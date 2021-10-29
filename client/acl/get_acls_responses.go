@@ -58,7 +58,7 @@ type GetAclsOK struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *GetAclsOKBody
 }
@@ -76,11 +76,7 @@ func (o *GetAclsOK) readResponse(response runtime.ClientResponse, consumer runti
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(GetAclsOKBody)
@@ -95,15 +91,8 @@ func (o *GetAclsOK) readResponse(response runtime.ClientResponse, consumer runti
 
 // NewGetAclsDefault creates a GetAclsDefault with default headers values
 func NewGetAclsDefault(code int) *GetAclsDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetAclsDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -116,7 +105,7 @@ type GetAclsDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -139,11 +128,7 @@ func (o *GetAclsDefault) readResponse(response runtime.ClientResponse, consumer 
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

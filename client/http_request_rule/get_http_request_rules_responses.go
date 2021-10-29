@@ -58,7 +58,7 @@ type GetHTTPRequestRulesOK struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *GetHTTPRequestRulesOKBody
 }
@@ -76,11 +76,7 @@ func (o *GetHTTPRequestRulesOK) readResponse(response runtime.ClientResponse, co
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(GetHTTPRequestRulesOKBody)
@@ -95,15 +91,8 @@ func (o *GetHTTPRequestRulesOK) readResponse(response runtime.ClientResponse, co
 
 // NewGetHTTPRequestRulesDefault creates a GetHTTPRequestRulesDefault with default headers values
 func NewGetHTTPRequestRulesDefault(code int) *GetHTTPRequestRulesDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetHTTPRequestRulesDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -116,7 +105,7 @@ type GetHTTPRequestRulesDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -139,11 +128,7 @@ func (o *GetHTTPRequestRulesDefault) readResponse(response runtime.ClientRespons
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

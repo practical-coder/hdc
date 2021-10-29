@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -81,15 +79,7 @@ func (o *GetConfigurationVersionOK) readResponse(response runtime.ClientResponse
 
 // NewGetConfigurationVersionNotFound creates a GetConfigurationVersionNotFound with default headers values
 func NewGetConfigurationVersionNotFound() *GetConfigurationVersionNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetConfigurationVersionNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetConfigurationVersionNotFound{}
 }
 
 /* GetConfigurationVersionNotFound describes a response with status code 404, with default header values.
@@ -100,7 +90,7 @@ type GetConfigurationVersionNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -118,11 +108,7 @@ func (o *GetConfigurationVersionNotFound) readResponse(response runtime.ClientRe
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -137,15 +123,8 @@ func (o *GetConfigurationVersionNotFound) readResponse(response runtime.ClientRe
 
 // NewGetConfigurationVersionDefault creates a GetConfigurationVersionDefault with default headers values
 func NewGetConfigurationVersionDefault(code int) *GetConfigurationVersionDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetConfigurationVersionDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -158,7 +137,7 @@ type GetConfigurationVersionDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -181,11 +160,7 @@ func (o *GetConfigurationVersionDefault) readResponse(response runtime.ClientRes
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

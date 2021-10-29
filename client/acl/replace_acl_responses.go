@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -139,15 +137,7 @@ func (o *ReplaceACLAccepted) readResponse(response runtime.ClientResponse, consu
 
 // NewReplaceACLBadRequest creates a ReplaceACLBadRequest with default headers values
 func NewReplaceACLBadRequest() *ReplaceACLBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &ReplaceACLBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &ReplaceACLBadRequest{}
 }
 
 /* ReplaceACLBadRequest describes a response with status code 400, with default header values.
@@ -158,7 +148,7 @@ type ReplaceACLBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -176,11 +166,7 @@ func (o *ReplaceACLBadRequest) readResponse(response runtime.ClientResponse, con
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -195,15 +181,7 @@ func (o *ReplaceACLBadRequest) readResponse(response runtime.ClientResponse, con
 
 // NewReplaceACLNotFound creates a ReplaceACLNotFound with default headers values
 func NewReplaceACLNotFound() *ReplaceACLNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &ReplaceACLNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &ReplaceACLNotFound{}
 }
 
 /* ReplaceACLNotFound describes a response with status code 404, with default header values.
@@ -214,7 +192,7 @@ type ReplaceACLNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -232,11 +210,7 @@ func (o *ReplaceACLNotFound) readResponse(response runtime.ClientResponse, consu
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -251,15 +225,8 @@ func (o *ReplaceACLNotFound) readResponse(response runtime.ClientResponse, consu
 
 // NewReplaceACLDefault creates a ReplaceACLDefault with default headers values
 func NewReplaceACLDefault(code int) *ReplaceACLDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &ReplaceACLDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -272,7 +239,7 @@ type ReplaceACLDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -295,11 +262,7 @@ func (o *ReplaceACLDefault) readResponse(response runtime.ClientResponse, consum
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

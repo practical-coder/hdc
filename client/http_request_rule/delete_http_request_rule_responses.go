@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -110,15 +108,7 @@ func (o *DeleteHTTPRequestRuleNoContent) readResponse(response runtime.ClientRes
 
 // NewDeleteHTTPRequestRuleNotFound creates a DeleteHTTPRequestRuleNotFound with default headers values
 func NewDeleteHTTPRequestRuleNotFound() *DeleteHTTPRequestRuleNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &DeleteHTTPRequestRuleNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &DeleteHTTPRequestRuleNotFound{}
 }
 
 /* DeleteHTTPRequestRuleNotFound describes a response with status code 404, with default header values.
@@ -129,7 +119,7 @@ type DeleteHTTPRequestRuleNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -147,11 +137,7 @@ func (o *DeleteHTTPRequestRuleNotFound) readResponse(response runtime.ClientResp
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -166,15 +152,8 @@ func (o *DeleteHTTPRequestRuleNotFound) readResponse(response runtime.ClientResp
 
 // NewDeleteHTTPRequestRuleDefault creates a DeleteHTTPRequestRuleDefault with default headers values
 func NewDeleteHTTPRequestRuleDefault(code int) *DeleteHTTPRequestRuleDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &DeleteHTTPRequestRuleDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -187,7 +166,7 @@ type DeleteHTTPRequestRuleDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -210,11 +189,7 @@ func (o *DeleteHTTPRequestRuleDefault) readResponse(response runtime.ClientRespo
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

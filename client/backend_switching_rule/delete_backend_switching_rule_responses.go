@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -110,15 +108,7 @@ func (o *DeleteBackendSwitchingRuleNoContent) readResponse(response runtime.Clie
 
 // NewDeleteBackendSwitchingRuleNotFound creates a DeleteBackendSwitchingRuleNotFound with default headers values
 func NewDeleteBackendSwitchingRuleNotFound() *DeleteBackendSwitchingRuleNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &DeleteBackendSwitchingRuleNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &DeleteBackendSwitchingRuleNotFound{}
 }
 
 /* DeleteBackendSwitchingRuleNotFound describes a response with status code 404, with default header values.
@@ -129,7 +119,7 @@ type DeleteBackendSwitchingRuleNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -147,11 +137,7 @@ func (o *DeleteBackendSwitchingRuleNotFound) readResponse(response runtime.Clien
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -166,15 +152,8 @@ func (o *DeleteBackendSwitchingRuleNotFound) readResponse(response runtime.Clien
 
 // NewDeleteBackendSwitchingRuleDefault creates a DeleteBackendSwitchingRuleDefault with default headers values
 func NewDeleteBackendSwitchingRuleDefault(code int) *DeleteBackendSwitchingRuleDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &DeleteBackendSwitchingRuleDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -187,7 +166,7 @@ type DeleteBackendSwitchingRuleDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -210,11 +189,7 @@ func (o *DeleteBackendSwitchingRuleDefault) readResponse(response runtime.Client
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

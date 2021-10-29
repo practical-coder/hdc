@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -83,15 +81,7 @@ func (o *PostClusterOK) readResponse(response runtime.ClientResponse, consumer r
 
 // NewPostClusterBadRequest creates a PostClusterBadRequest with default headers values
 func NewPostClusterBadRequest() *PostClusterBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &PostClusterBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &PostClusterBadRequest{}
 }
 
 /* PostClusterBadRequest describes a response with status code 400, with default header values.
@@ -102,7 +92,7 @@ type PostClusterBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -120,11 +110,7 @@ func (o *PostClusterBadRequest) readResponse(response runtime.ClientResponse, co
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -139,15 +125,8 @@ func (o *PostClusterBadRequest) readResponse(response runtime.ClientResponse, co
 
 // NewPostClusterDefault creates a PostClusterDefault with default headers values
 func NewPostClusterDefault(code int) *PostClusterDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &PostClusterDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -160,7 +139,7 @@ type PostClusterDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -183,11 +162,7 @@ func (o *PostClusterDefault) readResponse(response runtime.ClientResponse, consu
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

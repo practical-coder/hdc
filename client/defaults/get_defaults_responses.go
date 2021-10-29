@@ -57,7 +57,7 @@ type GetDefaultsOK struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *GetDefaultsOKBody
 }
@@ -75,11 +75,7 @@ func (o *GetDefaultsOK) readResponse(response runtime.ClientResponse, consumer r
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(GetDefaultsOKBody)
@@ -94,15 +90,8 @@ func (o *GetDefaultsOK) readResponse(response runtime.ClientResponse, consumer r
 
 // NewGetDefaultsDefault creates a GetDefaultsDefault with default headers values
 func NewGetDefaultsDefault(code int) *GetDefaultsDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetDefaultsDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -115,7 +104,7 @@ type GetDefaultsDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -138,11 +127,7 @@ func (o *GetDefaultsDefault) readResponse(response runtime.ClientResponse, consu
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

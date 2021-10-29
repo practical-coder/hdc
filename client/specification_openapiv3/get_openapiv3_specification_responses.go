@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -75,15 +73,8 @@ func (o *GetOpenapiv3SpecificationOK) readResponse(response runtime.ClientRespon
 
 // NewGetOpenapiv3SpecificationDefault creates a GetOpenapiv3SpecificationDefault with default headers values
 func NewGetOpenapiv3SpecificationDefault(code int) *GetOpenapiv3SpecificationDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetOpenapiv3SpecificationDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -96,7 +87,7 @@ type GetOpenapiv3SpecificationDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -119,11 +110,7 @@ func (o *GetOpenapiv3SpecificationDefault) readResponse(response runtime.ClientR
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

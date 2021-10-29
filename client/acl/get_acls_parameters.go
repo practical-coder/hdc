@@ -59,6 +59,12 @@ func NewGetAclsParamsWithHTTPClient(client *http.Client) *GetAclsParams {
 */
 type GetAclsParams struct {
 
+	/* ACLName.
+
+	   ACL name
+	*/
+	ACLName *string
+
 	/* ParentName.
 
 	   Parent name
@@ -130,6 +136,17 @@ func (o *GetAclsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithACLName adds the aCLName to the get acls params
+func (o *GetAclsParams) WithACLName(aCLName *string) *GetAclsParams {
+	o.SetACLName(aCLName)
+	return o
+}
+
+// SetACLName adds the aclName to the get acls params
+func (o *GetAclsParams) SetACLName(aCLName *string) {
+	o.ACLName = aCLName
+}
+
 // WithParentName adds the parentName to the get acls params
 func (o *GetAclsParams) WithParentName(parentName string) *GetAclsParams {
 	o.SetParentName(parentName)
@@ -170,6 +187,23 @@ func (o *GetAclsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regis
 		return err
 	}
 	var res []error
+
+	if o.ACLName != nil {
+
+		// query param acl_name
+		var qrACLName string
+
+		if o.ACLName != nil {
+			qrACLName = *o.ACLName
+		}
+		qACLName := qrACLName
+		if qACLName != "" {
+
+			if err := r.SetQueryParam("acl_name", qACLName); err != nil {
+				return err
+			}
+		}
+	}
 
 	// query param parent_name
 	qrParentName := o.ParentName

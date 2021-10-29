@@ -63,7 +63,7 @@ type GetResolverOK struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *GetResolverOKBody
 }
@@ -81,11 +81,7 @@ func (o *GetResolverOK) readResponse(response runtime.ClientResponse, consumer r
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(GetResolverOKBody)
@@ -100,15 +96,7 @@ func (o *GetResolverOK) readResponse(response runtime.ClientResponse, consumer r
 
 // NewGetResolverNotFound creates a GetResolverNotFound with default headers values
 func NewGetResolverNotFound() *GetResolverNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetResolverNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetResolverNotFound{}
 }
 
 /* GetResolverNotFound describes a response with status code 404, with default header values.
@@ -119,7 +107,7 @@ type GetResolverNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -137,11 +125,7 @@ func (o *GetResolverNotFound) readResponse(response runtime.ClientResponse, cons
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -156,15 +140,8 @@ func (o *GetResolverNotFound) readResponse(response runtime.ClientResponse, cons
 
 // NewGetResolverDefault creates a GetResolverDefault with default headers values
 func NewGetResolverDefault(code int) *GetResolverDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetResolverDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -177,7 +154,7 @@ type GetResolverDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -200,11 +177,7 @@ func (o *GetResolverDefault) readResponse(response runtime.ClientResponse, consu
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

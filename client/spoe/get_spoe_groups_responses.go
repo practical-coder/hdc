@@ -58,7 +58,7 @@ type GetSpoeGroupsOK struct {
 
 	/* Spoe configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *GetSpoeGroupsOKBody
 }
@@ -76,11 +76,7 @@ func (o *GetSpoeGroupsOK) readResponse(response runtime.ClientResponse, consumer
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(GetSpoeGroupsOKBody)
@@ -95,15 +91,8 @@ func (o *GetSpoeGroupsOK) readResponse(response runtime.ClientResponse, consumer
 
 // NewGetSpoeGroupsDefault creates a GetSpoeGroupsDefault with default headers values
 func NewGetSpoeGroupsDefault(code int) *GetSpoeGroupsDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetSpoeGroupsDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -116,7 +105,7 @@ type GetSpoeGroupsDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -139,11 +128,7 @@ func (o *GetSpoeGroupsDefault) readResponse(response runtime.ClientResponse, con
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

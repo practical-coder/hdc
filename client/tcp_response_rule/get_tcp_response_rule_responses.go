@@ -63,7 +63,7 @@ type GetTCPResponseRuleOK struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *GetTCPResponseRuleOKBody
 }
@@ -81,11 +81,7 @@ func (o *GetTCPResponseRuleOK) readResponse(response runtime.ClientResponse, con
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(GetTCPResponseRuleOKBody)
@@ -100,15 +96,7 @@ func (o *GetTCPResponseRuleOK) readResponse(response runtime.ClientResponse, con
 
 // NewGetTCPResponseRuleNotFound creates a GetTCPResponseRuleNotFound with default headers values
 func NewGetTCPResponseRuleNotFound() *GetTCPResponseRuleNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetTCPResponseRuleNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetTCPResponseRuleNotFound{}
 }
 
 /* GetTCPResponseRuleNotFound describes a response with status code 404, with default header values.
@@ -119,7 +107,7 @@ type GetTCPResponseRuleNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -137,11 +125,7 @@ func (o *GetTCPResponseRuleNotFound) readResponse(response runtime.ClientRespons
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -156,15 +140,8 @@ func (o *GetTCPResponseRuleNotFound) readResponse(response runtime.ClientRespons
 
 // NewGetTCPResponseRuleDefault creates a GetTCPResponseRuleDefault with default headers values
 func NewGetTCPResponseRuleDefault(code int) *GetTCPResponseRuleDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetTCPResponseRuleDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -177,7 +154,7 @@ type GetTCPResponseRuleDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -200,11 +177,7 @@ func (o *GetTCPResponseRuleDefault) readResponse(response runtime.ClientResponse
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

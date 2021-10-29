@@ -58,7 +58,7 @@ type GetBackendSwitchingRulesOK struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *GetBackendSwitchingRulesOKBody
 }
@@ -76,11 +76,7 @@ func (o *GetBackendSwitchingRulesOK) readResponse(response runtime.ClientRespons
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(GetBackendSwitchingRulesOKBody)
@@ -95,15 +91,8 @@ func (o *GetBackendSwitchingRulesOK) readResponse(response runtime.ClientRespons
 
 // NewGetBackendSwitchingRulesDefault creates a GetBackendSwitchingRulesDefault with default headers values
 func NewGetBackendSwitchingRulesDefault(code int) *GetBackendSwitchingRulesDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetBackendSwitchingRulesDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -116,7 +105,7 @@ type GetBackendSwitchingRulesDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -139,11 +128,7 @@ func (o *GetBackendSwitchingRulesDefault) readResponse(response runtime.ClientRe
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

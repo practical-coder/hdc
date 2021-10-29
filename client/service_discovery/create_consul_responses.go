@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -89,15 +87,7 @@ func (o *CreateConsulCreated) readResponse(response runtime.ClientResponse, cons
 
 // NewCreateConsulBadRequest creates a CreateConsulBadRequest with default headers values
 func NewCreateConsulBadRequest() *CreateConsulBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CreateConsulBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CreateConsulBadRequest{}
 }
 
 /* CreateConsulBadRequest describes a response with status code 400, with default header values.
@@ -108,7 +98,7 @@ type CreateConsulBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -126,11 +116,7 @@ func (o *CreateConsulBadRequest) readResponse(response runtime.ClientResponse, c
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -145,15 +131,7 @@ func (o *CreateConsulBadRequest) readResponse(response runtime.ClientResponse, c
 
 // NewCreateConsulConflict creates a CreateConsulConflict with default headers values
 func NewCreateConsulConflict() *CreateConsulConflict {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CreateConsulConflict{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CreateConsulConflict{}
 }
 
 /* CreateConsulConflict describes a response with status code 409, with default header values.
@@ -164,7 +142,7 @@ type CreateConsulConflict struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -182,11 +160,7 @@ func (o *CreateConsulConflict) readResponse(response runtime.ClientResponse, con
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -201,15 +175,8 @@ func (o *CreateConsulConflict) readResponse(response runtime.ClientResponse, con
 
 // NewCreateConsulDefault creates a CreateConsulDefault with default headers values
 func NewCreateConsulDefault(code int) *CreateConsulDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &CreateConsulDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -222,7 +189,7 @@ type CreateConsulDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -245,11 +212,7 @@ func (o *CreateConsulDefault) readResponse(response runtime.ClientResponse, cons
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

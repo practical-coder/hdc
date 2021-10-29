@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -89,15 +87,7 @@ func (o *CreateSpoeAgentCreated) readResponse(response runtime.ClientResponse, c
 
 // NewCreateSpoeAgentBadRequest creates a CreateSpoeAgentBadRequest with default headers values
 func NewCreateSpoeAgentBadRequest() *CreateSpoeAgentBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CreateSpoeAgentBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CreateSpoeAgentBadRequest{}
 }
 
 /* CreateSpoeAgentBadRequest describes a response with status code 400, with default header values.
@@ -108,7 +98,7 @@ type CreateSpoeAgentBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -126,11 +116,7 @@ func (o *CreateSpoeAgentBadRequest) readResponse(response runtime.ClientResponse
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -145,15 +131,7 @@ func (o *CreateSpoeAgentBadRequest) readResponse(response runtime.ClientResponse
 
 // NewCreateSpoeAgentConflict creates a CreateSpoeAgentConflict with default headers values
 func NewCreateSpoeAgentConflict() *CreateSpoeAgentConflict {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CreateSpoeAgentConflict{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CreateSpoeAgentConflict{}
 }
 
 /* CreateSpoeAgentConflict describes a response with status code 409, with default header values.
@@ -164,7 +142,7 @@ type CreateSpoeAgentConflict struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -182,11 +160,7 @@ func (o *CreateSpoeAgentConflict) readResponse(response runtime.ClientResponse, 
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -201,15 +175,8 @@ func (o *CreateSpoeAgentConflict) readResponse(response runtime.ClientResponse, 
 
 // NewCreateSpoeAgentDefault creates a CreateSpoeAgentDefault with default headers values
 func NewCreateSpoeAgentDefault(code int) *CreateSpoeAgentDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &CreateSpoeAgentDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -222,7 +189,7 @@ type CreateSpoeAgentDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -245,11 +212,7 @@ func (o *CreateSpoeAgentDefault) readResponse(response runtime.ClientResponse, c
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

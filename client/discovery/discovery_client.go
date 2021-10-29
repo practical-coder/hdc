@@ -40,7 +40,11 @@ type ClientService interface {
 
 	GetServicesEndpoints(params *GetServicesEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesEndpointsOK, error)
 
+	GetSpoeEndpoints(params *GetSpoeEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeEndpointsOK, error)
+
 	GetStatsEndpoints(params *GetStatsEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStatsEndpointsOK, error)
+
+	GetStorageEndpoints(params *GetStorageEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStorageEndpointsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -286,6 +290,46 @@ func (a *Client) GetServicesEndpoints(params *GetServicesEndpointsParams, authIn
 }
 
 /*
+  GetSpoeEndpoints returns list of h a proxy s p o e endpoints
+
+  Returns a list of endpoints to be used for SPOE settings of HAProxy.
+*/
+func (a *Client) GetSpoeEndpoints(params *GetSpoeEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeEndpointsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetSpoeEndpointsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getSpoeEndpoints",
+		Method:             "GET",
+		PathPattern:        "/services/haproxy/spoe",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetSpoeEndpointsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetSpoeEndpointsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetSpoeEndpointsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   GetStatsEndpoints returns list of h a proxy stats endpoints
 
   Returns a list of HAProxy stats endpoints.
@@ -322,6 +366,46 @@ func (a *Client) GetStatsEndpoints(params *GetStatsEndpointsParams, authInfo run
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*GetStatsEndpointsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  GetStorageEndpoints returns list of h a proxy storage endpoints
+
+  Returns a list of endpoints that use HAProxy storage for persistency, e.g. maps, ssl certificates...
+*/
+func (a *Client) GetStorageEndpoints(params *GetStorageEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStorageEndpointsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetStorageEndpointsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getStorageEndpoints",
+		Method:             "GET",
+		PathPattern:        "/services/haproxy/storage",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetStorageEndpointsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetStorageEndpointsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetStorageEndpointsDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

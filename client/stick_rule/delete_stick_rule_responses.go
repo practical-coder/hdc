@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -110,15 +108,7 @@ func (o *DeleteStickRuleNoContent) readResponse(response runtime.ClientResponse,
 
 // NewDeleteStickRuleNotFound creates a DeleteStickRuleNotFound with default headers values
 func NewDeleteStickRuleNotFound() *DeleteStickRuleNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &DeleteStickRuleNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &DeleteStickRuleNotFound{}
 }
 
 /* DeleteStickRuleNotFound describes a response with status code 404, with default header values.
@@ -129,7 +119,7 @@ type DeleteStickRuleNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -147,11 +137,7 @@ func (o *DeleteStickRuleNotFound) readResponse(response runtime.ClientResponse, 
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -166,15 +152,8 @@ func (o *DeleteStickRuleNotFound) readResponse(response runtime.ClientResponse, 
 
 // NewDeleteStickRuleDefault creates a DeleteStickRuleDefault with default headers values
 func NewDeleteStickRuleDefault(code int) *DeleteStickRuleDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &DeleteStickRuleDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -187,7 +166,7 @@ type DeleteStickRuleDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -210,11 +189,7 @@ func (o *DeleteStickRuleDefault) readResponse(response runtime.ClientResponse, c
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

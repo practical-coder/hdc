@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -110,15 +108,7 @@ func (o *DeleteServerNoContent) readResponse(response runtime.ClientResponse, co
 
 // NewDeleteServerNotFound creates a DeleteServerNotFound with default headers values
 func NewDeleteServerNotFound() *DeleteServerNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &DeleteServerNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &DeleteServerNotFound{}
 }
 
 /* DeleteServerNotFound describes a response with status code 404, with default header values.
@@ -129,7 +119,7 @@ type DeleteServerNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -147,11 +137,7 @@ func (o *DeleteServerNotFound) readResponse(response runtime.ClientResponse, con
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -166,15 +152,8 @@ func (o *DeleteServerNotFound) readResponse(response runtime.ClientResponse, con
 
 // NewDeleteServerDefault creates a DeleteServerDefault with default headers values
 func NewDeleteServerDefault(code int) *DeleteServerDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &DeleteServerDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -187,7 +166,7 @@ type DeleteServerDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -210,11 +189,7 @@ func (o *DeleteServerDefault) readResponse(response runtime.ClientResponse, cons
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

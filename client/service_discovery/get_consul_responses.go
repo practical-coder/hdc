@@ -84,15 +84,7 @@ func (o *GetConsulOK) readResponse(response runtime.ClientResponse, consumer run
 
 // NewGetConsulNotFound creates a GetConsulNotFound with default headers values
 func NewGetConsulNotFound() *GetConsulNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetConsulNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetConsulNotFound{}
 }
 
 /* GetConsulNotFound describes a response with status code 404, with default header values.
@@ -103,7 +95,7 @@ type GetConsulNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -121,11 +113,7 @@ func (o *GetConsulNotFound) readResponse(response runtime.ClientResponse, consum
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -140,15 +128,8 @@ func (o *GetConsulNotFound) readResponse(response runtime.ClientResponse, consum
 
 // NewGetConsulDefault creates a GetConsulDefault with default headers values
 func NewGetConsulDefault(code int) *GetConsulDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetConsulDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -161,7 +142,7 @@ type GetConsulDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -184,11 +165,7 @@ func (o *GetConsulDefault) readResponse(response runtime.ClientResponse, consume
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

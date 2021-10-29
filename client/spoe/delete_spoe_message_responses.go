@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -72,15 +70,7 @@ func (o *DeleteSpoeMessageNoContent) readResponse(response runtime.ClientRespons
 
 // NewDeleteSpoeMessageNotFound creates a DeleteSpoeMessageNotFound with default headers values
 func NewDeleteSpoeMessageNotFound() *DeleteSpoeMessageNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &DeleteSpoeMessageNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &DeleteSpoeMessageNotFound{}
 }
 
 /* DeleteSpoeMessageNotFound describes a response with status code 404, with default header values.
@@ -91,7 +81,7 @@ type DeleteSpoeMessageNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -109,11 +99,7 @@ func (o *DeleteSpoeMessageNotFound) readResponse(response runtime.ClientResponse
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -128,15 +114,8 @@ func (o *DeleteSpoeMessageNotFound) readResponse(response runtime.ClientResponse
 
 // NewDeleteSpoeMessageDefault creates a DeleteSpoeMessageDefault with default headers values
 func NewDeleteSpoeMessageDefault(code int) *DeleteSpoeMessageDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &DeleteSpoeMessageDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -149,7 +128,7 @@ type DeleteSpoeMessageDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -172,11 +151,7 @@ func (o *DeleteSpoeMessageDefault) readResponse(response runtime.ClientResponse,
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

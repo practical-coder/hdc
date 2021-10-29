@@ -62,6 +62,18 @@ func NewPostClusterParamsWithHTTPClient(client *http.Client) *PostClusterParams 
 */
 type PostClusterParams struct {
 
+	/* AdvertisedAddress.
+
+	   Force the advertised address when joining a cluster
+	*/
+	AdvertisedAddress *string
+
+	/* AdvertisedPort.
+
+	   Force the advertised port when joining a cluster
+	*/
+	AdvertisedPort *int64
+
 	/* Configuration.
 
 	   In case of moving to single mode do we keep or clean configuration
@@ -130,6 +142,28 @@ func (o *PostClusterParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAdvertisedAddress adds the advertisedAddress to the post cluster params
+func (o *PostClusterParams) WithAdvertisedAddress(advertisedAddress *string) *PostClusterParams {
+	o.SetAdvertisedAddress(advertisedAddress)
+	return o
+}
+
+// SetAdvertisedAddress adds the advertisedAddress to the post cluster params
+func (o *PostClusterParams) SetAdvertisedAddress(advertisedAddress *string) {
+	o.AdvertisedAddress = advertisedAddress
+}
+
+// WithAdvertisedPort adds the advertisedPort to the post cluster params
+func (o *PostClusterParams) WithAdvertisedPort(advertisedPort *int64) *PostClusterParams {
+	o.SetAdvertisedPort(advertisedPort)
+	return o
+}
+
+// SetAdvertisedPort adds the advertisedPort to the post cluster params
+func (o *PostClusterParams) SetAdvertisedPort(advertisedPort *int64) {
+	o.AdvertisedPort = advertisedPort
+}
+
 // WithConfiguration adds the configuration to the post cluster params
 func (o *PostClusterParams) WithConfiguration(configuration *string) *PostClusterParams {
 	o.SetConfiguration(configuration)
@@ -170,6 +204,40 @@ func (o *PostClusterParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
+
+	if o.AdvertisedAddress != nil {
+
+		// query param advertised_address
+		var qrAdvertisedAddress string
+
+		if o.AdvertisedAddress != nil {
+			qrAdvertisedAddress = *o.AdvertisedAddress
+		}
+		qAdvertisedAddress := qrAdvertisedAddress
+		if qAdvertisedAddress != "" {
+
+			if err := r.SetQueryParam("advertised_address", qAdvertisedAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.AdvertisedPort != nil {
+
+		// query param advertised_port
+		var qrAdvertisedPort int64
+
+		if o.AdvertisedPort != nil {
+			qrAdvertisedPort = *o.AdvertisedPort
+		}
+		qAdvertisedPort := swag.FormatInt64(qrAdvertisedPort)
+		if qAdvertisedPort != "" {
+
+			if err := r.SetQueryParam("advertised_port", qAdvertisedPort); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Configuration != nil {
 

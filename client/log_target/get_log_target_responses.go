@@ -63,7 +63,7 @@ type GetLogTargetOK struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *GetLogTargetOKBody
 }
@@ -81,11 +81,7 @@ func (o *GetLogTargetOK) readResponse(response runtime.ClientResponse, consumer 
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(GetLogTargetOKBody)
@@ -100,15 +96,7 @@ func (o *GetLogTargetOK) readResponse(response runtime.ClientResponse, consumer 
 
 // NewGetLogTargetNotFound creates a GetLogTargetNotFound with default headers values
 func NewGetLogTargetNotFound() *GetLogTargetNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetLogTargetNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetLogTargetNotFound{}
 }
 
 /* GetLogTargetNotFound describes a response with status code 404, with default header values.
@@ -119,7 +107,7 @@ type GetLogTargetNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -137,11 +125,7 @@ func (o *GetLogTargetNotFound) readResponse(response runtime.ClientResponse, con
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -156,15 +140,8 @@ func (o *GetLogTargetNotFound) readResponse(response runtime.ClientResponse, con
 
 // NewGetLogTargetDefault creates a GetLogTargetDefault with default headers values
 func NewGetLogTargetDefault(code int) *GetLogTargetDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetLogTargetDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -177,7 +154,7 @@ type GetLogTargetDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -200,11 +177,7 @@ func (o *GetLogTargetDefault) readResponse(response runtime.ClientResponse, cons
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

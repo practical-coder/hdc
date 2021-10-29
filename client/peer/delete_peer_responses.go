@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -110,15 +108,7 @@ func (o *DeletePeerNoContent) readResponse(response runtime.ClientResponse, cons
 
 // NewDeletePeerNotFound creates a DeletePeerNotFound with default headers values
 func NewDeletePeerNotFound() *DeletePeerNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &DeletePeerNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &DeletePeerNotFound{}
 }
 
 /* DeletePeerNotFound describes a response with status code 404, with default header values.
@@ -129,7 +119,7 @@ type DeletePeerNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -147,11 +137,7 @@ func (o *DeletePeerNotFound) readResponse(response runtime.ClientResponse, consu
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -166,15 +152,8 @@ func (o *DeletePeerNotFound) readResponse(response runtime.ClientResponse, consu
 
 // NewDeletePeerDefault creates a DeletePeerDefault with default headers values
 func NewDeletePeerDefault(code int) *DeletePeerDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &DeletePeerDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -187,7 +166,7 @@ type DeletePeerDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -210,11 +189,7 @@ func (o *DeletePeerDefault) readResponse(response runtime.ClientResponse, consum
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

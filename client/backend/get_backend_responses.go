@@ -63,7 +63,7 @@ type GetBackendOK struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *GetBackendOKBody
 }
@@ -81,11 +81,7 @@ func (o *GetBackendOK) readResponse(response runtime.ClientResponse, consumer ru
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(GetBackendOKBody)
@@ -100,15 +96,7 @@ func (o *GetBackendOK) readResponse(response runtime.ClientResponse, consumer ru
 
 // NewGetBackendNotFound creates a GetBackendNotFound with default headers values
 func NewGetBackendNotFound() *GetBackendNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetBackendNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetBackendNotFound{}
 }
 
 /* GetBackendNotFound describes a response with status code 404, with default header values.
@@ -119,7 +107,7 @@ type GetBackendNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -137,11 +125,7 @@ func (o *GetBackendNotFound) readResponse(response runtime.ClientResponse, consu
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -156,15 +140,8 @@ func (o *GetBackendNotFound) readResponse(response runtime.ClientResponse, consu
 
 // NewGetBackendDefault creates a GetBackendDefault with default headers values
 func NewGetBackendDefault(code int) *GetBackendDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetBackendDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -177,7 +154,7 @@ type GetBackendDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -200,11 +177,7 @@ func (o *GetBackendDefault) readResponse(response runtime.ClientResponse, consum
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

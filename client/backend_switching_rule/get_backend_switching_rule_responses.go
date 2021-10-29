@@ -63,7 +63,7 @@ type GetBackendSwitchingRuleOK struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *GetBackendSwitchingRuleOKBody
 }
@@ -81,11 +81,7 @@ func (o *GetBackendSwitchingRuleOK) readResponse(response runtime.ClientResponse
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(GetBackendSwitchingRuleOKBody)
@@ -100,15 +96,7 @@ func (o *GetBackendSwitchingRuleOK) readResponse(response runtime.ClientResponse
 
 // NewGetBackendSwitchingRuleNotFound creates a GetBackendSwitchingRuleNotFound with default headers values
 func NewGetBackendSwitchingRuleNotFound() *GetBackendSwitchingRuleNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetBackendSwitchingRuleNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetBackendSwitchingRuleNotFound{}
 }
 
 /* GetBackendSwitchingRuleNotFound describes a response with status code 404, with default header values.
@@ -119,7 +107,7 @@ type GetBackendSwitchingRuleNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -137,11 +125,7 @@ func (o *GetBackendSwitchingRuleNotFound) readResponse(response runtime.ClientRe
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -156,15 +140,8 @@ func (o *GetBackendSwitchingRuleNotFound) readResponse(response runtime.ClientRe
 
 // NewGetBackendSwitchingRuleDefault creates a GetBackendSwitchingRuleDefault with default headers values
 func NewGetBackendSwitchingRuleDefault(code int) *GetBackendSwitchingRuleDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetBackendSwitchingRuleDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -177,7 +154,7 @@ type GetBackendSwitchingRuleDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -200,11 +177,7 @@ func (o *GetBackendSwitchingRuleDefault) readResponse(response runtime.ClientRes
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

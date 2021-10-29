@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -139,15 +137,7 @@ func (o *ReplaceResolverAccepted) readResponse(response runtime.ClientResponse, 
 
 // NewReplaceResolverBadRequest creates a ReplaceResolverBadRequest with default headers values
 func NewReplaceResolverBadRequest() *ReplaceResolverBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &ReplaceResolverBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &ReplaceResolverBadRequest{}
 }
 
 /* ReplaceResolverBadRequest describes a response with status code 400, with default header values.
@@ -158,7 +148,7 @@ type ReplaceResolverBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -176,11 +166,7 @@ func (o *ReplaceResolverBadRequest) readResponse(response runtime.ClientResponse
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -195,15 +181,7 @@ func (o *ReplaceResolverBadRequest) readResponse(response runtime.ClientResponse
 
 // NewReplaceResolverNotFound creates a ReplaceResolverNotFound with default headers values
 func NewReplaceResolverNotFound() *ReplaceResolverNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &ReplaceResolverNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &ReplaceResolverNotFound{}
 }
 
 /* ReplaceResolverNotFound describes a response with status code 404, with default header values.
@@ -214,7 +192,7 @@ type ReplaceResolverNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -232,11 +210,7 @@ func (o *ReplaceResolverNotFound) readResponse(response runtime.ClientResponse, 
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -251,15 +225,8 @@ func (o *ReplaceResolverNotFound) readResponse(response runtime.ClientResponse, 
 
 // NewReplaceResolverDefault creates a ReplaceResolverDefault with default headers values
 func NewReplaceResolverDefault(code int) *ReplaceResolverDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &ReplaceResolverDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -272,7 +239,7 @@ type ReplaceResolverDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -295,11 +262,7 @@ func (o *ReplaceResolverDefault) readResponse(response runtime.ClientResponse, c
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

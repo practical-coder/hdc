@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -139,15 +137,7 @@ func (o *CreateHTTPResponseRuleAccepted) readResponse(response runtime.ClientRes
 
 // NewCreateHTTPResponseRuleBadRequest creates a CreateHTTPResponseRuleBadRequest with default headers values
 func NewCreateHTTPResponseRuleBadRequest() *CreateHTTPResponseRuleBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CreateHTTPResponseRuleBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CreateHTTPResponseRuleBadRequest{}
 }
 
 /* CreateHTTPResponseRuleBadRequest describes a response with status code 400, with default header values.
@@ -158,7 +148,7 @@ type CreateHTTPResponseRuleBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -176,11 +166,7 @@ func (o *CreateHTTPResponseRuleBadRequest) readResponse(response runtime.ClientR
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -195,15 +181,7 @@ func (o *CreateHTTPResponseRuleBadRequest) readResponse(response runtime.ClientR
 
 // NewCreateHTTPResponseRuleConflict creates a CreateHTTPResponseRuleConflict with default headers values
 func NewCreateHTTPResponseRuleConflict() *CreateHTTPResponseRuleConflict {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CreateHTTPResponseRuleConflict{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CreateHTTPResponseRuleConflict{}
 }
 
 /* CreateHTTPResponseRuleConflict describes a response with status code 409, with default header values.
@@ -214,7 +192,7 @@ type CreateHTTPResponseRuleConflict struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -232,11 +210,7 @@ func (o *CreateHTTPResponseRuleConflict) readResponse(response runtime.ClientRes
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -251,15 +225,8 @@ func (o *CreateHTTPResponseRuleConflict) readResponse(response runtime.ClientRes
 
 // NewCreateHTTPResponseRuleDefault creates a CreateHTTPResponseRuleDefault with default headers values
 func NewCreateHTTPResponseRuleDefault(code int) *CreateHTTPResponseRuleDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &CreateHTTPResponseRuleDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -272,7 +239,7 @@ type CreateHTTPResponseRuleDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -295,11 +262,7 @@ func (o *CreateHTTPResponseRuleDefault) readResponse(response runtime.ClientResp
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -139,15 +137,7 @@ func (o *CreateSiteAccepted) readResponse(response runtime.ClientResponse, consu
 
 // NewCreateSiteBadRequest creates a CreateSiteBadRequest with default headers values
 func NewCreateSiteBadRequest() *CreateSiteBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CreateSiteBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CreateSiteBadRequest{}
 }
 
 /* CreateSiteBadRequest describes a response with status code 400, with default header values.
@@ -158,7 +148,7 @@ type CreateSiteBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -176,11 +166,7 @@ func (o *CreateSiteBadRequest) readResponse(response runtime.ClientResponse, con
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -195,15 +181,7 @@ func (o *CreateSiteBadRequest) readResponse(response runtime.ClientResponse, con
 
 // NewCreateSiteConflict creates a CreateSiteConflict with default headers values
 func NewCreateSiteConflict() *CreateSiteConflict {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CreateSiteConflict{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CreateSiteConflict{}
 }
 
 /* CreateSiteConflict describes a response with status code 409, with default header values.
@@ -214,7 +192,7 @@ type CreateSiteConflict struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -232,11 +210,7 @@ func (o *CreateSiteConflict) readResponse(response runtime.ClientResponse, consu
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -251,15 +225,8 @@ func (o *CreateSiteConflict) readResponse(response runtime.ClientResponse, consu
 
 // NewCreateSiteDefault creates a CreateSiteDefault with default headers values
 func NewCreateSiteDefault(code int) *CreateSiteDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &CreateSiteDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -272,7 +239,7 @@ type CreateSiteDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -295,11 +262,7 @@ func (o *CreateSiteDefault) readResponse(response runtime.ClientResponse, consum
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

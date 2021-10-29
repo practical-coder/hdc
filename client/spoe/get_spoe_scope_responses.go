@@ -64,7 +64,7 @@ type GetSpoeScopeOK struct {
 
 	/* Spoe configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *GetSpoeScopeOKBody
 }
@@ -82,11 +82,7 @@ func (o *GetSpoeScopeOK) readResponse(response runtime.ClientResponse, consumer 
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(GetSpoeScopeOKBody)
@@ -101,15 +97,7 @@ func (o *GetSpoeScopeOK) readResponse(response runtime.ClientResponse, consumer 
 
 // NewGetSpoeScopeNotFound creates a GetSpoeScopeNotFound with default headers values
 func NewGetSpoeScopeNotFound() *GetSpoeScopeNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetSpoeScopeNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetSpoeScopeNotFound{}
 }
 
 /* GetSpoeScopeNotFound describes a response with status code 404, with default header values.
@@ -120,7 +108,7 @@ type GetSpoeScopeNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -138,11 +126,7 @@ func (o *GetSpoeScopeNotFound) readResponse(response runtime.ClientResponse, con
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -157,15 +141,8 @@ func (o *GetSpoeScopeNotFound) readResponse(response runtime.ClientResponse, con
 
 // NewGetSpoeScopeDefault creates a GetSpoeScopeDefault with default headers values
 func NewGetSpoeScopeDefault(code int) *GetSpoeScopeDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetSpoeScopeDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -178,7 +155,7 @@ type GetSpoeScopeDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -201,11 +178,7 @@ func (o *GetSpoeScopeDefault) readResponse(response runtime.ClientResponse, cons
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

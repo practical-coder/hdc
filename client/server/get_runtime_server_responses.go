@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -83,15 +81,7 @@ func (o *GetRuntimeServerOK) readResponse(response runtime.ClientResponse, consu
 
 // NewGetRuntimeServerNotFound creates a GetRuntimeServerNotFound with default headers values
 func NewGetRuntimeServerNotFound() *GetRuntimeServerNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetRuntimeServerNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetRuntimeServerNotFound{}
 }
 
 /* GetRuntimeServerNotFound describes a response with status code 404, with default header values.
@@ -102,7 +92,7 @@ type GetRuntimeServerNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -120,11 +110,7 @@ func (o *GetRuntimeServerNotFound) readResponse(response runtime.ClientResponse,
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -139,15 +125,8 @@ func (o *GetRuntimeServerNotFound) readResponse(response runtime.ClientResponse,
 
 // NewGetRuntimeServerDefault creates a GetRuntimeServerDefault with default headers values
 func NewGetRuntimeServerDefault(code int) *GetRuntimeServerDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetRuntimeServerDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -160,7 +139,7 @@ type GetRuntimeServerDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -183,11 +162,7 @@ func (o *GetRuntimeServerDefault) readResponse(response runtime.ClientResponse, 
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

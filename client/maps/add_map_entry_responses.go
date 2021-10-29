@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -89,15 +87,7 @@ func (o *AddMapEntryCreated) readResponse(response runtime.ClientResponse, consu
 
 // NewAddMapEntryBadRequest creates a AddMapEntryBadRequest with default headers values
 func NewAddMapEntryBadRequest() *AddMapEntryBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &AddMapEntryBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &AddMapEntryBadRequest{}
 }
 
 /* AddMapEntryBadRequest describes a response with status code 400, with default header values.
@@ -108,7 +98,7 @@ type AddMapEntryBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -126,11 +116,7 @@ func (o *AddMapEntryBadRequest) readResponse(response runtime.ClientResponse, co
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -145,15 +131,7 @@ func (o *AddMapEntryBadRequest) readResponse(response runtime.ClientResponse, co
 
 // NewAddMapEntryConflict creates a AddMapEntryConflict with default headers values
 func NewAddMapEntryConflict() *AddMapEntryConflict {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &AddMapEntryConflict{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &AddMapEntryConflict{}
 }
 
 /* AddMapEntryConflict describes a response with status code 409, with default header values.
@@ -164,7 +142,7 @@ type AddMapEntryConflict struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -182,11 +160,7 @@ func (o *AddMapEntryConflict) readResponse(response runtime.ClientResponse, cons
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -201,15 +175,8 @@ func (o *AddMapEntryConflict) readResponse(response runtime.ClientResponse, cons
 
 // NewAddMapEntryDefault creates a AddMapEntryDefault with default headers values
 func NewAddMapEntryDefault(code int) *AddMapEntryDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &AddMapEntryDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -222,7 +189,7 @@ type AddMapEntryDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -245,11 +212,7 @@ func (o *AddMapEntryDefault) readResponse(response runtime.ClientResponse, consu
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -49,6 +47,12 @@ func (o *CommitTransactionReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 406:
+		result := NewCommitTransactionNotAcceptable()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		result := NewCommitTransactionDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -68,7 +72,7 @@ func NewCommitTransactionOK() *CommitTransactionOK {
 
 /* CommitTransactionOK describes a response with status code 200, with default header values.
 
-Transaction succesfully commited
+Transaction successfully committed
 */
 type CommitTransactionOK struct {
 	Payload *models.Transaction
@@ -139,15 +143,7 @@ func (o *CommitTransactionAccepted) readResponse(response runtime.ClientResponse
 
 // NewCommitTransactionBadRequest creates a CommitTransactionBadRequest with default headers values
 func NewCommitTransactionBadRequest() *CommitTransactionBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CommitTransactionBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CommitTransactionBadRequest{}
 }
 
 /* CommitTransactionBadRequest describes a response with status code 400, with default header values.
@@ -158,7 +154,7 @@ type CommitTransactionBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -176,11 +172,7 @@ func (o *CommitTransactionBadRequest) readResponse(response runtime.ClientRespon
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -195,15 +187,7 @@ func (o *CommitTransactionBadRequest) readResponse(response runtime.ClientRespon
 
 // NewCommitTransactionNotFound creates a CommitTransactionNotFound with default headers values
 func NewCommitTransactionNotFound() *CommitTransactionNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CommitTransactionNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CommitTransactionNotFound{}
 }
 
 /* CommitTransactionNotFound describes a response with status code 404, with default header values.
@@ -214,7 +198,7 @@ type CommitTransactionNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -232,11 +216,51 @@ func (o *CommitTransactionNotFound) readResponse(response runtime.ClientResponse
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCommitTransactionNotAcceptable creates a CommitTransactionNotAcceptable with default headers values
+func NewCommitTransactionNotAcceptable() *CommitTransactionNotAcceptable {
+	return &CommitTransactionNotAcceptable{}
+}
+
+/* CommitTransactionNotAcceptable describes a response with status code 406, with default header values.
+
+The specified resource cannot be handled
+*/
+type CommitTransactionNotAcceptable struct {
+
+	/* Configuration file version
+	 */
+	ConfigurationVersion string
+
+	Payload *models.Error
+}
+
+func (o *CommitTransactionNotAcceptable) Error() string {
+	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionNotAcceptable  %+v", 406, o.Payload)
+}
+func (o *CommitTransactionNotAcceptable) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *CommitTransactionNotAcceptable) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -251,15 +275,8 @@ func (o *CommitTransactionNotFound) readResponse(response runtime.ClientResponse
 
 // NewCommitTransactionDefault creates a CommitTransactionDefault with default headers values
 func NewCommitTransactionDefault(code int) *CommitTransactionDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &CommitTransactionDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -272,7 +289,7 @@ type CommitTransactionDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -295,11 +312,7 @@ func (o *CommitTransactionDefault) readResponse(response runtime.ClientResponse,
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

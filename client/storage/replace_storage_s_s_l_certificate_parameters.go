@@ -75,6 +75,12 @@ type ReplaceStorageSSLCertificateParams struct {
 	*/
 	Name string
 
+	/* SkipReload.
+
+	   If set, no reload will be initiated after update
+	*/
+	SkipReload *bool
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -94,10 +100,13 @@ func (o *ReplaceStorageSSLCertificateParams) WithDefaults() *ReplaceStorageSSLCe
 func (o *ReplaceStorageSSLCertificateParams) SetDefaults() {
 	var (
 		forceReloadDefault = bool(false)
+
+		skipReloadDefault = bool(false)
 	)
 
 	val := ReplaceStorageSSLCertificateParams{
 		ForceReload: &forceReloadDefault,
+		SkipReload:  &skipReloadDefault,
 	}
 
 	val.timeout = o.timeout
@@ -172,6 +181,17 @@ func (o *ReplaceStorageSSLCertificateParams) SetName(name string) {
 	o.Name = name
 }
 
+// WithSkipReload adds the skipReload to the replace storage s s l certificate params
+func (o *ReplaceStorageSSLCertificateParams) WithSkipReload(skipReload *bool) *ReplaceStorageSSLCertificateParams {
+	o.SetSkipReload(skipReload)
+	return o
+}
+
+// SetSkipReload adds the skipReload to the replace storage s s l certificate params
+func (o *ReplaceStorageSSLCertificateParams) SetSkipReload(skipReload *bool) {
+	o.SkipReload = skipReload
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ReplaceStorageSSLCertificateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -203,6 +223,23 @@ func (o *ReplaceStorageSSLCertificateParams) WriteToRequest(r runtime.ClientRequ
 	// path param name
 	if err := r.SetPathParam("name", o.Name); err != nil {
 		return err
+	}
+
+	if o.SkipReload != nil {
+
+		// query param skip_reload
+		var qrSkipReload bool
+
+		if o.SkipReload != nil {
+			qrSkipReload = *o.SkipReload
+		}
+		qSkipReload := swag.FormatBool(qrSkipReload)
+		if qSkipReload != "" {
+
+			if err := r.SetQueryParam("skip_reload", qSkipReload); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {

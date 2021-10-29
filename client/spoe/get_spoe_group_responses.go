@@ -64,7 +64,7 @@ type GetSpoeGroupOK struct {
 
 	/* Spoe configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *GetSpoeGroupOKBody
 }
@@ -82,11 +82,7 @@ func (o *GetSpoeGroupOK) readResponse(response runtime.ClientResponse, consumer 
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(GetSpoeGroupOKBody)
@@ -101,15 +97,7 @@ func (o *GetSpoeGroupOK) readResponse(response runtime.ClientResponse, consumer 
 
 // NewGetSpoeGroupNotFound creates a GetSpoeGroupNotFound with default headers values
 func NewGetSpoeGroupNotFound() *GetSpoeGroupNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetSpoeGroupNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetSpoeGroupNotFound{}
 }
 
 /* GetSpoeGroupNotFound describes a response with status code 404, with default header values.
@@ -120,7 +108,7 @@ type GetSpoeGroupNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -138,11 +126,7 @@ func (o *GetSpoeGroupNotFound) readResponse(response runtime.ClientResponse, con
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -157,15 +141,8 @@ func (o *GetSpoeGroupNotFound) readResponse(response runtime.ClientResponse, con
 
 // NewGetSpoeGroupDefault creates a GetSpoeGroupDefault with default headers values
 func NewGetSpoeGroupDefault(code int) *GetSpoeGroupDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetSpoeGroupDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -178,7 +155,7 @@ type GetSpoeGroupDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -201,11 +178,7 @@ func (o *GetSpoeGroupDefault) readResponse(response runtime.ClientResponse, cons
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

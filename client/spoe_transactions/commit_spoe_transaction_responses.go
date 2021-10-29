@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -68,7 +66,7 @@ func NewCommitSpoeTransactionOK() *CommitSpoeTransactionOK {
 
 /* CommitSpoeTransactionOK describes a response with status code 200, with default header values.
 
-Transaction succesfully commited
+Transaction successfully committed
 */
 type CommitSpoeTransactionOK struct {
 	Payload *models.SpoeTransaction
@@ -139,15 +137,7 @@ func (o *CommitSpoeTransactionAccepted) readResponse(response runtime.ClientResp
 
 // NewCommitSpoeTransactionBadRequest creates a CommitSpoeTransactionBadRequest with default headers values
 func NewCommitSpoeTransactionBadRequest() *CommitSpoeTransactionBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CommitSpoeTransactionBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CommitSpoeTransactionBadRequest{}
 }
 
 /* CommitSpoeTransactionBadRequest describes a response with status code 400, with default header values.
@@ -158,7 +148,7 @@ type CommitSpoeTransactionBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -176,11 +166,7 @@ func (o *CommitSpoeTransactionBadRequest) readResponse(response runtime.ClientRe
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -195,15 +181,7 @@ func (o *CommitSpoeTransactionBadRequest) readResponse(response runtime.ClientRe
 
 // NewCommitSpoeTransactionNotFound creates a CommitSpoeTransactionNotFound with default headers values
 func NewCommitSpoeTransactionNotFound() *CommitSpoeTransactionNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CommitSpoeTransactionNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CommitSpoeTransactionNotFound{}
 }
 
 /* CommitSpoeTransactionNotFound describes a response with status code 404, with default header values.
@@ -214,7 +192,7 @@ type CommitSpoeTransactionNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -232,11 +210,7 @@ func (o *CommitSpoeTransactionNotFound) readResponse(response runtime.ClientResp
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -251,15 +225,8 @@ func (o *CommitSpoeTransactionNotFound) readResponse(response runtime.ClientResp
 
 // NewCommitSpoeTransactionDefault creates a CommitSpoeTransactionDefault with default headers values
 func NewCommitSpoeTransactionDefault(code int) *CommitSpoeTransactionDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &CommitSpoeTransactionDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -272,7 +239,7 @@ type CommitSpoeTransactionDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -295,11 +262,7 @@ func (o *CommitSpoeTransactionDefault) readResponse(response runtime.ClientRespo
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

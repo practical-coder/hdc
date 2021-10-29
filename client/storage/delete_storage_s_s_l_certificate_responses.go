@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -25,6 +23,12 @@ type DeleteStorageSSLCertificateReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteStorageSSLCertificateReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
+	case 202:
+		result := NewDeleteStorageSSLCertificateAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 204:
 		result := NewDeleteStorageSSLCertificateNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -47,6 +51,38 @@ func (o *DeleteStorageSSLCertificateReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 	}
+}
+
+// NewDeleteStorageSSLCertificateAccepted creates a DeleteStorageSSLCertificateAccepted with default headers values
+func NewDeleteStorageSSLCertificateAccepted() *DeleteStorageSSLCertificateAccepted {
+	return &DeleteStorageSSLCertificateAccepted{}
+}
+
+/* DeleteStorageSSLCertificateAccepted describes a response with status code 202, with default header values.
+
+SSL certificate deleted and reload requested
+*/
+type DeleteStorageSSLCertificateAccepted struct {
+
+	/* ID of the requested reload
+	 */
+	ReloadID string
+}
+
+func (o *DeleteStorageSSLCertificateAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/storage/ssl_certificates/{name}][%d] deleteStorageSSLCertificateAccepted ", 202)
+}
+
+func (o *DeleteStorageSSLCertificateAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
+
+	return nil
 }
 
 // NewDeleteStorageSSLCertificateNoContent creates a DeleteStorageSSLCertificateNoContent with default headers values
@@ -72,15 +108,7 @@ func (o *DeleteStorageSSLCertificateNoContent) readResponse(response runtime.Cli
 
 // NewDeleteStorageSSLCertificateNotFound creates a DeleteStorageSSLCertificateNotFound with default headers values
 func NewDeleteStorageSSLCertificateNotFound() *DeleteStorageSSLCertificateNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &DeleteStorageSSLCertificateNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &DeleteStorageSSLCertificateNotFound{}
 }
 
 /* DeleteStorageSSLCertificateNotFound describes a response with status code 404, with default header values.
@@ -91,7 +119,7 @@ type DeleteStorageSSLCertificateNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -109,11 +137,7 @@ func (o *DeleteStorageSSLCertificateNotFound) readResponse(response runtime.Clie
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -128,15 +152,8 @@ func (o *DeleteStorageSSLCertificateNotFound) readResponse(response runtime.Clie
 
 // NewDeleteStorageSSLCertificateDefault creates a DeleteStorageSSLCertificateDefault with default headers values
 func NewDeleteStorageSSLCertificateDefault(code int) *DeleteStorageSSLCertificateDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &DeleteStorageSSLCertificateDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -149,7 +166,7 @@ type DeleteStorageSSLCertificateDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -172,11 +189,7 @@ func (o *DeleteStorageSSLCertificateDefault) readResponse(response runtime.Clien
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

@@ -75,7 +75,7 @@ type CreateLogTargetParams struct {
 
 	   Parent name
 	*/
-	ParentName string
+	ParentName *string
 
 	/* ParentType.
 
@@ -182,13 +182,13 @@ func (o *CreateLogTargetParams) SetForceReload(forceReload *bool) {
 }
 
 // WithParentName adds the parentName to the create log target params
-func (o *CreateLogTargetParams) WithParentName(parentName string) *CreateLogTargetParams {
+func (o *CreateLogTargetParams) WithParentName(parentName *string) *CreateLogTargetParams {
 	o.SetParentName(parentName)
 	return o
 }
 
 // SetParentName adds the parentName to the create log target params
-func (o *CreateLogTargetParams) SetParentName(parentName string) {
+func (o *CreateLogTargetParams) SetParentName(parentName *string) {
 	o.ParentName = parentName
 }
 
@@ -255,13 +255,20 @@ func (o *CreateLogTargetParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		}
 	}
 
-	// query param parent_name
-	qrParentName := o.ParentName
-	qParentName := qrParentName
-	if qParentName != "" {
+	if o.ParentName != nil {
 
-		if err := r.SetQueryParam("parent_name", qParentName); err != nil {
-			return err
+		// query param parent_name
+		var qrParentName string
+
+		if o.ParentName != nil {
+			qrParentName = *o.ParentName
+		}
+		qParentName := qrParentName
+		if qParentName != "" {
+
+			if err := r.SetQueryParam("parent_name", qParentName); err != nil {
+				return err
+			}
 		}
 	}
 

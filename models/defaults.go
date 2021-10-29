@@ -51,6 +51,9 @@ type Defaults struct {
 	// clflog
 	Clflog bool `json:"clflog,omitempty"`
 
+	// client fin timeout
+	ClientFinTimeout *int64 `json:"client_fin_timeout,omitempty"`
+
 	// client timeout
 	ClientTimeout *int64 `json:"client_timeout,omitempty"`
 
@@ -78,6 +81,10 @@ type Defaults struct {
 	// dontlognull
 	// Enum: [enabled disabled]
 	Dontlognull string `json:"dontlognull,omitempty"`
+
+	// dynamic cookie key
+	// Pattern: ^[^\s]+$
+	DynamicCookieKey string `json:"dynamic_cookie_key,omitempty"`
 
 	// external check
 	// Enum: [enabled disabled]
@@ -129,6 +136,10 @@ type Defaults struct {
 	// httplog
 	Httplog bool `json:"httplog,omitempty"`
 
+	// load server state from file
+	// Enum: [global local none]
+	LoadServerStateFromFile string `json:"load_server_state_from_file,omitempty"`
+
 	// log format
 	LogFormat string `json:"log_format,omitempty"`
 
@@ -171,6 +182,9 @@ type Defaults struct {
 
 	// retries
 	Retries *int64 `json:"retries,omitempty"`
+
+	// server fin timeout
+	ServerFinTimeout *int64 `json:"server_fin_timeout,omitempty"`
 
 	// server timeout
 	ServerTimeout *int64 `json:"server_timeout,omitempty"`
@@ -246,6 +260,10 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDynamicCookieKey(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateExternalCheck(formats); err != nil {
 		res = append(res, err)
 	}
@@ -287,6 +305,10 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateHttpchkParams(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLoadServerStateFromFile(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -710,6 +732,18 @@ func (m *Defaults) validateDontlognull(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Defaults) validateDynamicCookieKey(formats strfmt.Registry) error {
+	if swag.IsZero(m.DynamicCookieKey) { // not required
+		return nil
+	}
+
+	if err := validate.Pattern("dynamic_cookie_key", "body", m.DynamicCookieKey, `^[^\s]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 var defaultsTypeExternalCheckPropEnum []interface{}
 
 func init() {
@@ -1047,6 +1081,51 @@ func (m *Defaults) validateHttpchkParams(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+var defaultsTypeLoadServerStateFromFilePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["global","local","none"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		defaultsTypeLoadServerStateFromFilePropEnum = append(defaultsTypeLoadServerStateFromFilePropEnum, v)
+	}
+}
+
+const (
+
+	// DefaultsLoadServerStateFromFileGlobal captures enum value "global"
+	DefaultsLoadServerStateFromFileGlobal string = "global"
+
+	// DefaultsLoadServerStateFromFileLocal captures enum value "local"
+	DefaultsLoadServerStateFromFileLocal string = "local"
+
+	// DefaultsLoadServerStateFromFileNone captures enum value "none"
+	DefaultsLoadServerStateFromFileNone string = "none"
+)
+
+// prop value enum
+func (m *Defaults) validateLoadServerStateFromFileEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, defaultsTypeLoadServerStateFromFilePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Defaults) validateLoadServerStateFromFile(formats strfmt.Registry) error {
+	if swag.IsZero(m.LoadServerStateFromFile) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateLoadServerStateFromFileEnum("load_server_state_from_file", "body", m.LoadServerStateFromFile); err != nil {
+		return err
 	}
 
 	return nil

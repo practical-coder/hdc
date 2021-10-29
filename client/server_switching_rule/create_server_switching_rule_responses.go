@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -139,15 +137,7 @@ func (o *CreateServerSwitchingRuleAccepted) readResponse(response runtime.Client
 
 // NewCreateServerSwitchingRuleBadRequest creates a CreateServerSwitchingRuleBadRequest with default headers values
 func NewCreateServerSwitchingRuleBadRequest() *CreateServerSwitchingRuleBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CreateServerSwitchingRuleBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CreateServerSwitchingRuleBadRequest{}
 }
 
 /* CreateServerSwitchingRuleBadRequest describes a response with status code 400, with default header values.
@@ -158,7 +148,7 @@ type CreateServerSwitchingRuleBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -176,11 +166,7 @@ func (o *CreateServerSwitchingRuleBadRequest) readResponse(response runtime.Clie
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -195,15 +181,7 @@ func (o *CreateServerSwitchingRuleBadRequest) readResponse(response runtime.Clie
 
 // NewCreateServerSwitchingRuleConflict creates a CreateServerSwitchingRuleConflict with default headers values
 func NewCreateServerSwitchingRuleConflict() *CreateServerSwitchingRuleConflict {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CreateServerSwitchingRuleConflict{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CreateServerSwitchingRuleConflict{}
 }
 
 /* CreateServerSwitchingRuleConflict describes a response with status code 409, with default header values.
@@ -214,7 +192,7 @@ type CreateServerSwitchingRuleConflict struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -232,11 +210,7 @@ func (o *CreateServerSwitchingRuleConflict) readResponse(response runtime.Client
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -251,15 +225,8 @@ func (o *CreateServerSwitchingRuleConflict) readResponse(response runtime.Client
 
 // NewCreateServerSwitchingRuleDefault creates a CreateServerSwitchingRuleDefault with default headers values
 func NewCreateServerSwitchingRuleDefault(code int) *CreateServerSwitchingRuleDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &CreateServerSwitchingRuleDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -272,7 +239,7 @@ type CreateServerSwitchingRuleDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -295,11 +262,7 @@ func (o *CreateServerSwitchingRuleDefault) readResponse(response runtime.ClientR
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

@@ -28,17 +28,68 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	CreateAWSRegion(params *CreateAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAWSRegionCreated, error)
+
 	CreateConsul(params *CreateConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateConsulCreated, error)
 
+	DeleteAWSRegion(params *DeleteAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteAWSRegionNoContent, error)
+
 	DeleteConsul(params *DeleteConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteConsulNoContent, error)
+
+	GetAWSRegion(params *GetAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAWSRegionOK, error)
+
+	GetAWSRegions(params *GetAWSRegionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAWSRegionsOK, error)
 
 	GetConsul(params *GetConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsulOK, error)
 
 	GetConsuls(params *GetConsulsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsulsOK, error)
 
+	ReplaceAWSRegion(params *ReplaceAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceAWSRegionOK, error)
+
 	ReplaceConsul(params *ReplaceConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceConsulOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateAWSRegion adds a new a w s region
+
+  Add a new AWS region.
+Credentials are not required in case Dataplane API is running in an EC2 instance with proper IAM role attached.
+*/
+func (a *Client) CreateAWSRegion(params *CreateAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAWSRegionCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateAWSRegionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "createAWSRegion",
+		Method:             "POST",
+		PathPattern:        "/service_discovery/aws",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CreateAWSRegionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateAWSRegionCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*CreateAWSRegionDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
@@ -82,6 +133,46 @@ func (a *Client) CreateConsul(params *CreateConsulParams, authInfo runtime.Clien
 }
 
 /*
+  DeleteAWSRegion deletes an a w s region
+
+  Delete an AWS region configuration by it's id.
+*/
+func (a *Client) DeleteAWSRegion(params *DeleteAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteAWSRegionNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteAWSRegionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteAWSRegion",
+		Method:             "DELETE",
+		PathPattern:        "/service_discovery/aws/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &DeleteAWSRegionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteAWSRegionNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DeleteAWSRegionDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   DeleteConsul deletes a consul server
 
   Deletes a Consul server configuration by it's id.
@@ -118,6 +209,86 @@ func (a *Client) DeleteConsul(params *DeleteConsulParams, authInfo runtime.Clien
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*DeleteConsulDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  GetAWSRegion returns an a w s region
+
+  Return one AWS Region configuration by it's id.
+*/
+func (a *Client) GetAWSRegion(params *GetAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAWSRegionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAWSRegionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getAWSRegion",
+		Method:             "GET",
+		PathPattern:        "/service_discovery/aws/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetAWSRegionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetAWSRegionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetAWSRegionDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  GetAWSRegions returns an array of all configured a w s regions
+
+  Return all configured AWS regions.
+*/
+func (a *Client) GetAWSRegions(params *GetAWSRegionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAWSRegionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAWSRegionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getAWSRegions",
+		Method:             "GET",
+		PathPattern:        "/service_discovery/aws",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetAWSRegionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetAWSRegionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetAWSRegionsDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
@@ -198,6 +369,46 @@ func (a *Client) GetConsuls(params *GetConsulsParams, authInfo runtime.ClientAut
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*GetConsulsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  ReplaceAWSRegion replaces an a w s region
+
+  Replace an AWS region configuration by its id.
+*/
+func (a *Client) ReplaceAWSRegion(params *ReplaceAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceAWSRegionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewReplaceAWSRegionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "replaceAWSRegion",
+		Method:             "PUT",
+		PathPattern:        "/service_discovery/aws/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ReplaceAWSRegionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ReplaceAWSRegionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*ReplaceAWSRegionDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

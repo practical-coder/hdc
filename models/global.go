@@ -44,11 +44,21 @@ type Global struct {
 	// Pattern: ^[^\s]+$
 	Group string `json:"group,omitempty"`
 
+	// hard stop after
+	HardStopAfter *int64 `json:"hard_stop_after,omitempty"`
+
+	// localpeer
+	// Pattern: ^[^\s]+$
+	Localpeer string `json:"localpeer,omitempty"`
+
 	// log send hostname
 	LogSendHostname *GlobalLogSendHostname `json:"log_send_hostname,omitempty"`
 
 	// lua loads
 	LuaLoads []*LuaLoad `json:"lua_loads"`
+
+	// lua prepend path
+	LuaPrependPath []*LuaPrependPath `json:"lua_prepend_path"`
 
 	// master worker
 	MasterWorker bool `json:"master-worker,omitempty"`
@@ -64,6 +74,14 @@ type Global struct {
 
 	// pidfile
 	Pidfile string `json:"pidfile,omitempty"`
+
+	// server state base
+	// Pattern: ^[^\s]+$
+	ServerStateBase string `json:"server_state_base,omitempty"`
+
+	// server state file
+	// Pattern: ^[^\s]+$
+	ServerStateFile string `json:"server_state_file,omitempty"`
 
 	// ssl default bind ciphers
 	SslDefaultBindCiphers string `json:"ssl_default_bind_ciphers,omitempty"`
@@ -122,11 +140,27 @@ func (m *Global) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateLocalpeer(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateLogSendHostname(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateLuaLoads(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLuaPrependPath(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServerStateBase(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServerStateFile(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -262,6 +296,18 @@ func (m *Global) validateGroup(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Global) validateLocalpeer(formats strfmt.Registry) error {
+	if swag.IsZero(m.Localpeer) { // not required
+		return nil
+	}
+
+	if err := validate.Pattern("localpeer", "body", m.Localpeer, `^[^\s]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *Global) validateLogSendHostname(formats strfmt.Registry) error {
 	if swag.IsZero(m.LogSendHostname) { // not required
 		return nil
@@ -302,6 +348,56 @@ func (m *Global) validateLuaLoads(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *Global) validateLuaPrependPath(formats strfmt.Registry) error {
+	if swag.IsZero(m.LuaPrependPath) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.LuaPrependPath); i++ {
+		if swag.IsZero(m.LuaPrependPath[i]) { // not required
+			continue
+		}
+
+		if m.LuaPrependPath[i] != nil {
+			if err := m.LuaPrependPath[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("lua_prepend_path" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("lua_prepend_path" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Global) validateServerStateBase(formats strfmt.Registry) error {
+	if swag.IsZero(m.ServerStateBase) { // not required
+		return nil
+	}
+
+	if err := validate.Pattern("server_state_base", "body", m.ServerStateBase, `^[^\s]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Global) validateServerStateFile(formats strfmt.Registry) error {
+	if swag.IsZero(m.ServerStateFile) { // not required
+		return nil
+	}
+
+	if err := validate.Pattern("server_state_file", "body", m.ServerStateFile, `^[^\s]+$`); err != nil {
+		return err
 	}
 
 	return nil
@@ -381,6 +477,10 @@ func (m *Global) ContextValidate(ctx context.Context, formats strfmt.Registry) e
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateLuaPrependPath(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -453,6 +553,26 @@ func (m *Global) contextValidateLuaLoads(ctx context.Context, formats strfmt.Reg
 					return ve.ValidateName("lua_loads" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("lua_loads" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Global) contextValidateLuaPrependPath(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.LuaPrependPath); i++ {
+
+		if m.LuaPrependPath[i] != nil {
+			if err := m.LuaPrependPath[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("lua_prepend_path" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("lua_prepend_path" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -719,6 +839,117 @@ func (m *LuaLoad) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *LuaLoad) UnmarshalBinary(b []byte) error {
 	var res LuaLoad
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// LuaPrependPath lua prepend path
+//
+// swagger:model LuaPrependPath
+type LuaPrependPath struct {
+
+	// path
+	// Required: true
+	// Pattern: ^[^\s]+$
+	Path *string `json:"path"`
+
+	// type
+	// Enum: [path cpath]
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this lua prepend path
+func (m *LuaPrependPath) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validatePath(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *LuaPrependPath) validatePath(formats strfmt.Registry) error {
+
+	if err := validate.Required("path", "body", m.Path); err != nil {
+		return err
+	}
+
+	if err := validate.Pattern("path", "body", *m.Path, `^[^\s]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var luaPrependPathTypeTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["path","cpath"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		luaPrependPathTypeTypePropEnum = append(luaPrependPathTypeTypePropEnum, v)
+	}
+}
+
+const (
+
+	// LuaPrependPathTypePath captures enum value "path"
+	LuaPrependPathTypePath string = "path"
+
+	// LuaPrependPathTypeCpath captures enum value "cpath"
+	LuaPrependPathTypeCpath string = "cpath"
+)
+
+// prop value enum
+func (m *LuaPrependPath) validateTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, luaPrependPathTypeTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *LuaPrependPath) validateType(formats strfmt.Registry) error {
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateTypeEnum("type", "body", m.Type); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this lua prepend path based on context it is used
+func (m *LuaPrependPath) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *LuaPrependPath) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *LuaPrependPath) UnmarshalBinary(b []byte) error {
+	var res LuaPrependPath
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

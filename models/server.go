@@ -62,6 +62,10 @@ type Server struct {
 	// Enum: [enabled disabled]
 	Check string `json:"check,omitempty"`
 
+	// check send proxy
+	// Enum: [enabled disabled]
+	CheckSendProxy string `json:"check-send-proxy,omitempty"`
+
 	// check sni
 	// Pattern: ^[^\s]+$
 	CheckSni string `json:"check-sni,omitempty"`
@@ -368,6 +372,10 @@ func (m *Server) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCheck(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCheckSendProxy(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -745,6 +753,48 @@ func (m *Server) validateCheck(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateCheckEnum("check", "body", m.Check); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var serverTypeCheckSendProxyPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		serverTypeCheckSendProxyPropEnum = append(serverTypeCheckSendProxyPropEnum, v)
+	}
+}
+
+const (
+
+	// ServerCheckSendProxyEnabled captures enum value "enabled"
+	ServerCheckSendProxyEnabled string = "enabled"
+
+	// ServerCheckSendProxyDisabled captures enum value "disabled"
+	ServerCheckSendProxyDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Server) validateCheckSendProxyEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, serverTypeCheckSendProxyPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Server) validateCheckSendProxy(formats strfmt.Registry) error {
+	if swag.IsZero(m.CheckSendProxy) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateCheckSendProxyEnum("check-send-proxy", "body", m.CheckSendProxy); err != nil {
 		return err
 	}
 

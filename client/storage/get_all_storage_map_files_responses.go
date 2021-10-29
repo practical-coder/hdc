@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -81,15 +79,7 @@ func (o *GetAllStorageMapFilesOK) readResponse(response runtime.ClientResponse, 
 
 // NewGetAllStorageMapFilesNotFound creates a GetAllStorageMapFilesNotFound with default headers values
 func NewGetAllStorageMapFilesNotFound() *GetAllStorageMapFilesNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetAllStorageMapFilesNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetAllStorageMapFilesNotFound{}
 }
 
 /* GetAllStorageMapFilesNotFound describes a response with status code 404, with default header values.
@@ -100,7 +90,7 @@ type GetAllStorageMapFilesNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -118,11 +108,7 @@ func (o *GetAllStorageMapFilesNotFound) readResponse(response runtime.ClientResp
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -137,15 +123,8 @@ func (o *GetAllStorageMapFilesNotFound) readResponse(response runtime.ClientResp
 
 // NewGetAllStorageMapFilesDefault creates a GetAllStorageMapFilesDefault with default headers values
 func NewGetAllStorageMapFilesDefault(code int) *GetAllStorageMapFilesDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetAllStorageMapFilesDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -158,7 +137,7 @@ type GetAllStorageMapFilesDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -181,11 +160,7 @@ func (o *GetAllStorageMapFilesDefault) readResponse(response runtime.ClientRespo
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

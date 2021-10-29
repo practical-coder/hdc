@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -85,15 +83,7 @@ func (o *GetOneStorageMapOK) readResponse(response runtime.ClientResponse, consu
 
 // NewGetOneStorageMapNotFound creates a GetOneStorageMapNotFound with default headers values
 func NewGetOneStorageMapNotFound() *GetOneStorageMapNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetOneStorageMapNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetOneStorageMapNotFound{}
 }
 
 /* GetOneStorageMapNotFound describes a response with status code 404, with default header values.
@@ -104,7 +94,7 @@ type GetOneStorageMapNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -122,11 +112,7 @@ func (o *GetOneStorageMapNotFound) readResponse(response runtime.ClientResponse,
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -141,15 +127,8 @@ func (o *GetOneStorageMapNotFound) readResponse(response runtime.ClientResponse,
 
 // NewGetOneStorageMapDefault creates a GetOneStorageMapDefault with default headers values
 func NewGetOneStorageMapDefault(code int) *GetOneStorageMapDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetOneStorageMapDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -162,7 +141,7 @@ type GetOneStorageMapDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -185,11 +164,7 @@ func (o *GetOneStorageMapDefault) readResponse(response runtime.ClientResponse, 
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

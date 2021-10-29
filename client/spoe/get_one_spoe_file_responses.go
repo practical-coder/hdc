@@ -10,7 +10,6 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -63,7 +62,7 @@ type GetOneSpoeFileOK struct {
 
 	/* Spoe configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *GetOneSpoeFileOKBody
 }
@@ -81,11 +80,7 @@ func (o *GetOneSpoeFileOK) readResponse(response runtime.ClientResponse, consume
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(GetOneSpoeFileOKBody)
@@ -100,15 +95,7 @@ func (o *GetOneSpoeFileOK) readResponse(response runtime.ClientResponse, consume
 
 // NewGetOneSpoeFileNotFound creates a GetOneSpoeFileNotFound with default headers values
 func NewGetOneSpoeFileNotFound() *GetOneSpoeFileNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetOneSpoeFileNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetOneSpoeFileNotFound{}
 }
 
 /* GetOneSpoeFileNotFound describes a response with status code 404, with default header values.
@@ -119,7 +106,7 @@ type GetOneSpoeFileNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -137,11 +124,7 @@ func (o *GetOneSpoeFileNotFound) readResponse(response runtime.ClientResponse, c
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -156,15 +139,8 @@ func (o *GetOneSpoeFileNotFound) readResponse(response runtime.ClientResponse, c
 
 // NewGetOneSpoeFileDefault creates a GetOneSpoeFileDefault with default headers values
 func NewGetOneSpoeFileDefault(code int) *GetOneSpoeFileDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetOneSpoeFileDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -177,7 +153,7 @@ type GetOneSpoeFileDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -200,11 +176,7 @@ func (o *GetOneSpoeFileDefault) readResponse(response runtime.ClientResponse, co
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -89,15 +87,7 @@ func (o *ReplaceRuntimeServerOK) readResponse(response runtime.ClientResponse, c
 
 // NewReplaceRuntimeServerBadRequest creates a ReplaceRuntimeServerBadRequest with default headers values
 func NewReplaceRuntimeServerBadRequest() *ReplaceRuntimeServerBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &ReplaceRuntimeServerBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &ReplaceRuntimeServerBadRequest{}
 }
 
 /* ReplaceRuntimeServerBadRequest describes a response with status code 400, with default header values.
@@ -108,7 +98,7 @@ type ReplaceRuntimeServerBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -126,11 +116,7 @@ func (o *ReplaceRuntimeServerBadRequest) readResponse(response runtime.ClientRes
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -145,15 +131,7 @@ func (o *ReplaceRuntimeServerBadRequest) readResponse(response runtime.ClientRes
 
 // NewReplaceRuntimeServerNotFound creates a ReplaceRuntimeServerNotFound with default headers values
 func NewReplaceRuntimeServerNotFound() *ReplaceRuntimeServerNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &ReplaceRuntimeServerNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &ReplaceRuntimeServerNotFound{}
 }
 
 /* ReplaceRuntimeServerNotFound describes a response with status code 404, with default header values.
@@ -164,7 +142,7 @@ type ReplaceRuntimeServerNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -182,11 +160,7 @@ func (o *ReplaceRuntimeServerNotFound) readResponse(response runtime.ClientRespo
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -201,15 +175,8 @@ func (o *ReplaceRuntimeServerNotFound) readResponse(response runtime.ClientRespo
 
 // NewReplaceRuntimeServerDefault creates a ReplaceRuntimeServerDefault with default headers values
 func NewReplaceRuntimeServerDefault(code int) *ReplaceRuntimeServerDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &ReplaceRuntimeServerDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -222,7 +189,7 @@ type ReplaceRuntimeServerDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -245,11 +212,7 @@ func (o *ReplaceRuntimeServerDefault) readResponse(response runtime.ClientRespon
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

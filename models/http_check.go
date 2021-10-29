@@ -29,7 +29,6 @@ type HTTPCheck struct {
 	Match string `json:"match,omitempty"`
 
 	// pattern
-	// Pattern: ^[^\s]+$
 	Pattern string `json:"pattern,omitempty"`
 
 	// type
@@ -43,10 +42,6 @@ func (m *HTTPCheck) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateMatch(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validatePattern(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -106,18 +101,6 @@ func (m *HTTPCheck) validateMatch(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateMatchEnum("match", "body", m.Match); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *HTTPCheck) validatePattern(formats strfmt.Registry) error {
-	if swag.IsZero(m.Pattern) { // not required
-		return nil
-	}
-
-	if err := validate.Pattern("pattern", "body", m.Pattern, `^[^\s]+$`); err != nil {
 		return err
 	}
 

@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -83,15 +81,7 @@ func (o *GetOneStorageSSLCertificateOK) readResponse(response runtime.ClientResp
 
 // NewGetOneStorageSSLCertificateNotFound creates a GetOneStorageSSLCertificateNotFound with default headers values
 func NewGetOneStorageSSLCertificateNotFound() *GetOneStorageSSLCertificateNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetOneStorageSSLCertificateNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetOneStorageSSLCertificateNotFound{}
 }
 
 /* GetOneStorageSSLCertificateNotFound describes a response with status code 404, with default header values.
@@ -102,7 +92,7 @@ type GetOneStorageSSLCertificateNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -120,11 +110,7 @@ func (o *GetOneStorageSSLCertificateNotFound) readResponse(response runtime.Clie
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -139,15 +125,8 @@ func (o *GetOneStorageSSLCertificateNotFound) readResponse(response runtime.Clie
 
 // NewGetOneStorageSSLCertificateDefault creates a GetOneStorageSSLCertificateDefault with default headers values
 func NewGetOneStorageSSLCertificateDefault(code int) *GetOneStorageSSLCertificateDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetOneStorageSSLCertificateDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -160,7 +139,7 @@ type GetOneStorageSSLCertificateDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -183,11 +162,7 @@ func (o *GetOneStorageSSLCertificateDefault) readResponse(response runtime.Clien
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

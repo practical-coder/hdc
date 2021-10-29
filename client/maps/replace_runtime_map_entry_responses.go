@@ -91,15 +91,7 @@ func (o *ReplaceRuntimeMapEntryOK) readResponse(response runtime.ClientResponse,
 
 // NewReplaceRuntimeMapEntryBadRequest creates a ReplaceRuntimeMapEntryBadRequest with default headers values
 func NewReplaceRuntimeMapEntryBadRequest() *ReplaceRuntimeMapEntryBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &ReplaceRuntimeMapEntryBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &ReplaceRuntimeMapEntryBadRequest{}
 }
 
 /* ReplaceRuntimeMapEntryBadRequest describes a response with status code 400, with default header values.
@@ -110,7 +102,7 @@ type ReplaceRuntimeMapEntryBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -128,11 +120,7 @@ func (o *ReplaceRuntimeMapEntryBadRequest) readResponse(response runtime.ClientR
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -147,15 +135,7 @@ func (o *ReplaceRuntimeMapEntryBadRequest) readResponse(response runtime.ClientR
 
 // NewReplaceRuntimeMapEntryNotFound creates a ReplaceRuntimeMapEntryNotFound with default headers values
 func NewReplaceRuntimeMapEntryNotFound() *ReplaceRuntimeMapEntryNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &ReplaceRuntimeMapEntryNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &ReplaceRuntimeMapEntryNotFound{}
 }
 
 /* ReplaceRuntimeMapEntryNotFound describes a response with status code 404, with default header values.
@@ -166,7 +146,7 @@ type ReplaceRuntimeMapEntryNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -184,11 +164,7 @@ func (o *ReplaceRuntimeMapEntryNotFound) readResponse(response runtime.ClientRes
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -203,15 +179,8 @@ func (o *ReplaceRuntimeMapEntryNotFound) readResponse(response runtime.ClientRes
 
 // NewReplaceRuntimeMapEntryDefault creates a ReplaceRuntimeMapEntryDefault with default headers values
 func NewReplaceRuntimeMapEntryDefault(code int) *ReplaceRuntimeMapEntryDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &ReplaceRuntimeMapEntryDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -224,7 +193,7 @@ type ReplaceRuntimeMapEntryDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -247,11 +216,7 @@ func (o *ReplaceRuntimeMapEntryDefault) readResponse(response runtime.ClientResp
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

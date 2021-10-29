@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -81,15 +79,7 @@ func (o *GetSpoeConfigurationVersionOK) readResponse(response runtime.ClientResp
 
 // NewGetSpoeConfigurationVersionNotFound creates a GetSpoeConfigurationVersionNotFound with default headers values
 func NewGetSpoeConfigurationVersionNotFound() *GetSpoeConfigurationVersionNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &GetSpoeConfigurationVersionNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &GetSpoeConfigurationVersionNotFound{}
 }
 
 /* GetSpoeConfigurationVersionNotFound describes a response with status code 404, with default header values.
@@ -100,7 +90,7 @@ type GetSpoeConfigurationVersionNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -118,11 +108,7 @@ func (o *GetSpoeConfigurationVersionNotFound) readResponse(response runtime.Clie
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -137,15 +123,8 @@ func (o *GetSpoeConfigurationVersionNotFound) readResponse(response runtime.Clie
 
 // NewGetSpoeConfigurationVersionDefault creates a GetSpoeConfigurationVersionDefault with default headers values
 func NewGetSpoeConfigurationVersionDefault(code int) *GetSpoeConfigurationVersionDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &GetSpoeConfigurationVersionDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -158,7 +137,7 @@ type GetSpoeConfigurationVersionDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -181,11 +160,7 @@ func (o *GetSpoeConfigurationVersionDefault) readResponse(response runtime.Clien
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

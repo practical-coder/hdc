@@ -63,7 +63,7 @@ type GetLogTargetsParams struct {
 
 	   Parent name
 	*/
-	ParentName string
+	ParentName *string
 
 	/* ParentType.
 
@@ -131,13 +131,13 @@ func (o *GetLogTargetsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithParentName adds the parentName to the get log targets params
-func (o *GetLogTargetsParams) WithParentName(parentName string) *GetLogTargetsParams {
+func (o *GetLogTargetsParams) WithParentName(parentName *string) *GetLogTargetsParams {
 	o.SetParentName(parentName)
 	return o
 }
 
 // SetParentName adds the parentName to the get log targets params
-func (o *GetLogTargetsParams) SetParentName(parentName string) {
+func (o *GetLogTargetsParams) SetParentName(parentName *string) {
 	o.ParentName = parentName
 }
 
@@ -171,13 +171,20 @@ func (o *GetLogTargetsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 	}
 	var res []error
 
-	// query param parent_name
-	qrParentName := o.ParentName
-	qParentName := qrParentName
-	if qParentName != "" {
+	if o.ParentName != nil {
 
-		if err := r.SetQueryParam("parent_name", qParentName); err != nil {
-			return err
+		// query param parent_name
+		var qrParentName string
+
+		if o.ParentName != nil {
+			qrParentName = *o.ParentName
+		}
+		qParentName := qrParentName
+		if qParentName != "" {
+
+			if err := r.SetQueryParam("parent_name", qParentName); err != nil {
+				return err
+			}
 		}
 	}
 

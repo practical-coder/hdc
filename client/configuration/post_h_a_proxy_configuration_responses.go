@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -129,15 +127,7 @@ func (o *PostHAProxyConfigurationAccepted) readResponse(response runtime.ClientR
 
 // NewPostHAProxyConfigurationBadRequest creates a PostHAProxyConfigurationBadRequest with default headers values
 func NewPostHAProxyConfigurationBadRequest() *PostHAProxyConfigurationBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &PostHAProxyConfigurationBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &PostHAProxyConfigurationBadRequest{}
 }
 
 /* PostHAProxyConfigurationBadRequest describes a response with status code 400, with default header values.
@@ -148,7 +138,7 @@ type PostHAProxyConfigurationBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -166,11 +156,7 @@ func (o *PostHAProxyConfigurationBadRequest) readResponse(response runtime.Clien
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -185,15 +171,8 @@ func (o *PostHAProxyConfigurationBadRequest) readResponse(response runtime.Clien
 
 // NewPostHAProxyConfigurationDefault creates a PostHAProxyConfigurationDefault with default headers values
 func NewPostHAProxyConfigurationDefault(code int) *PostHAProxyConfigurationDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &PostHAProxyConfigurationDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -206,7 +185,7 @@ type PostHAProxyConfigurationDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -229,11 +208,7 @@ func (o *PostHAProxyConfigurationDefault) readResponse(response runtime.ClientRe
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

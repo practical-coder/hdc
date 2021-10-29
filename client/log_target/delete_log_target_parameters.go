@@ -76,7 +76,7 @@ type DeleteLogTargetParams struct {
 
 	   Parent name
 	*/
-	ParentName string
+	ParentName *string
 
 	/* ParentType.
 
@@ -183,13 +183,13 @@ func (o *DeleteLogTargetParams) SetIndex(index int64) {
 }
 
 // WithParentName adds the parentName to the delete log target params
-func (o *DeleteLogTargetParams) WithParentName(parentName string) *DeleteLogTargetParams {
+func (o *DeleteLogTargetParams) WithParentName(parentName *string) *DeleteLogTargetParams {
 	o.SetParentName(parentName)
 	return o
 }
 
 // SetParentName adds the parentName to the delete log target params
-func (o *DeleteLogTargetParams) SetParentName(parentName string) {
+func (o *DeleteLogTargetParams) SetParentName(parentName *string) {
 	o.ParentName = parentName
 }
 
@@ -256,13 +256,20 @@ func (o *DeleteLogTargetParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 
-	// query param parent_name
-	qrParentName := o.ParentName
-	qParentName := qrParentName
-	if qParentName != "" {
+	if o.ParentName != nil {
 
-		if err := r.SetQueryParam("parent_name", qParentName); err != nil {
-			return err
+		// query param parent_name
+		var qrParentName string
+
+		if o.ParentName != nil {
+			qrParentName = *o.ParentName
+		}
+		qParentName := qrParentName
+		if qParentName != "" {
+
+			if err := r.SetQueryParam("parent_name", qParentName); err != nil {
+				return err
+			}
 		}
 	}
 

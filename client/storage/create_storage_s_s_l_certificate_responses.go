@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -89,15 +87,7 @@ func (o *CreateStorageSSLCertificateCreated) readResponse(response runtime.Clien
 
 // NewCreateStorageSSLCertificateBadRequest creates a CreateStorageSSLCertificateBadRequest with default headers values
 func NewCreateStorageSSLCertificateBadRequest() *CreateStorageSSLCertificateBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CreateStorageSSLCertificateBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CreateStorageSSLCertificateBadRequest{}
 }
 
 /* CreateStorageSSLCertificateBadRequest describes a response with status code 400, with default header values.
@@ -108,7 +98,7 @@ type CreateStorageSSLCertificateBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -126,11 +116,7 @@ func (o *CreateStorageSSLCertificateBadRequest) readResponse(response runtime.Cl
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -145,15 +131,7 @@ func (o *CreateStorageSSLCertificateBadRequest) readResponse(response runtime.Cl
 
 // NewCreateStorageSSLCertificateConflict creates a CreateStorageSSLCertificateConflict with default headers values
 func NewCreateStorageSSLCertificateConflict() *CreateStorageSSLCertificateConflict {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &CreateStorageSSLCertificateConflict{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &CreateStorageSSLCertificateConflict{}
 }
 
 /* CreateStorageSSLCertificateConflict describes a response with status code 409, with default header values.
@@ -164,7 +142,7 @@ type CreateStorageSSLCertificateConflict struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -182,11 +160,7 @@ func (o *CreateStorageSSLCertificateConflict) readResponse(response runtime.Clie
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -201,15 +175,8 @@ func (o *CreateStorageSSLCertificateConflict) readResponse(response runtime.Clie
 
 // NewCreateStorageSSLCertificateDefault creates a CreateStorageSSLCertificateDefault with default headers values
 func NewCreateStorageSSLCertificateDefault(code int) *CreateStorageSSLCertificateDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &CreateStorageSSLCertificateDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -222,7 +189,7 @@ type CreateStorageSSLCertificateDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -245,11 +212,7 @@ func (o *CreateStorageSSLCertificateDefault) readResponse(response runtime.Clien
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

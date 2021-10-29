@@ -9,10 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/haproxytech/models"
 )
@@ -116,15 +114,7 @@ func (o *ReplaceStorageMapFileNoContent) readResponse(response runtime.ClientRes
 
 // NewReplaceStorageMapFileBadRequest creates a ReplaceStorageMapFileBadRequest with default headers values
 func NewReplaceStorageMapFileBadRequest() *ReplaceStorageMapFileBadRequest {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &ReplaceStorageMapFileBadRequest{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &ReplaceStorageMapFileBadRequest{}
 }
 
 /* ReplaceStorageMapFileBadRequest describes a response with status code 400, with default header values.
@@ -135,7 +125,7 @@ type ReplaceStorageMapFileBadRequest struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -153,11 +143,7 @@ func (o *ReplaceStorageMapFileBadRequest) readResponse(response runtime.ClientRe
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -172,15 +158,7 @@ func (o *ReplaceStorageMapFileBadRequest) readResponse(response runtime.ClientRe
 
 // NewReplaceStorageMapFileNotFound creates a ReplaceStorageMapFileNotFound with default headers values
 func NewReplaceStorageMapFileNotFound() *ReplaceStorageMapFileNotFound {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
-	return &ReplaceStorageMapFileNotFound{
-
-		ConfigurationVersion: configurationVersionDefault,
-	}
+	return &ReplaceStorageMapFileNotFound{}
 }
 
 /* ReplaceStorageMapFileNotFound describes a response with status code 404, with default header values.
@@ -191,7 +169,7 @@ type ReplaceStorageMapFileNotFound struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -209,11 +187,7 @@ func (o *ReplaceStorageMapFileNotFound) readResponse(response runtime.ClientResp
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)
@@ -228,15 +202,8 @@ func (o *ReplaceStorageMapFileNotFound) readResponse(response runtime.ClientResp
 
 // NewReplaceStorageMapFileDefault creates a ReplaceStorageMapFileDefault with default headers values
 func NewReplaceStorageMapFileDefault(code int) *ReplaceStorageMapFileDefault {
-	var (
-		// initialize headers with default values
-		configurationVersionDefault = int64(0)
-	)
-
 	return &ReplaceStorageMapFileDefault{
 		_statusCode: code,
-
-		ConfigurationVersion: configurationVersionDefault,
 	}
 }
 
@@ -249,7 +216,7 @@ type ReplaceStorageMapFileDefault struct {
 
 	/* Configuration file version
 	 */
-	ConfigurationVersion int64
+	ConfigurationVersion string
 
 	Payload *models.Error
 }
@@ -272,11 +239,7 @@ func (o *ReplaceStorageMapFileDefault) readResponse(response runtime.ClientRespo
 	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
 
 	if hdrConfigurationVersion != "" {
-		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
-		if err != nil {
-			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
-		}
-		o.ConfigurationVersion = valconfigurationVersion
+		o.ConfigurationVersion = hdrConfigurationVersion
 	}
 
 	o.Payload = new(models.Error)

@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/strfmt"
 
 	"github.com/practical-coder/hdc/client/acl"
+	"github.com/practical-coder/hdc/client/acl_runtime"
 	"github.com/practical-coder/hdc/client/backend"
 	"github.com/practical-coder/hdc/client/backend_switching_rule"
 	"github.com/practical-coder/hdc/client/bind"
@@ -33,6 +34,7 @@ import (
 	"github.com/practical-coder/hdc/client/resolver"
 	serverops "github.com/practical-coder/hdc/client/server"
 	"github.com/practical-coder/hdc/client/server_switching_rule"
+	"github.com/practical-coder/hdc/client/server_template"
 	"github.com/practical-coder/hdc/client/service_discovery"
 	"github.com/practical-coder/hdc/client/sites"
 	"github.com/practical-coder/hdc/client/specification"
@@ -91,6 +93,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli := new(HaproxyDataplaneClient)
 	cli.Transport = transport
 	cli.ACL = acl.New(transport, formats)
+	cli.ACLRuntime = acl_runtime.New(transport, formats)
 	cli.Backend = backend.New(transport, formats)
 	cli.BackendSwitchingRule = backend_switching_rule.New(transport, formats)
 	cli.Bind = bind.New(transport, formats)
@@ -113,6 +116,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.Resolver = resolver.New(transport, formats)
 	cli.Server = serverops.New(transport, formats)
 	cli.ServerSwitchingRule = server_switching_rule.New(transport, formats)
+	cli.ServerTemplate = server_template.New(transport, formats)
 	cli.ServiceDiscovery = service_discovery.New(transport, formats)
 	cli.Sites = sites.New(transport, formats)
 	cli.Specification = specification.New(transport, formats)
@@ -172,6 +176,8 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 type HaproxyDataplaneClient struct {
 	ACL acl.ClientService
 
+	ACLRuntime acl_runtime.ClientService
+
 	Backend backend.ClientService
 
 	BackendSwitchingRule backend_switching_rule.ClientService
@@ -216,6 +222,8 @@ type HaproxyDataplaneClient struct {
 
 	ServerSwitchingRule server_switching_rule.ClientService
 
+	ServerTemplate server_template.ClientService
+
 	ServiceDiscovery service_discovery.ClientService
 
 	Sites sites.ClientService
@@ -249,6 +257,7 @@ type HaproxyDataplaneClient struct {
 func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.ACL.SetTransport(transport)
+	c.ACLRuntime.SetTransport(transport)
 	c.Backend.SetTransport(transport)
 	c.BackendSwitchingRule.SetTransport(transport)
 	c.Bind.SetTransport(transport)
@@ -271,6 +280,7 @@ func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport)
 	c.Resolver.SetTransport(transport)
 	c.Server.SetTransport(transport)
 	c.ServerSwitchingRule.SetTransport(transport)
+	c.ServerTemplate.SetTransport(transport)
 	c.ServiceDiscovery.SetTransport(transport)
 	c.Sites.SetTransport(transport)
 	c.Specification.SetTransport(transport)

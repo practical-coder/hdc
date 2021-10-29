@@ -81,7 +81,7 @@ type ReplaceLogTargetParams struct {
 
 	   Parent name
 	*/
-	ParentName string
+	ParentName *string
 
 	/* ParentType.
 
@@ -199,13 +199,13 @@ func (o *ReplaceLogTargetParams) SetIndex(index int64) {
 }
 
 // WithParentName adds the parentName to the replace log target params
-func (o *ReplaceLogTargetParams) WithParentName(parentName string) *ReplaceLogTargetParams {
+func (o *ReplaceLogTargetParams) WithParentName(parentName *string) *ReplaceLogTargetParams {
 	o.SetParentName(parentName)
 	return o
 }
 
 // SetParentName adds the parentName to the replace log target params
-func (o *ReplaceLogTargetParams) SetParentName(parentName string) {
+func (o *ReplaceLogTargetParams) SetParentName(parentName *string) {
 	o.ParentName = parentName
 }
 
@@ -277,13 +277,20 @@ func (o *ReplaceLogTargetParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 
-	// query param parent_name
-	qrParentName := o.ParentName
-	qParentName := qrParentName
-	if qParentName != "" {
+	if o.ParentName != nil {
 
-		if err := r.SetQueryParam("parent_name", qParentName); err != nil {
-			return err
+		// query param parent_name
+		var qrParentName string
+
+		if o.ParentName != nil {
+			qrParentName = *o.ParentName
+		}
+		qParentName := qrParentName
+		if qParentName != "" {
+
+			if err := r.SetQueryParam("parent_name", qParentName); err != nil {
+				return err
+			}
 		}
 	}
 
