@@ -7,14 +7,12 @@ package storage
 
 import (
 	"fmt"
-	"io"
-
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	"github.com/haproxytech/models"
+	"github.com/practical-coder/hdc/models"
+	"io"
 )
 
 // CreateRuntimeMapReader is a Reader for the CreateRuntimeMap structure.
