@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"client-native/models"
+	"github.com/practical-coder/hdc/models"
 )
 
 // NewReplaceTCPRequestRuleParams creates a new ReplaceTCPRequestRuleParams object,

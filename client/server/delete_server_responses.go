@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"client-native/models"
+	"github.com/practical-coder/hdc/models"
 )
 
 // DeleteServerReader is a Reader for the DeleteServer structure.

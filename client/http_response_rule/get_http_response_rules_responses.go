@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"client-native/models"
+	"github.com/practical-coder/hdc/models"
 )
 
 // GetHTTPResponseRulesReader is a Reader for the GetHTTPResponseRules structure.

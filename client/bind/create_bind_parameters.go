@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"client-native/models"
+	"github.com/practical-coder/hdc/models"
 )
 
 // NewCreateBindParams creates a new CreateBindParams object,

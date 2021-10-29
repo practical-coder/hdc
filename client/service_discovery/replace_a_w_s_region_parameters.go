@@ -15,7 +15,7 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"client-native/models"
+	"github.com/practical-coder/hdc/models"
 )
 
 // NewReplaceAWSRegionParams creates a new ReplaceAWSRegionParams object,

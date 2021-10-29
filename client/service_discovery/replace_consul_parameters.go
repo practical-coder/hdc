@@ -15,7 +15,7 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"client-native/models"
+	"github.com/practical-coder/hdc/models"
 )
 
 // NewReplaceConsulParams creates a new ReplaceConsulParams object,

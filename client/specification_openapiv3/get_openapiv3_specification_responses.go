@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"client-native/models"
+	"github.com/practical-coder/hdc/models"
 )
 
 // GetOpenapiv3SpecificationReader is a Reader for the GetOpenapiv3Specification structure.

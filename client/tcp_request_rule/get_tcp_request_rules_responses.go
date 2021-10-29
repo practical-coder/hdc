@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"client-native/models"
+	"github.com/practical-coder/hdc/models"
 )
 
 // GetTCPRequestRulesReader is a Reader for the GetTCPRequestRules structure.

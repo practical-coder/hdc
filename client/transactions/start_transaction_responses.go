@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"client-native/models"
+	"github.com/practical-coder/hdc/models"
 )
 
 // StartTransactionReader is a Reader for the StartTransaction structure.
