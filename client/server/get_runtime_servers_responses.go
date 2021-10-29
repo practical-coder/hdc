@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/models"
+	"github.com/haproxytech/cloud-native/models"
 )
 
 // GetRuntimeServersReader is a Reader for the GetRuntimeServers structure.

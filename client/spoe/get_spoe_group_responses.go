@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/models"
+	"github.com/haproxytech/cloud-native/models"
 )
 
 // GetSpoeGroupReader is a Reader for the GetSpoeGroup structure.

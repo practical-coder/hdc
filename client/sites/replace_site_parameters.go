@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/models"
+	"github.com/haproxytech/cloud-native/models"
 )
 
 // NewReplaceSiteParams creates a new ReplaceSiteParams object,

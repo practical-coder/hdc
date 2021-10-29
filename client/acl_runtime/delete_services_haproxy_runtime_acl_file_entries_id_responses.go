@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/models"
+	"github.com/haproxytech/cloud-native/models"
 )
 
 // DeleteServicesHaproxyRuntimeACLFileEntriesIDReader is a Reader for the DeleteServicesHaproxyRuntimeACLFileEntriesID structure.
