@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/cloud-native/models"
+	"github.com/haproxytech/client-native/models"
 )
 
 // ReplaceServerSwitchingRuleReader is a Reader for the ReplaceServerSwitchingRule structure.

@@ -15,7 +15,7 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/cloud-native/models"
+	"github.com/haproxytech/client-native/models"
 )
 
 // NewCreateConsulParams creates a new CreateConsulParams object,

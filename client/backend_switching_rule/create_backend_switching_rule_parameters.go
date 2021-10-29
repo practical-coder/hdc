@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/cloud-native/models"
+	"github.com/haproxytech/client-native/models"
 )
 
 // NewCreateBackendSwitchingRuleParams creates a new CreateBackendSwitchingRuleParams object,

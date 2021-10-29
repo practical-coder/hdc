@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/cloud-native/models"
+	"github.com/haproxytech/client-native/models"
 )
 
 // GetSpoeMessageReader is a Reader for the GetSpoeMessage structure.

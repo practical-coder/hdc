@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/cloud-native/models"
+	"github.com/haproxytech/client-native/models"
 )
 
 // GetBindsReader is a Reader for the GetBinds structure.
