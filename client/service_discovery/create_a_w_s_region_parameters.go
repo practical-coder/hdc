@@ -15,7 +15,7 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/models"
+	"client-native/models"
 )
 
 // NewCreateAWSRegionParams creates a new CreateAWSRegionParams object,

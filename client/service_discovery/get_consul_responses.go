@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/models"
+	"client-native/models"
 )
 
 // GetConsulReader is a Reader for the GetConsul structure.

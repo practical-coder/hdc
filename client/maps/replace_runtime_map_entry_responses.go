@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/models"
+	"client-native/models"
 )
 
 // ReplaceRuntimeMapEntryReader is a Reader for the ReplaceRuntimeMapEntry structure.

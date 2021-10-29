@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/models"
+	"client-native/models"
 )
 
 // DeleteRuntimeMapEntryReader is a Reader for the DeleteRuntimeMapEntry structure.
