@@ -15,7 +15,6 @@ import (
 	"github.com/practical-coder/hdc/client/backend"
 	"github.com/practical-coder/hdc/client/backend_switching_rule"
 	"github.com/practical-coder/hdc/client/bind"
-	"github.com/practical-coder/hdc/client/cache"
 	"github.com/practical-coder/hdc/client/cluster"
 	"github.com/practical-coder/hdc/client/configuration"
 	"github.com/practical-coder/hdc/client/defaults"
@@ -23,7 +22,6 @@ import (
 	"github.com/practical-coder/hdc/client/filter"
 	"github.com/practical-coder/hdc/client/frontend"
 	"github.com/practical-coder/hdc/client/global"
-	"github.com/practical-coder/hdc/client/http_check"
 	"github.com/practical-coder/hdc/client/http_request_rule"
 	"github.com/practical-coder/hdc/client/http_response_rule"
 	"github.com/practical-coder/hdc/client/information"
@@ -47,7 +45,6 @@ import (
 	"github.com/practical-coder/hdc/client/stick_rule"
 	"github.com/practical-coder/hdc/client/stick_table"
 	"github.com/practical-coder/hdc/client/storage"
-	"github.com/practical-coder/hdc/client/tcp_check"
 	"github.com/practical-coder/hdc/client/tcp_request_rule"
 	"github.com/practical-coder/hdc/client/tcp_response_rule"
 	"github.com/practical-coder/hdc/client/transactions"
@@ -100,7 +97,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.Backend = backend.New(transport, formats)
 	cli.BackendSwitchingRule = backend_switching_rule.New(transport, formats)
 	cli.Bind = bind.New(transport, formats)
-	cli.Cache = cache.New(transport, formats)
 	cli.Cluster = cluster.New(transport, formats)
 	cli.Configuration = configuration.New(transport, formats)
 	cli.Defaults = defaults.New(transport, formats)
@@ -108,7 +104,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.Filter = filter.New(transport, formats)
 	cli.Frontend = frontend.New(transport, formats)
 	cli.Global = global.New(transport, formats)
-	cli.HTTPCheck = http_check.New(transport, formats)
 	cli.HTTPRequestRule = http_request_rule.New(transport, formats)
 	cli.HTTPResponseRule = http_response_rule.New(transport, formats)
 	cli.Information = information.New(transport, formats)
@@ -132,7 +127,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.StickRule = stick_rule.New(transport, formats)
 	cli.StickTable = stick_table.New(transport, formats)
 	cli.Storage = storage.New(transport, formats)
-	cli.TCPCheck = tcp_check.New(transport, formats)
 	cli.TCPRequestRule = tcp_request_rule.New(transport, formats)
 	cli.TCPResponseRule = tcp_response_rule.New(transport, formats)
 	cli.Transactions = transactions.New(transport, formats)
@@ -190,8 +184,6 @@ type HaproxyDataplaneClient struct {
 
 	Bind bind.ClientService
 
-	Cache cache.ClientService
-
 	Cluster cluster.ClientService
 
 	Configuration configuration.ClientService
@@ -205,8 +197,6 @@ type HaproxyDataplaneClient struct {
 	Frontend frontend.ClientService
 
 	Global global.ClientService
-
-	HTTPCheck http_check.ClientService
 
 	HTTPRequestRule http_request_rule.ClientService
 
@@ -254,8 +244,6 @@ type HaproxyDataplaneClient struct {
 
 	Storage storage.ClientService
 
-	TCPCheck tcp_check.ClientService
-
 	TCPRequestRule tcp_request_rule.ClientService
 
 	TCPResponseRule tcp_response_rule.ClientService
@@ -273,7 +261,6 @@ func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport)
 	c.Backend.SetTransport(transport)
 	c.BackendSwitchingRule.SetTransport(transport)
 	c.Bind.SetTransport(transport)
-	c.Cache.SetTransport(transport)
 	c.Cluster.SetTransport(transport)
 	c.Configuration.SetTransport(transport)
 	c.Defaults.SetTransport(transport)
@@ -281,7 +268,6 @@ func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport)
 	c.Filter.SetTransport(transport)
 	c.Frontend.SetTransport(transport)
 	c.Global.SetTransport(transport)
-	c.HTTPCheck.SetTransport(transport)
 	c.HTTPRequestRule.SetTransport(transport)
 	c.HTTPResponseRule.SetTransport(transport)
 	c.Information.SetTransport(transport)
@@ -305,7 +291,6 @@ func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport)
 	c.StickRule.SetTransport(transport)
 	c.StickTable.SetTransport(transport)
 	c.Storage.SetTransport(transport)
-	c.TCPCheck.SetTransport(transport)
 	c.TCPRequestRule.SetTransport(transport)
 	c.TCPResponseRule.SetTransport(transport)
 	c.Transactions.SetTransport(transport)

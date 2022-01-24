@@ -27,10 +27,6 @@ type Backend struct {
 	// Enum: [enabled disabled]
 	Abortonclose string `json:"abortonclose,omitempty"`
 
-	// accept invalid http response
-	// Enum: [enabled disabled]
-	AcceptInvalidHTTPResponse string `json:"accept_invalid_http_response,omitempty"`
-
 	// adv check
 	// Enum: [ssl-hello-chk smtpchk ldap-check mysql-check pgsql-check tcp-check redis-check httpchk]
 	AdvCheck string `json:"adv_check,omitempty"`
@@ -76,10 +72,6 @@ type Backend struct {
 
 	// forwardfor
 	Forwardfor *Forwardfor `json:"forwardfor,omitempty"`
-
-	// h1 case adjust bogus server
-	// Enum: [enabled disabled]
-	H1CaseAdjustBogusServer string `json:"h1_case_adjust_bogus_server,omitempty"`
 
 	// hash type
 	HashType *BackendHashType `json:"hash_type,omitempty"`
@@ -169,10 +161,6 @@ func (m *Backend) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateAcceptInvalidHTTPResponse(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateAdvCheck(formats); err != nil {
 		res = append(res, err)
 	}
@@ -214,10 +202,6 @@ func (m *Backend) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateForwardfor(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateH1CaseAdjustBogusServer(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -331,48 +315,6 @@ func (m *Backend) validateAbortonclose(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateAbortoncloseEnum("abortonclose", "body", m.Abortonclose); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-var backendTypeAcceptInvalidHTTPResponsePropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		backendTypeAcceptInvalidHTTPResponsePropEnum = append(backendTypeAcceptInvalidHTTPResponsePropEnum, v)
-	}
-}
-
-const (
-
-	// BackendAcceptInvalidHTTPResponseEnabled captures enum value "enabled"
-	BackendAcceptInvalidHTTPResponseEnabled string = "enabled"
-
-	// BackendAcceptInvalidHTTPResponseDisabled captures enum value "disabled"
-	BackendAcceptInvalidHTTPResponseDisabled string = "disabled"
-)
-
-// prop value enum
-func (m *Backend) validateAcceptInvalidHTTPResponseEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendTypeAcceptInvalidHTTPResponsePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *Backend) validateAcceptInvalidHTTPResponse(formats strfmt.Registry) error {
-	if swag.IsZero(m.AcceptInvalidHTTPResponse) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateAcceptInvalidHTTPResponseEnum("accept_invalid_http_response", "body", m.AcceptInvalidHTTPResponse); err != nil {
 		return err
 	}
 
@@ -642,48 +584,6 @@ func (m *Backend) validateForwardfor(formats strfmt.Registry) error {
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-var backendTypeH1CaseAdjustBogusServerPropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		backendTypeH1CaseAdjustBogusServerPropEnum = append(backendTypeH1CaseAdjustBogusServerPropEnum, v)
-	}
-}
-
-const (
-
-	// BackendH1CaseAdjustBogusServerEnabled captures enum value "enabled"
-	BackendH1CaseAdjustBogusServerEnabled string = "enabled"
-
-	// BackendH1CaseAdjustBogusServerDisabled captures enum value "disabled"
-	BackendH1CaseAdjustBogusServerDisabled string = "disabled"
-)
-
-// prop value enum
-func (m *Backend) validateH1CaseAdjustBogusServerEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendTypeH1CaseAdjustBogusServerPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *Backend) validateH1CaseAdjustBogusServer(formats strfmt.Registry) error {
-	if swag.IsZero(m.H1CaseAdjustBogusServer) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateH1CaseAdjustBogusServerEnum("h1_case_adjust_bogus_server", "body", m.H1CaseAdjustBogusServer); err != nil {
-		return err
 	}
 
 	return nil
