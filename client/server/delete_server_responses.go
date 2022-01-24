@@ -58,13 +58,12 @@ func NewDeleteServerAccepted() *DeleteServerAccepted {
 	return &DeleteServerAccepted{}
 }
 
-/* DeleteServerAccepted describes a response with status code 202, with default header values.
+/*DeleteServerAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteServerAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -75,12 +74,8 @@ func (o *DeleteServerAccepted) Error() string {
 
 func (o *DeleteServerAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	return nil
 }
@@ -90,7 +85,7 @@ func NewDeleteServerNoContent() *DeleteServerNoContent {
 	return &DeleteServerNoContent{}
 }
 
-/* DeleteServerNoContent describes a response with status code 204, with default header values.
+/*DeleteServerNoContent handles this case with default header values.
 
 Server deleted
 */
@@ -111,13 +106,12 @@ func NewDeleteServerNotFound() *DeleteServerNotFound {
 	return &DeleteServerNotFound{}
 }
 
-/* DeleteServerNotFound describes a response with status code 404, with default header values.
+/*DeleteServerNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteServerNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,18 +121,15 @@ type DeleteServerNotFound struct {
 func (o *DeleteServerNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/servers/{name}][%d] deleteServerNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteServerNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteServerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -157,14 +148,14 @@ func NewDeleteServerDefault(code int) *DeleteServerDefault {
 	}
 }
 
-/* DeleteServerDefault describes a response with status code -1, with default header values.
+/*DeleteServerDefault handles this case with default header values.
 
 General Error
 */
 type DeleteServerDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -179,18 +170,15 @@ func (o *DeleteServerDefault) Code() int {
 func (o *DeleteServerDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/servers/{name}][%d] deleteServer default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteServerDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteServerDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

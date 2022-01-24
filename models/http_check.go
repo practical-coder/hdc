@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -91,11 +90,12 @@ func (m *HTTPCheck) validateMatchEnum(path, location string, value string) error
 }
 
 func (m *HTTPCheck) validateMatch(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Match) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("match", "body", m.Match, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("match", "body", string(m.Match), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -121,14 +121,14 @@ func init() {
 
 const (
 
-	// HTTPCheckTypeDisableDashOnDash404 captures enum value "disable-on-404"
-	HTTPCheckTypeDisableDashOnDash404 string = "disable-on-404"
+	// HTTPCheckTypeDisableOn404 captures enum value "disable-on-404"
+	HTTPCheckTypeDisableOn404 string = "disable-on-404"
 
 	// HTTPCheckTypeExpect captures enum value "expect"
 	HTTPCheckTypeExpect string = "expect"
 
-	// HTTPCheckTypeSendDashState captures enum value "send-state"
-	HTTPCheckTypeSendDashState string = "send-state"
+	// HTTPCheckTypeSendState captures enum value "send-state"
+	HTTPCheckTypeSendState string = "send-state"
 )
 
 // prop value enum
@@ -150,11 +150,6 @@ func (m *HTTPCheck) validateType(formats strfmt.Registry) error {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this http check based on context it is used
-func (m *HTTPCheck) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

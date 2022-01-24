@@ -23,20 +23,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateACL(params *CreateACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateACLCreated, *CreateACLAccepted, error)
+	CreateACL(params *CreateACLParams, authInfo runtime.ClientAuthInfoWriter) (*CreateACLCreated, *CreateACLAccepted, error)
 
-	DeleteACL(params *DeleteACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteACLAccepted, *DeleteACLNoContent, error)
+	DeleteACL(params *DeleteACLParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteACLAccepted, *DeleteACLNoContent, error)
 
-	GetACL(params *GetACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetACLOK, error)
+	GetACL(params *GetACLParams, authInfo runtime.ClientAuthInfoWriter) (*GetACLOK, error)
 
-	GetAcls(params *GetAclsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAclsOK, error)
+	GetAcls(params *GetAclsParams, authInfo runtime.ClientAuthInfoWriter) (*GetAclsOK, error)
 
-	ReplaceACL(params *ReplaceACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceACLOK, *ReplaceACLAccepted, error)
+	ReplaceACL(params *ReplaceACLParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceACLOK, *ReplaceACLAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,12 +43,13 @@ type ClientService interface {
 
   Adds a new ACL line of the specified type in the specified parent.
 */
-func (a *Client) CreateACL(params *CreateACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateACLCreated, *CreateACLAccepted, error) {
+func (a *Client) CreateACL(params *CreateACLParams, authInfo runtime.ClientAuthInfoWriter) (*CreateACLCreated, *CreateACLAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateACLParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createAcl",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/acls",
@@ -63,12 +61,7 @@ func (a *Client) CreateACL(params *CreateACLParams, authInfo runtime.ClientAuthI
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -88,12 +81,13 @@ func (a *Client) CreateACL(params *CreateACLParams, authInfo runtime.ClientAuthI
 
   Deletes a ACL line configuration by it's index from the specified parent.
 */
-func (a *Client) DeleteACL(params *DeleteACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteACLAccepted, *DeleteACLNoContent, error) {
+func (a *Client) DeleteACL(params *DeleteACLParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteACLAccepted, *DeleteACLNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteACLParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteAcl",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/acls/{index}",
@@ -105,12 +99,7 @@ func (a *Client) DeleteACL(params *DeleteACLParams, authInfo runtime.ClientAuthI
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -130,12 +119,13 @@ func (a *Client) DeleteACL(params *DeleteACLParams, authInfo runtime.ClientAuthI
 
   Returns one ACL line configuration by it's index in the specified parent.
 */
-func (a *Client) GetACL(params *GetACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetACLOK, error) {
+func (a *Client) GetACL(params *GetACLParams, authInfo runtime.ClientAuthInfoWriter) (*GetACLOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetACLParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getAcl",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/acls/{index}",
@@ -147,12 +137,7 @@ func (a *Client) GetACL(params *GetACLParams, authInfo runtime.ClientAuthInfoWri
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -170,12 +155,13 @@ func (a *Client) GetACL(params *GetACLParams, authInfo runtime.ClientAuthInfoWri
 
   Returns all ACL lines that are configured in specified parent.
 */
-func (a *Client) GetAcls(params *GetAclsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAclsOK, error) {
+func (a *Client) GetAcls(params *GetAclsParams, authInfo runtime.ClientAuthInfoWriter) (*GetAclsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAclsParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getAcls",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/acls",
@@ -187,12 +173,7 @@ func (a *Client) GetAcls(params *GetAclsParams, authInfo runtime.ClientAuthInfoW
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -210,12 +191,13 @@ func (a *Client) GetAcls(params *GetAclsParams, authInfo runtime.ClientAuthInfoW
 
   Replaces a ACL line configuration by it's index in the specified parent.
 */
-func (a *Client) ReplaceACL(params *ReplaceACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceACLOK, *ReplaceACLAccepted, error) {
+func (a *Client) ReplaceACL(params *ReplaceACLParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceACLOK, *ReplaceACLAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceACLParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "replaceAcl",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/acls/{index}",
@@ -227,12 +209,7 @@ func (a *Client) ReplaceACL(params *ReplaceACLParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}

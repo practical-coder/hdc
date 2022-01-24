@@ -6,7 +6,6 @@ package backend
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -50,13 +49,12 @@ func NewGetBackendsOK() *GetBackendsOK {
 	return &GetBackendsOK{}
 }
 
-/* GetBackendsOK describes a response with status code 200, with default header values.
+/*GetBackendsOK handles this case with default header values.
 
 Successful operation
 */
 type GetBackendsOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -66,18 +64,15 @@ type GetBackendsOK struct {
 func (o *GetBackendsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/backends][%d] getBackendsOK  %+v", 200, o.Payload)
 }
+
 func (o *GetBackendsOK) GetPayload() *GetBackendsOKBody {
 	return o.Payload
 }
 
 func (o *GetBackendsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetBackendsOKBody)
 
@@ -96,14 +91,14 @@ func NewGetBackendsDefault(code int) *GetBackendsDefault {
 	}
 }
 
-/* GetBackendsDefault describes a response with status code -1, with default header values.
+/*GetBackendsDefault handles this case with default header values.
 
 General Error
 */
 type GetBackendsDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -118,18 +113,15 @@ func (o *GetBackendsDefault) Code() int {
 func (o *GetBackendsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/backends][%d] getBackends default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetBackendsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetBackendsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -177,36 +169,6 @@ func (o *GetBackendsOKBody) validateData(formats strfmt.Registry) error {
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getBackendsOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getBackendsOK" + "." + "data")
-		}
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get backends o k body based on the context it is used
-func (o *GetBackendsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetBackendsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := o.Data.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("getBackendsOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getBackendsOK" + "." + "data")
 		}
 		return err
 	}

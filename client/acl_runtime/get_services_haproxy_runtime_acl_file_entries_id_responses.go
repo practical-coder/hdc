@@ -58,7 +58,7 @@ func NewGetServicesHaproxyRuntimeACLFileEntriesIDOK() *GetServicesHaproxyRuntime
 	return &GetServicesHaproxyRuntimeACLFileEntriesIDOK{}
 }
 
-/* GetServicesHaproxyRuntimeACLFileEntriesIDOK describes a response with status code 200, with default header values.
+/*GetServicesHaproxyRuntimeACLFileEntriesIDOK handles this case with default header values.
 
 Successful operation
 */
@@ -69,6 +69,7 @@ type GetServicesHaproxyRuntimeACLFileEntriesIDOK struct {
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acl_file_entries/{id}][%d] getServicesHaproxyRuntimeAclFileEntriesIdOK  %+v", 200, o.Payload)
 }
+
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDOK) GetPayload() *models.ACLFileEntry {
 	return o.Payload
 }
@@ -90,13 +91,12 @@ func NewGetServicesHaproxyRuntimeACLFileEntriesIDBadRequest() *GetServicesHaprox
 	return &GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest{}
 }
 
-/* GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest describes a response with status code 400, with default header values.
+/*GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest handles this case with default header values.
 
 Bad request
 */
 type GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,18 +106,15 @@ type GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest struct {
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acl_file_entries/{id}][%d] getServicesHaproxyRuntimeAclFileEntriesIdBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -134,13 +131,12 @@ func NewGetServicesHaproxyRuntimeACLFileEntriesIDNotFound() *GetServicesHaproxyR
 	return &GetServicesHaproxyRuntimeACLFileEntriesIDNotFound{}
 }
 
-/* GetServicesHaproxyRuntimeACLFileEntriesIDNotFound describes a response with status code 404, with default header values.
+/*GetServicesHaproxyRuntimeACLFileEntriesIDNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetServicesHaproxyRuntimeACLFileEntriesIDNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -150,18 +146,15 @@ type GetServicesHaproxyRuntimeACLFileEntriesIDNotFound struct {
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acl_file_entries/{id}][%d] getServicesHaproxyRuntimeAclFileEntriesIdNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -180,14 +173,14 @@ func NewGetServicesHaproxyRuntimeACLFileEntriesIDDefault(code int) *GetServicesH
 	}
 }
 
-/* GetServicesHaproxyRuntimeACLFileEntriesIDDefault describes a response with status code -1, with default header values.
+/*GetServicesHaproxyRuntimeACLFileEntriesIDDefault handles this case with default header values.
 
 General Error
 */
 type GetServicesHaproxyRuntimeACLFileEntriesIDDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -202,18 +195,15 @@ func (o *GetServicesHaproxyRuntimeACLFileEntriesIDDefault) Code() int {
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acl_file_entries/{id}][%d] GetServicesHaproxyRuntimeACLFileEntriesID default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

@@ -16,79 +16,64 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetSpoeConfigurationVersionParams creates a new GetSpoeConfigurationVersionParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewGetSpoeConfigurationVersionParams creates a new GetSpoeConfigurationVersionParams object
+// with the default values initialized.
 func NewGetSpoeConfigurationVersionParams() *GetSpoeConfigurationVersionParams {
+	var ()
 	return &GetSpoeConfigurationVersionParams{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetSpoeConfigurationVersionParamsWithTimeout creates a new GetSpoeConfigurationVersionParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewGetSpoeConfigurationVersionParamsWithTimeout(timeout time.Duration) *GetSpoeConfigurationVersionParams {
+	var ()
 	return &GetSpoeConfigurationVersionParams{
+
 		timeout: timeout,
 	}
 }
 
 // NewGetSpoeConfigurationVersionParamsWithContext creates a new GetSpoeConfigurationVersionParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewGetSpoeConfigurationVersionParamsWithContext(ctx context.Context) *GetSpoeConfigurationVersionParams {
+	var ()
 	return &GetSpoeConfigurationVersionParams{
+
 		Context: ctx,
 	}
 }
 
 // NewGetSpoeConfigurationVersionParamsWithHTTPClient creates a new GetSpoeConfigurationVersionParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetSpoeConfigurationVersionParamsWithHTTPClient(client *http.Client) *GetSpoeConfigurationVersionParams {
+	var ()
 	return &GetSpoeConfigurationVersionParams{
 		HTTPClient: client,
 	}
 }
 
-/* GetSpoeConfigurationVersionParams contains all the parameters to send to the API endpoint
-   for the get spoe configuration version operation.
-
-   Typically these are written to a http.Request.
+/*GetSpoeConfigurationVersionParams contains all the parameters to send to the API endpoint
+for the get spoe configuration version operation typically these are written to a http.Request
 */
 type GetSpoeConfigurationVersionParams struct {
 
-	/* Spoe.
+	/*Spoe
+	  Spoe file name
 
-	   Spoe file name
 	*/
 	Spoe string
+	/*TransactionID
+	  ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 
-	/* TransactionID.
-
-	   ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 	*/
 	TransactionID *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the get spoe configuration version params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetSpoeConfigurationVersionParams) WithDefaults() *GetSpoeConfigurationVersionParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the get spoe configuration version params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetSpoeConfigurationVersionParams) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get spoe configuration version params
@@ -158,7 +143,6 @@ func (o *GetSpoeConfigurationVersionParams) WriteToRequest(r runtime.ClientReque
 	qrSpoe := o.Spoe
 	qSpoe := qrSpoe
 	if qSpoe != "" {
-
 		if err := r.SetQueryParam("spoe", qSpoe); err != nil {
 			return err
 		}
@@ -168,17 +152,16 @@ func (o *GetSpoeConfigurationVersionParams) WriteToRequest(r runtime.ClientReque
 
 		// query param transaction_id
 		var qrTransactionID string
-
 		if o.TransactionID != nil {
 			qrTransactionID = *o.TransactionID
 		}
 		qTransactionID := qrTransactionID
 		if qTransactionID != "" {
-
 			if err := r.SetQueryParam("transaction_id", qTransactionID); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if len(res) > 0 {

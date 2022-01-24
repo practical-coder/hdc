@@ -58,13 +58,12 @@ func NewDeleteResolverAccepted() *DeleteResolverAccepted {
 	return &DeleteResolverAccepted{}
 }
 
-/* DeleteResolverAccepted describes a response with status code 202, with default header values.
+/*DeleteResolverAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteResolverAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -75,12 +74,8 @@ func (o *DeleteResolverAccepted) Error() string {
 
 func (o *DeleteResolverAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	return nil
 }
@@ -90,7 +85,7 @@ func NewDeleteResolverNoContent() *DeleteResolverNoContent {
 	return &DeleteResolverNoContent{}
 }
 
-/* DeleteResolverNoContent describes a response with status code 204, with default header values.
+/*DeleteResolverNoContent handles this case with default header values.
 
 Resolver deleted
 */
@@ -111,13 +106,12 @@ func NewDeleteResolverNotFound() *DeleteResolverNotFound {
 	return &DeleteResolverNotFound{}
 }
 
-/* DeleteResolverNotFound describes a response with status code 404, with default header values.
+/*DeleteResolverNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteResolverNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,18 +121,15 @@ type DeleteResolverNotFound struct {
 func (o *DeleteResolverNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolverNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteResolverNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteResolverNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -157,14 +148,14 @@ func NewDeleteResolverDefault(code int) *DeleteResolverDefault {
 	}
 }
 
-/* DeleteResolverDefault describes a response with status code -1, with default header values.
+/*DeleteResolverDefault handles this case with default header values.
 
 General Error
 */
 type DeleteResolverDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -179,18 +170,15 @@ func (o *DeleteResolverDefault) Code() int {
 func (o *DeleteResolverDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolver default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteResolverDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteResolverDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

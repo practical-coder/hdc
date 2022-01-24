@@ -23,20 +23,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateSite(params *CreateSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSiteCreated, *CreateSiteAccepted, error)
+	CreateSite(params *CreateSiteParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSiteCreated, *CreateSiteAccepted, error)
 
-	DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSiteAccepted, *DeleteSiteNoContent, error)
+	DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSiteAccepted, *DeleteSiteNoContent, error)
 
-	GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteOK, error)
+	GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteOK, error)
 
-	GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSitesOK, error)
+	GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInfoWriter) (*GetSitesOK, error)
 
-	ReplaceSite(params *ReplaceSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceSiteOK, *ReplaceSiteAccepted, error)
+	ReplaceSite(params *ReplaceSiteParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceSiteOK, *ReplaceSiteAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,12 +43,13 @@ type ClientService interface {
 
   Adds a new site to the configuration file.
 */
-func (a *Client) CreateSite(params *CreateSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSiteCreated, *CreateSiteAccepted, error) {
+func (a *Client) CreateSite(params *CreateSiteParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSiteCreated, *CreateSiteAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateSiteParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createSite",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/sites",
@@ -63,12 +61,7 @@ func (a *Client) CreateSite(params *CreateSiteParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -88,12 +81,13 @@ func (a *Client) CreateSite(params *CreateSiteParams, authInfo runtime.ClientAut
 
   Deletes a site from the configuration by it's name.
 */
-func (a *Client) DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSiteAccepted, *DeleteSiteNoContent, error) {
+func (a *Client) DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSiteAccepted, *DeleteSiteNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSiteParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteSite",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/sites/{name}",
@@ -105,12 +99,7 @@ func (a *Client) DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -130,12 +119,13 @@ func (a *Client) DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAut
 
   Returns one site configuration by it's name.
 */
-func (a *Client) GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteOK, error) {
+func (a *Client) GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoWriter) (*GetSiteOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSiteParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getSite",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/sites/{name}",
@@ -147,12 +137,7 @@ func (a *Client) GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoW
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -170,12 +155,13 @@ func (a *Client) GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoW
 
   Returns an array of all configured sites.
 */
-func (a *Client) GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSitesOK, error) {
+func (a *Client) GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInfoWriter) (*GetSitesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSitesParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getSites",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/sites",
@@ -187,12 +173,7 @@ func (a *Client) GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInf
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -210,12 +191,13 @@ func (a *Client) GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInf
 
   Replaces a site configuration by it's name.
 */
-func (a *Client) ReplaceSite(params *ReplaceSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceSiteOK, *ReplaceSiteAccepted, error) {
+func (a *Client) ReplaceSite(params *ReplaceSiteParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceSiteOK, *ReplaceSiteAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceSiteParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "replaceSite",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/sites/{name}",
@@ -227,12 +209,7 @@ func (a *Client) ReplaceSite(params *ReplaceSiteParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}

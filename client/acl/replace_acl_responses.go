@@ -64,7 +64,7 @@ func NewReplaceACLOK() *ReplaceACLOK {
 	return &ReplaceACLOK{}
 }
 
-/* ReplaceACLOK describes a response with status code 200, with default header values.
+/*ReplaceACLOK handles this case with default header values.
 
 ACL line replaced
 */
@@ -75,6 +75,7 @@ type ReplaceACLOK struct {
 func (o *ReplaceACLOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/acls/{index}][%d] replaceAclOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceACLOK) GetPayload() *models.ACL {
 	return o.Payload
 }
@@ -96,13 +97,12 @@ func NewReplaceACLAccepted() *ReplaceACLAccepted {
 	return &ReplaceACLAccepted{}
 }
 
-/* ReplaceACLAccepted describes a response with status code 202, with default header values.
+/*ReplaceACLAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceACLAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,18 +112,15 @@ type ReplaceACLAccepted struct {
 func (o *ReplaceACLAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/acls/{index}][%d] replaceAclAccepted  %+v", 202, o.Payload)
 }
+
 func (o *ReplaceACLAccepted) GetPayload() *models.ACL {
 	return o.Payload
 }
 
 func (o *ReplaceACLAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.ACL)
 
@@ -140,13 +137,12 @@ func NewReplaceACLBadRequest() *ReplaceACLBadRequest {
 	return &ReplaceACLBadRequest{}
 }
 
-/* ReplaceACLBadRequest describes a response with status code 400, with default header values.
+/*ReplaceACLBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceACLBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -156,18 +152,15 @@ type ReplaceACLBadRequest struct {
 func (o *ReplaceACLBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/acls/{index}][%d] replaceAclBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceACLBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceACLBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,13 +177,12 @@ func NewReplaceACLNotFound() *ReplaceACLNotFound {
 	return &ReplaceACLNotFound{}
 }
 
-/* ReplaceACLNotFound describes a response with status code 404, with default header values.
+/*ReplaceACLNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceACLNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +192,15 @@ type ReplaceACLNotFound struct {
 func (o *ReplaceACLNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/acls/{index}][%d] replaceAclNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceACLNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceACLNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -230,14 +219,14 @@ func NewReplaceACLDefault(code int) *ReplaceACLDefault {
 	}
 }
 
-/* ReplaceACLDefault describes a response with status code -1, with default header values.
+/*ReplaceACLDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceACLDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -252,18 +241,15 @@ func (o *ReplaceACLDefault) Code() int {
 func (o *ReplaceACLDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/acls/{index}][%d] replaceAcl default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceACLDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceACLDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

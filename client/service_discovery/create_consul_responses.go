@@ -58,7 +58,7 @@ func NewCreateConsulCreated() *CreateConsulCreated {
 	return &CreateConsulCreated{}
 }
 
-/* CreateConsulCreated describes a response with status code 201, with default header values.
+/*CreateConsulCreated handles this case with default header values.
 
 Consul created
 */
@@ -69,6 +69,7 @@ type CreateConsulCreated struct {
 func (o *CreateConsulCreated) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsulCreated  %+v", 201, o.Payload)
 }
+
 func (o *CreateConsulCreated) GetPayload() *models.Consul {
 	return o.Payload
 }
@@ -90,13 +91,12 @@ func NewCreateConsulBadRequest() *CreateConsulBadRequest {
 	return &CreateConsulBadRequest{}
 }
 
-/* CreateConsulBadRequest describes a response with status code 400, with default header values.
+/*CreateConsulBadRequest handles this case with default header values.
 
 Bad request
 */
 type CreateConsulBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,18 +106,15 @@ type CreateConsulBadRequest struct {
 func (o *CreateConsulBadRequest) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsulBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *CreateConsulBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateConsulBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -134,13 +131,12 @@ func NewCreateConsulConflict() *CreateConsulConflict {
 	return &CreateConsulConflict{}
 }
 
-/* CreateConsulConflict describes a response with status code 409, with default header values.
+/*CreateConsulConflict handles this case with default header values.
 
 The specified resource already exists
 */
 type CreateConsulConflict struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -150,18 +146,15 @@ type CreateConsulConflict struct {
 func (o *CreateConsulConflict) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsulConflict  %+v", 409, o.Payload)
 }
+
 func (o *CreateConsulConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateConsulConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -180,14 +173,14 @@ func NewCreateConsulDefault(code int) *CreateConsulDefault {
 	}
 }
 
-/* CreateConsulDefault describes a response with status code -1, with default header values.
+/*CreateConsulDefault handles this case with default header values.
 
 General Error
 */
 type CreateConsulDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -202,18 +195,15 @@ func (o *CreateConsulDefault) Code() int {
 func (o *CreateConsulDefault) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsul default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *CreateConsulDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateConsulDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

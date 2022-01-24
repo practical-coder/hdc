@@ -58,13 +58,12 @@ func NewDeleteBindAccepted() *DeleteBindAccepted {
 	return &DeleteBindAccepted{}
 }
 
-/* DeleteBindAccepted describes a response with status code 202, with default header values.
+/*DeleteBindAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteBindAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -75,12 +74,8 @@ func (o *DeleteBindAccepted) Error() string {
 
 func (o *DeleteBindAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	return nil
 }
@@ -90,7 +85,7 @@ func NewDeleteBindNoContent() *DeleteBindNoContent {
 	return &DeleteBindNoContent{}
 }
 
-/* DeleteBindNoContent describes a response with status code 204, with default header values.
+/*DeleteBindNoContent handles this case with default header values.
 
 Bind deleted
 */
@@ -111,13 +106,12 @@ func NewDeleteBindNotFound() *DeleteBindNotFound {
 	return &DeleteBindNotFound{}
 }
 
-/* DeleteBindNotFound describes a response with status code 404, with default header values.
+/*DeleteBindNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteBindNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,18 +121,15 @@ type DeleteBindNotFound struct {
 func (o *DeleteBindNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/binds/{name}][%d] deleteBindNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteBindNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteBindNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -157,14 +148,14 @@ func NewDeleteBindDefault(code int) *DeleteBindDefault {
 	}
 }
 
-/* DeleteBindDefault describes a response with status code -1, with default header values.
+/*DeleteBindDefault handles this case with default header values.
 
 General Error
 */
 type DeleteBindDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -179,18 +170,15 @@ func (o *DeleteBindDefault) Code() int {
 func (o *DeleteBindDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/binds/{name}][%d] deleteBind default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteBindDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteBindDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

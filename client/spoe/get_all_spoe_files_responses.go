@@ -52,7 +52,7 @@ func NewGetAllSpoeFilesOK() *GetAllSpoeFilesOK {
 	return &GetAllSpoeFilesOK{}
 }
 
-/* GetAllSpoeFilesOK describes a response with status code 200, with default header values.
+/*GetAllSpoeFilesOK handles this case with default header values.
 
 Successful operation
 */
@@ -63,6 +63,7 @@ type GetAllSpoeFilesOK struct {
 func (o *GetAllSpoeFilesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files][%d] getAllSpoeFilesOK  %+v", 200, o.Payload)
 }
+
 func (o *GetAllSpoeFilesOK) GetPayload() models.SpoeFiles {
 	return o.Payload
 }
@@ -82,13 +83,12 @@ func NewGetAllSpoeFilesNotFound() *GetAllSpoeFilesNotFound {
 	return &GetAllSpoeFilesNotFound{}
 }
 
-/* GetAllSpoeFilesNotFound describes a response with status code 404, with default header values.
+/*GetAllSpoeFilesNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetAllSpoeFilesNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -98,18 +98,15 @@ type GetAllSpoeFilesNotFound struct {
 func (o *GetAllSpoeFilesNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files][%d] getAllSpoeFilesNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetAllSpoeFilesNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetAllSpoeFilesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -128,14 +125,14 @@ func NewGetAllSpoeFilesDefault(code int) *GetAllSpoeFilesDefault {
 	}
 }
 
-/* GetAllSpoeFilesDefault describes a response with status code -1, with default header values.
+/*GetAllSpoeFilesDefault handles this case with default header values.
 
 General Error
 */
 type GetAllSpoeFilesDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -150,18 +147,15 @@ func (o *GetAllSpoeFilesDefault) Code() int {
 func (o *GetAllSpoeFilesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files][%d] getAllSpoeFiles default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetAllSpoeFilesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetAllSpoeFilesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

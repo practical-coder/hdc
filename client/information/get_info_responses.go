@@ -46,7 +46,7 @@ func NewGetInfoOK() *GetInfoOK {
 	return &GetInfoOK{}
 }
 
-/* GetInfoOK describes a response with status code 200, with default header values.
+/*GetInfoOK handles this case with default header values.
 
 Success
 */
@@ -57,6 +57,7 @@ type GetInfoOK struct {
 func (o *GetInfoOK) Error() string {
 	return fmt.Sprintf("[GET /info][%d] getInfoOK  %+v", 200, o.Payload)
 }
+
 func (o *GetInfoOK) GetPayload() *models.Info {
 	return o.Payload
 }
@@ -80,14 +81,14 @@ func NewGetInfoDefault(code int) *GetInfoDefault {
 	}
 }
 
-/* GetInfoDefault describes a response with status code -1, with default header values.
+/*GetInfoDefault handles this case with default header values.
 
 General Error
 */
 type GetInfoDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -102,18 +103,15 @@ func (o *GetInfoDefault) Code() int {
 func (o *GetInfoDefault) Error() string {
 	return fmt.Sprintf("[GET /info][%d] getInfo default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetInfoDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetInfoDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

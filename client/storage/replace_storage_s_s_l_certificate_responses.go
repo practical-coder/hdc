@@ -64,7 +64,7 @@ func NewReplaceStorageSSLCertificateOK() *ReplaceStorageSSLCertificateOK {
 	return &ReplaceStorageSSLCertificateOK{}
 }
 
-/* ReplaceStorageSSLCertificateOK describes a response with status code 200, with default header values.
+/*ReplaceStorageSSLCertificateOK handles this case with default header values.
 
 SSL certificate replaced
 */
@@ -75,6 +75,7 @@ type ReplaceStorageSSLCertificateOK struct {
 func (o *ReplaceStorageSSLCertificateOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceStorageSSLCertificateOK) GetPayload() *models.SslCertificate {
 	return o.Payload
 }
@@ -96,13 +97,12 @@ func NewReplaceStorageSSLCertificateAccepted() *ReplaceStorageSSLCertificateAcce
 	return &ReplaceStorageSSLCertificateAccepted{}
 }
 
-/* ReplaceStorageSSLCertificateAccepted describes a response with status code 202, with default header values.
+/*ReplaceStorageSSLCertificateAccepted handles this case with default header values.
 
 SSL certificate replaced and reload requested
 */
 type ReplaceStorageSSLCertificateAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,18 +112,15 @@ type ReplaceStorageSSLCertificateAccepted struct {
 func (o *ReplaceStorageSSLCertificateAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateAccepted  %+v", 202, o.Payload)
 }
+
 func (o *ReplaceStorageSSLCertificateAccepted) GetPayload() *models.SslCertificate {
 	return o.Payload
 }
 
 func (o *ReplaceStorageSSLCertificateAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.SslCertificate)
 
@@ -140,13 +137,12 @@ func NewReplaceStorageSSLCertificateBadRequest() *ReplaceStorageSSLCertificateBa
 	return &ReplaceStorageSSLCertificateBadRequest{}
 }
 
-/* ReplaceStorageSSLCertificateBadRequest describes a response with status code 400, with default header values.
+/*ReplaceStorageSSLCertificateBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceStorageSSLCertificateBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -156,18 +152,15 @@ type ReplaceStorageSSLCertificateBadRequest struct {
 func (o *ReplaceStorageSSLCertificateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceStorageSSLCertificateBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceStorageSSLCertificateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,13 +177,12 @@ func NewReplaceStorageSSLCertificateNotFound() *ReplaceStorageSSLCertificateNotF
 	return &ReplaceStorageSSLCertificateNotFound{}
 }
 
-/* ReplaceStorageSSLCertificateNotFound describes a response with status code 404, with default header values.
+/*ReplaceStorageSSLCertificateNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceStorageSSLCertificateNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +192,15 @@ type ReplaceStorageSSLCertificateNotFound struct {
 func (o *ReplaceStorageSSLCertificateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceStorageSSLCertificateNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceStorageSSLCertificateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -230,14 +219,14 @@ func NewReplaceStorageSSLCertificateDefault(code int) *ReplaceStorageSSLCertific
 	}
 }
 
-/* ReplaceStorageSSLCertificateDefault describes a response with status code -1, with default header values.
+/*ReplaceStorageSSLCertificateDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceStorageSSLCertificateDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -252,18 +241,15 @@ func (o *ReplaceStorageSSLCertificateDefault) Code() int {
 func (o *ReplaceStorageSSLCertificateDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificate default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceStorageSSLCertificateDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceStorageSSLCertificateDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

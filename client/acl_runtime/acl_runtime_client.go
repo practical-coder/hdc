@@ -23,24 +23,21 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteServicesHaproxyRuntimeACLFileEntriesID(params *DeleteServicesHaproxyRuntimeACLFileEntriesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteServicesHaproxyRuntimeACLFileEntriesIDNoContent, error)
+	DeleteServicesHaproxyRuntimeACLFileEntriesID(params *DeleteServicesHaproxyRuntimeACLFileEntriesIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteServicesHaproxyRuntimeACLFileEntriesIDNoContent, error)
 
-	GetServicesHaproxyRuntimeACLFileEntries(params *GetServicesHaproxyRuntimeACLFileEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesHaproxyRuntimeACLFileEntriesOK, error)
+	GetServicesHaproxyRuntimeACLFileEntries(params *GetServicesHaproxyRuntimeACLFileEntriesParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesHaproxyRuntimeACLFileEntriesOK, error)
 
-	GetServicesHaproxyRuntimeACLFileEntriesID(params *GetServicesHaproxyRuntimeACLFileEntriesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesHaproxyRuntimeACLFileEntriesIDOK, error)
+	GetServicesHaproxyRuntimeACLFileEntriesID(params *GetServicesHaproxyRuntimeACLFileEntriesIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesHaproxyRuntimeACLFileEntriesIDOK, error)
 
-	GetServicesHaproxyRuntimeAcls(params *GetServicesHaproxyRuntimeAclsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesHaproxyRuntimeAclsOK, error)
+	GetServicesHaproxyRuntimeAcls(params *GetServicesHaproxyRuntimeAclsParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesHaproxyRuntimeAclsOK, error)
 
-	GetServicesHaproxyRuntimeAclsID(params *GetServicesHaproxyRuntimeAclsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesHaproxyRuntimeAclsIDOK, error)
+	GetServicesHaproxyRuntimeAclsID(params *GetServicesHaproxyRuntimeAclsIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesHaproxyRuntimeAclsIDOK, error)
 
-	PostServicesHaproxyRuntimeACLFileEntries(params *PostServicesHaproxyRuntimeACLFileEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostServicesHaproxyRuntimeACLFileEntriesCreated, error)
+	PostServicesHaproxyRuntimeACLFileEntries(params *PostServicesHaproxyRuntimeACLFileEntriesParams, authInfo runtime.ClientAuthInfoWriter) (*PostServicesHaproxyRuntimeACLFileEntriesCreated, error)
 
-	AddPayloadRuntimeACL(params *AddPayloadRuntimeACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddPayloadRuntimeACLCreated, error)
+	AddPayloadRuntimeACL(params *AddPayloadRuntimeACLParams, authInfo runtime.ClientAuthInfoWriter) (*AddPayloadRuntimeACLCreated, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -50,12 +47,13 @@ type ClientService interface {
 
   Deletes the entry from the ACL by its value using the runtime socket.
 */
-func (a *Client) DeleteServicesHaproxyRuntimeACLFileEntriesID(params *DeleteServicesHaproxyRuntimeACLFileEntriesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteServicesHaproxyRuntimeACLFileEntriesIDNoContent, error) {
+func (a *Client) DeleteServicesHaproxyRuntimeACLFileEntriesID(params *DeleteServicesHaproxyRuntimeACLFileEntriesIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteServicesHaproxyRuntimeACLFileEntriesIDNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteServicesHaproxyRuntimeACLFileEntriesIDParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "DeleteServicesHaproxyRuntimeACLFileEntriesID",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/runtime/acl_file_entries/{id}",
@@ -67,12 +65,7 @@ func (a *Client) DeleteServicesHaproxyRuntimeACLFileEntriesID(params *DeleteServ
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -90,12 +83,13 @@ func (a *Client) DeleteServicesHaproxyRuntimeACLFileEntriesID(params *DeleteServ
 
   Returns an ACL runtime setting using the runtime socket.
 */
-func (a *Client) GetServicesHaproxyRuntimeACLFileEntries(params *GetServicesHaproxyRuntimeACLFileEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesHaproxyRuntimeACLFileEntriesOK, error) {
+func (a *Client) GetServicesHaproxyRuntimeACLFileEntries(params *GetServicesHaproxyRuntimeACLFileEntriesParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesHaproxyRuntimeACLFileEntriesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetServicesHaproxyRuntimeACLFileEntriesParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "GetServicesHaproxyRuntimeACLFileEntries",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/acl_file_entries",
@@ -107,12 +101,7 @@ func (a *Client) GetServicesHaproxyRuntimeACLFileEntries(params *GetServicesHapr
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -130,12 +119,13 @@ func (a *Client) GetServicesHaproxyRuntimeACLFileEntries(params *GetServicesHapr
 
   Returns the ACL entry by its ID using the runtime socket.
 */
-func (a *Client) GetServicesHaproxyRuntimeACLFileEntriesID(params *GetServicesHaproxyRuntimeACLFileEntriesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesHaproxyRuntimeACLFileEntriesIDOK, error) {
+func (a *Client) GetServicesHaproxyRuntimeACLFileEntriesID(params *GetServicesHaproxyRuntimeACLFileEntriesIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesHaproxyRuntimeACLFileEntriesIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetServicesHaproxyRuntimeACLFileEntriesIDParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "GetServicesHaproxyRuntimeACLFileEntriesID",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/acl_file_entries/{id}",
@@ -147,12 +137,7 @@ func (a *Client) GetServicesHaproxyRuntimeACLFileEntriesID(params *GetServicesHa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -170,12 +155,13 @@ func (a *Client) GetServicesHaproxyRuntimeACLFileEntriesID(params *GetServicesHa
 
   Returns all ACL files using the runtime socket.
 */
-func (a *Client) GetServicesHaproxyRuntimeAcls(params *GetServicesHaproxyRuntimeAclsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesHaproxyRuntimeAclsOK, error) {
+func (a *Client) GetServicesHaproxyRuntimeAcls(params *GetServicesHaproxyRuntimeAclsParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesHaproxyRuntimeAclsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetServicesHaproxyRuntimeAclsParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "GetServicesHaproxyRuntimeAcls",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/acls",
@@ -187,12 +173,7 @@ func (a *Client) GetServicesHaproxyRuntimeAcls(params *GetServicesHaproxyRuntime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -210,12 +191,13 @@ func (a *Client) GetServicesHaproxyRuntimeAcls(params *GetServicesHaproxyRuntime
 
   Returns an ACL file by id using the runtime socket.
 */
-func (a *Client) GetServicesHaproxyRuntimeAclsID(params *GetServicesHaproxyRuntimeAclsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesHaproxyRuntimeAclsIDOK, error) {
+func (a *Client) GetServicesHaproxyRuntimeAclsID(params *GetServicesHaproxyRuntimeAclsIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesHaproxyRuntimeAclsIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetServicesHaproxyRuntimeAclsIDParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "GetServicesHaproxyRuntimeAclsID",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/acls/{id}",
@@ -227,12 +209,7 @@ func (a *Client) GetServicesHaproxyRuntimeAclsID(params *GetServicesHaproxyRunti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -250,12 +227,13 @@ func (a *Client) GetServicesHaproxyRuntimeAclsID(params *GetServicesHaproxyRunti
 
   Adds an entry into the ACL file using the runtime socket.
 */
-func (a *Client) PostServicesHaproxyRuntimeACLFileEntries(params *PostServicesHaproxyRuntimeACLFileEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostServicesHaproxyRuntimeACLFileEntriesCreated, error) {
+func (a *Client) PostServicesHaproxyRuntimeACLFileEntries(params *PostServicesHaproxyRuntimeACLFileEntriesParams, authInfo runtime.ClientAuthInfoWriter) (*PostServicesHaproxyRuntimeACLFileEntriesCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostServicesHaproxyRuntimeACLFileEntriesParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "PostServicesHaproxyRuntimeACLFileEntries",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/runtime/acl_file_entries",
@@ -267,12 +245,7 @@ func (a *Client) PostServicesHaproxyRuntimeACLFileEntries(params *PostServicesHa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -290,12 +263,13 @@ func (a *Client) PostServicesHaproxyRuntimeACLFileEntries(params *PostServicesHa
 
   Adds a new ACL payload.
 */
-func (a *Client) AddPayloadRuntimeACL(params *AddPayloadRuntimeACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddPayloadRuntimeACLCreated, error) {
+func (a *Client) AddPayloadRuntimeACL(params *AddPayloadRuntimeACLParams, authInfo runtime.ClientAuthInfoWriter) (*AddPayloadRuntimeACLCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddPayloadRuntimeACLParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "addPayloadRuntimeACL",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/runtime/acl_file_entries",
@@ -307,12 +281,7 @@ func (a *Client) AddPayloadRuntimeACL(params *AddPayloadRuntimeACLParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}

@@ -58,7 +58,7 @@ func NewReplaceSpoeAgentOK() *ReplaceSpoeAgentOK {
 	return &ReplaceSpoeAgentOK{}
 }
 
-/* ReplaceSpoeAgentOK describes a response with status code 200, with default header values.
+/*ReplaceSpoeAgentOK handles this case with default header values.
 
 Spoe agent replaced
 */
@@ -69,6 +69,7 @@ type ReplaceSpoeAgentOK struct {
 func (o *ReplaceSpoeAgentOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgentOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceSpoeAgentOK) GetPayload() *models.SpoeAgent {
 	return o.Payload
 }
@@ -90,13 +91,12 @@ func NewReplaceSpoeAgentBadRequest() *ReplaceSpoeAgentBadRequest {
 	return &ReplaceSpoeAgentBadRequest{}
 }
 
-/* ReplaceSpoeAgentBadRequest describes a response with status code 400, with default header values.
+/*ReplaceSpoeAgentBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceSpoeAgentBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,18 +106,15 @@ type ReplaceSpoeAgentBadRequest struct {
 func (o *ReplaceSpoeAgentBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgentBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceSpoeAgentBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceSpoeAgentBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -134,13 +131,12 @@ func NewReplaceSpoeAgentNotFound() *ReplaceSpoeAgentNotFound {
 	return &ReplaceSpoeAgentNotFound{}
 }
 
-/* ReplaceSpoeAgentNotFound describes a response with status code 404, with default header values.
+/*ReplaceSpoeAgentNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceSpoeAgentNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -150,18 +146,15 @@ type ReplaceSpoeAgentNotFound struct {
 func (o *ReplaceSpoeAgentNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgentNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceSpoeAgentNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceSpoeAgentNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -180,14 +173,14 @@ func NewReplaceSpoeAgentDefault(code int) *ReplaceSpoeAgentDefault {
 	}
 }
 
-/* ReplaceSpoeAgentDefault describes a response with status code -1, with default header values.
+/*ReplaceSpoeAgentDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceSpoeAgentDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -202,18 +195,15 @@ func (o *ReplaceSpoeAgentDefault) Code() int {
 func (o *ReplaceSpoeAgentDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgent default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceSpoeAgentDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceSpoeAgentDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

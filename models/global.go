@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 	"strconv"
 
@@ -179,6 +178,7 @@ func (m *Global) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Global) validateCPUMaps(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.CPUMaps) { // not required
 		return nil
 	}
@@ -192,8 +192,6 @@ func (m *Global) validateCPUMaps(formats strfmt.Registry) error {
 			if err := m.CPUMaps[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("cpu_maps" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("cpu_maps" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -205,6 +203,7 @@ func (m *Global) validateCPUMaps(formats strfmt.Registry) error {
 }
 
 func (m *Global) validateRuntimeAPIs(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.RuntimeAPIs) { // not required
 		return nil
 	}
@@ -218,8 +217,6 @@ func (m *Global) validateRuntimeAPIs(formats strfmt.Registry) error {
 			if err := m.RuntimeAPIs[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("runtime_apis" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("runtime_apis" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -231,11 +228,12 @@ func (m *Global) validateRuntimeAPIs(formats strfmt.Registry) error {
 }
 
 func (m *Global) validateChroot(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Chroot) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("chroot", "body", m.Chroot, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("chroot", "body", string(m.Chroot), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -272,6 +270,7 @@ func (m *Global) validateDaemonEnum(path, location string, value string) error {
 }
 
 func (m *Global) validateDaemon(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Daemon) { // not required
 		return nil
 	}
@@ -285,11 +284,12 @@ func (m *Global) validateDaemon(formats strfmt.Registry) error {
 }
 
 func (m *Global) validateGroup(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Group) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("group", "body", m.Group, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("group", "body", string(m.Group), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -297,11 +297,12 @@ func (m *Global) validateGroup(formats strfmt.Registry) error {
 }
 
 func (m *Global) validateLocalpeer(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Localpeer) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("localpeer", "body", m.Localpeer, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("localpeer", "body", string(m.Localpeer), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -309,6 +310,7 @@ func (m *Global) validateLocalpeer(formats strfmt.Registry) error {
 }
 
 func (m *Global) validateLogSendHostname(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.LogSendHostname) { // not required
 		return nil
 	}
@@ -317,8 +319,6 @@ func (m *Global) validateLogSendHostname(formats strfmt.Registry) error {
 		if err := m.LogSendHostname.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("log_send_hostname")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("log_send_hostname")
 			}
 			return err
 		}
@@ -328,6 +328,7 @@ func (m *Global) validateLogSendHostname(formats strfmt.Registry) error {
 }
 
 func (m *Global) validateLuaLoads(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.LuaLoads) { // not required
 		return nil
 	}
@@ -341,8 +342,6 @@ func (m *Global) validateLuaLoads(formats strfmt.Registry) error {
 			if err := m.LuaLoads[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("lua_loads" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("lua_loads" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -354,6 +353,7 @@ func (m *Global) validateLuaLoads(formats strfmt.Registry) error {
 }
 
 func (m *Global) validateLuaPrependPath(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.LuaPrependPath) { // not required
 		return nil
 	}
@@ -367,8 +367,6 @@ func (m *Global) validateLuaPrependPath(formats strfmt.Registry) error {
 			if err := m.LuaPrependPath[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("lua_prepend_path" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("lua_prepend_path" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -380,11 +378,12 @@ func (m *Global) validateLuaPrependPath(formats strfmt.Registry) error {
 }
 
 func (m *Global) validateServerStateBase(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.ServerStateBase) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("server_state_base", "body", m.ServerStateBase, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("server_state_base", "body", string(m.ServerStateBase), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -392,11 +391,12 @@ func (m *Global) validateServerStateBase(formats strfmt.Registry) error {
 }
 
 func (m *Global) validateServerStateFile(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.ServerStateFile) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("server_state_file", "body", m.ServerStateFile, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("server_state_file", "body", string(m.ServerStateFile), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -433,6 +433,7 @@ func (m *Global) validateSslModeAsyncEnum(path, location string, value string) e
 }
 
 func (m *Global) validateSslModeAsync(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.SslModeAsync) { // not required
 		return nil
 	}
@@ -446,138 +447,13 @@ func (m *Global) validateSslModeAsync(formats strfmt.Registry) error {
 }
 
 func (m *Global) validateUser(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.User) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("user", "body", m.User, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("user", "body", string(m.User), `^[^\s]+$`); err != nil {
 		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this global based on the context it is used
-func (m *Global) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateCPUMaps(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateRuntimeAPIs(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateLogSendHostname(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateLuaLoads(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateLuaPrependPath(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *Global) contextValidateCPUMaps(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.CPUMaps); i++ {
-
-		if m.CPUMaps[i] != nil {
-			if err := m.CPUMaps[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("cpu_maps" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("cpu_maps" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *Global) contextValidateRuntimeAPIs(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.RuntimeAPIs); i++ {
-
-		if m.RuntimeAPIs[i] != nil {
-			if err := m.RuntimeAPIs[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("runtime_apis" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("runtime_apis" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *Global) contextValidateLogSendHostname(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.LogSendHostname != nil {
-		if err := m.LogSendHostname.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("log_send_hostname")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("log_send_hostname")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *Global) contextValidateLuaLoads(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.LuaLoads); i++ {
-
-		if m.LuaLoads[i] != nil {
-			if err := m.LuaLoads[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("lua_loads" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("lua_loads" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *Global) contextValidateLuaPrependPath(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.LuaPrependPath); i++ {
-
-		if m.LuaPrependPath[i] != nil {
-			if err := m.LuaPrependPath[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("lua_prepend_path" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("lua_prepend_path" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil
@@ -648,11 +524,6 @@ func (m *CPUMap) validateProcess(formats strfmt.Registry) error {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this CPU map based on context it is used
-func (m *CPUMap) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
@@ -751,19 +622,15 @@ func (m *GlobalLogSendHostname) validateEnabled(formats strfmt.Registry) error {
 }
 
 func (m *GlobalLogSendHostname) validateParam(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Param) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("log_send_hostname"+"."+"param", "body", m.Param, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("log_send_hostname"+"."+"param", "body", string(m.Param), `^[^\s]+$`); err != nil {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this global log send hostname based on context it is used
-func (m *GlobalLogSendHostname) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
@@ -816,15 +683,10 @@ func (m *LuaLoad) validateFile(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.Pattern("file", "body", *m.File, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("file", "body", string(*m.File), `^[^\s]+$`); err != nil {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this lua load based on context it is used
-func (m *LuaLoad) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
@@ -885,7 +747,7 @@ func (m *LuaPrependPath) validatePath(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.Pattern("path", "body", *m.Path, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("path", "body", string(*m.Path), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -922,6 +784,7 @@ func (m *LuaPrependPath) validateTypeEnum(path, location string, value string) e
 }
 
 func (m *LuaPrependPath) validateType(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Type) { // not required
 		return nil
 	}
@@ -931,11 +794,6 @@ func (m *LuaPrependPath) validateType(formats strfmt.Registry) error {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this lua prepend path based on context it is used
-func (m *LuaPrependPath) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
@@ -1015,7 +873,7 @@ func (m *RuntimeAPI) validateAddress(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.Pattern("address", "body", *m.Address, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("address", "body", string(*m.Address), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -1055,6 +913,7 @@ func (m *RuntimeAPI) validateLevelEnum(path, location string, value string) erro
 }
 
 func (m *RuntimeAPI) validateLevel(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Level) { // not required
 		return nil
 	}
@@ -1068,11 +927,12 @@ func (m *RuntimeAPI) validateLevel(formats strfmt.Registry) error {
 }
 
 func (m *RuntimeAPI) validateMode(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Mode) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("mode", "body", m.Mode, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("mode", "body", string(m.Mode), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -1080,19 +940,15 @@ func (m *RuntimeAPI) validateMode(formats strfmt.Registry) error {
 }
 
 func (m *RuntimeAPI) validateProcess(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Process) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("process", "body", m.Process, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("process", "body", string(m.Process), `^[^\s]+$`); err != nil {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this runtime API based on context it is used
-func (m *RuntimeAPI) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

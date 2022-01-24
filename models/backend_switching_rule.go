@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -18,7 +17,6 @@ import (
 // BackendSwitchingRule Backend Switching Rule
 //
 // HAProxy backend switching rule configuration (corresponds to use_backend directive)
-// Example: {"cond":"if","cond_test":"{ req_ssl_sni -i www.example.com }","index":0,"name":"test_backend"}
 //
 // swagger:model backend_switching_rule
 type BackendSwitchingRule struct {
@@ -92,6 +90,7 @@ func (m *BackendSwitchingRule) validateCondEnum(path, location string, value str
 }
 
 func (m *BackendSwitchingRule) validateCond(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Cond) { // not required
 		return nil
 	}
@@ -115,19 +114,14 @@ func (m *BackendSwitchingRule) validateIndex(formats strfmt.Registry) error {
 
 func (m *BackendSwitchingRule) validateName(formats strfmt.Registry) error {
 
-	if err := validate.RequiredString("name", "body", m.Name); err != nil {
+	if err := validate.RequiredString("name", "body", string(m.Name)); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("name", "body", m.Name, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("name", "body", string(m.Name), `^[^\s]+$`); err != nil {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this backend switching rule based on context it is used
-func (m *BackendSwitchingRule) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -18,76 +18,61 @@ import (
 	"github.com/haproxytech/client-native/v2/models"
 )
 
-// NewAddPayloadRuntimeACLParams creates a new AddPayloadRuntimeACLParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewAddPayloadRuntimeACLParams creates a new AddPayloadRuntimeACLParams object
+// with the default values initialized.
 func NewAddPayloadRuntimeACLParams() *AddPayloadRuntimeACLParams {
+	var ()
 	return &AddPayloadRuntimeACLParams{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewAddPayloadRuntimeACLParamsWithTimeout creates a new AddPayloadRuntimeACLParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewAddPayloadRuntimeACLParamsWithTimeout(timeout time.Duration) *AddPayloadRuntimeACLParams {
+	var ()
 	return &AddPayloadRuntimeACLParams{
+
 		timeout: timeout,
 	}
 }
 
 // NewAddPayloadRuntimeACLParamsWithContext creates a new AddPayloadRuntimeACLParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewAddPayloadRuntimeACLParamsWithContext(ctx context.Context) *AddPayloadRuntimeACLParams {
+	var ()
 	return &AddPayloadRuntimeACLParams{
+
 		Context: ctx,
 	}
 }
 
 // NewAddPayloadRuntimeACLParamsWithHTTPClient creates a new AddPayloadRuntimeACLParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewAddPayloadRuntimeACLParamsWithHTTPClient(client *http.Client) *AddPayloadRuntimeACLParams {
+	var ()
 	return &AddPayloadRuntimeACLParams{
 		HTTPClient: client,
 	}
 }
 
-/* AddPayloadRuntimeACLParams contains all the parameters to send to the API endpoint
-   for the add payload runtime ACL operation.
-
-   Typically these are written to a http.Request.
+/*AddPayloadRuntimeACLParams contains all the parameters to send to the API endpoint
+for the add payload runtime ACL operation typically these are written to a http.Request
 */
 type AddPayloadRuntimeACLParams struct {
 
-	/* ACLID.
+	/*ACLID
+	  ACL ID
 
-	   ACL ID
 	*/
 	ACLID string
-
-	// Data.
+	/*Data*/
 	Data models.ACLFilesEntries
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the add payload runtime ACL params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *AddPayloadRuntimeACLParams) WithDefaults() *AddPayloadRuntimeACLParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the add payload runtime ACL params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *AddPayloadRuntimeACLParams) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the add payload runtime ACL params
@@ -157,11 +142,11 @@ func (o *AddPayloadRuntimeACLParams) WriteToRequest(r runtime.ClientRequest, reg
 	qrACLID := o.ACLID
 	qACLID := qrACLID
 	if qACLID != "" {
-
 		if err := r.SetQueryParam("acl_id", qACLID); err != nil {
 			return err
 		}
 	}
+
 	if o.Data != nil {
 		if err := r.SetBodyParam(o.Data); err != nil {
 			return err

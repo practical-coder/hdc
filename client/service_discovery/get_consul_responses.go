@@ -6,7 +6,6 @@ package service_discovery
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -55,7 +54,7 @@ func NewGetConsulOK() *GetConsulOK {
 	return &GetConsulOK{}
 }
 
-/* GetConsulOK describes a response with status code 200, with default header values.
+/*GetConsulOK handles this case with default header values.
 
 Successful operation
 */
@@ -66,6 +65,7 @@ type GetConsulOK struct {
 func (o *GetConsulOK) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/consul/{id}][%d] getConsulOK  %+v", 200, o.Payload)
 }
+
 func (o *GetConsulOK) GetPayload() *GetConsulOKBody {
 	return o.Payload
 }
@@ -87,13 +87,12 @@ func NewGetConsulNotFound() *GetConsulNotFound {
 	return &GetConsulNotFound{}
 }
 
-/* GetConsulNotFound describes a response with status code 404, with default header values.
+/*GetConsulNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetConsulNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -103,18 +102,15 @@ type GetConsulNotFound struct {
 func (o *GetConsulNotFound) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/consul/{id}][%d] getConsulNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetConsulNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetConsulNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -133,14 +129,14 @@ func NewGetConsulDefault(code int) *GetConsulDefault {
 	}
 }
 
-/* GetConsulDefault describes a response with status code -1, with default header values.
+/*GetConsulDefault handles this case with default header values.
 
 General Error
 */
 type GetConsulDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -155,18 +151,15 @@ func (o *GetConsulDefault) Code() int {
 func (o *GetConsulDefault) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/consul/{id}][%d] getConsul default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetConsulDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetConsulDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -202,6 +195,7 @@ func (o *GetConsulOKBody) Validate(formats strfmt.Registry) error {
 }
 
 func (o *GetConsulOKBody) validateData(formats strfmt.Registry) error {
+
 	if swag.IsZero(o.Data) { // not required
 		return nil
 	}
@@ -210,38 +204,6 @@ func (o *GetConsulOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getConsulOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getConsulOK" + "." + "data")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get consul o k body based on the context it is used
-func (o *GetConsulOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetConsulOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Data != nil {
-		if err := o.Data.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("getConsulOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getConsulOK" + "." + "data")
 			}
 			return err
 		}

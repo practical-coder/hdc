@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -100,11 +99,12 @@ func (m *Forwardfor) validateEnabled(formats strfmt.Registry) error {
 }
 
 func (m *Forwardfor) validateExcept(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Except) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("except", "body", m.Except, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("except", "body", string(m.Except), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -112,19 +112,15 @@ func (m *Forwardfor) validateExcept(formats strfmt.Registry) error {
 }
 
 func (m *Forwardfor) validateHeader(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Header) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("header", "body", m.Header, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("header", "body", string(m.Header), `^[^\s]+$`); err != nil {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this forwardfor based on context it is used
-func (m *Forwardfor) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -70,7 +70,7 @@ func NewCommitTransactionOK() *CommitTransactionOK {
 	return &CommitTransactionOK{}
 }
 
-/* CommitTransactionOK describes a response with status code 200, with default header values.
+/*CommitTransactionOK handles this case with default header values.
 
 Transaction successfully committed
 */
@@ -81,6 +81,7 @@ type CommitTransactionOK struct {
 func (o *CommitTransactionOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionOK  %+v", 200, o.Payload)
 }
+
 func (o *CommitTransactionOK) GetPayload() *models.Transaction {
 	return o.Payload
 }
@@ -102,13 +103,12 @@ func NewCommitTransactionAccepted() *CommitTransactionAccepted {
 	return &CommitTransactionAccepted{}
 }
 
-/* CommitTransactionAccepted describes a response with status code 202, with default header values.
+/*CommitTransactionAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type CommitTransactionAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -118,18 +118,15 @@ type CommitTransactionAccepted struct {
 func (o *CommitTransactionAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionAccepted  %+v", 202, o.Payload)
 }
+
 func (o *CommitTransactionAccepted) GetPayload() *models.Transaction {
 	return o.Payload
 }
 
 func (o *CommitTransactionAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.Transaction)
 
@@ -146,13 +143,12 @@ func NewCommitTransactionBadRequest() *CommitTransactionBadRequest {
 	return &CommitTransactionBadRequest{}
 }
 
-/* CommitTransactionBadRequest describes a response with status code 400, with default header values.
+/*CommitTransactionBadRequest handles this case with default header values.
 
 Bad request
 */
 type CommitTransactionBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -162,18 +158,15 @@ type CommitTransactionBadRequest struct {
 func (o *CommitTransactionBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *CommitTransactionBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CommitTransactionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -190,13 +183,12 @@ func NewCommitTransactionNotFound() *CommitTransactionNotFound {
 	return &CommitTransactionNotFound{}
 }
 
-/* CommitTransactionNotFound describes a response with status code 404, with default header values.
+/*CommitTransactionNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type CommitTransactionNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -206,18 +198,15 @@ type CommitTransactionNotFound struct {
 func (o *CommitTransactionNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionNotFound  %+v", 404, o.Payload)
 }
+
 func (o *CommitTransactionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CommitTransactionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -234,13 +223,12 @@ func NewCommitTransactionNotAcceptable() *CommitTransactionNotAcceptable {
 	return &CommitTransactionNotAcceptable{}
 }
 
-/* CommitTransactionNotAcceptable describes a response with status code 406, with default header values.
+/*CommitTransactionNotAcceptable handles this case with default header values.
 
 The specified resource cannot be handled
 */
 type CommitTransactionNotAcceptable struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -250,18 +238,15 @@ type CommitTransactionNotAcceptable struct {
 func (o *CommitTransactionNotAcceptable) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionNotAcceptable  %+v", 406, o.Payload)
 }
+
 func (o *CommitTransactionNotAcceptable) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CommitTransactionNotAcceptable) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -280,14 +265,14 @@ func NewCommitTransactionDefault(code int) *CommitTransactionDefault {
 	}
 }
 
-/* CommitTransactionDefault describes a response with status code -1, with default header values.
+/*CommitTransactionDefault handles this case with default header values.
 
 General Error
 */
 type CommitTransactionDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -302,18 +287,15 @@ func (o *CommitTransactionDefault) Code() int {
 func (o *CommitTransactionDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransaction default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *CommitTransactionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CommitTransactionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

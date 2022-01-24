@@ -64,7 +64,7 @@ func NewReplaceSiteOK() *ReplaceSiteOK {
 	return &ReplaceSiteOK{}
 }
 
-/* ReplaceSiteOK describes a response with status code 200, with default header values.
+/*ReplaceSiteOK handles this case with default header values.
 
 Site replaced
 */
@@ -75,6 +75,7 @@ type ReplaceSiteOK struct {
 func (o *ReplaceSiteOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceSiteOK) GetPayload() *models.Site {
 	return o.Payload
 }
@@ -96,13 +97,12 @@ func NewReplaceSiteAccepted() *ReplaceSiteAccepted {
 	return &ReplaceSiteAccepted{}
 }
 
-/* ReplaceSiteAccepted describes a response with status code 202, with default header values.
+/*ReplaceSiteAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceSiteAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,18 +112,15 @@ type ReplaceSiteAccepted struct {
 func (o *ReplaceSiteAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteAccepted  %+v", 202, o.Payload)
 }
+
 func (o *ReplaceSiteAccepted) GetPayload() *models.Site {
 	return o.Payload
 }
 
 func (o *ReplaceSiteAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.Site)
 
@@ -140,13 +137,12 @@ func NewReplaceSiteBadRequest() *ReplaceSiteBadRequest {
 	return &ReplaceSiteBadRequest{}
 }
 
-/* ReplaceSiteBadRequest describes a response with status code 400, with default header values.
+/*ReplaceSiteBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceSiteBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -156,18 +152,15 @@ type ReplaceSiteBadRequest struct {
 func (o *ReplaceSiteBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceSiteBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceSiteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,13 +177,12 @@ func NewReplaceSiteNotFound() *ReplaceSiteNotFound {
 	return &ReplaceSiteNotFound{}
 }
 
-/* ReplaceSiteNotFound describes a response with status code 404, with default header values.
+/*ReplaceSiteNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceSiteNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +192,15 @@ type ReplaceSiteNotFound struct {
 func (o *ReplaceSiteNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceSiteNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceSiteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -230,14 +219,14 @@ func NewReplaceSiteDefault(code int) *ReplaceSiteDefault {
 	}
 }
 
-/* ReplaceSiteDefault describes a response with status code -1, with default header values.
+/*ReplaceSiteDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceSiteDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -252,18 +241,15 @@ func (o *ReplaceSiteDefault) Code() int {
 func (o *ReplaceSiteDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSite default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceSiteDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceSiteDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

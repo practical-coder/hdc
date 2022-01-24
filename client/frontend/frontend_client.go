@@ -23,20 +23,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateFrontend(params *CreateFrontendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateFrontendCreated, *CreateFrontendAccepted, error)
+	CreateFrontend(params *CreateFrontendParams, authInfo runtime.ClientAuthInfoWriter) (*CreateFrontendCreated, *CreateFrontendAccepted, error)
 
-	DeleteFrontend(params *DeleteFrontendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteFrontendAccepted, *DeleteFrontendNoContent, error)
+	DeleteFrontend(params *DeleteFrontendParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteFrontendAccepted, *DeleteFrontendNoContent, error)
 
-	GetFrontend(params *GetFrontendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFrontendOK, error)
+	GetFrontend(params *GetFrontendParams, authInfo runtime.ClientAuthInfoWriter) (*GetFrontendOK, error)
 
-	GetFrontends(params *GetFrontendsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFrontendsOK, error)
+	GetFrontends(params *GetFrontendsParams, authInfo runtime.ClientAuthInfoWriter) (*GetFrontendsOK, error)
 
-	ReplaceFrontend(params *ReplaceFrontendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceFrontendOK, *ReplaceFrontendAccepted, error)
+	ReplaceFrontend(params *ReplaceFrontendParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceFrontendOK, *ReplaceFrontendAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,12 +43,13 @@ type ClientService interface {
 
   Adds a new frontend to the configuration file.
 */
-func (a *Client) CreateFrontend(params *CreateFrontendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateFrontendCreated, *CreateFrontendAccepted, error) {
+func (a *Client) CreateFrontend(params *CreateFrontendParams, authInfo runtime.ClientAuthInfoWriter) (*CreateFrontendCreated, *CreateFrontendAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateFrontendParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createFrontend",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/frontends",
@@ -63,12 +61,7 @@ func (a *Client) CreateFrontend(params *CreateFrontendParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -88,12 +81,13 @@ func (a *Client) CreateFrontend(params *CreateFrontendParams, authInfo runtime.C
 
   Deletes a frontend from the configuration by it's name.
 */
-func (a *Client) DeleteFrontend(params *DeleteFrontendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteFrontendAccepted, *DeleteFrontendNoContent, error) {
+func (a *Client) DeleteFrontend(params *DeleteFrontendParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteFrontendAccepted, *DeleteFrontendNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteFrontendParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteFrontend",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/frontends/{name}",
@@ -105,12 +99,7 @@ func (a *Client) DeleteFrontend(params *DeleteFrontendParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -130,12 +119,13 @@ func (a *Client) DeleteFrontend(params *DeleteFrontendParams, authInfo runtime.C
 
   Returns one frontend configuration by it's name.
 */
-func (a *Client) GetFrontend(params *GetFrontendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFrontendOK, error) {
+func (a *Client) GetFrontend(params *GetFrontendParams, authInfo runtime.ClientAuthInfoWriter) (*GetFrontendOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFrontendParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getFrontend",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/frontends/{name}",
@@ -147,12 +137,7 @@ func (a *Client) GetFrontend(params *GetFrontendParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -170,12 +155,13 @@ func (a *Client) GetFrontend(params *GetFrontendParams, authInfo runtime.ClientA
 
   Returns an array of all configured frontends.
 */
-func (a *Client) GetFrontends(params *GetFrontendsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFrontendsOK, error) {
+func (a *Client) GetFrontends(params *GetFrontendsParams, authInfo runtime.ClientAuthInfoWriter) (*GetFrontendsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFrontendsParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getFrontends",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/frontends",
@@ -187,12 +173,7 @@ func (a *Client) GetFrontends(params *GetFrontendsParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -210,12 +191,13 @@ func (a *Client) GetFrontends(params *GetFrontendsParams, authInfo runtime.Clien
 
   Replaces a frontend configuration by it's name.
 */
-func (a *Client) ReplaceFrontend(params *ReplaceFrontendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceFrontendOK, *ReplaceFrontendAccepted, error) {
+func (a *Client) ReplaceFrontend(params *ReplaceFrontendParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceFrontendOK, *ReplaceFrontendAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceFrontendParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "replaceFrontend",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/frontends/{name}",
@@ -227,12 +209,7 @@ func (a *Client) ReplaceFrontend(params *ReplaceFrontendParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}

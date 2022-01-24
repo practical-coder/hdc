@@ -6,7 +6,6 @@ package peer_entry
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -50,13 +49,12 @@ func NewGetPeerEntriesOK() *GetPeerEntriesOK {
 	return &GetPeerEntriesOK{}
 }
 
-/* GetPeerEntriesOK describes a response with status code 200, with default header values.
+/*GetPeerEntriesOK handles this case with default header values.
 
 Successful operation
 */
 type GetPeerEntriesOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -66,18 +64,15 @@ type GetPeerEntriesOK struct {
 func (o *GetPeerEntriesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/peer_entries][%d] getPeerEntriesOK  %+v", 200, o.Payload)
 }
+
 func (o *GetPeerEntriesOK) GetPayload() *GetPeerEntriesOKBody {
 	return o.Payload
 }
 
 func (o *GetPeerEntriesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetPeerEntriesOKBody)
 
@@ -96,14 +91,14 @@ func NewGetPeerEntriesDefault(code int) *GetPeerEntriesDefault {
 	}
 }
 
-/* GetPeerEntriesDefault describes a response with status code -1, with default header values.
+/*GetPeerEntriesDefault handles this case with default header values.
 
 General Error
 */
 type GetPeerEntriesDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -118,18 +113,15 @@ func (o *GetPeerEntriesDefault) Code() int {
 func (o *GetPeerEntriesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/peer_entries][%d] getPeerEntries default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetPeerEntriesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetPeerEntriesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -177,36 +169,6 @@ func (o *GetPeerEntriesOKBody) validateData(formats strfmt.Registry) error {
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getPeerEntriesOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getPeerEntriesOK" + "." + "data")
-		}
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get peer entries o k body based on the context it is used
-func (o *GetPeerEntriesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetPeerEntriesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := o.Data.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("getPeerEntriesOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getPeerEntriesOK" + "." + "data")
 		}
 		return err
 	}

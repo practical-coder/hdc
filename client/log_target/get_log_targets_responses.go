@@ -6,7 +6,6 @@ package log_target
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -50,13 +49,12 @@ func NewGetLogTargetsOK() *GetLogTargetsOK {
 	return &GetLogTargetsOK{}
 }
 
-/* GetLogTargetsOK describes a response with status code 200, with default header values.
+/*GetLogTargetsOK handles this case with default header values.
 
 Successful operation
 */
 type GetLogTargetsOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -66,18 +64,15 @@ type GetLogTargetsOK struct {
 func (o *GetLogTargetsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_targets][%d] getLogTargetsOK  %+v", 200, o.Payload)
 }
+
 func (o *GetLogTargetsOK) GetPayload() *GetLogTargetsOKBody {
 	return o.Payload
 }
 
 func (o *GetLogTargetsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetLogTargetsOKBody)
 
@@ -96,14 +91,14 @@ func NewGetLogTargetsDefault(code int) *GetLogTargetsDefault {
 	}
 }
 
-/* GetLogTargetsDefault describes a response with status code -1, with default header values.
+/*GetLogTargetsDefault handles this case with default header values.
 
 General Error
 */
 type GetLogTargetsDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -118,18 +113,15 @@ func (o *GetLogTargetsDefault) Code() int {
 func (o *GetLogTargetsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_targets][%d] getLogTargets default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetLogTargetsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetLogTargetsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -177,36 +169,6 @@ func (o *GetLogTargetsOKBody) validateData(formats strfmt.Registry) error {
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getLogTargetsOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getLogTargetsOK" + "." + "data")
-		}
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get log targets o k body based on the context it is used
-func (o *GetLogTargetsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetLogTargetsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := o.Data.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("getLogTargetsOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getLogTargetsOK" + "." + "data")
 		}
 		return err
 	}

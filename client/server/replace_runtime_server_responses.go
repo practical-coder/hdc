@@ -58,7 +58,7 @@ func NewReplaceRuntimeServerOK() *ReplaceRuntimeServerOK {
 	return &ReplaceRuntimeServerOK{}
 }
 
-/* ReplaceRuntimeServerOK describes a response with status code 200, with default header values.
+/*ReplaceRuntimeServerOK handles this case with default header values.
 
 Server transient settings replaced
 */
@@ -69,6 +69,7 @@ type ReplaceRuntimeServerOK struct {
 func (o *ReplaceRuntimeServerOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/servers/{name}][%d] replaceRuntimeServerOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceRuntimeServerOK) GetPayload() *models.RuntimeServer {
 	return o.Payload
 }
@@ -90,13 +91,12 @@ func NewReplaceRuntimeServerBadRequest() *ReplaceRuntimeServerBadRequest {
 	return &ReplaceRuntimeServerBadRequest{}
 }
 
-/* ReplaceRuntimeServerBadRequest describes a response with status code 400, with default header values.
+/*ReplaceRuntimeServerBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceRuntimeServerBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,18 +106,15 @@ type ReplaceRuntimeServerBadRequest struct {
 func (o *ReplaceRuntimeServerBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/servers/{name}][%d] replaceRuntimeServerBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceRuntimeServerBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceRuntimeServerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -134,13 +131,12 @@ func NewReplaceRuntimeServerNotFound() *ReplaceRuntimeServerNotFound {
 	return &ReplaceRuntimeServerNotFound{}
 }
 
-/* ReplaceRuntimeServerNotFound describes a response with status code 404, with default header values.
+/*ReplaceRuntimeServerNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceRuntimeServerNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -150,18 +146,15 @@ type ReplaceRuntimeServerNotFound struct {
 func (o *ReplaceRuntimeServerNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/servers/{name}][%d] replaceRuntimeServerNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceRuntimeServerNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceRuntimeServerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -180,14 +173,14 @@ func NewReplaceRuntimeServerDefault(code int) *ReplaceRuntimeServerDefault {
 	}
 }
 
-/* ReplaceRuntimeServerDefault describes a response with status code -1, with default header values.
+/*ReplaceRuntimeServerDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceRuntimeServerDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -202,18 +195,15 @@ func (o *ReplaceRuntimeServerDefault) Code() int {
 func (o *ReplaceRuntimeServerDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/servers/{name}][%d] replaceRuntimeServer default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceRuntimeServerDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceRuntimeServerDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

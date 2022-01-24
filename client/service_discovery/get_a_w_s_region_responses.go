@@ -6,7 +6,6 @@ package service_discovery
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -55,7 +54,7 @@ func NewGetAWSRegionOK() *GetAWSRegionOK {
 	return &GetAWSRegionOK{}
 }
 
-/* GetAWSRegionOK describes a response with status code 200, with default header values.
+/*GetAWSRegionOK handles this case with default header values.
 
 Successful operation
 */
@@ -66,6 +65,7 @@ type GetAWSRegionOK struct {
 func (o *GetAWSRegionOK) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/aws/{id}][%d] getAWSRegionOK  %+v", 200, o.Payload)
 }
+
 func (o *GetAWSRegionOK) GetPayload() *GetAWSRegionOKBody {
 	return o.Payload
 }
@@ -87,13 +87,12 @@ func NewGetAWSRegionNotFound() *GetAWSRegionNotFound {
 	return &GetAWSRegionNotFound{}
 }
 
-/* GetAWSRegionNotFound describes a response with status code 404, with default header values.
+/*GetAWSRegionNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetAWSRegionNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -103,18 +102,15 @@ type GetAWSRegionNotFound struct {
 func (o *GetAWSRegionNotFound) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/aws/{id}][%d] getAWSRegionNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetAWSRegionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetAWSRegionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -133,14 +129,14 @@ func NewGetAWSRegionDefault(code int) *GetAWSRegionDefault {
 	}
 }
 
-/* GetAWSRegionDefault describes a response with status code -1, with default header values.
+/*GetAWSRegionDefault handles this case with default header values.
 
 General Error
 */
 type GetAWSRegionDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -155,18 +151,15 @@ func (o *GetAWSRegionDefault) Code() int {
 func (o *GetAWSRegionDefault) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/aws/{id}][%d] getAWSRegion default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetAWSRegionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetAWSRegionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -202,6 +195,7 @@ func (o *GetAWSRegionOKBody) Validate(formats strfmt.Registry) error {
 }
 
 func (o *GetAWSRegionOKBody) validateData(formats strfmt.Registry) error {
+
 	if swag.IsZero(o.Data) { // not required
 		return nil
 	}
@@ -210,38 +204,6 @@ func (o *GetAWSRegionOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getAWSRegionOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getAWSRegionOK" + "." + "data")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get a w s region o k body based on the context it is used
-func (o *GetAWSRegionOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetAWSRegionOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Data != nil {
-		if err := o.Data.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("getAWSRegionOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getAWSRegionOK" + "." + "data")
 			}
 			return err
 		}

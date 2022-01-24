@@ -46,7 +46,7 @@ func NewGetStorageEndpointsOK() *GetStorageEndpointsOK {
 	return &GetStorageEndpointsOK{}
 }
 
-/* GetStorageEndpointsOK describes a response with status code 200, with default header values.
+/*GetStorageEndpointsOK handles this case with default header values.
 
 Success
 */
@@ -57,6 +57,7 @@ type GetStorageEndpointsOK struct {
 func (o *GetStorageEndpointsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage][%d] getStorageEndpointsOK  %+v", 200, o.Payload)
 }
+
 func (o *GetStorageEndpointsOK) GetPayload() models.Endpoints {
 	return o.Payload
 }
@@ -78,14 +79,14 @@ func NewGetStorageEndpointsDefault(code int) *GetStorageEndpointsDefault {
 	}
 }
 
-/* GetStorageEndpointsDefault describes a response with status code -1, with default header values.
+/*GetStorageEndpointsDefault handles this case with default header values.
 
 General Error
 */
 type GetStorageEndpointsDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -100,18 +101,15 @@ func (o *GetStorageEndpointsDefault) Code() int {
 func (o *GetStorageEndpointsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage][%d] getStorageEndpoints default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetStorageEndpointsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetStorageEndpointsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

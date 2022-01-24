@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -18,7 +17,6 @@ import (
 // StickRule Stick Rule
 //
 // Define a pattern used to create an entry in a stickiness table or matching condition or associate a user to a server.
-// Example: {"index":0,"pattern":"src","type":"match"}
 //
 // swagger:model stick_rule
 type StickRule struct {
@@ -109,6 +107,7 @@ func (m *StickRule) validateCondEnum(path, location string, value string) error 
 }
 
 func (m *StickRule) validateCond(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Cond) { // not required
 		return nil
 	}
@@ -132,11 +131,11 @@ func (m *StickRule) validateIndex(formats strfmt.Registry) error {
 
 func (m *StickRule) validatePattern(formats strfmt.Registry) error {
 
-	if err := validate.RequiredString("pattern", "body", m.Pattern); err != nil {
+	if err := validate.RequiredString("pattern", "body", string(m.Pattern)); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("pattern", "body", m.Pattern, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("pattern", "body", string(m.Pattern), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -144,11 +143,12 @@ func (m *StickRule) validatePattern(formats strfmt.Registry) error {
 }
 
 func (m *StickRule) validateTable(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Table) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("table", "body", m.Table, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("table", "body", string(m.Table), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -175,11 +175,11 @@ const (
 	// StickRuleTypeOn captures enum value "on"
 	StickRuleTypeOn string = "on"
 
-	// StickRuleTypeStoreDashRequest captures enum value "store-request"
-	StickRuleTypeStoreDashRequest string = "store-request"
+	// StickRuleTypeStoreRequest captures enum value "store-request"
+	StickRuleTypeStoreRequest string = "store-request"
 
-	// StickRuleTypeStoreDashResponse captures enum value "store-response"
-	StickRuleTypeStoreDashResponse string = "store-response"
+	// StickRuleTypeStoreResponse captures enum value "store-response"
+	StickRuleTypeStoreResponse string = "store-response"
 )
 
 // prop value enum
@@ -192,7 +192,7 @@ func (m *StickRule) validateTypeEnum(path, location string, value string) error 
 
 func (m *StickRule) validateType(formats strfmt.Registry) error {
 
-	if err := validate.RequiredString("type", "body", m.Type); err != nil {
+	if err := validate.RequiredString("type", "body", string(m.Type)); err != nil {
 		return err
 	}
 
@@ -201,11 +201,6 @@ func (m *StickRule) validateType(formats strfmt.Registry) error {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this stick rule based on context it is used
-func (m *StickRule) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

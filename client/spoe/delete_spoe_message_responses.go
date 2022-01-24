@@ -52,7 +52,7 @@ func NewDeleteSpoeMessageNoContent() *DeleteSpoeMessageNoContent {
 	return &DeleteSpoeMessageNoContent{}
 }
 
-/* DeleteSpoeMessageNoContent describes a response with status code 204, with default header values.
+/*DeleteSpoeMessageNoContent handles this case with default header values.
 
 Spoe message deleted
 */
@@ -73,13 +73,12 @@ func NewDeleteSpoeMessageNotFound() *DeleteSpoeMessageNotFound {
 	return &DeleteSpoeMessageNotFound{}
 }
 
-/* DeleteSpoeMessageNotFound describes a response with status code 404, with default header values.
+/*DeleteSpoeMessageNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteSpoeMessageNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -89,18 +88,15 @@ type DeleteSpoeMessageNotFound struct {
 func (o *DeleteSpoeMessageNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_messages/{name}][%d] deleteSpoeMessageNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteSpoeMessageNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteSpoeMessageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -119,14 +115,14 @@ func NewDeleteSpoeMessageDefault(code int) *DeleteSpoeMessageDefault {
 	}
 }
 
-/* DeleteSpoeMessageDefault describes a response with status code -1, with default header values.
+/*DeleteSpoeMessageDefault handles this case with default header values.
 
 General Error
 */
 type DeleteSpoeMessageDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -141,18 +137,15 @@ func (o *DeleteSpoeMessageDefault) Code() int {
 func (o *DeleteSpoeMessageDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_messages/{name}][%d] deleteSpoeMessage default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteSpoeMessageDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteSpoeMessageDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

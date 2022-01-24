@@ -6,7 +6,6 @@ package configuration
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -50,13 +49,12 @@ func NewGetHAProxyConfigurationOK() *GetHAProxyConfigurationOK {
 	return &GetHAProxyConfigurationOK{}
 }
 
-/* GetHAProxyConfigurationOK describes a response with status code 200, with default header values.
+/*GetHAProxyConfigurationOK handles this case with default header values.
 
 Operation successful
 */
 type GetHAProxyConfigurationOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -66,18 +64,15 @@ type GetHAProxyConfigurationOK struct {
 func (o *GetHAProxyConfigurationOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/raw][%d] getHAProxyConfigurationOK  %+v", 200, o.Payload)
 }
+
 func (o *GetHAProxyConfigurationOK) GetPayload() *GetHAProxyConfigurationOKBody {
 	return o.Payload
 }
 
 func (o *GetHAProxyConfigurationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetHAProxyConfigurationOKBody)
 
@@ -96,14 +91,14 @@ func NewGetHAProxyConfigurationDefault(code int) *GetHAProxyConfigurationDefault
 	}
 }
 
-/* GetHAProxyConfigurationDefault describes a response with status code -1, with default header values.
+/*GetHAProxyConfigurationDefault handles this case with default header values.
 
 General Error
 */
 type GetHAProxyConfigurationDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -118,18 +113,15 @@ func (o *GetHAProxyConfigurationDefault) Code() int {
 func (o *GetHAProxyConfigurationDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/raw][%d] getHAProxyConfiguration default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetHAProxyConfigurationDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetHAProxyConfigurationDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -174,11 +166,6 @@ func (o *GetHAProxyConfigurationOKBody) validateData(formats strfmt.Registry) er
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this get h a proxy configuration o k body based on context it is used
-func (o *GetHAProxyConfigurationOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

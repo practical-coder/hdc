@@ -6,7 +6,6 @@ package spoe
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -50,13 +49,12 @@ func NewGetSpoeScopesOK() *GetSpoeScopesOK {
 	return &GetSpoeScopesOK{}
 }
 
-/* GetSpoeScopesOK describes a response with status code 200, with default header values.
+/*GetSpoeScopesOK handles this case with default header values.
 
 Successful operation
 */
 type GetSpoeScopesOK struct {
-
-	/* Spoe configuration file version
+	/*Spoe configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -66,18 +64,15 @@ type GetSpoeScopesOK struct {
 func (o *GetSpoeScopesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_scopes][%d] getSpoeScopesOK  %+v", 200, o.Payload)
 }
+
 func (o *GetSpoeScopesOK) GetPayload() *GetSpoeScopesOKBody {
 	return o.Payload
 }
 
 func (o *GetSpoeScopesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetSpoeScopesOKBody)
 
@@ -96,14 +91,14 @@ func NewGetSpoeScopesDefault(code int) *GetSpoeScopesDefault {
 	}
 }
 
-/* GetSpoeScopesDefault describes a response with status code -1, with default header values.
+/*GetSpoeScopesDefault handles this case with default header values.
 
 General Error
 */
 type GetSpoeScopesDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -118,18 +113,15 @@ func (o *GetSpoeScopesDefault) Code() int {
 func (o *GetSpoeScopesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_scopes][%d] getSpoeScopes default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetSpoeScopesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetSpoeScopesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -177,36 +169,6 @@ func (o *GetSpoeScopesOKBody) validateData(formats strfmt.Registry) error {
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getSpoeScopesOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getSpoeScopesOK" + "." + "data")
-		}
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get spoe scopes o k body based on the context it is used
-func (o *GetSpoeScopesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetSpoeScopesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := o.Data.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("getSpoeScopesOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getSpoeScopesOK" + "." + "data")
 		}
 		return err
 	}

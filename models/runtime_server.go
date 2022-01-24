@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -18,7 +17,6 @@ import (
 // RuntimeServer Runtime Server
 //
 // Runtime transient server properties
-// Example: {"address":"127.0.0.5","admin_state":"ready","operational_state":"up","port":80,"server_id":1,"server_name":"web_server"}
 //
 // swagger:model runtime_server
 type RuntimeServer struct {
@@ -78,11 +76,12 @@ func (m *RuntimeServer) Validate(formats strfmt.Registry) error {
 }
 
 func (m *RuntimeServer) validateAddress(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Address) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("address", "body", m.Address, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("address", "body", string(m.Address), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -122,6 +121,7 @@ func (m *RuntimeServer) validateAdminStateEnum(path, location string, value stri
 }
 
 func (m *RuntimeServer) validateAdminState(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.AdminState) { // not required
 		return nil
 	}
@@ -167,6 +167,7 @@ func (m *RuntimeServer) validateOperationalStateEnum(path, location string, valu
 }
 
 func (m *RuntimeServer) validateOperationalState(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.OperationalState) { // not required
 		return nil
 	}
@@ -180,77 +181,16 @@ func (m *RuntimeServer) validateOperationalState(formats strfmt.Registry) error 
 }
 
 func (m *RuntimeServer) validatePort(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Port) { // not required
 		return nil
 	}
 
-	if err := validate.MinimumInt("port", "body", *m.Port, 1, false); err != nil {
+	if err := validate.MinimumInt("port", "body", int64(*m.Port), 1, false); err != nil {
 		return err
 	}
 
-	if err := validate.MaximumInt("port", "body", *m.Port, 65535, false); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this runtime server based on the context it is used
-func (m *RuntimeServer) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateAddress(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateID(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateName(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidatePort(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *RuntimeServer) contextValidateAddress(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := validate.ReadOnly(ctx, "address", "body", string(m.Address)); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *RuntimeServer) contextValidateID(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := validate.ReadOnly(ctx, "id", "body", string(m.ID)); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *RuntimeServer) contextValidateName(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := validate.ReadOnly(ctx, "name", "body", string(m.Name)); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *RuntimeServer) contextValidatePort(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := validate.ReadOnly(ctx, "port", "body", m.Port); err != nil {
+	if err := validate.MaximumInt("port", "body", int64(*m.Port), 65535, false); err != nil {
 		return err
 	}
 

@@ -23,14 +23,11 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetReload(params *GetReloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReloadOK, error)
+	GetReload(params *GetReloadParams, authInfo runtime.ClientAuthInfoWriter) (*GetReloadOK, error)
 
-	GetReloads(params *GetReloadsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReloadsOK, error)
+	GetReloads(params *GetReloadsParams, authInfo runtime.ClientAuthInfoWriter) (*GetReloadsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,12 +37,13 @@ type ClientService interface {
 
   Returns one HAProxy reload status.
 */
-func (a *Client) GetReload(params *GetReloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReloadOK, error) {
+func (a *Client) GetReload(params *GetReloadParams, authInfo runtime.ClientAuthInfoWriter) (*GetReloadOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetReloadParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getReload",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/reloads/{id}",
@@ -57,12 +55,7 @@ func (a *Client) GetReload(params *GetReloadParams, authInfo runtime.ClientAuthI
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -80,12 +73,13 @@ func (a *Client) GetReload(params *GetReloadParams, authInfo runtime.ClientAuthI
 
   Returns a list of HAProxy reloads.
 */
-func (a *Client) GetReloads(params *GetReloadsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReloadsOK, error) {
+func (a *Client) GetReloads(params *GetReloadsParams, authInfo runtime.ClientAuthInfoWriter) (*GetReloadsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetReloadsParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getReloads",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/reloads",
@@ -97,12 +91,7 @@ func (a *Client) GetReloads(params *GetReloadsParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}

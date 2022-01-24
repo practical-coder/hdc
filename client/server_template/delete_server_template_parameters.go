@@ -17,108 +17,91 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewDeleteServerTemplateParams creates a new DeleteServerTemplateParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewDeleteServerTemplateParams creates a new DeleteServerTemplateParams object
+// with the default values initialized.
 func NewDeleteServerTemplateParams() *DeleteServerTemplateParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &DeleteServerTemplateParams{
+		ForceReload: &forceReloadDefault,
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteServerTemplateParamsWithTimeout creates a new DeleteServerTemplateParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewDeleteServerTemplateParamsWithTimeout(timeout time.Duration) *DeleteServerTemplateParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &DeleteServerTemplateParams{
+		ForceReload: &forceReloadDefault,
+
 		timeout: timeout,
 	}
 }
 
 // NewDeleteServerTemplateParamsWithContext creates a new DeleteServerTemplateParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewDeleteServerTemplateParamsWithContext(ctx context.Context) *DeleteServerTemplateParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &DeleteServerTemplateParams{
+		ForceReload: &forceReloadDefault,
+
 		Context: ctx,
 	}
 }
 
 // NewDeleteServerTemplateParamsWithHTTPClient creates a new DeleteServerTemplateParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewDeleteServerTemplateParamsWithHTTPClient(client *http.Client) *DeleteServerTemplateParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &DeleteServerTemplateParams{
-		HTTPClient: client,
+		ForceReload: &forceReloadDefault,
+		HTTPClient:  client,
 	}
 }
 
-/* DeleteServerTemplateParams contains all the parameters to send to the API endpoint
-   for the delete server template operation.
-
-   Typically these are written to a http.Request.
+/*DeleteServerTemplateParams contains all the parameters to send to the API endpoint
+for the delete server template operation typically these are written to a http.Request
 */
 type DeleteServerTemplateParams struct {
 
-	/* Backend.
+	/*Backend
+	  Parent backend name
 
-	   Parent backend name
 	*/
 	Backend string
+	/*ForceReload
+	  If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 
-	/* ForceReload.
-
-	   If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 	*/
 	ForceReload *bool
+	/*Prefix
+	  Server template prefix
 
-	/* Prefix.
-
-	   Server template prefix
 	*/
 	Prefix string
+	/*TransactionID
+	  ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 
-	/* TransactionID.
-
-	   ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 	*/
 	TransactionID *string
+	/*Version
+	  Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 
-	/* Version.
-
-	   Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 	*/
 	Version *int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the delete server template params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *DeleteServerTemplateParams) WithDefaults() *DeleteServerTemplateParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the delete server template params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *DeleteServerTemplateParams) SetDefaults() {
-	var (
-		forceReloadDefault = bool(false)
-	)
-
-	val := DeleteServerTemplateParams{
-		ForceReload: &forceReloadDefault,
-	}
-
-	val.timeout = o.timeout
-	val.Context = o.Context
-	val.HTTPClient = o.HTTPClient
-	*o = val
 }
 
 // WithTimeout adds the timeout to the delete server template params
@@ -221,7 +204,6 @@ func (o *DeleteServerTemplateParams) WriteToRequest(r runtime.ClientRequest, reg
 	qrBackend := o.Backend
 	qBackend := qrBackend
 	if qBackend != "" {
-
 		if err := r.SetQueryParam("backend", qBackend); err != nil {
 			return err
 		}
@@ -231,17 +213,16 @@ func (o *DeleteServerTemplateParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// query param force_reload
 		var qrForceReload bool
-
 		if o.ForceReload != nil {
 			qrForceReload = *o.ForceReload
 		}
 		qForceReload := swag.FormatBool(qrForceReload)
 		if qForceReload != "" {
-
 			if err := r.SetQueryParam("force_reload", qForceReload); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	// path param prefix
@@ -253,34 +234,32 @@ func (o *DeleteServerTemplateParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// query param transaction_id
 		var qrTransactionID string
-
 		if o.TransactionID != nil {
 			qrTransactionID = *o.TransactionID
 		}
 		qTransactionID := qrTransactionID
 		if qTransactionID != "" {
-
 			if err := r.SetQueryParam("transaction_id", qTransactionID); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if o.Version != nil {
 
 		// query param version
 		var qrVersion int64
-
 		if o.Version != nil {
 			qrVersion = *o.Version
 		}
 		qVersion := swag.FormatInt64(qrVersion)
 		if qVersion != "" {
-
 			if err := r.SetQueryParam("version", qVersion); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if len(res) > 0 {

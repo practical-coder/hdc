@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -18,7 +17,6 @@ import (
 // Transaction Configuration transaction
 //
 // HAProxy configuration transaction
-// Example: {"_version":2,"id":"273e3385-2d0c-4fb1-aa27-93cbb31ff203","status":"in_progress"}
 //
 // swagger:model transaction
 type Transaction struct {
@@ -54,11 +52,12 @@ func (m *Transaction) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Transaction) validateID(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.ID) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("id", "body", m.ID, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("id", "body", string(m.ID), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -101,6 +100,7 @@ func (m *Transaction) validateStatusEnum(path, location string, value string) er
 }
 
 func (m *Transaction) validateStatus(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
@@ -110,11 +110,6 @@ func (m *Transaction) validateStatus(formats strfmt.Registry) error {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this transaction based on context it is used
-func (m *Transaction) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

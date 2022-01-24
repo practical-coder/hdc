@@ -18,76 +18,61 @@ import (
 	"github.com/haproxytech/client-native/v2/models"
 )
 
-// NewReplaceAWSRegionParams creates a new ReplaceAWSRegionParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewReplaceAWSRegionParams creates a new ReplaceAWSRegionParams object
+// with the default values initialized.
 func NewReplaceAWSRegionParams() *ReplaceAWSRegionParams {
+	var ()
 	return &ReplaceAWSRegionParams{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewReplaceAWSRegionParamsWithTimeout creates a new ReplaceAWSRegionParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewReplaceAWSRegionParamsWithTimeout(timeout time.Duration) *ReplaceAWSRegionParams {
+	var ()
 	return &ReplaceAWSRegionParams{
+
 		timeout: timeout,
 	}
 }
 
 // NewReplaceAWSRegionParamsWithContext creates a new ReplaceAWSRegionParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewReplaceAWSRegionParamsWithContext(ctx context.Context) *ReplaceAWSRegionParams {
+	var ()
 	return &ReplaceAWSRegionParams{
+
 		Context: ctx,
 	}
 }
 
 // NewReplaceAWSRegionParamsWithHTTPClient creates a new ReplaceAWSRegionParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewReplaceAWSRegionParamsWithHTTPClient(client *http.Client) *ReplaceAWSRegionParams {
+	var ()
 	return &ReplaceAWSRegionParams{
 		HTTPClient: client,
 	}
 }
 
-/* ReplaceAWSRegionParams contains all the parameters to send to the API endpoint
-   for the replace a w s region operation.
-
-   Typically these are written to a http.Request.
+/*ReplaceAWSRegionParams contains all the parameters to send to the API endpoint
+for the replace a w s region operation typically these are written to a http.Request
 */
 type ReplaceAWSRegionParams struct {
 
-	// Data.
+	/*Data*/
 	Data *models.AwsRegion
+	/*ID
+	  AWS Region ID
 
-	/* ID.
-
-	   AWS Region ID
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the replace a w s region params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *ReplaceAWSRegionParams) WithDefaults() *ReplaceAWSRegionParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the replace a w s region params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *ReplaceAWSRegionParams) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the replace a w s region params
@@ -152,6 +137,7 @@ func (o *ReplaceAWSRegionParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
+
 	if o.Data != nil {
 		if err := r.SetBodyParam(o.Data); err != nil {
 			return err

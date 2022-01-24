@@ -52,7 +52,7 @@ func NewDeleteAWSRegionNoContent() *DeleteAWSRegionNoContent {
 	return &DeleteAWSRegionNoContent{}
 }
 
-/* DeleteAWSRegionNoContent describes a response with status code 204, with default header values.
+/*DeleteAWSRegionNoContent handles this case with default header values.
 
 Resource deleted
 */
@@ -73,13 +73,12 @@ func NewDeleteAWSRegionNotFound() *DeleteAWSRegionNotFound {
 	return &DeleteAWSRegionNotFound{}
 }
 
-/* DeleteAWSRegionNotFound describes a response with status code 404, with default header values.
+/*DeleteAWSRegionNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteAWSRegionNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -89,18 +88,15 @@ type DeleteAWSRegionNotFound struct {
 func (o *DeleteAWSRegionNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /service_discovery/aws/{id}][%d] deleteAWSRegionNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteAWSRegionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteAWSRegionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -119,14 +115,14 @@ func NewDeleteAWSRegionDefault(code int) *DeleteAWSRegionDefault {
 	}
 }
 
-/* DeleteAWSRegionDefault describes a response with status code -1, with default header values.
+/*DeleteAWSRegionDefault handles this case with default header values.
 
 General Error
 */
 type DeleteAWSRegionDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -141,18 +137,15 @@ func (o *DeleteAWSRegionDefault) Code() int {
 func (o *DeleteAWSRegionDefault) Error() string {
 	return fmt.Sprintf("[DELETE /service_discovery/aws/{id}][%d] deleteAWSRegion default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteAWSRegionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteAWSRegionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

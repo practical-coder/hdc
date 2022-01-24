@@ -6,7 +6,6 @@ package server_switching_rule
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -55,13 +54,12 @@ func NewGetServerSwitchingRuleOK() *GetServerSwitchingRuleOK {
 	return &GetServerSwitchingRuleOK{}
 }
 
-/* GetServerSwitchingRuleOK describes a response with status code 200, with default header values.
+/*GetServerSwitchingRuleOK handles this case with default header values.
 
 Successful operation
 */
 type GetServerSwitchingRuleOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -71,18 +69,15 @@ type GetServerSwitchingRuleOK struct {
 func (o *GetServerSwitchingRuleOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_switching_rules/{index}][%d] getServerSwitchingRuleOK  %+v", 200, o.Payload)
 }
+
 func (o *GetServerSwitchingRuleOK) GetPayload() *GetServerSwitchingRuleOKBody {
 	return o.Payload
 }
 
 func (o *GetServerSwitchingRuleOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetServerSwitchingRuleOKBody)
 
@@ -99,13 +94,12 @@ func NewGetServerSwitchingRuleNotFound() *GetServerSwitchingRuleNotFound {
 	return &GetServerSwitchingRuleNotFound{}
 }
 
-/* GetServerSwitchingRuleNotFound describes a response with status code 404, with default header values.
+/*GetServerSwitchingRuleNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetServerSwitchingRuleNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -115,18 +109,15 @@ type GetServerSwitchingRuleNotFound struct {
 func (o *GetServerSwitchingRuleNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_switching_rules/{index}][%d] getServerSwitchingRuleNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetServerSwitchingRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetServerSwitchingRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -145,14 +136,14 @@ func NewGetServerSwitchingRuleDefault(code int) *GetServerSwitchingRuleDefault {
 	}
 }
 
-/* GetServerSwitchingRuleDefault describes a response with status code -1, with default header values.
+/*GetServerSwitchingRuleDefault handles this case with default header values.
 
 General Error
 */
 type GetServerSwitchingRuleDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -167,18 +158,15 @@ func (o *GetServerSwitchingRuleDefault) Code() int {
 func (o *GetServerSwitchingRuleDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_switching_rules/{index}][%d] getServerSwitchingRule default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetServerSwitchingRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetServerSwitchingRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -217,6 +205,7 @@ func (o *GetServerSwitchingRuleOKBody) Validate(formats strfmt.Registry) error {
 }
 
 func (o *GetServerSwitchingRuleOKBody) validateData(formats strfmt.Registry) error {
+
 	if swag.IsZero(o.Data) { // not required
 		return nil
 	}
@@ -225,38 +214,6 @@ func (o *GetServerSwitchingRuleOKBody) validateData(formats strfmt.Registry) err
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getServerSwitchingRuleOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getServerSwitchingRuleOK" + "." + "data")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get server switching rule o k body based on the context it is used
-func (o *GetServerSwitchingRuleOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetServerSwitchingRuleOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Data != nil {
-		if err := o.Data.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("getServerSwitchingRuleOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getServerSwitchingRuleOK" + "." + "data")
 			}
 			return err
 		}

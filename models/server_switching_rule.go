@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -18,7 +17,6 @@ import (
 // ServerSwitchingRule Server Switching Rule
 //
 // HAProxy server switching rule configuration (corresponds to use-server directive)
-// Example: {"cond":"if","cond_test":"{ req_ssl_sni -i www.example.com }","index":0,"target_server":"www"}
 //
 // swagger:model server_switching_rule
 type ServerSwitchingRule struct {
@@ -92,6 +90,7 @@ func (m *ServerSwitchingRule) validateCondEnum(path, location string, value stri
 }
 
 func (m *ServerSwitchingRule) validateCond(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Cond) { // not required
 		return nil
 	}
@@ -115,19 +114,14 @@ func (m *ServerSwitchingRule) validateIndex(formats strfmt.Registry) error {
 
 func (m *ServerSwitchingRule) validateTargetServer(formats strfmt.Registry) error {
 
-	if err := validate.RequiredString("target_server", "body", m.TargetServer); err != nil {
+	if err := validate.RequiredString("target_server", "body", string(m.TargetServer)); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("target_server", "body", m.TargetServer, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("target_server", "body", string(m.TargetServer), `^[^\s]+$`); err != nil {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this server switching rule based on context it is used
-func (m *ServerSwitchingRule) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

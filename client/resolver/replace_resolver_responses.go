@@ -64,7 +64,7 @@ func NewReplaceResolverOK() *ReplaceResolverOK {
 	return &ReplaceResolverOK{}
 }
 
-/* ReplaceResolverOK describes a response with status code 200, with default header values.
+/*ReplaceResolverOK handles this case with default header values.
 
 Resolver replaced
 */
@@ -75,6 +75,7 @@ type ReplaceResolverOK struct {
 func (o *ReplaceResolverOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolverOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceResolverOK) GetPayload() *models.Resolver {
 	return o.Payload
 }
@@ -96,13 +97,12 @@ func NewReplaceResolverAccepted() *ReplaceResolverAccepted {
 	return &ReplaceResolverAccepted{}
 }
 
-/* ReplaceResolverAccepted describes a response with status code 202, with default header values.
+/*ReplaceResolverAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceResolverAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,18 +112,15 @@ type ReplaceResolverAccepted struct {
 func (o *ReplaceResolverAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolverAccepted  %+v", 202, o.Payload)
 }
+
 func (o *ReplaceResolverAccepted) GetPayload() *models.Resolver {
 	return o.Payload
 }
 
 func (o *ReplaceResolverAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.Resolver)
 
@@ -140,13 +137,12 @@ func NewReplaceResolverBadRequest() *ReplaceResolverBadRequest {
 	return &ReplaceResolverBadRequest{}
 }
 
-/* ReplaceResolverBadRequest describes a response with status code 400, with default header values.
+/*ReplaceResolverBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceResolverBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -156,18 +152,15 @@ type ReplaceResolverBadRequest struct {
 func (o *ReplaceResolverBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolverBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceResolverBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceResolverBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,13 +177,12 @@ func NewReplaceResolverNotFound() *ReplaceResolverNotFound {
 	return &ReplaceResolverNotFound{}
 }
 
-/* ReplaceResolverNotFound describes a response with status code 404, with default header values.
+/*ReplaceResolverNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceResolverNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +192,15 @@ type ReplaceResolverNotFound struct {
 func (o *ReplaceResolverNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolverNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceResolverNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceResolverNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -230,14 +219,14 @@ func NewReplaceResolverDefault(code int) *ReplaceResolverDefault {
 	}
 }
 
-/* ReplaceResolverDefault describes a response with status code -1, with default header values.
+/*ReplaceResolverDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceResolverDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -252,18 +241,15 @@ func (o *ReplaceResolverDefault) Code() int {
 func (o *ReplaceResolverDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolver default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceResolverDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceResolverDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

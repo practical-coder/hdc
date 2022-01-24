@@ -32,7 +32,7 @@ import (
 	"github.com/practical-coder/hdc/client/peer_entry"
 	"github.com/practical-coder/hdc/client/reloads"
 	"github.com/practical-coder/hdc/client/resolver"
-	serverops "github.com/practical-coder/hdc/client/server"
+	"github.com/practical-coder/hdc/client/server"
 	"github.com/practical-coder/hdc/client/server_switching_rule"
 	"github.com/practical-coder/hdc/client/server_template"
 	"github.com/practical-coder/hdc/client/service_discovery"
@@ -114,7 +114,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.PeerEntry = peer_entry.New(transport, formats)
 	cli.Reloads = reloads.New(transport, formats)
 	cli.Resolver = resolver.New(transport, formats)
-	cli.Server = serverops.New(transport, formats)
+	cli.Server = server.New(transport, formats)
 	cli.ServerSwitchingRule = server_switching_rule.New(transport, formats)
 	cli.ServerTemplate = server_template.New(transport, formats)
 	cli.ServiceDiscovery = service_discovery.New(transport, formats)
@@ -218,7 +218,7 @@ type HaproxyDataplaneClient struct {
 
 	Resolver resolver.ClientService
 
-	Server serverops.ClientService
+	Server server.ClientService
 
 	ServerSwitchingRule server_switching_rule.ClientService
 

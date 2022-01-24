@@ -23,20 +23,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CommitSpoeTransaction(params *CommitSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommitSpoeTransactionOK, *CommitSpoeTransactionAccepted, error)
+	CommitSpoeTransaction(params *CommitSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter) (*CommitSpoeTransactionOK, *CommitSpoeTransactionAccepted, error)
 
-	DeleteSpoeTransaction(params *DeleteSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeTransactionNoContent, error)
+	DeleteSpoeTransaction(params *DeleteSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSpoeTransactionNoContent, error)
 
-	GetSpoeTransaction(params *GetSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeTransactionOK, error)
+	GetSpoeTransaction(params *GetSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeTransactionOK, error)
 
-	GetSpoeTransactions(params *GetSpoeTransactionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeTransactionsOK, error)
+	GetSpoeTransactions(params *GetSpoeTransactionsParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeTransactionsOK, error)
 
-	StartSpoeTransaction(params *StartSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StartSpoeTransactionCreated, error)
+	StartSpoeTransaction(params *StartSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter) (*StartSpoeTransactionCreated, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,12 +43,13 @@ type ClientService interface {
 
   Commit transaction, execute all operations in transaction and return msg
 */
-func (a *Client) CommitSpoeTransaction(params *CommitSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommitSpoeTransactionOK, *CommitSpoeTransactionAccepted, error) {
+func (a *Client) CommitSpoeTransaction(params *CommitSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter) (*CommitSpoeTransactionOK, *CommitSpoeTransactionAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCommitSpoeTransactionParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "commitSpoeTransaction",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/spoe_transactions/{id}",
@@ -63,12 +61,7 @@ func (a *Client) CommitSpoeTransaction(params *CommitSpoeTransactionParams, auth
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -88,12 +81,13 @@ func (a *Client) CommitSpoeTransaction(params *CommitSpoeTransactionParams, auth
 
   Deletes a transaction.
 */
-func (a *Client) DeleteSpoeTransaction(params *DeleteSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeTransactionNoContent, error) {
+func (a *Client) DeleteSpoeTransaction(params *DeleteSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSpoeTransactionNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSpoeTransactionParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteSpoeTransaction",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/spoe_transactions/{id}",
@@ -105,12 +99,7 @@ func (a *Client) DeleteSpoeTransaction(params *DeleteSpoeTransactionParams, auth
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -128,12 +117,13 @@ func (a *Client) DeleteSpoeTransaction(params *DeleteSpoeTransactionParams, auth
 
   Returns one SPOE configuration transactions.
 */
-func (a *Client) GetSpoeTransaction(params *GetSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeTransactionOK, error) {
+func (a *Client) GetSpoeTransaction(params *GetSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeTransactionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSpoeTransactionParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getSpoeTransaction",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/spoe_transactions/{id}",
@@ -145,12 +135,7 @@ func (a *Client) GetSpoeTransaction(params *GetSpoeTransactionParams, authInfo r
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -168,12 +153,13 @@ func (a *Client) GetSpoeTransaction(params *GetSpoeTransactionParams, authInfo r
 
   Returns a list of SPOE configuration transactions. Transactions can be filtered by their status.
 */
-func (a *Client) GetSpoeTransactions(params *GetSpoeTransactionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeTransactionsOK, error) {
+func (a *Client) GetSpoeTransactions(params *GetSpoeTransactionsParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeTransactionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSpoeTransactionsParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getSpoeTransactions",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/spoe_transactions",
@@ -185,12 +171,7 @@ func (a *Client) GetSpoeTransactions(params *GetSpoeTransactionsParams, authInfo
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -208,12 +189,13 @@ func (a *Client) GetSpoeTransactions(params *GetSpoeTransactionsParams, authInfo
 
   Starts a new transaction and returns it's id
 */
-func (a *Client) StartSpoeTransaction(params *StartSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StartSpoeTransactionCreated, error) {
+func (a *Client) StartSpoeTransaction(params *StartSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter) (*StartSpoeTransactionCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewStartSpoeTransactionParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "startSpoeTransaction",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/spoe_transactions",
@@ -225,12 +207,7 @@ func (a *Client) StartSpoeTransaction(params *StartSpoeTransactionParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}

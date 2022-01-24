@@ -17,108 +17,91 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewDeleteServerSwitchingRuleParams creates a new DeleteServerSwitchingRuleParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewDeleteServerSwitchingRuleParams creates a new DeleteServerSwitchingRuleParams object
+// with the default values initialized.
 func NewDeleteServerSwitchingRuleParams() *DeleteServerSwitchingRuleParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &DeleteServerSwitchingRuleParams{
+		ForceReload: &forceReloadDefault,
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteServerSwitchingRuleParamsWithTimeout creates a new DeleteServerSwitchingRuleParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewDeleteServerSwitchingRuleParamsWithTimeout(timeout time.Duration) *DeleteServerSwitchingRuleParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &DeleteServerSwitchingRuleParams{
+		ForceReload: &forceReloadDefault,
+
 		timeout: timeout,
 	}
 }
 
 // NewDeleteServerSwitchingRuleParamsWithContext creates a new DeleteServerSwitchingRuleParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewDeleteServerSwitchingRuleParamsWithContext(ctx context.Context) *DeleteServerSwitchingRuleParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &DeleteServerSwitchingRuleParams{
+		ForceReload: &forceReloadDefault,
+
 		Context: ctx,
 	}
 }
 
 // NewDeleteServerSwitchingRuleParamsWithHTTPClient creates a new DeleteServerSwitchingRuleParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewDeleteServerSwitchingRuleParamsWithHTTPClient(client *http.Client) *DeleteServerSwitchingRuleParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &DeleteServerSwitchingRuleParams{
-		HTTPClient: client,
+		ForceReload: &forceReloadDefault,
+		HTTPClient:  client,
 	}
 }
 
-/* DeleteServerSwitchingRuleParams contains all the parameters to send to the API endpoint
-   for the delete server switching rule operation.
-
-   Typically these are written to a http.Request.
+/*DeleteServerSwitchingRuleParams contains all the parameters to send to the API endpoint
+for the delete server switching rule operation typically these are written to a http.Request
 */
 type DeleteServerSwitchingRuleParams struct {
 
-	/* Backend.
+	/*Backend
+	  Backend name
 
-	   Backend name
 	*/
 	Backend string
+	/*ForceReload
+	  If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 
-	/* ForceReload.
-
-	   If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 	*/
 	ForceReload *bool
+	/*Index
+	  Switching Rule Index
 
-	/* Index.
-
-	   Switching Rule Index
 	*/
 	Index int64
+	/*TransactionID
+	  ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 
-	/* TransactionID.
-
-	   ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 	*/
 	TransactionID *string
+	/*Version
+	  Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 
-	/* Version.
-
-	   Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 	*/
 	Version *int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the delete server switching rule params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *DeleteServerSwitchingRuleParams) WithDefaults() *DeleteServerSwitchingRuleParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the delete server switching rule params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *DeleteServerSwitchingRuleParams) SetDefaults() {
-	var (
-		forceReloadDefault = bool(false)
-	)
-
-	val := DeleteServerSwitchingRuleParams{
-		ForceReload: &forceReloadDefault,
-	}
-
-	val.timeout = o.timeout
-	val.Context = o.Context
-	val.HTTPClient = o.HTTPClient
-	*o = val
 }
 
 // WithTimeout adds the timeout to the delete server switching rule params
@@ -221,7 +204,6 @@ func (o *DeleteServerSwitchingRuleParams) WriteToRequest(r runtime.ClientRequest
 	qrBackend := o.Backend
 	qBackend := qrBackend
 	if qBackend != "" {
-
 		if err := r.SetQueryParam("backend", qBackend); err != nil {
 			return err
 		}
@@ -231,17 +213,16 @@ func (o *DeleteServerSwitchingRuleParams) WriteToRequest(r runtime.ClientRequest
 
 		// query param force_reload
 		var qrForceReload bool
-
 		if o.ForceReload != nil {
 			qrForceReload = *o.ForceReload
 		}
 		qForceReload := swag.FormatBool(qrForceReload)
 		if qForceReload != "" {
-
 			if err := r.SetQueryParam("force_reload", qForceReload); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	// path param index
@@ -253,34 +234,32 @@ func (o *DeleteServerSwitchingRuleParams) WriteToRequest(r runtime.ClientRequest
 
 		// query param transaction_id
 		var qrTransactionID string
-
 		if o.TransactionID != nil {
 			qrTransactionID = *o.TransactionID
 		}
 		qTransactionID := qrTransactionID
 		if qTransactionID != "" {
-
 			if err := r.SetQueryParam("transaction_id", qTransactionID); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if o.Version != nil {
 
 		// query param version
 		var qrVersion int64
-
 		if o.Version != nil {
 			qrVersion = *o.Version
 		}
 		qVersion := swag.FormatInt64(qrVersion)
 		if qVersion != "" {
-
 			if err := r.SetQueryParam("version", qVersion); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if len(res) > 0 {

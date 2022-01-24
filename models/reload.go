@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -18,7 +17,6 @@ import (
 // Reload HAProxy reload
 //
 // HAProxy reload
-// Example: {"id":"2019-01-03-44","status":"in_progress"}
 //
 // swagger:model reload
 type Reload struct {
@@ -57,11 +55,12 @@ func (m *Reload) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Reload) validateID(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.ID) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("id", "body", m.ID, `^\d{4}-\d{2}-\d{2}-\d+$`); err != nil {
+	if err := validate.Pattern("id", "body", string(m.ID), `^\d{4}-\d{2}-\d{2}-\d+$`); err != nil {
 		return err
 	}
 
@@ -101,6 +100,7 @@ func (m *Reload) validateStatusEnum(path, location string, value string) error {
 }
 
 func (m *Reload) validateStatus(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
@@ -110,11 +110,6 @@ func (m *Reload) validateStatus(formats strfmt.Registry) error {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this reload based on context it is used
-func (m *Reload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

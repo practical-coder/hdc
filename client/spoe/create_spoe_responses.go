@@ -58,7 +58,7 @@ func NewCreateSpoeCreated() *CreateSpoeCreated {
 	return &CreateSpoeCreated{}
 }
 
-/* CreateSpoeCreated describes a response with status code 201, with default header values.
+/*CreateSpoeCreated handles this case with default header values.
 
 SPOE file created with its entries
 */
@@ -69,6 +69,7 @@ type CreateSpoeCreated struct {
 func (o *CreateSpoeCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoeCreated  %+v", 201, o.Payload)
 }
+
 func (o *CreateSpoeCreated) GetPayload() string {
 	return o.Payload
 }
@@ -88,13 +89,12 @@ func NewCreateSpoeBadRequest() *CreateSpoeBadRequest {
 	return &CreateSpoeBadRequest{}
 }
 
-/* CreateSpoeBadRequest describes a response with status code 400, with default header values.
+/*CreateSpoeBadRequest handles this case with default header values.
 
 Bad request
 */
 type CreateSpoeBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -104,18 +104,15 @@ type CreateSpoeBadRequest struct {
 func (o *CreateSpoeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoeBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *CreateSpoeBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateSpoeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -132,13 +129,12 @@ func NewCreateSpoeConflict() *CreateSpoeConflict {
 	return &CreateSpoeConflict{}
 }
 
-/* CreateSpoeConflict describes a response with status code 409, with default header values.
+/*CreateSpoeConflict handles this case with default header values.
 
 The specified resource already exists
 */
 type CreateSpoeConflict struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -148,18 +144,15 @@ type CreateSpoeConflict struct {
 func (o *CreateSpoeConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoeConflict  %+v", 409, o.Payload)
 }
+
 func (o *CreateSpoeConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateSpoeConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -178,14 +171,14 @@ func NewCreateSpoeDefault(code int) *CreateSpoeDefault {
 	}
 }
 
-/* CreateSpoeDefault describes a response with status code -1, with default header values.
+/*CreateSpoeDefault handles this case with default header values.
 
 General Error
 */
 type CreateSpoeDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +193,15 @@ func (o *CreateSpoeDefault) Code() int {
 func (o *CreateSpoeDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoe default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *CreateSpoeDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateSpoeDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

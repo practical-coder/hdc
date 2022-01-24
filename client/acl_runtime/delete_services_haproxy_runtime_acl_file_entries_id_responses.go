@@ -58,7 +58,7 @@ func NewDeleteServicesHaproxyRuntimeACLFileEntriesIDNoContent() *DeleteServicesH
 	return &DeleteServicesHaproxyRuntimeACLFileEntriesIDNoContent{}
 }
 
-/* DeleteServicesHaproxyRuntimeACLFileEntriesIDNoContent describes a response with status code 204, with default header values.
+/*DeleteServicesHaproxyRuntimeACLFileEntriesIDNoContent handles this case with default header values.
 
 Successful operation
 */
@@ -79,13 +79,12 @@ func NewDeleteServicesHaproxyRuntimeACLFileEntriesIDBadRequest() *DeleteServices
 	return &DeleteServicesHaproxyRuntimeACLFileEntriesIDBadRequest{}
 }
 
-/* DeleteServicesHaproxyRuntimeACLFileEntriesIDBadRequest describes a response with status code 400, with default header values.
+/*DeleteServicesHaproxyRuntimeACLFileEntriesIDBadRequest handles this case with default header values.
 
 Bad request
 */
 type DeleteServicesHaproxyRuntimeACLFileEntriesIDBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -95,18 +94,15 @@ type DeleteServicesHaproxyRuntimeACLFileEntriesIDBadRequest struct {
 func (o *DeleteServicesHaproxyRuntimeACLFileEntriesIDBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/acl_file_entries/{id}][%d] deleteServicesHaproxyRuntimeAclFileEntriesIdBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *DeleteServicesHaproxyRuntimeACLFileEntriesIDBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteServicesHaproxyRuntimeACLFileEntriesIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -123,13 +119,12 @@ func NewDeleteServicesHaproxyRuntimeACLFileEntriesIDNotFound() *DeleteServicesHa
 	return &DeleteServicesHaproxyRuntimeACLFileEntriesIDNotFound{}
 }
 
-/* DeleteServicesHaproxyRuntimeACLFileEntriesIDNotFound describes a response with status code 404, with default header values.
+/*DeleteServicesHaproxyRuntimeACLFileEntriesIDNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteServicesHaproxyRuntimeACLFileEntriesIDNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -139,18 +134,15 @@ type DeleteServicesHaproxyRuntimeACLFileEntriesIDNotFound struct {
 func (o *DeleteServicesHaproxyRuntimeACLFileEntriesIDNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/acl_file_entries/{id}][%d] deleteServicesHaproxyRuntimeAclFileEntriesIdNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteServicesHaproxyRuntimeACLFileEntriesIDNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteServicesHaproxyRuntimeACLFileEntriesIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -169,14 +161,14 @@ func NewDeleteServicesHaproxyRuntimeACLFileEntriesIDDefault(code int) *DeleteSer
 	}
 }
 
-/* DeleteServicesHaproxyRuntimeACLFileEntriesIDDefault describes a response with status code -1, with default header values.
+/*DeleteServicesHaproxyRuntimeACLFileEntriesIDDefault handles this case with default header values.
 
 General Error
 */
 type DeleteServicesHaproxyRuntimeACLFileEntriesIDDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -191,18 +183,15 @@ func (o *DeleteServicesHaproxyRuntimeACLFileEntriesIDDefault) Code() int {
 func (o *DeleteServicesHaproxyRuntimeACLFileEntriesIDDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/acl_file_entries/{id}][%d] DeleteServicesHaproxyRuntimeACLFileEntriesID default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteServicesHaproxyRuntimeACLFileEntriesIDDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteServicesHaproxyRuntimeACLFileEntriesIDDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

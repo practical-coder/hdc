@@ -23,20 +23,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateHTTPResponseRule(params *CreateHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateHTTPResponseRuleCreated, *CreateHTTPResponseRuleAccepted, error)
+	CreateHTTPResponseRule(params *CreateHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*CreateHTTPResponseRuleCreated, *CreateHTTPResponseRuleAccepted, error)
 
-	DeleteHTTPResponseRule(params *DeleteHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteHTTPResponseRuleAccepted, *DeleteHTTPResponseRuleNoContent, error)
+	DeleteHTTPResponseRule(params *DeleteHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteHTTPResponseRuleAccepted, *DeleteHTTPResponseRuleNoContent, error)
 
-	GetHTTPResponseRule(params *GetHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPResponseRuleOK, error)
+	GetHTTPResponseRule(params *GetHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*GetHTTPResponseRuleOK, error)
 
-	GetHTTPResponseRules(params *GetHTTPResponseRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPResponseRulesOK, error)
+	GetHTTPResponseRules(params *GetHTTPResponseRulesParams, authInfo runtime.ClientAuthInfoWriter) (*GetHTTPResponseRulesOK, error)
 
-	ReplaceHTTPResponseRule(params *ReplaceHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceHTTPResponseRuleOK, *ReplaceHTTPResponseRuleAccepted, error)
+	ReplaceHTTPResponseRule(params *ReplaceHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceHTTPResponseRuleOK, *ReplaceHTTPResponseRuleAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,12 +43,13 @@ type ClientService interface {
 
   Adds a new HTTP Response Rule of the specified type in the specified parent.
 */
-func (a *Client) CreateHTTPResponseRule(params *CreateHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateHTTPResponseRuleCreated, *CreateHTTPResponseRuleAccepted, error) {
+func (a *Client) CreateHTTPResponseRule(params *CreateHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*CreateHTTPResponseRuleCreated, *CreateHTTPResponseRuleAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateHTTPResponseRuleParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createHTTPResponseRule",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/http_response_rules",
@@ -63,12 +61,7 @@ func (a *Client) CreateHTTPResponseRule(params *CreateHTTPResponseRuleParams, au
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -88,12 +81,13 @@ func (a *Client) CreateHTTPResponseRule(params *CreateHTTPResponseRuleParams, au
 
   Deletes a HTTP Response Rule configuration by it's index from the specified parent.
 */
-func (a *Client) DeleteHTTPResponseRule(params *DeleteHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteHTTPResponseRuleAccepted, *DeleteHTTPResponseRuleNoContent, error) {
+func (a *Client) DeleteHTTPResponseRule(params *DeleteHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteHTTPResponseRuleAccepted, *DeleteHTTPResponseRuleNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteHTTPResponseRuleParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteHTTPResponseRule",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/http_response_rules/{index}",
@@ -105,12 +99,7 @@ func (a *Client) DeleteHTTPResponseRule(params *DeleteHTTPResponseRuleParams, au
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -130,12 +119,13 @@ func (a *Client) DeleteHTTPResponseRule(params *DeleteHTTPResponseRuleParams, au
 
   Returns one HTTP Response Rule configuration by it's index in the specified parent.
 */
-func (a *Client) GetHTTPResponseRule(params *GetHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPResponseRuleOK, error) {
+func (a *Client) GetHTTPResponseRule(params *GetHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*GetHTTPResponseRuleOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetHTTPResponseRuleParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getHTTPResponseRule",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/http_response_rules/{index}",
@@ -147,12 +137,7 @@ func (a *Client) GetHTTPResponseRule(params *GetHTTPResponseRuleParams, authInfo
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -170,12 +155,13 @@ func (a *Client) GetHTTPResponseRule(params *GetHTTPResponseRuleParams, authInfo
 
   Returns all HTTP Response Rules that are configured in specified parent.
 */
-func (a *Client) GetHTTPResponseRules(params *GetHTTPResponseRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPResponseRulesOK, error) {
+func (a *Client) GetHTTPResponseRules(params *GetHTTPResponseRulesParams, authInfo runtime.ClientAuthInfoWriter) (*GetHTTPResponseRulesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetHTTPResponseRulesParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getHTTPResponseRules",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/http_response_rules",
@@ -187,12 +173,7 @@ func (a *Client) GetHTTPResponseRules(params *GetHTTPResponseRulesParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -210,12 +191,13 @@ func (a *Client) GetHTTPResponseRules(params *GetHTTPResponseRulesParams, authIn
 
   Replaces a HTTP Response Rule configuration by it's index in the specified parent.
 */
-func (a *Client) ReplaceHTTPResponseRule(params *ReplaceHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceHTTPResponseRuleOK, *ReplaceHTTPResponseRuleAccepted, error) {
+func (a *Client) ReplaceHTTPResponseRule(params *ReplaceHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceHTTPResponseRuleOK, *ReplaceHTTPResponseRuleAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceHTTPResponseRuleParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "replaceHTTPResponseRule",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/http_response_rules/{index}",
@@ -227,12 +209,7 @@ func (a *Client) ReplaceHTTPResponseRule(params *ReplaceHTTPResponseRuleParams, 
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}

@@ -6,7 +6,6 @@ package transactions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -54,7 +53,7 @@ func NewStartTransactionCreated() *StartTransactionCreated {
 	return &StartTransactionCreated{}
 }
 
-/* StartTransactionCreated describes a response with status code 201, with default header values.
+/*StartTransactionCreated handles this case with default header values.
 
 Transaction started
 */
@@ -65,6 +64,7 @@ type StartTransactionCreated struct {
 func (o *StartTransactionCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/transactions][%d] startTransactionCreated  %+v", 201, o.Payload)
 }
+
 func (o *StartTransactionCreated) GetPayload() *models.Transaction {
 	return o.Payload
 }
@@ -86,7 +86,7 @@ func NewStartTransactionTooManyRequests() *StartTransactionTooManyRequests {
 	return &StartTransactionTooManyRequests{}
 }
 
-/* StartTransactionTooManyRequests describes a response with status code 429, with default header values.
+/*StartTransactionTooManyRequests handles this case with default header values.
 
 Too many open transactions
 */
@@ -97,6 +97,7 @@ type StartTransactionTooManyRequests struct {
 func (o *StartTransactionTooManyRequests) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/transactions][%d] startTransactionTooManyRequests  %+v", 429, o.Payload)
 }
+
 func (o *StartTransactionTooManyRequests) GetPayload() *StartTransactionTooManyRequestsBody {
 	return o.Payload
 }
@@ -120,14 +121,14 @@ func NewStartTransactionDefault(code int) *StartTransactionDefault {
 	}
 }
 
-/* StartTransactionDefault describes a response with status code -1, with default header values.
+/*StartTransactionDefault handles this case with default header values.
 
 General Error
 */
 type StartTransactionDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -142,18 +143,15 @@ func (o *StartTransactionDefault) Code() int {
 func (o *StartTransactionDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/transactions][%d] startTransaction default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *StartTransactionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *StartTransactionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -166,7 +164,6 @@ func (o *StartTransactionDefault) readResponse(response runtime.ClientResponse, 
 }
 
 /*StartTransactionTooManyRequestsBody start transaction too many requests body
-// Example: {"code":429,"message":"cannot start a new transaction, reached the maximum amount of 20 active transactions available"}
 swagger:model StartTransactionTooManyRequestsBody
 */
 type StartTransactionTooManyRequestsBody struct {
@@ -180,11 +177,6 @@ type StartTransactionTooManyRequestsBody struct {
 
 // Validate validates this start transaction too many requests body
 func (o *StartTransactionTooManyRequestsBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this start transaction too many requests body based on context it is used
-func (o *StartTransactionTooManyRequestsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

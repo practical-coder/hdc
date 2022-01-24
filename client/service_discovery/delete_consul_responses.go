@@ -52,7 +52,7 @@ func NewDeleteConsulNoContent() *DeleteConsulNoContent {
 	return &DeleteConsulNoContent{}
 }
 
-/* DeleteConsulNoContent describes a response with status code 204, with default header values.
+/*DeleteConsulNoContent handles this case with default header values.
 
 Consul server deleted
 */
@@ -73,13 +73,12 @@ func NewDeleteConsulNotFound() *DeleteConsulNotFound {
 	return &DeleteConsulNotFound{}
 }
 
-/* DeleteConsulNotFound describes a response with status code 404, with default header values.
+/*DeleteConsulNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteConsulNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -89,18 +88,15 @@ type DeleteConsulNotFound struct {
 func (o *DeleteConsulNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /service_discovery/consul/{id}][%d] deleteConsulNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteConsulNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteConsulNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -119,14 +115,14 @@ func NewDeleteConsulDefault(code int) *DeleteConsulDefault {
 	}
 }
 
-/* DeleteConsulDefault describes a response with status code -1, with default header values.
+/*DeleteConsulDefault handles this case with default header values.
 
 General Error
 */
 type DeleteConsulDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -141,18 +137,15 @@ func (o *DeleteConsulDefault) Code() int {
 func (o *DeleteConsulDefault) Error() string {
 	return fmt.Sprintf("[DELETE /service_discovery/consul/{id}][%d] deleteConsul default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteConsulDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteConsulDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

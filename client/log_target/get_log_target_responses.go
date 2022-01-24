@@ -6,7 +6,6 @@ package log_target
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -55,13 +54,12 @@ func NewGetLogTargetOK() *GetLogTargetOK {
 	return &GetLogTargetOK{}
 }
 
-/* GetLogTargetOK describes a response with status code 200, with default header values.
+/*GetLogTargetOK handles this case with default header values.
 
 Successful operation
 */
 type GetLogTargetOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -71,18 +69,15 @@ type GetLogTargetOK struct {
 func (o *GetLogTargetOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_targets/{index}][%d] getLogTargetOK  %+v", 200, o.Payload)
 }
+
 func (o *GetLogTargetOK) GetPayload() *GetLogTargetOKBody {
 	return o.Payload
 }
 
 func (o *GetLogTargetOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetLogTargetOKBody)
 
@@ -99,13 +94,12 @@ func NewGetLogTargetNotFound() *GetLogTargetNotFound {
 	return &GetLogTargetNotFound{}
 }
 
-/* GetLogTargetNotFound describes a response with status code 404, with default header values.
+/*GetLogTargetNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetLogTargetNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -115,18 +109,15 @@ type GetLogTargetNotFound struct {
 func (o *GetLogTargetNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_targets/{index}][%d] getLogTargetNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetLogTargetNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetLogTargetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -145,14 +136,14 @@ func NewGetLogTargetDefault(code int) *GetLogTargetDefault {
 	}
 }
 
-/* GetLogTargetDefault describes a response with status code -1, with default header values.
+/*GetLogTargetDefault handles this case with default header values.
 
 General Error
 */
 type GetLogTargetDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -167,18 +158,15 @@ func (o *GetLogTargetDefault) Code() int {
 func (o *GetLogTargetDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_targets/{index}][%d] getLogTarget default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetLogTargetDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetLogTargetDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -217,6 +205,7 @@ func (o *GetLogTargetOKBody) Validate(formats strfmt.Registry) error {
 }
 
 func (o *GetLogTargetOKBody) validateData(formats strfmt.Registry) error {
+
 	if swag.IsZero(o.Data) { // not required
 		return nil
 	}
@@ -225,38 +214,6 @@ func (o *GetLogTargetOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getLogTargetOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getLogTargetOK" + "." + "data")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get log target o k body based on the context it is used
-func (o *GetLogTargetOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetLogTargetOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Data != nil {
-		if err := o.Data.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("getLogTargetOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getLogTargetOK" + "." + "data")
 			}
 			return err
 		}

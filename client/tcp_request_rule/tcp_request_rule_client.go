@@ -23,20 +23,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateTCPRequestRule(params *CreateTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateTCPRequestRuleCreated, *CreateTCPRequestRuleAccepted, error)
+	CreateTCPRequestRule(params *CreateTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter) (*CreateTCPRequestRuleCreated, *CreateTCPRequestRuleAccepted, error)
 
-	DeleteTCPRequestRule(params *DeleteTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteTCPRequestRuleAccepted, *DeleteTCPRequestRuleNoContent, error)
+	DeleteTCPRequestRule(params *DeleteTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteTCPRequestRuleAccepted, *DeleteTCPRequestRuleNoContent, error)
 
-	GetTCPRequestRule(params *GetTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPRequestRuleOK, error)
+	GetTCPRequestRule(params *GetTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter) (*GetTCPRequestRuleOK, error)
 
-	GetTCPRequestRules(params *GetTCPRequestRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPRequestRulesOK, error)
+	GetTCPRequestRules(params *GetTCPRequestRulesParams, authInfo runtime.ClientAuthInfoWriter) (*GetTCPRequestRulesOK, error)
 
-	ReplaceTCPRequestRule(params *ReplaceTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceTCPRequestRuleOK, *ReplaceTCPRequestRuleAccepted, error)
+	ReplaceTCPRequestRule(params *ReplaceTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceTCPRequestRuleOK, *ReplaceTCPRequestRuleAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,12 +43,13 @@ type ClientService interface {
 
   Adds a new TCP Request Rule of the specified type in the specified parent.
 */
-func (a *Client) CreateTCPRequestRule(params *CreateTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateTCPRequestRuleCreated, *CreateTCPRequestRuleAccepted, error) {
+func (a *Client) CreateTCPRequestRule(params *CreateTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter) (*CreateTCPRequestRuleCreated, *CreateTCPRequestRuleAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateTCPRequestRuleParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createTCPRequestRule",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/tcp_request_rules",
@@ -63,12 +61,7 @@ func (a *Client) CreateTCPRequestRule(params *CreateTCPRequestRuleParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -88,12 +81,13 @@ func (a *Client) CreateTCPRequestRule(params *CreateTCPRequestRuleParams, authIn
 
   Deletes a TCP Request Rule configuration by it's index from the specified parent.
 */
-func (a *Client) DeleteTCPRequestRule(params *DeleteTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteTCPRequestRuleAccepted, *DeleteTCPRequestRuleNoContent, error) {
+func (a *Client) DeleteTCPRequestRule(params *DeleteTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteTCPRequestRuleAccepted, *DeleteTCPRequestRuleNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteTCPRequestRuleParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteTCPRequestRule",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/tcp_request_rules/{index}",
@@ -105,12 +99,7 @@ func (a *Client) DeleteTCPRequestRule(params *DeleteTCPRequestRuleParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -130,12 +119,13 @@ func (a *Client) DeleteTCPRequestRule(params *DeleteTCPRequestRuleParams, authIn
 
   Returns one TCP Request Rule configuration by it's index in the specified parent.
 */
-func (a *Client) GetTCPRequestRule(params *GetTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPRequestRuleOK, error) {
+func (a *Client) GetTCPRequestRule(params *GetTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter) (*GetTCPRequestRuleOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTCPRequestRuleParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getTCPRequestRule",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/tcp_request_rules/{index}",
@@ -147,12 +137,7 @@ func (a *Client) GetTCPRequestRule(params *GetTCPRequestRuleParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -170,12 +155,13 @@ func (a *Client) GetTCPRequestRule(params *GetTCPRequestRuleParams, authInfo run
 
   Returns all TCP Request Rules that are configured in specified parent and parent type.
 */
-func (a *Client) GetTCPRequestRules(params *GetTCPRequestRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPRequestRulesOK, error) {
+func (a *Client) GetTCPRequestRules(params *GetTCPRequestRulesParams, authInfo runtime.ClientAuthInfoWriter) (*GetTCPRequestRulesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTCPRequestRulesParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getTCPRequestRules",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/tcp_request_rules",
@@ -187,12 +173,7 @@ func (a *Client) GetTCPRequestRules(params *GetTCPRequestRulesParams, authInfo r
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -210,12 +191,13 @@ func (a *Client) GetTCPRequestRules(params *GetTCPRequestRulesParams, authInfo r
 
   Replaces a TCP Request Rule configuration by it's index in the specified parent.
 */
-func (a *Client) ReplaceTCPRequestRule(params *ReplaceTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceTCPRequestRuleOK, *ReplaceTCPRequestRuleAccepted, error) {
+func (a *Client) ReplaceTCPRequestRule(params *ReplaceTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceTCPRequestRuleOK, *ReplaceTCPRequestRuleAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceTCPRequestRuleParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "replaceTCPRequestRule",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/tcp_request_rules/{index}",
@@ -227,12 +209,7 @@ func (a *Client) ReplaceTCPRequestRule(params *ReplaceTCPRequestRuleParams, auth
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}

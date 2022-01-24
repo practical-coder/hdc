@@ -52,7 +52,7 @@ func NewGetAllStorageSSLCertificatesOK() *GetAllStorageSSLCertificatesOK {
 	return &GetAllStorageSSLCertificatesOK{}
 }
 
-/* GetAllStorageSSLCertificatesOK describes a response with status code 200, with default header values.
+/*GetAllStorageSSLCertificatesOK handles this case with default header values.
 
 Successful operation
 */
@@ -63,6 +63,7 @@ type GetAllStorageSSLCertificatesOK struct {
 func (o *GetAllStorageSSLCertificatesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/ssl_certificates][%d] getAllStorageSSLCertificatesOK  %+v", 200, o.Payload)
 }
+
 func (o *GetAllStorageSSLCertificatesOK) GetPayload() models.SslCertificates {
 	return o.Payload
 }
@@ -82,13 +83,12 @@ func NewGetAllStorageSSLCertificatesNotFound() *GetAllStorageSSLCertificatesNotF
 	return &GetAllStorageSSLCertificatesNotFound{}
 }
 
-/* GetAllStorageSSLCertificatesNotFound describes a response with status code 404, with default header values.
+/*GetAllStorageSSLCertificatesNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetAllStorageSSLCertificatesNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -98,18 +98,15 @@ type GetAllStorageSSLCertificatesNotFound struct {
 func (o *GetAllStorageSSLCertificatesNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/ssl_certificates][%d] getAllStorageSSLCertificatesNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetAllStorageSSLCertificatesNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetAllStorageSSLCertificatesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -128,14 +125,14 @@ func NewGetAllStorageSSLCertificatesDefault(code int) *GetAllStorageSSLCertifica
 	}
 }
 
-/* GetAllStorageSSLCertificatesDefault describes a response with status code -1, with default header values.
+/*GetAllStorageSSLCertificatesDefault handles this case with default header values.
 
 General Error
 */
 type GetAllStorageSSLCertificatesDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -150,18 +147,15 @@ func (o *GetAllStorageSSLCertificatesDefault) Code() int {
 func (o *GetAllStorageSSLCertificatesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/ssl_certificates][%d] getAllStorageSSLCertificates default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetAllStorageSSLCertificatesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetAllStorageSSLCertificatesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

@@ -6,7 +6,6 @@ package spoe
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -56,13 +55,12 @@ func NewGetSpoeAgentOK() *GetSpoeAgentOK {
 	return &GetSpoeAgentOK{}
 }
 
-/* GetSpoeAgentOK describes a response with status code 200, with default header values.
+/*GetSpoeAgentOK handles this case with default header values.
 
 Successful operation
 */
 type GetSpoeAgentOK struct {
-
-	/* Spoe configuration file version
+	/*Spoe configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -72,18 +70,15 @@ type GetSpoeAgentOK struct {
 func (o *GetSpoeAgentOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_agents/{name}][%d] getSpoeAgentOK  %+v", 200, o.Payload)
 }
+
 func (o *GetSpoeAgentOK) GetPayload() *GetSpoeAgentOKBody {
 	return o.Payload
 }
 
 func (o *GetSpoeAgentOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetSpoeAgentOKBody)
 
@@ -100,13 +95,12 @@ func NewGetSpoeAgentNotFound() *GetSpoeAgentNotFound {
 	return &GetSpoeAgentNotFound{}
 }
 
-/* GetSpoeAgentNotFound describes a response with status code 404, with default header values.
+/*GetSpoeAgentNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetSpoeAgentNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -116,18 +110,15 @@ type GetSpoeAgentNotFound struct {
 func (o *GetSpoeAgentNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_agents/{name}][%d] getSpoeAgentNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetSpoeAgentNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetSpoeAgentNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -146,14 +137,14 @@ func NewGetSpoeAgentDefault(code int) *GetSpoeAgentDefault {
 	}
 }
 
-/* GetSpoeAgentDefault describes a response with status code -1, with default header values.
+/*GetSpoeAgentDefault handles this case with default header values.
 
 General Error
 */
 type GetSpoeAgentDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -168,18 +159,15 @@ func (o *GetSpoeAgentDefault) Code() int {
 func (o *GetSpoeAgentDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_agents/{name}][%d] getSpoeAgent default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetSpoeAgentDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetSpoeAgentDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -228,38 +216,6 @@ func (o *GetSpoeAgentOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getSpoeAgentOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getSpoeAgentOK" + "." + "data")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get spoe agent o k body based on the context it is used
-func (o *GetSpoeAgentOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetSpoeAgentOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Data != nil {
-		if err := o.Data.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("getSpoeAgentOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getSpoeAgentOK" + "." + "data")
 			}
 			return err
 		}

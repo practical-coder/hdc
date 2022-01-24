@@ -46,7 +46,7 @@ func NewGetStatsEndpointsOK() *GetStatsEndpointsOK {
 	return &GetStatsEndpointsOK{}
 }
 
-/* GetStatsEndpointsOK describes a response with status code 200, with default header values.
+/*GetStatsEndpointsOK handles this case with default header values.
 
 Success
 */
@@ -57,6 +57,7 @@ type GetStatsEndpointsOK struct {
 func (o *GetStatsEndpointsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/stats][%d] getStatsEndpointsOK  %+v", 200, o.Payload)
 }
+
 func (o *GetStatsEndpointsOK) GetPayload() models.Endpoints {
 	return o.Payload
 }
@@ -78,14 +79,14 @@ func NewGetStatsEndpointsDefault(code int) *GetStatsEndpointsDefault {
 	}
 }
 
-/* GetStatsEndpointsDefault describes a response with status code -1, with default header values.
+/*GetStatsEndpointsDefault handles this case with default header values.
 
 General Error
 */
 type GetStatsEndpointsDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -100,18 +101,15 @@ func (o *GetStatsEndpointsDefault) Code() int {
 func (o *GetStatsEndpointsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/stats][%d] getStatsEndpoints default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetStatsEndpointsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetStatsEndpointsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

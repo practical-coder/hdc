@@ -52,7 +52,7 @@ func NewGetSpoeConfigurationVersionOK() *GetSpoeConfigurationVersionOK {
 	return &GetSpoeConfigurationVersionOK{}
 }
 
-/* GetSpoeConfigurationVersionOK describes a response with status code 200, with default header values.
+/*GetSpoeConfigurationVersionOK handles this case with default header values.
 
 SPOE configuration version
 */
@@ -63,6 +63,7 @@ type GetSpoeConfigurationVersionOK struct {
 func (o *GetSpoeConfigurationVersionOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/version][%d] getSpoeConfigurationVersionOK  %+v", 200, o.Payload)
 }
+
 func (o *GetSpoeConfigurationVersionOK) GetPayload() int64 {
 	return o.Payload
 }
@@ -82,13 +83,12 @@ func NewGetSpoeConfigurationVersionNotFound() *GetSpoeConfigurationVersionNotFou
 	return &GetSpoeConfigurationVersionNotFound{}
 }
 
-/* GetSpoeConfigurationVersionNotFound describes a response with status code 404, with default header values.
+/*GetSpoeConfigurationVersionNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetSpoeConfigurationVersionNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -98,18 +98,15 @@ type GetSpoeConfigurationVersionNotFound struct {
 func (o *GetSpoeConfigurationVersionNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/version][%d] getSpoeConfigurationVersionNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetSpoeConfigurationVersionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetSpoeConfigurationVersionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -128,14 +125,14 @@ func NewGetSpoeConfigurationVersionDefault(code int) *GetSpoeConfigurationVersio
 	}
 }
 
-/* GetSpoeConfigurationVersionDefault describes a response with status code -1, with default header values.
+/*GetSpoeConfigurationVersionDefault handles this case with default header values.
 
 General Error
 */
 type GetSpoeConfigurationVersionDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -150,18 +147,15 @@ func (o *GetSpoeConfigurationVersionDefault) Code() int {
 func (o *GetSpoeConfigurationVersionDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/version][%d] getSpoeConfigurationVersion default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetSpoeConfigurationVersionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetSpoeConfigurationVersionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

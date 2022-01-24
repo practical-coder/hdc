@@ -23,20 +23,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateResolver(params *CreateResolverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateResolverCreated, *CreateResolverAccepted, error)
+	CreateResolver(params *CreateResolverParams, authInfo runtime.ClientAuthInfoWriter) (*CreateResolverCreated, *CreateResolverAccepted, error)
 
-	DeleteResolver(params *DeleteResolverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteResolverAccepted, *DeleteResolverNoContent, error)
+	DeleteResolver(params *DeleteResolverParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteResolverAccepted, *DeleteResolverNoContent, error)
 
-	GetResolver(params *GetResolverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetResolverOK, error)
+	GetResolver(params *GetResolverParams, authInfo runtime.ClientAuthInfoWriter) (*GetResolverOK, error)
 
-	GetResolvers(params *GetResolversParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetResolversOK, error)
+	GetResolvers(params *GetResolversParams, authInfo runtime.ClientAuthInfoWriter) (*GetResolversOK, error)
 
-	ReplaceResolver(params *ReplaceResolverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceResolverOK, *ReplaceResolverAccepted, error)
+	ReplaceResolver(params *ReplaceResolverParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceResolverOK, *ReplaceResolverAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,12 +43,13 @@ type ClientService interface {
 
   Adds a new resolver section to the configuration file.
 */
-func (a *Client) CreateResolver(params *CreateResolverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateResolverCreated, *CreateResolverAccepted, error) {
+func (a *Client) CreateResolver(params *CreateResolverParams, authInfo runtime.ClientAuthInfoWriter) (*CreateResolverCreated, *CreateResolverAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateResolverParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createResolver",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/resolvers",
@@ -63,12 +61,7 @@ func (a *Client) CreateResolver(params *CreateResolverParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -88,12 +81,13 @@ func (a *Client) CreateResolver(params *CreateResolverParams, authInfo runtime.C
 
   Deletes a resolver from the configuration by it's name.
 */
-func (a *Client) DeleteResolver(params *DeleteResolverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteResolverAccepted, *DeleteResolverNoContent, error) {
+func (a *Client) DeleteResolver(params *DeleteResolverParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteResolverAccepted, *DeleteResolverNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteResolverParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteResolver",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/resolvers/{name}",
@@ -105,12 +99,7 @@ func (a *Client) DeleteResolver(params *DeleteResolverParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -130,12 +119,13 @@ func (a *Client) DeleteResolver(params *DeleteResolverParams, authInfo runtime.C
 
   Returns one resolver section configuration by it's name.
 */
-func (a *Client) GetResolver(params *GetResolverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetResolverOK, error) {
+func (a *Client) GetResolver(params *GetResolverParams, authInfo runtime.ClientAuthInfoWriter) (*GetResolverOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetResolverParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getResolver",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/resolvers/{name}",
@@ -147,12 +137,7 @@ func (a *Client) GetResolver(params *GetResolverParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -170,12 +155,13 @@ func (a *Client) GetResolver(params *GetResolverParams, authInfo runtime.ClientA
 
   Returns an array of all configured resolvers.
 */
-func (a *Client) GetResolvers(params *GetResolversParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetResolversOK, error) {
+func (a *Client) GetResolvers(params *GetResolversParams, authInfo runtime.ClientAuthInfoWriter) (*GetResolversOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetResolversParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getResolvers",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/resolvers",
@@ -187,12 +173,7 @@ func (a *Client) GetResolvers(params *GetResolversParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -210,12 +191,13 @@ func (a *Client) GetResolvers(params *GetResolversParams, authInfo runtime.Clien
 
   Replaces a resolver configuration by it's name.
 */
-func (a *Client) ReplaceResolver(params *ReplaceResolverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceResolverOK, *ReplaceResolverAccepted, error) {
+func (a *Client) ReplaceResolver(params *ReplaceResolverParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceResolverOK, *ReplaceResolverAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceResolverParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "replaceResolver",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/resolvers/{name}",
@@ -227,12 +209,7 @@ func (a *Client) ReplaceResolver(params *ReplaceResolverParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}

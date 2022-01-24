@@ -64,7 +64,7 @@ func NewCreateTCPRequestRuleCreated() *CreateTCPRequestRuleCreated {
 	return &CreateTCPRequestRuleCreated{}
 }
 
-/* CreateTCPRequestRuleCreated describes a response with status code 201, with default header values.
+/*CreateTCPRequestRuleCreated handles this case with default header values.
 
 TCP Request Rule created
 */
@@ -75,6 +75,7 @@ type CreateTCPRequestRuleCreated struct {
 func (o *CreateTCPRequestRuleCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_request_rules][%d] createTcpRequestRuleCreated  %+v", 201, o.Payload)
 }
+
 func (o *CreateTCPRequestRuleCreated) GetPayload() *models.TCPRequestRule {
 	return o.Payload
 }
@@ -96,13 +97,12 @@ func NewCreateTCPRequestRuleAccepted() *CreateTCPRequestRuleAccepted {
 	return &CreateTCPRequestRuleAccepted{}
 }
 
-/* CreateTCPRequestRuleAccepted describes a response with status code 202, with default header values.
+/*CreateTCPRequestRuleAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type CreateTCPRequestRuleAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,18 +112,15 @@ type CreateTCPRequestRuleAccepted struct {
 func (o *CreateTCPRequestRuleAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_request_rules][%d] createTcpRequestRuleAccepted  %+v", 202, o.Payload)
 }
+
 func (o *CreateTCPRequestRuleAccepted) GetPayload() *models.TCPRequestRule {
 	return o.Payload
 }
 
 func (o *CreateTCPRequestRuleAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.TCPRequestRule)
 
@@ -140,13 +137,12 @@ func NewCreateTCPRequestRuleBadRequest() *CreateTCPRequestRuleBadRequest {
 	return &CreateTCPRequestRuleBadRequest{}
 }
 
-/* CreateTCPRequestRuleBadRequest describes a response with status code 400, with default header values.
+/*CreateTCPRequestRuleBadRequest handles this case with default header values.
 
 Bad request
 */
 type CreateTCPRequestRuleBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -156,18 +152,15 @@ type CreateTCPRequestRuleBadRequest struct {
 func (o *CreateTCPRequestRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_request_rules][%d] createTcpRequestRuleBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *CreateTCPRequestRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateTCPRequestRuleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,13 +177,12 @@ func NewCreateTCPRequestRuleConflict() *CreateTCPRequestRuleConflict {
 	return &CreateTCPRequestRuleConflict{}
 }
 
-/* CreateTCPRequestRuleConflict describes a response with status code 409, with default header values.
+/*CreateTCPRequestRuleConflict handles this case with default header values.
 
 The specified resource already exists
 */
 type CreateTCPRequestRuleConflict struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +192,15 @@ type CreateTCPRequestRuleConflict struct {
 func (o *CreateTCPRequestRuleConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_request_rules][%d] createTcpRequestRuleConflict  %+v", 409, o.Payload)
 }
+
 func (o *CreateTCPRequestRuleConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateTCPRequestRuleConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -230,14 +219,14 @@ func NewCreateTCPRequestRuleDefault(code int) *CreateTCPRequestRuleDefault {
 	}
 }
 
-/* CreateTCPRequestRuleDefault describes a response with status code -1, with default header values.
+/*CreateTCPRequestRuleDefault handles this case with default header values.
 
 General Error
 */
 type CreateTCPRequestRuleDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -252,18 +241,15 @@ func (o *CreateTCPRequestRuleDefault) Code() int {
 func (o *CreateTCPRequestRuleDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_request_rules][%d] createTCPRequestRule default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *CreateTCPRequestRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateTCPRequestRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

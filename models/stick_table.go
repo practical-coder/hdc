@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 	"strconv"
 
@@ -62,6 +61,7 @@ func (m *StickTable) Validate(formats strfmt.Registry) error {
 }
 
 func (m *StickTable) validateFields(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Fields) { // not required
 		return nil
 	}
@@ -75,8 +75,6 @@ func (m *StickTable) validateFields(formats strfmt.Registry) error {
 			if err := m.Fields[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("fields" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("fields" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -126,6 +124,7 @@ func (m *StickTable) validateTypeEnum(path, location string, value string) error
 }
 
 func (m *StickTable) validateType(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Type) { // not required
 		return nil
 	}
@@ -133,40 +132,6 @@ func (m *StickTable) validateType(formats strfmt.Registry) error {
 	// value enum
 	if err := m.validateTypeEnum("type", "body", m.Type); err != nil {
 		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this stick table based on the context it is used
-func (m *StickTable) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateFields(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *StickTable) contextValidateFields(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Fields); i++ {
-
-		if m.Fields[i] != nil {
-			if err := m.Fields[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("fields" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("fields" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil
@@ -306,6 +271,7 @@ func (m *StickTableField) validateFieldEnum(path, location string, value string)
 }
 
 func (m *StickTableField) validateField(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Field) { // not required
 		return nil
 	}
@@ -348,6 +314,7 @@ func (m *StickTableField) validateTypeEnum(path, location string, value string) 
 }
 
 func (m *StickTableField) validateType(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Type) { // not required
 		return nil
 	}
@@ -357,11 +324,6 @@ func (m *StickTableField) validateType(formats strfmt.Registry) error {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this stick table field based on context it is used
-func (m *StickTableField) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -17,96 +17,81 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewCommitSpoeTransactionParams creates a new CommitSpoeTransactionParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewCommitSpoeTransactionParams creates a new CommitSpoeTransactionParams object
+// with the default values initialized.
 func NewCommitSpoeTransactionParams() *CommitSpoeTransactionParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &CommitSpoeTransactionParams{
+		ForceReload: &forceReloadDefault,
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCommitSpoeTransactionParamsWithTimeout creates a new CommitSpoeTransactionParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewCommitSpoeTransactionParamsWithTimeout(timeout time.Duration) *CommitSpoeTransactionParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &CommitSpoeTransactionParams{
+		ForceReload: &forceReloadDefault,
+
 		timeout: timeout,
 	}
 }
 
 // NewCommitSpoeTransactionParamsWithContext creates a new CommitSpoeTransactionParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewCommitSpoeTransactionParamsWithContext(ctx context.Context) *CommitSpoeTransactionParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &CommitSpoeTransactionParams{
+		ForceReload: &forceReloadDefault,
+
 		Context: ctx,
 	}
 }
 
 // NewCommitSpoeTransactionParamsWithHTTPClient creates a new CommitSpoeTransactionParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewCommitSpoeTransactionParamsWithHTTPClient(client *http.Client) *CommitSpoeTransactionParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &CommitSpoeTransactionParams{
-		HTTPClient: client,
+		ForceReload: &forceReloadDefault,
+		HTTPClient:  client,
 	}
 }
 
-/* CommitSpoeTransactionParams contains all the parameters to send to the API endpoint
-   for the commit spoe transaction operation.
-
-   Typically these are written to a http.Request.
+/*CommitSpoeTransactionParams contains all the parameters to send to the API endpoint
+for the commit spoe transaction operation typically these are written to a http.Request
 */
 type CommitSpoeTransactionParams struct {
 
-	/* ForceReload.
+	/*ForceReload
+	  If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 
-	   If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 	*/
 	ForceReload *bool
+	/*ID
+	  Transaction id
 
-	/* ID.
-
-	   Transaction id
 	*/
 	ID string
+	/*Spoe
+	  Spoe file name
 
-	/* Spoe.
-
-	   Spoe file name
 	*/
 	Spoe string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the commit spoe transaction params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *CommitSpoeTransactionParams) WithDefaults() *CommitSpoeTransactionParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the commit spoe transaction params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *CommitSpoeTransactionParams) SetDefaults() {
-	var (
-		forceReloadDefault = bool(false)
-	)
-
-	val := CommitSpoeTransactionParams{
-		ForceReload: &forceReloadDefault,
-	}
-
-	val.timeout = o.timeout
-	val.Context = o.Context
-	val.HTTPClient = o.HTTPClient
-	*o = val
 }
 
 // WithTimeout adds the timeout to the commit spoe transaction params
@@ -187,17 +172,16 @@ func (o *CommitSpoeTransactionParams) WriteToRequest(r runtime.ClientRequest, re
 
 		// query param force_reload
 		var qrForceReload bool
-
 		if o.ForceReload != nil {
 			qrForceReload = *o.ForceReload
 		}
 		qForceReload := swag.FormatBool(qrForceReload)
 		if qForceReload != "" {
-
 			if err := r.SetQueryParam("force_reload", qForceReload); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	// path param id
@@ -209,7 +193,6 @@ func (o *CommitSpoeTransactionParams) WriteToRequest(r runtime.ClientRequest, re
 	qrSpoe := o.Spoe
 	qSpoe := qrSpoe
 	if qSpoe != "" {
-
 		if err := r.SetQueryParam("spoe", qSpoe); err != nil {
 			return err
 		}

@@ -58,13 +58,12 @@ func NewDeleteStorageSSLCertificateAccepted() *DeleteStorageSSLCertificateAccept
 	return &DeleteStorageSSLCertificateAccepted{}
 }
 
-/* DeleteStorageSSLCertificateAccepted describes a response with status code 202, with default header values.
+/*DeleteStorageSSLCertificateAccepted handles this case with default header values.
 
 SSL certificate deleted and reload requested
 */
 type DeleteStorageSSLCertificateAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -75,12 +74,8 @@ func (o *DeleteStorageSSLCertificateAccepted) Error() string {
 
 func (o *DeleteStorageSSLCertificateAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	return nil
 }
@@ -90,7 +85,7 @@ func NewDeleteStorageSSLCertificateNoContent() *DeleteStorageSSLCertificateNoCon
 	return &DeleteStorageSSLCertificateNoContent{}
 }
 
-/* DeleteStorageSSLCertificateNoContent describes a response with status code 204, with default header values.
+/*DeleteStorageSSLCertificateNoContent handles this case with default header values.
 
 SSL certificate deleted
 */
@@ -111,13 +106,12 @@ func NewDeleteStorageSSLCertificateNotFound() *DeleteStorageSSLCertificateNotFou
 	return &DeleteStorageSSLCertificateNotFound{}
 }
 
-/* DeleteStorageSSLCertificateNotFound describes a response with status code 404, with default header values.
+/*DeleteStorageSSLCertificateNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteStorageSSLCertificateNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,18 +121,15 @@ type DeleteStorageSSLCertificateNotFound struct {
 func (o *DeleteStorageSSLCertificateNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/ssl_certificates/{name}][%d] deleteStorageSSLCertificateNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteStorageSSLCertificateNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteStorageSSLCertificateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -157,14 +148,14 @@ func NewDeleteStorageSSLCertificateDefault(code int) *DeleteStorageSSLCertificat
 	}
 }
 
-/* DeleteStorageSSLCertificateDefault describes a response with status code -1, with default header values.
+/*DeleteStorageSSLCertificateDefault handles this case with default header values.
 
 General Error
 */
 type DeleteStorageSSLCertificateDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -179,18 +170,15 @@ func (o *DeleteStorageSSLCertificateDefault) Code() int {
 func (o *DeleteStorageSSLCertificateDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/ssl_certificates/{name}][%d] deleteStorageSSLCertificate default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteStorageSSLCertificateDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteStorageSSLCertificateDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

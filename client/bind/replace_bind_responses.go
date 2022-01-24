@@ -64,7 +64,7 @@ func NewReplaceBindOK() *ReplaceBindOK {
 	return &ReplaceBindOK{}
 }
 
-/* ReplaceBindOK describes a response with status code 200, with default header values.
+/*ReplaceBindOK handles this case with default header values.
 
 Bind replaced
 */
@@ -75,6 +75,7 @@ type ReplaceBindOK struct {
 func (o *ReplaceBindOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBindOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceBindOK) GetPayload() *models.Bind {
 	return o.Payload
 }
@@ -96,13 +97,12 @@ func NewReplaceBindAccepted() *ReplaceBindAccepted {
 	return &ReplaceBindAccepted{}
 }
 
-/* ReplaceBindAccepted describes a response with status code 202, with default header values.
+/*ReplaceBindAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceBindAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,18 +112,15 @@ type ReplaceBindAccepted struct {
 func (o *ReplaceBindAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBindAccepted  %+v", 202, o.Payload)
 }
+
 func (o *ReplaceBindAccepted) GetPayload() *models.Bind {
 	return o.Payload
 }
 
 func (o *ReplaceBindAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.Bind)
 
@@ -140,13 +137,12 @@ func NewReplaceBindBadRequest() *ReplaceBindBadRequest {
 	return &ReplaceBindBadRequest{}
 }
 
-/* ReplaceBindBadRequest describes a response with status code 400, with default header values.
+/*ReplaceBindBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceBindBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -156,18 +152,15 @@ type ReplaceBindBadRequest struct {
 func (o *ReplaceBindBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBindBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceBindBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceBindBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,13 +177,12 @@ func NewReplaceBindNotFound() *ReplaceBindNotFound {
 	return &ReplaceBindNotFound{}
 }
 
-/* ReplaceBindNotFound describes a response with status code 404, with default header values.
+/*ReplaceBindNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceBindNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +192,15 @@ type ReplaceBindNotFound struct {
 func (o *ReplaceBindNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBindNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceBindNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceBindNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -230,14 +219,14 @@ func NewReplaceBindDefault(code int) *ReplaceBindDefault {
 	}
 }
 
-/* ReplaceBindDefault describes a response with status code -1, with default header values.
+/*ReplaceBindDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceBindDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -252,18 +241,15 @@ func (o *ReplaceBindDefault) Code() int {
 func (o *ReplaceBindDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBind default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceBindDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceBindDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

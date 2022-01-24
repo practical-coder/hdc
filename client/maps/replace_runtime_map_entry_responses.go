@@ -6,7 +6,6 @@ package maps
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -62,7 +61,7 @@ func NewReplaceRuntimeMapEntryOK() *ReplaceRuntimeMapEntryOK {
 	return &ReplaceRuntimeMapEntryOK{}
 }
 
-/* ReplaceRuntimeMapEntryOK describes a response with status code 200, with default header values.
+/*ReplaceRuntimeMapEntryOK handles this case with default header values.
 
 Map value replaced
 */
@@ -73,6 +72,7 @@ type ReplaceRuntimeMapEntryOK struct {
 func (o *ReplaceRuntimeMapEntryOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntryOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceRuntimeMapEntryOK) GetPayload() *models.MapEntry {
 	return o.Payload
 }
@@ -94,13 +94,12 @@ func NewReplaceRuntimeMapEntryBadRequest() *ReplaceRuntimeMapEntryBadRequest {
 	return &ReplaceRuntimeMapEntryBadRequest{}
 }
 
-/* ReplaceRuntimeMapEntryBadRequest describes a response with status code 400, with default header values.
+/*ReplaceRuntimeMapEntryBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceRuntimeMapEntryBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -110,18 +109,15 @@ type ReplaceRuntimeMapEntryBadRequest struct {
 func (o *ReplaceRuntimeMapEntryBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntryBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceRuntimeMapEntryBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceRuntimeMapEntryBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -138,13 +134,12 @@ func NewReplaceRuntimeMapEntryNotFound() *ReplaceRuntimeMapEntryNotFound {
 	return &ReplaceRuntimeMapEntryNotFound{}
 }
 
-/* ReplaceRuntimeMapEntryNotFound describes a response with status code 404, with default header values.
+/*ReplaceRuntimeMapEntryNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceRuntimeMapEntryNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -154,18 +149,15 @@ type ReplaceRuntimeMapEntryNotFound struct {
 func (o *ReplaceRuntimeMapEntryNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntryNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceRuntimeMapEntryNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceRuntimeMapEntryNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,14 +176,14 @@ func NewReplaceRuntimeMapEntryDefault(code int) *ReplaceRuntimeMapEntryDefault {
 	}
 }
 
-/* ReplaceRuntimeMapEntryDefault describes a response with status code -1, with default header values.
+/*ReplaceRuntimeMapEntryDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceRuntimeMapEntryDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -206,18 +198,15 @@ func (o *ReplaceRuntimeMapEntryDefault) Code() int {
 func (o *ReplaceRuntimeMapEntryDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntry default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceRuntimeMapEntryDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceRuntimeMapEntryDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -259,11 +248,6 @@ func (o *ReplaceRuntimeMapEntryBody) validateValue(formats strfmt.Registry) erro
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this replace runtime map entry body based on context it is used
-func (o *ReplaceRuntimeMapEntryBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

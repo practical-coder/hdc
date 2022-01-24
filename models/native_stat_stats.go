@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -16,7 +15,6 @@ import (
 )
 
 // NativeStatStats native stat stats
-// Example: {"bin":4326578,"bout":889901290,"comp_byp":0,"comp_in":0,"comp_out":0,"comp_rsp":0,"conn_rate":12,"conn_rate_max":456,"conn_tot":45682,"dcon":0,"dreq":4,"dresp":1,"dses":0,"ereq":54,"hrsp_1xx":0,"hrsp_2xx":165,"hrsp_3xx":12,"hrsp_4xx":50,"hrsp_5xx":4,"hrsp_other":0,"iid":0,"intercepted":346,"mode":"http","pid":3204,"rate":64,"rate_lim":20000,"rate_max":4000,"req_rate":49,"req_rate_max":3965,"req_total":1254786,"scur":129,"slim":2000,"smax":2000,"status":"UP","stot":12902}
 //
 // swagger:model native_stat_stats
 type NativeStatStats struct {
@@ -334,6 +332,7 @@ func (m *NativeStatStats) validateAgentStatusEnum(path, location string, value s
 }
 
 func (m *NativeStatStats) validateAgentStatus(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.AgentStatus) { // not required
 		return nil
 	}
@@ -412,6 +411,7 @@ func (m *NativeStatStats) validateCheckStatusEnum(path, location string, value s
 }
 
 func (m *NativeStatStats) validateCheckStatus(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.CheckStatus) { // not required
 		return nil
 	}
@@ -460,6 +460,7 @@ func (m *NativeStatStats) validateModeEnum(path, location string, value string) 
 }
 
 func (m *NativeStatStats) validateMode(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Mode) { // not required
 		return nil
 	}
@@ -511,6 +512,7 @@ func (m *NativeStatStats) validateStatusEnum(path, location string, value string
 }
 
 func (m *NativeStatStats) validateStatus(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
@@ -520,11 +522,6 @@ func (m *NativeStatStats) validateStatus(formats strfmt.Registry) error {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this native stat stats based on context it is used
-func (m *NativeStatStats) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -64,7 +64,7 @@ func NewReplaceHTTPRequestRuleOK() *ReplaceHTTPRequestRuleOK {
 	return &ReplaceHTTPRequestRuleOK{}
 }
 
-/* ReplaceHTTPRequestRuleOK describes a response with status code 200, with default header values.
+/*ReplaceHTTPRequestRuleOK handles this case with default header values.
 
 HTTP Request Rule replaced
 */
@@ -75,6 +75,7 @@ type ReplaceHTTPRequestRuleOK struct {
 func (o *ReplaceHTTPRequestRuleOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_request_rules/{index}][%d] replaceHttpRequestRuleOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceHTTPRequestRuleOK) GetPayload() *models.HTTPRequestRule {
 	return o.Payload
 }
@@ -96,13 +97,12 @@ func NewReplaceHTTPRequestRuleAccepted() *ReplaceHTTPRequestRuleAccepted {
 	return &ReplaceHTTPRequestRuleAccepted{}
 }
 
-/* ReplaceHTTPRequestRuleAccepted describes a response with status code 202, with default header values.
+/*ReplaceHTTPRequestRuleAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceHTTPRequestRuleAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,18 +112,15 @@ type ReplaceHTTPRequestRuleAccepted struct {
 func (o *ReplaceHTTPRequestRuleAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_request_rules/{index}][%d] replaceHttpRequestRuleAccepted  %+v", 202, o.Payload)
 }
+
 func (o *ReplaceHTTPRequestRuleAccepted) GetPayload() *models.HTTPRequestRule {
 	return o.Payload
 }
 
 func (o *ReplaceHTTPRequestRuleAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.HTTPRequestRule)
 
@@ -140,13 +137,12 @@ func NewReplaceHTTPRequestRuleBadRequest() *ReplaceHTTPRequestRuleBadRequest {
 	return &ReplaceHTTPRequestRuleBadRequest{}
 }
 
-/* ReplaceHTTPRequestRuleBadRequest describes a response with status code 400, with default header values.
+/*ReplaceHTTPRequestRuleBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceHTTPRequestRuleBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -156,18 +152,15 @@ type ReplaceHTTPRequestRuleBadRequest struct {
 func (o *ReplaceHTTPRequestRuleBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_request_rules/{index}][%d] replaceHttpRequestRuleBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceHTTPRequestRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceHTTPRequestRuleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,13 +177,12 @@ func NewReplaceHTTPRequestRuleNotFound() *ReplaceHTTPRequestRuleNotFound {
 	return &ReplaceHTTPRequestRuleNotFound{}
 }
 
-/* ReplaceHTTPRequestRuleNotFound describes a response with status code 404, with default header values.
+/*ReplaceHTTPRequestRuleNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceHTTPRequestRuleNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +192,15 @@ type ReplaceHTTPRequestRuleNotFound struct {
 func (o *ReplaceHTTPRequestRuleNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_request_rules/{index}][%d] replaceHttpRequestRuleNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceHTTPRequestRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceHTTPRequestRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -230,14 +219,14 @@ func NewReplaceHTTPRequestRuleDefault(code int) *ReplaceHTTPRequestRuleDefault {
 	}
 }
 
-/* ReplaceHTTPRequestRuleDefault describes a response with status code -1, with default header values.
+/*ReplaceHTTPRequestRuleDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceHTTPRequestRuleDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -252,18 +241,15 @@ func (o *ReplaceHTTPRequestRuleDefault) Code() int {
 func (o *ReplaceHTTPRequestRuleDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_request_rules/{index}][%d] replaceHTTPRequestRule default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceHTTPRequestRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceHTTPRequestRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

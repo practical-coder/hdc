@@ -64,7 +64,7 @@ func NewReplaceServerTemplateOK() *ReplaceServerTemplateOK {
 	return &ReplaceServerTemplateOK{}
 }
 
-/* ReplaceServerTemplateOK describes a response with status code 200, with default header values.
+/*ReplaceServerTemplateOK handles this case with default header values.
 
 Server template replaced
 */
@@ -75,6 +75,7 @@ type ReplaceServerTemplateOK struct {
 func (o *ReplaceServerTemplateOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplateOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceServerTemplateOK) GetPayload() *models.ServerTemplate {
 	return o.Payload
 }
@@ -96,13 +97,12 @@ func NewReplaceServerTemplateAccepted() *ReplaceServerTemplateAccepted {
 	return &ReplaceServerTemplateAccepted{}
 }
 
-/* ReplaceServerTemplateAccepted describes a response with status code 202, with default header values.
+/*ReplaceServerTemplateAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceServerTemplateAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,18 +112,15 @@ type ReplaceServerTemplateAccepted struct {
 func (o *ReplaceServerTemplateAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplateAccepted  %+v", 202, o.Payload)
 }
+
 func (o *ReplaceServerTemplateAccepted) GetPayload() *models.ServerTemplate {
 	return o.Payload
 }
 
 func (o *ReplaceServerTemplateAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.ServerTemplate)
 
@@ -140,13 +137,12 @@ func NewReplaceServerTemplateBadRequest() *ReplaceServerTemplateBadRequest {
 	return &ReplaceServerTemplateBadRequest{}
 }
 
-/* ReplaceServerTemplateBadRequest describes a response with status code 400, with default header values.
+/*ReplaceServerTemplateBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceServerTemplateBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -156,18 +152,15 @@ type ReplaceServerTemplateBadRequest struct {
 func (o *ReplaceServerTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplateBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceServerTemplateBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceServerTemplateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,13 +177,12 @@ func NewReplaceServerTemplateNotFound() *ReplaceServerTemplateNotFound {
 	return &ReplaceServerTemplateNotFound{}
 }
 
-/* ReplaceServerTemplateNotFound describes a response with status code 404, with default header values.
+/*ReplaceServerTemplateNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceServerTemplateNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +192,15 @@ type ReplaceServerTemplateNotFound struct {
 func (o *ReplaceServerTemplateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplateNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceServerTemplateNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceServerTemplateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -230,14 +219,14 @@ func NewReplaceServerTemplateDefault(code int) *ReplaceServerTemplateDefault {
 	}
 }
 
-/* ReplaceServerTemplateDefault describes a response with status code -1, with default header values.
+/*ReplaceServerTemplateDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceServerTemplateDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -252,18 +241,15 @@ func (o *ReplaceServerTemplateDefault) Code() int {
 func (o *ReplaceServerTemplateDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplate default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceServerTemplateDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceServerTemplateDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

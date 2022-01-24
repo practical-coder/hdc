@@ -52,7 +52,7 @@ func NewGetStickTableOK() *GetStickTableOK {
 	return &GetStickTableOK{}
 }
 
-/* GetStickTableOK describes a response with status code 200, with default header values.
+/*GetStickTableOK handles this case with default header values.
 
 Successful operation
 */
@@ -63,6 +63,7 @@ type GetStickTableOK struct {
 func (o *GetStickTableOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_tables/{name}][%d] getStickTableOK  %+v", 200, o.Payload)
 }
+
 func (o *GetStickTableOK) GetPayload() *models.StickTable {
 	return o.Payload
 }
@@ -84,13 +85,12 @@ func NewGetStickTableNotFound() *GetStickTableNotFound {
 	return &GetStickTableNotFound{}
 }
 
-/* GetStickTableNotFound describes a response with status code 404, with default header values.
+/*GetStickTableNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetStickTableNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -100,18 +100,15 @@ type GetStickTableNotFound struct {
 func (o *GetStickTableNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_tables/{name}][%d] getStickTableNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetStickTableNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetStickTableNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -130,14 +127,14 @@ func NewGetStickTableDefault(code int) *GetStickTableDefault {
 	}
 }
 
-/* GetStickTableDefault describes a response with status code -1, with default header values.
+/*GetStickTableDefault handles this case with default header values.
 
 General Error
 */
 type GetStickTableDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,18 +149,15 @@ func (o *GetStickTableDefault) Code() int {
 func (o *GetStickTableDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_tables/{name}][%d] getStickTable default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetStickTableDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetStickTableDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

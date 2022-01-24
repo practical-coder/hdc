@@ -58,7 +58,7 @@ func NewCreateStorageSSLCertificateCreated() *CreateStorageSSLCertificateCreated
 	return &CreateStorageSSLCertificateCreated{}
 }
 
-/* CreateStorageSSLCertificateCreated describes a response with status code 201, with default header values.
+/*CreateStorageSSLCertificateCreated handles this case with default header values.
 
 SSL certificate created
 */
@@ -69,6 +69,7 @@ type CreateStorageSSLCertificateCreated struct {
 func (o *CreateStorageSSLCertificateCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificateCreated  %+v", 201, o.Payload)
 }
+
 func (o *CreateStorageSSLCertificateCreated) GetPayload() *models.SslCertificate {
 	return o.Payload
 }
@@ -90,13 +91,12 @@ func NewCreateStorageSSLCertificateBadRequest() *CreateStorageSSLCertificateBadR
 	return &CreateStorageSSLCertificateBadRequest{}
 }
 
-/* CreateStorageSSLCertificateBadRequest describes a response with status code 400, with default header values.
+/*CreateStorageSSLCertificateBadRequest handles this case with default header values.
 
 Bad request
 */
 type CreateStorageSSLCertificateBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,18 +106,15 @@ type CreateStorageSSLCertificateBadRequest struct {
 func (o *CreateStorageSSLCertificateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificateBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *CreateStorageSSLCertificateBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateStorageSSLCertificateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -134,13 +131,12 @@ func NewCreateStorageSSLCertificateConflict() *CreateStorageSSLCertificateConfli
 	return &CreateStorageSSLCertificateConflict{}
 }
 
-/* CreateStorageSSLCertificateConflict describes a response with status code 409, with default header values.
+/*CreateStorageSSLCertificateConflict handles this case with default header values.
 
 The specified resource already exists
 */
 type CreateStorageSSLCertificateConflict struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -150,18 +146,15 @@ type CreateStorageSSLCertificateConflict struct {
 func (o *CreateStorageSSLCertificateConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificateConflict  %+v", 409, o.Payload)
 }
+
 func (o *CreateStorageSSLCertificateConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateStorageSSLCertificateConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -180,14 +173,14 @@ func NewCreateStorageSSLCertificateDefault(code int) *CreateStorageSSLCertificat
 	}
 }
 
-/* CreateStorageSSLCertificateDefault describes a response with status code -1, with default header values.
+/*CreateStorageSSLCertificateDefault handles this case with default header values.
 
 General Error
 */
 type CreateStorageSSLCertificateDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -202,18 +195,15 @@ func (o *CreateStorageSSLCertificateDefault) Code() int {
 func (o *CreateStorageSSLCertificateDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificate default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *CreateStorageSSLCertificateDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateStorageSSLCertificateDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

@@ -23,20 +23,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateFilter(params *CreateFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateFilterCreated, *CreateFilterAccepted, error)
+	CreateFilter(params *CreateFilterParams, authInfo runtime.ClientAuthInfoWriter) (*CreateFilterCreated, *CreateFilterAccepted, error)
 
-	DeleteFilter(params *DeleteFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteFilterAccepted, *DeleteFilterNoContent, error)
+	DeleteFilter(params *DeleteFilterParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteFilterAccepted, *DeleteFilterNoContent, error)
 
-	GetFilter(params *GetFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFilterOK, error)
+	GetFilter(params *GetFilterParams, authInfo runtime.ClientAuthInfoWriter) (*GetFilterOK, error)
 
-	GetFilters(params *GetFiltersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFiltersOK, error)
+	GetFilters(params *GetFiltersParams, authInfo runtime.ClientAuthInfoWriter) (*GetFiltersOK, error)
 
-	ReplaceFilter(params *ReplaceFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceFilterOK, *ReplaceFilterAccepted, error)
+	ReplaceFilter(params *ReplaceFilterParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceFilterOK, *ReplaceFilterAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,12 +43,13 @@ type ClientService interface {
 
   Adds a new Filter of the specified type in the specified parent.
 */
-func (a *Client) CreateFilter(params *CreateFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateFilterCreated, *CreateFilterAccepted, error) {
+func (a *Client) CreateFilter(params *CreateFilterParams, authInfo runtime.ClientAuthInfoWriter) (*CreateFilterCreated, *CreateFilterAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateFilterParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createFilter",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/filters",
@@ -63,12 +61,7 @@ func (a *Client) CreateFilter(params *CreateFilterParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -88,12 +81,13 @@ func (a *Client) CreateFilter(params *CreateFilterParams, authInfo runtime.Clien
 
   Deletes a Filter configuration by it's index from the specified parent.
 */
-func (a *Client) DeleteFilter(params *DeleteFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteFilterAccepted, *DeleteFilterNoContent, error) {
+func (a *Client) DeleteFilter(params *DeleteFilterParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteFilterAccepted, *DeleteFilterNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteFilterParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteFilter",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/filters/{index}",
@@ -105,12 +99,7 @@ func (a *Client) DeleteFilter(params *DeleteFilterParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -130,12 +119,13 @@ func (a *Client) DeleteFilter(params *DeleteFilterParams, authInfo runtime.Clien
 
   Returns one Filter configuration by it's index in the specified parent.
 */
-func (a *Client) GetFilter(params *GetFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFilterOK, error) {
+func (a *Client) GetFilter(params *GetFilterParams, authInfo runtime.ClientAuthInfoWriter) (*GetFilterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFilterParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getFilter",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/filters/{index}",
@@ -147,12 +137,7 @@ func (a *Client) GetFilter(params *GetFilterParams, authInfo runtime.ClientAuthI
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -170,12 +155,13 @@ func (a *Client) GetFilter(params *GetFilterParams, authInfo runtime.ClientAuthI
 
   Returns all Filters that are configured in specified parent.
 */
-func (a *Client) GetFilters(params *GetFiltersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFiltersOK, error) {
+func (a *Client) GetFilters(params *GetFiltersParams, authInfo runtime.ClientAuthInfoWriter) (*GetFiltersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFiltersParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getFilters",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/filters",
@@ -187,12 +173,7 @@ func (a *Client) GetFilters(params *GetFiltersParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -210,12 +191,13 @@ func (a *Client) GetFilters(params *GetFiltersParams, authInfo runtime.ClientAut
 
   Replaces a Filter configuration by it's index in the specified parent.
 */
-func (a *Client) ReplaceFilter(params *ReplaceFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceFilterOK, *ReplaceFilterAccepted, error) {
+func (a *Client) ReplaceFilter(params *ReplaceFilterParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceFilterOK, *ReplaceFilterAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceFilterParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "replaceFilter",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/filters/{index}",
@@ -227,12 +209,7 @@ func (a *Client) ReplaceFilter(params *ReplaceFilterParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}

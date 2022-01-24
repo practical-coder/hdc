@@ -58,7 +58,7 @@ func NewReplaceAWSRegionOK() *ReplaceAWSRegionOK {
 	return &ReplaceAWSRegionOK{}
 }
 
-/* ReplaceAWSRegionOK describes a response with status code 200, with default header values.
+/*ReplaceAWSRegionOK handles this case with default header values.
 
 Resource updated
 */
@@ -69,6 +69,7 @@ type ReplaceAWSRegionOK struct {
 func (o *ReplaceAWSRegionOK) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegionOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceAWSRegionOK) GetPayload() *models.AwsRegion {
 	return o.Payload
 }
@@ -90,13 +91,12 @@ func NewReplaceAWSRegionBadRequest() *ReplaceAWSRegionBadRequest {
 	return &ReplaceAWSRegionBadRequest{}
 }
 
-/* ReplaceAWSRegionBadRequest describes a response with status code 400, with default header values.
+/*ReplaceAWSRegionBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceAWSRegionBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,18 +106,15 @@ type ReplaceAWSRegionBadRequest struct {
 func (o *ReplaceAWSRegionBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegionBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceAWSRegionBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceAWSRegionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -134,13 +131,12 @@ func NewReplaceAWSRegionNotFound() *ReplaceAWSRegionNotFound {
 	return &ReplaceAWSRegionNotFound{}
 }
 
-/* ReplaceAWSRegionNotFound describes a response with status code 404, with default header values.
+/*ReplaceAWSRegionNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceAWSRegionNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -150,18 +146,15 @@ type ReplaceAWSRegionNotFound struct {
 func (o *ReplaceAWSRegionNotFound) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegionNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceAWSRegionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceAWSRegionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -180,14 +173,14 @@ func NewReplaceAWSRegionDefault(code int) *ReplaceAWSRegionDefault {
 	}
 }
 
-/* ReplaceAWSRegionDefault describes a response with status code -1, with default header values.
+/*ReplaceAWSRegionDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceAWSRegionDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -202,18 +195,15 @@ func (o *ReplaceAWSRegionDefault) Code() int {
 func (o *ReplaceAWSRegionDefault) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegion default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceAWSRegionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceAWSRegionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

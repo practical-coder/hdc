@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -18,7 +17,6 @@ import (
 // Bind Bind
 //
 // HAProxy frontend bind configuration
-// Example: {"address":"127.0.0.1","name":"http","port":80}
 //
 // swagger:model bind
 type Bind struct {
@@ -298,11 +296,12 @@ func (m *Bind) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Bind) validateAddress(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Address) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("address", "body", m.Address, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("address", "body", string(m.Address), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -310,11 +309,12 @@ func (m *Bind) validateAddress(formats strfmt.Registry) error {
 }
 
 func (m *Bind) validateAlpn(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Alpn) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("alpn", "body", m.Alpn, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("alpn", "body", string(m.Alpn), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -354,6 +354,7 @@ func (m *Bind) validateLevelEnum(path, location string, value string) error {
 }
 
 func (m *Bind) validateLevel(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Level) { // not required
 		return nil
 	}
@@ -368,11 +369,11 @@ func (m *Bind) validateLevel(formats strfmt.Registry) error {
 
 func (m *Bind) validateName(formats strfmt.Registry) error {
 
-	if err := validate.RequiredString("name", "body", m.Name); err != nil {
+	if err := validate.RequiredString("name", "body", string(m.Name)); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("name", "body", m.Name, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("name", "body", string(m.Name), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -380,15 +381,16 @@ func (m *Bind) validateName(formats strfmt.Registry) error {
 }
 
 func (m *Bind) validatePort(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Port) { // not required
 		return nil
 	}
 
-	if err := validate.MinimumInt("port", "body", *m.Port, 1, false); err != nil {
+	if err := validate.MinimumInt("port", "body", int64(*m.Port), 1, false); err != nil {
 		return err
 	}
 
-	if err := validate.MaximumInt("port", "body", *m.Port, 65535, false); err != nil {
+	if err := validate.MaximumInt("port", "body", int64(*m.Port), 65535, false); err != nil {
 		return err
 	}
 
@@ -396,15 +398,16 @@ func (m *Bind) validatePort(formats strfmt.Registry) error {
 }
 
 func (m *Bind) validatePortRangeEnd(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.PortRangeEnd) { // not required
 		return nil
 	}
 
-	if err := validate.MinimumInt("port-range-end", "body", *m.PortRangeEnd, 1, false); err != nil {
+	if err := validate.MinimumInt("port-range-end", "body", int64(*m.PortRangeEnd), 1, false); err != nil {
 		return err
 	}
 
-	if err := validate.MaximumInt("port-range-end", "body", *m.PortRangeEnd, 65535, false); err != nil {
+	if err := validate.MaximumInt("port-range-end", "body", int64(*m.PortRangeEnd), 65535, false); err != nil {
 		return err
 	}
 
@@ -412,11 +415,12 @@ func (m *Bind) validatePortRangeEnd(formats strfmt.Registry) error {
 }
 
 func (m *Bind) validateProcess(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Process) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("process", "body", m.Process, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("process", "body", string(m.Process), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -456,6 +460,7 @@ func (m *Bind) validateSeverityOutputEnum(path, location string, value string) e
 }
 
 func (m *Bind) validateSeverityOutput(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.SeverityOutput) { // not required
 		return nil
 	}
@@ -469,11 +474,12 @@ func (m *Bind) validateSeverityOutput(formats strfmt.Registry) error {
 }
 
 func (m *Bind) validateSslCafile(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.SslCafile) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("ssl_cafile", "body", m.SslCafile, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("ssl_cafile", "body", string(m.SslCafile), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -481,11 +487,12 @@ func (m *Bind) validateSslCafile(formats strfmt.Registry) error {
 }
 
 func (m *Bind) validateSslCertificate(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.SslCertificate) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("ssl_certificate", "body", m.SslCertificate, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("ssl_certificate", "body", string(m.SslCertificate), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -509,17 +516,17 @@ const (
 	// BindSslMaxVerSSLv3 captures enum value "SSLv3"
 	BindSslMaxVerSSLv3 string = "SSLv3"
 
-	// BindSslMaxVerTLSv1Dot0 captures enum value "TLSv1.0"
-	BindSslMaxVerTLSv1Dot0 string = "TLSv1.0"
+	// BindSslMaxVerTLSv10 captures enum value "TLSv1.0"
+	BindSslMaxVerTLSv10 string = "TLSv1.0"
 
-	// BindSslMaxVerTLSv1Dot1 captures enum value "TLSv1.1"
-	BindSslMaxVerTLSv1Dot1 string = "TLSv1.1"
+	// BindSslMaxVerTLSv11 captures enum value "TLSv1.1"
+	BindSslMaxVerTLSv11 string = "TLSv1.1"
 
-	// BindSslMaxVerTLSv1Dot2 captures enum value "TLSv1.2"
-	BindSslMaxVerTLSv1Dot2 string = "TLSv1.2"
+	// BindSslMaxVerTLSv12 captures enum value "TLSv1.2"
+	BindSslMaxVerTLSv12 string = "TLSv1.2"
 
-	// BindSslMaxVerTLSv1Dot3 captures enum value "TLSv1.3"
-	BindSslMaxVerTLSv1Dot3 string = "TLSv1.3"
+	// BindSslMaxVerTLSv13 captures enum value "TLSv1.3"
+	BindSslMaxVerTLSv13 string = "TLSv1.3"
 )
 
 // prop value enum
@@ -531,6 +538,7 @@ func (m *Bind) validateSslMaxVerEnum(path, location string, value string) error 
 }
 
 func (m *Bind) validateSslMaxVer(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.SslMaxVer) { // not required
 		return nil
 	}
@@ -560,17 +568,17 @@ const (
 	// BindSslMinVerSSLv3 captures enum value "SSLv3"
 	BindSslMinVerSSLv3 string = "SSLv3"
 
-	// BindSslMinVerTLSv1Dot0 captures enum value "TLSv1.0"
-	BindSslMinVerTLSv1Dot0 string = "TLSv1.0"
+	// BindSslMinVerTLSv10 captures enum value "TLSv1.0"
+	BindSslMinVerTLSv10 string = "TLSv1.0"
 
-	// BindSslMinVerTLSv1Dot1 captures enum value "TLSv1.1"
-	BindSslMinVerTLSv1Dot1 string = "TLSv1.1"
+	// BindSslMinVerTLSv11 captures enum value "TLSv1.1"
+	BindSslMinVerTLSv11 string = "TLSv1.1"
 
-	// BindSslMinVerTLSv1Dot2 captures enum value "TLSv1.2"
-	BindSslMinVerTLSv1Dot2 string = "TLSv1.2"
+	// BindSslMinVerTLSv12 captures enum value "TLSv1.2"
+	BindSslMinVerTLSv12 string = "TLSv1.2"
 
-	// BindSslMinVerTLSv1Dot3 captures enum value "TLSv1.3"
-	BindSslMinVerTLSv1Dot3 string = "TLSv1.3"
+	// BindSslMinVerTLSv13 captures enum value "TLSv1.3"
+	BindSslMinVerTLSv13 string = "TLSv1.3"
 )
 
 // prop value enum
@@ -582,6 +590,7 @@ func (m *Bind) validateSslMinVerEnum(path, location string, value string) error 
 }
 
 func (m *Bind) validateSslMinVer(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.SslMinVer) { // not required
 		return nil
 	}
@@ -627,6 +636,7 @@ func (m *Bind) validateVerifyEnum(path, location string, value string) error {
 }
 
 func (m *Bind) validateVerify(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Verify) { // not required
 		return nil
 	}
@@ -636,11 +646,6 @@ func (m *Bind) validateVerify(formats strfmt.Registry) error {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this bind based on context it is used
-func (m *Bind) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

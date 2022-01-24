@@ -23,14 +23,11 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetDefaults(params *GetDefaultsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDefaultsOK, error)
+	GetDefaults(params *GetDefaultsParams, authInfo runtime.ClientAuthInfoWriter) (*GetDefaultsOK, error)
 
-	ReplaceDefaults(params *ReplaceDefaultsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceDefaultsOK, *ReplaceDefaultsAccepted, error)
+	ReplaceDefaults(params *ReplaceDefaultsParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceDefaultsOK, *ReplaceDefaultsAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,12 +37,13 @@ type ClientService interface {
 
   Returns defaults part of configuration.
 */
-func (a *Client) GetDefaults(params *GetDefaultsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDefaultsOK, error) {
+func (a *Client) GetDefaults(params *GetDefaultsParams, authInfo runtime.ClientAuthInfoWriter) (*GetDefaultsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDefaultsParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getDefaults",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/defaults",
@@ -57,12 +55,7 @@ func (a *Client) GetDefaults(params *GetDefaultsParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -80,12 +73,13 @@ func (a *Client) GetDefaults(params *GetDefaultsParams, authInfo runtime.ClientA
 
   Replace defaults part of config
 */
-func (a *Client) ReplaceDefaults(params *ReplaceDefaultsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceDefaultsOK, *ReplaceDefaultsAccepted, error) {
+func (a *Client) ReplaceDefaults(params *ReplaceDefaultsParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceDefaultsOK, *ReplaceDefaultsAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceDefaultsParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "replaceDefaults",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/defaults",
@@ -97,12 +91,7 @@ func (a *Client) ReplaceDefaults(params *ReplaceDefaultsParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}

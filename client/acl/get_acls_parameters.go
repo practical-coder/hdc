@@ -16,91 +16,74 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetAclsParams creates a new GetAclsParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewGetAclsParams creates a new GetAclsParams object
+// with the default values initialized.
 func NewGetAclsParams() *GetAclsParams {
+	var ()
 	return &GetAclsParams{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetAclsParamsWithTimeout creates a new GetAclsParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewGetAclsParamsWithTimeout(timeout time.Duration) *GetAclsParams {
+	var ()
 	return &GetAclsParams{
+
 		timeout: timeout,
 	}
 }
 
 // NewGetAclsParamsWithContext creates a new GetAclsParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewGetAclsParamsWithContext(ctx context.Context) *GetAclsParams {
+	var ()
 	return &GetAclsParams{
+
 		Context: ctx,
 	}
 }
 
 // NewGetAclsParamsWithHTTPClient creates a new GetAclsParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetAclsParamsWithHTTPClient(client *http.Client) *GetAclsParams {
+	var ()
 	return &GetAclsParams{
 		HTTPClient: client,
 	}
 }
 
-/* GetAclsParams contains all the parameters to send to the API endpoint
-   for the get acls operation.
-
-   Typically these are written to a http.Request.
+/*GetAclsParams contains all the parameters to send to the API endpoint
+for the get acls operation typically these are written to a http.Request
 */
 type GetAclsParams struct {
 
-	/* ACLName.
+	/*ACLName
+	  ACL name
 
-	   ACL name
 	*/
 	ACLName *string
+	/*ParentName
+	  Parent name
 
-	/* ParentName.
-
-	   Parent name
 	*/
 	ParentName string
+	/*ParentType
+	  Parent type
 
-	/* ParentType.
-
-	   Parent type
 	*/
 	ParentType string
+	/*TransactionID
+	  ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 
-	/* TransactionID.
-
-	   ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 	*/
 	TransactionID *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the get acls params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetAclsParams) WithDefaults() *GetAclsParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the get acls params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetAclsParams) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get acls params
@@ -192,24 +175,22 @@ func (o *GetAclsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regis
 
 		// query param acl_name
 		var qrACLName string
-
 		if o.ACLName != nil {
 			qrACLName = *o.ACLName
 		}
 		qACLName := qrACLName
 		if qACLName != "" {
-
 			if err := r.SetQueryParam("acl_name", qACLName); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	// query param parent_name
 	qrParentName := o.ParentName
 	qParentName := qrParentName
 	if qParentName != "" {
-
 		if err := r.SetQueryParam("parent_name", qParentName); err != nil {
 			return err
 		}
@@ -219,7 +200,6 @@ func (o *GetAclsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regis
 	qrParentType := o.ParentType
 	qParentType := qrParentType
 	if qParentType != "" {
-
 		if err := r.SetQueryParam("parent_type", qParentType); err != nil {
 			return err
 		}
@@ -229,17 +209,16 @@ func (o *GetAclsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regis
 
 		// query param transaction_id
 		var qrTransactionID string
-
 		if o.TransactionID != nil {
 			qrTransactionID = *o.TransactionID
 		}
 		qTransactionID := qrTransactionID
 		if qTransactionID != "" {
-
 			if err := r.SetQueryParam("transaction_id", qTransactionID); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if len(res) > 0 {

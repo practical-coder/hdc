@@ -46,7 +46,7 @@ func NewGetSpoeTransactionsOK() *GetSpoeTransactionsOK {
 	return &GetSpoeTransactionsOK{}
 }
 
-/* GetSpoeTransactionsOK describes a response with status code 200, with default header values.
+/*GetSpoeTransactionsOK handles this case with default header values.
 
 Success
 */
@@ -57,6 +57,7 @@ type GetSpoeTransactionsOK struct {
 func (o *GetSpoeTransactionsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe_transactions][%d] getSpoeTransactionsOK  %+v", 200, o.Payload)
 }
+
 func (o *GetSpoeTransactionsOK) GetPayload() models.SpoeTransactions {
 	return o.Payload
 }
@@ -78,14 +79,14 @@ func NewGetSpoeTransactionsDefault(code int) *GetSpoeTransactionsDefault {
 	}
 }
 
-/* GetSpoeTransactionsDefault describes a response with status code -1, with default header values.
+/*GetSpoeTransactionsDefault handles this case with default header values.
 
 General Error
 */
 type GetSpoeTransactionsDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -100,18 +101,15 @@ func (o *GetSpoeTransactionsDefault) Code() int {
 func (o *GetSpoeTransactionsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe_transactions][%d] getSpoeTransactions default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetSpoeTransactionsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetSpoeTransactionsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

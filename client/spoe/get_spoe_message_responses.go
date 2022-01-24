@@ -6,7 +6,6 @@ package spoe
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -56,13 +55,12 @@ func NewGetSpoeMessageOK() *GetSpoeMessageOK {
 	return &GetSpoeMessageOK{}
 }
 
-/* GetSpoeMessageOK describes a response with status code 200, with default header values.
+/*GetSpoeMessageOK handles this case with default header values.
 
 Successful operation
 */
 type GetSpoeMessageOK struct {
-
-	/* Spoe configuration file version
+	/*Spoe configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -72,18 +70,15 @@ type GetSpoeMessageOK struct {
 func (o *GetSpoeMessageOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_messages/{name}][%d] getSpoeMessageOK  %+v", 200, o.Payload)
 }
+
 func (o *GetSpoeMessageOK) GetPayload() *GetSpoeMessageOKBody {
 	return o.Payload
 }
 
 func (o *GetSpoeMessageOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetSpoeMessageOKBody)
 
@@ -100,13 +95,12 @@ func NewGetSpoeMessageNotFound() *GetSpoeMessageNotFound {
 	return &GetSpoeMessageNotFound{}
 }
 
-/* GetSpoeMessageNotFound describes a response with status code 404, with default header values.
+/*GetSpoeMessageNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetSpoeMessageNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -116,18 +110,15 @@ type GetSpoeMessageNotFound struct {
 func (o *GetSpoeMessageNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_messages/{name}][%d] getSpoeMessageNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetSpoeMessageNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetSpoeMessageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -146,14 +137,14 @@ func NewGetSpoeMessageDefault(code int) *GetSpoeMessageDefault {
 	}
 }
 
-/* GetSpoeMessageDefault describes a response with status code -1, with default header values.
+/*GetSpoeMessageDefault handles this case with default header values.
 
 General Error
 */
 type GetSpoeMessageDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -168,18 +159,15 @@ func (o *GetSpoeMessageDefault) Code() int {
 func (o *GetSpoeMessageDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_messages/{name}][%d] getSpoeMessage default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetSpoeMessageDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetSpoeMessageDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -228,38 +216,6 @@ func (o *GetSpoeMessageOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getSpoeMessageOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getSpoeMessageOK" + "." + "data")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get spoe message o k body based on the context it is used
-func (o *GetSpoeMessageOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetSpoeMessageOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Data != nil {
-		if err := o.Data.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("getSpoeMessageOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getSpoeMessageOK" + "." + "data")
 			}
 			return err
 		}

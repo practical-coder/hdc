@@ -58,13 +58,12 @@ func NewDeleteHTTPRequestRuleAccepted() *DeleteHTTPRequestRuleAccepted {
 	return &DeleteHTTPRequestRuleAccepted{}
 }
 
-/* DeleteHTTPRequestRuleAccepted describes a response with status code 202, with default header values.
+/*DeleteHTTPRequestRuleAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteHTTPRequestRuleAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -75,12 +74,8 @@ func (o *DeleteHTTPRequestRuleAccepted) Error() string {
 
 func (o *DeleteHTTPRequestRuleAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	return nil
 }
@@ -90,7 +85,7 @@ func NewDeleteHTTPRequestRuleNoContent() *DeleteHTTPRequestRuleNoContent {
 	return &DeleteHTTPRequestRuleNoContent{}
 }
 
-/* DeleteHTTPRequestRuleNoContent describes a response with status code 204, with default header values.
+/*DeleteHTTPRequestRuleNoContent handles this case with default header values.
 
 HTTP Request Rule deleted
 */
@@ -111,13 +106,12 @@ func NewDeleteHTTPRequestRuleNotFound() *DeleteHTTPRequestRuleNotFound {
 	return &DeleteHTTPRequestRuleNotFound{}
 }
 
-/* DeleteHTTPRequestRuleNotFound describes a response with status code 404, with default header values.
+/*DeleteHTTPRequestRuleNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteHTTPRequestRuleNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,18 +121,15 @@ type DeleteHTTPRequestRuleNotFound struct {
 func (o *DeleteHTTPRequestRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_request_rules/{index}][%d] deleteHttpRequestRuleNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteHTTPRequestRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteHTTPRequestRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -157,14 +148,14 @@ func NewDeleteHTTPRequestRuleDefault(code int) *DeleteHTTPRequestRuleDefault {
 	}
 }
 
-/* DeleteHTTPRequestRuleDefault describes a response with status code -1, with default header values.
+/*DeleteHTTPRequestRuleDefault handles this case with default header values.
 
 General Error
 */
 type DeleteHTTPRequestRuleDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -179,18 +170,15 @@ func (o *DeleteHTTPRequestRuleDefault) Code() int {
 func (o *DeleteHTTPRequestRuleDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_request_rules/{index}][%d] deleteHTTPRequestRule default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteHTTPRequestRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteHTTPRequestRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

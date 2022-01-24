@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -18,7 +17,6 @@ import (
 // Filter Filter
 //
 // HAProxy filters
-// Example: {"index":0,"trace_name":"name","trace_rnd_parsing":true,"type":"trace"}
 //
 // swagger:model filter
 type Filter struct {
@@ -93,11 +91,12 @@ func (m *Filter) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Filter) validateCacheName(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.CacheName) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("cache_name", "body", m.CacheName, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("cache_name", "body", string(m.CacheName), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -114,11 +113,12 @@ func (m *Filter) validateIndex(formats strfmt.Registry) error {
 }
 
 func (m *Filter) validateSpoeConfig(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.SpoeConfig) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("spoe_config", "body", m.SpoeConfig, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("spoe_config", "body", string(m.SpoeConfig), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -126,11 +126,12 @@ func (m *Filter) validateSpoeConfig(formats strfmt.Registry) error {
 }
 
 func (m *Filter) validateSpoeEngine(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.SpoeEngine) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("spoe_engine", "body", m.SpoeEngine, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("spoe_engine", "body", string(m.SpoeEngine), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -138,11 +139,12 @@ func (m *Filter) validateSpoeEngine(formats strfmt.Registry) error {
 }
 
 func (m *Filter) validateTraceName(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.TraceName) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("trace_name", "body", m.TraceName, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("trace_name", "body", string(m.TraceName), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -186,7 +188,7 @@ func (m *Filter) validateTypeEnum(path, location string, value string) error {
 
 func (m *Filter) validateType(formats strfmt.Registry) error {
 
-	if err := validate.RequiredString("type", "body", m.Type); err != nil {
+	if err := validate.RequiredString("type", "body", string(m.Type)); err != nil {
 		return err
 	}
 
@@ -195,11 +197,6 @@ func (m *Filter) validateType(formats strfmt.Registry) error {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this filter based on context it is used
-func (m *Filter) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

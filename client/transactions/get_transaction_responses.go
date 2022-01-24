@@ -52,7 +52,7 @@ func NewGetTransactionOK() *GetTransactionOK {
 	return &GetTransactionOK{}
 }
 
-/* GetTransactionOK describes a response with status code 200, with default header values.
+/*GetTransactionOK handles this case with default header values.
 
 Successful operation
 */
@@ -63,6 +63,7 @@ type GetTransactionOK struct {
 func (o *GetTransactionOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/transactions/{id}][%d] getTransactionOK  %+v", 200, o.Payload)
 }
+
 func (o *GetTransactionOK) GetPayload() *models.Transaction {
 	return o.Payload
 }
@@ -84,13 +85,12 @@ func NewGetTransactionNotFound() *GetTransactionNotFound {
 	return &GetTransactionNotFound{}
 }
 
-/* GetTransactionNotFound describes a response with status code 404, with default header values.
+/*GetTransactionNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetTransactionNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -100,18 +100,15 @@ type GetTransactionNotFound struct {
 func (o *GetTransactionNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/transactions/{id}][%d] getTransactionNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetTransactionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetTransactionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -130,14 +127,14 @@ func NewGetTransactionDefault(code int) *GetTransactionDefault {
 	}
 }
 
-/* GetTransactionDefault describes a response with status code -1, with default header values.
+/*GetTransactionDefault handles this case with default header values.
 
 General Error
 */
 type GetTransactionDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,18 +149,15 @@ func (o *GetTransactionDefault) Code() int {
 func (o *GetTransactionDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/transactions/{id}][%d] getTransaction default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetTransactionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetTransactionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

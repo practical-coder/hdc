@@ -52,7 +52,7 @@ func NewDeleteSpoeGroupNoContent() *DeleteSpoeGroupNoContent {
 	return &DeleteSpoeGroupNoContent{}
 }
 
-/* DeleteSpoeGroupNoContent describes a response with status code 204, with default header values.
+/*DeleteSpoeGroupNoContent handles this case with default header values.
 
 Spoe group deleted
 */
@@ -73,13 +73,12 @@ func NewDeleteSpoeGroupNotFound() *DeleteSpoeGroupNotFound {
 	return &DeleteSpoeGroupNotFound{}
 }
 
-/* DeleteSpoeGroupNotFound describes a response with status code 404, with default header values.
+/*DeleteSpoeGroupNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteSpoeGroupNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -89,18 +88,15 @@ type DeleteSpoeGroupNotFound struct {
 func (o *DeleteSpoeGroupNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_groups/{name}][%d] deleteSpoeGroupNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteSpoeGroupNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteSpoeGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -119,14 +115,14 @@ func NewDeleteSpoeGroupDefault(code int) *DeleteSpoeGroupDefault {
 	}
 }
 
-/* DeleteSpoeGroupDefault describes a response with status code -1, with default header values.
+/*DeleteSpoeGroupDefault handles this case with default header values.
 
 General Error
 */
 type DeleteSpoeGroupDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -141,18 +137,15 @@ func (o *DeleteSpoeGroupDefault) Code() int {
 func (o *DeleteSpoeGroupDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_groups/{name}][%d] deleteSpoeGroup default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteSpoeGroupDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteSpoeGroupDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

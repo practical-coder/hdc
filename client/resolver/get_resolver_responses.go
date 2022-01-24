@@ -6,7 +6,6 @@ package resolver
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -55,13 +54,12 @@ func NewGetResolverOK() *GetResolverOK {
 	return &GetResolverOK{}
 }
 
-/* GetResolverOK describes a response with status code 200, with default header values.
+/*GetResolverOK handles this case with default header values.
 
 Successful operation
 */
 type GetResolverOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -71,18 +69,15 @@ type GetResolverOK struct {
 func (o *GetResolverOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/resolvers/{name}][%d] getResolverOK  %+v", 200, o.Payload)
 }
+
 func (o *GetResolverOK) GetPayload() *GetResolverOKBody {
 	return o.Payload
 }
 
 func (o *GetResolverOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetResolverOKBody)
 
@@ -99,13 +94,12 @@ func NewGetResolverNotFound() *GetResolverNotFound {
 	return &GetResolverNotFound{}
 }
 
-/* GetResolverNotFound describes a response with status code 404, with default header values.
+/*GetResolverNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetResolverNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -115,18 +109,15 @@ type GetResolverNotFound struct {
 func (o *GetResolverNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/resolvers/{name}][%d] getResolverNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetResolverNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetResolverNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -145,14 +136,14 @@ func NewGetResolverDefault(code int) *GetResolverDefault {
 	}
 }
 
-/* GetResolverDefault describes a response with status code -1, with default header values.
+/*GetResolverDefault handles this case with default header values.
 
 General Error
 */
 type GetResolverDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -167,18 +158,15 @@ func (o *GetResolverDefault) Code() int {
 func (o *GetResolverDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/resolvers/{name}][%d] getResolver default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetResolverDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetResolverDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -217,6 +205,7 @@ func (o *GetResolverOKBody) Validate(formats strfmt.Registry) error {
 }
 
 func (o *GetResolverOKBody) validateData(formats strfmt.Registry) error {
+
 	if swag.IsZero(o.Data) { // not required
 		return nil
 	}
@@ -225,38 +214,6 @@ func (o *GetResolverOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getResolverOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getResolverOK" + "." + "data")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get resolver o k body based on the context it is used
-func (o *GetResolverOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetResolverOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Data != nil {
-		if err := o.Data.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("getResolverOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getResolverOK" + "." + "data")
 			}
 			return err
 		}

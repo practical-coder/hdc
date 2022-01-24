@@ -6,7 +6,6 @@ package frontend
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -50,13 +49,12 @@ func NewGetFrontendsOK() *GetFrontendsOK {
 	return &GetFrontendsOK{}
 }
 
-/* GetFrontendsOK describes a response with status code 200, with default header values.
+/*GetFrontendsOK handles this case with default header values.
 
 Successful operation
 */
 type GetFrontendsOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -66,18 +64,15 @@ type GetFrontendsOK struct {
 func (o *GetFrontendsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/frontends][%d] getFrontendsOK  %+v", 200, o.Payload)
 }
+
 func (o *GetFrontendsOK) GetPayload() *GetFrontendsOKBody {
 	return o.Payload
 }
 
 func (o *GetFrontendsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetFrontendsOKBody)
 
@@ -96,14 +91,14 @@ func NewGetFrontendsDefault(code int) *GetFrontendsDefault {
 	}
 }
 
-/* GetFrontendsDefault describes a response with status code -1, with default header values.
+/*GetFrontendsDefault handles this case with default header values.
 
 General Error
 */
 type GetFrontendsDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -118,18 +113,15 @@ func (o *GetFrontendsDefault) Code() int {
 func (o *GetFrontendsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/frontends][%d] getFrontends default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetFrontendsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetFrontendsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -177,36 +169,6 @@ func (o *GetFrontendsOKBody) validateData(formats strfmt.Registry) error {
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getFrontendsOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getFrontendsOK" + "." + "data")
-		}
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get frontends o k body based on the context it is used
-func (o *GetFrontendsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetFrontendsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := o.Data.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("getFrontendsOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getFrontendsOK" + "." + "data")
 		}
 		return err
 	}

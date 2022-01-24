@@ -46,7 +46,7 @@ func NewGetTransactionsOK() *GetTransactionsOK {
 	return &GetTransactionsOK{}
 }
 
-/* GetTransactionsOK describes a response with status code 200, with default header values.
+/*GetTransactionsOK handles this case with default header values.
 
 Success
 */
@@ -57,6 +57,7 @@ type GetTransactionsOK struct {
 func (o *GetTransactionsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/transactions][%d] getTransactionsOK  %+v", 200, o.Payload)
 }
+
 func (o *GetTransactionsOK) GetPayload() models.Transactions {
 	return o.Payload
 }
@@ -78,14 +79,14 @@ func NewGetTransactionsDefault(code int) *GetTransactionsDefault {
 	}
 }
 
-/* GetTransactionsDefault describes a response with status code -1, with default header values.
+/*GetTransactionsDefault handles this case with default header values.
 
 General Error
 */
 type GetTransactionsDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -100,18 +101,15 @@ func (o *GetTransactionsDefault) Code() int {
 func (o *GetTransactionsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/transactions][%d] getTransactions default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetTransactionsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetTransactionsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

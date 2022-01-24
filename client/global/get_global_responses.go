@@ -6,7 +6,6 @@ package global
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -49,13 +48,12 @@ func NewGetGlobalOK() *GetGlobalOK {
 	return &GetGlobalOK{}
 }
 
-/* GetGlobalOK describes a response with status code 200, with default header values.
+/*GetGlobalOK handles this case with default header values.
 
 Successful operation
 */
 type GetGlobalOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -65,18 +63,15 @@ type GetGlobalOK struct {
 func (o *GetGlobalOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/global][%d] getGlobalOK  %+v", 200, o.Payload)
 }
+
 func (o *GetGlobalOK) GetPayload() *GetGlobalOKBody {
 	return o.Payload
 }
 
 func (o *GetGlobalOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetGlobalOKBody)
 
@@ -95,14 +90,14 @@ func NewGetGlobalDefault(code int) *GetGlobalDefault {
 	}
 }
 
-/* GetGlobalDefault describes a response with status code -1, with default header values.
+/*GetGlobalDefault handles this case with default header values.
 
 General Error
 */
 type GetGlobalDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -117,18 +112,15 @@ func (o *GetGlobalDefault) Code() int {
 func (o *GetGlobalDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/global][%d] getGlobal default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetGlobalDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetGlobalDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -167,6 +159,7 @@ func (o *GetGlobalOKBody) Validate(formats strfmt.Registry) error {
 }
 
 func (o *GetGlobalOKBody) validateData(formats strfmt.Registry) error {
+
 	if swag.IsZero(o.Data) { // not required
 		return nil
 	}
@@ -175,38 +168,6 @@ func (o *GetGlobalOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getGlobalOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getGlobalOK" + "." + "data")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get global o k body based on the context it is used
-func (o *GetGlobalOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetGlobalOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Data != nil {
-		if err := o.Data.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("getGlobalOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getGlobalOK" + "." + "data")
 			}
 			return err
 		}

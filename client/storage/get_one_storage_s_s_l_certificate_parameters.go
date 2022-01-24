@@ -16,73 +16,59 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetOneStorageSSLCertificateParams creates a new GetOneStorageSSLCertificateParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewGetOneStorageSSLCertificateParams creates a new GetOneStorageSSLCertificateParams object
+// with the default values initialized.
 func NewGetOneStorageSSLCertificateParams() *GetOneStorageSSLCertificateParams {
+	var ()
 	return &GetOneStorageSSLCertificateParams{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetOneStorageSSLCertificateParamsWithTimeout creates a new GetOneStorageSSLCertificateParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewGetOneStorageSSLCertificateParamsWithTimeout(timeout time.Duration) *GetOneStorageSSLCertificateParams {
+	var ()
 	return &GetOneStorageSSLCertificateParams{
+
 		timeout: timeout,
 	}
 }
 
 // NewGetOneStorageSSLCertificateParamsWithContext creates a new GetOneStorageSSLCertificateParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewGetOneStorageSSLCertificateParamsWithContext(ctx context.Context) *GetOneStorageSSLCertificateParams {
+	var ()
 	return &GetOneStorageSSLCertificateParams{
+
 		Context: ctx,
 	}
 }
 
 // NewGetOneStorageSSLCertificateParamsWithHTTPClient creates a new GetOneStorageSSLCertificateParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetOneStorageSSLCertificateParamsWithHTTPClient(client *http.Client) *GetOneStorageSSLCertificateParams {
+	var ()
 	return &GetOneStorageSSLCertificateParams{
 		HTTPClient: client,
 	}
 }
 
-/* GetOneStorageSSLCertificateParams contains all the parameters to send to the API endpoint
-   for the get one storage s s l certificate operation.
-
-   Typically these are written to a http.Request.
+/*GetOneStorageSSLCertificateParams contains all the parameters to send to the API endpoint
+for the get one storage s s l certificate operation typically these are written to a http.Request
 */
 type GetOneStorageSSLCertificateParams struct {
 
-	/* Name.
+	/*Name
+	  SSL certificate name
 
-	   SSL certificate name
 	*/
 	Name string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the get one storage s s l certificate params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetOneStorageSSLCertificateParams) WithDefaults() *GetOneStorageSSLCertificateParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the get one storage s s l certificate params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetOneStorageSSLCertificateParams) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get one storage s s l certificate params

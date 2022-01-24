@@ -58,13 +58,12 @@ func NewDeleteTCPResponseRuleAccepted() *DeleteTCPResponseRuleAccepted {
 	return &DeleteTCPResponseRuleAccepted{}
 }
 
-/* DeleteTCPResponseRuleAccepted describes a response with status code 202, with default header values.
+/*DeleteTCPResponseRuleAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteTCPResponseRuleAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -75,12 +74,8 @@ func (o *DeleteTCPResponseRuleAccepted) Error() string {
 
 func (o *DeleteTCPResponseRuleAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	return nil
 }
@@ -90,7 +85,7 @@ func NewDeleteTCPResponseRuleNoContent() *DeleteTCPResponseRuleNoContent {
 	return &DeleteTCPResponseRuleNoContent{}
 }
 
-/* DeleteTCPResponseRuleNoContent describes a response with status code 204, with default header values.
+/*DeleteTCPResponseRuleNoContent handles this case with default header values.
 
 TCP Response Rule deleted
 */
@@ -111,13 +106,12 @@ func NewDeleteTCPResponseRuleNotFound() *DeleteTCPResponseRuleNotFound {
 	return &DeleteTCPResponseRuleNotFound{}
 }
 
-/* DeleteTCPResponseRuleNotFound describes a response with status code 404, with default header values.
+/*DeleteTCPResponseRuleNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteTCPResponseRuleNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,18 +121,15 @@ type DeleteTCPResponseRuleNotFound struct {
 func (o *DeleteTCPResponseRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_response_rules/{index}][%d] deleteTcpResponseRuleNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteTCPResponseRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteTCPResponseRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -157,14 +148,14 @@ func NewDeleteTCPResponseRuleDefault(code int) *DeleteTCPResponseRuleDefault {
 	}
 }
 
-/* DeleteTCPResponseRuleDefault describes a response with status code -1, with default header values.
+/*DeleteTCPResponseRuleDefault handles this case with default header values.
 
 General Error
 */
 type DeleteTCPResponseRuleDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -179,18 +170,15 @@ func (o *DeleteTCPResponseRuleDefault) Code() int {
 func (o *DeleteTCPResponseRuleDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_response_rules/{index}][%d] deleteTCPResponseRule default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteTCPResponseRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteTCPResponseRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

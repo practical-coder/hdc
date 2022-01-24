@@ -52,7 +52,7 @@ func NewGetReloadOK() *GetReloadOK {
 	return &GetReloadOK{}
 }
 
-/* GetReloadOK describes a response with status code 200, with default header values.
+/*GetReloadOK handles this case with default header values.
 
 Successful operation
 */
@@ -63,6 +63,7 @@ type GetReloadOK struct {
 func (o *GetReloadOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/reloads/{id}][%d] getReloadOK  %+v", 200, o.Payload)
 }
+
 func (o *GetReloadOK) GetPayload() *models.Reload {
 	return o.Payload
 }
@@ -84,13 +85,12 @@ func NewGetReloadNotFound() *GetReloadNotFound {
 	return &GetReloadNotFound{}
 }
 
-/* GetReloadNotFound describes a response with status code 404, with default header values.
+/*GetReloadNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetReloadNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -100,18 +100,15 @@ type GetReloadNotFound struct {
 func (o *GetReloadNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/reloads/{id}][%d] getReloadNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetReloadNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetReloadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -130,14 +127,14 @@ func NewGetReloadDefault(code int) *GetReloadDefault {
 	}
 }
 
-/* GetReloadDefault describes a response with status code -1, with default header values.
+/*GetReloadDefault handles this case with default header values.
 
 General Error
 */
 type GetReloadDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,18 +149,15 @@ func (o *GetReloadDefault) Code() int {
 func (o *GetReloadDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/reloads/{id}][%d] getReload default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetReloadDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetReloadDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

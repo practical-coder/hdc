@@ -6,7 +6,6 @@ package nameserver
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -50,13 +49,12 @@ func NewGetNameserversOK() *GetNameserversOK {
 	return &GetNameserversOK{}
 }
 
-/* GetNameserversOK describes a response with status code 200, with default header values.
+/*GetNameserversOK handles this case with default header values.
 
 Successful operation
 */
 type GetNameserversOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -66,18 +64,15 @@ type GetNameserversOK struct {
 func (o *GetNameserversOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/nameservers][%d] getNameserversOK  %+v", 200, o.Payload)
 }
+
 func (o *GetNameserversOK) GetPayload() *GetNameserversOKBody {
 	return o.Payload
 }
 
 func (o *GetNameserversOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetNameserversOKBody)
 
@@ -96,14 +91,14 @@ func NewGetNameserversDefault(code int) *GetNameserversDefault {
 	}
 }
 
-/* GetNameserversDefault describes a response with status code -1, with default header values.
+/*GetNameserversDefault handles this case with default header values.
 
 General Error
 */
 type GetNameserversDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -118,18 +113,15 @@ func (o *GetNameserversDefault) Code() int {
 func (o *GetNameserversDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/nameservers][%d] getNameservers default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetNameserversDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetNameserversDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -177,36 +169,6 @@ func (o *GetNameserversOKBody) validateData(formats strfmt.Registry) error {
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getNameserversOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getNameserversOK" + "." + "data")
-		}
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get nameservers o k body based on the context it is used
-func (o *GetNameserversOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetNameserversOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := o.Data.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("getNameserversOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getNameserversOK" + "." + "data")
 		}
 		return err
 	}

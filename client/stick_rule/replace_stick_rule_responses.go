@@ -64,7 +64,7 @@ func NewReplaceStickRuleOK() *ReplaceStickRuleOK {
 	return &ReplaceStickRuleOK{}
 }
 
-/* ReplaceStickRuleOK describes a response with status code 200, with default header values.
+/*ReplaceStickRuleOK handles this case with default header values.
 
 Stick Rule replaced
 */
@@ -75,6 +75,7 @@ type ReplaceStickRuleOK struct {
 func (o *ReplaceStickRuleOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRuleOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceStickRuleOK) GetPayload() *models.StickRule {
 	return o.Payload
 }
@@ -96,13 +97,12 @@ func NewReplaceStickRuleAccepted() *ReplaceStickRuleAccepted {
 	return &ReplaceStickRuleAccepted{}
 }
 
-/* ReplaceStickRuleAccepted describes a response with status code 202, with default header values.
+/*ReplaceStickRuleAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceStickRuleAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,18 +112,15 @@ type ReplaceStickRuleAccepted struct {
 func (o *ReplaceStickRuleAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRuleAccepted  %+v", 202, o.Payload)
 }
+
 func (o *ReplaceStickRuleAccepted) GetPayload() *models.StickRule {
 	return o.Payload
 }
 
 func (o *ReplaceStickRuleAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.StickRule)
 
@@ -140,13 +137,12 @@ func NewReplaceStickRuleBadRequest() *ReplaceStickRuleBadRequest {
 	return &ReplaceStickRuleBadRequest{}
 }
 
-/* ReplaceStickRuleBadRequest describes a response with status code 400, with default header values.
+/*ReplaceStickRuleBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceStickRuleBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -156,18 +152,15 @@ type ReplaceStickRuleBadRequest struct {
 func (o *ReplaceStickRuleBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRuleBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceStickRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceStickRuleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,13 +177,12 @@ func NewReplaceStickRuleNotFound() *ReplaceStickRuleNotFound {
 	return &ReplaceStickRuleNotFound{}
 }
 
-/* ReplaceStickRuleNotFound describes a response with status code 404, with default header values.
+/*ReplaceStickRuleNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceStickRuleNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +192,15 @@ type ReplaceStickRuleNotFound struct {
 func (o *ReplaceStickRuleNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRuleNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceStickRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceStickRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -230,14 +219,14 @@ func NewReplaceStickRuleDefault(code int) *ReplaceStickRuleDefault {
 	}
 }
 
-/* ReplaceStickRuleDefault describes a response with status code -1, with default header values.
+/*ReplaceStickRuleDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceStickRuleDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -252,18 +241,15 @@ func (o *ReplaceStickRuleDefault) Code() int {
 func (o *ReplaceStickRuleDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRule default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceStickRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceStickRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

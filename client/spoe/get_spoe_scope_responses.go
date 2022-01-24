@@ -6,7 +6,6 @@ package spoe
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -14,7 +13,6 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 
 	"github.com/haproxytech/client-native/v2/models"
 )
@@ -56,13 +54,12 @@ func NewGetSpoeScopeOK() *GetSpoeScopeOK {
 	return &GetSpoeScopeOK{}
 }
 
-/* GetSpoeScopeOK describes a response with status code 200, with default header values.
+/*GetSpoeScopeOK handles this case with default header values.
 
 Successful operation
 */
 type GetSpoeScopeOK struct {
-
-	/* Spoe configuration file version
+	/*Spoe configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -72,18 +69,15 @@ type GetSpoeScopeOK struct {
 func (o *GetSpoeScopeOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_scopes/{name}][%d] getSpoeScopeOK  %+v", 200, o.Payload)
 }
+
 func (o *GetSpoeScopeOK) GetPayload() *GetSpoeScopeOKBody {
 	return o.Payload
 }
 
 func (o *GetSpoeScopeOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetSpoeScopeOKBody)
 
@@ -100,13 +94,12 @@ func NewGetSpoeScopeNotFound() *GetSpoeScopeNotFound {
 	return &GetSpoeScopeNotFound{}
 }
 
-/* GetSpoeScopeNotFound describes a response with status code 404, with default header values.
+/*GetSpoeScopeNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetSpoeScopeNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -116,18 +109,15 @@ type GetSpoeScopeNotFound struct {
 func (o *GetSpoeScopeNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_scopes/{name}][%d] getSpoeScopeNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetSpoeScopeNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetSpoeScopeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -146,14 +136,14 @@ func NewGetSpoeScopeDefault(code int) *GetSpoeScopeDefault {
 	}
 }
 
-/* GetSpoeScopeDefault describes a response with status code -1, with default header values.
+/*GetSpoeScopeDefault handles this case with default header values.
 
 General Error
 */
 type GetSpoeScopeDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -168,18 +158,15 @@ func (o *GetSpoeScopeDefault) Code() int {
 func (o *GetSpoeScopeDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_scopes/{name}][%d] getSpoeScope default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetSpoeScopeDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetSpoeScopeDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -201,7 +188,7 @@ type GetSpoeScopeOKBody struct {
 
 	// data
 	// Required: true
-	Data *models.SpoeScope `json:"data"`
+	Data models.SpoeScope `json:"data"`
 }
 
 // Validate validates this get spoe scope o k body
@@ -220,53 +207,11 @@ func (o *GetSpoeScopeOKBody) Validate(formats strfmt.Registry) error {
 
 func (o *GetSpoeScopeOKBody) validateData(formats strfmt.Registry) error {
 
-	if err := validate.Required("getSpoeScopeOK"+"."+"data", "body", o.Data); err != nil {
-		return err
-	}
-
-	if err := validate.Required("getSpoeScopeOK"+"."+"data", "body", o.Data); err != nil {
-		return err
-	}
-
-	if o.Data != nil {
-		if err := o.Data.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("getSpoeScopeOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getSpoeScopeOK" + "." + "data")
-			}
-			return err
+	if err := o.Data.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("getSpoeScopeOK" + "." + "data")
 		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get spoe scope o k body based on the context it is used
-func (o *GetSpoeScopeOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetSpoeScopeOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Data != nil {
-		if err := o.Data.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("getSpoeScopeOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getSpoeScopeOK" + "." + "data")
-			}
-			return err
-		}
+		return err
 	}
 
 	return nil

@@ -64,7 +64,7 @@ func NewReplaceFilterOK() *ReplaceFilterOK {
 	return &ReplaceFilterOK{}
 }
 
-/* ReplaceFilterOK describes a response with status code 200, with default header values.
+/*ReplaceFilterOK handles this case with default header values.
 
 Filter replaced
 */
@@ -75,6 +75,7 @@ type ReplaceFilterOK struct {
 func (o *ReplaceFilterOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceFilterOK) GetPayload() *models.Filter {
 	return o.Payload
 }
@@ -96,13 +97,12 @@ func NewReplaceFilterAccepted() *ReplaceFilterAccepted {
 	return &ReplaceFilterAccepted{}
 }
 
-/* ReplaceFilterAccepted describes a response with status code 202, with default header values.
+/*ReplaceFilterAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceFilterAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,18 +112,15 @@ type ReplaceFilterAccepted struct {
 func (o *ReplaceFilterAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterAccepted  %+v", 202, o.Payload)
 }
+
 func (o *ReplaceFilterAccepted) GetPayload() *models.Filter {
 	return o.Payload
 }
 
 func (o *ReplaceFilterAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.Filter)
 
@@ -140,13 +137,12 @@ func NewReplaceFilterBadRequest() *ReplaceFilterBadRequest {
 	return &ReplaceFilterBadRequest{}
 }
 
-/* ReplaceFilterBadRequest describes a response with status code 400, with default header values.
+/*ReplaceFilterBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceFilterBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -156,18 +152,15 @@ type ReplaceFilterBadRequest struct {
 func (o *ReplaceFilterBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceFilterBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceFilterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,13 +177,12 @@ func NewReplaceFilterNotFound() *ReplaceFilterNotFound {
 	return &ReplaceFilterNotFound{}
 }
 
-/* ReplaceFilterNotFound describes a response with status code 404, with default header values.
+/*ReplaceFilterNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceFilterNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +192,15 @@ type ReplaceFilterNotFound struct {
 func (o *ReplaceFilterNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceFilterNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceFilterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -230,14 +219,14 @@ func NewReplaceFilterDefault(code int) *ReplaceFilterDefault {
 	}
 }
 
-/* ReplaceFilterDefault describes a response with status code -1, with default header values.
+/*ReplaceFilterDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceFilterDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -252,18 +241,15 @@ func (o *ReplaceFilterDefault) Code() int {
 func (o *ReplaceFilterDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilter default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceFilterDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceFilterDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

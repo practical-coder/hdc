@@ -58,13 +58,12 @@ func NewDeleteFrontendAccepted() *DeleteFrontendAccepted {
 	return &DeleteFrontendAccepted{}
 }
 
-/* DeleteFrontendAccepted describes a response with status code 202, with default header values.
+/*DeleteFrontendAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteFrontendAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -75,12 +74,8 @@ func (o *DeleteFrontendAccepted) Error() string {
 
 func (o *DeleteFrontendAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	return nil
 }
@@ -90,7 +85,7 @@ func NewDeleteFrontendNoContent() *DeleteFrontendNoContent {
 	return &DeleteFrontendNoContent{}
 }
 
-/* DeleteFrontendNoContent describes a response with status code 204, with default header values.
+/*DeleteFrontendNoContent handles this case with default header values.
 
 Frontend deleted
 */
@@ -111,13 +106,12 @@ func NewDeleteFrontendNotFound() *DeleteFrontendNotFound {
 	return &DeleteFrontendNotFound{}
 }
 
-/* DeleteFrontendNotFound describes a response with status code 404, with default header values.
+/*DeleteFrontendNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteFrontendNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,18 +121,15 @@ type DeleteFrontendNotFound struct {
 func (o *DeleteFrontendNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/frontends/{name}][%d] deleteFrontendNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteFrontendNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteFrontendNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -157,14 +148,14 @@ func NewDeleteFrontendDefault(code int) *DeleteFrontendDefault {
 	}
 }
 
-/* DeleteFrontendDefault describes a response with status code -1, with default header values.
+/*DeleteFrontendDefault handles this case with default header values.
 
 General Error
 */
 type DeleteFrontendDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -179,18 +170,15 @@ func (o *DeleteFrontendDefault) Code() int {
 func (o *DeleteFrontendDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/frontends/{name}][%d] deleteFrontend default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteFrontendDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteFrontendDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

@@ -46,7 +46,7 @@ func NewGetRuntimeServersOK() *GetRuntimeServersOK {
 	return &GetRuntimeServersOK{}
 }
 
-/* GetRuntimeServersOK describes a response with status code 200, with default header values.
+/*GetRuntimeServersOK handles this case with default header values.
 
 Successful operation
 */
@@ -57,6 +57,7 @@ type GetRuntimeServersOK struct {
 func (o *GetRuntimeServersOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/servers][%d] getRuntimeServersOK  %+v", 200, o.Payload)
 }
+
 func (o *GetRuntimeServersOK) GetPayload() models.RuntimeServers {
 	return o.Payload
 }
@@ -78,14 +79,14 @@ func NewGetRuntimeServersDefault(code int) *GetRuntimeServersDefault {
 	}
 }
 
-/* GetRuntimeServersDefault describes a response with status code -1, with default header values.
+/*GetRuntimeServersDefault handles this case with default header values.
 
 General Error
 */
 type GetRuntimeServersDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -100,18 +101,15 @@ func (o *GetRuntimeServersDefault) Code() int {
 func (o *GetRuntimeServersDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/servers][%d] getRuntimeServers default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetRuntimeServersDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetRuntimeServersDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

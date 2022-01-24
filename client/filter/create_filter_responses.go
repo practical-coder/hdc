@@ -64,7 +64,7 @@ func NewCreateFilterCreated() *CreateFilterCreated {
 	return &CreateFilterCreated{}
 }
 
-/* CreateFilterCreated describes a response with status code 201, with default header values.
+/*CreateFilterCreated handles this case with default header values.
 
 Filter created
 */
@@ -75,6 +75,7 @@ type CreateFilterCreated struct {
 func (o *CreateFilterCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/filters][%d] createFilterCreated  %+v", 201, o.Payload)
 }
+
 func (o *CreateFilterCreated) GetPayload() *models.Filter {
 	return o.Payload
 }
@@ -96,13 +97,12 @@ func NewCreateFilterAccepted() *CreateFilterAccepted {
 	return &CreateFilterAccepted{}
 }
 
-/* CreateFilterAccepted describes a response with status code 202, with default header values.
+/*CreateFilterAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type CreateFilterAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,18 +112,15 @@ type CreateFilterAccepted struct {
 func (o *CreateFilterAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/filters][%d] createFilterAccepted  %+v", 202, o.Payload)
 }
+
 func (o *CreateFilterAccepted) GetPayload() *models.Filter {
 	return o.Payload
 }
 
 func (o *CreateFilterAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.Filter)
 
@@ -140,13 +137,12 @@ func NewCreateFilterBadRequest() *CreateFilterBadRequest {
 	return &CreateFilterBadRequest{}
 }
 
-/* CreateFilterBadRequest describes a response with status code 400, with default header values.
+/*CreateFilterBadRequest handles this case with default header values.
 
 Bad request
 */
 type CreateFilterBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -156,18 +152,15 @@ type CreateFilterBadRequest struct {
 func (o *CreateFilterBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/filters][%d] createFilterBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *CreateFilterBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateFilterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,13 +177,12 @@ func NewCreateFilterConflict() *CreateFilterConflict {
 	return &CreateFilterConflict{}
 }
 
-/* CreateFilterConflict describes a response with status code 409, with default header values.
+/*CreateFilterConflict handles this case with default header values.
 
 The specified resource already exists
 */
 type CreateFilterConflict struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +192,15 @@ type CreateFilterConflict struct {
 func (o *CreateFilterConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/filters][%d] createFilterConflict  %+v", 409, o.Payload)
 }
+
 func (o *CreateFilterConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateFilterConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -230,14 +219,14 @@ func NewCreateFilterDefault(code int) *CreateFilterDefault {
 	}
 }
 
-/* CreateFilterDefault describes a response with status code -1, with default header values.
+/*CreateFilterDefault handles this case with default header values.
 
 General Error
 */
 type CreateFilterDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -252,18 +241,15 @@ func (o *CreateFilterDefault) Code() int {
 func (o *CreateFilterDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/filters][%d] createFilter default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *CreateFilterDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateFilterDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

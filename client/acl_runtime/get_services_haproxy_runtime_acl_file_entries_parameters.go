@@ -16,73 +16,59 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetServicesHaproxyRuntimeACLFileEntriesParams creates a new GetServicesHaproxyRuntimeACLFileEntriesParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewGetServicesHaproxyRuntimeACLFileEntriesParams creates a new GetServicesHaproxyRuntimeACLFileEntriesParams object
+// with the default values initialized.
 func NewGetServicesHaproxyRuntimeACLFileEntriesParams() *GetServicesHaproxyRuntimeACLFileEntriesParams {
+	var ()
 	return &GetServicesHaproxyRuntimeACLFileEntriesParams{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetServicesHaproxyRuntimeACLFileEntriesParamsWithTimeout creates a new GetServicesHaproxyRuntimeACLFileEntriesParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewGetServicesHaproxyRuntimeACLFileEntriesParamsWithTimeout(timeout time.Duration) *GetServicesHaproxyRuntimeACLFileEntriesParams {
+	var ()
 	return &GetServicesHaproxyRuntimeACLFileEntriesParams{
+
 		timeout: timeout,
 	}
 }
 
 // NewGetServicesHaproxyRuntimeACLFileEntriesParamsWithContext creates a new GetServicesHaproxyRuntimeACLFileEntriesParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewGetServicesHaproxyRuntimeACLFileEntriesParamsWithContext(ctx context.Context) *GetServicesHaproxyRuntimeACLFileEntriesParams {
+	var ()
 	return &GetServicesHaproxyRuntimeACLFileEntriesParams{
+
 		Context: ctx,
 	}
 }
 
 // NewGetServicesHaproxyRuntimeACLFileEntriesParamsWithHTTPClient creates a new GetServicesHaproxyRuntimeACLFileEntriesParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetServicesHaproxyRuntimeACLFileEntriesParamsWithHTTPClient(client *http.Client) *GetServicesHaproxyRuntimeACLFileEntriesParams {
+	var ()
 	return &GetServicesHaproxyRuntimeACLFileEntriesParams{
 		HTTPClient: client,
 	}
 }
 
-/* GetServicesHaproxyRuntimeACLFileEntriesParams contains all the parameters to send to the API endpoint
-   for the get services haproxy runtime ACL file entries operation.
-
-   Typically these are written to a http.Request.
+/*GetServicesHaproxyRuntimeACLFileEntriesParams contains all the parameters to send to the API endpoint
+for the get services haproxy runtime ACL file entries operation typically these are written to a http.Request
 */
 type GetServicesHaproxyRuntimeACLFileEntriesParams struct {
 
-	/* ACLID.
+	/*ACLID
+	  ACL ID
 
-	   ACL ID
 	*/
 	ACLID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the get services haproxy runtime ACL file entries params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetServicesHaproxyRuntimeACLFileEntriesParams) WithDefaults() *GetServicesHaproxyRuntimeACLFileEntriesParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the get services haproxy runtime ACL file entries params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetServicesHaproxyRuntimeACLFileEntriesParams) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get services haproxy runtime ACL file entries params
@@ -141,7 +127,6 @@ func (o *GetServicesHaproxyRuntimeACLFileEntriesParams) WriteToRequest(r runtime
 	qrACLID := o.ACLID
 	qACLID := qrACLID
 	if qACLID != "" {
-
 		if err := r.SetQueryParam("acl_id", qACLID); err != nil {
 			return err
 		}

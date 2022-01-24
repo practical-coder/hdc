@@ -58,7 +58,7 @@ func NewPostServicesHaproxyRuntimeACLFileEntriesCreated() *PostServicesHaproxyRu
 	return &PostServicesHaproxyRuntimeACLFileEntriesCreated{}
 }
 
-/* PostServicesHaproxyRuntimeACLFileEntriesCreated describes a response with status code 201, with default header values.
+/*PostServicesHaproxyRuntimeACLFileEntriesCreated handles this case with default header values.
 
 ACL entry created
 */
@@ -69,6 +69,7 @@ type PostServicesHaproxyRuntimeACLFileEntriesCreated struct {
 func (o *PostServicesHaproxyRuntimeACLFileEntriesCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/acl_file_entries][%d] postServicesHaproxyRuntimeAclFileEntriesCreated  %+v", 201, o.Payload)
 }
+
 func (o *PostServicesHaproxyRuntimeACLFileEntriesCreated) GetPayload() *models.ACLFileEntry {
 	return o.Payload
 }
@@ -90,13 +91,12 @@ func NewPostServicesHaproxyRuntimeACLFileEntriesBadRequest() *PostServicesHaprox
 	return &PostServicesHaproxyRuntimeACLFileEntriesBadRequest{}
 }
 
-/* PostServicesHaproxyRuntimeACLFileEntriesBadRequest describes a response with status code 400, with default header values.
+/*PostServicesHaproxyRuntimeACLFileEntriesBadRequest handles this case with default header values.
 
 Bad request
 */
 type PostServicesHaproxyRuntimeACLFileEntriesBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,18 +106,15 @@ type PostServicesHaproxyRuntimeACLFileEntriesBadRequest struct {
 func (o *PostServicesHaproxyRuntimeACLFileEntriesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/acl_file_entries][%d] postServicesHaproxyRuntimeAclFileEntriesBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *PostServicesHaproxyRuntimeACLFileEntriesBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *PostServicesHaproxyRuntimeACLFileEntriesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -134,13 +131,12 @@ func NewPostServicesHaproxyRuntimeACLFileEntriesConflict() *PostServicesHaproxyR
 	return &PostServicesHaproxyRuntimeACLFileEntriesConflict{}
 }
 
-/* PostServicesHaproxyRuntimeACLFileEntriesConflict describes a response with status code 409, with default header values.
+/*PostServicesHaproxyRuntimeACLFileEntriesConflict handles this case with default header values.
 
 The specified resource already exists
 */
 type PostServicesHaproxyRuntimeACLFileEntriesConflict struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -150,18 +146,15 @@ type PostServicesHaproxyRuntimeACLFileEntriesConflict struct {
 func (o *PostServicesHaproxyRuntimeACLFileEntriesConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/acl_file_entries][%d] postServicesHaproxyRuntimeAclFileEntriesConflict  %+v", 409, o.Payload)
 }
+
 func (o *PostServicesHaproxyRuntimeACLFileEntriesConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *PostServicesHaproxyRuntimeACLFileEntriesConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -180,14 +173,14 @@ func NewPostServicesHaproxyRuntimeACLFileEntriesDefault(code int) *PostServicesH
 	}
 }
 
-/* PostServicesHaproxyRuntimeACLFileEntriesDefault describes a response with status code -1, with default header values.
+/*PostServicesHaproxyRuntimeACLFileEntriesDefault handles this case with default header values.
 
 General Error
 */
 type PostServicesHaproxyRuntimeACLFileEntriesDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -202,18 +195,15 @@ func (o *PostServicesHaproxyRuntimeACLFileEntriesDefault) Code() int {
 func (o *PostServicesHaproxyRuntimeACLFileEntriesDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/acl_file_entries][%d] PostServicesHaproxyRuntimeACLFileEntries default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *PostServicesHaproxyRuntimeACLFileEntriesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *PostServicesHaproxyRuntimeACLFileEntriesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

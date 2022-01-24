@@ -6,7 +6,6 @@ package spoe
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -54,13 +53,12 @@ func NewGetOneSpoeFileOK() *GetOneSpoeFileOK {
 	return &GetOneSpoeFileOK{}
 }
 
-/* GetOneSpoeFileOK describes a response with status code 200, with default header values.
+/*GetOneSpoeFileOK handles this case with default header values.
 
 Successful operation
 */
 type GetOneSpoeFileOK struct {
-
-	/* Spoe configuration file version
+	/*Spoe configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -70,18 +68,15 @@ type GetOneSpoeFileOK struct {
 func (o *GetOneSpoeFileOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files/{name}][%d] getOneSpoeFileOK  %+v", 200, o.Payload)
 }
+
 func (o *GetOneSpoeFileOK) GetPayload() *GetOneSpoeFileOKBody {
 	return o.Payload
 }
 
 func (o *GetOneSpoeFileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetOneSpoeFileOKBody)
 
@@ -98,13 +93,12 @@ func NewGetOneSpoeFileNotFound() *GetOneSpoeFileNotFound {
 	return &GetOneSpoeFileNotFound{}
 }
 
-/* GetOneSpoeFileNotFound describes a response with status code 404, with default header values.
+/*GetOneSpoeFileNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetOneSpoeFileNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -114,18 +108,15 @@ type GetOneSpoeFileNotFound struct {
 func (o *GetOneSpoeFileNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files/{name}][%d] getOneSpoeFileNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetOneSpoeFileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetOneSpoeFileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -144,14 +135,14 @@ func NewGetOneSpoeFileDefault(code int) *GetOneSpoeFileDefault {
 	}
 }
 
-/* GetOneSpoeFileDefault describes a response with status code -1, with default header values.
+/*GetOneSpoeFileDefault handles this case with default header values.
 
 General Error
 */
 type GetOneSpoeFileDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -166,18 +157,15 @@ func (o *GetOneSpoeFileDefault) Code() int {
 func (o *GetOneSpoeFileDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files/{name}][%d] getOneSpoeFile default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetOneSpoeFileDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetOneSpoeFileDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -203,11 +191,6 @@ type GetOneSpoeFileOKBody struct {
 
 // Validate validates this get one spoe file o k body
 func (o *GetOneSpoeFileOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this get one spoe file o k body based on context it is used
-func (o *GetOneSpoeFileOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

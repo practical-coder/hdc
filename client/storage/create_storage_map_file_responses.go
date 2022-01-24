@@ -58,7 +58,7 @@ func NewCreateStorageMapFileCreated() *CreateStorageMapFileCreated {
 	return &CreateStorageMapFileCreated{}
 }
 
-/* CreateStorageMapFileCreated describes a response with status code 201, with default header values.
+/*CreateStorageMapFileCreated handles this case with default header values.
 
 Map file created with its entries
 */
@@ -69,6 +69,7 @@ type CreateStorageMapFileCreated struct {
 func (o *CreateStorageMapFileCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/maps][%d] createStorageMapFileCreated  %+v", 201, o.Payload)
 }
+
 func (o *CreateStorageMapFileCreated) GetPayload() *models.Map {
 	return o.Payload
 }
@@ -90,13 +91,12 @@ func NewCreateStorageMapFileBadRequest() *CreateStorageMapFileBadRequest {
 	return &CreateStorageMapFileBadRequest{}
 }
 
-/* CreateStorageMapFileBadRequest describes a response with status code 400, with default header values.
+/*CreateStorageMapFileBadRequest handles this case with default header values.
 
 Bad request
 */
 type CreateStorageMapFileBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,18 +106,15 @@ type CreateStorageMapFileBadRequest struct {
 func (o *CreateStorageMapFileBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/maps][%d] createStorageMapFileBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *CreateStorageMapFileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateStorageMapFileBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -134,13 +131,12 @@ func NewCreateStorageMapFileConflict() *CreateStorageMapFileConflict {
 	return &CreateStorageMapFileConflict{}
 }
 
-/* CreateStorageMapFileConflict describes a response with status code 409, with default header values.
+/*CreateStorageMapFileConflict handles this case with default header values.
 
 The specified resource already exists
 */
 type CreateStorageMapFileConflict struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -150,18 +146,15 @@ type CreateStorageMapFileConflict struct {
 func (o *CreateStorageMapFileConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/maps][%d] createStorageMapFileConflict  %+v", 409, o.Payload)
 }
+
 func (o *CreateStorageMapFileConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateStorageMapFileConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -180,14 +173,14 @@ func NewCreateStorageMapFileDefault(code int) *CreateStorageMapFileDefault {
 	}
 }
 
-/* CreateStorageMapFileDefault describes a response with status code -1, with default header values.
+/*CreateStorageMapFileDefault handles this case with default header values.
 
 General Error
 */
 type CreateStorageMapFileDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -202,18 +195,15 @@ func (o *CreateStorageMapFileDefault) Code() int {
 func (o *CreateStorageMapFileDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/maps][%d] createStorageMapFile default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *CreateStorageMapFileDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateStorageMapFileDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

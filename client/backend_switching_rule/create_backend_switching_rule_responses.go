@@ -64,7 +64,7 @@ func NewCreateBackendSwitchingRuleCreated() *CreateBackendSwitchingRuleCreated {
 	return &CreateBackendSwitchingRuleCreated{}
 }
 
-/* CreateBackendSwitchingRuleCreated describes a response with status code 201, with default header values.
+/*CreateBackendSwitchingRuleCreated handles this case with default header values.
 
 Backend Switching Rule created
 */
@@ -75,6 +75,7 @@ type CreateBackendSwitchingRuleCreated struct {
 func (o *CreateBackendSwitchingRuleCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backend_switching_rules][%d] createBackendSwitchingRuleCreated  %+v", 201, o.Payload)
 }
+
 func (o *CreateBackendSwitchingRuleCreated) GetPayload() *models.BackendSwitchingRule {
 	return o.Payload
 }
@@ -96,13 +97,12 @@ func NewCreateBackendSwitchingRuleAccepted() *CreateBackendSwitchingRuleAccepted
 	return &CreateBackendSwitchingRuleAccepted{}
 }
 
-/* CreateBackendSwitchingRuleAccepted describes a response with status code 202, with default header values.
+/*CreateBackendSwitchingRuleAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type CreateBackendSwitchingRuleAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,18 +112,15 @@ type CreateBackendSwitchingRuleAccepted struct {
 func (o *CreateBackendSwitchingRuleAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backend_switching_rules][%d] createBackendSwitchingRuleAccepted  %+v", 202, o.Payload)
 }
+
 func (o *CreateBackendSwitchingRuleAccepted) GetPayload() *models.BackendSwitchingRule {
 	return o.Payload
 }
 
 func (o *CreateBackendSwitchingRuleAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.BackendSwitchingRule)
 
@@ -140,13 +137,12 @@ func NewCreateBackendSwitchingRuleBadRequest() *CreateBackendSwitchingRuleBadReq
 	return &CreateBackendSwitchingRuleBadRequest{}
 }
 
-/* CreateBackendSwitchingRuleBadRequest describes a response with status code 400, with default header values.
+/*CreateBackendSwitchingRuleBadRequest handles this case with default header values.
 
 Bad request
 */
 type CreateBackendSwitchingRuleBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -156,18 +152,15 @@ type CreateBackendSwitchingRuleBadRequest struct {
 func (o *CreateBackendSwitchingRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backend_switching_rules][%d] createBackendSwitchingRuleBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *CreateBackendSwitchingRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateBackendSwitchingRuleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,13 +177,12 @@ func NewCreateBackendSwitchingRuleConflict() *CreateBackendSwitchingRuleConflict
 	return &CreateBackendSwitchingRuleConflict{}
 }
 
-/* CreateBackendSwitchingRuleConflict describes a response with status code 409, with default header values.
+/*CreateBackendSwitchingRuleConflict handles this case with default header values.
 
 The specified resource already exists
 */
 type CreateBackendSwitchingRuleConflict struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +192,15 @@ type CreateBackendSwitchingRuleConflict struct {
 func (o *CreateBackendSwitchingRuleConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backend_switching_rules][%d] createBackendSwitchingRuleConflict  %+v", 409, o.Payload)
 }
+
 func (o *CreateBackendSwitchingRuleConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateBackendSwitchingRuleConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -230,14 +219,14 @@ func NewCreateBackendSwitchingRuleDefault(code int) *CreateBackendSwitchingRuleD
 	}
 }
 
-/* CreateBackendSwitchingRuleDefault describes a response with status code -1, with default header values.
+/*CreateBackendSwitchingRuleDefault handles this case with default header values.
 
 General Error
 */
 type CreateBackendSwitchingRuleDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -252,18 +241,15 @@ func (o *CreateBackendSwitchingRuleDefault) Code() int {
 func (o *CreateBackendSwitchingRuleDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backend_switching_rules][%d] createBackendSwitchingRule default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *CreateBackendSwitchingRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateBackendSwitchingRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

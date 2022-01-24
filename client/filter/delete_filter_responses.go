@@ -58,13 +58,12 @@ func NewDeleteFilterAccepted() *DeleteFilterAccepted {
 	return &DeleteFilterAccepted{}
 }
 
-/* DeleteFilterAccepted describes a response with status code 202, with default header values.
+/*DeleteFilterAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteFilterAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -75,12 +74,8 @@ func (o *DeleteFilterAccepted) Error() string {
 
 func (o *DeleteFilterAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	return nil
 }
@@ -90,7 +85,7 @@ func NewDeleteFilterNoContent() *DeleteFilterNoContent {
 	return &DeleteFilterNoContent{}
 }
 
-/* DeleteFilterNoContent describes a response with status code 204, with default header values.
+/*DeleteFilterNoContent handles this case with default header values.
 
 Filter deleted
 */
@@ -111,13 +106,12 @@ func NewDeleteFilterNotFound() *DeleteFilterNotFound {
 	return &DeleteFilterNotFound{}
 }
 
-/* DeleteFilterNotFound describes a response with status code 404, with default header values.
+/*DeleteFilterNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteFilterNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,18 +121,15 @@ type DeleteFilterNotFound struct {
 func (o *DeleteFilterNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/filters/{index}][%d] deleteFilterNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteFilterNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteFilterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -157,14 +148,14 @@ func NewDeleteFilterDefault(code int) *DeleteFilterDefault {
 	}
 }
 
-/* DeleteFilterDefault describes a response with status code -1, with default header values.
+/*DeleteFilterDefault handles this case with default header values.
 
 General Error
 */
 type DeleteFilterDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -179,18 +170,15 @@ func (o *DeleteFilterDefault) Code() int {
 func (o *DeleteFilterDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/filters/{index}][%d] deleteFilter default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteFilterDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteFilterDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

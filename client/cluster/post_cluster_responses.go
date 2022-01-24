@@ -52,7 +52,7 @@ func NewPostClusterOK() *PostClusterOK {
 	return &PostClusterOK{}
 }
 
-/* PostClusterOK describes a response with status code 200, with default header values.
+/*PostClusterOK handles this case with default header values.
 
 Cluster settings changed
 */
@@ -63,6 +63,7 @@ type PostClusterOK struct {
 func (o *PostClusterOK) Error() string {
 	return fmt.Sprintf("[POST /cluster][%d] postClusterOK  %+v", 200, o.Payload)
 }
+
 func (o *PostClusterOK) GetPayload() *models.ClusterSettings {
 	return o.Payload
 }
@@ -84,13 +85,12 @@ func NewPostClusterBadRequest() *PostClusterBadRequest {
 	return &PostClusterBadRequest{}
 }
 
-/* PostClusterBadRequest describes a response with status code 400, with default header values.
+/*PostClusterBadRequest handles this case with default header values.
 
 Bad request
 */
 type PostClusterBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -100,18 +100,15 @@ type PostClusterBadRequest struct {
 func (o *PostClusterBadRequest) Error() string {
 	return fmt.Sprintf("[POST /cluster][%d] postClusterBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *PostClusterBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *PostClusterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -130,14 +127,14 @@ func NewPostClusterDefault(code int) *PostClusterDefault {
 	}
 }
 
-/* PostClusterDefault describes a response with status code -1, with default header values.
+/*PostClusterDefault handles this case with default header values.
 
 General Error
 */
 type PostClusterDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,18 +149,15 @@ func (o *PostClusterDefault) Code() int {
 func (o *PostClusterDefault) Error() string {
 	return fmt.Sprintf("[POST /cluster][%d] postCluster default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *PostClusterDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *PostClusterDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

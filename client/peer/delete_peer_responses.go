@@ -58,13 +58,12 @@ func NewDeletePeerAccepted() *DeletePeerAccepted {
 	return &DeletePeerAccepted{}
 }
 
-/* DeletePeerAccepted describes a response with status code 202, with default header values.
+/*DeletePeerAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeletePeerAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -75,12 +74,8 @@ func (o *DeletePeerAccepted) Error() string {
 
 func (o *DeletePeerAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	return nil
 }
@@ -90,7 +85,7 @@ func NewDeletePeerNoContent() *DeletePeerNoContent {
 	return &DeletePeerNoContent{}
 }
 
-/* DeletePeerNoContent describes a response with status code 204, with default header values.
+/*DeletePeerNoContent handles this case with default header values.
 
 Peer deleted
 */
@@ -111,13 +106,12 @@ func NewDeletePeerNotFound() *DeletePeerNotFound {
 	return &DeletePeerNotFound{}
 }
 
-/* DeletePeerNotFound describes a response with status code 404, with default header values.
+/*DeletePeerNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeletePeerNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,18 +121,15 @@ type DeletePeerNotFound struct {
 func (o *DeletePeerNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/peer_section/{name}][%d] deletePeerNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeletePeerNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeletePeerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -157,14 +148,14 @@ func NewDeletePeerDefault(code int) *DeletePeerDefault {
 	}
 }
 
-/* DeletePeerDefault describes a response with status code -1, with default header values.
+/*DeletePeerDefault handles this case with default header values.
 
 General Error
 */
 type DeletePeerDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -179,18 +170,15 @@ func (o *DeletePeerDefault) Code() int {
 func (o *DeletePeerDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/peer_section/{name}][%d] deletePeer default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeletePeerDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeletePeerDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

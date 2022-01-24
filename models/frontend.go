@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -18,7 +17,6 @@ import (
 // Frontend Frontend
 //
 // HAProxy frontend configuration
-// Example: {"default_backend":"test_backend","http_connection_mode":"http-keep-alive","maxconn":2000,"mode":"http","name":"test_frontend"}
 //
 // swagger:model frontend
 type Frontend struct {
@@ -201,11 +199,12 @@ func (m *Frontend) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Frontend) validateBindProcess(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.BindProcess) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("bind_process", "body", m.BindProcess, `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("bind_process", "body", string(m.BindProcess), `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -242,6 +241,7 @@ func (m *Frontend) validateClitcpkaEnum(path, location string, value string) err
 }
 
 func (m *Frontend) validateClitcpka(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Clitcpka) { // not required
 		return nil
 	}
@@ -281,6 +281,7 @@ func (m *Frontend) validateContstatsEnum(path, location string, value string) er
 }
 
 func (m *Frontend) validateContstats(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Contstats) { // not required
 		return nil
 	}
@@ -294,11 +295,12 @@ func (m *Frontend) validateContstats(formats strfmt.Registry) error {
 }
 
 func (m *Frontend) validateDefaultBackend(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.DefaultBackend) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("default_backend", "body", m.DefaultBackend, `^[A-Za-z0-9-_.:]+$`); err != nil {
+	if err := validate.Pattern("default_backend", "body", string(m.DefaultBackend), `^[A-Za-z0-9-_.:]+$`); err != nil {
 		return err
 	}
 
@@ -335,6 +337,7 @@ func (m *Frontend) validateDontlognullEnum(path, location string, value string) 
 }
 
 func (m *Frontend) validateDontlognull(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Dontlognull) { // not required
 		return nil
 	}
@@ -348,6 +351,7 @@ func (m *Frontend) validateDontlognull(formats strfmt.Registry) error {
 }
 
 func (m *Frontend) validateForwardfor(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Forwardfor) { // not required
 		return nil
 	}
@@ -356,8 +360,6 @@ func (m *Frontend) validateForwardfor(formats strfmt.Registry) error {
 		if err := m.Forwardfor.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("forwardfor")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("forwardfor")
 			}
 			return err
 		}
@@ -396,6 +398,7 @@ func (m *Frontend) validateHTTPBufferRequestEnum(path, location string, value st
 }
 
 func (m *Frontend) validateHTTPBufferRequest(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.HTTPBufferRequest) { // not required
 		return nil
 	}
@@ -438,6 +441,7 @@ func (m *Frontend) validateHTTPUseHtxEnum(path, location string, value string) e
 }
 
 func (m *Frontend) validateHTTPUseHtx(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.HTTPUseHtx) { // not required
 		return nil
 	}
@@ -467,11 +471,11 @@ const (
 	// FrontendHTTPConnectionModeHttpclose captures enum value "httpclose"
 	FrontendHTTPConnectionModeHttpclose string = "httpclose"
 
-	// FrontendHTTPConnectionModeHTTPDashServerDashClose captures enum value "http-server-close"
-	FrontendHTTPConnectionModeHTTPDashServerDashClose string = "http-server-close"
+	// FrontendHTTPConnectionModeHTTPServerClose captures enum value "http-server-close"
+	FrontendHTTPConnectionModeHTTPServerClose string = "http-server-close"
 
-	// FrontendHTTPConnectionModeHTTPDashKeepDashAlive captures enum value "http-keep-alive"
-	FrontendHTTPConnectionModeHTTPDashKeepDashAlive string = "http-keep-alive"
+	// FrontendHTTPConnectionModeHTTPKeepAlive captures enum value "http-keep-alive"
+	FrontendHTTPConnectionModeHTTPKeepAlive string = "http-keep-alive"
 )
 
 // prop value enum
@@ -483,6 +487,7 @@ func (m *Frontend) validateHTTPConnectionModeEnum(path, location string, value s
 }
 
 func (m *Frontend) validateHTTPConnectionMode(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.HTTPConnectionMode) { // not required
 		return nil
 	}
@@ -525,6 +530,7 @@ func (m *Frontend) validateLogSeparateErrorsEnum(path, location string, value st
 }
 
 func (m *Frontend) validateLogSeparateErrors(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.LogSeparateErrors) { // not required
 		return nil
 	}
@@ -538,11 +544,12 @@ func (m *Frontend) validateLogSeparateErrors(formats strfmt.Registry) error {
 }
 
 func (m *Frontend) validateLogTag(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.LogTag) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("log_tag", "body", m.LogTag, `^[A-Za-z0-9-_.:]+$`); err != nil {
+	if err := validate.Pattern("log_tag", "body", string(m.LogTag), `^[A-Za-z0-9-_.:]+$`); err != nil {
 		return err
 	}
 
@@ -579,6 +586,7 @@ func (m *Frontend) validateLogasapEnum(path, location string, value string) erro
 }
 
 func (m *Frontend) validateLogasap(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Logasap) { // not required
 		return nil
 	}
@@ -621,6 +629,7 @@ func (m *Frontend) validateModeEnum(path, location string, value string) error {
 }
 
 func (m *Frontend) validateMode(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Mode) { // not required
 		return nil
 	}
@@ -634,6 +643,7 @@ func (m *Frontend) validateMode(formats strfmt.Registry) error {
 }
 
 func (m *Frontend) validateMonitorFail(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.MonitorFail) { // not required
 		return nil
 	}
@@ -642,8 +652,6 @@ func (m *Frontend) validateMonitorFail(formats strfmt.Registry) error {
 		if err := m.MonitorFail.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("monitor_fail")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("monitor_fail")
 			}
 			return err
 		}
@@ -653,6 +661,7 @@ func (m *Frontend) validateMonitorFail(formats strfmt.Registry) error {
 }
 
 func (m *Frontend) validateMonitorURI(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.MonitorURI) { // not required
 		return nil
 	}
@@ -660,8 +669,6 @@ func (m *Frontend) validateMonitorURI(formats strfmt.Registry) error {
 	if err := m.MonitorURI.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("monitor_uri")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("monitor_uri")
 		}
 		return err
 	}
@@ -671,11 +678,11 @@ func (m *Frontend) validateMonitorURI(formats strfmt.Registry) error {
 
 func (m *Frontend) validateName(formats strfmt.Registry) error {
 
-	if err := validate.RequiredString("name", "body", m.Name); err != nil {
+	if err := validate.RequiredString("name", "body", string(m.Name)); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("name", "body", m.Name, `^[A-Za-z0-9-_.:]+$`); err != nil {
+	if err := validate.Pattern("name", "body", string(m.Name), `^[A-Za-z0-9-_.:]+$`); err != nil {
 		return err
 	}
 
@@ -683,6 +690,7 @@ func (m *Frontend) validateName(formats strfmt.Registry) error {
 }
 
 func (m *Frontend) validateStatsOptions(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.StatsOptions) { // not required
 		return nil
 	}
@@ -691,96 +699,6 @@ func (m *Frontend) validateStatsOptions(formats strfmt.Registry) error {
 		if err := m.StatsOptions.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stats_options")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("stats_options")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this frontend based on the context it is used
-func (m *Frontend) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateForwardfor(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateMonitorFail(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateMonitorURI(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateStatsOptions(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *Frontend) contextValidateForwardfor(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Forwardfor != nil {
-		if err := m.Forwardfor.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("forwardfor")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("forwardfor")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *Frontend) contextValidateMonitorFail(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.MonitorFail != nil {
-		if err := m.MonitorFail.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("monitor_fail")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("monitor_fail")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *Frontend) contextValidateMonitorURI(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := m.MonitorURI.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("monitor_uri")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("monitor_uri")
-		}
-		return err
-	}
-
-	return nil
-}
-
-func (m *Frontend) contextValidateStatsOptions(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.StatsOptions != nil {
-		if err := m.StatsOptions.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("stats_options")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("stats_options")
 			}
 			return err
 		}

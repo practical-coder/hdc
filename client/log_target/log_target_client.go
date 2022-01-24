@@ -23,20 +23,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateLogTarget(params *CreateLogTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateLogTargetCreated, *CreateLogTargetAccepted, error)
+	CreateLogTarget(params *CreateLogTargetParams, authInfo runtime.ClientAuthInfoWriter) (*CreateLogTargetCreated, *CreateLogTargetAccepted, error)
 
-	DeleteLogTarget(params *DeleteLogTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteLogTargetAccepted, *DeleteLogTargetNoContent, error)
+	DeleteLogTarget(params *DeleteLogTargetParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteLogTargetAccepted, *DeleteLogTargetNoContent, error)
 
-	GetLogTarget(params *GetLogTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogTargetOK, error)
+	GetLogTarget(params *GetLogTargetParams, authInfo runtime.ClientAuthInfoWriter) (*GetLogTargetOK, error)
 
-	GetLogTargets(params *GetLogTargetsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogTargetsOK, error)
+	GetLogTargets(params *GetLogTargetsParams, authInfo runtime.ClientAuthInfoWriter) (*GetLogTargetsOK, error)
 
-	ReplaceLogTarget(params *ReplaceLogTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceLogTargetOK, *ReplaceLogTargetAccepted, error)
+	ReplaceLogTarget(params *ReplaceLogTargetParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceLogTargetOK, *ReplaceLogTargetAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,12 +43,13 @@ type ClientService interface {
 
   Adds a new Log Target of the specified type in the specified parent.
 */
-func (a *Client) CreateLogTarget(params *CreateLogTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateLogTargetCreated, *CreateLogTargetAccepted, error) {
+func (a *Client) CreateLogTarget(params *CreateLogTargetParams, authInfo runtime.ClientAuthInfoWriter) (*CreateLogTargetCreated, *CreateLogTargetAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateLogTargetParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createLogTarget",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/log_targets",
@@ -63,12 +61,7 @@ func (a *Client) CreateLogTarget(params *CreateLogTargetParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -88,12 +81,13 @@ func (a *Client) CreateLogTarget(params *CreateLogTargetParams, authInfo runtime
 
   Deletes a Log Target configuration by it's index from the specified parent.
 */
-func (a *Client) DeleteLogTarget(params *DeleteLogTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteLogTargetAccepted, *DeleteLogTargetNoContent, error) {
+func (a *Client) DeleteLogTarget(params *DeleteLogTargetParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteLogTargetAccepted, *DeleteLogTargetNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteLogTargetParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteLogTarget",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/log_targets/{index}",
@@ -105,12 +99,7 @@ func (a *Client) DeleteLogTarget(params *DeleteLogTargetParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -130,12 +119,13 @@ func (a *Client) DeleteLogTarget(params *DeleteLogTargetParams, authInfo runtime
 
   Returns one Log Target configuration by it's index in the specified parent.
 */
-func (a *Client) GetLogTarget(params *GetLogTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogTargetOK, error) {
+func (a *Client) GetLogTarget(params *GetLogTargetParams, authInfo runtime.ClientAuthInfoWriter) (*GetLogTargetOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLogTargetParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getLogTarget",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/log_targets/{index}",
@@ -147,12 +137,7 @@ func (a *Client) GetLogTarget(params *GetLogTargetParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -170,12 +155,13 @@ func (a *Client) GetLogTarget(params *GetLogTargetParams, authInfo runtime.Clien
 
   Returns all Log Targets that are configured in specified parent.
 */
-func (a *Client) GetLogTargets(params *GetLogTargetsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogTargetsOK, error) {
+func (a *Client) GetLogTargets(params *GetLogTargetsParams, authInfo runtime.ClientAuthInfoWriter) (*GetLogTargetsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLogTargetsParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getLogTargets",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/log_targets",
@@ -187,12 +173,7 @@ func (a *Client) GetLogTargets(params *GetLogTargetsParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -210,12 +191,13 @@ func (a *Client) GetLogTargets(params *GetLogTargetsParams, authInfo runtime.Cli
 
   Replaces a Log Target configuration by it's index in the specified parent.
 */
-func (a *Client) ReplaceLogTarget(params *ReplaceLogTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceLogTargetOK, *ReplaceLogTargetAccepted, error) {
+func (a *Client) ReplaceLogTarget(params *ReplaceLogTargetParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceLogTargetOK, *ReplaceLogTargetAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceLogTargetParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "replaceLogTarget",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/log_targets/{index}",
@@ -227,12 +209,7 @@ func (a *Client) ReplaceLogTarget(params *ReplaceLogTargetParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}

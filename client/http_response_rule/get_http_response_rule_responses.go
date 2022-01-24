@@ -6,7 +6,6 @@ package http_response_rule
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -55,13 +54,12 @@ func NewGetHTTPResponseRuleOK() *GetHTTPResponseRuleOK {
 	return &GetHTTPResponseRuleOK{}
 }
 
-/* GetHTTPResponseRuleOK describes a response with status code 200, with default header values.
+/*GetHTTPResponseRuleOK handles this case with default header values.
 
 Successful operation
 */
 type GetHTTPResponseRuleOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -71,18 +69,15 @@ type GetHTTPResponseRuleOK struct {
 func (o *GetHTTPResponseRuleOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_response_rules/{index}][%d] getHttpResponseRuleOK  %+v", 200, o.Payload)
 }
+
 func (o *GetHTTPResponseRuleOK) GetPayload() *GetHTTPResponseRuleOKBody {
 	return o.Payload
 }
 
 func (o *GetHTTPResponseRuleOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetHTTPResponseRuleOKBody)
 
@@ -99,13 +94,12 @@ func NewGetHTTPResponseRuleNotFound() *GetHTTPResponseRuleNotFound {
 	return &GetHTTPResponseRuleNotFound{}
 }
 
-/* GetHTTPResponseRuleNotFound describes a response with status code 404, with default header values.
+/*GetHTTPResponseRuleNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetHTTPResponseRuleNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -115,18 +109,15 @@ type GetHTTPResponseRuleNotFound struct {
 func (o *GetHTTPResponseRuleNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_response_rules/{index}][%d] getHttpResponseRuleNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetHTTPResponseRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetHTTPResponseRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -145,14 +136,14 @@ func NewGetHTTPResponseRuleDefault(code int) *GetHTTPResponseRuleDefault {
 	}
 }
 
-/* GetHTTPResponseRuleDefault describes a response with status code -1, with default header values.
+/*GetHTTPResponseRuleDefault handles this case with default header values.
 
 General Error
 */
 type GetHTTPResponseRuleDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -167,18 +158,15 @@ func (o *GetHTTPResponseRuleDefault) Code() int {
 func (o *GetHTTPResponseRuleDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_response_rules/{index}][%d] getHTTPResponseRule default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetHTTPResponseRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetHTTPResponseRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -217,6 +205,7 @@ func (o *GetHTTPResponseRuleOKBody) Validate(formats strfmt.Registry) error {
 }
 
 func (o *GetHTTPResponseRuleOKBody) validateData(formats strfmt.Registry) error {
+
 	if swag.IsZero(o.Data) { // not required
 		return nil
 	}
@@ -225,38 +214,6 @@ func (o *GetHTTPResponseRuleOKBody) validateData(formats strfmt.Registry) error 
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getHttpResponseRuleOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getHttpResponseRuleOK" + "." + "data")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get HTTP response rule o k body based on the context it is used
-func (o *GetHTTPResponseRuleOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetHTTPResponseRuleOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Data != nil {
-		if err := o.Data.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("getHttpResponseRuleOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getHttpResponseRuleOK" + "." + "data")
 			}
 			return err
 		}

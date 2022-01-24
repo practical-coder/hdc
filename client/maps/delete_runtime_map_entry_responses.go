@@ -52,7 +52,7 @@ func NewDeleteRuntimeMapEntryNoContent() *DeleteRuntimeMapEntryNoContent {
 	return &DeleteRuntimeMapEntryNoContent{}
 }
 
-/* DeleteRuntimeMapEntryNoContent describes a response with status code 204, with default header values.
+/*DeleteRuntimeMapEntryNoContent handles this case with default header values.
 
 Map key/value deleted
 */
@@ -73,13 +73,12 @@ func NewDeleteRuntimeMapEntryNotFound() *DeleteRuntimeMapEntryNotFound {
 	return &DeleteRuntimeMapEntryNotFound{}
 }
 
-/* DeleteRuntimeMapEntryNotFound describes a response with status code 404, with default header values.
+/*DeleteRuntimeMapEntryNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteRuntimeMapEntryNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -89,18 +88,15 @@ type DeleteRuntimeMapEntryNotFound struct {
 func (o *DeleteRuntimeMapEntryNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/maps_entries/{id}][%d] deleteRuntimeMapEntryNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteRuntimeMapEntryNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteRuntimeMapEntryNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -119,14 +115,14 @@ func NewDeleteRuntimeMapEntryDefault(code int) *DeleteRuntimeMapEntryDefault {
 	}
 }
 
-/* DeleteRuntimeMapEntryDefault describes a response with status code -1, with default header values.
+/*DeleteRuntimeMapEntryDefault handles this case with default header values.
 
 General Error
 */
 type DeleteRuntimeMapEntryDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -141,18 +137,15 @@ func (o *DeleteRuntimeMapEntryDefault) Code() int {
 func (o *DeleteRuntimeMapEntryDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/maps_entries/{id}][%d] deleteRuntimeMapEntry default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteRuntimeMapEntryDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteRuntimeMapEntryDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

@@ -52,7 +52,7 @@ func NewGetRuntimeMapEntryOK() *GetRuntimeMapEntryOK {
 	return &GetRuntimeMapEntryOK{}
 }
 
-/* GetRuntimeMapEntryOK describes a response with status code 200, with default header values.
+/*GetRuntimeMapEntryOK handles this case with default header values.
 
 Successful operation
 */
@@ -63,6 +63,7 @@ type GetRuntimeMapEntryOK struct {
 func (o *GetRuntimeMapEntryOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps_entries/{id}][%d] getRuntimeMapEntryOK  %+v", 200, o.Payload)
 }
+
 func (o *GetRuntimeMapEntryOK) GetPayload() *models.MapEntry {
 	return o.Payload
 }
@@ -84,13 +85,12 @@ func NewGetRuntimeMapEntryNotFound() *GetRuntimeMapEntryNotFound {
 	return &GetRuntimeMapEntryNotFound{}
 }
 
-/* GetRuntimeMapEntryNotFound describes a response with status code 404, with default header values.
+/*GetRuntimeMapEntryNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetRuntimeMapEntryNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -100,18 +100,15 @@ type GetRuntimeMapEntryNotFound struct {
 func (o *GetRuntimeMapEntryNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps_entries/{id}][%d] getRuntimeMapEntryNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetRuntimeMapEntryNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetRuntimeMapEntryNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -130,14 +127,14 @@ func NewGetRuntimeMapEntryDefault(code int) *GetRuntimeMapEntryDefault {
 	}
 }
 
-/* GetRuntimeMapEntryDefault describes a response with status code -1, with default header values.
+/*GetRuntimeMapEntryDefault handles this case with default header values.
 
 General Error
 */
 type GetRuntimeMapEntryDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,18 +149,15 @@ func (o *GetRuntimeMapEntryDefault) Code() int {
 func (o *GetRuntimeMapEntryDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps_entries/{id}][%d] getRuntimeMapEntry default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetRuntimeMapEntryDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetRuntimeMapEntryDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

@@ -58,13 +58,12 @@ func NewDeleteACLAccepted() *DeleteACLAccepted {
 	return &DeleteACLAccepted{}
 }
 
-/* DeleteACLAccepted describes a response with status code 202, with default header values.
+/*DeleteACLAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteACLAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -75,12 +74,8 @@ func (o *DeleteACLAccepted) Error() string {
 
 func (o *DeleteACLAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	return nil
 }
@@ -90,7 +85,7 @@ func NewDeleteACLNoContent() *DeleteACLNoContent {
 	return &DeleteACLNoContent{}
 }
 
-/* DeleteACLNoContent describes a response with status code 204, with default header values.
+/*DeleteACLNoContent handles this case with default header values.
 
 ACL line deleted
 */
@@ -111,13 +106,12 @@ func NewDeleteACLNotFound() *DeleteACLNotFound {
 	return &DeleteACLNotFound{}
 }
 
-/* DeleteACLNotFound describes a response with status code 404, with default header values.
+/*DeleteACLNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteACLNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,18 +121,15 @@ type DeleteACLNotFound struct {
 func (o *DeleteACLNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/acls/{index}][%d] deleteAclNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteACLNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteACLNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -157,14 +148,14 @@ func NewDeleteACLDefault(code int) *DeleteACLDefault {
 	}
 }
 
-/* DeleteACLDefault describes a response with status code -1, with default header values.
+/*DeleteACLDefault handles this case with default header values.
 
 General Error
 */
 type DeleteACLDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -179,18 +170,15 @@ func (o *DeleteACLDefault) Code() int {
 func (o *DeleteACLDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/acls/{index}][%d] deleteAcl default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteACLDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteACLDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

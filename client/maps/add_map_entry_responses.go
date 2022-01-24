@@ -58,7 +58,7 @@ func NewAddMapEntryCreated() *AddMapEntryCreated {
 	return &AddMapEntryCreated{}
 }
 
-/* AddMapEntryCreated describes a response with status code 201, with default header values.
+/*AddMapEntryCreated handles this case with default header values.
 
 Map entry created
 */
@@ -69,6 +69,7 @@ type AddMapEntryCreated struct {
 func (o *AddMapEntryCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntryCreated  %+v", 201, o.Payload)
 }
+
 func (o *AddMapEntryCreated) GetPayload() *models.MapEntry {
 	return o.Payload
 }
@@ -90,13 +91,12 @@ func NewAddMapEntryBadRequest() *AddMapEntryBadRequest {
 	return &AddMapEntryBadRequest{}
 }
 
-/* AddMapEntryBadRequest describes a response with status code 400, with default header values.
+/*AddMapEntryBadRequest handles this case with default header values.
 
 Bad request
 */
 type AddMapEntryBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,18 +106,15 @@ type AddMapEntryBadRequest struct {
 func (o *AddMapEntryBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntryBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *AddMapEntryBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *AddMapEntryBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -134,13 +131,12 @@ func NewAddMapEntryConflict() *AddMapEntryConflict {
 	return &AddMapEntryConflict{}
 }
 
-/* AddMapEntryConflict describes a response with status code 409, with default header values.
+/*AddMapEntryConflict handles this case with default header values.
 
 The specified resource already exists
 */
 type AddMapEntryConflict struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -150,18 +146,15 @@ type AddMapEntryConflict struct {
 func (o *AddMapEntryConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntryConflict  %+v", 409, o.Payload)
 }
+
 func (o *AddMapEntryConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *AddMapEntryConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -180,14 +173,14 @@ func NewAddMapEntryDefault(code int) *AddMapEntryDefault {
 	}
 }
 
-/* AddMapEntryDefault describes a response with status code -1, with default header values.
+/*AddMapEntryDefault handles this case with default header values.
 
 General Error
 */
 type AddMapEntryDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -202,18 +195,15 @@ func (o *AddMapEntryDefault) Code() int {
 func (o *AddMapEntryDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntry default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *AddMapEntryDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *AddMapEntryDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

@@ -23,14 +23,11 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetHaproxyProcessInfo(params *GetHaproxyProcessInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHaproxyProcessInfoOK, error)
+	GetHaproxyProcessInfo(params *GetHaproxyProcessInfoParams, authInfo runtime.ClientAuthInfoWriter) (*GetHaproxyProcessInfoOK, error)
 
-	GetInfo(params *GetInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetInfoOK, error)
+	GetInfo(params *GetInfoParams, authInfo runtime.ClientAuthInfoWriter) (*GetInfoOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,12 +37,13 @@ type ClientService interface {
 
   Return HAProxy process information
 */
-func (a *Client) GetHaproxyProcessInfo(params *GetHaproxyProcessInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHaproxyProcessInfoOK, error) {
+func (a *Client) GetHaproxyProcessInfo(params *GetHaproxyProcessInfoParams, authInfo runtime.ClientAuthInfoWriter) (*GetHaproxyProcessInfoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetHaproxyProcessInfoParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getHaproxyProcessInfo",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/info",
@@ -57,12 +55,7 @@ func (a *Client) GetHaproxyProcessInfo(params *GetHaproxyProcessInfoParams, auth
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -80,12 +73,13 @@ func (a *Client) GetHaproxyProcessInfo(params *GetHaproxyProcessInfoParams, auth
 
   Return API, hardware and OS information
 */
-func (a *Client) GetInfo(params *GetInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetInfoOK, error) {
+func (a *Client) GetInfo(params *GetInfoParams, authInfo runtime.ClientAuthInfoWriter) (*GetInfoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetInfoParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getInfo",
 		Method:             "GET",
 		PathPattern:        "/info",
@@ -97,12 +91,7 @@ func (a *Client) GetInfo(params *GetInfoParams, authInfo runtime.ClientAuthInfoW
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}

@@ -6,7 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -59,6 +58,7 @@ func (m *SpoeMessage) Validate(formats strfmt.Registry) error {
 }
 
 func (m *SpoeMessage) validateACL(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.ACL) { // not required
 		return nil
 	}
@@ -66,8 +66,6 @@ func (m *SpoeMessage) validateACL(formats strfmt.Registry) error {
 	if err := m.ACL.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("acl")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("acl")
 		}
 		return err
 	}
@@ -76,6 +74,7 @@ func (m *SpoeMessage) validateACL(formats strfmt.Registry) error {
 }
 
 func (m *SpoeMessage) validateEvent(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Event) { // not required
 		return nil
 	}
@@ -84,8 +83,6 @@ func (m *SpoeMessage) validateEvent(formats strfmt.Registry) error {
 		if err := m.Event.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("event")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("event")
 			}
 			return err
 		}
@@ -98,54 +95,6 @@ func (m *SpoeMessage) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this spoe message based on the context it is used
-func (m *SpoeMessage) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateACL(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateEvent(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *SpoeMessage) contextValidateACL(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := m.ACL.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("acl")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("acl")
-		}
-		return err
-	}
-
-	return nil
-}
-
-func (m *SpoeMessage) contextValidateEvent(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Event != nil {
-		if err := m.Event.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("event")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("event")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -235,6 +184,7 @@ func (m *SpoeMessageEvent) validateCondEnum(path, location string, value string)
 }
 
 func (m *SpoeMessageEvent) validateCond(formats strfmt.Registry) error {
+
 	if swag.IsZero(m.Cond) { // not required
 		return nil
 	}
@@ -261,29 +211,29 @@ func init() {
 
 const (
 
-	// SpoeMessageEventNameOnDashClientDashSession captures enum value "on-client-session"
-	SpoeMessageEventNameOnDashClientDashSession string = "on-client-session"
+	// SpoeMessageEventNameOnClientSession captures enum value "on-client-session"
+	SpoeMessageEventNameOnClientSession string = "on-client-session"
 
-	// SpoeMessageEventNameOnDashServerDashSession captures enum value "on-server-session"
-	SpoeMessageEventNameOnDashServerDashSession string = "on-server-session"
+	// SpoeMessageEventNameOnServerSession captures enum value "on-server-session"
+	SpoeMessageEventNameOnServerSession string = "on-server-session"
 
-	// SpoeMessageEventNameOnDashFrontendDashTCPDashRequest captures enum value "on-frontend-tcp-request"
-	SpoeMessageEventNameOnDashFrontendDashTCPDashRequest string = "on-frontend-tcp-request"
+	// SpoeMessageEventNameOnFrontendTCPRequest captures enum value "on-frontend-tcp-request"
+	SpoeMessageEventNameOnFrontendTCPRequest string = "on-frontend-tcp-request"
 
-	// SpoeMessageEventNameOnDashBackendDashTCPDashRequest captures enum value "on-backend-tcp-request"
-	SpoeMessageEventNameOnDashBackendDashTCPDashRequest string = "on-backend-tcp-request"
+	// SpoeMessageEventNameOnBackendTCPRequest captures enum value "on-backend-tcp-request"
+	SpoeMessageEventNameOnBackendTCPRequest string = "on-backend-tcp-request"
 
-	// SpoeMessageEventNameOnDashTCPDashResponse captures enum value "on-tcp-response"
-	SpoeMessageEventNameOnDashTCPDashResponse string = "on-tcp-response"
+	// SpoeMessageEventNameOnTCPResponse captures enum value "on-tcp-response"
+	SpoeMessageEventNameOnTCPResponse string = "on-tcp-response"
 
-	// SpoeMessageEventNameOnDashFrontendDashHTTPDashRequest captures enum value "on-frontend-http-request"
-	SpoeMessageEventNameOnDashFrontendDashHTTPDashRequest string = "on-frontend-http-request"
+	// SpoeMessageEventNameOnFrontendHTTPRequest captures enum value "on-frontend-http-request"
+	SpoeMessageEventNameOnFrontendHTTPRequest string = "on-frontend-http-request"
 
-	// SpoeMessageEventNameOnDashBackendDashHTTPDashRequest captures enum value "on-backend-http-request"
-	SpoeMessageEventNameOnDashBackendDashHTTPDashRequest string = "on-backend-http-request"
+	// SpoeMessageEventNameOnBackendHTTPRequest captures enum value "on-backend-http-request"
+	SpoeMessageEventNameOnBackendHTTPRequest string = "on-backend-http-request"
 
-	// SpoeMessageEventNameOnDashHTTPDashResponse captures enum value "on-http-response"
-	SpoeMessageEventNameOnDashHTTPDashResponse string = "on-http-response"
+	// SpoeMessageEventNameOnHTTPResponse captures enum value "on-http-response"
+	SpoeMessageEventNameOnHTTPResponse string = "on-http-response"
 )
 
 // prop value enum
@@ -305,11 +255,6 @@ func (m *SpoeMessageEvent) validateName(formats strfmt.Registry) error {
 		return err
 	}
 
-	return nil
-}
-
-// ContextValidate validates this spoe message event based on context it is used
-func (m *SpoeMessageEvent) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

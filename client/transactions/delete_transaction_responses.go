@@ -52,7 +52,7 @@ func NewDeleteTransactionNoContent() *DeleteTransactionNoContent {
 	return &DeleteTransactionNoContent{}
 }
 
-/* DeleteTransactionNoContent describes a response with status code 204, with default header values.
+/*DeleteTransactionNoContent handles this case with default header values.
 
 Transaction deleted
 */
@@ -73,13 +73,12 @@ func NewDeleteTransactionNotFound() *DeleteTransactionNotFound {
 	return &DeleteTransactionNotFound{}
 }
 
-/* DeleteTransactionNotFound describes a response with status code 404, with default header values.
+/*DeleteTransactionNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteTransactionNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -89,18 +88,15 @@ type DeleteTransactionNotFound struct {
 func (o *DeleteTransactionNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/transactions/{id}][%d] deleteTransactionNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteTransactionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteTransactionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -119,14 +115,14 @@ func NewDeleteTransactionDefault(code int) *DeleteTransactionDefault {
 	}
 }
 
-/* DeleteTransactionDefault describes a response with status code -1, with default header values.
+/*DeleteTransactionDefault handles this case with default header values.
 
 General Error
 */
 type DeleteTransactionDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -141,18 +137,15 @@ func (o *DeleteTransactionDefault) Code() int {
 func (o *DeleteTransactionDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/transactions/{id}][%d] deleteTransaction default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteTransactionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteTransactionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
