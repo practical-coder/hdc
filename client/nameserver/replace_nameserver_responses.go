@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/practical-coder/hdc/models"
+	"github.com/haproxytech/client-native/v2/models"
 )
 
 // ReplaceNameserverReader is a Reader for the ReplaceNameserver structure.

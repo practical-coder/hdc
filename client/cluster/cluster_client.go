@@ -28,11 +28,137 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	DeleteCluster(params *DeleteClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteClusterNoContent, error)
+
+	EditCluster(params *EditClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*EditClusterOK, error)
+
+	GetCluster(params *GetClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterOK, error)
+
 	InitiateCertificateRefresh(params *InitiateCertificateRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InitiateCertificateRefreshOK, error)
 
 	PostCluster(params *PostClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostClusterOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  DeleteCluster deletes cluster settings
+
+  Delete cluster settings and move the node back to single mode
+*/
+func (a *Client) DeleteCluster(params *DeleteClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteClusterNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteClusterParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteCluster",
+		Method:             "DELETE",
+		PathPattern:        "/cluster",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &DeleteClusterReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteClusterNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DeleteClusterDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  EditCluster edits cluster settings
+
+  Edit cluster settings
+*/
+func (a *Client) EditCluster(params *EditClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*EditClusterOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewEditClusterParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "editCluster",
+		Method:             "PUT",
+		PathPattern:        "/cluster",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &EditClusterReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*EditClusterOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*EditClusterDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  GetCluster returns cluster data
+
+  Returns cluster data
+*/
+func (a *Client) GetCluster(params *GetClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetClusterParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getCluster",
+		Method:             "GET",
+		PathPattern:        "/cluster",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetClusterReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetClusterOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetClusterDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*

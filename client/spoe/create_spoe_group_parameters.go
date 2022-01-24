@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/practical-coder/hdc/models"
+	"github.com/haproxytech/client-native/v2/models"
 )
 
 // NewCreateSpoeGroupParams creates a new CreateSpoeGroupParams object,

@@ -30,8 +30,6 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	GetAPIEndpoints(params *GetAPIEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAPIEndpointsOK, error)
 
-	GetCluster(params *GetClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterOK, error)
-
 	GetConfigurationEndpoints(params *GetConfigurationEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConfigurationEndpointsOK, error)
 
 	GetHaproxyEndpoints(params *GetHaproxyEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHaproxyEndpointsOK, error)
@@ -86,46 +84,6 @@ func (a *Client) GetAPIEndpoints(params *GetAPIEndpointsParams, authInfo runtime
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*GetAPIEndpointsDefault)
-	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
-}
-
-/*
-  GetCluster returns cluster data
-
-  Returns cluster data
-*/
-func (a *Client) GetCluster(params *GetClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetClusterParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getCluster",
-		Method:             "GET",
-		PathPattern:        "/cluster",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &GetClusterReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetClusterOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	unexpectedSuccess := result.(*GetClusterDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

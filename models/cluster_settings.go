@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 	"encoding/json"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -232,6 +233,9 @@ func (m *ClusterSettings) UnmarshalBinary(b []byte) error {
 // swagger:model ClusterSettingsCluster
 type ClusterSettingsCluster struct {
 
+	// cluster log targets
+	ClusterLogTargets []*ClusterLogTarget `json:"log_targets"`
+
 	// address
 	// Read Only: true
 	// Pattern: ^[^\s]+$
@@ -240,6 +244,9 @@ type ClusterSettingsCluster struct {
 	// api base path
 	// Read Only: true
 	APIBasePath string `json:"api_base_path,omitempty"`
+
+	// cluster id
+	ClusterID string `json:"cluster_id,omitempty"`
 
 	// description
 	// Read Only: true
@@ -260,6 +267,10 @@ type ClusterSettingsCluster struct {
 func (m *ClusterSettingsCluster) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateClusterLogTargets(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateAddress(formats); err != nil {
 		res = append(res, err)
 	}
@@ -271,6 +282,32 @@ func (m *ClusterSettingsCluster) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ClusterSettingsCluster) validateClusterLogTargets(formats strfmt.Registry) error {
+	if swag.IsZero(m.ClusterLogTargets) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ClusterLogTargets); i++ {
+		if swag.IsZero(m.ClusterLogTargets[i]) { // not required
+			continue
+		}
+
+		if m.ClusterLogTargets[i] != nil {
+			if err := m.ClusterLogTargets[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("cluster" + "." + "log_targets" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cluster" + "." + "log_targets" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -306,6 +343,10 @@ func (m *ClusterSettingsCluster) validatePort(formats strfmt.Registry) error {
 func (m *ClusterSettingsCluster) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateClusterLogTargets(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateAddress(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -329,6 +370,26 @@ func (m *ClusterSettingsCluster) ContextValidate(ctx context.Context, formats st
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ClusterSettingsCluster) contextValidateClusterLogTargets(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ClusterLogTargets); i++ {
+
+		if m.ClusterLogTargets[i] != nil {
+			if err := m.ClusterLogTargets[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("cluster" + "." + "log_targets" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cluster" + "." + "log_targets" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -388,6 +449,144 @@ func (m *ClusterSettingsCluster) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ClusterSettingsCluster) UnmarshalBinary(b []byte) error {
 	var res ClusterSettingsCluster
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ClusterLogTarget cluster log target
+//
+// swagger:model ClusterLogTarget
+type ClusterLogTarget struct {
+
+	// address
+	// Required: true
+	Address *string `json:"address"`
+
+	// log format
+	LogFormat string `json:"log_format,omitempty"`
+
+	// port
+	// Required: true
+	// Maximum: 65535
+	// Minimum: 1
+	Port *int64 `json:"port"`
+
+	// protocol
+	// Required: true
+	// Enum: [tcp udp]
+	Protocol *string `json:"protocol"`
+}
+
+// Validate validates this cluster log target
+func (m *ClusterLogTarget) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAddress(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePort(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProtocol(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ClusterLogTarget) validateAddress(formats strfmt.Registry) error {
+
+	if err := validate.Required("address", "body", m.Address); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ClusterLogTarget) validatePort(formats strfmt.Registry) error {
+
+	if err := validate.Required("port", "body", m.Port); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("port", "body", *m.Port, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("port", "body", *m.Port, 65535, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var clusterLogTargetTypeProtocolPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["tcp","udp"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		clusterLogTargetTypeProtocolPropEnum = append(clusterLogTargetTypeProtocolPropEnum, v)
+	}
+}
+
+const (
+
+	// ClusterLogTargetProtocolTCP captures enum value "tcp"
+	ClusterLogTargetProtocolTCP string = "tcp"
+
+	// ClusterLogTargetProtocolUDP captures enum value "udp"
+	ClusterLogTargetProtocolUDP string = "udp"
+)
+
+// prop value enum
+func (m *ClusterLogTarget) validateProtocolEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, clusterLogTargetTypeProtocolPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *ClusterLogTarget) validateProtocol(formats strfmt.Registry) error {
+
+	if err := validate.Required("protocol", "body", m.Protocol); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateProtocolEnum("protocol", "body", *m.Protocol); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this cluster log target based on context it is used
+func (m *ClusterLogTarget) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ClusterLogTarget) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ClusterLogTarget) UnmarshalBinary(b []byte) error {
+	var res ClusterLogTarget
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

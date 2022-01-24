@@ -23,6 +23,10 @@ import (
 // swagger:model frontend
 type Frontend struct {
 
+	// accept invalid http request
+	// Enum: [enabled disabled]
+	AcceptInvalidHTTPRequest string `json:"accept_invalid_http_request,omitempty"`
+
 	// bind process
 	// Pattern: ^[^\s]+$
 	BindProcess string `json:"bind_process,omitempty"`
@@ -51,6 +55,10 @@ type Frontend struct {
 
 	// forwardfor
 	Forwardfor *Forwardfor `json:"forwardfor,omitempty"`
+
+	// h1 case adjust bogus client
+	// Enum: [enabled disabled]
+	H1CaseAdjustBogusClient string `json:"h1_case_adjust_bogus_client,omitempty"`
 
 	// http buffer request
 	// Enum: [enabled disabled]
@@ -126,6 +134,10 @@ type Frontend struct {
 func (m *Frontend) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAcceptInvalidHTTPRequest(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateBindProcess(formats); err != nil {
 		res = append(res, err)
 	}
@@ -147,6 +159,10 @@ func (m *Frontend) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateForwardfor(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateH1CaseAdjustBogusClient(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -197,6 +213,48 @@ func (m *Frontend) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var frontendTypeAcceptInvalidHTTPRequestPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		frontendTypeAcceptInvalidHTTPRequestPropEnum = append(frontendTypeAcceptInvalidHTTPRequestPropEnum, v)
+	}
+}
+
+const (
+
+	// FrontendAcceptInvalidHTTPRequestEnabled captures enum value "enabled"
+	FrontendAcceptInvalidHTTPRequestEnabled string = "enabled"
+
+	// FrontendAcceptInvalidHTTPRequestDisabled captures enum value "disabled"
+	FrontendAcceptInvalidHTTPRequestDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Frontend) validateAcceptInvalidHTTPRequestEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, frontendTypeAcceptInvalidHTTPRequestPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Frontend) validateAcceptInvalidHTTPRequest(formats strfmt.Registry) error {
+	if swag.IsZero(m.AcceptInvalidHTTPRequest) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateAcceptInvalidHTTPRequestEnum("accept_invalid_http_request", "body", m.AcceptInvalidHTTPRequest); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -361,6 +419,48 @@ func (m *Frontend) validateForwardfor(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+var frontendTypeH1CaseAdjustBogusClientPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		frontendTypeH1CaseAdjustBogusClientPropEnum = append(frontendTypeH1CaseAdjustBogusClientPropEnum, v)
+	}
+}
+
+const (
+
+	// FrontendH1CaseAdjustBogusClientEnabled captures enum value "enabled"
+	FrontendH1CaseAdjustBogusClientEnabled string = "enabled"
+
+	// FrontendH1CaseAdjustBogusClientDisabled captures enum value "disabled"
+	FrontendH1CaseAdjustBogusClientDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Frontend) validateH1CaseAdjustBogusClientEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, frontendTypeH1CaseAdjustBogusClientPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Frontend) validateH1CaseAdjustBogusClient(formats strfmt.Registry) error {
+	if swag.IsZero(m.H1CaseAdjustBogusClient) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateH1CaseAdjustBogusClientEnum("h1_case_adjust_bogus_client", "body", m.H1CaseAdjustBogusClient); err != nil {
+		return err
 	}
 
 	return nil

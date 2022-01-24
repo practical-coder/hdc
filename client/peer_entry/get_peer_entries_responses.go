@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/practical-coder/hdc/models"
+	"github.com/haproxytech/client-native/v2/models"
 )
 
 // GetPeerEntriesReader is a Reader for the GetPeerEntries structure.
