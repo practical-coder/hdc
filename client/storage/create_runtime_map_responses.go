@@ -11,7 +11,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/practical-coder/hdc/models"
+	"github.com/haproxytech/client-native/v2/models"
 	"io"
 )
 
