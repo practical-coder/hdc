@@ -129,7 +129,7 @@ const (
 
 // prop value enum
 func (m *Balance) validateAlgorithmEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, balanceTypeAlgorithmPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, balanceTypeAlgorithmPropEnum); err != nil {
 		return err
 	}
 	return nil

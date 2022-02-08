@@ -300,7 +300,7 @@ const (
 
 // prop value enum
 func (m *Backend) validateAbortoncloseEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendTypeAbortonclosePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendTypeAbortonclosePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -361,7 +361,7 @@ const (
 
 // prop value enum
 func (m *Backend) validateAdvCheckEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendTypeAdvCheckPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendTypeAdvCheckPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -404,7 +404,7 @@ const (
 
 // prop value enum
 func (m *Backend) validateAllbackupsEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendTypeAllbackupsPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendTypeAllbackupsPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -527,7 +527,7 @@ const (
 
 // prop value enum
 func (m *Backend) validateExternalCheckEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendTypeExternalCheckPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendTypeExternalCheckPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -632,7 +632,7 @@ const (
 
 // prop value enum
 func (m *Backend) validateHTTPBufferRequestEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendTypeHTTPBufferRequestPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendTypeHTTPBufferRequestPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -693,7 +693,7 @@ const (
 
 // prop value enum
 func (m *Backend) validateHTTPUseHtxEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendTypeHTTPUseHtxPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendTypeHTTPUseHtxPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -743,7 +743,7 @@ const (
 
 // prop value enum
 func (m *Backend) validateHTTPConnectionModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendTypeHTTPConnectionModePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendTypeHTTPConnectionModePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -786,7 +786,7 @@ const (
 
 // prop value enum
 func (m *Backend) validateHTTPPretendKeepaliveEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendTypeHTTPPretendKeepalivePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendTypeHTTPPretendKeepalivePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -835,7 +835,7 @@ const (
 
 // prop value enum
 func (m *Backend) validateHTTPReuseEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendTypeHTTPReusePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendTypeHTTPReusePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -909,7 +909,7 @@ const (
 
 // prop value enum
 func (m *Backend) validateModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendTypeModePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendTypeModePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1137,7 +1137,7 @@ const (
 
 // prop value enum
 func (m *BackendHashType) validateFunctionEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendHashTypeTypeFunctionPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendHashTypeTypeFunctionPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1180,7 +1180,7 @@ const (
 
 // prop value enum
 func (m *BackendHashType) validateMethodEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendHashTypeTypeMethodPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendHashTypeTypeMethodPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1220,7 +1220,7 @@ const (
 
 // prop value enum
 func (m *BackendHashType) validateModifierEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendHashTypeTypeModifierPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendHashTypeTypeModifierPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1368,7 +1368,7 @@ const (
 
 // prop value enum
 func (m *BackendStickTable) validateTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendStickTableTypeTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendStickTableTypeTypePropEnum); err != nil {
 		return err
 	}
 	return nil

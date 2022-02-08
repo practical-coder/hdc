@@ -405,7 +405,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateAbortoncloseEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeAbortonclosePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeAbortonclosePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -466,7 +466,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateAdvCheckEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeAdvCheckPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeAdvCheckPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -509,7 +509,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateAllbackupsEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeAllbackupsPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeAllbackupsPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -583,7 +583,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateClitcpkaEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeClitcpkaPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeClitcpkaPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -623,7 +623,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateContstatsEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeContstatsPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeContstatsPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -715,7 +715,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateDontlognullEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeDontlognullPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeDontlognullPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -771,7 +771,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateExternalCheckEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeExternalCheckPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeExternalCheckPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -858,7 +858,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateHTTPBufferRequestEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeHTTPBufferRequestPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeHTTPBufferRequestPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -919,7 +919,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateHTTPUseHtxEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeHTTPUseHtxPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeHTTPUseHtxPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -965,7 +965,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateHTTPConnectionModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeHTTPConnectionModePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeHTTPConnectionModePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1008,7 +1008,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateHTTPPretendKeepaliveEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeHTTPPretendKeepalivePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeHTTPPretendKeepalivePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1057,7 +1057,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateHTTPReuseEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeHTTPReusePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeHTTPReusePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1121,7 +1121,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateLoadServerStateFromFileEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeLoadServerStateFromFilePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeLoadServerStateFromFilePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1164,7 +1164,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateLogSeparateErrorsEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeLogSeparateErrorsPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeLogSeparateErrorsPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1220,7 +1220,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateLogasapEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeLogasapPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeLogasapPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1263,7 +1263,7 @@ const (
 
 // prop value enum
 func (m *Defaults) validateModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeModePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, defaultsTypeModePropEnum); err != nil {
 		return err
 	}
 	return nil

@@ -528,7 +528,7 @@ const (
 
 // prop value enum
 func (m *HTTPRequestRule) validateCondEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpRequestRuleTypeCondPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpRequestRuleTypeCondPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -562,7 +562,7 @@ func init() {
 
 // prop value enum
 func (m *HTTPRequestRule) validateDenyStatusEnum(path, location string, value int64) error {
-	if err := validate.EnumCase(path, location, value, httpRequestRuleTypeDenyStatusPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpRequestRuleTypeDenyStatusPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -661,7 +661,7 @@ const (
 
 // prop value enum
 func (m *HTTPRequestRule) validateLogLevelEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpRequestRuleTypeLogLevelPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpRequestRuleTypeLogLevelPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -825,7 +825,7 @@ const (
 
 // prop value enum
 func (m *HTTPRequestRule) validateProtocolEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpRequestRuleTypeProtocolPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpRequestRuleTypeProtocolPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -859,7 +859,7 @@ func init() {
 
 // prop value enum
 func (m *HTTPRequestRule) validateRedirCodeEnum(path, location string, value int64) error {
-	if err := validate.EnumCase(path, location, value, httpRequestRuleTypeRedirCodePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpRequestRuleTypeRedirCodePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -905,7 +905,7 @@ const (
 
 // prop value enum
 func (m *HTTPRequestRule) validateRedirTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpRequestRuleTypeRedirTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpRequestRuleTypeRedirTypePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -976,7 +976,7 @@ const (
 
 // prop value enum
 func (m *HTTPRequestRule) validateReturnContentFormatEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpRequestRuleTypeReturnContentFormatPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpRequestRuleTypeReturnContentFormatPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1062,7 +1062,7 @@ const (
 
 // prop value enum
 func (m *HTTPRequestRule) validateStrictModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpRequestRuleTypeStrictModePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpRequestRuleTypeStrictModePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1340,7 +1340,7 @@ const (
 
 // prop value enum
 func (m *HTTPRequestRule) validateTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpRequestRuleTypeTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpRequestRuleTypeTypePropEnum); err != nil {
 		return err
 	}
 	return nil

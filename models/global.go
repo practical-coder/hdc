@@ -263,7 +263,7 @@ const (
 
 // prop value enum
 func (m *Global) validateDaemonEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, globalTypeDaemonPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, globalTypeDaemonPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -426,7 +426,7 @@ const (
 
 // prop value enum
 func (m *Global) validateSslModeAsyncEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, globalTypeSslModeAsyncPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, globalTypeSslModeAsyncPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -601,7 +601,7 @@ const (
 
 // prop value enum
 func (m *GlobalLogSendHostname) validateEnabledEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, globalLogSendHostnameTypeEnabledPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, globalLogSendHostnameTypeEnabledPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -777,7 +777,7 @@ const (
 
 // prop value enum
 func (m *LuaPrependPath) validateTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, luaPrependPathTypeTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, luaPrependPathTypeTypePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -906,7 +906,7 @@ const (
 
 // prop value enum
 func (m *RuntimeAPI) validateLevelEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, runtimeApiTypeLevelPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, runtimeApiTypeLevelPropEnum); err != nil {
 		return err
 	}
 	return nil

@@ -100,7 +100,7 @@ const (
 
 // prop value enum
 func (m *StickRule) validateCondEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, stickRuleTypeCondPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, stickRuleTypeCondPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -184,7 +184,7 @@ const (
 
 // prop value enum
 func (m *StickRule) validateTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, stickRuleTypeTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, stickRuleTypeTypePropEnum); err != nil {
 		return err
 	}
 	return nil

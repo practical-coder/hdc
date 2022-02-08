@@ -365,7 +365,7 @@ const (
 
 // prop value enum
 func (m *HTTPResponseRule) validateCondEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpResponseRuleTypeCondPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpResponseRuleTypeCondPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -438,7 +438,7 @@ const (
 
 // prop value enum
 func (m *HTTPResponseRule) validateLogLevelEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpResponseRuleTypeLogLevelPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpResponseRuleTypeLogLevelPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -554,7 +554,7 @@ func init() {
 
 // prop value enum
 func (m *HTTPResponseRule) validateRedirCodeEnum(path, location string, value int64) error {
-	if err := validate.EnumCase(path, location, value, httpResponseRuleTypeRedirCodePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpResponseRuleTypeRedirCodePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -600,7 +600,7 @@ const (
 
 // prop value enum
 func (m *HTTPResponseRule) validateRedirTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpResponseRuleTypeRedirTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpResponseRuleTypeRedirTypePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -699,7 +699,7 @@ const (
 
 // prop value enum
 func (m *HTTPResponseRule) validateStrictModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpResponseRuleTypeStrictModePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpResponseRuleTypeStrictModePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -917,7 +917,7 @@ const (
 
 // prop value enum
 func (m *HTTPResponseRule) validateTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpResponseRuleTypeTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpResponseRuleTypeTypePropEnum); err != nil {
 		return err
 	}
 	return nil

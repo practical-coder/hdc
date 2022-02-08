@@ -83,7 +83,7 @@ const (
 
 // prop value enum
 func (m *HTTPCheck) validateMatchEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpCheckTypeMatchPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpCheckTypeMatchPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -133,7 +133,7 @@ const (
 
 // prop value enum
 func (m *HTTPCheck) validateTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, httpCheckTypeTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, httpCheckTypeTypePropEnum); err != nil {
 		return err
 	}
 	return nil

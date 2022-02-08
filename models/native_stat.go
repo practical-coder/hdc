@@ -97,7 +97,7 @@ const (
 
 // prop value enum
 func (m *NativeStat) validateTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, nativeStatTypeTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, nativeStatTypeTypePropEnum); err != nil {
 		return err
 	}
 	return nil

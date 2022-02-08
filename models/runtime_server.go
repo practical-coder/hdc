@@ -114,7 +114,7 @@ const (
 
 // prop value enum
 func (m *RuntimeServer) validateAdminStateEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, runtimeServerTypeAdminStatePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, runtimeServerTypeAdminStatePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -160,7 +160,7 @@ const (
 
 // prop value enum
 func (m *RuntimeServer) validateOperationalStateEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, runtimeServerTypeOperationalStatePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, runtimeServerTypeOperationalStatePropEnum); err != nil {
 		return err
 	}
 	return nil

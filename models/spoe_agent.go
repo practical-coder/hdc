@@ -186,7 +186,7 @@ const (
 
 // prop value enum
 func (m *SpoeAgent) validateAsyncEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, spoeAgentTypeAsyncPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, spoeAgentTypeAsyncPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -226,7 +226,7 @@ const (
 
 // prop value enum
 func (m *SpoeAgent) validateContinueOnErrorEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, spoeAgentTypeContinueOnErrorPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, spoeAgentTypeContinueOnErrorPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -269,7 +269,7 @@ const (
 
 // prop value enum
 func (m *SpoeAgent) validateDontlogNormalEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, spoeAgentTypeDontlogNormalPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, spoeAgentTypeDontlogNormalPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -309,7 +309,7 @@ const (
 
 // prop value enum
 func (m *SpoeAgent) validateForceSetVarEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, spoeAgentTypeForceSetVarPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, spoeAgentTypeForceSetVarPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -429,7 +429,7 @@ const (
 
 // prop value enum
 func (m *SpoeAgent) validatePipeliningEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, spoeAgentTypePipeliningPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, spoeAgentTypePipeliningPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -472,7 +472,7 @@ const (
 
 // prop value enum
 func (m *SpoeAgent) validateSendFragPayloadEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, spoeAgentTypeSendFragPayloadPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, spoeAgentTypeSendFragPayloadPropEnum); err != nil {
 		return err
 	}
 	return nil

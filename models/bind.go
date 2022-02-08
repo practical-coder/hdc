@@ -347,7 +347,7 @@ const (
 
 // prop value enum
 func (m *Bind) validateLevelEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, bindTypeLevelPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, bindTypeLevelPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -453,7 +453,7 @@ const (
 
 // prop value enum
 func (m *Bind) validateSeverityOutputEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, bindTypeSeverityOutputPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, bindTypeSeverityOutputPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -531,7 +531,7 @@ const (
 
 // prop value enum
 func (m *Bind) validateSslMaxVerEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, bindTypeSslMaxVerPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, bindTypeSslMaxVerPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -583,7 +583,7 @@ const (
 
 // prop value enum
 func (m *Bind) validateSslMinVerEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, bindTypeSslMinVerPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, bindTypeSslMinVerPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -629,7 +629,7 @@ const (
 
 // prop value enum
 func (m *Bind) validateVerifyEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, bindTypeVerifyPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, bindTypeVerifyPropEnum); err != nil {
 		return err
 	}
 	return nil

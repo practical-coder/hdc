@@ -101,7 +101,7 @@ const (
 
 // prop value enum
 func (m *ClusterSettings) validateModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, clusterSettingsTypeModePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, clusterSettingsTypeModePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -147,7 +147,7 @@ const (
 
 // prop value enum
 func (m *ClusterSettings) validateStatusEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, clusterSettingsTypeStatusPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, clusterSettingsTypeStatusPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -410,7 +410,7 @@ const (
 
 // prop value enum
 func (m *ClusterLogTarget) validateProtocolEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, clusterLogTargetTypeProtocolPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, clusterLogTargetTypeProtocolPropEnum); err != nil {
 		return err
 	}
 	return nil

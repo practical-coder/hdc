@@ -117,7 +117,7 @@ const (
 
 // prop value enum
 func (m *StickTable) validateTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, stickTableTypeTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, stickTableTypeTypePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -264,7 +264,7 @@ const (
 
 // prop value enum
 func (m *StickTableField) validateFieldEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, stickTableFieldTypeFieldPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, stickTableFieldTypeFieldPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -307,7 +307,7 @@ const (
 
 // prop value enum
 func (m *StickTableField) validateTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, stickTableFieldTypeTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, stickTableFieldTypeTypePropEnum); err != nil {
 		return err
 	}
 	return nil

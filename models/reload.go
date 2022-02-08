@@ -93,7 +93,7 @@ const (
 
 // prop value enum
 func (m *Reload) validateStatusEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, reloadTypeStatusPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, reloadTypeStatusPropEnum); err != nil {
 		return err
 	}
 	return nil

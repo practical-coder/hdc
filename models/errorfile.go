@@ -55,7 +55,7 @@ func init() {
 
 // prop value enum
 func (m *Errorfile) validateCodeEnum(path, location string, value int64) error {
-	if err := validate.EnumCase(path, location, value, errorfileTypeCodePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, errorfileTypeCodePropEnum); err != nil {
 		return err
 	}
 	return nil

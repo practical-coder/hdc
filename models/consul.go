@@ -224,7 +224,7 @@ const (
 
 // prop value enum
 func (m *Consul) validateServerSlotsGrowthTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, consulTypeServerSlotsGrowthTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, consulTypeServerSlotsGrowthTypePropEnum); err != nil {
 		return err
 	}
 	return nil

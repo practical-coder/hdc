@@ -623,7 +623,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateAgentCheckEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeAgentCheckPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeAgentCheckPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -696,7 +696,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateBackupEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeBackupPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeBackupPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -739,7 +739,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateCheckEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeCheckPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeCheckPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -782,7 +782,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateCheckSendProxyEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeCheckSendProxyPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeCheckSendProxyPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -838,7 +838,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateCheckSslEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeCheckSslPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeCheckSslPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -907,7 +907,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateCheckViaSocks4Enum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeCheckViaSocks4PropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeCheckViaSocks4PropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -963,7 +963,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateForceSslv3Enum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeForceSslv3PropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeForceSslv3PropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1006,7 +1006,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateForceTlsv10Enum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeForceTlsv10PropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeForceTlsv10PropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1049,7 +1049,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateForceTlsv11Enum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeForceTlsv11PropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeForceTlsv11PropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1092,7 +1092,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateForceTlsv12Enum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeForceTlsv12PropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeForceTlsv12PropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1135,7 +1135,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateForceTlsv13Enum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeForceTlsv13PropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeForceTlsv13PropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1217,7 +1217,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateLogProtoEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeLogProtoPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeLogProtoPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1260,7 +1260,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateMaintenanceEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeMaintenancePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeMaintenancePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1303,7 +1303,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateNoSslv3Enum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeNoSslv3PropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeNoSslv3PropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1346,7 +1346,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateNoTlsv10Enum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeNoTlsv10PropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeNoTlsv10PropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1389,7 +1389,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateNoTlsv11Enum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeNoTlsv11PropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeNoTlsv11PropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1432,7 +1432,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateNoTlsv12Enum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeNoTlsv12PropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeNoTlsv12PropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1475,7 +1475,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateNoTlsv13Enum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeNoTlsv13PropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeNoTlsv13PropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1518,7 +1518,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateNoVerifyhostEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeNoVerifyhostPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeNoVerifyhostPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1570,7 +1570,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateObserveEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeObservePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeObservePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1619,7 +1619,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateOnErrorEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeOnErrorPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeOnErrorPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1659,7 +1659,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateOnMarkedDownEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeOnMarkedDownPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeOnMarkedDownPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1699,7 +1699,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateOnMarkedUpEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeOnMarkedUpPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeOnMarkedUpPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1775,7 +1775,7 @@ func init() {
 }
 
 func (m *ServerTemplate) validateProxyV2OptionsItemsEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateProxyV2OptionsItemsEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateProxyV2OptionsItemsEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1835,7 +1835,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateResolvePreferEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeResolvePreferPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeResolvePreferPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1904,7 +1904,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateSendProxyEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeSendProxyPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeSendProxyPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1947,7 +1947,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateSendProxyV2Enum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeSendProxyV2PropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeSendProxyV2PropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -1990,7 +1990,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateSendProxyV2SslEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeSendProxyV2SslPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeSendProxyV2SslPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -2033,7 +2033,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateSendProxyV2SslCnEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeSendProxyV2SslCnPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeSendProxyV2SslCnPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -2102,7 +2102,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateSslEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeSslPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeSslPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -2180,7 +2180,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateSslMaxVerEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeSslMaxVerPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeSslMaxVerPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -2232,7 +2232,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateSslMinVerEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeSslMinVerPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeSslMinVerPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -2275,7 +2275,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateSslReuseEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeSslReusePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeSslReusePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -2318,7 +2318,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateStickEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeStickPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeStickPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -2361,7 +2361,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateTfoEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeTfoPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeTfoPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -2404,7 +2404,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateTLSTicketsEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeTLSTicketsPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeTLSTicketsPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -2447,7 +2447,7 @@ const (
 
 // prop value enum
 func (m *ServerTemplate) validateVerifyEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, serverTemplateTypeVerifyPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, serverTemplateTypeVerifyPropEnum); err != nil {
 		return err
 	}
 	return nil

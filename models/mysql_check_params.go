@@ -64,7 +64,7 @@ const (
 
 // prop value enum
 func (m *MysqlCheckParams) validateClientVersionEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, mysqlCheckParamsTypeClientVersionPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, mysqlCheckParamsTypeClientVersionPropEnum); err != nil {
 		return err
 	}
 	return nil

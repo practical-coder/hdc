@@ -177,7 +177,7 @@ const (
 
 // prop value enum
 func (m *SpoeMessageEvent) validateCondEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, spoeMessageEventTypeCondPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, spoeMessageEventTypeCondPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -238,7 +238,7 @@ const (
 
 // prop value enum
 func (m *SpoeMessageEvent) validateNameEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, spoeMessageEventTypeNamePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, spoeMessageEventTypeNamePropEnum); err != nil {
 		return err
 	}
 	return nil

@@ -325,7 +325,7 @@ const (
 
 // prop value enum
 func (m *NativeStatStats) validateAgentStatusEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, nativeStatStatsTypeAgentStatusPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, nativeStatStatsTypeAgentStatusPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -404,7 +404,7 @@ const (
 
 // prop value enum
 func (m *NativeStatStats) validateCheckStatusEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, nativeStatStatsTypeCheckStatusPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, nativeStatStatsTypeCheckStatusPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -453,7 +453,7 @@ const (
 
 // prop value enum
 func (m *NativeStatStats) validateModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, nativeStatStatsTypeModePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, nativeStatStatsTypeModePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -505,7 +505,7 @@ const (
 
 // prop value enum
 func (m *NativeStatStats) validateStatusEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, nativeStatStatsTypeStatusPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, nativeStatStatsTypeStatusPropEnum); err != nil {
 		return err
 	}
 	return nil

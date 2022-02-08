@@ -238,7 +238,7 @@ const (
 
 // prop value enum
 func (m *TCPRequestRule) validateActionEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, tcpRequestRuleTypeActionPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, tcpRequestRuleTypeActionPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -294,7 +294,7 @@ const (
 
 // prop value enum
 func (m *TCPRequestRule) validateCondEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, tcpRequestRuleTypeCondPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, tcpRequestRuleTypeCondPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -359,7 +359,7 @@ const (
 
 // prop value enum
 func (m *TCPRequestRule) validatePriorityTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, tcpRequestRuleTypePriorityTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, tcpRequestRuleTypePriorityTypePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -402,7 +402,7 @@ const (
 
 // prop value enum
 func (m *TCPRequestRule) validateResolveProtocolEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, tcpRequestRuleTypeResolveProtocolPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, tcpRequestRuleTypeResolveProtocolPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -451,7 +451,7 @@ const (
 
 // prop value enum
 func (m *TCPRequestRule) validateTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, tcpRequestRuleTypeTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, tcpRequestRuleTypeTypePropEnum); err != nil {
 		return err
 	}
 	return nil

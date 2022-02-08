@@ -65,7 +65,7 @@ const (
 
 // prop value enum
 func (m *Redispatch) validateEnabledEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, redispatchTypeEnabledPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, redispatchTypeEnabledPropEnum); err != nil {
 		return err
 	}
 	return nil

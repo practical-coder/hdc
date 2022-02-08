@@ -90,7 +90,7 @@ const (
 
 // prop value enum
 func (m *SpoeTransaction) validateStatusEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, spoeTransactionTypeStatusPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, spoeTransactionTypeStatusPropEnum); err != nil {
 		return err
 	}
 	return nil

@@ -83,7 +83,7 @@ const (
 
 // prop value enum
 func (m *BackendSwitchingRule) validateCondEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, backendSwitchingRuleTypeCondPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, backendSwitchingRuleTypeCondPropEnum); err != nil {
 		return err
 	}
 	return nil

@@ -234,7 +234,7 @@ const (
 
 // prop value enum
 func (m *Frontend) validateClitcpkaEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, frontendTypeClitcpkaPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, frontendTypeClitcpkaPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -274,7 +274,7 @@ const (
 
 // prop value enum
 func (m *Frontend) validateContstatsEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, frontendTypeContstatsPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, frontendTypeContstatsPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -330,7 +330,7 @@ const (
 
 // prop value enum
 func (m *Frontend) validateDontlognullEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, frontendTypeDontlognullPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, frontendTypeDontlognullPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -391,7 +391,7 @@ const (
 
 // prop value enum
 func (m *Frontend) validateHTTPBufferRequestEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, frontendTypeHTTPBufferRequestPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, frontendTypeHTTPBufferRequestPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -434,7 +434,7 @@ const (
 
 // prop value enum
 func (m *Frontend) validateHTTPUseHtxEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, frontendTypeHTTPUseHtxPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, frontendTypeHTTPUseHtxPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -480,7 +480,7 @@ const (
 
 // prop value enum
 func (m *Frontend) validateHTTPConnectionModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, frontendTypeHTTPConnectionModePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, frontendTypeHTTPConnectionModePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -523,7 +523,7 @@ const (
 
 // prop value enum
 func (m *Frontend) validateLogSeparateErrorsEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, frontendTypeLogSeparateErrorsPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, frontendTypeLogSeparateErrorsPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -579,7 +579,7 @@ const (
 
 // prop value enum
 func (m *Frontend) validateLogasapEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, frontendTypeLogasapPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, frontendTypeLogasapPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -622,7 +622,7 @@ const (
 
 // prop value enum
 func (m *Frontend) validateModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, frontendTypeModePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, frontendTypeModePropEnum); err != nil {
 		return err
 	}
 	return nil

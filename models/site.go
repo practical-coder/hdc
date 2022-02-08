@@ -249,7 +249,7 @@ const (
 
 // prop value enum
 func (m *SiteFarm) validateCondEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, siteFarmTypeCondPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, siteFarmTypeCondPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -310,7 +310,7 @@ const (
 
 // prop value enum
 func (m *SiteFarm) validateModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, siteFarmTypeModePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, siteFarmTypeModePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -391,7 +391,7 @@ const (
 
 // prop value enum
 func (m *SiteFarm) validateUseAsEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, siteFarmTypeUseAsPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, siteFarmTypeUseAsPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -503,7 +503,7 @@ const (
 
 // prop value enum
 func (m *SiteService) validateHTTPConnectionModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, siteServiceTypeHTTPConnectionModePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, siteServiceTypeHTTPConnectionModePropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -571,7 +571,7 @@ const (
 
 // prop value enum
 func (m *SiteService) validateModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, siteServiceTypeModePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, siteServiceTypeModePropEnum); err != nil {
 		return err
 	}
 	return nil

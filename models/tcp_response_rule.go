@@ -108,7 +108,7 @@ const (
 
 // prop value enum
 func (m *TCPResponseRule) validateActionEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, tcpResponseRuleTypeActionPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, tcpResponseRuleTypeActionPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -151,7 +151,7 @@ const (
 
 // prop value enum
 func (m *TCPResponseRule) validateCondEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, tcpResponseRuleTypeCondPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, tcpResponseRuleTypeCondPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -216,7 +216,7 @@ const (
 
 // prop value enum
 func (m *TCPResponseRule) validateTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, tcpResponseRuleTypeTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, tcpResponseRuleTypeTypePropEnum); err != nil {
 		return err
 	}
 	return nil

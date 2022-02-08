@@ -216,7 +216,7 @@ const (
 
 // prop value enum
 func (m *AwsRegion) validateIPV4AddressEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, awsRegionTypeIPV4AddressPropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, awsRegionTypeIPV4AddressPropEnum); err != nil {
 		return err
 	}
 	return nil
@@ -290,7 +290,7 @@ const (
 
 // prop value enum
 func (m *AwsRegion) validateServerSlotsGrowthTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, awsRegionTypeServerSlotsGrowthTypePropEnum, true); err != nil {
+	if err := validate.Enum(path, location, value, awsRegionTypeServerSlotsGrowthTypePropEnum); err != nil {
 		return err
 	}
 	return nil
