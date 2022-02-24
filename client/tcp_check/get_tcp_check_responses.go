@@ -6,7 +6,6 @@ package tcp_check
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -15,7 +14,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v2/models"
+	"github.com/haproxytech/client-native/v3/models"
 )
 
 // GetTCPCheckReader is a Reader for the GetTCPCheck structure.
@@ -55,13 +54,12 @@ func NewGetTCPCheckOK() *GetTCPCheckOK {
 	return &GetTCPCheckOK{}
 }
 
-/* GetTCPCheckOK describes a response with status code 200, with default header values.
+/*GetTCPCheckOK handles this case with default header values.
 
 Successful operation
 */
 type GetTCPCheckOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -71,18 +69,15 @@ type GetTCPCheckOK struct {
 func (o *GetTCPCheckOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_checks/{index}][%d] getTcpCheckOK  %+v", 200, o.Payload)
 }
+
 func (o *GetTCPCheckOK) GetPayload() *GetTCPCheckOKBody {
 	return o.Payload
 }
 
 func (o *GetTCPCheckOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetTCPCheckOKBody)
 
@@ -99,13 +94,12 @@ func NewGetTCPCheckNotFound() *GetTCPCheckNotFound {
 	return &GetTCPCheckNotFound{}
 }
 
-/* GetTCPCheckNotFound describes a response with status code 404, with default header values.
+/*GetTCPCheckNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type GetTCPCheckNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -115,18 +109,15 @@ type GetTCPCheckNotFound struct {
 func (o *GetTCPCheckNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_checks/{index}][%d] getTcpCheckNotFound  %+v", 404, o.Payload)
 }
+
 func (o *GetTCPCheckNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetTCPCheckNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -145,14 +136,14 @@ func NewGetTCPCheckDefault(code int) *GetTCPCheckDefault {
 	}
 }
 
-/* GetTCPCheckDefault describes a response with status code -1, with default header values.
+/*GetTCPCheckDefault handles this case with default header values.
 
 General Error
 */
 type GetTCPCheckDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -167,18 +158,15 @@ func (o *GetTCPCheckDefault) Code() int {
 func (o *GetTCPCheckDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_checks/{index}][%d] getTCPCheck default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetTCPCheckDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetTCPCheckDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -217,6 +205,7 @@ func (o *GetTCPCheckOKBody) Validate(formats strfmt.Registry) error {
 }
 
 func (o *GetTCPCheckOKBody) validateData(formats strfmt.Registry) error {
+
 	if swag.IsZero(o.Data) { // not required
 		return nil
 	}
@@ -225,38 +214,6 @@ func (o *GetTCPCheckOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getTcpCheckOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getTcpCheckOK" + "." + "data")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get TCP check o k body based on the context it is used
-func (o *GetTCPCheckOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetTCPCheckOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Data != nil {
-		if err := o.Data.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("getTcpCheckOK" + "." + "data")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("getTcpCheckOK" + "." + "data")
 			}
 			return err
 		}

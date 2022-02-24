@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v2/models"
+	"github.com/haproxytech/client-native/v3/models"
 )
 
 // DeleteCacheReader is a Reader for the DeleteCache structure.
@@ -58,13 +58,12 @@ func NewDeleteCacheAccepted() *DeleteCacheAccepted {
 	return &DeleteCacheAccepted{}
 }
 
-/* DeleteCacheAccepted describes a response with status code 202, with default header values.
+/*DeleteCacheAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteCacheAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -75,12 +74,8 @@ func (o *DeleteCacheAccepted) Error() string {
 
 func (o *DeleteCacheAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	return nil
 }
@@ -90,7 +85,7 @@ func NewDeleteCacheNoContent() *DeleteCacheNoContent {
 	return &DeleteCacheNoContent{}
 }
 
-/* DeleteCacheNoContent describes a response with status code 204, with default header values.
+/*DeleteCacheNoContent handles this case with default header values.
 
 Cache deleted
 */
@@ -111,13 +106,12 @@ func NewDeleteCacheNotFound() *DeleteCacheNotFound {
 	return &DeleteCacheNotFound{}
 }
 
-/* DeleteCacheNotFound describes a response with status code 404, with default header values.
+/*DeleteCacheNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteCacheNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,18 +121,15 @@ type DeleteCacheNotFound struct {
 func (o *DeleteCacheNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/caches/{name}][%d] deleteCacheNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteCacheNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteCacheNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -157,14 +148,14 @@ func NewDeleteCacheDefault(code int) *DeleteCacheDefault {
 	}
 }
 
-/* DeleteCacheDefault describes a response with status code -1, with default header values.
+/*DeleteCacheDefault handles this case with default header values.
 
 General Error
 */
 type DeleteCacheDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -179,18 +170,15 @@ func (o *DeleteCacheDefault) Code() int {
 func (o *DeleteCacheDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/caches/{name}][%d] deleteCache default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteCacheDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteCacheDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

@@ -6,7 +6,6 @@ package cache
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -16,7 +15,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v2/models"
+	"github.com/haproxytech/client-native/v3/models"
 )
 
 // GetCachesReader is a Reader for the GetCaches structure.
@@ -50,13 +49,12 @@ func NewGetCachesOK() *GetCachesOK {
 	return &GetCachesOK{}
 }
 
-/* GetCachesOK describes a response with status code 200, with default header values.
+/*GetCachesOK handles this case with default header values.
 
 Successful operation
 */
 type GetCachesOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -66,18 +64,15 @@ type GetCachesOK struct {
 func (o *GetCachesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/caches][%d] getCachesOK  %+v", 200, o.Payload)
 }
+
 func (o *GetCachesOK) GetPayload() *GetCachesOKBody {
 	return o.Payload
 }
 
 func (o *GetCachesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetCachesOKBody)
 
@@ -96,14 +91,14 @@ func NewGetCachesDefault(code int) *GetCachesDefault {
 	}
 }
 
-/* GetCachesDefault describes a response with status code -1, with default header values.
+/*GetCachesDefault handles this case with default header values.
 
 General Error
 */
 type GetCachesDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -118,18 +113,15 @@ func (o *GetCachesDefault) Code() int {
 func (o *GetCachesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/caches][%d] getCaches default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetCachesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetCachesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -177,36 +169,6 @@ func (o *GetCachesOKBody) validateData(formats strfmt.Registry) error {
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getCachesOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getCachesOK" + "." + "data")
-		}
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get caches o k body based on the context it is used
-func (o *GetCachesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetCachesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := o.Data.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("getCachesOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getCachesOK" + "." + "data")
 		}
 		return err
 	}

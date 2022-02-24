@@ -16,108 +16,91 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v2/models"
+	"github.com/haproxytech/client-native/v3/models"
 )
 
-// NewReplaceCacheParams creates a new ReplaceCacheParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewReplaceCacheParams creates a new ReplaceCacheParams object
+// with the default values initialized.
 func NewReplaceCacheParams() *ReplaceCacheParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &ReplaceCacheParams{
+		ForceReload: &forceReloadDefault,
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewReplaceCacheParamsWithTimeout creates a new ReplaceCacheParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewReplaceCacheParamsWithTimeout(timeout time.Duration) *ReplaceCacheParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &ReplaceCacheParams{
+		ForceReload: &forceReloadDefault,
+
 		timeout: timeout,
 	}
 }
 
 // NewReplaceCacheParamsWithContext creates a new ReplaceCacheParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewReplaceCacheParamsWithContext(ctx context.Context) *ReplaceCacheParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &ReplaceCacheParams{
+		ForceReload: &forceReloadDefault,
+
 		Context: ctx,
 	}
 }
 
 // NewReplaceCacheParamsWithHTTPClient creates a new ReplaceCacheParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewReplaceCacheParamsWithHTTPClient(client *http.Client) *ReplaceCacheParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &ReplaceCacheParams{
-		HTTPClient: client,
+		ForceReload: &forceReloadDefault,
+		HTTPClient:  client,
 	}
 }
 
-/* ReplaceCacheParams contains all the parameters to send to the API endpoint
-   for the replace cache operation.
-
-   Typically these are written to a http.Request.
+/*ReplaceCacheParams contains all the parameters to send to the API endpoint
+for the replace cache operation typically these are written to a http.Request
 */
 type ReplaceCacheParams struct {
 
-	// Data.
+	/*Data*/
 	Data *models.Cache
+	/*ForceReload
+	  If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 
-	/* ForceReload.
-
-	   If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 	*/
 	ForceReload *bool
+	/*Name
+	  Cache name
 
-	/* Name.
-
-	   Cache name
 	*/
 	Name string
+	/*TransactionID
+	  ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 
-	/* TransactionID.
-
-	   ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 	*/
 	TransactionID *string
+	/*Version
+	  Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 
-	/* Version.
-
-	   Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 	*/
 	Version *int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the replace cache params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *ReplaceCacheParams) WithDefaults() *ReplaceCacheParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the replace cache params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *ReplaceCacheParams) SetDefaults() {
-	var (
-		forceReloadDefault = bool(false)
-	)
-
-	val := ReplaceCacheParams{
-		ForceReload: &forceReloadDefault,
-	}
-
-	val.timeout = o.timeout
-	val.Context = o.Context
-	val.HTTPClient = o.HTTPClient
-	*o = val
 }
 
 // WithTimeout adds the timeout to the replace cache params
@@ -215,6 +198,7 @@ func (o *ReplaceCacheParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		return err
 	}
 	var res []error
+
 	if o.Data != nil {
 		if err := r.SetBodyParam(o.Data); err != nil {
 			return err
@@ -225,17 +209,16 @@ func (o *ReplaceCacheParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 
 		// query param force_reload
 		var qrForceReload bool
-
 		if o.ForceReload != nil {
 			qrForceReload = *o.ForceReload
 		}
 		qForceReload := swag.FormatBool(qrForceReload)
 		if qForceReload != "" {
-
 			if err := r.SetQueryParam("force_reload", qForceReload); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	// path param name
@@ -247,34 +230,32 @@ func (o *ReplaceCacheParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 
 		// query param transaction_id
 		var qrTransactionID string
-
 		if o.TransactionID != nil {
 			qrTransactionID = *o.TransactionID
 		}
 		qTransactionID := qrTransactionID
 		if qTransactionID != "" {
-
 			if err := r.SetQueryParam("transaction_id", qTransactionID); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if o.Version != nil {
 
 		// query param version
 		var qrVersion int64
-
 		if o.Version != nil {
 			qrVersion = *o.Version
 		}
 		qVersion := swag.FormatInt64(qrVersion)
 		if qVersion != "" {
-
 			if err := r.SetQueryParam("version", qVersion); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if len(res) > 0 {

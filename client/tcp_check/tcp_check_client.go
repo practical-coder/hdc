@@ -23,20 +23,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateTCPCheck(params *CreateTCPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateTCPCheckCreated, *CreateTCPCheckAccepted, error)
+	CreateTCPCheck(params *CreateTCPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*CreateTCPCheckCreated, *CreateTCPCheckAccepted, error)
 
-	DeleteTCPCheck(params *DeleteTCPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteTCPCheckAccepted, *DeleteTCPCheckNoContent, error)
+	DeleteTCPCheck(params *DeleteTCPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteTCPCheckAccepted, *DeleteTCPCheckNoContent, error)
 
-	GetTCPCheck(params *GetTCPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPCheckOK, error)
+	GetTCPCheck(params *GetTCPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*GetTCPCheckOK, error)
 
-	GetTCPChecks(params *GetTCPChecksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPChecksOK, error)
+	GetTCPChecks(params *GetTCPChecksParams, authInfo runtime.ClientAuthInfoWriter) (*GetTCPChecksOK, error)
 
-	ReplaceTCPCheck(params *ReplaceTCPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceTCPCheckOK, *ReplaceTCPCheckAccepted, error)
+	ReplaceTCPCheck(params *ReplaceTCPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceTCPCheckOK, *ReplaceTCPCheckAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,12 +43,13 @@ type ClientService interface {
 
   Adds a new TCP check of the specified type in the specified parent.
 */
-func (a *Client) CreateTCPCheck(params *CreateTCPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateTCPCheckCreated, *CreateTCPCheckAccepted, error) {
+func (a *Client) CreateTCPCheck(params *CreateTCPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*CreateTCPCheckCreated, *CreateTCPCheckAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateTCPCheckParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createTCPCheck",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/tcp_checks",
@@ -63,12 +61,7 @@ func (a *Client) CreateTCPCheck(params *CreateTCPCheckParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -88,12 +81,13 @@ func (a *Client) CreateTCPCheck(params *CreateTCPCheckParams, authInfo runtime.C
 
   Deletes a TCP check configuration by it's index from the specified parent.
 */
-func (a *Client) DeleteTCPCheck(params *DeleteTCPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteTCPCheckAccepted, *DeleteTCPCheckNoContent, error) {
+func (a *Client) DeleteTCPCheck(params *DeleteTCPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteTCPCheckAccepted, *DeleteTCPCheckNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteTCPCheckParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteTCPCheck",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/tcp_checks/{index}",
@@ -105,12 +99,7 @@ func (a *Client) DeleteTCPCheck(params *DeleteTCPCheckParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -130,12 +119,13 @@ func (a *Client) DeleteTCPCheck(params *DeleteTCPCheckParams, authInfo runtime.C
 
   Returns one TCP check configuration by it's index in the specified parent.
 */
-func (a *Client) GetTCPCheck(params *GetTCPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPCheckOK, error) {
+func (a *Client) GetTCPCheck(params *GetTCPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*GetTCPCheckOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTCPCheckParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getTCPCheck",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/tcp_checks/{index}",
@@ -147,12 +137,7 @@ func (a *Client) GetTCPCheck(params *GetTCPCheckParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -170,12 +155,13 @@ func (a *Client) GetTCPCheck(params *GetTCPCheckParams, authInfo runtime.ClientA
 
   Returns all TCP checks that are configured in specified parent.
 */
-func (a *Client) GetTCPChecks(params *GetTCPChecksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPChecksOK, error) {
+func (a *Client) GetTCPChecks(params *GetTCPChecksParams, authInfo runtime.ClientAuthInfoWriter) (*GetTCPChecksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTCPChecksParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getTCPChecks",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/tcp_checks",
@@ -187,12 +173,7 @@ func (a *Client) GetTCPChecks(params *GetTCPChecksParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -210,12 +191,13 @@ func (a *Client) GetTCPChecks(params *GetTCPChecksParams, authInfo runtime.Clien
 
   Replaces a TCP Check configuration by it's index in the specified parent.
 */
-func (a *Client) ReplaceTCPCheck(params *ReplaceTCPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceTCPCheckOK, *ReplaceTCPCheckAccepted, error) {
+func (a *Client) ReplaceTCPCheck(params *ReplaceTCPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceTCPCheckOK, *ReplaceTCPCheckAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceTCPCheckParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "replaceTCPCheck",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/tcp_checks/{index}",
@@ -227,12 +209,7 @@ func (a *Client) ReplaceTCPCheck(params *ReplaceTCPCheckParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v2/models"
+	"github.com/haproxytech/client-native/v3/models"
 )
 
 // DeleteHTTPCheckReader is a Reader for the DeleteHTTPCheck structure.
@@ -58,13 +58,12 @@ func NewDeleteHTTPCheckAccepted() *DeleteHTTPCheckAccepted {
 	return &DeleteHTTPCheckAccepted{}
 }
 
-/* DeleteHTTPCheckAccepted describes a response with status code 202, with default header values.
+/*DeleteHTTPCheckAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteHTTPCheckAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -75,12 +74,8 @@ func (o *DeleteHTTPCheckAccepted) Error() string {
 
 func (o *DeleteHTTPCheckAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	return nil
 }
@@ -90,7 +85,7 @@ func NewDeleteHTTPCheckNoContent() *DeleteHTTPCheckNoContent {
 	return &DeleteHTTPCheckNoContent{}
 }
 
-/* DeleteHTTPCheckNoContent describes a response with status code 204, with default header values.
+/*DeleteHTTPCheckNoContent handles this case with default header values.
 
 HTTP check deleted
 */
@@ -111,13 +106,12 @@ func NewDeleteHTTPCheckNotFound() *DeleteHTTPCheckNotFound {
 	return &DeleteHTTPCheckNotFound{}
 }
 
-/* DeleteHTTPCheckNotFound describes a response with status code 404, with default header values.
+/*DeleteHTTPCheckNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type DeleteHTTPCheckNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,18 +121,15 @@ type DeleteHTTPCheckNotFound struct {
 func (o *DeleteHTTPCheckNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_checks/{index}][%d] deleteHttpCheckNotFound  %+v", 404, o.Payload)
 }
+
 func (o *DeleteHTTPCheckNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteHTTPCheckNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -157,14 +148,14 @@ func NewDeleteHTTPCheckDefault(code int) *DeleteHTTPCheckDefault {
 	}
 }
 
-/* DeleteHTTPCheckDefault describes a response with status code -1, with default header values.
+/*DeleteHTTPCheckDefault handles this case with default header values.
 
 General Error
 */
 type DeleteHTTPCheckDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -179,18 +170,15 @@ func (o *DeleteHTTPCheckDefault) Code() int {
 func (o *DeleteHTTPCheckDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_checks/{index}][%d] deleteHTTPCheck default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *DeleteHTTPCheckDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteHTTPCheckDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

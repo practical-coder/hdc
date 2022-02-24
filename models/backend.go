@@ -25,6 +25,10 @@ type Backend struct {
 	// Enum: [enabled disabled]
 	Abortonclose string `json:"abortonclose,omitempty"`
 
+	// accept invalid http response
+	// Enum: [enabled disabled]
+	AcceptInvalidHTTPResponse string `json:"accept_invalid_http_response,omitempty"`
+
 	// adv check
 	// Enum: [ssl-hello-chk smtpchk ldap-check mysql-check pgsql-check tcp-check redis-check httpchk]
 	AdvCheck string `json:"adv_check,omitempty"`
@@ -42,6 +46,9 @@ type Backend struct {
 
 	// check timeout
 	CheckTimeout *int64 `json:"check_timeout,omitempty"`
+
+	// compression
+	Compression *Compression `json:"compression,omitempty"`
 
 	// connect timeout
 	ConnectTimeout *int64 `json:"connect_timeout,omitempty"`
@@ -70,6 +77,10 @@ type Backend struct {
 
 	// forwardfor
 	Forwardfor *Forwardfor `json:"forwardfor,omitempty"`
+
+	// h1 case adjust bogus server
+	// Enum: [enabled disabled]
+	H1CaseAdjustBogusServer string `json:"h1_case_adjust_bogus_server,omitempty"`
 
 	// hash type
 	HashType *BackendHashType `json:"hash_type,omitempty"`
@@ -145,7 +156,7 @@ type Backend struct {
 	StatsOptions *StatsOptions `json:"stats_options,omitempty"`
 
 	// stick table
-	StickTable *BackendStickTable `json:"stick_table,omitempty"`
+	StickTable *ConfigStickTable `json:"stick_table,omitempty"`
 
 	// tunnel timeout
 	TunnelTimeout *int64 `json:"tunnel_timeout,omitempty"`
@@ -156,6 +167,10 @@ func (m *Backend) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAbortonclose(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAcceptInvalidHTTPResponse(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -172,6 +187,10 @@ func (m *Backend) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateBindProcess(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCompression(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -200,6 +219,10 @@ func (m *Backend) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateForwardfor(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateH1CaseAdjustBogusServer(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -314,6 +337,49 @@ func (m *Backend) validateAbortonclose(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateAbortoncloseEnum("abortonclose", "body", m.Abortonclose); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var backendTypeAcceptInvalidHTTPResponsePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypeAcceptInvalidHTTPResponsePropEnum = append(backendTypeAcceptInvalidHTTPResponsePropEnum, v)
+	}
+}
+
+const (
+
+	// BackendAcceptInvalidHTTPResponseEnabled captures enum value "enabled"
+	BackendAcceptInvalidHTTPResponseEnabled string = "enabled"
+
+	// BackendAcceptInvalidHTTPResponseDisabled captures enum value "disabled"
+	BackendAcceptInvalidHTTPResponseDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validateAcceptInvalidHTTPResponseEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, backendTypeAcceptInvalidHTTPResponsePropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validateAcceptInvalidHTTPResponse(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.AcceptInvalidHTTPResponse) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateAcceptInvalidHTTPResponseEnum("accept_invalid_http_response", "body", m.AcceptInvalidHTTPResponse); err != nil {
 		return err
 	}
 
@@ -455,6 +521,24 @@ func (m *Backend) validateBindProcess(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Backend) validateCompression(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Compression) { // not required
+		return nil
+	}
+
+	if m.Compression != nil {
+		if err := m.Compression.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("compression")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Backend) validateCookie(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Cookie) { // not required
@@ -586,6 +670,49 @@ func (m *Backend) validateForwardfor(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+var backendTypeH1CaseAdjustBogusServerPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypeH1CaseAdjustBogusServerPropEnum = append(backendTypeH1CaseAdjustBogusServerPropEnum, v)
+	}
+}
+
+const (
+
+	// BackendH1CaseAdjustBogusServerEnabled captures enum value "enabled"
+	BackendH1CaseAdjustBogusServerEnabled string = "enabled"
+
+	// BackendH1CaseAdjustBogusServerDisabled captures enum value "disabled"
+	BackendH1CaseAdjustBogusServerDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validateH1CaseAdjustBogusServerEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, backendTypeH1CaseAdjustBogusServerPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validateH1CaseAdjustBogusServer(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.H1CaseAdjustBogusServer) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateH1CaseAdjustBogusServerEnum("h1_case_adjust_bogus_server", "body", m.H1CaseAdjustBogusServer); err != nil {
+		return err
 	}
 
 	return nil
@@ -1251,154 +1378,6 @@ func (m *BackendHashType) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BackendHashType) UnmarshalBinary(b []byte) error {
 	var res BackendHashType
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// BackendStickTable backend stick table
-//
-// swagger:model BackendStickTable
-type BackendStickTable struct {
-
-	// expire
-	Expire *int64 `json:"expire,omitempty"`
-
-	// keylen
-	Keylen *int64 `json:"keylen,omitempty"`
-
-	// nopurge
-	Nopurge bool `json:"nopurge,omitempty"`
-
-	// peers
-	// Pattern: ^[^\s]+$
-	Peers string `json:"peers,omitempty"`
-
-	// size
-	Size *int64 `json:"size,omitempty"`
-
-	// store
-	// Pattern: ^[^\s]+$
-	Store string `json:"store,omitempty"`
-
-	// type
-	// Enum: [ip ipv6 integer string binary]
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this backend stick table
-func (m *BackendStickTable) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validatePeers(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateStore(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *BackendStickTable) validatePeers(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.Peers) { // not required
-		return nil
-	}
-
-	if err := validate.Pattern("stick_table"+"."+"peers", "body", string(m.Peers), `^[^\s]+$`); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *BackendStickTable) validateStore(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.Store) { // not required
-		return nil
-	}
-
-	if err := validate.Pattern("stick_table"+"."+"store", "body", string(m.Store), `^[^\s]+$`); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-var backendStickTableTypeTypePropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["ip","ipv6","integer","string","binary"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		backendStickTableTypeTypePropEnum = append(backendStickTableTypeTypePropEnum, v)
-	}
-}
-
-const (
-
-	// BackendStickTableTypeIP captures enum value "ip"
-	BackendStickTableTypeIP string = "ip"
-
-	// BackendStickTableTypeIPV6 captures enum value "ipv6"
-	BackendStickTableTypeIPV6 string = "ipv6"
-
-	// BackendStickTableTypeInteger captures enum value "integer"
-	BackendStickTableTypeInteger string = "integer"
-
-	// BackendStickTableTypeString captures enum value "string"
-	BackendStickTableTypeString string = "string"
-
-	// BackendStickTableTypeBinary captures enum value "binary"
-	BackendStickTableTypeBinary string = "binary"
-)
-
-// prop value enum
-func (m *BackendStickTable) validateTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendStickTableTypeTypePropEnum); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *BackendStickTable) validateType(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.Type) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateTypeEnum("stick_table"+"."+"type", "body", m.Type); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *BackendStickTable) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *BackendStickTable) UnmarshalBinary(b []byte) error {
-	var res BackendStickTable
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

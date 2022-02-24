@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v2/models"
+	"github.com/haproxytech/client-native/v3/models"
 )
 
 // ReplaceCacheReader is a Reader for the ReplaceCache structure.
@@ -64,7 +64,7 @@ func NewReplaceCacheOK() *ReplaceCacheOK {
 	return &ReplaceCacheOK{}
 }
 
-/* ReplaceCacheOK describes a response with status code 200, with default header values.
+/*ReplaceCacheOK handles this case with default header values.
 
 Cache replaced
 */
@@ -75,6 +75,7 @@ type ReplaceCacheOK struct {
 func (o *ReplaceCacheOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheOK  %+v", 200, o.Payload)
 }
+
 func (o *ReplaceCacheOK) GetPayload() *models.Cache {
 	return o.Payload
 }
@@ -96,13 +97,12 @@ func NewReplaceCacheAccepted() *ReplaceCacheAccepted {
 	return &ReplaceCacheAccepted{}
 }
 
-/* ReplaceCacheAccepted describes a response with status code 202, with default header values.
+/*ReplaceCacheAccepted handles this case with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceCacheAccepted struct {
-
-	/* ID of the requested reload
+	/*ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,18 +112,15 @@ type ReplaceCacheAccepted struct {
 func (o *ReplaceCacheAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheAccepted  %+v", 202, o.Payload)
 }
+
 func (o *ReplaceCacheAccepted) GetPayload() *models.Cache {
 	return o.Payload
 }
 
 func (o *ReplaceCacheAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Reload-ID
-	hdrReloadID := response.GetHeader("Reload-ID")
-
-	if hdrReloadID != "" {
-		o.ReloadID = hdrReloadID
-	}
+	// response header Reload-ID
+	o.ReloadID = response.GetHeader("Reload-ID")
 
 	o.Payload = new(models.Cache)
 
@@ -140,13 +137,12 @@ func NewReplaceCacheBadRequest() *ReplaceCacheBadRequest {
 	return &ReplaceCacheBadRequest{}
 }
 
-/* ReplaceCacheBadRequest describes a response with status code 400, with default header values.
+/*ReplaceCacheBadRequest handles this case with default header values.
 
 Bad request
 */
 type ReplaceCacheBadRequest struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -156,18 +152,15 @@ type ReplaceCacheBadRequest struct {
 func (o *ReplaceCacheBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheBadRequest  %+v", 400, o.Payload)
 }
+
 func (o *ReplaceCacheBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceCacheBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -184,13 +177,12 @@ func NewReplaceCacheNotFound() *ReplaceCacheNotFound {
 	return &ReplaceCacheNotFound{}
 }
 
-/* ReplaceCacheNotFound describes a response with status code 404, with default header values.
+/*ReplaceCacheNotFound handles this case with default header values.
 
 The specified resource was not found
 */
 type ReplaceCacheNotFound struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -200,18 +192,15 @@ type ReplaceCacheNotFound struct {
 func (o *ReplaceCacheNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheNotFound  %+v", 404, o.Payload)
 }
+
 func (o *ReplaceCacheNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceCacheNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -230,14 +219,14 @@ func NewReplaceCacheDefault(code int) *ReplaceCacheDefault {
 	}
 }
 
-/* ReplaceCacheDefault describes a response with status code -1, with default header values.
+/*ReplaceCacheDefault handles this case with default header values.
 
 General Error
 */
 type ReplaceCacheDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -252,18 +241,15 @@ func (o *ReplaceCacheDefault) Code() int {
 func (o *ReplaceCacheDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCache default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *ReplaceCacheDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceCacheDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 

@@ -6,7 +6,6 @@ package http_check
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
@@ -16,7 +15,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v2/models"
+	"github.com/haproxytech/client-native/v3/models"
 )
 
 // GetHTTPChecksReader is a Reader for the GetHTTPChecks structure.
@@ -50,13 +49,12 @@ func NewGetHTTPChecksOK() *GetHTTPChecksOK {
 	return &GetHTTPChecksOK{}
 }
 
-/* GetHTTPChecksOK describes a response with status code 200, with default header values.
+/*GetHTTPChecksOK handles this case with default header values.
 
 Successful operation
 */
 type GetHTTPChecksOK struct {
-
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -66,18 +64,15 @@ type GetHTTPChecksOK struct {
 func (o *GetHTTPChecksOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_checks][%d] getHttpChecksOK  %+v", 200, o.Payload)
 }
+
 func (o *GetHTTPChecksOK) GetPayload() *GetHTTPChecksOKBody {
 	return o.Payload
 }
 
 func (o *GetHTTPChecksOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(GetHTTPChecksOKBody)
 
@@ -96,14 +91,14 @@ func NewGetHTTPChecksDefault(code int) *GetHTTPChecksDefault {
 	}
 }
 
-/* GetHTTPChecksDefault describes a response with status code -1, with default header values.
+/*GetHTTPChecksDefault handles this case with default header values.
 
 General Error
 */
 type GetHTTPChecksDefault struct {
 	_statusCode int
 
-	/* Configuration file version
+	/*Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -118,18 +113,15 @@ func (o *GetHTTPChecksDefault) Code() int {
 func (o *GetHTTPChecksDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_checks][%d] getHTTPChecks default  %+v", o._statusCode, o.Payload)
 }
+
 func (o *GetHTTPChecksDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetHTTPChecksDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header Configuration-Version
-	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
-
-	if hdrConfigurationVersion != "" {
-		o.ConfigurationVersion = hdrConfigurationVersion
-	}
+	// response header Configuration-Version
+	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
 
 	o.Payload = new(models.Error)
 
@@ -151,7 +143,7 @@ type GetHTTPChecksOKBody struct {
 
 	// data
 	// Required: true
-	Data models.HTTPCheckRules `json:"data"`
+	Data models.HTTPChecks `json:"data"`
 }
 
 // Validate validates this get HTTP checks o k body
@@ -177,36 +169,6 @@ func (o *GetHTTPChecksOKBody) validateData(formats strfmt.Registry) error {
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getHttpChecksOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getHttpChecksOK" + "." + "data")
-		}
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this get HTTP checks o k body based on the context it is used
-func (o *GetHTTPChecksOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *GetHTTPChecksOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := o.Data.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("getHttpChecksOK" + "." + "data")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("getHttpChecksOK" + "." + "data")
 		}
 		return err
 	}

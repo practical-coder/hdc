@@ -16,120 +16,101 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v2/models"
+	"github.com/haproxytech/client-native/v3/models"
 )
 
-// NewReplaceTCPCheckParams creates a new ReplaceTCPCheckParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewReplaceTCPCheckParams creates a new ReplaceTCPCheckParams object
+// with the default values initialized.
 func NewReplaceTCPCheckParams() *ReplaceTCPCheckParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &ReplaceTCPCheckParams{
+		ForceReload: &forceReloadDefault,
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewReplaceTCPCheckParamsWithTimeout creates a new ReplaceTCPCheckParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewReplaceTCPCheckParamsWithTimeout(timeout time.Duration) *ReplaceTCPCheckParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &ReplaceTCPCheckParams{
+		ForceReload: &forceReloadDefault,
+
 		timeout: timeout,
 	}
 }
 
 // NewReplaceTCPCheckParamsWithContext creates a new ReplaceTCPCheckParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewReplaceTCPCheckParamsWithContext(ctx context.Context) *ReplaceTCPCheckParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &ReplaceTCPCheckParams{
+		ForceReload: &forceReloadDefault,
+
 		Context: ctx,
 	}
 }
 
 // NewReplaceTCPCheckParamsWithHTTPClient creates a new ReplaceTCPCheckParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewReplaceTCPCheckParamsWithHTTPClient(client *http.Client) *ReplaceTCPCheckParams {
+	var (
+		forceReloadDefault = bool(false)
+	)
 	return &ReplaceTCPCheckParams{
-		HTTPClient: client,
+		ForceReload: &forceReloadDefault,
+		HTTPClient:  client,
 	}
 }
 
-/* ReplaceTCPCheckParams contains all the parameters to send to the API endpoint
-   for the replace TCP check operation.
-
-   Typically these are written to a http.Request.
+/*ReplaceTCPCheckParams contains all the parameters to send to the API endpoint
+for the replace TCP check operation typically these are written to a http.Request
 */
 type ReplaceTCPCheckParams struct {
 
-	// Data.
+	/*Data*/
 	Data *models.TCPCheck
+	/*ForceReload
+	  If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 
-	/* ForceReload.
-
-	   If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 	*/
 	ForceReload *bool
+	/*Index
+	  TCP Check Index
 
-	/* Index.
-
-	   TCP Check Index
 	*/
 	Index int64
+	/*ParentName
+	  Parent name
 
-	/* ParentName.
-
-	   Parent name
 	*/
 	ParentName *string
+	/*ParentType
+	  Parent type
 
-	/* ParentType.
-
-	   Parent type
 	*/
 	ParentType string
+	/*TransactionID
+	  ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 
-	/* TransactionID.
-
-	   ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 	*/
 	TransactionID *string
+	/*Version
+	  Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 
-	/* Version.
-
-	   Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 	*/
 	Version *int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the replace TCP check params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *ReplaceTCPCheckParams) WithDefaults() *ReplaceTCPCheckParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the replace TCP check params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *ReplaceTCPCheckParams) SetDefaults() {
-	var (
-		forceReloadDefault = bool(false)
-	)
-
-	val := ReplaceTCPCheckParams{
-		ForceReload: &forceReloadDefault,
-	}
-
-	val.timeout = o.timeout
-	val.Context = o.Context
-	val.HTTPClient = o.HTTPClient
-	*o = val
 }
 
 // WithTimeout adds the timeout to the replace TCP check params
@@ -249,6 +230,7 @@ func (o *ReplaceTCPCheckParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 	var res []error
+
 	if o.Data != nil {
 		if err := r.SetBodyParam(o.Data); err != nil {
 			return err
@@ -259,17 +241,16 @@ func (o *ReplaceTCPCheckParams) WriteToRequest(r runtime.ClientRequest, reg strf
 
 		// query param force_reload
 		var qrForceReload bool
-
 		if o.ForceReload != nil {
 			qrForceReload = *o.ForceReload
 		}
 		qForceReload := swag.FormatBool(qrForceReload)
 		if qForceReload != "" {
-
 			if err := r.SetQueryParam("force_reload", qForceReload); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	// path param index
@@ -281,24 +262,22 @@ func (o *ReplaceTCPCheckParams) WriteToRequest(r runtime.ClientRequest, reg strf
 
 		// query param parent_name
 		var qrParentName string
-
 		if o.ParentName != nil {
 			qrParentName = *o.ParentName
 		}
 		qParentName := qrParentName
 		if qParentName != "" {
-
 			if err := r.SetQueryParam("parent_name", qParentName); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	// query param parent_type
 	qrParentType := o.ParentType
 	qParentType := qrParentType
 	if qParentType != "" {
-
 		if err := r.SetQueryParam("parent_type", qParentType); err != nil {
 			return err
 		}
@@ -308,34 +287,32 @@ func (o *ReplaceTCPCheckParams) WriteToRequest(r runtime.ClientRequest, reg strf
 
 		// query param transaction_id
 		var qrTransactionID string
-
 		if o.TransactionID != nil {
 			qrTransactionID = *o.TransactionID
 		}
 		qTransactionID := qrTransactionID
 		if qTransactionID != "" {
-
 			if err := r.SetQueryParam("transaction_id", qTransactionID); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if o.Version != nil {
 
 		// query param version
 		var qrVersion int64
-
 		if o.Version != nil {
 			qrVersion = *o.Version
 		}
 		qVersion := swag.FormatInt64(qrVersion)
 		if qVersion != "" {
-
 			if err := r.SetQueryParam("version", qVersion); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if len(res) > 0 {

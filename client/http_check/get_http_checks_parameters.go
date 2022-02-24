@@ -16,85 +16,69 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetHTTPChecksParams creates a new GetHTTPChecksParams object,
-// with the default timeout for this client.
-//
-// Default values are not hydrated, since defaults are normally applied by the API server side.
-//
-// To enforce default values in parameter, use SetDefaults or WithDefaults.
+// NewGetHTTPChecksParams creates a new GetHTTPChecksParams object
+// with the default values initialized.
 func NewGetHTTPChecksParams() *GetHTTPChecksParams {
+	var ()
 	return &GetHTTPChecksParams{
+
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetHTTPChecksParamsWithTimeout creates a new GetHTTPChecksParams object
-// with the ability to set a timeout on a request.
+// with the default values initialized, and the ability to set a timeout on a request
 func NewGetHTTPChecksParamsWithTimeout(timeout time.Duration) *GetHTTPChecksParams {
+	var ()
 	return &GetHTTPChecksParams{
+
 		timeout: timeout,
 	}
 }
 
 // NewGetHTTPChecksParamsWithContext creates a new GetHTTPChecksParams object
-// with the ability to set a context for a request.
+// with the default values initialized, and the ability to set a context for a request
 func NewGetHTTPChecksParamsWithContext(ctx context.Context) *GetHTTPChecksParams {
+	var ()
 	return &GetHTTPChecksParams{
+
 		Context: ctx,
 	}
 }
 
 // NewGetHTTPChecksParamsWithHTTPClient creates a new GetHTTPChecksParams object
-// with the ability to set a custom HTTPClient for a request.
+// with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetHTTPChecksParamsWithHTTPClient(client *http.Client) *GetHTTPChecksParams {
+	var ()
 	return &GetHTTPChecksParams{
 		HTTPClient: client,
 	}
 }
 
-/* GetHTTPChecksParams contains all the parameters to send to the API endpoint
-   for the get HTTP checks operation.
-
-   Typically these are written to a http.Request.
+/*GetHTTPChecksParams contains all the parameters to send to the API endpoint
+for the get HTTP checks operation typically these are written to a http.Request
 */
 type GetHTTPChecksParams struct {
 
-	/* ParentName.
+	/*ParentName
+	  Parent name
 
-	   Parent name
 	*/
 	ParentName *string
+	/*ParentType
+	  Parent type
 
-	/* ParentType.
-
-	   Parent type
 	*/
 	ParentType string
+	/*TransactionID
+	  ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 
-	/* TransactionID.
-
-	   ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 	*/
 	TransactionID *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
-}
-
-// WithDefaults hydrates default values in the get HTTP checks params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetHTTPChecksParams) WithDefaults() *GetHTTPChecksParams {
-	o.SetDefaults()
-	return o
-}
-
-// SetDefaults hydrates default values in the get HTTP checks params (not the query body).
-//
-// All values with no default are reset to their zero value.
-func (o *GetHTTPChecksParams) SetDefaults() {
-	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get HTTP checks params
@@ -175,24 +159,22 @@ func (o *GetHTTPChecksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 		// query param parent_name
 		var qrParentName string
-
 		if o.ParentName != nil {
 			qrParentName = *o.ParentName
 		}
 		qParentName := qrParentName
 		if qParentName != "" {
-
 			if err := r.SetQueryParam("parent_name", qParentName); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	// query param parent_type
 	qrParentType := o.ParentType
 	qParentType := qrParentType
 	if qParentType != "" {
-
 		if err := r.SetQueryParam("parent_type", qParentType); err != nil {
 			return err
 		}
@@ -202,17 +184,16 @@ func (o *GetHTTPChecksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 		// query param transaction_id
 		var qrTransactionID string
-
 		if o.TransactionID != nil {
 			qrTransactionID = *o.TransactionID
 		}
 		qTransactionID := qrTransactionID
 		if qTransactionID != "" {
-
 			if err := r.SetQueryParam("transaction_id", qTransactionID); err != nil {
 				return err
 			}
 		}
+
 	}
 
 	if len(res) > 0 {

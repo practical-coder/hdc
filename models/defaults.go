@@ -29,6 +29,14 @@ type Defaults struct {
 	// Enum: [enabled disabled]
 	Abortonclose string `json:"abortonclose,omitempty"`
 
+	// accept invalid http request
+	// Enum: [enabled disabled]
+	AcceptInvalidHTTPRequest string `json:"accept_invalid_http_request,omitempty"`
+
+	// accept invalid http response
+	// Enum: [enabled disabled]
+	AcceptInvalidHTTPResponse string `json:"accept_invalid_http_response,omitempty"`
+
 	// adv check
 	// Enum: [ssl-hello-chk smtpchk ldap-check mysql-check pgsql-check tcp-check redis-check httpchk]
 	AdvCheck string `json:"adv_check,omitempty"`
@@ -59,6 +67,9 @@ type Defaults struct {
 	// clitcpka
 	// Enum: [enabled disabled]
 	Clitcpka string `json:"clitcpka,omitempty"`
+
+	// compression
+	Compression *Compression `json:"compression,omitempty"`
 
 	// connect timeout
 	ConnectTimeout *int64 `json:"connect_timeout,omitempty"`
@@ -99,6 +110,14 @@ type Defaults struct {
 
 	// forwardfor
 	Forwardfor *Forwardfor `json:"forwardfor,omitempty"`
+
+	// h1 case adjust bogus client
+	// Enum: [enabled disabled]
+	H1CaseAdjustBogusClient string `json:"h1_case_adjust_bogus_client,omitempty"`
+
+	// h1 case adjust bogus server
+	// Enum: [enabled disabled]
+	H1CaseAdjustBogusServer string `json:"h1_case_adjust_bogus_server,omitempty"`
 
 	// http buffer request
 	// Enum: [enabled disabled]
@@ -219,6 +238,14 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateAcceptInvalidHTTPRequest(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAcceptInvalidHTTPResponse(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateAdvCheck(formats); err != nil {
 		res = append(res, err)
 	}
@@ -236,6 +263,10 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateClitcpka(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCompression(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -276,6 +307,14 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateForwardfor(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateH1CaseAdjustBogusClient(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateH1CaseAdjustBogusServer(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -419,6 +458,92 @@ func (m *Defaults) validateAbortonclose(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateAbortoncloseEnum("abortonclose", "body", m.Abortonclose); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var defaultsTypeAcceptInvalidHTTPRequestPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		defaultsTypeAcceptInvalidHTTPRequestPropEnum = append(defaultsTypeAcceptInvalidHTTPRequestPropEnum, v)
+	}
+}
+
+const (
+
+	// DefaultsAcceptInvalidHTTPRequestEnabled captures enum value "enabled"
+	DefaultsAcceptInvalidHTTPRequestEnabled string = "enabled"
+
+	// DefaultsAcceptInvalidHTTPRequestDisabled captures enum value "disabled"
+	DefaultsAcceptInvalidHTTPRequestDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Defaults) validateAcceptInvalidHTTPRequestEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, defaultsTypeAcceptInvalidHTTPRequestPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Defaults) validateAcceptInvalidHTTPRequest(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.AcceptInvalidHTTPRequest) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateAcceptInvalidHTTPRequestEnum("accept_invalid_http_request", "body", m.AcceptInvalidHTTPRequest); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var defaultsTypeAcceptInvalidHTTPResponsePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		defaultsTypeAcceptInvalidHTTPResponsePropEnum = append(defaultsTypeAcceptInvalidHTTPResponsePropEnum, v)
+	}
+}
+
+const (
+
+	// DefaultsAcceptInvalidHTTPResponseEnabled captures enum value "enabled"
+	DefaultsAcceptInvalidHTTPResponseEnabled string = "enabled"
+
+	// DefaultsAcceptInvalidHTTPResponseDisabled captures enum value "disabled"
+	DefaultsAcceptInvalidHTTPResponseDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Defaults) validateAcceptInvalidHTTPResponseEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, defaultsTypeAcceptInvalidHTTPResponsePropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Defaults) validateAcceptInvalidHTTPResponse(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.AcceptInvalidHTTPResponse) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateAcceptInvalidHTTPResponseEnum("accept_invalid_http_response", "body", m.AcceptInvalidHTTPResponse); err != nil {
 		return err
 	}
 
@@ -598,6 +723,24 @@ func (m *Defaults) validateClitcpka(formats strfmt.Registry) error {
 	// value enum
 	if err := m.validateClitcpkaEnum("clitcpka", "body", m.Clitcpka); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Defaults) validateCompression(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Compression) { // not required
+		return nil
+	}
+
+	if m.Compression != nil {
+		if err := m.Compression.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("compression")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -830,6 +973,92 @@ func (m *Defaults) validateForwardfor(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+var defaultsTypeH1CaseAdjustBogusClientPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		defaultsTypeH1CaseAdjustBogusClientPropEnum = append(defaultsTypeH1CaseAdjustBogusClientPropEnum, v)
+	}
+}
+
+const (
+
+	// DefaultsH1CaseAdjustBogusClientEnabled captures enum value "enabled"
+	DefaultsH1CaseAdjustBogusClientEnabled string = "enabled"
+
+	// DefaultsH1CaseAdjustBogusClientDisabled captures enum value "disabled"
+	DefaultsH1CaseAdjustBogusClientDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Defaults) validateH1CaseAdjustBogusClientEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, defaultsTypeH1CaseAdjustBogusClientPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Defaults) validateH1CaseAdjustBogusClient(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.H1CaseAdjustBogusClient) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateH1CaseAdjustBogusClientEnum("h1_case_adjust_bogus_client", "body", m.H1CaseAdjustBogusClient); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var defaultsTypeH1CaseAdjustBogusServerPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		defaultsTypeH1CaseAdjustBogusServerPropEnum = append(defaultsTypeH1CaseAdjustBogusServerPropEnum, v)
+	}
+}
+
+const (
+
+	// DefaultsH1CaseAdjustBogusServerEnabled captures enum value "enabled"
+	DefaultsH1CaseAdjustBogusServerEnabled string = "enabled"
+
+	// DefaultsH1CaseAdjustBogusServerDisabled captures enum value "disabled"
+	DefaultsH1CaseAdjustBogusServerDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Defaults) validateH1CaseAdjustBogusServerEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, defaultsTypeH1CaseAdjustBogusServerPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Defaults) validateH1CaseAdjustBogusServer(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.H1CaseAdjustBogusServer) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateH1CaseAdjustBogusServerEnum("h1_case_adjust_bogus_server", "body", m.H1CaseAdjustBogusServer); err != nil {
+		return err
 	}
 
 	return nil

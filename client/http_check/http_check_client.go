@@ -23,20 +23,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
-type ClientOption func(*runtime.ClientOperation)
-
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateHTTPCheck(params *CreateHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateHTTPCheckCreated, *CreateHTTPCheckAccepted, error)
+	CreateHTTPCheck(params *CreateHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*CreateHTTPCheckCreated, *CreateHTTPCheckAccepted, error)
 
-	DeleteHTTPCheck(params *DeleteHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteHTTPCheckAccepted, *DeleteHTTPCheckNoContent, error)
+	DeleteHTTPCheck(params *DeleteHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteHTTPCheckAccepted, *DeleteHTTPCheckNoContent, error)
 
-	GetHTTPCheck(params *GetHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPCheckOK, error)
+	GetHTTPCheck(params *GetHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*GetHTTPCheckOK, error)
 
-	GetHTTPChecks(params *GetHTTPChecksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPChecksOK, error)
+	GetHTTPChecks(params *GetHTTPChecksParams, authInfo runtime.ClientAuthInfoWriter) (*GetHTTPChecksOK, error)
 
-	ReplaceHTTPCheck(params *ReplaceHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceHTTPCheckOK, *ReplaceHTTPCheckAccepted, error)
+	ReplaceHTTPCheck(params *ReplaceHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceHTTPCheckOK, *ReplaceHTTPCheckAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,12 +43,13 @@ type ClientService interface {
 
   Adds a new HTTP check of the specified type in the specified parent.
 */
-func (a *Client) CreateHTTPCheck(params *CreateHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateHTTPCheckCreated, *CreateHTTPCheckAccepted, error) {
+func (a *Client) CreateHTTPCheck(params *CreateHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*CreateHTTPCheckCreated, *CreateHTTPCheckAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateHTTPCheckParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createHTTPCheck",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/http_checks",
@@ -63,12 +61,7 @@ func (a *Client) CreateHTTPCheck(params *CreateHTTPCheckParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -88,12 +81,13 @@ func (a *Client) CreateHTTPCheck(params *CreateHTTPCheckParams, authInfo runtime
 
   Deletes a HTTP check configuration by it's index from the specified parent.
 */
-func (a *Client) DeleteHTTPCheck(params *DeleteHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteHTTPCheckAccepted, *DeleteHTTPCheckNoContent, error) {
+func (a *Client) DeleteHTTPCheck(params *DeleteHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteHTTPCheckAccepted, *DeleteHTTPCheckNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteHTTPCheckParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteHTTPCheck",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/http_checks/{index}",
@@ -105,12 +99,7 @@ func (a *Client) DeleteHTTPCheck(params *DeleteHTTPCheckParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -130,12 +119,13 @@ func (a *Client) DeleteHTTPCheck(params *DeleteHTTPCheckParams, authInfo runtime
 
   Returns one HTTP check configuration by it's index in the specified parent.
 */
-func (a *Client) GetHTTPCheck(params *GetHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPCheckOK, error) {
+func (a *Client) GetHTTPCheck(params *GetHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*GetHTTPCheckOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetHTTPCheckParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getHTTPCheck",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/http_checks/{index}",
@@ -147,12 +137,7 @@ func (a *Client) GetHTTPCheck(params *GetHTTPCheckParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -170,12 +155,13 @@ func (a *Client) GetHTTPCheck(params *GetHTTPCheckParams, authInfo runtime.Clien
 
   Returns all HTTP checks that are configured in specified parent.
 */
-func (a *Client) GetHTTPChecks(params *GetHTTPChecksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPChecksOK, error) {
+func (a *Client) GetHTTPChecks(params *GetHTTPChecksParams, authInfo runtime.ClientAuthInfoWriter) (*GetHTTPChecksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetHTTPChecksParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getHTTPChecks",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/http_checks",
@@ -187,12 +173,7 @@ func (a *Client) GetHTTPChecks(params *GetHTTPChecksParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -210,12 +191,13 @@ func (a *Client) GetHTTPChecks(params *GetHTTPChecksParams, authInfo runtime.Cli
 
   Replaces a HTTP Check configuration by it's index in the specified parent.
 */
-func (a *Client) ReplaceHTTPCheck(params *ReplaceHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceHTTPCheckOK, *ReplaceHTTPCheckAccepted, error) {
+func (a *Client) ReplaceHTTPCheck(params *ReplaceHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceHTTPCheckOK, *ReplaceHTTPCheckAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceHTTPCheckParams()
 	}
-	op := &runtime.ClientOperation{
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "replaceHTTPCheck",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/http_checks/{index}",
@@ -227,12 +209,7 @@ func (a *Client) ReplaceHTTPCheck(params *ReplaceHTTPCheckParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
+	})
 	if err != nil {
 		return nil, nil, err
 	}
