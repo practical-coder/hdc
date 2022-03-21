@@ -88,6 +88,10 @@ type Defaults struct {
 	// default server
 	DefaultServer *DefaultServer `json:"default_server,omitempty"`
 
+	// disable h2 upgrade
+	// Enum: [enabled disabled]
+	DisableH2Upgrade string `json:"disable_h2_upgrade,omitempty"`
+
 	// dontlognull
 	// Enum: [enabled disabled]
 	Dontlognull string `json:"dontlognull,omitempty"`
@@ -163,6 +167,10 @@ type Defaults struct {
 
 	// log format sd
 	LogFormatSd string `json:"log_format_sd,omitempty"`
+
+	// log health checks
+	// Enum: [enabled disabled]
+	LogHealthChecks string `json:"log_health_checks,omitempty"`
 
 	// log separate errors
 	// Enum: [enabled disabled]
@@ -286,6 +294,10 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDisableH2Upgrade(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDontlognull(formats); err != nil {
 		res = append(res, err)
 	}
@@ -347,6 +359,10 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLoadServerStateFromFile(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLogHealthChecks(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -830,6 +846,49 @@ func (m *Defaults) validateDefaultServer(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+var defaultsTypeDisableH2UpgradePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		defaultsTypeDisableH2UpgradePropEnum = append(defaultsTypeDisableH2UpgradePropEnum, v)
+	}
+}
+
+const (
+
+	// DefaultsDisableH2UpgradeEnabled captures enum value "enabled"
+	DefaultsDisableH2UpgradeEnabled string = "enabled"
+
+	// DefaultsDisableH2UpgradeDisabled captures enum value "disabled"
+	DefaultsDisableH2UpgradeDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Defaults) validateDisableH2UpgradeEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, defaultsTypeDisableH2UpgradePropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Defaults) validateDisableH2Upgrade(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DisableH2Upgrade) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateDisableH2UpgradeEnum("disable_h2_upgrade", "body", m.DisableH2Upgrade); err != nil {
+		return err
 	}
 
 	return nil
@@ -1364,6 +1423,49 @@ func (m *Defaults) validateLoadServerStateFromFile(formats strfmt.Registry) erro
 
 	// value enum
 	if err := m.validateLoadServerStateFromFileEnum("load_server_state_from_file", "body", m.LoadServerStateFromFile); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var defaultsTypeLogHealthChecksPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		defaultsTypeLogHealthChecksPropEnum = append(defaultsTypeLogHealthChecksPropEnum, v)
+	}
+}
+
+const (
+
+	// DefaultsLogHealthChecksEnabled captures enum value "enabled"
+	DefaultsLogHealthChecksEnabled string = "enabled"
+
+	// DefaultsLogHealthChecksDisabled captures enum value "disabled"
+	DefaultsLogHealthChecksDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Defaults) validateLogHealthChecksEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, defaultsTypeLogHealthChecksPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Defaults) validateLogHealthChecks(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.LogHealthChecks) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateLogHealthChecksEnum("log_health_checks", "body", m.LogHealthChecks); err != nil {
 		return err
 	}
 
