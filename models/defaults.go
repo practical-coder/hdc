@@ -45,6 +45,9 @@ type Defaults struct {
 	// Enum: [enabled disabled]
 	Allbackups string `json:"allbackups,omitempty"`
 
+	// backlog
+	Backlog *int64 `json:"backlog,omitempty"`
+
 	// balance
 	Balance *Balance `json:"balance,omitempty"`
 
@@ -87,6 +90,10 @@ type Defaults struct {
 
 	// default server
 	DefaultServer *DefaultServer `json:"default_server,omitempty"`
+
+	// disable h2 upgrade
+	// Enum: [enabled disabled]
+	DisableH2Upgrade string `json:"disable_h2_upgrade,omitempty"`
 
 	// dontlognull
 	// Enum: [enabled disabled]
@@ -164,6 +171,10 @@ type Defaults struct {
 	// log format sd
 	LogFormatSd string `json:"log_format_sd,omitempty"`
 
+	// log health checks
+	// Enum: [enabled disabled]
+	LogHealthChecks string `json:"log_health_checks,omitempty"`
+
 	// log separate errors
 	// Enum: [enabled disabled]
 	LogSeparateErrors string `json:"log_separate_errors,omitempty"`
@@ -210,8 +221,16 @@ type Defaults struct {
 	// smtpchk params
 	SmtpchkParams *SmtpchkParams `json:"smtpchk_params,omitempty"`
 
+	// srvtcpka
+	// Enum: [enabled disabled]
+	Srvtcpka string `json:"srvtcpka,omitempty"`
+
 	// stats options
 	StatsOptions *StatsOptions `json:"stats_options,omitempty"`
+
+	// tcpka
+	// Enum: [enabled disabled]
+	Tcpka string `json:"tcpka,omitempty"`
 
 	// tcplog
 	Tcplog bool `json:"tcplog,omitempty"`
@@ -286,6 +305,10 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDisableH2Upgrade(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDontlognull(formats); err != nil {
 		res = append(res, err)
 	}
@@ -350,6 +373,10 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateLogHealthChecks(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateLogSeparateErrors(formats); err != nil {
 		res = append(res, err)
 	}
@@ -386,7 +413,15 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateSrvtcpka(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStatsOptions(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTcpka(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -830,6 +865,49 @@ func (m *Defaults) validateDefaultServer(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+var defaultsTypeDisableH2UpgradePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		defaultsTypeDisableH2UpgradePropEnum = append(defaultsTypeDisableH2UpgradePropEnum, v)
+	}
+}
+
+const (
+
+	// DefaultsDisableH2UpgradeEnabled captures enum value "enabled"
+	DefaultsDisableH2UpgradeEnabled string = "enabled"
+
+	// DefaultsDisableH2UpgradeDisabled captures enum value "disabled"
+	DefaultsDisableH2UpgradeDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Defaults) validateDisableH2UpgradeEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, defaultsTypeDisableH2UpgradePropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Defaults) validateDisableH2Upgrade(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DisableH2Upgrade) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateDisableH2UpgradeEnum("disable_h2_upgrade", "body", m.DisableH2Upgrade); err != nil {
+		return err
 	}
 
 	return nil
@@ -1370,6 +1448,49 @@ func (m *Defaults) validateLoadServerStateFromFile(formats strfmt.Registry) erro
 	return nil
 }
 
+var defaultsTypeLogHealthChecksPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		defaultsTypeLogHealthChecksPropEnum = append(defaultsTypeLogHealthChecksPropEnum, v)
+	}
+}
+
+const (
+
+	// DefaultsLogHealthChecksEnabled captures enum value "enabled"
+	DefaultsLogHealthChecksEnabled string = "enabled"
+
+	// DefaultsLogHealthChecksDisabled captures enum value "disabled"
+	DefaultsLogHealthChecksDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Defaults) validateLogHealthChecksEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, defaultsTypeLogHealthChecksPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Defaults) validateLogHealthChecks(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.LogHealthChecks) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateLogHealthChecksEnum("log_health_checks", "body", m.LogHealthChecks); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 var defaultsTypeLogSeparateErrorsPropEnum []interface{}
 
 func init() {
@@ -1600,6 +1721,49 @@ func (m *Defaults) validateSmtpchkParams(formats strfmt.Registry) error {
 	return nil
 }
 
+var defaultsTypeSrvtcpkaPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		defaultsTypeSrvtcpkaPropEnum = append(defaultsTypeSrvtcpkaPropEnum, v)
+	}
+}
+
+const (
+
+	// DefaultsSrvtcpkaEnabled captures enum value "enabled"
+	DefaultsSrvtcpkaEnabled string = "enabled"
+
+	// DefaultsSrvtcpkaDisabled captures enum value "disabled"
+	DefaultsSrvtcpkaDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Defaults) validateSrvtcpkaEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, defaultsTypeSrvtcpkaPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Defaults) validateSrvtcpka(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Srvtcpka) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateSrvtcpkaEnum("srvtcpka", "body", m.Srvtcpka); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *Defaults) validateStatsOptions(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.StatsOptions) { // not required
@@ -1613,6 +1777,49 @@ func (m *Defaults) validateStatsOptions(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+var defaultsTypeTcpkaPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		defaultsTypeTcpkaPropEnum = append(defaultsTypeTcpkaPropEnum, v)
+	}
+}
+
+const (
+
+	// DefaultsTcpkaEnabled captures enum value "enabled"
+	DefaultsTcpkaEnabled string = "enabled"
+
+	// DefaultsTcpkaDisabled captures enum value "disabled"
+	DefaultsTcpkaDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Defaults) validateTcpkaEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, defaultsTypeTcpkaPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Defaults) validateTcpka(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Tcpka) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateTcpkaEnum("tcpka", "body", m.Tcpka); err != nil {
+		return err
 	}
 
 	return nil

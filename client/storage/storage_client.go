@@ -27,27 +27,73 @@ type Client struct {
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	CreateStorageGeneralFile(params *CreateStorageGeneralFileParams, authInfo runtime.ClientAuthInfoWriter) (*CreateStorageGeneralFileCreated, error)
+
 	CreateStorageMapFile(params *CreateStorageMapFileParams, authInfo runtime.ClientAuthInfoWriter) (*CreateStorageMapFileCreated, error)
 
 	CreateStorageSSLCertificate(params *CreateStorageSSLCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*CreateStorageSSLCertificateCreated, error)
+
+	DeleteStorageGeneralFile(params *DeleteStorageGeneralFileParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteStorageGeneralFileNoContent, error)
 
 	DeleteStorageMap(params *DeleteStorageMapParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteStorageMapNoContent, error)
 
 	DeleteStorageSSLCertificate(params *DeleteStorageSSLCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteStorageSSLCertificateAccepted, *DeleteStorageSSLCertificateNoContent, error)
 
+	GetAllStorageGeneralFiles(params *GetAllStorageGeneralFilesParams, authInfo runtime.ClientAuthInfoWriter) (*GetAllStorageGeneralFilesOK, error)
+
 	GetAllStorageMapFiles(params *GetAllStorageMapFilesParams, authInfo runtime.ClientAuthInfoWriter) (*GetAllStorageMapFilesOK, error)
 
 	GetAllStorageSSLCertificates(params *GetAllStorageSSLCertificatesParams, authInfo runtime.ClientAuthInfoWriter) (*GetAllStorageSSLCertificatesOK, error)
 
+	GetOneStorageGeneralFile(params *GetOneStorageGeneralFileParams, authInfo runtime.ClientAuthInfoWriter, writer io.Writer) (*GetOneStorageGeneralFileOK, error)
+
 	GetOneStorageMap(params *GetOneStorageMapParams, authInfo runtime.ClientAuthInfoWriter, writer io.Writer) (*GetOneStorageMapOK, error)
 
 	GetOneStorageSSLCertificate(params *GetOneStorageSSLCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*GetOneStorageSSLCertificateOK, error)
+
+	ReplaceStorageGeneralFile(params *ReplaceStorageGeneralFileParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceStorageGeneralFileAccepted, *ReplaceStorageGeneralFileNoContent, error)
 
 	ReplaceStorageMapFile(params *ReplaceStorageMapFileParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceStorageMapFileAccepted, *ReplaceStorageMapFileNoContent, error)
 
 	ReplaceStorageSSLCertificate(params *ReplaceStorageSSLCertificateParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceStorageSSLCertificateOK, *ReplaceStorageSSLCertificateAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateStorageGeneralFile creates a managed storage general use file with contents
+
+  Creates a managed storage general use file with contents.
+*/
+func (a *Client) CreateStorageGeneralFile(params *CreateStorageGeneralFileParams, authInfo runtime.ClientAuthInfoWriter) (*CreateStorageGeneralFileCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateStorageGeneralFileParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "createStorageGeneralFile",
+		Method:             "POST",
+		PathPattern:        "/services/haproxy/storage/general",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CreateStorageGeneralFileReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateStorageGeneralFileCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*CreateStorageGeneralFileDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
@@ -119,6 +165,42 @@ func (a *Client) CreateStorageSSLCertificate(params *CreateStorageSSLCertificate
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*CreateStorageSSLCertificateDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  DeleteStorageGeneralFile deletes a managed general use file from disk
+
+  Deletes a managed general use file from disk.
+*/
+func (a *Client) DeleteStorageGeneralFile(params *DeleteStorageGeneralFileParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteStorageGeneralFileNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteStorageGeneralFileParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "deleteStorageGeneralFile",
+		Method:             "DELETE",
+		PathPattern:        "/services/haproxy/storage/general/{name}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &DeleteStorageGeneralFileReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteStorageGeneralFileNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DeleteStorageGeneralFileDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
@@ -197,6 +279,42 @@ func (a *Client) DeleteStorageSSLCertificate(params *DeleteStorageSSLCertificate
 }
 
 /*
+  GetAllStorageGeneralFiles returns a list of all managed general use files
+
+  Returns a list of all managed general use files
+*/
+func (a *Client) GetAllStorageGeneralFiles(params *GetAllStorageGeneralFilesParams, authInfo runtime.ClientAuthInfoWriter) (*GetAllStorageGeneralFilesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAllStorageGeneralFilesParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getAllStorageGeneralFiles",
+		Method:             "GET",
+		PathPattern:        "/services/haproxy/storage/general",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetAllStorageGeneralFilesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetAllStorageGeneralFilesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetAllStorageGeneralFilesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   GetAllStorageMapFiles returns a list of all managed map files
 
   Returns a list of all managed map files
@@ -265,6 +383,42 @@ func (a *Client) GetAllStorageSSLCertificates(params *GetAllStorageSSLCertificat
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*GetAllStorageSSLCertificatesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  GetOneStorageGeneralFile returns the contents of one managed general use file from disk
+
+  Returns the contents of one managed general use file from disk
+*/
+func (a *Client) GetOneStorageGeneralFile(params *GetOneStorageGeneralFileParams, authInfo runtime.ClientAuthInfoWriter, writer io.Writer) (*GetOneStorageGeneralFileOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetOneStorageGeneralFileParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getOneStorageGeneralFile",
+		Method:             "GET",
+		PathPattern:        "/services/haproxy/storage/general/{name}",
+		ProducesMediaTypes: []string{"application/octet-stream"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetOneStorageGeneralFileReader{formats: a.formats, writer: writer},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetOneStorageGeneralFileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetOneStorageGeneralFileDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
@@ -338,6 +492,44 @@ func (a *Client) GetOneStorageSSLCertificate(params *GetOneStorageSSLCertificate
 	// unexpected success response
 	unexpectedSuccess := result.(*GetOneStorageSSLCertificateDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  ReplaceStorageGeneralFile replaces contents of a managed general use file on disk
+
+  Replaces the contents of a managed general use file on disk
+*/
+func (a *Client) ReplaceStorageGeneralFile(params *ReplaceStorageGeneralFileParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceStorageGeneralFileAccepted, *ReplaceStorageGeneralFileNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewReplaceStorageGeneralFileParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "replaceStorageGeneralFile",
+		Method:             "PUT",
+		PathPattern:        "/services/haproxy/storage/general/{name}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"text/plain"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ReplaceStorageGeneralFileReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *ReplaceStorageGeneralFileAccepted:
+		return value, nil, nil
+	case *ReplaceStorageGeneralFileNoContent:
+		return nil, value, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*ReplaceStorageGeneralFileDefault)
+	return nil, nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*

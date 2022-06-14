@@ -31,9 +31,15 @@ type Global struct {
 	// runtime a p is
 	RuntimeAPIs []*RuntimeAPI `json:"runtime_apis"`
 
+	// ca base
+	CaBase string `json:"ca_base,omitempty"`
+
 	// chroot
 	// Pattern: ^[^\s]+$
 	Chroot string `json:"chroot,omitempty"`
+
+	// crt base
+	CrtBase string `json:"crt_base,omitempty"`
 
 	// daemon
 	// Enum: [enabled disabled]
@@ -41,6 +47,9 @@ type Global struct {
 
 	// external check
 	ExternalCheck bool `json:"external_check,omitempty"`
+
+	// gid
+	Gid int64 `json:"gid,omitempty"`
 
 	// group
 	// Pattern: ^[^\s]+$
@@ -118,6 +127,9 @@ type Global struct {
 
 	// tune ssl default dh param
 	TuneSslDefaultDhParam int64 `json:"tune_ssl_default_dh_param,omitempty"`
+
+	// uid
+	UID int64 `json:"uid,omitempty"`
 
 	// user
 	// Pattern: ^[^\s]+$

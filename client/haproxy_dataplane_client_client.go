@@ -24,6 +24,7 @@ import (
 	"github.com/practical-coder/hdc/client/filter"
 	"github.com/practical-coder/hdc/client/frontend"
 	"github.com/practical-coder/hdc/client/global"
+	"github.com/practical-coder/hdc/client/group"
 	"github.com/practical-coder/hdc/client/http_check"
 	"github.com/practical-coder/hdc/client/http_request_rule"
 	"github.com/practical-coder/hdc/client/http_response_rule"
@@ -52,6 +53,8 @@ import (
 	"github.com/practical-coder/hdc/client/tcp_request_rule"
 	"github.com/practical-coder/hdc/client/tcp_response_rule"
 	"github.com/practical-coder/hdc/client/transactions"
+	"github.com/practical-coder/hdc/client/user"
+	"github.com/practical-coder/hdc/client/userlist"
 )
 
 // Default haproxy dataplane client HTTP client.
@@ -110,6 +113,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.Filter = filter.New(transport, formats)
 	cli.Frontend = frontend.New(transport, formats)
 	cli.Global = global.New(transport, formats)
+	cli.Group = group.New(transport, formats)
 	cli.HTTPCheck = http_check.New(transport, formats)
 	cli.HTTPRequestRule = http_request_rule.New(transport, formats)
 	cli.HTTPResponseRule = http_response_rule.New(transport, formats)
@@ -138,6 +142,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.TCPRequestRule = tcp_request_rule.New(transport, formats)
 	cli.TCPResponseRule = tcp_response_rule.New(transport, formats)
 	cli.Transactions = transactions.New(transport, formats)
+	cli.User = user.New(transport, formats)
+	cli.Userlist = userlist.New(transport, formats)
 	return cli
 }
 
@@ -210,6 +216,8 @@ type HaproxyDataplaneClient struct {
 
 	Global global.ClientService
 
+	Group group.ClientService
+
 	HTTPCheck http_check.ClientService
 
 	HTTPRequestRule http_request_rule.ClientService
@@ -266,6 +274,10 @@ type HaproxyDataplaneClient struct {
 
 	Transactions transactions.ClientService
 
+	User user.ClientService
+
+	Userlist userlist.ClientService
+
 	Transport runtime.ClientTransport
 }
 
@@ -286,6 +298,7 @@ func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport)
 	c.Filter.SetTransport(transport)
 	c.Frontend.SetTransport(transport)
 	c.Global.SetTransport(transport)
+	c.Group.SetTransport(transport)
 	c.HTTPCheck.SetTransport(transport)
 	c.HTTPRequestRule.SetTransport(transport)
 	c.HTTPResponseRule.SetTransport(transport)
@@ -314,4 +327,6 @@ func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport)
 	c.TCPRequestRule.SetTransport(transport)
 	c.TCPResponseRule.SetTransport(transport)
 	c.Transactions.SetTransport(transport)
+	c.User.SetTransport(transport)
+	c.Userlist.SetTransport(transport)
 }

@@ -25,6 +25,9 @@ type Frontend struct {
 	// Enum: [enabled disabled]
 	AcceptInvalidHTTPRequest string `json:"accept_invalid_http_request,omitempty"`
 
+	// backlog
+	Backlog *int64 `json:"backlog,omitempty"`
+
 	// bind process
 	// Pattern: ^[^\s]+$
 	BindProcess string `json:"bind_process,omitempty"`
@@ -49,6 +52,10 @@ type Frontend struct {
 	// default backend
 	// Pattern: ^[A-Za-z0-9-_.:]+$
 	DefaultBackend string `json:"default_backend,omitempty"`
+
+	// disable h2 upgrade
+	// Enum: [enabled disabled]
+	DisableH2Upgrade string `json:"disable_h2_upgrade,omitempty"`
 
 	// dontlognull
 	// Enum: [enabled disabled]
@@ -124,6 +131,10 @@ type Frontend struct {
 	// stick table
 	StickTable *ConfigStickTable `json:"stick_table,omitempty"`
 
+	// tcpka
+	// Enum: [enabled disabled]
+	Tcpka string `json:"tcpka,omitempty"`
+
 	// tcplog
 	Tcplog bool `json:"tcplog,omitempty"`
 
@@ -159,6 +170,10 @@ func (m *Frontend) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateDefaultBackend(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDisableH2Upgrade(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -219,6 +234,10 @@ func (m *Frontend) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStickTable(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTcpka(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -392,6 +411,49 @@ func (m *Frontend) validateDefaultBackend(formats strfmt.Registry) error {
 	}
 
 	if err := validate.Pattern("default_backend", "body", string(m.DefaultBackend), `^[A-Za-z0-9-_.:]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var frontendTypeDisableH2UpgradePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		frontendTypeDisableH2UpgradePropEnum = append(frontendTypeDisableH2UpgradePropEnum, v)
+	}
+}
+
+const (
+
+	// FrontendDisableH2UpgradeEnabled captures enum value "enabled"
+	FrontendDisableH2UpgradeEnabled string = "enabled"
+
+	// FrontendDisableH2UpgradeDisabled captures enum value "disabled"
+	FrontendDisableH2UpgradeDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Frontend) validateDisableH2UpgradeEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, frontendTypeDisableH2UpgradePropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Frontend) validateDisableH2Upgrade(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DisableH2Upgrade) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateDisableH2UpgradeEnum("disable_h2_upgrade", "body", m.DisableH2Upgrade); err != nil {
 		return err
 	}
 
@@ -854,6 +916,49 @@ func (m *Frontend) validateStickTable(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+var frontendTypeTcpkaPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		frontendTypeTcpkaPropEnum = append(frontendTypeTcpkaPropEnum, v)
+	}
+}
+
+const (
+
+	// FrontendTcpkaEnabled captures enum value "enabled"
+	FrontendTcpkaEnabled string = "enabled"
+
+	// FrontendTcpkaDisabled captures enum value "disabled"
+	FrontendTcpkaDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Frontend) validateTcpkaEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, frontendTypeTcpkaPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Frontend) validateTcpka(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Tcpka) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateTcpkaEnum("tcpka", "body", m.Tcpka); err != nil {
+		return err
 	}
 
 	return nil
