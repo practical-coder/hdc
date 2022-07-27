@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // CreatePeerReader is a Reader for the CreatePeer structure.
@@ -64,7 +64,7 @@ func NewCreatePeerCreated() *CreatePeerCreated {
 	return &CreatePeerCreated{}
 }
 
-/*CreatePeerCreated handles this case with default header values.
+/* CreatePeerCreated describes a response with status code 201, with default header values.
 
 Peer created
 */
@@ -75,7 +75,6 @@ type CreatePeerCreated struct {
 func (o *CreatePeerCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeerCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreatePeerCreated) GetPayload() *models.PeerSection {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewCreatePeerAccepted() *CreatePeerAccepted {
 	return &CreatePeerAccepted{}
 }
 
-/*CreatePeerAccepted handles this case with default header values.
+/* CreatePeerAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type CreatePeerAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type CreatePeerAccepted struct {
 func (o *CreatePeerAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeerAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreatePeerAccepted) GetPayload() *models.PeerSection {
 	return o.Payload
 }
 
 func (o *CreatePeerAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.PeerSection)
 
@@ -137,12 +140,13 @@ func NewCreatePeerBadRequest() *CreatePeerBadRequest {
 	return &CreatePeerBadRequest{}
 }
 
-/*CreatePeerBadRequest handles this case with default header values.
+/* CreatePeerBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type CreatePeerBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type CreatePeerBadRequest struct {
 func (o *CreatePeerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeerBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreatePeerBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreatePeerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewCreatePeerConflict() *CreatePeerConflict {
 	return &CreatePeerConflict{}
 }
 
-/*CreatePeerConflict handles this case with default header values.
+/* CreatePeerConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
 type CreatePeerConflict struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type CreatePeerConflict struct {
 func (o *CreatePeerConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeerConflict  %+v", 409, o.Payload)
 }
-
 func (o *CreatePeerConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreatePeerConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewCreatePeerDefault(code int) *CreatePeerDefault {
 	}
 }
 
-/*CreatePeerDefault handles this case with default header values.
+/* CreatePeerDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type CreatePeerDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *CreatePeerDefault) Code() int {
 func (o *CreatePeerDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeer default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *CreatePeerDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreatePeerDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

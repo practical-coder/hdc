@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // DeleteSpoeTransactionReader is a Reader for the DeleteSpoeTransaction structure.
@@ -52,7 +52,7 @@ func NewDeleteSpoeTransactionNoContent() *DeleteSpoeTransactionNoContent {
 	return &DeleteSpoeTransactionNoContent{}
 }
 
-/*DeleteSpoeTransactionNoContent handles this case with default header values.
+/* DeleteSpoeTransactionNoContent describes a response with status code 204, with default header values.
 
 Transaction deleted
 */
@@ -73,12 +73,13 @@ func NewDeleteSpoeTransactionNotFound() *DeleteSpoeTransactionNotFound {
 	return &DeleteSpoeTransactionNotFound{}
 }
 
-/*DeleteSpoeTransactionNotFound handles this case with default header values.
+/* DeleteSpoeTransactionNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type DeleteSpoeTransactionNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -88,15 +89,18 @@ type DeleteSpoeTransactionNotFound struct {
 func (o *DeleteSpoeTransactionNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe_transactions/{id}][%d] deleteSpoeTransactionNotFound  %+v", 404, o.Payload)
 }
-
 func (o *DeleteSpoeTransactionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteSpoeTransactionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -115,14 +119,14 @@ func NewDeleteSpoeTransactionDefault(code int) *DeleteSpoeTransactionDefault {
 	}
 }
 
-/*DeleteSpoeTransactionDefault handles this case with default header values.
+/* DeleteSpoeTransactionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type DeleteSpoeTransactionDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -137,15 +141,18 @@ func (o *DeleteSpoeTransactionDefault) Code() int {
 func (o *DeleteSpoeTransactionDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe_transactions/{id}][%d] deleteSpoeTransaction default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteSpoeTransactionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteSpoeTransactionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

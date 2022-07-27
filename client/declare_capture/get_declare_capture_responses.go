@@ -6,6 +6,7 @@ package declare_capture
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -14,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetDeclareCaptureReader is a Reader for the GetDeclareCapture structure.
@@ -54,12 +55,13 @@ func NewGetDeclareCaptureOK() *GetDeclareCaptureOK {
 	return &GetDeclareCaptureOK{}
 }
 
-/*GetDeclareCaptureOK handles this case with default header values.
+/* GetDeclareCaptureOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
 type GetDeclareCaptureOK struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -69,15 +71,18 @@ type GetDeclareCaptureOK struct {
 func (o *GetDeclareCaptureOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/captures/{index}][%d] getDeclareCaptureOK  %+v", 200, o.Payload)
 }
-
 func (o *GetDeclareCaptureOK) GetPayload() *GetDeclareCaptureOKBody {
 	return o.Payload
 }
 
 func (o *GetDeclareCaptureOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(GetDeclareCaptureOKBody)
 
@@ -94,12 +99,13 @@ func NewGetDeclareCaptureNotFound() *GetDeclareCaptureNotFound {
 	return &GetDeclareCaptureNotFound{}
 }
 
-/*GetDeclareCaptureNotFound handles this case with default header values.
+/* GetDeclareCaptureNotFound describes a response with status code 404, with default header values.
 
 The specified resource already exists
 */
 type GetDeclareCaptureNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -109,15 +115,18 @@ type GetDeclareCaptureNotFound struct {
 func (o *GetDeclareCaptureNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/captures/{index}][%d] getDeclareCaptureNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetDeclareCaptureNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetDeclareCaptureNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -136,14 +145,14 @@ func NewGetDeclareCaptureDefault(code int) *GetDeclareCaptureDefault {
 	}
 }
 
-/*GetDeclareCaptureDefault handles this case with default header values.
+/* GetDeclareCaptureDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetDeclareCaptureDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -158,15 +167,18 @@ func (o *GetDeclareCaptureDefault) Code() int {
 func (o *GetDeclareCaptureDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/captures/{index}][%d] getDeclareCapture default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetDeclareCaptureDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetDeclareCaptureDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -205,7 +217,6 @@ func (o *GetDeclareCaptureOKBody) Validate(formats strfmt.Registry) error {
 }
 
 func (o *GetDeclareCaptureOKBody) validateData(formats strfmt.Registry) error {
-
 	if swag.IsZero(o.Data) { // not required
 		return nil
 	}
@@ -214,6 +225,38 @@ func (o *GetDeclareCaptureOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getDeclareCaptureOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getDeclareCaptureOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get declare capture o k body based on the context it is used
+func (o *GetDeclareCaptureOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetDeclareCaptureOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getDeclareCaptureOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getDeclareCaptureOK" + "." + "data")
 			}
 			return err
 		}

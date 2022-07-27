@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteStorageGeneralFileParams creates a new DeleteStorageGeneralFileParams object
-// with the default values initialized.
+// NewDeleteStorageGeneralFileParams creates a new DeleteStorageGeneralFileParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteStorageGeneralFileParams() *DeleteStorageGeneralFileParams {
-	var ()
 	return &DeleteStorageGeneralFileParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteStorageGeneralFileParamsWithTimeout creates a new DeleteStorageGeneralFileParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteStorageGeneralFileParamsWithTimeout(timeout time.Duration) *DeleteStorageGeneralFileParams {
-	var ()
 	return &DeleteStorageGeneralFileParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteStorageGeneralFileParamsWithContext creates a new DeleteStorageGeneralFileParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteStorageGeneralFileParamsWithContext(ctx context.Context) *DeleteStorageGeneralFileParams {
-	var ()
 	return &DeleteStorageGeneralFileParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteStorageGeneralFileParamsWithHTTPClient creates a new DeleteStorageGeneralFileParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteStorageGeneralFileParamsWithHTTPClient(client *http.Client) *DeleteStorageGeneralFileParams {
-	var ()
 	return &DeleteStorageGeneralFileParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteStorageGeneralFileParams contains all the parameters to send to the API endpoint
-for the delete storage general file operation typically these are written to a http.Request
+/* DeleteStorageGeneralFileParams contains all the parameters to send to the API endpoint
+   for the delete storage general file operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteStorageGeneralFileParams struct {
 
-	/*Name
-	  General use file storage_name
+	/* Name.
 
+	   General use file storage_name
 	*/
 	Name string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete storage general file params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteStorageGeneralFileParams) WithDefaults() *DeleteStorageGeneralFileParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete storage general file params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteStorageGeneralFileParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete storage general file params

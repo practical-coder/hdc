@@ -23,55 +23,58 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateSpoe(params *CreateSpoeParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSpoeCreated, error)
+	CreateSpoe(params *CreateSpoeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeCreated, error)
 
-	CreateSpoeAgent(params *CreateSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSpoeAgentCreated, error)
+	CreateSpoeAgent(params *CreateSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeAgentCreated, error)
 
-	CreateSpoeGroup(params *CreateSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSpoeGroupCreated, error)
+	CreateSpoeGroup(params *CreateSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeGroupCreated, error)
 
-	CreateSpoeMessage(params *CreateSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSpoeMessageCreated, error)
+	CreateSpoeMessage(params *CreateSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeMessageCreated, error)
 
-	CreateSpoeScope(params *CreateSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSpoeScopeCreated, error)
+	CreateSpoeScope(params *CreateSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeScopeCreated, error)
 
-	DeleteSpoeAgent(params *DeleteSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSpoeAgentNoContent, error)
+	DeleteSpoeAgent(params *DeleteSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeAgentNoContent, error)
 
-	DeleteSpoeFile(params *DeleteSpoeFileParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSpoeFileNoContent, error)
+	DeleteSpoeFile(params *DeleteSpoeFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeFileNoContent, error)
 
-	DeleteSpoeGroup(params *DeleteSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSpoeGroupNoContent, error)
+	DeleteSpoeGroup(params *DeleteSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeGroupNoContent, error)
 
-	DeleteSpoeMessage(params *DeleteSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSpoeMessageNoContent, error)
+	DeleteSpoeMessage(params *DeleteSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeMessageNoContent, error)
 
-	DeleteSpoeScope(params *DeleteSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSpoeScopeNoContent, error)
+	DeleteSpoeScope(params *DeleteSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeScopeNoContent, error)
 
-	GetAllSpoeFiles(params *GetAllSpoeFilesParams, authInfo runtime.ClientAuthInfoWriter) (*GetAllSpoeFilesOK, error)
+	GetAllSpoeFiles(params *GetAllSpoeFilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAllSpoeFilesOK, error)
 
-	GetOneSpoeFile(params *GetOneSpoeFileParams, authInfo runtime.ClientAuthInfoWriter) (*GetOneSpoeFileOK, error)
+	GetOneSpoeFile(params *GetOneSpoeFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOneSpoeFileOK, error)
 
-	GetSpoeAgent(params *GetSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeAgentOK, error)
+	GetSpoeAgent(params *GetSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeAgentOK, error)
 
-	GetSpoeAgents(params *GetSpoeAgentsParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeAgentsOK, error)
+	GetSpoeAgents(params *GetSpoeAgentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeAgentsOK, error)
 
-	GetSpoeConfigurationVersion(params *GetSpoeConfigurationVersionParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeConfigurationVersionOK, error)
+	GetSpoeConfigurationVersion(params *GetSpoeConfigurationVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeConfigurationVersionOK, error)
 
-	GetSpoeGroup(params *GetSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeGroupOK, error)
+	GetSpoeGroup(params *GetSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeGroupOK, error)
 
-	GetSpoeGroups(params *GetSpoeGroupsParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeGroupsOK, error)
+	GetSpoeGroups(params *GetSpoeGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeGroupsOK, error)
 
-	GetSpoeMessage(params *GetSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeMessageOK, error)
+	GetSpoeMessage(params *GetSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeMessageOK, error)
 
-	GetSpoeMessages(params *GetSpoeMessagesParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeMessagesOK, error)
+	GetSpoeMessages(params *GetSpoeMessagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeMessagesOK, error)
 
-	GetSpoeScope(params *GetSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeScopeOK, error)
+	GetSpoeScope(params *GetSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeScopeOK, error)
 
-	GetSpoeScopes(params *GetSpoeScopesParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeScopesOK, error)
+	GetSpoeScopes(params *GetSpoeScopesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeScopesOK, error)
 
-	ReplaceSpoeAgent(params *ReplaceSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceSpoeAgentOK, error)
+	ReplaceSpoeAgent(params *ReplaceSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceSpoeAgentOK, error)
 
-	ReplaceSpoeGroup(params *ReplaceSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceSpoeGroupOK, error)
+	ReplaceSpoeGroup(params *ReplaceSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceSpoeGroupOK, error)
 
-	ReplaceSpoeMessage(params *ReplaceSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceSpoeMessageOK, error)
+	ReplaceSpoeMessage(params *ReplaceSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceSpoeMessageOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -81,13 +84,12 @@ type ClientService interface {
 
   Creates SPOE file with its entries.
 */
-func (a *Client) CreateSpoe(params *CreateSpoeParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSpoeCreated, error) {
+func (a *Client) CreateSpoe(params *CreateSpoeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateSpoeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createSpoe",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/spoe/spoe_files",
@@ -99,7 +101,12 @@ func (a *Client) CreateSpoe(params *CreateSpoeParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -117,13 +124,12 @@ func (a *Client) CreateSpoe(params *CreateSpoeParams, authInfo runtime.ClientAut
 
   Adds a new spoe agent to the spoe scope.
 */
-func (a *Client) CreateSpoeAgent(params *CreateSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSpoeAgentCreated, error) {
+func (a *Client) CreateSpoeAgent(params *CreateSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeAgentCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateSpoeAgentParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createSpoeAgent",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/spoe/spoe_agents",
@@ -135,7 +141,12 @@ func (a *Client) CreateSpoeAgent(params *CreateSpoeAgentParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -153,13 +164,12 @@ func (a *Client) CreateSpoeAgent(params *CreateSpoeAgentParams, authInfo runtime
 
   Adds a new SPOE groups to the SPOE scope.
 */
-func (a *Client) CreateSpoeGroup(params *CreateSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSpoeGroupCreated, error) {
+func (a *Client) CreateSpoeGroup(params *CreateSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeGroupCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateSpoeGroupParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createSpoeGroup",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/spoe/spoe_groups",
@@ -171,7 +181,12 @@ func (a *Client) CreateSpoeGroup(params *CreateSpoeGroupParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -189,13 +204,12 @@ func (a *Client) CreateSpoeGroup(params *CreateSpoeGroupParams, authInfo runtime
 
   Adds a new spoe message to the spoe scope.
 */
-func (a *Client) CreateSpoeMessage(params *CreateSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSpoeMessageCreated, error) {
+func (a *Client) CreateSpoeMessage(params *CreateSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeMessageCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateSpoeMessageParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createSpoeMessage",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/spoe/spoe_messages",
@@ -207,7 +221,12 @@ func (a *Client) CreateSpoeMessage(params *CreateSpoeMessageParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -225,13 +244,12 @@ func (a *Client) CreateSpoeMessage(params *CreateSpoeMessageParams, authInfo run
 
   Adds a new spoe scope.
 */
-func (a *Client) CreateSpoeScope(params *CreateSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter) (*CreateSpoeScopeCreated, error) {
+func (a *Client) CreateSpoeScope(params *CreateSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeScopeCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateSpoeScopeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createSpoeScope",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/spoe/spoe_scopes",
@@ -243,7 +261,12 @@ func (a *Client) CreateSpoeScope(params *CreateSpoeScopeParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -261,13 +284,12 @@ func (a *Client) CreateSpoeScope(params *CreateSpoeScopeParams, authInfo runtime
 
   Deletes a SPOE agent from the configuration in one SPOE scope.
 */
-func (a *Client) DeleteSpoeAgent(params *DeleteSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSpoeAgentNoContent, error) {
+func (a *Client) DeleteSpoeAgent(params *DeleteSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeAgentNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSpoeAgentParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteSpoeAgent",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/spoe/spoe_agents/{name}",
@@ -279,7 +301,12 @@ func (a *Client) DeleteSpoeAgent(params *DeleteSpoeAgentParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -297,13 +324,12 @@ func (a *Client) DeleteSpoeAgent(params *DeleteSpoeAgentParams, authInfo runtime
 
   Deletes SPOE file.
 */
-func (a *Client) DeleteSpoeFile(params *DeleteSpoeFileParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSpoeFileNoContent, error) {
+func (a *Client) DeleteSpoeFile(params *DeleteSpoeFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeFileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSpoeFileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteSpoeFile",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/spoe/spoe_files/{name}",
@@ -315,7 +341,12 @@ func (a *Client) DeleteSpoeFile(params *DeleteSpoeFileParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -333,13 +364,12 @@ func (a *Client) DeleteSpoeFile(params *DeleteSpoeFileParams, authInfo runtime.C
 
   Deletes a SPOE groups from the one SPOE scope.
 */
-func (a *Client) DeleteSpoeGroup(params *DeleteSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSpoeGroupNoContent, error) {
+func (a *Client) DeleteSpoeGroup(params *DeleteSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeGroupNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSpoeGroupParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteSpoeGroup",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/spoe/spoe_groups/{name}",
@@ -351,7 +381,12 @@ func (a *Client) DeleteSpoeGroup(params *DeleteSpoeGroupParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -369,13 +404,12 @@ func (a *Client) DeleteSpoeGroup(params *DeleteSpoeGroupParams, authInfo runtime
 
   Deletes a spoe message from the SPOE scope.
 */
-func (a *Client) DeleteSpoeMessage(params *DeleteSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSpoeMessageNoContent, error) {
+func (a *Client) DeleteSpoeMessage(params *DeleteSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeMessageNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSpoeMessageParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteSpoeMessage",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/spoe/spoe_messages/{name}",
@@ -387,7 +421,12 @@ func (a *Client) DeleteSpoeMessage(params *DeleteSpoeMessageParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -405,13 +444,12 @@ func (a *Client) DeleteSpoeMessage(params *DeleteSpoeMessageParams, authInfo run
 
   Deletes a SPOE scope from the configuration file.
 */
-func (a *Client) DeleteSpoeScope(params *DeleteSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteSpoeScopeNoContent, error) {
+func (a *Client) DeleteSpoeScope(params *DeleteSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeScopeNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSpoeScopeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteSpoeScope",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/spoe/spoe_scopes/{name}",
@@ -423,7 +461,12 @@ func (a *Client) DeleteSpoeScope(params *DeleteSpoeScopeParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -441,13 +484,12 @@ func (a *Client) DeleteSpoeScope(params *DeleteSpoeScopeParams, authInfo runtime
 
   Returns all available SPOE files.
 */
-func (a *Client) GetAllSpoeFiles(params *GetAllSpoeFilesParams, authInfo runtime.ClientAuthInfoWriter) (*GetAllSpoeFilesOK, error) {
+func (a *Client) GetAllSpoeFiles(params *GetAllSpoeFilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAllSpoeFilesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAllSpoeFilesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAllSpoeFiles",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/spoe/spoe_files",
@@ -459,7 +501,12 @@ func (a *Client) GetAllSpoeFiles(params *GetAllSpoeFilesParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -477,13 +524,12 @@ func (a *Client) GetAllSpoeFiles(params *GetAllSpoeFilesParams, authInfo runtime
 
   Returns one SPOE file.
 */
-func (a *Client) GetOneSpoeFile(params *GetOneSpoeFileParams, authInfo runtime.ClientAuthInfoWriter) (*GetOneSpoeFileOK, error) {
+func (a *Client) GetOneSpoeFile(params *GetOneSpoeFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOneSpoeFileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetOneSpoeFileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getOneSpoeFile",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/spoe/spoe_files/{name}",
@@ -495,7 +541,12 @@ func (a *Client) GetOneSpoeFile(params *GetOneSpoeFileParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -513,13 +564,12 @@ func (a *Client) GetOneSpoeFile(params *GetOneSpoeFileParams, authInfo runtime.C
 
   Returns one spoe agent configuration in one SPOE scope.
 */
-func (a *Client) GetSpoeAgent(params *GetSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeAgentOK, error) {
+func (a *Client) GetSpoeAgent(params *GetSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeAgentOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSpoeAgentParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getSpoeAgent",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/spoe/spoe_agents/{name}",
@@ -531,7 +581,12 @@ func (a *Client) GetSpoeAgent(params *GetSpoeAgentParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -549,13 +604,12 @@ func (a *Client) GetSpoeAgent(params *GetSpoeAgentParams, authInfo runtime.Clien
 
   Returns an array of all configured spoe agents in one scope.
 */
-func (a *Client) GetSpoeAgents(params *GetSpoeAgentsParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeAgentsOK, error) {
+func (a *Client) GetSpoeAgents(params *GetSpoeAgentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeAgentsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSpoeAgentsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getSpoeAgents",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/spoe/spoe_agents",
@@ -567,7 +621,12 @@ func (a *Client) GetSpoeAgents(params *GetSpoeAgentsParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -585,13 +644,12 @@ func (a *Client) GetSpoeAgents(params *GetSpoeAgentsParams, authInfo runtime.Cli
 
   Returns SPOE configuration version.
 */
-func (a *Client) GetSpoeConfigurationVersion(params *GetSpoeConfigurationVersionParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeConfigurationVersionOK, error) {
+func (a *Client) GetSpoeConfigurationVersion(params *GetSpoeConfigurationVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeConfigurationVersionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSpoeConfigurationVersionParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getSpoeConfigurationVersion",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/spoe/version",
@@ -603,7 +661,12 @@ func (a *Client) GetSpoeConfigurationVersion(params *GetSpoeConfigurationVersion
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -621,13 +684,12 @@ func (a *Client) GetSpoeConfigurationVersion(params *GetSpoeConfigurationVersion
 
   Returns one SPOE groups configuration in one SPOE scope.
 */
-func (a *Client) GetSpoeGroup(params *GetSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeGroupOK, error) {
+func (a *Client) GetSpoeGroup(params *GetSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSpoeGroupParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getSpoeGroup",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/spoe/spoe_groups/{name}",
@@ -639,7 +701,12 @@ func (a *Client) GetSpoeGroup(params *GetSpoeGroupParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -657,13 +724,12 @@ func (a *Client) GetSpoeGroup(params *GetSpoeGroupParams, authInfo runtime.Clien
 
   Returns an array of all configured SPOE groups in one SPOE scope.
 */
-func (a *Client) GetSpoeGroups(params *GetSpoeGroupsParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeGroupsOK, error) {
+func (a *Client) GetSpoeGroups(params *GetSpoeGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeGroupsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSpoeGroupsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getSpoeGroups",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/spoe/spoe_groups",
@@ -675,7 +741,12 @@ func (a *Client) GetSpoeGroups(params *GetSpoeGroupsParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -693,13 +764,12 @@ func (a *Client) GetSpoeGroups(params *GetSpoeGroupsParams, authInfo runtime.Cli
 
   Returns one spoe message configuration in SPOE scope.
 */
-func (a *Client) GetSpoeMessage(params *GetSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeMessageOK, error) {
+func (a *Client) GetSpoeMessage(params *GetSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeMessageOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSpoeMessageParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getSpoeMessage",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/spoe/spoe_messages/{name}",
@@ -711,7 +781,12 @@ func (a *Client) GetSpoeMessage(params *GetSpoeMessageParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -729,13 +804,12 @@ func (a *Client) GetSpoeMessage(params *GetSpoeMessageParams, authInfo runtime.C
 
   Returns an array of all configured spoe messages in one scope.
 */
-func (a *Client) GetSpoeMessages(params *GetSpoeMessagesParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeMessagesOK, error) {
+func (a *Client) GetSpoeMessages(params *GetSpoeMessagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeMessagesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSpoeMessagesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getSpoeMessages",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/spoe/spoe_messages",
@@ -747,7 +821,12 @@ func (a *Client) GetSpoeMessages(params *GetSpoeMessagesParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -765,13 +844,12 @@ func (a *Client) GetSpoeMessages(params *GetSpoeMessagesParams, authInfo runtime
 
   Returns one SPOE scope in one SPOE file.
 */
-func (a *Client) GetSpoeScope(params *GetSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeScopeOK, error) {
+func (a *Client) GetSpoeScope(params *GetSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeScopeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSpoeScopeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getSpoeScope",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/spoe/spoe_scopes/{name}",
@@ -783,7 +861,12 @@ func (a *Client) GetSpoeScope(params *GetSpoeScopeParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -801,13 +884,12 @@ func (a *Client) GetSpoeScope(params *GetSpoeScopeParams, authInfo runtime.Clien
 
   Returns an array of all configured spoe scopes.
 */
-func (a *Client) GetSpoeScopes(params *GetSpoeScopesParams, authInfo runtime.ClientAuthInfoWriter) (*GetSpoeScopesOK, error) {
+func (a *Client) GetSpoeScopes(params *GetSpoeScopesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeScopesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSpoeScopesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getSpoeScopes",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/spoe/spoe_scopes",
@@ -819,7 +901,12 @@ func (a *Client) GetSpoeScopes(params *GetSpoeScopesParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -837,13 +924,12 @@ func (a *Client) GetSpoeScopes(params *GetSpoeScopesParams, authInfo runtime.Cli
 
   Replaces a SPOE agent configuration in one SPOE scope.
 */
-func (a *Client) ReplaceSpoeAgent(params *ReplaceSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceSpoeAgentOK, error) {
+func (a *Client) ReplaceSpoeAgent(params *ReplaceSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceSpoeAgentOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceSpoeAgentParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceSpoeAgent",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/spoe/spoe_agents/{name}",
@@ -855,7 +941,12 @@ func (a *Client) ReplaceSpoeAgent(params *ReplaceSpoeAgentParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -873,13 +964,12 @@ func (a *Client) ReplaceSpoeAgent(params *ReplaceSpoeAgentParams, authInfo runti
 
   Replaces a SPOE groups configuration in one SPOE scope.
 */
-func (a *Client) ReplaceSpoeGroup(params *ReplaceSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceSpoeGroupOK, error) {
+func (a *Client) ReplaceSpoeGroup(params *ReplaceSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceSpoeGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceSpoeGroupParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceSpoeGroup",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/spoe/spoe_groups/{name}",
@@ -891,7 +981,12 @@ func (a *Client) ReplaceSpoeGroup(params *ReplaceSpoeGroupParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -909,13 +1004,12 @@ func (a *Client) ReplaceSpoeGroup(params *ReplaceSpoeGroupParams, authInfo runti
 
   Replaces a spoe message configuration in one SPOE scope.
 */
-func (a *Client) ReplaceSpoeMessage(params *ReplaceSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceSpoeMessageOK, error) {
+func (a *Client) ReplaceSpoeMessage(params *ReplaceSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceSpoeMessageOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceSpoeMessageParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceSpoeMessage",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/spoe/spoe_messages/{name}",
@@ -927,7 +1021,12 @@ func (a *Client) ReplaceSpoeMessage(params *ReplaceSpoeMessageParams, authInfo r
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

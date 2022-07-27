@@ -16,81 +16,96 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
-// NewAddPayloadRuntimeMapParams creates a new AddPayloadRuntimeMapParams object
-// with the default values initialized.
+// NewAddPayloadRuntimeMapParams creates a new AddPayloadRuntimeMapParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewAddPayloadRuntimeMapParams() *AddPayloadRuntimeMapParams {
-	var (
-		forceSyncDefault = bool(false)
-	)
 	return &AddPayloadRuntimeMapParams{
-		ForceSync: &forceSyncDefault,
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewAddPayloadRuntimeMapParamsWithTimeout creates a new AddPayloadRuntimeMapParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewAddPayloadRuntimeMapParamsWithTimeout(timeout time.Duration) *AddPayloadRuntimeMapParams {
-	var (
-		forceSyncDefault = bool(false)
-	)
 	return &AddPayloadRuntimeMapParams{
-		ForceSync: &forceSyncDefault,
-
 		timeout: timeout,
 	}
 }
 
 // NewAddPayloadRuntimeMapParamsWithContext creates a new AddPayloadRuntimeMapParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewAddPayloadRuntimeMapParamsWithContext(ctx context.Context) *AddPayloadRuntimeMapParams {
-	var (
-		forceSyncDefault = bool(false)
-	)
 	return &AddPayloadRuntimeMapParams{
-		ForceSync: &forceSyncDefault,
-
 		Context: ctx,
 	}
 }
 
 // NewAddPayloadRuntimeMapParamsWithHTTPClient creates a new AddPayloadRuntimeMapParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewAddPayloadRuntimeMapParamsWithHTTPClient(client *http.Client) *AddPayloadRuntimeMapParams {
-	var (
-		forceSyncDefault = bool(false)
-	)
 	return &AddPayloadRuntimeMapParams{
-		ForceSync:  &forceSyncDefault,
 		HTTPClient: client,
 	}
 }
 
-/*AddPayloadRuntimeMapParams contains all the parameters to send to the API endpoint
-for the add payload runtime map operation typically these are written to a http.Request
+/* AddPayloadRuntimeMapParams contains all the parameters to send to the API endpoint
+   for the add payload runtime map operation.
+
+   Typically these are written to a http.Request.
 */
 type AddPayloadRuntimeMapParams struct {
 
-	/*Data*/
+	// Data.
 	Data models.MapEntries
-	/*ForceSync
-	  If true, immediately syncs changes to disk
 
+	/* ForceSync.
+
+	   If true, immediately syncs changes to disk
 	*/
 	ForceSync *bool
-	/*Name
-	  Map file name
 
+	/* Name.
+
+	   Map file name
 	*/
 	Name string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the add payload runtime map params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *AddPayloadRuntimeMapParams) WithDefaults() *AddPayloadRuntimeMapParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the add payload runtime map params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *AddPayloadRuntimeMapParams) SetDefaults() {
+	var (
+		forceSyncDefault = bool(false)
+	)
+
+	val := AddPayloadRuntimeMapParams{
+		ForceSync: &forceSyncDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the add payload runtime map params
@@ -166,7 +181,6 @@ func (o *AddPayloadRuntimeMapParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
-
 	if o.Data != nil {
 		if err := r.SetBodyParam(o.Data); err != nil {
 			return err
@@ -177,16 +191,17 @@ func (o *AddPayloadRuntimeMapParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// query param force_sync
 		var qrForceSync bool
+
 		if o.ForceSync != nil {
 			qrForceSync = *o.ForceSync
 		}
 		qForceSync := swag.FormatBool(qrForceSync)
 		if qForceSync != "" {
+
 			if err := r.SetQueryParam("force_sync", qForceSync); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param name

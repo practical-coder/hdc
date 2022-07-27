@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteAWSRegionParams creates a new DeleteAWSRegionParams object
-// with the default values initialized.
+// NewDeleteAWSRegionParams creates a new DeleteAWSRegionParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteAWSRegionParams() *DeleteAWSRegionParams {
-	var ()
 	return &DeleteAWSRegionParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteAWSRegionParamsWithTimeout creates a new DeleteAWSRegionParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteAWSRegionParamsWithTimeout(timeout time.Duration) *DeleteAWSRegionParams {
-	var ()
 	return &DeleteAWSRegionParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteAWSRegionParamsWithContext creates a new DeleteAWSRegionParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteAWSRegionParamsWithContext(ctx context.Context) *DeleteAWSRegionParams {
-	var ()
 	return &DeleteAWSRegionParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteAWSRegionParamsWithHTTPClient creates a new DeleteAWSRegionParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteAWSRegionParamsWithHTTPClient(client *http.Client) *DeleteAWSRegionParams {
-	var ()
 	return &DeleteAWSRegionParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteAWSRegionParams contains all the parameters to send to the API endpoint
-for the delete a w s region operation typically these are written to a http.Request
+/* DeleteAWSRegionParams contains all the parameters to send to the API endpoint
+   for the delete a w s region operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteAWSRegionParams struct {
 
-	/*ID
-	  AWS region ID
+	/* ID.
 
+	   AWS region ID
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete a w s region params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteAWSRegionParams) WithDefaults() *DeleteAWSRegionParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete a w s region params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteAWSRegionParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete a w s region params

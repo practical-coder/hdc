@@ -23,23 +23,26 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateServer(params *CreateServerParams, authInfo runtime.ClientAuthInfoWriter) (*CreateServerCreated, *CreateServerAccepted, error)
+	CreateServer(params *CreateServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateServerCreated, *CreateServerAccepted, error)
 
-	DeleteServer(params *DeleteServerParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteServerAccepted, *DeleteServerNoContent, error)
+	DeleteServer(params *DeleteServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteServerAccepted, *DeleteServerNoContent, error)
 
-	GetRuntimeServer(params *GetRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter) (*GetRuntimeServerOK, error)
+	GetRuntimeServer(params *GetRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRuntimeServerOK, error)
 
-	GetRuntimeServers(params *GetRuntimeServersParams, authInfo runtime.ClientAuthInfoWriter) (*GetRuntimeServersOK, error)
+	GetRuntimeServers(params *GetRuntimeServersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRuntimeServersOK, error)
 
-	GetServer(params *GetServerParams, authInfo runtime.ClientAuthInfoWriter) (*GetServerOK, error)
+	GetServer(params *GetServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServerOK, error)
 
-	GetServers(params *GetServersParams, authInfo runtime.ClientAuthInfoWriter) (*GetServersOK, error)
+	GetServers(params *GetServersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServersOK, error)
 
-	ReplaceRuntimeServer(params *ReplaceRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceRuntimeServerOK, error)
+	ReplaceRuntimeServer(params *ReplaceRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceRuntimeServerOK, error)
 
-	ReplaceServer(params *ReplaceServerParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceServerOK, *ReplaceServerAccepted, error)
+	ReplaceServer(params *ReplaceServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceServerOK, *ReplaceServerAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -49,13 +52,12 @@ type ClientService interface {
 
   Adds a new server in the specified backend in the configuration file.
 */
-func (a *Client) CreateServer(params *CreateServerParams, authInfo runtime.ClientAuthInfoWriter) (*CreateServerCreated, *CreateServerAccepted, error) {
+func (a *Client) CreateServer(params *CreateServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateServerCreated, *CreateServerAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateServerParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createServer",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/servers",
@@ -67,7 +69,12 @@ func (a *Client) CreateServer(params *CreateServerParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -87,13 +94,12 @@ func (a *Client) CreateServer(params *CreateServerParams, authInfo runtime.Clien
 
   Deletes a server configuration by it's name in the specified backend.
 */
-func (a *Client) DeleteServer(params *DeleteServerParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteServerAccepted, *DeleteServerNoContent, error) {
+func (a *Client) DeleteServer(params *DeleteServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteServerAccepted, *DeleteServerNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteServerParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteServer",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/servers/{name}",
@@ -105,7 +111,12 @@ func (a *Client) DeleteServer(params *DeleteServerParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -125,13 +136,12 @@ func (a *Client) DeleteServer(params *DeleteServerParams, authInfo runtime.Clien
 
   Returns one server runtime settings by it's name in the specified backend.
 */
-func (a *Client) GetRuntimeServer(params *GetRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter) (*GetRuntimeServerOK, error) {
+func (a *Client) GetRuntimeServer(params *GetRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRuntimeServerOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetRuntimeServerParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getRuntimeServer",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/servers/{name}",
@@ -143,7 +153,12 @@ func (a *Client) GetRuntimeServer(params *GetRuntimeServerParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -161,13 +176,12 @@ func (a *Client) GetRuntimeServer(params *GetRuntimeServerParams, authInfo runti
 
   Returns an array of all servers' runtime settings.
 */
-func (a *Client) GetRuntimeServers(params *GetRuntimeServersParams, authInfo runtime.ClientAuthInfoWriter) (*GetRuntimeServersOK, error) {
+func (a *Client) GetRuntimeServers(params *GetRuntimeServersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRuntimeServersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetRuntimeServersParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getRuntimeServers",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/servers",
@@ -179,7 +193,12 @@ func (a *Client) GetRuntimeServers(params *GetRuntimeServersParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -197,13 +216,12 @@ func (a *Client) GetRuntimeServers(params *GetRuntimeServersParams, authInfo run
 
   Returns one server configuration by it's name in the specified backend.
 */
-func (a *Client) GetServer(params *GetServerParams, authInfo runtime.ClientAuthInfoWriter) (*GetServerOK, error) {
+func (a *Client) GetServer(params *GetServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServerOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetServerParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getServer",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/servers/{name}",
@@ -215,7 +233,12 @@ func (a *Client) GetServer(params *GetServerParams, authInfo runtime.ClientAuthI
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -233,13 +256,12 @@ func (a *Client) GetServer(params *GetServerParams, authInfo runtime.ClientAuthI
 
   Returns an array of all servers that are configured in specified backend.
 */
-func (a *Client) GetServers(params *GetServersParams, authInfo runtime.ClientAuthInfoWriter) (*GetServersOK, error) {
+func (a *Client) GetServers(params *GetServersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetServersParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getServers",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/servers",
@@ -251,7 +273,12 @@ func (a *Client) GetServers(params *GetServersParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -269,13 +296,12 @@ func (a *Client) GetServers(params *GetServersParams, authInfo runtime.ClientAut
 
   Replaces a server transient settings by it's name in the specified backend.
 */
-func (a *Client) ReplaceRuntimeServer(params *ReplaceRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceRuntimeServerOK, error) {
+func (a *Client) ReplaceRuntimeServer(params *ReplaceRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceRuntimeServerOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceRuntimeServerParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceRuntimeServer",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/runtime/servers/{name}",
@@ -287,7 +313,12 @@ func (a *Client) ReplaceRuntimeServer(params *ReplaceRuntimeServerParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -305,13 +336,12 @@ func (a *Client) ReplaceRuntimeServer(params *ReplaceRuntimeServerParams, authIn
 
   Replaces a server configuration by it's name in the specified backend.
 */
-func (a *Client) ReplaceServer(params *ReplaceServerParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceServerOK, *ReplaceServerAccepted, error) {
+func (a *Client) ReplaceServer(params *ReplaceServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceServerOK, *ReplaceServerAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceServerParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceServer",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/servers/{name}",
@@ -323,7 +353,12 @@ func (a *Client) ReplaceServer(params *ReplaceServerParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}

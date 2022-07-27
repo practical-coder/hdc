@@ -23,17 +23,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateServerTemplate(params *CreateServerTemplateParams, authInfo runtime.ClientAuthInfoWriter) (*CreateServerTemplateCreated, *CreateServerTemplateAccepted, error)
+	CreateServerTemplate(params *CreateServerTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateServerTemplateCreated, *CreateServerTemplateAccepted, error)
 
-	DeleteServerTemplate(params *DeleteServerTemplateParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteServerTemplateAccepted, *DeleteServerTemplateNoContent, error)
+	DeleteServerTemplate(params *DeleteServerTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteServerTemplateAccepted, *DeleteServerTemplateNoContent, error)
 
-	GetServerTemplate(params *GetServerTemplateParams, authInfo runtime.ClientAuthInfoWriter) (*GetServerTemplateOK, error)
+	GetServerTemplate(params *GetServerTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServerTemplateOK, error)
 
-	GetServerTemplates(params *GetServerTemplatesParams, authInfo runtime.ClientAuthInfoWriter) (*GetServerTemplatesOK, error)
+	GetServerTemplates(params *GetServerTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServerTemplatesOK, error)
 
-	ReplaceServerTemplate(params *ReplaceServerTemplateParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceServerTemplateOK, *ReplaceServerTemplateAccepted, error)
+	ReplaceServerTemplate(params *ReplaceServerTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceServerTemplateOK, *ReplaceServerTemplateAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +46,12 @@ type ClientService interface {
 
   Adds a new server template in the specified backend in the configuration file.
 */
-func (a *Client) CreateServerTemplate(params *CreateServerTemplateParams, authInfo runtime.ClientAuthInfoWriter) (*CreateServerTemplateCreated, *CreateServerTemplateAccepted, error) {
+func (a *Client) CreateServerTemplate(params *CreateServerTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateServerTemplateCreated, *CreateServerTemplateAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateServerTemplateParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createServerTemplate",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/server_templates",
@@ -61,7 +63,12 @@ func (a *Client) CreateServerTemplate(params *CreateServerTemplateParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -81,13 +88,12 @@ func (a *Client) CreateServerTemplate(params *CreateServerTemplateParams, authIn
 
   Deletes a server template configuration by it's prefix in the specified backend.
 */
-func (a *Client) DeleteServerTemplate(params *DeleteServerTemplateParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteServerTemplateAccepted, *DeleteServerTemplateNoContent, error) {
+func (a *Client) DeleteServerTemplate(params *DeleteServerTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteServerTemplateAccepted, *DeleteServerTemplateNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteServerTemplateParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteServerTemplate",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/server_templates/{prefix}",
@@ -99,7 +105,12 @@ func (a *Client) DeleteServerTemplate(params *DeleteServerTemplateParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -119,13 +130,12 @@ func (a *Client) DeleteServerTemplate(params *DeleteServerTemplateParams, authIn
 
   Returns one server template configuration by it's prefix in the specified backend.
 */
-func (a *Client) GetServerTemplate(params *GetServerTemplateParams, authInfo runtime.ClientAuthInfoWriter) (*GetServerTemplateOK, error) {
+func (a *Client) GetServerTemplate(params *GetServerTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServerTemplateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetServerTemplateParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getServerTemplate",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/server_templates/{prefix}",
@@ -137,7 +147,12 @@ func (a *Client) GetServerTemplate(params *GetServerTemplateParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -155,13 +170,12 @@ func (a *Client) GetServerTemplate(params *GetServerTemplateParams, authInfo run
 
   Returns an array of all server templates that are configured in specified backend.
 */
-func (a *Client) GetServerTemplates(params *GetServerTemplatesParams, authInfo runtime.ClientAuthInfoWriter) (*GetServerTemplatesOK, error) {
+func (a *Client) GetServerTemplates(params *GetServerTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServerTemplatesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetServerTemplatesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getServerTemplates",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/server_templates",
@@ -173,7 +187,12 @@ func (a *Client) GetServerTemplates(params *GetServerTemplatesParams, authInfo r
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -191,13 +210,12 @@ func (a *Client) GetServerTemplates(params *GetServerTemplatesParams, authInfo r
 
   Replaces a server template configuration by it's prefix in the specified backend.
 */
-func (a *Client) ReplaceServerTemplate(params *ReplaceServerTemplateParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceServerTemplateOK, *ReplaceServerTemplateAccepted, error) {
+func (a *Client) ReplaceServerTemplate(params *ReplaceServerTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceServerTemplateOK, *ReplaceServerTemplateAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceServerTemplateParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceServerTemplate",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/server_templates/{prefix}",
@@ -209,7 +227,12 @@ func (a *Client) ReplaceServerTemplate(params *ReplaceServerTemplateParams, auth
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // DeleteUserReader is a Reader for the DeleteUser structure.
@@ -58,12 +58,13 @@ func NewDeleteUserAccepted() *DeleteUserAccepted {
 	return &DeleteUserAccepted{}
 }
 
-/*DeleteUserAccepted handles this case with default header values.
+/* DeleteUserAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteUserAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -74,8 +75,12 @@ func (o *DeleteUserAccepted) Error() string {
 
 func (o *DeleteUserAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	return nil
 }
@@ -85,7 +90,7 @@ func NewDeleteUserNoContent() *DeleteUserNoContent {
 	return &DeleteUserNoContent{}
 }
 
-/*DeleteUserNoContent handles this case with default header values.
+/* DeleteUserNoContent describes a response with status code 204, with default header values.
 
 User deleted
 */
@@ -106,12 +111,13 @@ func NewDeleteUserNotFound() *DeleteUserNotFound {
 	return &DeleteUserNotFound{}
 }
 
-/*DeleteUserNotFound handles this case with default header values.
+/* DeleteUserNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type DeleteUserNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -121,15 +127,18 @@ type DeleteUserNotFound struct {
 func (o *DeleteUserNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/users/{username}][%d] deleteUserNotFound  %+v", 404, o.Payload)
 }
-
 func (o *DeleteUserNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteUserNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -148,14 +157,14 @@ func NewDeleteUserDefault(code int) *DeleteUserDefault {
 	}
 }
 
-/*DeleteUserDefault handles this case with default header values.
+/* DeleteUserDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type DeleteUserDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -170,15 +179,18 @@ func (o *DeleteUserDefault) Code() int {
 func (o *DeleteUserDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/users/{username}][%d] deleteUser default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteUserDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteUserDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

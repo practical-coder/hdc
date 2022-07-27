@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // CreateACLReader is a Reader for the CreateACL structure.
@@ -64,7 +64,7 @@ func NewCreateACLCreated() *CreateACLCreated {
 	return &CreateACLCreated{}
 }
 
-/*CreateACLCreated handles this case with default header values.
+/* CreateACLCreated describes a response with status code 201, with default header values.
 
 ACL line created
 */
@@ -75,7 +75,6 @@ type CreateACLCreated struct {
 func (o *CreateACLCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateACLCreated) GetPayload() *models.ACL {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewCreateACLAccepted() *CreateACLAccepted {
 	return &CreateACLAccepted{}
 }
 
-/*CreateACLAccepted handles this case with default header values.
+/* CreateACLAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type CreateACLAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type CreateACLAccepted struct {
 func (o *CreateACLAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateACLAccepted) GetPayload() *models.ACL {
 	return o.Payload
 }
 
 func (o *CreateACLAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.ACL)
 
@@ -137,12 +140,13 @@ func NewCreateACLBadRequest() *CreateACLBadRequest {
 	return &CreateACLBadRequest{}
 }
 
-/*CreateACLBadRequest handles this case with default header values.
+/* CreateACLBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type CreateACLBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type CreateACLBadRequest struct {
 func (o *CreateACLBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateACLBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateACLBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewCreateACLConflict() *CreateACLConflict {
 	return &CreateACLConflict{}
 }
 
-/*CreateACLConflict handles this case with default header values.
+/* CreateACLConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
 type CreateACLConflict struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type CreateACLConflict struct {
 func (o *CreateACLConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclConflict  %+v", 409, o.Payload)
 }
-
 func (o *CreateACLConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateACLConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewCreateACLDefault(code int) *CreateACLDefault {
 	}
 }
 
-/*CreateACLDefault handles this case with default header values.
+/* CreateACLDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type CreateACLDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *CreateACLDefault) Code() int {
 func (o *CreateACLDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAcl default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *CreateACLDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateACLDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -186,14 +187,13 @@ const (
 
 // prop value enum
 func (m *SpoeAgent) validateAsyncEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, spoeAgentTypeAsyncPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, spoeAgentTypeAsyncPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *SpoeAgent) validateAsync(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Async) { // not required
 		return nil
 	}
@@ -226,14 +226,13 @@ const (
 
 // prop value enum
 func (m *SpoeAgent) validateContinueOnErrorEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, spoeAgentTypeContinueOnErrorPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, spoeAgentTypeContinueOnErrorPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *SpoeAgent) validateContinueOnError(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ContinueOnError) { // not required
 		return nil
 	}
@@ -269,14 +268,13 @@ const (
 
 // prop value enum
 func (m *SpoeAgent) validateDontlogNormalEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, spoeAgentTypeDontlogNormalPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, spoeAgentTypeDontlogNormalPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *SpoeAgent) validateDontlogNormal(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.DontlogNormal) { // not required
 		return nil
 	}
@@ -309,14 +307,13 @@ const (
 
 // prop value enum
 func (m *SpoeAgent) validateForceSetVarEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, spoeAgentTypeForceSetVarPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, spoeAgentTypeForceSetVarPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *SpoeAgent) validateForceSetVar(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ForceSetVar) { // not required
 		return nil
 	}
@@ -330,7 +327,6 @@ func (m *SpoeAgent) validateForceSetVar(formats strfmt.Registry) error {
 }
 
 func (m *SpoeAgent) validateLog(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Log) { // not required
 		return nil
 	}
@@ -338,6 +334,8 @@ func (m *SpoeAgent) validateLog(formats strfmt.Registry) error {
 	if err := m.Log.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("log")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("log")
 		}
 		return err
 	}
@@ -355,12 +353,11 @@ func (m *SpoeAgent) validateName(formats strfmt.Registry) error {
 }
 
 func (m *SpoeAgent) validateOptionSetOnError(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OptionSetOnError) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("option_set-on-error", "body", string(m.OptionSetOnError), `^[A-Za-z0-9-_.]+$`); err != nil {
+	if err := validate.Pattern("option_set-on-error", "body", m.OptionSetOnError, `^[A-Za-z0-9-_.]+$`); err != nil {
 		return err
 	}
 
@@ -368,12 +365,11 @@ func (m *SpoeAgent) validateOptionSetOnError(formats strfmt.Registry) error {
 }
 
 func (m *SpoeAgent) validateOptionSetProcessTime(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OptionSetProcessTime) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("option_set-process-time", "body", string(m.OptionSetProcessTime), `^[A-Za-z0-9-_.]+$`); err != nil {
+	if err := validate.Pattern("option_set-process-time", "body", m.OptionSetProcessTime, `^[A-Za-z0-9-_.]+$`); err != nil {
 		return err
 	}
 
@@ -381,12 +377,11 @@ func (m *SpoeAgent) validateOptionSetProcessTime(formats strfmt.Registry) error 
 }
 
 func (m *SpoeAgent) validateOptionSetTotalTime(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OptionSetTotalTime) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("option_set-total-time", "body", string(m.OptionSetTotalTime), `^[A-Za-z0-9-_.]+$`); err != nil {
+	if err := validate.Pattern("option_set-total-time", "body", m.OptionSetTotalTime, `^[A-Za-z0-9-_.]+$`); err != nil {
 		return err
 	}
 
@@ -394,12 +389,11 @@ func (m *SpoeAgent) validateOptionSetTotalTime(formats strfmt.Registry) error {
 }
 
 func (m *SpoeAgent) validateOptionVarPrefix(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OptionVarPrefix) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("option_var-prefix", "body", string(m.OptionVarPrefix), `^[A-Za-z0-9-_.]+$`); err != nil {
+	if err := validate.Pattern("option_var-prefix", "body", m.OptionVarPrefix, `^[A-Za-z0-9-_.]+$`); err != nil {
 		return err
 	}
 
@@ -429,14 +423,13 @@ const (
 
 // prop value enum
 func (m *SpoeAgent) validatePipeliningEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, spoeAgentTypePipeliningPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, spoeAgentTypePipeliningPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *SpoeAgent) validatePipelining(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Pipelining) { // not required
 		return nil
 	}
@@ -472,20 +465,47 @@ const (
 
 // prop value enum
 func (m *SpoeAgent) validateSendFragPayloadEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, spoeAgentTypeSendFragPayloadPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, spoeAgentTypeSendFragPayloadPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *SpoeAgent) validateSendFragPayload(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.SendFragPayload) { // not required
 		return nil
 	}
 
 	// value enum
 	if err := m.validateSendFragPayloadEnum("send-frag-payload", "body", m.SendFragPayload); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this spoe agent based on the context it is used
+func (m *SpoeAgent) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateLog(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *SpoeAgent) contextValidateLog(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Log.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("log")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("log")
+		}
 		return err
 	}
 

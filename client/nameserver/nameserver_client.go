@@ -23,17 +23,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateNameserver(params *CreateNameserverParams, authInfo runtime.ClientAuthInfoWriter) (*CreateNameserverCreated, *CreateNameserverAccepted, error)
+	CreateNameserver(params *CreateNameserverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNameserverCreated, *CreateNameserverAccepted, error)
 
-	DeleteNameserver(params *DeleteNameserverParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteNameserverAccepted, *DeleteNameserverNoContent, error)
+	DeleteNameserver(params *DeleteNameserverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNameserverAccepted, *DeleteNameserverNoContent, error)
 
-	GetNameserver(params *GetNameserverParams, authInfo runtime.ClientAuthInfoWriter) (*GetNameserverOK, error)
+	GetNameserver(params *GetNameserverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNameserverOK, error)
 
-	GetNameservers(params *GetNameserversParams, authInfo runtime.ClientAuthInfoWriter) (*GetNameserversOK, error)
+	GetNameservers(params *GetNameserversParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNameserversOK, error)
 
-	ReplaceNameserver(params *ReplaceNameserverParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceNameserverOK, *ReplaceNameserverAccepted, error)
+	ReplaceNameserver(params *ReplaceNameserverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceNameserverOK, *ReplaceNameserverAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +46,12 @@ type ClientService interface {
 
   Adds a new nameserver to the resolvers section.
 */
-func (a *Client) CreateNameserver(params *CreateNameserverParams, authInfo runtime.ClientAuthInfoWriter) (*CreateNameserverCreated, *CreateNameserverAccepted, error) {
+func (a *Client) CreateNameserver(params *CreateNameserverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNameserverCreated, *CreateNameserverAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateNameserverParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createNameserver",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/nameservers",
@@ -61,7 +63,12 @@ func (a *Client) CreateNameserver(params *CreateNameserverParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -81,13 +88,12 @@ func (a *Client) CreateNameserver(params *CreateNameserverParams, authInfo runti
 
   Deletes a nameserver from the resolvers section by it's name.
 */
-func (a *Client) DeleteNameserver(params *DeleteNameserverParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteNameserverAccepted, *DeleteNameserverNoContent, error) {
+func (a *Client) DeleteNameserver(params *DeleteNameserverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNameserverAccepted, *DeleteNameserverNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteNameserverParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteNameserver",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/nameservers/{name}",
@@ -99,7 +105,12 @@ func (a *Client) DeleteNameserver(params *DeleteNameserverParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -119,13 +130,12 @@ func (a *Client) DeleteNameserver(params *DeleteNameserverParams, authInfo runti
 
   Returns one nameserver configuration by it's name.
 */
-func (a *Client) GetNameserver(params *GetNameserverParams, authInfo runtime.ClientAuthInfoWriter) (*GetNameserverOK, error) {
+func (a *Client) GetNameserver(params *GetNameserverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNameserverOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNameserverParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getNameserver",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/nameservers/{name}",
@@ -137,7 +147,12 @@ func (a *Client) GetNameserver(params *GetNameserverParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -155,13 +170,12 @@ func (a *Client) GetNameserver(params *GetNameserverParams, authInfo runtime.Cli
 
   Returns an array of all configured nameservers.
 */
-func (a *Client) GetNameservers(params *GetNameserversParams, authInfo runtime.ClientAuthInfoWriter) (*GetNameserversOK, error) {
+func (a *Client) GetNameservers(params *GetNameserversParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNameserversOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNameserversParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getNameservers",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/nameservers",
@@ -173,7 +187,12 @@ func (a *Client) GetNameservers(params *GetNameserversParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -191,13 +210,12 @@ func (a *Client) GetNameservers(params *GetNameserversParams, authInfo runtime.C
 
   Replaces a nameserver configuration by it's name.
 */
-func (a *Client) ReplaceNameserver(params *ReplaceNameserverParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceNameserverOK, *ReplaceNameserverAccepted, error) {
+func (a *Client) ReplaceNameserver(params *ReplaceNameserverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceNameserverOK, *ReplaceNameserverAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceNameserverParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceNameserver",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/nameservers/{name}",
@@ -209,7 +227,12 @@ func (a *Client) ReplaceNameserver(params *ReplaceNameserverParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}

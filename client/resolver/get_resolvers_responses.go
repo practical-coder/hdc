@@ -6,6 +6,7 @@ package resolver
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -15,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetResolversReader is a Reader for the GetResolvers structure.
@@ -49,12 +50,13 @@ func NewGetResolversOK() *GetResolversOK {
 	return &GetResolversOK{}
 }
 
-/*GetResolversOK handles this case with default header values.
+/* GetResolversOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
 type GetResolversOK struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -64,15 +66,18 @@ type GetResolversOK struct {
 func (o *GetResolversOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/resolvers][%d] getResolversOK  %+v", 200, o.Payload)
 }
-
 func (o *GetResolversOK) GetPayload() *GetResolversOKBody {
 	return o.Payload
 }
 
 func (o *GetResolversOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(GetResolversOKBody)
 
@@ -91,14 +96,14 @@ func NewGetResolversDefault(code int) *GetResolversDefault {
 	}
 }
 
-/*GetResolversDefault handles this case with default header values.
+/* GetResolversDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetResolversDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -113,15 +118,18 @@ func (o *GetResolversDefault) Code() int {
 func (o *GetResolversDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/resolvers][%d] getResolvers default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetResolversDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetResolversDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -169,6 +177,36 @@ func (o *GetResolversOKBody) validateData(formats strfmt.Registry) error {
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getResolversOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getResolversOK" + "." + "data")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get resolvers o k body based on the context it is used
+func (o *GetResolversOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetResolversOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := o.Data.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("getResolversOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getResolversOK" + "." + "data")
 		}
 		return err
 	}

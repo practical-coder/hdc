@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -15,6 +17,7 @@ import (
 // Nameserver Nameserver
 //
 // Nameserver used in Runtime DNS configuration
+// Example: {"address":"10.0.0.1","name":"ns1","port":53}
 //
 // swagger:model nameserver
 type Nameserver struct {
@@ -63,7 +66,7 @@ func (m *Nameserver) validateAddress(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.Pattern("address", "body", string(*m.Address), `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("address", "body", *m.Address, `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -72,11 +75,11 @@ func (m *Nameserver) validateAddress(formats strfmt.Registry) error {
 
 func (m *Nameserver) validateName(formats strfmt.Registry) error {
 
-	if err := validate.RequiredString("name", "body", string(m.Name)); err != nil {
+	if err := validate.RequiredString("name", "body", m.Name); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("name", "body", string(m.Name), `^[A-Za-z0-9-_.:]+$`); err != nil {
+	if err := validate.Pattern("name", "body", m.Name, `^[A-Za-z0-9-_.:]+$`); err != nil {
 		return err
 	}
 
@@ -84,19 +87,23 @@ func (m *Nameserver) validateName(formats strfmt.Registry) error {
 }
 
 func (m *Nameserver) validatePort(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Port) { // not required
 		return nil
 	}
 
-	if err := validate.MinimumInt("port", "body", int64(*m.Port), 1, false); err != nil {
+	if err := validate.MinimumInt("port", "body", *m.Port, 1, false); err != nil {
 		return err
 	}
 
-	if err := validate.MaximumInt("port", "body", int64(*m.Port), 65535, false); err != nil {
+	if err := validate.MaximumInt("port", "body", *m.Port, 65535, false); err != nil {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this nameserver based on context it is used
+func (m *Nameserver) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

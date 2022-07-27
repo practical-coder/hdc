@@ -16,96 +16,114 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
-// NewReplaceUserParams creates a new ReplaceUserParams object
-// with the default values initialized.
+// NewReplaceUserParams creates a new ReplaceUserParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewReplaceUserParams() *ReplaceUserParams {
-	var (
-		forceReloadDefault = bool(false)
-	)
 	return &ReplaceUserParams{
-		ForceReload: &forceReloadDefault,
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewReplaceUserParamsWithTimeout creates a new ReplaceUserParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewReplaceUserParamsWithTimeout(timeout time.Duration) *ReplaceUserParams {
-	var (
-		forceReloadDefault = bool(false)
-	)
 	return &ReplaceUserParams{
-		ForceReload: &forceReloadDefault,
-
 		timeout: timeout,
 	}
 }
 
 // NewReplaceUserParamsWithContext creates a new ReplaceUserParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewReplaceUserParamsWithContext(ctx context.Context) *ReplaceUserParams {
-	var (
-		forceReloadDefault = bool(false)
-	)
 	return &ReplaceUserParams{
-		ForceReload: &forceReloadDefault,
-
 		Context: ctx,
 	}
 }
 
 // NewReplaceUserParamsWithHTTPClient creates a new ReplaceUserParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewReplaceUserParamsWithHTTPClient(client *http.Client) *ReplaceUserParams {
-	var (
-		forceReloadDefault = bool(false)
-	)
 	return &ReplaceUserParams{
-		ForceReload: &forceReloadDefault,
-		HTTPClient:  client,
+		HTTPClient: client,
 	}
 }
 
-/*ReplaceUserParams contains all the parameters to send to the API endpoint
-for the replace user operation typically these are written to a http.Request
+/* ReplaceUserParams contains all the parameters to send to the API endpoint
+   for the replace user operation.
+
+   Typically these are written to a http.Request.
 */
 type ReplaceUserParams struct {
 
-	/*Data*/
+	// Data.
 	Data *models.User
-	/*ForceReload
-	  If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 
+	/* ForceReload.
+
+	   If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 	*/
 	ForceReload *bool
-	/*TransactionID
-	  ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 
+	/* TransactionID.
+
+	   ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 	*/
 	TransactionID *string
-	/*Userlist
-	  Parent userlist name
 
+	/* Userlist.
+
+	   Parent userlist name
 	*/
 	Userlist string
-	/*Username
-	  User username
 
+	/* Username.
+
+	   User username
 	*/
 	Username string
-	/*Version
-	  Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 
+	/* Version.
+
+	   Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 	*/
 	Version *int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the replace user params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ReplaceUserParams) WithDefaults() *ReplaceUserParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the replace user params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ReplaceUserParams) SetDefaults() {
+	var (
+		forceReloadDefault = bool(false)
+	)
+
+	val := ReplaceUserParams{
+		ForceReload: &forceReloadDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the replace user params
@@ -214,7 +232,6 @@ func (o *ReplaceUserParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
-
 	if o.Data != nil {
 		if err := r.SetBodyParam(o.Data); err != nil {
 			return err
@@ -225,38 +242,41 @@ func (o *ReplaceUserParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 		// query param force_reload
 		var qrForceReload bool
+
 		if o.ForceReload != nil {
 			qrForceReload = *o.ForceReload
 		}
 		qForceReload := swag.FormatBool(qrForceReload)
 		if qForceReload != "" {
+
 			if err := r.SetQueryParam("force_reload", qForceReload); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.TransactionID != nil {
 
 		// query param transaction_id
 		var qrTransactionID string
+
 		if o.TransactionID != nil {
 			qrTransactionID = *o.TransactionID
 		}
 		qTransactionID := qrTransactionID
 		if qTransactionID != "" {
+
 			if err := r.SetQueryParam("transaction_id", qTransactionID); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// query param userlist
 	qrUserlist := o.Userlist
 	qUserlist := qrUserlist
 	if qUserlist != "" {
+
 		if err := r.SetQueryParam("userlist", qUserlist); err != nil {
 			return err
 		}
@@ -271,16 +291,17 @@ func (o *ReplaceUserParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 		// query param version
 		var qrVersion int64
+
 		if o.Version != nil {
 			qrVersion = *o.Version
 		}
 		qVersion := swag.FormatInt64(qrVersion)
 		if qVersion != "" {
+
 			if err := r.SetQueryParam("version", qVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

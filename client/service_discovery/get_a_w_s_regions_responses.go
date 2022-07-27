@@ -6,6 +6,7 @@ package service_discovery
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -15,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetAWSRegionsReader is a Reader for the GetAWSRegions structure.
@@ -49,7 +50,7 @@ func NewGetAWSRegionsOK() *GetAWSRegionsOK {
 	return &GetAWSRegionsOK{}
 }
 
-/*GetAWSRegionsOK handles this case with default header values.
+/* GetAWSRegionsOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -60,7 +61,6 @@ type GetAWSRegionsOK struct {
 func (o *GetAWSRegionsOK) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/aws][%d] getAWSRegionsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetAWSRegionsOK) GetPayload() *GetAWSRegionsOKBody {
 	return o.Payload
 }
@@ -84,14 +84,14 @@ func NewGetAWSRegionsDefault(code int) *GetAWSRegionsDefault {
 	}
 }
 
-/*GetAWSRegionsDefault handles this case with default header values.
+/* GetAWSRegionsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetAWSRegionsDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,15 +106,18 @@ func (o *GetAWSRegionsDefault) Code() int {
 func (o *GetAWSRegionsDefault) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/aws][%d] getAWSRegions default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetAWSRegionsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetAWSRegionsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -159,6 +162,36 @@ func (o *GetAWSRegionsOKBody) validateData(formats strfmt.Registry) error {
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getAWSRegionsOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getAWSRegionsOK" + "." + "data")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get a w s regions o k body based on the context it is used
+func (o *GetAWSRegionsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetAWSRegionsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := o.Data.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("getAWSRegionsOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getAWSRegionsOK" + "." + "data")
 		}
 		return err
 	}

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // DeleteServerSwitchingRuleReader is a Reader for the DeleteServerSwitchingRule structure.
@@ -58,12 +58,13 @@ func NewDeleteServerSwitchingRuleAccepted() *DeleteServerSwitchingRuleAccepted {
 	return &DeleteServerSwitchingRuleAccepted{}
 }
 
-/*DeleteServerSwitchingRuleAccepted handles this case with default header values.
+/* DeleteServerSwitchingRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteServerSwitchingRuleAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -74,8 +75,12 @@ func (o *DeleteServerSwitchingRuleAccepted) Error() string {
 
 func (o *DeleteServerSwitchingRuleAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	return nil
 }
@@ -85,7 +90,7 @@ func NewDeleteServerSwitchingRuleNoContent() *DeleteServerSwitchingRuleNoContent
 	return &DeleteServerSwitchingRuleNoContent{}
 }
 
-/*DeleteServerSwitchingRuleNoContent handles this case with default header values.
+/* DeleteServerSwitchingRuleNoContent describes a response with status code 204, with default header values.
 
 Server Switching Rule deleted
 */
@@ -106,12 +111,13 @@ func NewDeleteServerSwitchingRuleNotFound() *DeleteServerSwitchingRuleNotFound {
 	return &DeleteServerSwitchingRuleNotFound{}
 }
 
-/*DeleteServerSwitchingRuleNotFound handles this case with default header values.
+/* DeleteServerSwitchingRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type DeleteServerSwitchingRuleNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -121,15 +127,18 @@ type DeleteServerSwitchingRuleNotFound struct {
 func (o *DeleteServerSwitchingRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_switching_rules/{index}][%d] deleteServerSwitchingRuleNotFound  %+v", 404, o.Payload)
 }
-
 func (o *DeleteServerSwitchingRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteServerSwitchingRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -148,14 +157,14 @@ func NewDeleteServerSwitchingRuleDefault(code int) *DeleteServerSwitchingRuleDef
 	}
 }
 
-/*DeleteServerSwitchingRuleDefault handles this case with default header values.
+/* DeleteServerSwitchingRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type DeleteServerSwitchingRuleDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -170,15 +179,18 @@ func (o *DeleteServerSwitchingRuleDefault) Code() int {
 func (o *DeleteServerSwitchingRuleDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_switching_rules/{index}][%d] deleteServerSwitchingRule default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteServerSwitchingRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteServerSwitchingRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

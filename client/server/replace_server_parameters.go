@@ -16,96 +16,126 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
-// NewReplaceServerParams creates a new ReplaceServerParams object
-// with the default values initialized.
+// NewReplaceServerParams creates a new ReplaceServerParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewReplaceServerParams() *ReplaceServerParams {
-	var (
-		forceReloadDefault = bool(false)
-	)
 	return &ReplaceServerParams{
-		ForceReload: &forceReloadDefault,
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewReplaceServerParamsWithTimeout creates a new ReplaceServerParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewReplaceServerParamsWithTimeout(timeout time.Duration) *ReplaceServerParams {
-	var (
-		forceReloadDefault = bool(false)
-	)
 	return &ReplaceServerParams{
-		ForceReload: &forceReloadDefault,
-
 		timeout: timeout,
 	}
 }
 
 // NewReplaceServerParamsWithContext creates a new ReplaceServerParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewReplaceServerParamsWithContext(ctx context.Context) *ReplaceServerParams {
-	var (
-		forceReloadDefault = bool(false)
-	)
 	return &ReplaceServerParams{
-		ForceReload: &forceReloadDefault,
-
 		Context: ctx,
 	}
 }
 
 // NewReplaceServerParamsWithHTTPClient creates a new ReplaceServerParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewReplaceServerParamsWithHTTPClient(client *http.Client) *ReplaceServerParams {
-	var (
-		forceReloadDefault = bool(false)
-	)
 	return &ReplaceServerParams{
-		ForceReload: &forceReloadDefault,
-		HTTPClient:  client,
+		HTTPClient: client,
 	}
 }
 
-/*ReplaceServerParams contains all the parameters to send to the API endpoint
-for the replace server operation typically these are written to a http.Request
+/* ReplaceServerParams contains all the parameters to send to the API endpoint
+   for the replace server operation.
+
+   Typically these are written to a http.Request.
 */
 type ReplaceServerParams struct {
 
-	/*Backend
-	  Parent backend name
+	/* Backend.
 
+	   Parent backend name
 	*/
-	Backend string
-	/*Data*/
-	Data *models.Server
-	/*ForceReload
-	  If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
+	Backend *string
 
+	// Data.
+	Data *models.Server
+
+	/* ForceReload.
+
+	   If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 	*/
 	ForceReload *bool
-	/*Name
-	  Server name
 
+	/* Name.
+
+	   Server name
 	*/
 	Name string
-	/*TransactionID
-	  ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 
+	/* ParentName.
+
+	   Parent name
+	*/
+	ParentName *string
+
+	/* ParentType.
+
+	   Parent type
+	*/
+	ParentType *string
+
+	/* TransactionID.
+
+	   ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 	*/
 	TransactionID *string
-	/*Version
-	  Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 
+	/* Version.
+
+	   Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 	*/
 	Version *int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the replace server params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ReplaceServerParams) WithDefaults() *ReplaceServerParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the replace server params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ReplaceServerParams) SetDefaults() {
+	var (
+		forceReloadDefault = bool(false)
+	)
+
+	val := ReplaceServerParams{
+		ForceReload: &forceReloadDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the replace server params
@@ -142,13 +172,13 @@ func (o *ReplaceServerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBackend adds the backend to the replace server params
-func (o *ReplaceServerParams) WithBackend(backend string) *ReplaceServerParams {
+func (o *ReplaceServerParams) WithBackend(backend *string) *ReplaceServerParams {
 	o.SetBackend(backend)
 	return o
 }
 
 // SetBackend adds the backend to the replace server params
-func (o *ReplaceServerParams) SetBackend(backend string) {
+func (o *ReplaceServerParams) SetBackend(backend *string) {
 	o.Backend = backend
 }
 
@@ -185,6 +215,28 @@ func (o *ReplaceServerParams) SetName(name string) {
 	o.Name = name
 }
 
+// WithParentName adds the parentName to the replace server params
+func (o *ReplaceServerParams) WithParentName(parentName *string) *ReplaceServerParams {
+	o.SetParentName(parentName)
+	return o
+}
+
+// SetParentName adds the parentName to the replace server params
+func (o *ReplaceServerParams) SetParentName(parentName *string) {
+	o.ParentName = parentName
+}
+
+// WithParentType adds the parentType to the replace server params
+func (o *ReplaceServerParams) WithParentType(parentType *string) *ReplaceServerParams {
+	o.SetParentType(parentType)
+	return o
+}
+
+// SetParentType adds the parentType to the replace server params
+func (o *ReplaceServerParams) SetParentType(parentType *string) {
+	o.ParentType = parentType
+}
+
 // WithTransactionID adds the transactionID to the replace server params
 func (o *ReplaceServerParams) WithTransactionID(transactionID *string) *ReplaceServerParams {
 	o.SetTransactionID(transactionID)
@@ -215,15 +267,22 @@ func (o *ReplaceServerParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 	}
 	var res []error
 
-	// query param backend
-	qrBackend := o.Backend
-	qBackend := qrBackend
-	if qBackend != "" {
-		if err := r.SetQueryParam("backend", qBackend); err != nil {
-			return err
+	if o.Backend != nil {
+
+		// query param backend
+		var qrBackend string
+
+		if o.Backend != nil {
+			qrBackend = *o.Backend
+		}
+		qBackend := qrBackend
+		if qBackend != "" {
+
+			if err := r.SetQueryParam("backend", qBackend); err != nil {
+				return err
+			}
 		}
 	}
-
 	if o.Data != nil {
 		if err := r.SetBodyParam(o.Data); err != nil {
 			return err
@@ -234,16 +293,17 @@ func (o *ReplaceServerParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 		// query param force_reload
 		var qrForceReload bool
+
 		if o.ForceReload != nil {
 			qrForceReload = *o.ForceReload
 		}
 		qForceReload := swag.FormatBool(qrForceReload)
 		if qForceReload != "" {
+
 			if err := r.SetQueryParam("force_reload", qForceReload); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param name
@@ -251,36 +311,72 @@ func (o *ReplaceServerParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		return err
 	}
 
+	if o.ParentName != nil {
+
+		// query param parent_name
+		var qrParentName string
+
+		if o.ParentName != nil {
+			qrParentName = *o.ParentName
+		}
+		qParentName := qrParentName
+		if qParentName != "" {
+
+			if err := r.SetQueryParam("parent_name", qParentName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ParentType != nil {
+
+		// query param parent_type
+		var qrParentType string
+
+		if o.ParentType != nil {
+			qrParentType = *o.ParentType
+		}
+		qParentType := qrParentType
+		if qParentType != "" {
+
+			if err := r.SetQueryParam("parent_type", qParentType); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.TransactionID != nil {
 
 		// query param transaction_id
 		var qrTransactionID string
+
 		if o.TransactionID != nil {
 			qrTransactionID = *o.TransactionID
 		}
 		qTransactionID := qrTransactionID
 		if qTransactionID != "" {
+
 			if err := r.SetQueryParam("transaction_id", qTransactionID); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Version != nil {
 
 		// query param version
 		var qrVersion int64
+
 		if o.Version != nil {
 			qrVersion = *o.Version
 		}
 		qVersion := swag.FormatInt64(qrVersion)
 		if qVersion != "" {
+
 			if err := r.SetQueryParam("version", qVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

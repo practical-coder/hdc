@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
-// NewEditClusterParams creates a new EditClusterParams object
-// with the default values initialized.
+// NewEditClusterParams creates a new EditClusterParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewEditClusterParams() *EditClusterParams {
-	var ()
 	return &EditClusterParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewEditClusterParamsWithTimeout creates a new EditClusterParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewEditClusterParamsWithTimeout(timeout time.Duration) *EditClusterParams {
-	var ()
 	return &EditClusterParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewEditClusterParamsWithContext creates a new EditClusterParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewEditClusterParamsWithContext(ctx context.Context) *EditClusterParams {
-	var ()
 	return &EditClusterParams{
-
 		Context: ctx,
 	}
 }
 
 // NewEditClusterParamsWithHTTPClient creates a new EditClusterParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewEditClusterParamsWithHTTPClient(client *http.Client) *EditClusterParams {
-	var ()
 	return &EditClusterParams{
 		HTTPClient: client,
 	}
 }
 
-/*EditClusterParams contains all the parameters to send to the API endpoint
-for the edit cluster operation typically these are written to a http.Request
+/* EditClusterParams contains all the parameters to send to the API endpoint
+   for the edit cluster operation.
+
+   Typically these are written to a http.Request.
 */
 type EditClusterParams struct {
 
-	/*Data*/
+	// Data.
 	Data *models.ClusterSettings
-	/*Version
-	  Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 
+	/* Version.
+
+	   Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 	*/
 	Version *int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the edit cluster params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *EditClusterParams) WithDefaults() *EditClusterParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the edit cluster params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *EditClusterParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the edit cluster params
@@ -138,7 +153,6 @@ func (o *EditClusterParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
-
 	if o.Data != nil {
 		if err := r.SetBodyParam(o.Data); err != nil {
 			return err
@@ -149,16 +163,17 @@ func (o *EditClusterParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 		// query param version
 		var qrVersion int64
+
 		if o.Version != nil {
 			qrVersion = *o.Version
 		}
 		qVersion := swag.FormatInt64(qrVersion)
 		if qVersion != "" {
+
 			if err := r.SetQueryParam("version", qVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

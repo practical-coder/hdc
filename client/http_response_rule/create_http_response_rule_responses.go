@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // CreateHTTPResponseRuleReader is a Reader for the CreateHTTPResponseRule structure.
@@ -64,7 +64,7 @@ func NewCreateHTTPResponseRuleCreated() *CreateHTTPResponseRuleCreated {
 	return &CreateHTTPResponseRuleCreated{}
 }
 
-/*CreateHTTPResponseRuleCreated handles this case with default header values.
+/* CreateHTTPResponseRuleCreated describes a response with status code 201, with default header values.
 
 HTTP Response Rule created
 */
@@ -75,7 +75,6 @@ type CreateHTTPResponseRuleCreated struct {
 func (o *CreateHTTPResponseRuleCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHttpResponseRuleCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateHTTPResponseRuleCreated) GetPayload() *models.HTTPResponseRule {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewCreateHTTPResponseRuleAccepted() *CreateHTTPResponseRuleAccepted {
 	return &CreateHTTPResponseRuleAccepted{}
 }
 
-/*CreateHTTPResponseRuleAccepted handles this case with default header values.
+/* CreateHTTPResponseRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type CreateHTTPResponseRuleAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type CreateHTTPResponseRuleAccepted struct {
 func (o *CreateHTTPResponseRuleAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHttpResponseRuleAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateHTTPResponseRuleAccepted) GetPayload() *models.HTTPResponseRule {
 	return o.Payload
 }
 
 func (o *CreateHTTPResponseRuleAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.HTTPResponseRule)
 
@@ -137,12 +140,13 @@ func NewCreateHTTPResponseRuleBadRequest() *CreateHTTPResponseRuleBadRequest {
 	return &CreateHTTPResponseRuleBadRequest{}
 }
 
-/*CreateHTTPResponseRuleBadRequest handles this case with default header values.
+/* CreateHTTPResponseRuleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type CreateHTTPResponseRuleBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type CreateHTTPResponseRuleBadRequest struct {
 func (o *CreateHTTPResponseRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHttpResponseRuleBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateHTTPResponseRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateHTTPResponseRuleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewCreateHTTPResponseRuleConflict() *CreateHTTPResponseRuleConflict {
 	return &CreateHTTPResponseRuleConflict{}
 }
 
-/*CreateHTTPResponseRuleConflict handles this case with default header values.
+/* CreateHTTPResponseRuleConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
 type CreateHTTPResponseRuleConflict struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type CreateHTTPResponseRuleConflict struct {
 func (o *CreateHTTPResponseRuleConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHttpResponseRuleConflict  %+v", 409, o.Payload)
 }
-
 func (o *CreateHTTPResponseRuleConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateHTTPResponseRuleConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewCreateHTTPResponseRuleDefault(code int) *CreateHTTPResponseRuleDefault {
 	}
 }
 
-/*CreateHTTPResponseRuleDefault handles this case with default header values.
+/* CreateHTTPResponseRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type CreateHTTPResponseRuleDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *CreateHTTPResponseRuleDefault) Code() int {
 func (o *CreateHTTPResponseRuleDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHTTPResponseRule default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *CreateHTTPResponseRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateHTTPResponseRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

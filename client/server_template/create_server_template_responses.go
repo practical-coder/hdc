@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // CreateServerTemplateReader is a Reader for the CreateServerTemplate structure.
@@ -64,7 +64,7 @@ func NewCreateServerTemplateCreated() *CreateServerTemplateCreated {
 	return &CreateServerTemplateCreated{}
 }
 
-/*CreateServerTemplateCreated handles this case with default header values.
+/* CreateServerTemplateCreated describes a response with status code 201, with default header values.
 
 Server template created
 */
@@ -75,7 +75,6 @@ type CreateServerTemplateCreated struct {
 func (o *CreateServerTemplateCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateServerTemplateCreated) GetPayload() *models.ServerTemplate {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewCreateServerTemplateAccepted() *CreateServerTemplateAccepted {
 	return &CreateServerTemplateAccepted{}
 }
 
-/*CreateServerTemplateAccepted handles this case with default header values.
+/* CreateServerTemplateAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type CreateServerTemplateAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type CreateServerTemplateAccepted struct {
 func (o *CreateServerTemplateAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateServerTemplateAccepted) GetPayload() *models.ServerTemplate {
 	return o.Payload
 }
 
 func (o *CreateServerTemplateAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.ServerTemplate)
 
@@ -137,12 +140,13 @@ func NewCreateServerTemplateBadRequest() *CreateServerTemplateBadRequest {
 	return &CreateServerTemplateBadRequest{}
 }
 
-/*CreateServerTemplateBadRequest handles this case with default header values.
+/* CreateServerTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type CreateServerTemplateBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type CreateServerTemplateBadRequest struct {
 func (o *CreateServerTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateServerTemplateBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateServerTemplateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewCreateServerTemplateConflict() *CreateServerTemplateConflict {
 	return &CreateServerTemplateConflict{}
 }
 
-/*CreateServerTemplateConflict handles this case with default header values.
+/* CreateServerTemplateConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
 type CreateServerTemplateConflict struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type CreateServerTemplateConflict struct {
 func (o *CreateServerTemplateConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateConflict  %+v", 409, o.Payload)
 }
-
 func (o *CreateServerTemplateConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateServerTemplateConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewCreateServerTemplateDefault(code int) *CreateServerTemplateDefault {
 	}
 }
 
-/*CreateServerTemplateDefault handles this case with default header values.
+/* CreateServerTemplateDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type CreateServerTemplateDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *CreateServerTemplateDefault) Code() int {
 func (o *CreateServerTemplateDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplate default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *CreateServerTemplateDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateServerTemplateDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

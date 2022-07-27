@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // DeleteSpoeGroupReader is a Reader for the DeleteSpoeGroup structure.
@@ -52,7 +52,7 @@ func NewDeleteSpoeGroupNoContent() *DeleteSpoeGroupNoContent {
 	return &DeleteSpoeGroupNoContent{}
 }
 
-/*DeleteSpoeGroupNoContent handles this case with default header values.
+/* DeleteSpoeGroupNoContent describes a response with status code 204, with default header values.
 
 Spoe group deleted
 */
@@ -73,12 +73,13 @@ func NewDeleteSpoeGroupNotFound() *DeleteSpoeGroupNotFound {
 	return &DeleteSpoeGroupNotFound{}
 }
 
-/*DeleteSpoeGroupNotFound handles this case with default header values.
+/* DeleteSpoeGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type DeleteSpoeGroupNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -88,15 +89,18 @@ type DeleteSpoeGroupNotFound struct {
 func (o *DeleteSpoeGroupNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_groups/{name}][%d] deleteSpoeGroupNotFound  %+v", 404, o.Payload)
 }
-
 func (o *DeleteSpoeGroupNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteSpoeGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -115,14 +119,14 @@ func NewDeleteSpoeGroupDefault(code int) *DeleteSpoeGroupDefault {
 	}
 }
 
-/*DeleteSpoeGroupDefault handles this case with default header values.
+/* DeleteSpoeGroupDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type DeleteSpoeGroupDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -137,15 +141,18 @@ func (o *DeleteSpoeGroupDefault) Code() int {
 func (o *DeleteSpoeGroupDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_groups/{name}][%d] deleteSpoeGroup default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteSpoeGroupDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteSpoeGroupDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

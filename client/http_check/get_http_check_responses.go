@@ -6,6 +6,7 @@ package http_check
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -14,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetHTTPCheckReader is a Reader for the GetHTTPCheck structure.
@@ -54,12 +55,13 @@ func NewGetHTTPCheckOK() *GetHTTPCheckOK {
 	return &GetHTTPCheckOK{}
 }
 
-/*GetHTTPCheckOK handles this case with default header values.
+/* GetHTTPCheckOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
 type GetHTTPCheckOK struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -69,15 +71,18 @@ type GetHTTPCheckOK struct {
 func (o *GetHTTPCheckOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_checks/{index}][%d] getHttpCheckOK  %+v", 200, o.Payload)
 }
-
 func (o *GetHTTPCheckOK) GetPayload() *GetHTTPCheckOKBody {
 	return o.Payload
 }
 
 func (o *GetHTTPCheckOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(GetHTTPCheckOKBody)
 
@@ -94,12 +99,13 @@ func NewGetHTTPCheckNotFound() *GetHTTPCheckNotFound {
 	return &GetHTTPCheckNotFound{}
 }
 
-/*GetHTTPCheckNotFound handles this case with default header values.
+/* GetHTTPCheckNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type GetHTTPCheckNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -109,15 +115,18 @@ type GetHTTPCheckNotFound struct {
 func (o *GetHTTPCheckNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_checks/{index}][%d] getHttpCheckNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetHTTPCheckNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetHTTPCheckNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -136,14 +145,14 @@ func NewGetHTTPCheckDefault(code int) *GetHTTPCheckDefault {
 	}
 }
 
-/*GetHTTPCheckDefault handles this case with default header values.
+/* GetHTTPCheckDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetHTTPCheckDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -158,15 +167,18 @@ func (o *GetHTTPCheckDefault) Code() int {
 func (o *GetHTTPCheckDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_checks/{index}][%d] getHTTPCheck default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetHTTPCheckDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetHTTPCheckDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -205,7 +217,6 @@ func (o *GetHTTPCheckOKBody) Validate(formats strfmt.Registry) error {
 }
 
 func (o *GetHTTPCheckOKBody) validateData(formats strfmt.Registry) error {
-
 	if swag.IsZero(o.Data) { // not required
 		return nil
 	}
@@ -214,6 +225,38 @@ func (o *GetHTTPCheckOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getHttpCheckOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getHttpCheckOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get HTTP check o k body based on the context it is used
+func (o *GetHTTPCheckOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetHTTPCheckOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getHttpCheckOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getHttpCheckOK" + "." + "data")
 			}
 			return err
 		}

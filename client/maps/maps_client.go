@@ -23,25 +23,28 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	AddMapEntry(params *AddMapEntryParams, authInfo runtime.ClientAuthInfoWriter) (*AddMapEntryCreated, error)
+	AddMapEntry(params *AddMapEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddMapEntryCreated, error)
 
-	AddPayloadRuntimeMap(params *AddPayloadRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter) (*AddPayloadRuntimeMapCreated, error)
+	AddPayloadRuntimeMap(params *AddPayloadRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddPayloadRuntimeMapCreated, error)
 
-	ClearRuntimeMap(params *ClearRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter) (*ClearRuntimeMapNoContent, error)
+	ClearRuntimeMap(params *ClearRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ClearRuntimeMapNoContent, error)
 
-	DeleteRuntimeMapEntry(params *DeleteRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteRuntimeMapEntryNoContent, error)
+	DeleteRuntimeMapEntry(params *DeleteRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRuntimeMapEntryNoContent, error)
 
-	GetAllRuntimeMapFiles(params *GetAllRuntimeMapFilesParams, authInfo runtime.ClientAuthInfoWriter) (*GetAllRuntimeMapFilesOK, error)
+	GetAllRuntimeMapFiles(params *GetAllRuntimeMapFilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAllRuntimeMapFilesOK, error)
 
-	GetOneRuntimeMap(params *GetOneRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter) (*GetOneRuntimeMapOK, error)
+	GetOneRuntimeMap(params *GetOneRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOneRuntimeMapOK, error)
 
-	GetRuntimeMapEntry(params *GetRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter) (*GetRuntimeMapEntryOK, error)
+	GetRuntimeMapEntry(params *GetRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRuntimeMapEntryOK, error)
 
-	ReplaceRuntimeMapEntry(params *ReplaceRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceRuntimeMapEntryOK, error)
+	ReplaceRuntimeMapEntry(params *ReplaceRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceRuntimeMapEntryOK, error)
 
-	ShowRuntimeMap(params *ShowRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter) (*ShowRuntimeMapOK, error)
+	ShowRuntimeMap(params *ShowRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowRuntimeMapOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -51,13 +54,12 @@ type ClientService interface {
 
   Adds an entry into the map file.
 */
-func (a *Client) AddMapEntry(params *AddMapEntryParams, authInfo runtime.ClientAuthInfoWriter) (*AddMapEntryCreated, error) {
+func (a *Client) AddMapEntry(params *AddMapEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddMapEntryCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddMapEntryParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "addMapEntry",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/runtime/maps_entries",
@@ -69,7 +71,12 @@ func (a *Client) AddMapEntry(params *AddMapEntryParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -87,13 +94,12 @@ func (a *Client) AddMapEntry(params *AddMapEntryParams, authInfo runtime.ClientA
 
   Adds a new map payload.
 */
-func (a *Client) AddPayloadRuntimeMap(params *AddPayloadRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter) (*AddPayloadRuntimeMapCreated, error) {
+func (a *Client) AddPayloadRuntimeMap(params *AddPayloadRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddPayloadRuntimeMapCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddPayloadRuntimeMapParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "addPayloadRuntimeMap",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/runtime/maps/{name}",
@@ -105,7 +111,12 @@ func (a *Client) AddPayloadRuntimeMap(params *AddPayloadRuntimeMapParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -123,13 +134,12 @@ func (a *Client) AddPayloadRuntimeMap(params *AddPayloadRuntimeMapParams, authIn
 
   Remove all map entries from the map file.
 */
-func (a *Client) ClearRuntimeMap(params *ClearRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter) (*ClearRuntimeMapNoContent, error) {
+func (a *Client) ClearRuntimeMap(params *ClearRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ClearRuntimeMapNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewClearRuntimeMapParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "clearRuntimeMap",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/runtime/maps/{name}",
@@ -141,7 +151,12 @@ func (a *Client) ClearRuntimeMap(params *ClearRuntimeMapParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -159,13 +174,12 @@ func (a *Client) ClearRuntimeMap(params *ClearRuntimeMapParams, authInfo runtime
 
   Delete all the map entries from the map by its id.
 */
-func (a *Client) DeleteRuntimeMapEntry(params *DeleteRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteRuntimeMapEntryNoContent, error) {
+func (a *Client) DeleteRuntimeMapEntry(params *DeleteRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRuntimeMapEntryNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteRuntimeMapEntryParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteRuntimeMapEntry",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/runtime/maps_entries/{id}",
@@ -177,7 +191,12 @@ func (a *Client) DeleteRuntimeMapEntry(params *DeleteRuntimeMapEntryParams, auth
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -195,13 +214,12 @@ func (a *Client) DeleteRuntimeMapEntry(params *DeleteRuntimeMapEntryParams, auth
 
   Returns runtime map files.
 */
-func (a *Client) GetAllRuntimeMapFiles(params *GetAllRuntimeMapFilesParams, authInfo runtime.ClientAuthInfoWriter) (*GetAllRuntimeMapFilesOK, error) {
+func (a *Client) GetAllRuntimeMapFiles(params *GetAllRuntimeMapFilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAllRuntimeMapFilesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAllRuntimeMapFilesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAllRuntimeMapFiles",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/maps",
@@ -213,7 +231,12 @@ func (a *Client) GetAllRuntimeMapFiles(params *GetAllRuntimeMapFilesParams, auth
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -231,13 +254,12 @@ func (a *Client) GetAllRuntimeMapFiles(params *GetAllRuntimeMapFilesParams, auth
 
   Returns one runtime map file.
 */
-func (a *Client) GetOneRuntimeMap(params *GetOneRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter) (*GetOneRuntimeMapOK, error) {
+func (a *Client) GetOneRuntimeMap(params *GetOneRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOneRuntimeMapOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetOneRuntimeMapParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getOneRuntimeMap",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/maps/{name}",
@@ -249,7 +271,12 @@ func (a *Client) GetOneRuntimeMap(params *GetOneRuntimeMapParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -267,13 +294,12 @@ func (a *Client) GetOneRuntimeMap(params *GetOneRuntimeMapParams, authInfo runti
 
   Returns one map runtime setting by it's id.
 */
-func (a *Client) GetRuntimeMapEntry(params *GetRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter) (*GetRuntimeMapEntryOK, error) {
+func (a *Client) GetRuntimeMapEntry(params *GetRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRuntimeMapEntryOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetRuntimeMapEntryParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getRuntimeMapEntry",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/maps_entries/{id}",
@@ -285,7 +311,12 @@ func (a *Client) GetRuntimeMapEntry(params *GetRuntimeMapEntryParams, authInfo r
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -303,13 +334,12 @@ func (a *Client) GetRuntimeMapEntry(params *GetRuntimeMapEntryParams, authInfo r
 
   Replaces the value corresponding to each id in a map.
 */
-func (a *Client) ReplaceRuntimeMapEntry(params *ReplaceRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceRuntimeMapEntryOK, error) {
+func (a *Client) ReplaceRuntimeMapEntry(params *ReplaceRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceRuntimeMapEntryOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceRuntimeMapEntryParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceRuntimeMapEntry",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/runtime/maps_entries/{id}",
@@ -321,7 +351,12 @@ func (a *Client) ReplaceRuntimeMapEntry(params *ReplaceRuntimeMapEntryParams, au
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -339,13 +374,12 @@ func (a *Client) ReplaceRuntimeMapEntry(params *ReplaceRuntimeMapEntryParams, au
 
   Returns an array of all entries in a given runtime map file.
 */
-func (a *Client) ShowRuntimeMap(params *ShowRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter) (*ShowRuntimeMapOK, error) {
+func (a *Client) ShowRuntimeMap(params *ShowRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowRuntimeMapOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewShowRuntimeMapParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "showRuntimeMap",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/maps_entries",
@@ -357,7 +391,12 @@ func (a *Client) ShowRuntimeMap(params *ShowRuntimeMapParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

@@ -6,6 +6,7 @@ package filter
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -15,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetFiltersReader is a Reader for the GetFilters structure.
@@ -49,12 +50,13 @@ func NewGetFiltersOK() *GetFiltersOK {
 	return &GetFiltersOK{}
 }
 
-/*GetFiltersOK handles this case with default header values.
+/* GetFiltersOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
 type GetFiltersOK struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -64,15 +66,18 @@ type GetFiltersOK struct {
 func (o *GetFiltersOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/filters][%d] getFiltersOK  %+v", 200, o.Payload)
 }
-
 func (o *GetFiltersOK) GetPayload() *GetFiltersOKBody {
 	return o.Payload
 }
 
 func (o *GetFiltersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(GetFiltersOKBody)
 
@@ -91,14 +96,14 @@ func NewGetFiltersDefault(code int) *GetFiltersDefault {
 	}
 }
 
-/*GetFiltersDefault handles this case with default header values.
+/* GetFiltersDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetFiltersDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -113,15 +118,18 @@ func (o *GetFiltersDefault) Code() int {
 func (o *GetFiltersDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/filters][%d] getFilters default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetFiltersDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetFiltersDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -169,6 +177,36 @@ func (o *GetFiltersOKBody) validateData(formats strfmt.Registry) error {
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getFiltersOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getFiltersOK" + "." + "data")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get filters o k body based on the context it is used
+func (o *GetFiltersOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetFiltersOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := o.Data.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("getFiltersOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getFiltersOK" + "." + "data")
 		}
 		return err
 	}

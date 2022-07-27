@@ -6,6 +6,7 @@ package server_template
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -14,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetServerTemplateReader is a Reader for the GetServerTemplate structure.
@@ -54,12 +55,13 @@ func NewGetServerTemplateOK() *GetServerTemplateOK {
 	return &GetServerTemplateOK{}
 }
 
-/*GetServerTemplateOK handles this case with default header values.
+/* GetServerTemplateOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
 type GetServerTemplateOK struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion int64
 
@@ -69,19 +71,22 @@ type GetServerTemplateOK struct {
 func (o *GetServerTemplateOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_templates/{prefix}][%d] getServerTemplateOK  %+v", 200, o.Payload)
 }
-
 func (o *GetServerTemplateOK) GetPayload() *GetServerTemplateOKBody {
 	return o.Payload
 }
 
 func (o *GetServerTemplateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	configurationVersion, err := swag.ConvertInt64(response.GetHeader("Configuration-Version"))
-	if err != nil {
-		return errors.InvalidType("Configuration-Version", "header", "int64", response.GetHeader("Configuration-Version"))
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		valconfigurationVersion, err := swag.ConvertInt64(hdrConfigurationVersion)
+		if err != nil {
+			return errors.InvalidType("Configuration-Version", "header", "int64", hdrConfigurationVersion)
+		}
+		o.ConfigurationVersion = valconfigurationVersion
 	}
-	o.ConfigurationVersion = configurationVersion
 
 	o.Payload = new(GetServerTemplateOKBody)
 
@@ -98,12 +103,13 @@ func NewGetServerTemplateNotFound() *GetServerTemplateNotFound {
 	return &GetServerTemplateNotFound{}
 }
 
-/*GetServerTemplateNotFound handles this case with default header values.
+/* GetServerTemplateNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type GetServerTemplateNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -113,15 +119,18 @@ type GetServerTemplateNotFound struct {
 func (o *GetServerTemplateNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_templates/{prefix}][%d] getServerTemplateNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetServerTemplateNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetServerTemplateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -140,14 +149,14 @@ func NewGetServerTemplateDefault(code int) *GetServerTemplateDefault {
 	}
 }
 
-/*GetServerTemplateDefault handles this case with default header values.
+/* GetServerTemplateDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetServerTemplateDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -162,15 +171,18 @@ func (o *GetServerTemplateDefault) Code() int {
 func (o *GetServerTemplateDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_templates/{prefix}][%d] getServerTemplate default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetServerTemplateDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetServerTemplateDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -209,7 +221,6 @@ func (o *GetServerTemplateOKBody) Validate(formats strfmt.Registry) error {
 }
 
 func (o *GetServerTemplateOKBody) validateData(formats strfmt.Registry) error {
-
 	if swag.IsZero(o.Data) { // not required
 		return nil
 	}
@@ -218,6 +229,38 @@ func (o *GetServerTemplateOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getServerTemplateOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getServerTemplateOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get server template o k body based on the context it is used
+func (o *GetServerTemplateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetServerTemplateOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getServerTemplateOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getServerTemplateOK" + "." + "data")
 			}
 			return err
 		}

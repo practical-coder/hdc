@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetConfigurationVersionReader is a Reader for the GetConfigurationVersion structure.
@@ -52,7 +52,7 @@ func NewGetConfigurationVersionOK() *GetConfigurationVersionOK {
 	return &GetConfigurationVersionOK{}
 }
 
-/*GetConfigurationVersionOK handles this case with default header values.
+/* GetConfigurationVersionOK describes a response with status code 200, with default header values.
 
 Configuration version
 */
@@ -63,7 +63,6 @@ type GetConfigurationVersionOK struct {
 func (o *GetConfigurationVersionOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/version][%d] getConfigurationVersionOK  %+v", 200, o.Payload)
 }
-
 func (o *GetConfigurationVersionOK) GetPayload() int64 {
 	return o.Payload
 }
@@ -83,12 +82,13 @@ func NewGetConfigurationVersionNotFound() *GetConfigurationVersionNotFound {
 	return &GetConfigurationVersionNotFound{}
 }
 
-/*GetConfigurationVersionNotFound handles this case with default header values.
+/* GetConfigurationVersionNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type GetConfigurationVersionNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -98,15 +98,18 @@ type GetConfigurationVersionNotFound struct {
 func (o *GetConfigurationVersionNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/version][%d] getConfigurationVersionNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetConfigurationVersionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetConfigurationVersionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -125,14 +128,14 @@ func NewGetConfigurationVersionDefault(code int) *GetConfigurationVersionDefault
 	}
 }
 
-/*GetConfigurationVersionDefault handles this case with default header values.
+/* GetConfigurationVersionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetConfigurationVersionDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -147,15 +150,18 @@ func (o *GetConfigurationVersionDefault) Code() int {
 func (o *GetConfigurationVersionDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/version][%d] getConfigurationVersion default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetConfigurationVersionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetConfigurationVersionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

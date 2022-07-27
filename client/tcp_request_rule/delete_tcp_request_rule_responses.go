@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // DeleteTCPRequestRuleReader is a Reader for the DeleteTCPRequestRule structure.
@@ -58,12 +58,13 @@ func NewDeleteTCPRequestRuleAccepted() *DeleteTCPRequestRuleAccepted {
 	return &DeleteTCPRequestRuleAccepted{}
 }
 
-/*DeleteTCPRequestRuleAccepted handles this case with default header values.
+/* DeleteTCPRequestRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteTCPRequestRuleAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -74,8 +75,12 @@ func (o *DeleteTCPRequestRuleAccepted) Error() string {
 
 func (o *DeleteTCPRequestRuleAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	return nil
 }
@@ -85,7 +90,7 @@ func NewDeleteTCPRequestRuleNoContent() *DeleteTCPRequestRuleNoContent {
 	return &DeleteTCPRequestRuleNoContent{}
 }
 
-/*DeleteTCPRequestRuleNoContent handles this case with default header values.
+/* DeleteTCPRequestRuleNoContent describes a response with status code 204, with default header values.
 
 TCP Request Rule deleted
 */
@@ -106,12 +111,13 @@ func NewDeleteTCPRequestRuleNotFound() *DeleteTCPRequestRuleNotFound {
 	return &DeleteTCPRequestRuleNotFound{}
 }
 
-/*DeleteTCPRequestRuleNotFound handles this case with default header values.
+/* DeleteTCPRequestRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type DeleteTCPRequestRuleNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -121,15 +127,18 @@ type DeleteTCPRequestRuleNotFound struct {
 func (o *DeleteTCPRequestRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_request_rules/{index}][%d] deleteTcpRequestRuleNotFound  %+v", 404, o.Payload)
 }
-
 func (o *DeleteTCPRequestRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteTCPRequestRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -148,14 +157,14 @@ func NewDeleteTCPRequestRuleDefault(code int) *DeleteTCPRequestRuleDefault {
 	}
 }
 
-/*DeleteTCPRequestRuleDefault handles this case with default header values.
+/* DeleteTCPRequestRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type DeleteTCPRequestRuleDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -170,15 +179,18 @@ func (o *DeleteTCPRequestRuleDefault) Code() int {
 func (o *DeleteTCPRequestRuleDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_request_rules/{index}][%d] deleteTCPRequestRule default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteTCPRequestRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteTCPRequestRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

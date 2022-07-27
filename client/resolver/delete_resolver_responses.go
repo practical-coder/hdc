@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // DeleteResolverReader is a Reader for the DeleteResolver structure.
@@ -58,12 +58,13 @@ func NewDeleteResolverAccepted() *DeleteResolverAccepted {
 	return &DeleteResolverAccepted{}
 }
 
-/*DeleteResolverAccepted handles this case with default header values.
+/* DeleteResolverAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteResolverAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -74,8 +75,12 @@ func (o *DeleteResolverAccepted) Error() string {
 
 func (o *DeleteResolverAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	return nil
 }
@@ -85,7 +90,7 @@ func NewDeleteResolverNoContent() *DeleteResolverNoContent {
 	return &DeleteResolverNoContent{}
 }
 
-/*DeleteResolverNoContent handles this case with default header values.
+/* DeleteResolverNoContent describes a response with status code 204, with default header values.
 
 Resolver deleted
 */
@@ -106,12 +111,13 @@ func NewDeleteResolverNotFound() *DeleteResolverNotFound {
 	return &DeleteResolverNotFound{}
 }
 
-/*DeleteResolverNotFound handles this case with default header values.
+/* DeleteResolverNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type DeleteResolverNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -121,15 +127,18 @@ type DeleteResolverNotFound struct {
 func (o *DeleteResolverNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolverNotFound  %+v", 404, o.Payload)
 }
-
 func (o *DeleteResolverNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteResolverNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -148,14 +157,14 @@ func NewDeleteResolverDefault(code int) *DeleteResolverDefault {
 	}
 }
 
-/*DeleteResolverDefault handles this case with default header values.
+/* DeleteResolverDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type DeleteResolverDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -170,15 +179,18 @@ func (o *DeleteResolverDefault) Code() int {
 func (o *DeleteResolverDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolver default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteResolverDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteResolverDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

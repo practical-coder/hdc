@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewCreateStorageMapFileParams creates a new CreateStorageMapFileParams object
-// with the default values initialized.
+// NewCreateStorageMapFileParams creates a new CreateStorageMapFileParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateStorageMapFileParams() *CreateStorageMapFileParams {
-	var ()
 	return &CreateStorageMapFileParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateStorageMapFileParamsWithTimeout creates a new CreateStorageMapFileParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateStorageMapFileParamsWithTimeout(timeout time.Duration) *CreateStorageMapFileParams {
-	var ()
 	return &CreateStorageMapFileParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateStorageMapFileParamsWithContext creates a new CreateStorageMapFileParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateStorageMapFileParamsWithContext(ctx context.Context) *CreateStorageMapFileParams {
-	var ()
 	return &CreateStorageMapFileParams{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateStorageMapFileParamsWithHTTPClient creates a new CreateStorageMapFileParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateStorageMapFileParamsWithHTTPClient(client *http.Client) *CreateStorageMapFileParams {
-	var ()
 	return &CreateStorageMapFileParams{
 		HTTPClient: client,
 	}
 }
 
-/*CreateStorageMapFileParams contains all the parameters to send to the API endpoint
-for the create storage map file operation typically these are written to a http.Request
+/* CreateStorageMapFileParams contains all the parameters to send to the API endpoint
+   for the create storage map file operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateStorageMapFileParams struct {
 
-	/*FileUpload
-	  The map file contents
+	/* FileUpload.
 
+	   The map file contents
 	*/
 	FileUpload runtime.NamedReadCloser
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create storage map file params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateStorageMapFileParams) WithDefaults() *CreateStorageMapFileParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create storage map file params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateStorageMapFileParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create storage map file params
@@ -126,14 +140,11 @@ func (o *CreateStorageMapFileParams) WriteToRequest(r runtime.ClientRequest, reg
 	if o.FileUpload != nil {
 
 		if o.FileUpload != nil {
-
 			// form file param file_upload
 			if err := r.SetFileParam("file_upload", o.FileUpload); err != nil {
 				return err
 			}
-
 		}
-
 	}
 
 	if len(res) > 0 {

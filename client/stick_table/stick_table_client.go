@@ -23,13 +23,18 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetStickTable(params *GetStickTableParams, authInfo runtime.ClientAuthInfoWriter) (*GetStickTableOK, error)
+	GetStickTable(params *GetStickTableParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStickTableOK, error)
 
-	GetStickTableEntries(params *GetStickTableEntriesParams, authInfo runtime.ClientAuthInfoWriter) (*GetStickTableEntriesOK, error)
+	GetStickTableEntries(params *GetStickTableEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStickTableEntriesOK, error)
 
-	GetStickTables(params *GetStickTablesParams, authInfo runtime.ClientAuthInfoWriter) (*GetStickTablesOK, error)
+	GetStickTables(params *GetStickTablesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStickTablesOK, error)
+
+	SetStickTableEntries(params *SetStickTableEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SetStickTableEntriesNoContent, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -39,13 +44,12 @@ type ClientService interface {
 
   Returns one stick table from runtime.
 */
-func (a *Client) GetStickTable(params *GetStickTableParams, authInfo runtime.ClientAuthInfoWriter) (*GetStickTableOK, error) {
+func (a *Client) GetStickTable(params *GetStickTableParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStickTableOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetStickTableParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getStickTable",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/stick_tables/{name}",
@@ -57,7 +61,12 @@ func (a *Client) GetStickTable(params *GetStickTableParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -75,13 +84,12 @@ func (a *Client) GetStickTable(params *GetStickTableParams, authInfo runtime.Cli
 
   Returns an array of all entries in a given stick tables.
 */
-func (a *Client) GetStickTableEntries(params *GetStickTableEntriesParams, authInfo runtime.ClientAuthInfoWriter) (*GetStickTableEntriesOK, error) {
+func (a *Client) GetStickTableEntries(params *GetStickTableEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStickTableEntriesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetStickTableEntriesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getStickTableEntries",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/stick_table_entries",
@@ -93,7 +101,12 @@ func (a *Client) GetStickTableEntries(params *GetStickTableEntriesParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -111,13 +124,12 @@ func (a *Client) GetStickTableEntries(params *GetStickTableEntriesParams, authIn
 
   Returns an array of all stick tables.
 */
-func (a *Client) GetStickTables(params *GetStickTablesParams, authInfo runtime.ClientAuthInfoWriter) (*GetStickTablesOK, error) {
+func (a *Client) GetStickTables(params *GetStickTablesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStickTablesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetStickTablesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getStickTables",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/runtime/stick_tables",
@@ -129,7 +141,12 @@ func (a *Client) GetStickTables(params *GetStickTablesParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -139,6 +156,46 @@ func (a *Client) GetStickTables(params *GetStickTablesParams, authInfo runtime.C
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*GetStickTablesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  SetStickTableEntries sets entry to stick table
+
+  Create or update a stick-table entry in the table.
+*/
+func (a *Client) SetStickTableEntries(params *SetStickTableEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SetStickTableEntriesNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewSetStickTableEntriesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "setStickTableEntries",
+		Method:             "POST",
+		PathPattern:        "/services/haproxy/runtime/stick_table_entries",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &SetStickTableEntriesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*SetStickTableEntriesNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*SetStickTableEntriesDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // ReplaceDeclareCaptureReader is a Reader for the ReplaceDeclareCapture structure.
@@ -64,7 +64,7 @@ func NewReplaceDeclareCaptureOK() *ReplaceDeclareCaptureOK {
 	return &ReplaceDeclareCaptureOK{}
 }
 
-/*ReplaceDeclareCaptureOK handles this case with default header values.
+/* ReplaceDeclareCaptureOK describes a response with status code 200, with default header values.
 
 Declare Capture replaced
 */
@@ -75,7 +75,6 @@ type ReplaceDeclareCaptureOK struct {
 func (o *ReplaceDeclareCaptureOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureOK  %+v", 200, o.Payload)
 }
-
 func (o *ReplaceDeclareCaptureOK) GetPayload() *models.Capture {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewReplaceDeclareCaptureAccepted() *ReplaceDeclareCaptureAccepted {
 	return &ReplaceDeclareCaptureAccepted{}
 }
 
-/*ReplaceDeclareCaptureAccepted handles this case with default header values.
+/* ReplaceDeclareCaptureAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceDeclareCaptureAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type ReplaceDeclareCaptureAccepted struct {
 func (o *ReplaceDeclareCaptureAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ReplaceDeclareCaptureAccepted) GetPayload() *models.Capture {
 	return o.Payload
 }
 
 func (o *ReplaceDeclareCaptureAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.Capture)
 
@@ -137,12 +140,13 @@ func NewReplaceDeclareCaptureBadRequest() *ReplaceDeclareCaptureBadRequest {
 	return &ReplaceDeclareCaptureBadRequest{}
 }
 
-/*ReplaceDeclareCaptureBadRequest handles this case with default header values.
+/* ReplaceDeclareCaptureBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type ReplaceDeclareCaptureBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type ReplaceDeclareCaptureBadRequest struct {
 func (o *ReplaceDeclareCaptureBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ReplaceDeclareCaptureBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceDeclareCaptureBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewReplaceDeclareCaptureNotFound() *ReplaceDeclareCaptureNotFound {
 	return &ReplaceDeclareCaptureNotFound{}
 }
 
-/*ReplaceDeclareCaptureNotFound handles this case with default header values.
+/* ReplaceDeclareCaptureNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type ReplaceDeclareCaptureNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type ReplaceDeclareCaptureNotFound struct {
 func (o *ReplaceDeclareCaptureNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ReplaceDeclareCaptureNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceDeclareCaptureNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewReplaceDeclareCaptureDefault(code int) *ReplaceDeclareCaptureDefault {
 	}
 }
 
-/*ReplaceDeclareCaptureDefault handles this case with default header values.
+/* ReplaceDeclareCaptureDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type ReplaceDeclareCaptureDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *ReplaceDeclareCaptureDefault) Code() int {
 func (o *ReplaceDeclareCaptureDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCapture default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *ReplaceDeclareCaptureDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceDeclareCaptureDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

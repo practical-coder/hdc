@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // ReplaceTCPRequestRuleReader is a Reader for the ReplaceTCPRequestRule structure.
@@ -64,7 +64,7 @@ func NewReplaceTCPRequestRuleOK() *ReplaceTCPRequestRuleOK {
 	return &ReplaceTCPRequestRuleOK{}
 }
 
-/*ReplaceTCPRequestRuleOK handles this case with default header values.
+/* ReplaceTCPRequestRuleOK describes a response with status code 200, with default header values.
 
 TCP Request Rule replaced
 */
@@ -75,7 +75,6 @@ type ReplaceTCPRequestRuleOK struct {
 func (o *ReplaceTCPRequestRuleOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_request_rules/{index}][%d] replaceTcpRequestRuleOK  %+v", 200, o.Payload)
 }
-
 func (o *ReplaceTCPRequestRuleOK) GetPayload() *models.TCPRequestRule {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewReplaceTCPRequestRuleAccepted() *ReplaceTCPRequestRuleAccepted {
 	return &ReplaceTCPRequestRuleAccepted{}
 }
 
-/*ReplaceTCPRequestRuleAccepted handles this case with default header values.
+/* ReplaceTCPRequestRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceTCPRequestRuleAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type ReplaceTCPRequestRuleAccepted struct {
 func (o *ReplaceTCPRequestRuleAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_request_rules/{index}][%d] replaceTcpRequestRuleAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ReplaceTCPRequestRuleAccepted) GetPayload() *models.TCPRequestRule {
 	return o.Payload
 }
 
 func (o *ReplaceTCPRequestRuleAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.TCPRequestRule)
 
@@ -137,12 +140,13 @@ func NewReplaceTCPRequestRuleBadRequest() *ReplaceTCPRequestRuleBadRequest {
 	return &ReplaceTCPRequestRuleBadRequest{}
 }
 
-/*ReplaceTCPRequestRuleBadRequest handles this case with default header values.
+/* ReplaceTCPRequestRuleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type ReplaceTCPRequestRuleBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type ReplaceTCPRequestRuleBadRequest struct {
 func (o *ReplaceTCPRequestRuleBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_request_rules/{index}][%d] replaceTcpRequestRuleBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ReplaceTCPRequestRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceTCPRequestRuleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewReplaceTCPRequestRuleNotFound() *ReplaceTCPRequestRuleNotFound {
 	return &ReplaceTCPRequestRuleNotFound{}
 }
 
-/*ReplaceTCPRequestRuleNotFound handles this case with default header values.
+/* ReplaceTCPRequestRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type ReplaceTCPRequestRuleNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type ReplaceTCPRequestRuleNotFound struct {
 func (o *ReplaceTCPRequestRuleNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_request_rules/{index}][%d] replaceTcpRequestRuleNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ReplaceTCPRequestRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceTCPRequestRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewReplaceTCPRequestRuleDefault(code int) *ReplaceTCPRequestRuleDefault {
 	}
 }
 
-/*ReplaceTCPRequestRuleDefault handles this case with default header values.
+/* ReplaceTCPRequestRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type ReplaceTCPRequestRuleDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *ReplaceTCPRequestRuleDefault) Code() int {
 func (o *ReplaceTCPRequestRuleDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_request_rules/{index}][%d] replaceTCPRequestRule default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *ReplaceTCPRequestRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceTCPRequestRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // CreateUserlistReader is a Reader for the CreateUserlist structure.
@@ -64,7 +64,7 @@ func NewCreateUserlistCreated() *CreateUserlistCreated {
 	return &CreateUserlistCreated{}
 }
 
-/*CreateUserlistCreated handles this case with default header values.
+/* CreateUserlistCreated describes a response with status code 201, with default header values.
 
 Userlist created
 */
@@ -75,7 +75,6 @@ type CreateUserlistCreated struct {
 func (o *CreateUserlistCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateUserlistCreated) GetPayload() *models.Userlist {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewCreateUserlistAccepted() *CreateUserlistAccepted {
 	return &CreateUserlistAccepted{}
 }
 
-/*CreateUserlistAccepted handles this case with default header values.
+/* CreateUserlistAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type CreateUserlistAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type CreateUserlistAccepted struct {
 func (o *CreateUserlistAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateUserlistAccepted) GetPayload() *models.Userlist {
 	return o.Payload
 }
 
 func (o *CreateUserlistAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.Userlist)
 
@@ -137,12 +140,13 @@ func NewCreateUserlistBadRequest() *CreateUserlistBadRequest {
 	return &CreateUserlistBadRequest{}
 }
 
-/*CreateUserlistBadRequest handles this case with default header values.
+/* CreateUserlistBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type CreateUserlistBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type CreateUserlistBadRequest struct {
 func (o *CreateUserlistBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateUserlistBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateUserlistBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewCreateUserlistConflict() *CreateUserlistConflict {
 	return &CreateUserlistConflict{}
 }
 
-/*CreateUserlistConflict handles this case with default header values.
+/* CreateUserlistConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
 type CreateUserlistConflict struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type CreateUserlistConflict struct {
 func (o *CreateUserlistConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistConflict  %+v", 409, o.Payload)
 }
-
 func (o *CreateUserlistConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateUserlistConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewCreateUserlistDefault(code int) *CreateUserlistDefault {
 	}
 }
 
-/*CreateUserlistDefault handles this case with default header values.
+/* CreateUserlistDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type CreateUserlistDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *CreateUserlistDefault) Code() int {
 func (o *CreateUserlistDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlist default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *CreateUserlistDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateUserlistDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetAWSRegionParams creates a new GetAWSRegionParams object
-// with the default values initialized.
+// NewGetAWSRegionParams creates a new GetAWSRegionParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetAWSRegionParams() *GetAWSRegionParams {
-	var ()
 	return &GetAWSRegionParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetAWSRegionParamsWithTimeout creates a new GetAWSRegionParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetAWSRegionParamsWithTimeout(timeout time.Duration) *GetAWSRegionParams {
-	var ()
 	return &GetAWSRegionParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetAWSRegionParamsWithContext creates a new GetAWSRegionParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetAWSRegionParamsWithContext(ctx context.Context) *GetAWSRegionParams {
-	var ()
 	return &GetAWSRegionParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetAWSRegionParamsWithHTTPClient creates a new GetAWSRegionParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetAWSRegionParamsWithHTTPClient(client *http.Client) *GetAWSRegionParams {
-	var ()
 	return &GetAWSRegionParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetAWSRegionParams contains all the parameters to send to the API endpoint
-for the get a w s region operation typically these are written to a http.Request
+/* GetAWSRegionParams contains all the parameters to send to the API endpoint
+   for the get a w s region operation.
+
+   Typically these are written to a http.Request.
 */
 type GetAWSRegionParams struct {
 
-	/*ID
-	  AWS region id
+	/* ID.
 
+	   AWS region id
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get a w s region params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetAWSRegionParams) WithDefaults() *GetAWSRegionParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get a w s region params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetAWSRegionParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get a w s region params

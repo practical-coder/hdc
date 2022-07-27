@@ -6,6 +6,7 @@ package userlist
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -14,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetUserlistReader is a Reader for the GetUserlist structure.
@@ -54,12 +55,13 @@ func NewGetUserlistOK() *GetUserlistOK {
 	return &GetUserlistOK{}
 }
 
-/*GetUserlistOK handles this case with default header values.
+/* GetUserlistOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
 type GetUserlistOK struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -69,15 +71,18 @@ type GetUserlistOK struct {
 func (o *GetUserlistOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/userlists/{name}][%d] getUserlistOK  %+v", 200, o.Payload)
 }
-
 func (o *GetUserlistOK) GetPayload() *GetUserlistOKBody {
 	return o.Payload
 }
 
 func (o *GetUserlistOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(GetUserlistOKBody)
 
@@ -94,12 +99,13 @@ func NewGetUserlistNotFound() *GetUserlistNotFound {
 	return &GetUserlistNotFound{}
 }
 
-/*GetUserlistNotFound handles this case with default header values.
+/* GetUserlistNotFound describes a response with status code 404, with default header values.
 
 The specified resource already exists
 */
 type GetUserlistNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -109,15 +115,18 @@ type GetUserlistNotFound struct {
 func (o *GetUserlistNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/userlists/{name}][%d] getUserlistNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetUserlistNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetUserlistNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -136,14 +145,14 @@ func NewGetUserlistDefault(code int) *GetUserlistDefault {
 	}
 }
 
-/*GetUserlistDefault handles this case with default header values.
+/* GetUserlistDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetUserlistDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -158,15 +167,18 @@ func (o *GetUserlistDefault) Code() int {
 func (o *GetUserlistDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/userlists/{name}][%d] getUserlist default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetUserlistDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetUserlistDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -205,7 +217,6 @@ func (o *GetUserlistOKBody) Validate(formats strfmt.Registry) error {
 }
 
 func (o *GetUserlistOKBody) validateData(formats strfmt.Registry) error {
-
 	if swag.IsZero(o.Data) { // not required
 		return nil
 	}
@@ -214,6 +225,38 @@ func (o *GetUserlistOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getUserlistOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getUserlistOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get userlist o k body based on the context it is used
+func (o *GetUserlistOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetUserlistOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getUserlistOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getUserlistOK" + "." + "data")
 			}
 			return err
 		}

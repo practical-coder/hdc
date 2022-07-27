@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // ReplaceServerSwitchingRuleReader is a Reader for the ReplaceServerSwitchingRule structure.
@@ -64,7 +64,7 @@ func NewReplaceServerSwitchingRuleOK() *ReplaceServerSwitchingRuleOK {
 	return &ReplaceServerSwitchingRuleOK{}
 }
 
-/*ReplaceServerSwitchingRuleOK handles this case with default header values.
+/* ReplaceServerSwitchingRuleOK describes a response with status code 200, with default header values.
 
 Server Switching Rule replaced
 */
@@ -75,7 +75,6 @@ type ReplaceServerSwitchingRuleOK struct {
 func (o *ReplaceServerSwitchingRuleOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_switching_rules/{index}][%d] replaceServerSwitchingRuleOK  %+v", 200, o.Payload)
 }
-
 func (o *ReplaceServerSwitchingRuleOK) GetPayload() *models.ServerSwitchingRule {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewReplaceServerSwitchingRuleAccepted() *ReplaceServerSwitchingRuleAccepted
 	return &ReplaceServerSwitchingRuleAccepted{}
 }
 
-/*ReplaceServerSwitchingRuleAccepted handles this case with default header values.
+/* ReplaceServerSwitchingRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceServerSwitchingRuleAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type ReplaceServerSwitchingRuleAccepted struct {
 func (o *ReplaceServerSwitchingRuleAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_switching_rules/{index}][%d] replaceServerSwitchingRuleAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ReplaceServerSwitchingRuleAccepted) GetPayload() *models.ServerSwitchingRule {
 	return o.Payload
 }
 
 func (o *ReplaceServerSwitchingRuleAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.ServerSwitchingRule)
 
@@ -137,12 +140,13 @@ func NewReplaceServerSwitchingRuleBadRequest() *ReplaceServerSwitchingRuleBadReq
 	return &ReplaceServerSwitchingRuleBadRequest{}
 }
 
-/*ReplaceServerSwitchingRuleBadRequest handles this case with default header values.
+/* ReplaceServerSwitchingRuleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type ReplaceServerSwitchingRuleBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type ReplaceServerSwitchingRuleBadRequest struct {
 func (o *ReplaceServerSwitchingRuleBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_switching_rules/{index}][%d] replaceServerSwitchingRuleBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ReplaceServerSwitchingRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceServerSwitchingRuleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewReplaceServerSwitchingRuleNotFound() *ReplaceServerSwitchingRuleNotFound
 	return &ReplaceServerSwitchingRuleNotFound{}
 }
 
-/*ReplaceServerSwitchingRuleNotFound handles this case with default header values.
+/* ReplaceServerSwitchingRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type ReplaceServerSwitchingRuleNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type ReplaceServerSwitchingRuleNotFound struct {
 func (o *ReplaceServerSwitchingRuleNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_switching_rules/{index}][%d] replaceServerSwitchingRuleNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ReplaceServerSwitchingRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceServerSwitchingRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewReplaceServerSwitchingRuleDefault(code int) *ReplaceServerSwitchingRuleD
 	}
 }
 
-/*ReplaceServerSwitchingRuleDefault handles this case with default header values.
+/* ReplaceServerSwitchingRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type ReplaceServerSwitchingRuleDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *ReplaceServerSwitchingRuleDefault) Code() int {
 func (o *ReplaceServerSwitchingRuleDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_switching_rules/{index}][%d] replaceServerSwitchingRule default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *ReplaceServerSwitchingRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceServerSwitchingRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

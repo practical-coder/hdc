@@ -23,15 +23,18 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateUserlist(params *CreateUserlistParams, authInfo runtime.ClientAuthInfoWriter) (*CreateUserlistCreated, *CreateUserlistAccepted, error)
+	CreateUserlist(params *CreateUserlistParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserlistCreated, *CreateUserlistAccepted, error)
 
-	DeleteUserlist(params *DeleteUserlistParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteUserlistAccepted, *DeleteUserlistNoContent, error)
+	DeleteUserlist(params *DeleteUserlistParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteUserlistAccepted, *DeleteUserlistNoContent, error)
 
-	GetUserlist(params *GetUserlistParams, authInfo runtime.ClientAuthInfoWriter) (*GetUserlistOK, error)
+	GetUserlist(params *GetUserlistParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserlistOK, error)
 
-	GetUserlists(params *GetUserlistsParams, authInfo runtime.ClientAuthInfoWriter) (*GetUserlistsOK, error)
+	GetUserlists(params *GetUserlistsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserlistsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -41,13 +44,12 @@ type ClientService interface {
 
   Adds a new userlist to the configuration file.
 */
-func (a *Client) CreateUserlist(params *CreateUserlistParams, authInfo runtime.ClientAuthInfoWriter) (*CreateUserlistCreated, *CreateUserlistAccepted, error) {
+func (a *Client) CreateUserlist(params *CreateUserlistParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserlistCreated, *CreateUserlistAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateUserlistParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createUserlist",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/userlists",
@@ -59,7 +61,12 @@ func (a *Client) CreateUserlist(params *CreateUserlistParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -79,13 +86,12 @@ func (a *Client) CreateUserlist(params *CreateUserlistParams, authInfo runtime.C
 
   Deletes a userlist configuration by it's name.
 */
-func (a *Client) DeleteUserlist(params *DeleteUserlistParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteUserlistAccepted, *DeleteUserlistNoContent, error) {
+func (a *Client) DeleteUserlist(params *DeleteUserlistParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteUserlistAccepted, *DeleteUserlistNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteUserlistParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteUserlist",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/userlists/{name}",
@@ -97,7 +103,12 @@ func (a *Client) DeleteUserlist(params *DeleteUserlistParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -117,13 +128,12 @@ func (a *Client) DeleteUserlist(params *DeleteUserlistParams, authInfo runtime.C
 
   Returns one userlist configuration by it's name.
 */
-func (a *Client) GetUserlist(params *GetUserlistParams, authInfo runtime.ClientAuthInfoWriter) (*GetUserlistOK, error) {
+func (a *Client) GetUserlist(params *GetUserlistParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserlistOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUserlistParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getUserlist",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/userlists/{name}",
@@ -135,7 +145,12 @@ func (a *Client) GetUserlist(params *GetUserlistParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -153,13 +168,12 @@ func (a *Client) GetUserlist(params *GetUserlistParams, authInfo runtime.ClientA
 
   Returns an array of all configured userlists.
 */
-func (a *Client) GetUserlists(params *GetUserlistsParams, authInfo runtime.ClientAuthInfoWriter) (*GetUserlistsOK, error) {
+func (a *Client) GetUserlists(params *GetUserlistsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserlistsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUserlistsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getUserlists",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/userlists",
@@ -171,7 +185,12 @@ func (a *Client) GetUserlists(params *GetUserlistsParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

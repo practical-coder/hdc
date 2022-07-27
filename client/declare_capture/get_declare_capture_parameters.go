@@ -17,69 +17,85 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetDeclareCaptureParams creates a new GetDeclareCaptureParams object
-// with the default values initialized.
+// NewGetDeclareCaptureParams creates a new GetDeclareCaptureParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetDeclareCaptureParams() *GetDeclareCaptureParams {
-	var ()
 	return &GetDeclareCaptureParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetDeclareCaptureParamsWithTimeout creates a new GetDeclareCaptureParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetDeclareCaptureParamsWithTimeout(timeout time.Duration) *GetDeclareCaptureParams {
-	var ()
 	return &GetDeclareCaptureParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetDeclareCaptureParamsWithContext creates a new GetDeclareCaptureParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetDeclareCaptureParamsWithContext(ctx context.Context) *GetDeclareCaptureParams {
-	var ()
 	return &GetDeclareCaptureParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetDeclareCaptureParamsWithHTTPClient creates a new GetDeclareCaptureParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetDeclareCaptureParamsWithHTTPClient(client *http.Client) *GetDeclareCaptureParams {
-	var ()
 	return &GetDeclareCaptureParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetDeclareCaptureParams contains all the parameters to send to the API endpoint
-for the get declare capture operation typically these are written to a http.Request
+/* GetDeclareCaptureParams contains all the parameters to send to the API endpoint
+   for the get declare capture operation.
+
+   Typically these are written to a http.Request.
 */
 type GetDeclareCaptureParams struct {
 
-	/*Frontend
-	  Parent frontend name
+	/* Frontend.
 
+	   Parent frontend name
 	*/
 	Frontend string
-	/*Index
-	  Declare Capture Index
 
+	/* Index.
+
+	   Declare Capture Index
 	*/
 	Index int64
-	/*TransactionID
-	  ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 
+	/* TransactionID.
+
+	   ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 	*/
 	TransactionID *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get declare capture params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeclareCaptureParams) WithDefaults() *GetDeclareCaptureParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get declare capture params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeclareCaptureParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get declare capture params
@@ -160,6 +176,7 @@ func (o *GetDeclareCaptureParams) WriteToRequest(r runtime.ClientRequest, reg st
 	qrFrontend := o.Frontend
 	qFrontend := qrFrontend
 	if qFrontend != "" {
+
 		if err := r.SetQueryParam("frontend", qFrontend); err != nil {
 			return err
 		}
@@ -174,16 +191,17 @@ func (o *GetDeclareCaptureParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 		// query param transaction_id
 		var qrTransactionID string
+
 		if o.TransactionID != nil {
 			qrTransactionID = *o.TransactionID
 		}
 		qTransactionID := qrTransactionID
 		if qTransactionID != "" {
+
 			if err := r.SetQueryParam("transaction_id", qTransactionID); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

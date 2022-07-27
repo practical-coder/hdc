@@ -23,27 +23,30 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateAWSRegion(params *CreateAWSRegionParams, authInfo runtime.ClientAuthInfoWriter) (*CreateAWSRegionCreated, error)
+	CreateAWSRegion(params *CreateAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAWSRegionCreated, error)
 
-	CreateConsul(params *CreateConsulParams, authInfo runtime.ClientAuthInfoWriter) (*CreateConsulCreated, error)
+	CreateConsul(params *CreateConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateConsulCreated, error)
 
-	DeleteAWSRegion(params *DeleteAWSRegionParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAWSRegionNoContent, error)
+	DeleteAWSRegion(params *DeleteAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteAWSRegionNoContent, error)
 
-	DeleteConsul(params *DeleteConsulParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteConsulNoContent, error)
+	DeleteConsul(params *DeleteConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteConsulNoContent, error)
 
-	GetAWSRegion(params *GetAWSRegionParams, authInfo runtime.ClientAuthInfoWriter) (*GetAWSRegionOK, error)
+	GetAWSRegion(params *GetAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAWSRegionOK, error)
 
-	GetAWSRegions(params *GetAWSRegionsParams, authInfo runtime.ClientAuthInfoWriter) (*GetAWSRegionsOK, error)
+	GetAWSRegions(params *GetAWSRegionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAWSRegionsOK, error)
 
-	GetConsul(params *GetConsulParams, authInfo runtime.ClientAuthInfoWriter) (*GetConsulOK, error)
+	GetConsul(params *GetConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsulOK, error)
 
-	GetConsuls(params *GetConsulsParams, authInfo runtime.ClientAuthInfoWriter) (*GetConsulsOK, error)
+	GetConsuls(params *GetConsulsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsulsOK, error)
 
-	ReplaceAWSRegion(params *ReplaceAWSRegionParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceAWSRegionOK, error)
+	ReplaceAWSRegion(params *ReplaceAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceAWSRegionOK, error)
 
-	ReplaceConsul(params *ReplaceConsulParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceConsulOK, error)
+	ReplaceConsul(params *ReplaceConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceConsulOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -54,13 +57,12 @@ type ClientService interface {
   Add a new AWS region.
 Credentials are not required in case Dataplane API is running in an EC2 instance with proper IAM role attached.
 */
-func (a *Client) CreateAWSRegion(params *CreateAWSRegionParams, authInfo runtime.ClientAuthInfoWriter) (*CreateAWSRegionCreated, error) {
+func (a *Client) CreateAWSRegion(params *CreateAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAWSRegionCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateAWSRegionParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createAWSRegion",
 		Method:             "POST",
 		PathPattern:        "/service_discovery/aws",
@@ -72,7 +74,12 @@ func (a *Client) CreateAWSRegion(params *CreateAWSRegionParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -90,13 +97,12 @@ func (a *Client) CreateAWSRegion(params *CreateAWSRegionParams, authInfo runtime
 
   Adds a new Consul server.
 */
-func (a *Client) CreateConsul(params *CreateConsulParams, authInfo runtime.ClientAuthInfoWriter) (*CreateConsulCreated, error) {
+func (a *Client) CreateConsul(params *CreateConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateConsulCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateConsulParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createConsul",
 		Method:             "POST",
 		PathPattern:        "/service_discovery/consul",
@@ -108,7 +114,12 @@ func (a *Client) CreateConsul(params *CreateConsulParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -126,13 +137,12 @@ func (a *Client) CreateConsul(params *CreateConsulParams, authInfo runtime.Clien
 
   Delete an AWS region configuration by it's id.
 */
-func (a *Client) DeleteAWSRegion(params *DeleteAWSRegionParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAWSRegionNoContent, error) {
+func (a *Client) DeleteAWSRegion(params *DeleteAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteAWSRegionNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAWSRegionParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteAWSRegion",
 		Method:             "DELETE",
 		PathPattern:        "/service_discovery/aws/{id}",
@@ -144,7 +154,12 @@ func (a *Client) DeleteAWSRegion(params *DeleteAWSRegionParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -162,13 +177,12 @@ func (a *Client) DeleteAWSRegion(params *DeleteAWSRegionParams, authInfo runtime
 
   Deletes a Consul server configuration by it's id.
 */
-func (a *Client) DeleteConsul(params *DeleteConsulParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteConsulNoContent, error) {
+func (a *Client) DeleteConsul(params *DeleteConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteConsulNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteConsulParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteConsul",
 		Method:             "DELETE",
 		PathPattern:        "/service_discovery/consul/{id}",
@@ -180,7 +194,12 @@ func (a *Client) DeleteConsul(params *DeleteConsulParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -198,13 +217,12 @@ func (a *Client) DeleteConsul(params *DeleteConsulParams, authInfo runtime.Clien
 
   Return one AWS Region configuration by it's id.
 */
-func (a *Client) GetAWSRegion(params *GetAWSRegionParams, authInfo runtime.ClientAuthInfoWriter) (*GetAWSRegionOK, error) {
+func (a *Client) GetAWSRegion(params *GetAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAWSRegionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAWSRegionParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAWSRegion",
 		Method:             "GET",
 		PathPattern:        "/service_discovery/aws/{id}",
@@ -216,7 +234,12 @@ func (a *Client) GetAWSRegion(params *GetAWSRegionParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -234,13 +257,12 @@ func (a *Client) GetAWSRegion(params *GetAWSRegionParams, authInfo runtime.Clien
 
   Return all configured AWS regions.
 */
-func (a *Client) GetAWSRegions(params *GetAWSRegionsParams, authInfo runtime.ClientAuthInfoWriter) (*GetAWSRegionsOK, error) {
+func (a *Client) GetAWSRegions(params *GetAWSRegionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAWSRegionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAWSRegionsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAWSRegions",
 		Method:             "GET",
 		PathPattern:        "/service_discovery/aws",
@@ -252,7 +274,12 @@ func (a *Client) GetAWSRegions(params *GetAWSRegionsParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -270,13 +297,12 @@ func (a *Client) GetAWSRegions(params *GetAWSRegionsParams, authInfo runtime.Cli
 
   Returns one Consul server configuration by it's id.
 */
-func (a *Client) GetConsul(params *GetConsulParams, authInfo runtime.ClientAuthInfoWriter) (*GetConsulOK, error) {
+func (a *Client) GetConsul(params *GetConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsulOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetConsulParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getConsul",
 		Method:             "GET",
 		PathPattern:        "/service_discovery/consul/{id}",
@@ -288,7 +314,12 @@ func (a *Client) GetConsul(params *GetConsulParams, authInfo runtime.ClientAuthI
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -306,13 +337,12 @@ func (a *Client) GetConsul(params *GetConsulParams, authInfo runtime.ClientAuthI
 
   Returns all configured Consul servers.
 */
-func (a *Client) GetConsuls(params *GetConsulsParams, authInfo runtime.ClientAuthInfoWriter) (*GetConsulsOK, error) {
+func (a *Client) GetConsuls(params *GetConsulsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsulsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetConsulsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getConsuls",
 		Method:             "GET",
 		PathPattern:        "/service_discovery/consul",
@@ -324,7 +354,12 @@ func (a *Client) GetConsuls(params *GetConsulsParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -342,13 +377,12 @@ func (a *Client) GetConsuls(params *GetConsulsParams, authInfo runtime.ClientAut
 
   Replace an AWS region configuration by its id.
 */
-func (a *Client) ReplaceAWSRegion(params *ReplaceAWSRegionParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceAWSRegionOK, error) {
+func (a *Client) ReplaceAWSRegion(params *ReplaceAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceAWSRegionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceAWSRegionParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceAWSRegion",
 		Method:             "PUT",
 		PathPattern:        "/service_discovery/aws/{id}",
@@ -360,7 +394,12 @@ func (a *Client) ReplaceAWSRegion(params *ReplaceAWSRegionParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -378,13 +417,12 @@ func (a *Client) ReplaceAWSRegion(params *ReplaceAWSRegionParams, authInfo runti
 
   Replaces a Consul server configuration by it's id.
 */
-func (a *Client) ReplaceConsul(params *ReplaceConsulParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceConsulOK, error) {
+func (a *Client) ReplaceConsul(params *ReplaceConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceConsulOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceConsulParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceConsul",
 		Method:             "PUT",
 		PathPattern:        "/service_discovery/consul/{id}",
@@ -396,7 +434,12 @@ func (a *Client) ReplaceConsul(params *ReplaceConsulParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

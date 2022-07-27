@@ -6,6 +6,7 @@ package spoe_transactions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -13,7 +14,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // StartSpoeTransactionReader is a Reader for the StartSpoeTransaction structure.
@@ -53,7 +54,7 @@ func NewStartSpoeTransactionCreated() *StartSpoeTransactionCreated {
 	return &StartSpoeTransactionCreated{}
 }
 
-/*StartSpoeTransactionCreated handles this case with default header values.
+/* StartSpoeTransactionCreated describes a response with status code 201, with default header values.
 
 Transaction started
 */
@@ -64,7 +65,6 @@ type StartSpoeTransactionCreated struct {
 func (o *StartSpoeTransactionCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe_transactions][%d] startSpoeTransactionCreated  %+v", 201, o.Payload)
 }
-
 func (o *StartSpoeTransactionCreated) GetPayload() *models.SpoeTransaction {
 	return o.Payload
 }
@@ -86,7 +86,7 @@ func NewStartSpoeTransactionTooManyRequests() *StartSpoeTransactionTooManyReques
 	return &StartSpoeTransactionTooManyRequests{}
 }
 
-/*StartSpoeTransactionTooManyRequests handles this case with default header values.
+/* StartSpoeTransactionTooManyRequests describes a response with status code 429, with default header values.
 
 Too many open transactions
 */
@@ -97,7 +97,6 @@ type StartSpoeTransactionTooManyRequests struct {
 func (o *StartSpoeTransactionTooManyRequests) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe_transactions][%d] startSpoeTransactionTooManyRequests  %+v", 429, o.Payload)
 }
-
 func (o *StartSpoeTransactionTooManyRequests) GetPayload() *StartSpoeTransactionTooManyRequestsBody {
 	return o.Payload
 }
@@ -121,14 +120,14 @@ func NewStartSpoeTransactionDefault(code int) *StartSpoeTransactionDefault {
 	}
 }
 
-/*StartSpoeTransactionDefault handles this case with default header values.
+/* StartSpoeTransactionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type StartSpoeTransactionDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -143,15 +142,18 @@ func (o *StartSpoeTransactionDefault) Code() int {
 func (o *StartSpoeTransactionDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe_transactions][%d] startSpoeTransaction default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *StartSpoeTransactionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *StartSpoeTransactionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -164,6 +166,7 @@ func (o *StartSpoeTransactionDefault) readResponse(response runtime.ClientRespon
 }
 
 /*StartSpoeTransactionTooManyRequestsBody start spoe transaction too many requests body
+// Example: {"code":429,"message":"cannot start a new transaction, reached the maximum amount of 20 active transactions available"}
 swagger:model StartSpoeTransactionTooManyRequestsBody
 */
 type StartSpoeTransactionTooManyRequestsBody struct {
@@ -177,6 +180,11 @@ type StartSpoeTransactionTooManyRequestsBody struct {
 
 // Validate validates this start spoe transaction too many requests body
 func (o *StartSpoeTransactionTooManyRequestsBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this start spoe transaction too many requests body based on context it is used
+func (o *StartSpoeTransactionTooManyRequestsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

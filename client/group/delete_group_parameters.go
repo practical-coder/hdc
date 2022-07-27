@@ -17,91 +17,108 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewDeleteGroupParams creates a new DeleteGroupParams object
-// with the default values initialized.
+// NewDeleteGroupParams creates a new DeleteGroupParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteGroupParams() *DeleteGroupParams {
-	var (
-		forceReloadDefault = bool(false)
-	)
 	return &DeleteGroupParams{
-		ForceReload: &forceReloadDefault,
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteGroupParamsWithTimeout creates a new DeleteGroupParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteGroupParamsWithTimeout(timeout time.Duration) *DeleteGroupParams {
-	var (
-		forceReloadDefault = bool(false)
-	)
 	return &DeleteGroupParams{
-		ForceReload: &forceReloadDefault,
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteGroupParamsWithContext creates a new DeleteGroupParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteGroupParamsWithContext(ctx context.Context) *DeleteGroupParams {
-	var (
-		forceReloadDefault = bool(false)
-	)
 	return &DeleteGroupParams{
-		ForceReload: &forceReloadDefault,
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteGroupParamsWithHTTPClient creates a new DeleteGroupParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteGroupParamsWithHTTPClient(client *http.Client) *DeleteGroupParams {
-	var (
-		forceReloadDefault = bool(false)
-	)
 	return &DeleteGroupParams{
-		ForceReload: &forceReloadDefault,
-		HTTPClient:  client,
+		HTTPClient: client,
 	}
 }
 
-/*DeleteGroupParams contains all the parameters to send to the API endpoint
-for the delete group operation typically these are written to a http.Request
+/* DeleteGroupParams contains all the parameters to send to the API endpoint
+   for the delete group operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteGroupParams struct {
 
-	/*ForceReload
-	  If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
+	/* ForceReload.
 
+	   If set, do a force reload, do not wait for the configured reload-delay. Cannot be used when transaction is specified, as changes in transaction are not applied directly to configuration.
 	*/
 	ForceReload *bool
-	/*Name
-	  group name
 
+	/* Name.
+
+	   group name
 	*/
 	Name string
-	/*TransactionID
-	  ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 
+	/* TransactionID.
+
+	   ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 	*/
 	TransactionID *string
-	/*Userlist
-	  Parent userlist name
 
+	/* Userlist.
+
+	   Parent userlist name
 	*/
 	Userlist string
-	/*Version
-	  Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 
+	/* Version.
+
+	   Version used for checking configuration version. Cannot be used when transaction is specified, transaction has it's own version.
 	*/
 	Version *int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete group params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteGroupParams) WithDefaults() *DeleteGroupParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete group params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteGroupParams) SetDefaults() {
+	var (
+		forceReloadDefault = bool(false)
+	)
+
+	val := DeleteGroupParams{
+		ForceReload: &forceReloadDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the delete group params
@@ -204,16 +221,17 @@ func (o *DeleteGroupParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 		// query param force_reload
 		var qrForceReload bool
+
 		if o.ForceReload != nil {
 			qrForceReload = *o.ForceReload
 		}
 		qForceReload := swag.FormatBool(qrForceReload)
 		if qForceReload != "" {
+
 			if err := r.SetQueryParam("force_reload", qForceReload); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param name
@@ -225,22 +243,24 @@ func (o *DeleteGroupParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 		// query param transaction_id
 		var qrTransactionID string
+
 		if o.TransactionID != nil {
 			qrTransactionID = *o.TransactionID
 		}
 		qTransactionID := qrTransactionID
 		if qTransactionID != "" {
+
 			if err := r.SetQueryParam("transaction_id", qTransactionID); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// query param userlist
 	qrUserlist := o.Userlist
 	qUserlist := qrUserlist
 	if qUserlist != "" {
+
 		if err := r.SetQueryParam("userlist", qUserlist); err != nil {
 			return err
 		}
@@ -250,16 +270,17 @@ func (o *DeleteGroupParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 		// query param version
 		var qrVersion int64
+
 		if o.Version != nil {
 			qrVersion = *o.Version
 		}
 		qVersion := swag.FormatInt64(qrVersion)
 		if qVersion != "" {
+
 			if err := r.SetQueryParam("version", qVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

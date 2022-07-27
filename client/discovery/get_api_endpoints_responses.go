@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetAPIEndpointsReader is a Reader for the GetAPIEndpoints structure.
@@ -46,7 +46,7 @@ func NewGetAPIEndpointsOK() *GetAPIEndpointsOK {
 	return &GetAPIEndpointsOK{}
 }
 
-/*GetAPIEndpointsOK handles this case with default header values.
+/* GetAPIEndpointsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -57,7 +57,6 @@ type GetAPIEndpointsOK struct {
 func (o *GetAPIEndpointsOK) Error() string {
 	return fmt.Sprintf("[GET /][%d] getApiEndpointsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetAPIEndpointsOK) GetPayload() models.Endpoints {
 	return o.Payload
 }
@@ -79,14 +78,14 @@ func NewGetAPIEndpointsDefault(code int) *GetAPIEndpointsDefault {
 	}
 }
 
-/*GetAPIEndpointsDefault handles this case with default header values.
+/* GetAPIEndpointsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetAPIEndpointsDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -101,15 +100,18 @@ func (o *GetAPIEndpointsDefault) Code() int {
 func (o *GetAPIEndpointsDefault) Error() string {
 	return fmt.Sprintf("[GET /][%d] getAPIEndpoints default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetAPIEndpointsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetAPIEndpointsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

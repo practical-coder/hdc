@@ -6,6 +6,7 @@ package http_response_rule
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -15,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetHTTPResponseRulesReader is a Reader for the GetHTTPResponseRules structure.
@@ -49,12 +50,13 @@ func NewGetHTTPResponseRulesOK() *GetHTTPResponseRulesOK {
 	return &GetHTTPResponseRulesOK{}
 }
 
-/*GetHTTPResponseRulesOK handles this case with default header values.
+/* GetHTTPResponseRulesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
 type GetHTTPResponseRulesOK struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -64,15 +66,18 @@ type GetHTTPResponseRulesOK struct {
 func (o *GetHTTPResponseRulesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_response_rules][%d] getHttpResponseRulesOK  %+v", 200, o.Payload)
 }
-
 func (o *GetHTTPResponseRulesOK) GetPayload() *GetHTTPResponseRulesOKBody {
 	return o.Payload
 }
 
 func (o *GetHTTPResponseRulesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(GetHTTPResponseRulesOKBody)
 
@@ -91,14 +96,14 @@ func NewGetHTTPResponseRulesDefault(code int) *GetHTTPResponseRulesDefault {
 	}
 }
 
-/*GetHTTPResponseRulesDefault handles this case with default header values.
+/* GetHTTPResponseRulesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetHTTPResponseRulesDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -113,15 +118,18 @@ func (o *GetHTTPResponseRulesDefault) Code() int {
 func (o *GetHTTPResponseRulesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_response_rules][%d] getHTTPResponseRules default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetHTTPResponseRulesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetHTTPResponseRulesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -169,6 +177,36 @@ func (o *GetHTTPResponseRulesOKBody) validateData(formats strfmt.Registry) error
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getHttpResponseRulesOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getHttpResponseRulesOK" + "." + "data")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get HTTP response rules o k body based on the context it is used
+func (o *GetHTTPResponseRulesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetHTTPResponseRulesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := o.Data.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("getHttpResponseRulesOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getHttpResponseRulesOK" + "." + "data")
 		}
 		return err
 	}

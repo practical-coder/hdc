@@ -23,17 +23,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateTCPResponseRule(params *CreateTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*CreateTCPResponseRuleCreated, *CreateTCPResponseRuleAccepted, error)
+	CreateTCPResponseRule(params *CreateTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateTCPResponseRuleCreated, *CreateTCPResponseRuleAccepted, error)
 
-	DeleteTCPResponseRule(params *DeleteTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteTCPResponseRuleAccepted, *DeleteTCPResponseRuleNoContent, error)
+	DeleteTCPResponseRule(params *DeleteTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteTCPResponseRuleAccepted, *DeleteTCPResponseRuleNoContent, error)
 
-	GetTCPResponseRule(params *GetTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*GetTCPResponseRuleOK, error)
+	GetTCPResponseRule(params *GetTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPResponseRuleOK, error)
 
-	GetTCPResponseRules(params *GetTCPResponseRulesParams, authInfo runtime.ClientAuthInfoWriter) (*GetTCPResponseRulesOK, error)
+	GetTCPResponseRules(params *GetTCPResponseRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPResponseRulesOK, error)
 
-	ReplaceTCPResponseRule(params *ReplaceTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceTCPResponseRuleOK, *ReplaceTCPResponseRuleAccepted, error)
+	ReplaceTCPResponseRule(params *ReplaceTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceTCPResponseRuleOK, *ReplaceTCPResponseRuleAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +46,12 @@ type ClientService interface {
 
   Adds a new TCP Response Rule of the specified type in the specified backend.
 */
-func (a *Client) CreateTCPResponseRule(params *CreateTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*CreateTCPResponseRuleCreated, *CreateTCPResponseRuleAccepted, error) {
+func (a *Client) CreateTCPResponseRule(params *CreateTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateTCPResponseRuleCreated, *CreateTCPResponseRuleAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateTCPResponseRuleParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createTCPResponseRule",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/tcp_response_rules",
@@ -61,7 +63,12 @@ func (a *Client) CreateTCPResponseRule(params *CreateTCPResponseRuleParams, auth
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -81,13 +88,12 @@ func (a *Client) CreateTCPResponseRule(params *CreateTCPResponseRuleParams, auth
 
   Deletes a TCP Response Rule configuration by it's index from the specified backend.
 */
-func (a *Client) DeleteTCPResponseRule(params *DeleteTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteTCPResponseRuleAccepted, *DeleteTCPResponseRuleNoContent, error) {
+func (a *Client) DeleteTCPResponseRule(params *DeleteTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteTCPResponseRuleAccepted, *DeleteTCPResponseRuleNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteTCPResponseRuleParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteTCPResponseRule",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/tcp_response_rules/{index}",
@@ -99,7 +105,12 @@ func (a *Client) DeleteTCPResponseRule(params *DeleteTCPResponseRuleParams, auth
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -119,13 +130,12 @@ func (a *Client) DeleteTCPResponseRule(params *DeleteTCPResponseRuleParams, auth
 
   Returns one TCP Response Rule configuration by it's index in the specified backend.
 */
-func (a *Client) GetTCPResponseRule(params *GetTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*GetTCPResponseRuleOK, error) {
+func (a *Client) GetTCPResponseRule(params *GetTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPResponseRuleOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTCPResponseRuleParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getTCPResponseRule",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/tcp_response_rules/{index}",
@@ -137,7 +147,12 @@ func (a *Client) GetTCPResponseRule(params *GetTCPResponseRuleParams, authInfo r
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -155,13 +170,12 @@ func (a *Client) GetTCPResponseRule(params *GetTCPResponseRuleParams, authInfo r
 
   Returns all TCP Response Rules that are configured in specified backend.
 */
-func (a *Client) GetTCPResponseRules(params *GetTCPResponseRulesParams, authInfo runtime.ClientAuthInfoWriter) (*GetTCPResponseRulesOK, error) {
+func (a *Client) GetTCPResponseRules(params *GetTCPResponseRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPResponseRulesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTCPResponseRulesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getTCPResponseRules",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/tcp_response_rules",
@@ -173,7 +187,12 @@ func (a *Client) GetTCPResponseRules(params *GetTCPResponseRulesParams, authInfo
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -191,13 +210,12 @@ func (a *Client) GetTCPResponseRules(params *GetTCPResponseRulesParams, authInfo
 
   Replaces a TCP Response Rule configuration by it's Index in the specified backend.
 */
-func (a *Client) ReplaceTCPResponseRule(params *ReplaceTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceTCPResponseRuleOK, *ReplaceTCPResponseRuleAccepted, error) {
+func (a *Client) ReplaceTCPResponseRule(params *ReplaceTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceTCPResponseRuleOK, *ReplaceTCPResponseRuleAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceTCPResponseRuleParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceTCPResponseRule",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/tcp_response_rules/{index}",
@@ -209,7 +227,12 @@ func (a *Client) ReplaceTCPResponseRule(params *ReplaceTCPResponseRuleParams, au
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}

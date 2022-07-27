@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetSpoeEndpointsReader is a Reader for the GetSpoeEndpoints structure.
@@ -46,7 +46,7 @@ func NewGetSpoeEndpointsOK() *GetSpoeEndpointsOK {
 	return &GetSpoeEndpointsOK{}
 }
 
-/*GetSpoeEndpointsOK handles this case with default header values.
+/* GetSpoeEndpointsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -57,7 +57,6 @@ type GetSpoeEndpointsOK struct {
 func (o *GetSpoeEndpointsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe][%d] getSpoeEndpointsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetSpoeEndpointsOK) GetPayload() models.Endpoints {
 	return o.Payload
 }
@@ -79,14 +78,14 @@ func NewGetSpoeEndpointsDefault(code int) *GetSpoeEndpointsDefault {
 	}
 }
 
-/*GetSpoeEndpointsDefault handles this case with default header values.
+/* GetSpoeEndpointsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetSpoeEndpointsDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -101,15 +100,18 @@ func (o *GetSpoeEndpointsDefault) Code() int {
 func (o *GetSpoeEndpointsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe][%d] getSpoeEndpoints default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetSpoeEndpointsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetSpoeEndpointsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // PostHAProxyConfigurationReader is a Reader for the PostHAProxyConfiguration structure.
@@ -58,7 +58,7 @@ func NewPostHAProxyConfigurationCreated() *PostHAProxyConfigurationCreated {
 	return &PostHAProxyConfigurationCreated{}
 }
 
-/*PostHAProxyConfigurationCreated handles this case with default header values.
+/* PostHAProxyConfigurationCreated describes a response with status code 201, with default header values.
 
 New HAProxy configuration pushed
 */
@@ -69,7 +69,6 @@ type PostHAProxyConfigurationCreated struct {
 func (o *PostHAProxyConfigurationCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/raw][%d] postHAProxyConfigurationCreated  %+v", 201, o.Payload)
 }
-
 func (o *PostHAProxyConfigurationCreated) GetPayload() string {
 	return o.Payload
 }
@@ -89,12 +88,13 @@ func NewPostHAProxyConfigurationAccepted() *PostHAProxyConfigurationAccepted {
 	return &PostHAProxyConfigurationAccepted{}
 }
 
-/*PostHAProxyConfigurationAccepted handles this case with default header values.
+/* PostHAProxyConfigurationAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type PostHAProxyConfigurationAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -104,15 +104,18 @@ type PostHAProxyConfigurationAccepted struct {
 func (o *PostHAProxyConfigurationAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/raw][%d] postHAProxyConfigurationAccepted  %+v", 202, o.Payload)
 }
-
 func (o *PostHAProxyConfigurationAccepted) GetPayload() string {
 	return o.Payload
 }
 
 func (o *PostHAProxyConfigurationAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -127,12 +130,13 @@ func NewPostHAProxyConfigurationBadRequest() *PostHAProxyConfigurationBadRequest
 	return &PostHAProxyConfigurationBadRequest{}
 }
 
-/*PostHAProxyConfigurationBadRequest handles this case with default header values.
+/* PostHAProxyConfigurationBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type PostHAProxyConfigurationBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -142,15 +146,18 @@ type PostHAProxyConfigurationBadRequest struct {
 func (o *PostHAProxyConfigurationBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/raw][%d] postHAProxyConfigurationBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *PostHAProxyConfigurationBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *PostHAProxyConfigurationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -169,14 +176,14 @@ func NewPostHAProxyConfigurationDefault(code int) *PostHAProxyConfigurationDefau
 	}
 }
 
-/*PostHAProxyConfigurationDefault handles this case with default header values.
+/* PostHAProxyConfigurationDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type PostHAProxyConfigurationDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -191,15 +198,18 @@ func (o *PostHAProxyConfigurationDefault) Code() int {
 func (o *PostHAProxyConfigurationDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/raw][%d] postHAProxyConfiguration default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostHAProxyConfigurationDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *PostHAProxyConfigurationDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

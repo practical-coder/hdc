@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // DeleteServerTemplateReader is a Reader for the DeleteServerTemplate structure.
@@ -58,12 +58,13 @@ func NewDeleteServerTemplateAccepted() *DeleteServerTemplateAccepted {
 	return &DeleteServerTemplateAccepted{}
 }
 
-/*DeleteServerTemplateAccepted handles this case with default header values.
+/* DeleteServerTemplateAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteServerTemplateAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -74,8 +75,12 @@ func (o *DeleteServerTemplateAccepted) Error() string {
 
 func (o *DeleteServerTemplateAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	return nil
 }
@@ -85,7 +90,7 @@ func NewDeleteServerTemplateNoContent() *DeleteServerTemplateNoContent {
 	return &DeleteServerTemplateNoContent{}
 }
 
-/*DeleteServerTemplateNoContent handles this case with default header values.
+/* DeleteServerTemplateNoContent describes a response with status code 204, with default header values.
 
 Server template deleted
 */
@@ -106,12 +111,13 @@ func NewDeleteServerTemplateNotFound() *DeleteServerTemplateNotFound {
 	return &DeleteServerTemplateNotFound{}
 }
 
-/*DeleteServerTemplateNotFound handles this case with default header values.
+/* DeleteServerTemplateNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type DeleteServerTemplateNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -121,15 +127,18 @@ type DeleteServerTemplateNotFound struct {
 func (o *DeleteServerTemplateNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_templates/{prefix}][%d] deleteServerTemplateNotFound  %+v", 404, o.Payload)
 }
-
 func (o *DeleteServerTemplateNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteServerTemplateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -148,14 +157,14 @@ func NewDeleteServerTemplateDefault(code int) *DeleteServerTemplateDefault {
 	}
 }
 
-/*DeleteServerTemplateDefault handles this case with default header values.
+/* DeleteServerTemplateDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type DeleteServerTemplateDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -170,15 +179,18 @@ func (o *DeleteServerTemplateDefault) Code() int {
 func (o *DeleteServerTemplateDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_templates/{prefix}][%d] deleteServerTemplate default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteServerTemplateDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteServerTemplateDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

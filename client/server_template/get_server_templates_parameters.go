@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetServerTemplatesParams creates a new GetServerTemplatesParams object
-// with the default values initialized.
+// NewGetServerTemplatesParams creates a new GetServerTemplatesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetServerTemplatesParams() *GetServerTemplatesParams {
-	var ()
 	return &GetServerTemplatesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetServerTemplatesParamsWithTimeout creates a new GetServerTemplatesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetServerTemplatesParamsWithTimeout(timeout time.Duration) *GetServerTemplatesParams {
-	var ()
 	return &GetServerTemplatesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetServerTemplatesParamsWithContext creates a new GetServerTemplatesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetServerTemplatesParamsWithContext(ctx context.Context) *GetServerTemplatesParams {
-	var ()
 	return &GetServerTemplatesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetServerTemplatesParamsWithHTTPClient creates a new GetServerTemplatesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetServerTemplatesParamsWithHTTPClient(client *http.Client) *GetServerTemplatesParams {
-	var ()
 	return &GetServerTemplatesParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetServerTemplatesParams contains all the parameters to send to the API endpoint
-for the get server templates operation typically these are written to a http.Request
+/* GetServerTemplatesParams contains all the parameters to send to the API endpoint
+   for the get server templates operation.
+
+   Typically these are written to a http.Request.
 */
 type GetServerTemplatesParams struct {
 
-	/*Backend
-	  Parent backend name
+	/* Backend.
 
+	   Parent backend name
 	*/
 	Backend string
-	/*TransactionID
-	  ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 
+	/* TransactionID.
+
+	   ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 	*/
 	TransactionID *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get server templates params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetServerTemplatesParams) WithDefaults() *GetServerTemplatesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get server templates params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetServerTemplatesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get server templates params
@@ -143,6 +158,7 @@ func (o *GetServerTemplatesParams) WriteToRequest(r runtime.ClientRequest, reg s
 	qrBackend := o.Backend
 	qBackend := qrBackend
 	if qBackend != "" {
+
 		if err := r.SetQueryParam("backend", qBackend); err != nil {
 			return err
 		}
@@ -152,16 +168,17 @@ func (o *GetServerTemplatesParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 		// query param transaction_id
 		var qrTransactionID string
+
 		if o.TransactionID != nil {
 			qrTransactionID = *o.TransactionID
 		}
 		qTransactionID := qrTransactionID
 		if qTransactionID != "" {
+
 			if err := r.SetQueryParam("transaction_id", qTransactionID); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

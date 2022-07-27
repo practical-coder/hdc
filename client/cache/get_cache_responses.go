@@ -6,6 +6,7 @@ package cache
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -14,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetCacheReader is a Reader for the GetCache structure.
@@ -54,12 +55,13 @@ func NewGetCacheOK() *GetCacheOK {
 	return &GetCacheOK{}
 }
 
-/*GetCacheOK handles this case with default header values.
+/* GetCacheOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
 type GetCacheOK struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -69,15 +71,18 @@ type GetCacheOK struct {
 func (o *GetCacheOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/caches/{name}][%d] getCacheOK  %+v", 200, o.Payload)
 }
-
 func (o *GetCacheOK) GetPayload() *GetCacheOKBody {
 	return o.Payload
 }
 
 func (o *GetCacheOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(GetCacheOKBody)
 
@@ -94,12 +99,13 @@ func NewGetCacheNotFound() *GetCacheNotFound {
 	return &GetCacheNotFound{}
 }
 
-/*GetCacheNotFound handles this case with default header values.
+/* GetCacheNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type GetCacheNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -109,15 +115,18 @@ type GetCacheNotFound struct {
 func (o *GetCacheNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/caches/{name}][%d] getCacheNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetCacheNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetCacheNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -136,14 +145,14 @@ func NewGetCacheDefault(code int) *GetCacheDefault {
 	}
 }
 
-/*GetCacheDefault handles this case with default header values.
+/* GetCacheDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetCacheDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -158,15 +167,18 @@ func (o *GetCacheDefault) Code() int {
 func (o *GetCacheDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/caches/{name}][%d] getCache default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetCacheDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetCacheDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -205,7 +217,6 @@ func (o *GetCacheOKBody) Validate(formats strfmt.Registry) error {
 }
 
 func (o *GetCacheOKBody) validateData(formats strfmt.Registry) error {
-
 	if swag.IsZero(o.Data) { // not required
 		return nil
 	}
@@ -214,6 +225,38 @@ func (o *GetCacheOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCacheOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCacheOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get cache o k body based on the context it is used
+func (o *GetCacheOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetCacheOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getCacheOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCacheOK" + "." + "data")
 			}
 			return err
 		}

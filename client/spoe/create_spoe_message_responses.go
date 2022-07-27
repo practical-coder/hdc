@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // CreateSpoeMessageReader is a Reader for the CreateSpoeMessage structure.
@@ -58,7 +58,7 @@ func NewCreateSpoeMessageCreated() *CreateSpoeMessageCreated {
 	return &CreateSpoeMessageCreated{}
 }
 
-/*CreateSpoeMessageCreated handles this case with default header values.
+/* CreateSpoeMessageCreated describes a response with status code 201, with default header values.
 
 Spoe message created
 */
@@ -69,7 +69,6 @@ type CreateSpoeMessageCreated struct {
 func (o *CreateSpoeMessageCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_messages][%d] createSpoeMessageCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateSpoeMessageCreated) GetPayload() *models.SpoeMessage {
 	return o.Payload
 }
@@ -91,12 +90,13 @@ func NewCreateSpoeMessageBadRequest() *CreateSpoeMessageBadRequest {
 	return &CreateSpoeMessageBadRequest{}
 }
 
-/*CreateSpoeMessageBadRequest handles this case with default header values.
+/* CreateSpoeMessageBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type CreateSpoeMessageBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,15 +106,18 @@ type CreateSpoeMessageBadRequest struct {
 func (o *CreateSpoeMessageBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_messages][%d] createSpoeMessageBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateSpoeMessageBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateSpoeMessageBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -131,12 +134,13 @@ func NewCreateSpoeMessageConflict() *CreateSpoeMessageConflict {
 	return &CreateSpoeMessageConflict{}
 }
 
-/*CreateSpoeMessageConflict handles this case with default header values.
+/* CreateSpoeMessageConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
 type CreateSpoeMessageConflict struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -146,15 +150,18 @@ type CreateSpoeMessageConflict struct {
 func (o *CreateSpoeMessageConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_messages][%d] createSpoeMessageConflict  %+v", 409, o.Payload)
 }
-
 func (o *CreateSpoeMessageConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateSpoeMessageConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -173,14 +180,14 @@ func NewCreateSpoeMessageDefault(code int) *CreateSpoeMessageDefault {
 	}
 }
 
-/*CreateSpoeMessageDefault handles this case with default header values.
+/* CreateSpoeMessageDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type CreateSpoeMessageDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -195,15 +202,18 @@ func (o *CreateSpoeMessageDefault) Code() int {
 func (o *CreateSpoeMessageDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_messages][%d] createSpoeMessage default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *CreateSpoeMessageDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateSpoeMessageDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // EditClusterReader is a Reader for the EditCluster structure.
@@ -52,7 +52,7 @@ func NewEditClusterOK() *EditClusterOK {
 	return &EditClusterOK{}
 }
 
-/*EditClusterOK handles this case with default header values.
+/* EditClusterOK describes a response with status code 200, with default header values.
 
 Cluster settings changed
 */
@@ -63,7 +63,6 @@ type EditClusterOK struct {
 func (o *EditClusterOK) Error() string {
 	return fmt.Sprintf("[PUT /cluster][%d] editClusterOK  %+v", 200, o.Payload)
 }
-
 func (o *EditClusterOK) GetPayload() *models.ClusterSettings {
 	return o.Payload
 }
@@ -85,12 +84,13 @@ func NewEditClusterBadRequest() *EditClusterBadRequest {
 	return &EditClusterBadRequest{}
 }
 
-/*EditClusterBadRequest handles this case with default header values.
+/* EditClusterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type EditClusterBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -100,15 +100,18 @@ type EditClusterBadRequest struct {
 func (o *EditClusterBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /cluster][%d] editClusterBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *EditClusterBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *EditClusterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -127,14 +130,14 @@ func NewEditClusterDefault(code int) *EditClusterDefault {
 	}
 }
 
-/*EditClusterDefault handles this case with default header values.
+/* EditClusterDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type EditClusterDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -149,15 +152,18 @@ func (o *EditClusterDefault) Code() int {
 func (o *EditClusterDefault) Error() string {
 	return fmt.Sprintf("[PUT /cluster][%d] editCluster default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *EditClusterDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *EditClusterDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

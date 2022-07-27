@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // CreateStorageGeneralFileReader is a Reader for the CreateStorageGeneralFile structure.
@@ -58,7 +58,7 @@ func NewCreateStorageGeneralFileCreated() *CreateStorageGeneralFileCreated {
 	return &CreateStorageGeneralFileCreated{}
 }
 
-/*CreateStorageGeneralFileCreated handles this case with default header values.
+/* CreateStorageGeneralFileCreated describes a response with status code 201, with default header values.
 
 General use file created with its contents
 */
@@ -69,7 +69,6 @@ type CreateStorageGeneralFileCreated struct {
 func (o *CreateStorageGeneralFileCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/general][%d] createStorageGeneralFileCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateStorageGeneralFileCreated) GetPayload() *models.GeneralFile {
 	return o.Payload
 }
@@ -91,12 +90,13 @@ func NewCreateStorageGeneralFileBadRequest() *CreateStorageGeneralFileBadRequest
 	return &CreateStorageGeneralFileBadRequest{}
 }
 
-/*CreateStorageGeneralFileBadRequest handles this case with default header values.
+/* CreateStorageGeneralFileBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type CreateStorageGeneralFileBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,15 +106,18 @@ type CreateStorageGeneralFileBadRequest struct {
 func (o *CreateStorageGeneralFileBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/general][%d] createStorageGeneralFileBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateStorageGeneralFileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateStorageGeneralFileBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -131,12 +134,13 @@ func NewCreateStorageGeneralFileConflict() *CreateStorageGeneralFileConflict {
 	return &CreateStorageGeneralFileConflict{}
 }
 
-/*CreateStorageGeneralFileConflict handles this case with default header values.
+/* CreateStorageGeneralFileConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
 type CreateStorageGeneralFileConflict struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -146,15 +150,18 @@ type CreateStorageGeneralFileConflict struct {
 func (o *CreateStorageGeneralFileConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/general][%d] createStorageGeneralFileConflict  %+v", 409, o.Payload)
 }
-
 func (o *CreateStorageGeneralFileConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateStorageGeneralFileConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -173,14 +180,14 @@ func NewCreateStorageGeneralFileDefault(code int) *CreateStorageGeneralFileDefau
 	}
 }
 
-/*CreateStorageGeneralFileDefault handles this case with default header values.
+/* CreateStorageGeneralFileDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type CreateStorageGeneralFileDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -195,15 +202,18 @@ func (o *CreateStorageGeneralFileDefault) Code() int {
 func (o *CreateStorageGeneralFileDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/general][%d] createStorageGeneralFile default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *CreateStorageGeneralFileDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateStorageGeneralFileDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

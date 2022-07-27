@@ -20,15 +20,19 @@ import (
 	"github.com/practical-coder/hdc/client/configuration"
 	"github.com/practical-coder/hdc/client/declare_capture"
 	"github.com/practical-coder/hdc/client/defaults"
+	"github.com/practical-coder/hdc/client/dgram_bind"
 	"github.com/practical-coder/hdc/client/discovery"
 	"github.com/practical-coder/hdc/client/filter"
 	"github.com/practical-coder/hdc/client/frontend"
 	"github.com/practical-coder/hdc/client/global"
 	"github.com/practical-coder/hdc/client/group"
+	"github.com/practical-coder/hdc/client/health"
+	"github.com/practical-coder/hdc/client/http_after_response_rule"
 	"github.com/practical-coder/hdc/client/http_check"
 	"github.com/practical-coder/hdc/client/http_request_rule"
 	"github.com/practical-coder/hdc/client/http_response_rule"
 	"github.com/practical-coder/hdc/client/information"
+	"github.com/practical-coder/hdc/client/log_forward"
 	"github.com/practical-coder/hdc/client/log_target"
 	"github.com/practical-coder/hdc/client/maps"
 	"github.com/practical-coder/hdc/client/nameserver"
@@ -36,7 +40,8 @@ import (
 	"github.com/practical-coder/hdc/client/peer_entry"
 	"github.com/practical-coder/hdc/client/reloads"
 	"github.com/practical-coder/hdc/client/resolver"
-	"github.com/practical-coder/hdc/client/server"
+	"github.com/practical-coder/hdc/client/ring"
+	serverops "github.com/practical-coder/hdc/client/server"
 	"github.com/practical-coder/hdc/client/server_switching_rule"
 	"github.com/practical-coder/hdc/client/server_template"
 	"github.com/practical-coder/hdc/client/service_discovery"
@@ -109,15 +114,19 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.Configuration = configuration.New(transport, formats)
 	cli.DeclareCapture = declare_capture.New(transport, formats)
 	cli.Defaults = defaults.New(transport, formats)
+	cli.DgramBind = dgram_bind.New(transport, formats)
 	cli.Discovery = discovery.New(transport, formats)
 	cli.Filter = filter.New(transport, formats)
 	cli.Frontend = frontend.New(transport, formats)
 	cli.Global = global.New(transport, formats)
 	cli.Group = group.New(transport, formats)
+	cli.Health = health.New(transport, formats)
+	cli.HTTPAfterResponseRule = http_after_response_rule.New(transport, formats)
 	cli.HTTPCheck = http_check.New(transport, formats)
 	cli.HTTPRequestRule = http_request_rule.New(transport, formats)
 	cli.HTTPResponseRule = http_response_rule.New(transport, formats)
 	cli.Information = information.New(transport, formats)
+	cli.LogForward = log_forward.New(transport, formats)
 	cli.LogTarget = log_target.New(transport, formats)
 	cli.Maps = maps.New(transport, formats)
 	cli.Nameserver = nameserver.New(transport, formats)
@@ -125,7 +134,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.PeerEntry = peer_entry.New(transport, formats)
 	cli.Reloads = reloads.New(transport, formats)
 	cli.Resolver = resolver.New(transport, formats)
-	cli.Server = server.New(transport, formats)
+	cli.Ring = ring.New(transport, formats)
+	cli.Server = serverops.New(transport, formats)
 	cli.ServerSwitchingRule = server_switching_rule.New(transport, formats)
 	cli.ServerTemplate = server_template.New(transport, formats)
 	cli.ServiceDiscovery = service_discovery.New(transport, formats)
@@ -208,6 +218,8 @@ type HaproxyDataplaneClient struct {
 
 	Defaults defaults.ClientService
 
+	DgramBind dgram_bind.ClientService
+
 	Discovery discovery.ClientService
 
 	Filter filter.ClientService
@@ -218,6 +230,10 @@ type HaproxyDataplaneClient struct {
 
 	Group group.ClientService
 
+	Health health.ClientService
+
+	HTTPAfterResponseRule http_after_response_rule.ClientService
+
 	HTTPCheck http_check.ClientService
 
 	HTTPRequestRule http_request_rule.ClientService
@@ -225,6 +241,8 @@ type HaproxyDataplaneClient struct {
 	HTTPResponseRule http_response_rule.ClientService
 
 	Information information.ClientService
+
+	LogForward log_forward.ClientService
 
 	LogTarget log_target.ClientService
 
@@ -240,7 +258,9 @@ type HaproxyDataplaneClient struct {
 
 	Resolver resolver.ClientService
 
-	Server server.ClientService
+	Ring ring.ClientService
+
+	Server serverops.ClientService
 
 	ServerSwitchingRule server_switching_rule.ClientService
 
@@ -294,15 +314,19 @@ func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport)
 	c.Configuration.SetTransport(transport)
 	c.DeclareCapture.SetTransport(transport)
 	c.Defaults.SetTransport(transport)
+	c.DgramBind.SetTransport(transport)
 	c.Discovery.SetTransport(transport)
 	c.Filter.SetTransport(transport)
 	c.Frontend.SetTransport(transport)
 	c.Global.SetTransport(transport)
 	c.Group.SetTransport(transport)
+	c.Health.SetTransport(transport)
+	c.HTTPAfterResponseRule.SetTransport(transport)
 	c.HTTPCheck.SetTransport(transport)
 	c.HTTPRequestRule.SetTransport(transport)
 	c.HTTPResponseRule.SetTransport(transport)
 	c.Information.SetTransport(transport)
+	c.LogForward.SetTransport(transport)
 	c.LogTarget.SetTransport(transport)
 	c.Maps.SetTransport(transport)
 	c.Nameserver.SetTransport(transport)
@@ -310,6 +334,7 @@ func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport)
 	c.PeerEntry.SetTransport(transport)
 	c.Reloads.SetTransport(transport)
 	c.Resolver.SetTransport(transport)
+	c.Ring.SetTransport(transport)
 	c.Server.SetTransport(transport)
 	c.ServerSwitchingRule.SetTransport(transport)
 	c.ServerTemplate.SetTransport(transport)

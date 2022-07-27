@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 	"strconv"
 
@@ -57,14 +58,13 @@ func init() {
 }
 
 func (m *Compression) validateAlgorithmsItemsEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, compressionAlgorithmsItemsEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, compressionAlgorithmsItemsEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Compression) validateAlgorithms(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Algorithms) { // not required
 		return nil
 	}
@@ -78,6 +78,11 @@ func (m *Compression) validateAlgorithms(formats strfmt.Registry) error {
 
 	}
 
+	return nil
+}
+
+// ContextValidate validates this compression based on context it is used
+func (m *Compression) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

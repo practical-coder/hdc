@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // CreateCacheReader is a Reader for the CreateCache structure.
@@ -64,7 +64,7 @@ func NewCreateCacheCreated() *CreateCacheCreated {
 	return &CreateCacheCreated{}
 }
 
-/*CreateCacheCreated handles this case with default header values.
+/* CreateCacheCreated describes a response with status code 201, with default header values.
 
 Cache created
 */
@@ -75,7 +75,6 @@ type CreateCacheCreated struct {
 func (o *CreateCacheCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/caches][%d] createCacheCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateCacheCreated) GetPayload() *models.Cache {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewCreateCacheAccepted() *CreateCacheAccepted {
 	return &CreateCacheAccepted{}
 }
 
-/*CreateCacheAccepted handles this case with default header values.
+/* CreateCacheAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type CreateCacheAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type CreateCacheAccepted struct {
 func (o *CreateCacheAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/caches][%d] createCacheAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateCacheAccepted) GetPayload() *models.Cache {
 	return o.Payload
 }
 
 func (o *CreateCacheAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.Cache)
 
@@ -137,12 +140,13 @@ func NewCreateCacheBadRequest() *CreateCacheBadRequest {
 	return &CreateCacheBadRequest{}
 }
 
-/*CreateCacheBadRequest handles this case with default header values.
+/* CreateCacheBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type CreateCacheBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type CreateCacheBadRequest struct {
 func (o *CreateCacheBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/caches][%d] createCacheBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateCacheBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateCacheBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewCreateCacheConflict() *CreateCacheConflict {
 	return &CreateCacheConflict{}
 }
 
-/*CreateCacheConflict handles this case with default header values.
+/* CreateCacheConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
 type CreateCacheConflict struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type CreateCacheConflict struct {
 func (o *CreateCacheConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/caches][%d] createCacheConflict  %+v", 409, o.Payload)
 }
-
 func (o *CreateCacheConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateCacheConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewCreateCacheDefault(code int) *CreateCacheDefault {
 	}
 }
 
-/*CreateCacheDefault handles this case with default header values.
+/* CreateCacheDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type CreateCacheDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *CreateCacheDefault) Code() int {
 func (o *CreateCacheDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/caches][%d] createCache default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *CreateCacheDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateCacheDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

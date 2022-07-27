@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetReloadsReader is a Reader for the GetReloads structure.
@@ -46,7 +46,7 @@ func NewGetReloadsOK() *GetReloadsOK {
 	return &GetReloadsOK{}
 }
 
-/*GetReloadsOK handles this case with default header values.
+/* GetReloadsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -57,7 +57,6 @@ type GetReloadsOK struct {
 func (o *GetReloadsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/reloads][%d] getReloadsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetReloadsOK) GetPayload() models.Reloads {
 	return o.Payload
 }
@@ -79,14 +78,14 @@ func NewGetReloadsDefault(code int) *GetReloadsDefault {
 	}
 }
 
-/*GetReloadsDefault handles this case with default header values.
+/* GetReloadsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetReloadsDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -101,15 +100,18 @@ func (o *GetReloadsDefault) Code() int {
 func (o *GetReloadsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/reloads][%d] getReloads default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetReloadsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetReloadsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

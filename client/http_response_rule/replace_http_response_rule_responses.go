@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // ReplaceHTTPResponseRuleReader is a Reader for the ReplaceHTTPResponseRule structure.
@@ -64,7 +64,7 @@ func NewReplaceHTTPResponseRuleOK() *ReplaceHTTPResponseRuleOK {
 	return &ReplaceHTTPResponseRuleOK{}
 }
 
-/*ReplaceHTTPResponseRuleOK handles this case with default header values.
+/* ReplaceHTTPResponseRuleOK describes a response with status code 200, with default header values.
 
 HTTP Response Rule replaced
 */
@@ -75,7 +75,6 @@ type ReplaceHTTPResponseRuleOK struct {
 func (o *ReplaceHTTPResponseRuleOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_response_rules/{index}][%d] replaceHttpResponseRuleOK  %+v", 200, o.Payload)
 }
-
 func (o *ReplaceHTTPResponseRuleOK) GetPayload() *models.HTTPResponseRule {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewReplaceHTTPResponseRuleAccepted() *ReplaceHTTPResponseRuleAccepted {
 	return &ReplaceHTTPResponseRuleAccepted{}
 }
 
-/*ReplaceHTTPResponseRuleAccepted handles this case with default header values.
+/* ReplaceHTTPResponseRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceHTTPResponseRuleAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type ReplaceHTTPResponseRuleAccepted struct {
 func (o *ReplaceHTTPResponseRuleAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_response_rules/{index}][%d] replaceHttpResponseRuleAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ReplaceHTTPResponseRuleAccepted) GetPayload() *models.HTTPResponseRule {
 	return o.Payload
 }
 
 func (o *ReplaceHTTPResponseRuleAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.HTTPResponseRule)
 
@@ -137,12 +140,13 @@ func NewReplaceHTTPResponseRuleBadRequest() *ReplaceHTTPResponseRuleBadRequest {
 	return &ReplaceHTTPResponseRuleBadRequest{}
 }
 
-/*ReplaceHTTPResponseRuleBadRequest handles this case with default header values.
+/* ReplaceHTTPResponseRuleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type ReplaceHTTPResponseRuleBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type ReplaceHTTPResponseRuleBadRequest struct {
 func (o *ReplaceHTTPResponseRuleBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_response_rules/{index}][%d] replaceHttpResponseRuleBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ReplaceHTTPResponseRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceHTTPResponseRuleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewReplaceHTTPResponseRuleNotFound() *ReplaceHTTPResponseRuleNotFound {
 	return &ReplaceHTTPResponseRuleNotFound{}
 }
 
-/*ReplaceHTTPResponseRuleNotFound handles this case with default header values.
+/* ReplaceHTTPResponseRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type ReplaceHTTPResponseRuleNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type ReplaceHTTPResponseRuleNotFound struct {
 func (o *ReplaceHTTPResponseRuleNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_response_rules/{index}][%d] replaceHttpResponseRuleNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ReplaceHTTPResponseRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceHTTPResponseRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewReplaceHTTPResponseRuleDefault(code int) *ReplaceHTTPResponseRuleDefault
 	}
 }
 
-/*ReplaceHTTPResponseRuleDefault handles this case with default header values.
+/* ReplaceHTTPResponseRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type ReplaceHTTPResponseRuleDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *ReplaceHTTPResponseRuleDefault) Code() int {
 func (o *ReplaceHTTPResponseRuleDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_response_rules/{index}][%d] replaceHTTPResponseRule default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *ReplaceHTTPResponseRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceHTTPResponseRuleDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

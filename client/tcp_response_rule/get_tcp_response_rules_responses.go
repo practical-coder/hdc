@@ -6,6 +6,7 @@ package tcp_response_rule
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -15,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetTCPResponseRulesReader is a Reader for the GetTCPResponseRules structure.
@@ -49,12 +50,13 @@ func NewGetTCPResponseRulesOK() *GetTCPResponseRulesOK {
 	return &GetTCPResponseRulesOK{}
 }
 
-/*GetTCPResponseRulesOK handles this case with default header values.
+/* GetTCPResponseRulesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
 type GetTCPResponseRulesOK struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -64,15 +66,18 @@ type GetTCPResponseRulesOK struct {
 func (o *GetTCPResponseRulesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_response_rules][%d] getTcpResponseRulesOK  %+v", 200, o.Payload)
 }
-
 func (o *GetTCPResponseRulesOK) GetPayload() *GetTCPResponseRulesOKBody {
 	return o.Payload
 }
 
 func (o *GetTCPResponseRulesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(GetTCPResponseRulesOKBody)
 
@@ -91,14 +96,14 @@ func NewGetTCPResponseRulesDefault(code int) *GetTCPResponseRulesDefault {
 	}
 }
 
-/*GetTCPResponseRulesDefault handles this case with default header values.
+/* GetTCPResponseRulesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetTCPResponseRulesDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -113,15 +118,18 @@ func (o *GetTCPResponseRulesDefault) Code() int {
 func (o *GetTCPResponseRulesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_response_rules][%d] getTCPResponseRules default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetTCPResponseRulesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetTCPResponseRulesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -169,6 +177,36 @@ func (o *GetTCPResponseRulesOKBody) validateData(formats strfmt.Registry) error 
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getTcpResponseRulesOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getTcpResponseRulesOK" + "." + "data")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get TCP response rules o k body based on the context it is used
+func (o *GetTCPResponseRulesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetTCPResponseRulesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := o.Data.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("getTcpResponseRulesOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getTcpResponseRulesOK" + "." + "data")
 		}
 		return err
 	}

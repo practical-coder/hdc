@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // ReplaceStorageMapFileReader is a Reader for the ReplaceStorageMapFile structure.
@@ -64,12 +64,13 @@ func NewReplaceStorageMapFileAccepted() *ReplaceStorageMapFileAccepted {
 	return &ReplaceStorageMapFileAccepted{}
 }
 
-/*ReplaceStorageMapFileAccepted handles this case with default header values.
+/* ReplaceStorageMapFileAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceStorageMapFileAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -80,8 +81,12 @@ func (o *ReplaceStorageMapFileAccepted) Error() string {
 
 func (o *ReplaceStorageMapFileAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	return nil
 }
@@ -91,7 +96,7 @@ func NewReplaceStorageMapFileNoContent() *ReplaceStorageMapFileNoContent {
 	return &ReplaceStorageMapFileNoContent{}
 }
 
-/*ReplaceStorageMapFileNoContent handles this case with default header values.
+/* ReplaceStorageMapFileNoContent describes a response with status code 204, with default header values.
 
 Map file replaced
 */
@@ -112,12 +117,13 @@ func NewReplaceStorageMapFileBadRequest() *ReplaceStorageMapFileBadRequest {
 	return &ReplaceStorageMapFileBadRequest{}
 }
 
-/*ReplaceStorageMapFileBadRequest handles this case with default header values.
+/* ReplaceStorageMapFileBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type ReplaceStorageMapFileBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,15 +133,18 @@ type ReplaceStorageMapFileBadRequest struct {
 func (o *ReplaceStorageMapFileBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/maps/{name}][%d] replaceStorageMapFileBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ReplaceStorageMapFileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceStorageMapFileBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -152,12 +161,13 @@ func NewReplaceStorageMapFileNotFound() *ReplaceStorageMapFileNotFound {
 	return &ReplaceStorageMapFileNotFound{}
 }
 
-/*ReplaceStorageMapFileNotFound handles this case with default header values.
+/* ReplaceStorageMapFileNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type ReplaceStorageMapFileNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -167,15 +177,18 @@ type ReplaceStorageMapFileNotFound struct {
 func (o *ReplaceStorageMapFileNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/maps/{name}][%d] replaceStorageMapFileNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ReplaceStorageMapFileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceStorageMapFileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -194,14 +207,14 @@ func NewReplaceStorageMapFileDefault(code int) *ReplaceStorageMapFileDefault {
 	}
 }
 
-/*ReplaceStorageMapFileDefault handles this case with default header values.
+/* ReplaceStorageMapFileDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type ReplaceStorageMapFileDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -216,15 +229,18 @@ func (o *ReplaceStorageMapFileDefault) Code() int {
 func (o *ReplaceStorageMapFileDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/maps/{name}][%d] replaceStorageMapFile default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *ReplaceStorageMapFileDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceStorageMapFileDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

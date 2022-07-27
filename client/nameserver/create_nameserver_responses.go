@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // CreateNameserverReader is a Reader for the CreateNameserver structure.
@@ -64,7 +64,7 @@ func NewCreateNameserverCreated() *CreateNameserverCreated {
 	return &CreateNameserverCreated{}
 }
 
-/*CreateNameserverCreated handles this case with default header values.
+/* CreateNameserverCreated describes a response with status code 201, with default header values.
 
 Nameserver created
 */
@@ -75,7 +75,6 @@ type CreateNameserverCreated struct {
 func (o *CreateNameserverCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateNameserverCreated) GetPayload() *models.Nameserver {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewCreateNameserverAccepted() *CreateNameserverAccepted {
 	return &CreateNameserverAccepted{}
 }
 
-/*CreateNameserverAccepted handles this case with default header values.
+/* CreateNameserverAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type CreateNameserverAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type CreateNameserverAccepted struct {
 func (o *CreateNameserverAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateNameserverAccepted) GetPayload() *models.Nameserver {
 	return o.Payload
 }
 
 func (o *CreateNameserverAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.Nameserver)
 
@@ -137,12 +140,13 @@ func NewCreateNameserverBadRequest() *CreateNameserverBadRequest {
 	return &CreateNameserverBadRequest{}
 }
 
-/*CreateNameserverBadRequest handles this case with default header values.
+/* CreateNameserverBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type CreateNameserverBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type CreateNameserverBadRequest struct {
 func (o *CreateNameserverBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateNameserverBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateNameserverBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewCreateNameserverConflict() *CreateNameserverConflict {
 	return &CreateNameserverConflict{}
 }
 
-/*CreateNameserverConflict handles this case with default header values.
+/* CreateNameserverConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
 type CreateNameserverConflict struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type CreateNameserverConflict struct {
 func (o *CreateNameserverConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverConflict  %+v", 409, o.Payload)
 }
-
 func (o *CreateNameserverConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateNameserverConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewCreateNameserverDefault(code int) *CreateNameserverDefault {
 	}
 }
 
-/*CreateNameserverDefault handles this case with default header values.
+/* CreateNameserverDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type CreateNameserverDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *CreateNameserverDefault) Code() int {
 func (o *CreateNameserverDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserver default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *CreateNameserverDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateNameserverDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

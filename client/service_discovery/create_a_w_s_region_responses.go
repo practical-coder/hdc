@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // CreateAWSRegionReader is a Reader for the CreateAWSRegion structure.
@@ -58,7 +58,7 @@ func NewCreateAWSRegionCreated() *CreateAWSRegionCreated {
 	return &CreateAWSRegionCreated{}
 }
 
-/*CreateAWSRegionCreated handles this case with default header values.
+/* CreateAWSRegionCreated describes a response with status code 201, with default header values.
 
 Resource created
 */
@@ -69,7 +69,6 @@ type CreateAWSRegionCreated struct {
 func (o *CreateAWSRegionCreated) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/aws][%d] createAWSRegionCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateAWSRegionCreated) GetPayload() *models.AwsRegion {
 	return o.Payload
 }
@@ -91,12 +90,13 @@ func NewCreateAWSRegionBadRequest() *CreateAWSRegionBadRequest {
 	return &CreateAWSRegionBadRequest{}
 }
 
-/*CreateAWSRegionBadRequest handles this case with default header values.
+/* CreateAWSRegionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type CreateAWSRegionBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,15 +106,18 @@ type CreateAWSRegionBadRequest struct {
 func (o *CreateAWSRegionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/aws][%d] createAWSRegionBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateAWSRegionBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateAWSRegionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -131,12 +134,13 @@ func NewCreateAWSRegionConflict() *CreateAWSRegionConflict {
 	return &CreateAWSRegionConflict{}
 }
 
-/*CreateAWSRegionConflict handles this case with default header values.
+/* CreateAWSRegionConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
 type CreateAWSRegionConflict struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -146,15 +150,18 @@ type CreateAWSRegionConflict struct {
 func (o *CreateAWSRegionConflict) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/aws][%d] createAWSRegionConflict  %+v", 409, o.Payload)
 }
-
 func (o *CreateAWSRegionConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateAWSRegionConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -173,14 +180,14 @@ func NewCreateAWSRegionDefault(code int) *CreateAWSRegionDefault {
 	}
 }
 
-/*CreateAWSRegionDefault handles this case with default header values.
+/* CreateAWSRegionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type CreateAWSRegionDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -195,15 +202,18 @@ func (o *CreateAWSRegionDefault) Code() int {
 func (o *CreateAWSRegionDefault) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/aws][%d] createAWSRegion default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *CreateAWSRegionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateAWSRegionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

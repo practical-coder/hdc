@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // AddPayloadRuntimeMapReader is a Reader for the AddPayloadRuntimeMap structure.
@@ -52,7 +52,7 @@ func NewAddPayloadRuntimeMapCreated() *AddPayloadRuntimeMapCreated {
 	return &AddPayloadRuntimeMapCreated{}
 }
 
-/*AddPayloadRuntimeMapCreated handles this case with default header values.
+/* AddPayloadRuntimeMapCreated describes a response with status code 201, with default header values.
 
 Map payload added
 */
@@ -63,7 +63,6 @@ type AddPayloadRuntimeMapCreated struct {
 func (o *AddPayloadRuntimeMapCreated) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps/{name}][%d] addPayloadRuntimeMapCreated  %+v", 201, o.Payload)
 }
-
 func (o *AddPayloadRuntimeMapCreated) GetPayload() models.MapEntries {
 	return o.Payload
 }
@@ -83,12 +82,13 @@ func NewAddPayloadRuntimeMapBadRequest() *AddPayloadRuntimeMapBadRequest {
 	return &AddPayloadRuntimeMapBadRequest{}
 }
 
-/*AddPayloadRuntimeMapBadRequest handles this case with default header values.
+/* AddPayloadRuntimeMapBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type AddPayloadRuntimeMapBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -98,15 +98,18 @@ type AddPayloadRuntimeMapBadRequest struct {
 func (o *AddPayloadRuntimeMapBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps/{name}][%d] addPayloadRuntimeMapBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *AddPayloadRuntimeMapBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *AddPayloadRuntimeMapBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -125,14 +128,14 @@ func NewAddPayloadRuntimeMapDefault(code int) *AddPayloadRuntimeMapDefault {
 	}
 }
 
-/*AddPayloadRuntimeMapDefault handles this case with default header values.
+/* AddPayloadRuntimeMapDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type AddPayloadRuntimeMapDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -147,15 +150,18 @@ func (o *AddPayloadRuntimeMapDefault) Code() int {
 func (o *AddPayloadRuntimeMapDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps/{name}][%d] addPayloadRuntimeMap default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *AddPayloadRuntimeMapDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *AddPayloadRuntimeMapDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

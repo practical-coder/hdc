@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // InitiateCertificateRefreshReader is a Reader for the InitiateCertificateRefresh structure.
@@ -52,7 +52,7 @@ func NewInitiateCertificateRefreshOK() *InitiateCertificateRefreshOK {
 	return &InitiateCertificateRefreshOK{}
 }
 
-/*InitiateCertificateRefreshOK handles this case with default header values.
+/* InitiateCertificateRefreshOK describes a response with status code 200, with default header values.
 
 refresh activated
 */
@@ -73,7 +73,7 @@ func NewInitiateCertificateRefreshForbidden() *InitiateCertificateRefreshForbidd
 	return &InitiateCertificateRefreshForbidden{}
 }
 
-/*InitiateCertificateRefreshForbidden handles this case with default header values.
+/* InitiateCertificateRefreshForbidden describes a response with status code 403, with default header values.
 
 refresh not possible
 */
@@ -96,14 +96,14 @@ func NewInitiateCertificateRefreshDefault(code int) *InitiateCertificateRefreshD
 	}
 }
 
-/*InitiateCertificateRefreshDefault handles this case with default header values.
+/* InitiateCertificateRefreshDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type InitiateCertificateRefreshDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -118,15 +118,18 @@ func (o *InitiateCertificateRefreshDefault) Code() int {
 func (o *InitiateCertificateRefreshDefault) Error() string {
 	return fmt.Sprintf("[POST /cluster/certificate][%d] initiateCertificateRefresh default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *InitiateCertificateRefreshDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *InitiateCertificateRefreshDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

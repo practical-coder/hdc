@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetStickTableEntriesReader is a Reader for the GetStickTableEntries structure.
@@ -46,7 +46,7 @@ func NewGetStickTableEntriesOK() *GetStickTableEntriesOK {
 	return &GetStickTableEntriesOK{}
 }
 
-/*GetStickTableEntriesOK handles this case with default header values.
+/* GetStickTableEntriesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -57,7 +57,6 @@ type GetStickTableEntriesOK struct {
 func (o *GetStickTableEntriesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_table_entries][%d] getStickTableEntriesOK  %+v", 200, o.Payload)
 }
-
 func (o *GetStickTableEntriesOK) GetPayload() models.StickTableEntries {
 	return o.Payload
 }
@@ -79,14 +78,14 @@ func NewGetStickTableEntriesDefault(code int) *GetStickTableEntriesDefault {
 	}
 }
 
-/*GetStickTableEntriesDefault handles this case with default header values.
+/* GetStickTableEntriesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetStickTableEntriesDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -101,15 +100,18 @@ func (o *GetStickTableEntriesDefault) Code() int {
 func (o *GetStickTableEntriesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_table_entries][%d] getStickTableEntries default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetStickTableEntriesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetStickTableEntriesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

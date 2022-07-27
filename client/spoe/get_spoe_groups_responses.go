@@ -6,6 +6,7 @@ package spoe
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -15,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetSpoeGroupsReader is a Reader for the GetSpoeGroups structure.
@@ -49,12 +50,13 @@ func NewGetSpoeGroupsOK() *GetSpoeGroupsOK {
 	return &GetSpoeGroupsOK{}
 }
 
-/*GetSpoeGroupsOK handles this case with default header values.
+/* GetSpoeGroupsOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
 type GetSpoeGroupsOK struct {
-	/*Spoe configuration file version
+
+	/* Spoe configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -64,15 +66,18 @@ type GetSpoeGroupsOK struct {
 func (o *GetSpoeGroupsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_groups][%d] getSpoeGroupsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetSpoeGroupsOK) GetPayload() *GetSpoeGroupsOKBody {
 	return o.Payload
 }
 
 func (o *GetSpoeGroupsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(GetSpoeGroupsOKBody)
 
@@ -91,14 +96,14 @@ func NewGetSpoeGroupsDefault(code int) *GetSpoeGroupsDefault {
 	}
 }
 
-/*GetSpoeGroupsDefault handles this case with default header values.
+/* GetSpoeGroupsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetSpoeGroupsDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -113,15 +118,18 @@ func (o *GetSpoeGroupsDefault) Code() int {
 func (o *GetSpoeGroupsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_groups][%d] getSpoeGroups default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetSpoeGroupsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetSpoeGroupsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -169,6 +177,36 @@ func (o *GetSpoeGroupsOKBody) validateData(formats strfmt.Registry) error {
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getSpoeGroupsOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getSpoeGroupsOK" + "." + "data")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get spoe groups o k body based on the context it is used
+func (o *GetSpoeGroupsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetSpoeGroupsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := o.Data.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("getSpoeGroupsOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getSpoeGroupsOK" + "." + "data")
 		}
 		return err
 	}

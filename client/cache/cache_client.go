@@ -23,17 +23,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateCache(params *CreateCacheParams, authInfo runtime.ClientAuthInfoWriter) (*CreateCacheCreated, *CreateCacheAccepted, error)
+	CreateCache(params *CreateCacheParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateCacheCreated, *CreateCacheAccepted, error)
 
-	DeleteCache(params *DeleteCacheParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCacheAccepted, *DeleteCacheNoContent, error)
+	DeleteCache(params *DeleteCacheParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCacheAccepted, *DeleteCacheNoContent, error)
 
-	GetCache(params *GetCacheParams, authInfo runtime.ClientAuthInfoWriter) (*GetCacheOK, error)
+	GetCache(params *GetCacheParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCacheOK, error)
 
-	GetCaches(params *GetCachesParams, authInfo runtime.ClientAuthInfoWriter) (*GetCachesOK, error)
+	GetCaches(params *GetCachesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCachesOK, error)
 
-	ReplaceCache(params *ReplaceCacheParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceCacheOK, *ReplaceCacheAccepted, error)
+	ReplaceCache(params *ReplaceCacheParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceCacheOK, *ReplaceCacheAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +46,12 @@ type ClientService interface {
 
   Adds a new cache section to the configuration file.
 */
-func (a *Client) CreateCache(params *CreateCacheParams, authInfo runtime.ClientAuthInfoWriter) (*CreateCacheCreated, *CreateCacheAccepted, error) {
+func (a *Client) CreateCache(params *CreateCacheParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateCacheCreated, *CreateCacheAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateCacheParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createCache",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/caches",
@@ -61,7 +63,12 @@ func (a *Client) CreateCache(params *CreateCacheParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -81,13 +88,12 @@ func (a *Client) CreateCache(params *CreateCacheParams, authInfo runtime.ClientA
 
   Deletes a cache from the configuration by it's name.
 */
-func (a *Client) DeleteCache(params *DeleteCacheParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCacheAccepted, *DeleteCacheNoContent, error) {
+func (a *Client) DeleteCache(params *DeleteCacheParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCacheAccepted, *DeleteCacheNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCacheParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteCache",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/caches/{name}",
@@ -99,7 +105,12 @@ func (a *Client) DeleteCache(params *DeleteCacheParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -119,13 +130,12 @@ func (a *Client) DeleteCache(params *DeleteCacheParams, authInfo runtime.ClientA
 
   Returns one cache section configuration by it's name.
 */
-func (a *Client) GetCache(params *GetCacheParams, authInfo runtime.ClientAuthInfoWriter) (*GetCacheOK, error) {
+func (a *Client) GetCache(params *GetCacheParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCacheOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCacheParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getCache",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/caches/{name}",
@@ -137,7 +147,12 @@ func (a *Client) GetCache(params *GetCacheParams, authInfo runtime.ClientAuthInf
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -155,13 +170,12 @@ func (a *Client) GetCache(params *GetCacheParams, authInfo runtime.ClientAuthInf
 
   Returns an array of all configured caches.
 */
-func (a *Client) GetCaches(params *GetCachesParams, authInfo runtime.ClientAuthInfoWriter) (*GetCachesOK, error) {
+func (a *Client) GetCaches(params *GetCachesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCachesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCachesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getCaches",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/caches",
@@ -173,7 +187,12 @@ func (a *Client) GetCaches(params *GetCachesParams, authInfo runtime.ClientAuthI
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -191,13 +210,12 @@ func (a *Client) GetCaches(params *GetCachesParams, authInfo runtime.ClientAuthI
 
   Replaces a cache configuration by it's name.
 */
-func (a *Client) ReplaceCache(params *ReplaceCacheParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceCacheOK, *ReplaceCacheAccepted, error) {
+func (a *Client) ReplaceCache(params *ReplaceCacheParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceCacheOK, *ReplaceCacheAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceCacheParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceCache",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/caches/{name}",
@@ -209,7 +227,12 @@ func (a *Client) ReplaceCache(params *ReplaceCacheParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}

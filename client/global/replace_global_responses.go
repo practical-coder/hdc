@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // ReplaceGlobalReader is a Reader for the ReplaceGlobal structure.
@@ -58,7 +58,7 @@ func NewReplaceGlobalOK() *ReplaceGlobalOK {
 	return &ReplaceGlobalOK{}
 }
 
-/*ReplaceGlobalOK handles this case with default header values.
+/* ReplaceGlobalOK describes a response with status code 200, with default header values.
 
 Global replaced
 */
@@ -69,7 +69,6 @@ type ReplaceGlobalOK struct {
 func (o *ReplaceGlobalOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/global][%d] replaceGlobalOK  %+v", 200, o.Payload)
 }
-
 func (o *ReplaceGlobalOK) GetPayload() *models.Global {
 	return o.Payload
 }
@@ -91,12 +90,13 @@ func NewReplaceGlobalAccepted() *ReplaceGlobalAccepted {
 	return &ReplaceGlobalAccepted{}
 }
 
-/*ReplaceGlobalAccepted handles this case with default header values.
+/* ReplaceGlobalAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceGlobalAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -106,15 +106,18 @@ type ReplaceGlobalAccepted struct {
 func (o *ReplaceGlobalAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/global][%d] replaceGlobalAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ReplaceGlobalAccepted) GetPayload() *models.Global {
 	return o.Payload
 }
 
 func (o *ReplaceGlobalAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.Global)
 
@@ -131,12 +134,13 @@ func NewReplaceGlobalBadRequest() *ReplaceGlobalBadRequest {
 	return &ReplaceGlobalBadRequest{}
 }
 
-/*ReplaceGlobalBadRequest handles this case with default header values.
+/* ReplaceGlobalBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type ReplaceGlobalBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -146,15 +150,18 @@ type ReplaceGlobalBadRequest struct {
 func (o *ReplaceGlobalBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/global][%d] replaceGlobalBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ReplaceGlobalBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceGlobalBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -173,14 +180,14 @@ func NewReplaceGlobalDefault(code int) *ReplaceGlobalDefault {
 	}
 }
 
-/*ReplaceGlobalDefault handles this case with default header values.
+/* ReplaceGlobalDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type ReplaceGlobalDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -195,15 +202,18 @@ func (o *ReplaceGlobalDefault) Code() int {
 func (o *ReplaceGlobalDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/global][%d] replaceGlobal default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *ReplaceGlobalDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceGlobalDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

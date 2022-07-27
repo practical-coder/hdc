@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetRuntimeServersReader is a Reader for the GetRuntimeServers structure.
@@ -46,7 +46,7 @@ func NewGetRuntimeServersOK() *GetRuntimeServersOK {
 	return &GetRuntimeServersOK{}
 }
 
-/*GetRuntimeServersOK handles this case with default header values.
+/* GetRuntimeServersOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -57,7 +57,6 @@ type GetRuntimeServersOK struct {
 func (o *GetRuntimeServersOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/servers][%d] getRuntimeServersOK  %+v", 200, o.Payload)
 }
-
 func (o *GetRuntimeServersOK) GetPayload() models.RuntimeServers {
 	return o.Payload
 }
@@ -79,14 +78,14 @@ func NewGetRuntimeServersDefault(code int) *GetRuntimeServersDefault {
 	}
 }
 
-/*GetRuntimeServersDefault handles this case with default header values.
+/* GetRuntimeServersDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetRuntimeServersDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -101,15 +100,18 @@ func (o *GetRuntimeServersDefault) Code() int {
 func (o *GetRuntimeServersDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/servers][%d] getRuntimeServers default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetRuntimeServersDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetRuntimeServersDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

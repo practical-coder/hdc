@@ -23,17 +23,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateBackend(params *CreateBackendParams, authInfo runtime.ClientAuthInfoWriter) (*CreateBackendCreated, *CreateBackendAccepted, error)
+	CreateBackend(params *CreateBackendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateBackendCreated, *CreateBackendAccepted, error)
 
-	DeleteBackend(params *DeleteBackendParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteBackendAccepted, *DeleteBackendNoContent, error)
+	DeleteBackend(params *DeleteBackendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteBackendAccepted, *DeleteBackendNoContent, error)
 
-	GetBackend(params *GetBackendParams, authInfo runtime.ClientAuthInfoWriter) (*GetBackendOK, error)
+	GetBackend(params *GetBackendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackendOK, error)
 
-	GetBackends(params *GetBackendsParams, authInfo runtime.ClientAuthInfoWriter) (*GetBackendsOK, error)
+	GetBackends(params *GetBackendsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackendsOK, error)
 
-	ReplaceBackend(params *ReplaceBackendParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceBackendOK, *ReplaceBackendAccepted, error)
+	ReplaceBackend(params *ReplaceBackendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceBackendOK, *ReplaceBackendAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +46,12 @@ type ClientService interface {
 
   Adds a new backend to the configuration file.
 */
-func (a *Client) CreateBackend(params *CreateBackendParams, authInfo runtime.ClientAuthInfoWriter) (*CreateBackendCreated, *CreateBackendAccepted, error) {
+func (a *Client) CreateBackend(params *CreateBackendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateBackendCreated, *CreateBackendAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateBackendParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createBackend",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/backends",
@@ -61,7 +63,12 @@ func (a *Client) CreateBackend(params *CreateBackendParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -81,13 +88,12 @@ func (a *Client) CreateBackend(params *CreateBackendParams, authInfo runtime.Cli
 
   Deletes a backend from the configuration by it's name.
 */
-func (a *Client) DeleteBackend(params *DeleteBackendParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteBackendAccepted, *DeleteBackendNoContent, error) {
+func (a *Client) DeleteBackend(params *DeleteBackendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteBackendAccepted, *DeleteBackendNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteBackendParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteBackend",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/backends/{name}",
@@ -99,7 +105,12 @@ func (a *Client) DeleteBackend(params *DeleteBackendParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -119,13 +130,12 @@ func (a *Client) DeleteBackend(params *DeleteBackendParams, authInfo runtime.Cli
 
   Returns one backend configuration by it's name.
 */
-func (a *Client) GetBackend(params *GetBackendParams, authInfo runtime.ClientAuthInfoWriter) (*GetBackendOK, error) {
+func (a *Client) GetBackend(params *GetBackendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackendOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackendParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getBackend",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/backends/{name}",
@@ -137,7 +147,12 @@ func (a *Client) GetBackend(params *GetBackendParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -155,13 +170,12 @@ func (a *Client) GetBackend(params *GetBackendParams, authInfo runtime.ClientAut
 
   Returns an array of all configured backends.
 */
-func (a *Client) GetBackends(params *GetBackendsParams, authInfo runtime.ClientAuthInfoWriter) (*GetBackendsOK, error) {
+func (a *Client) GetBackends(params *GetBackendsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackendsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackendsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getBackends",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/backends",
@@ -173,7 +187,12 @@ func (a *Client) GetBackends(params *GetBackendsParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -191,13 +210,12 @@ func (a *Client) GetBackends(params *GetBackendsParams, authInfo runtime.ClientA
 
   Replaces a backend configuration by it's name.
 */
-func (a *Client) ReplaceBackend(params *ReplaceBackendParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceBackendOK, *ReplaceBackendAccepted, error) {
+func (a *Client) ReplaceBackend(params *ReplaceBackendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceBackendOK, *ReplaceBackendAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceBackendParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceBackend",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/backends/{name}",
@@ -209,7 +227,12 @@ func (a *Client) ReplaceBackend(params *ReplaceBackendParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}

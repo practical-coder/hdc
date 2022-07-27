@@ -23,17 +23,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateDeclareCapture(params *CreateDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter) (*CreateDeclareCaptureCreated, *CreateDeclareCaptureAccepted, error)
+	CreateDeclareCapture(params *CreateDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateDeclareCaptureCreated, *CreateDeclareCaptureAccepted, error)
 
-	DeleteDeclareCapture(params *DeleteDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteDeclareCaptureAccepted, *DeleteDeclareCaptureNoContent, error)
+	DeleteDeclareCapture(params *DeleteDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteDeclareCaptureAccepted, *DeleteDeclareCaptureNoContent, error)
 
-	GetDeclareCapture(params *GetDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter) (*GetDeclareCaptureOK, error)
+	GetDeclareCapture(params *GetDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDeclareCaptureOK, error)
 
-	GetDeclareCaptures(params *GetDeclareCapturesParams, authInfo runtime.ClientAuthInfoWriter) (*GetDeclareCapturesOK, error)
+	GetDeclareCaptures(params *GetDeclareCapturesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDeclareCapturesOK, error)
 
-	ReplaceDeclareCapture(params *ReplaceDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceDeclareCaptureOK, *ReplaceDeclareCaptureAccepted, error)
+	ReplaceDeclareCapture(params *ReplaceDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceDeclareCaptureOK, *ReplaceDeclareCaptureAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +46,12 @@ type ClientService interface {
 
   Adds a new declare capture in the specified frontend in the configuration file.
 */
-func (a *Client) CreateDeclareCapture(params *CreateDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter) (*CreateDeclareCaptureCreated, *CreateDeclareCaptureAccepted, error) {
+func (a *Client) CreateDeclareCapture(params *CreateDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateDeclareCaptureCreated, *CreateDeclareCaptureAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateDeclareCaptureParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createDeclareCapture",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/captures",
@@ -61,7 +63,12 @@ func (a *Client) CreateDeclareCapture(params *CreateDeclareCaptureParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -81,13 +88,12 @@ func (a *Client) CreateDeclareCapture(params *CreateDeclareCaptureParams, authIn
 
   Deletes a declare capture configuration by it's index in the specified frontend.
 */
-func (a *Client) DeleteDeclareCapture(params *DeleteDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteDeclareCaptureAccepted, *DeleteDeclareCaptureNoContent, error) {
+func (a *Client) DeleteDeclareCapture(params *DeleteDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteDeclareCaptureAccepted, *DeleteDeclareCaptureNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteDeclareCaptureParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteDeclareCapture",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/captures/{index}",
@@ -99,7 +105,12 @@ func (a *Client) DeleteDeclareCapture(params *DeleteDeclareCaptureParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -119,13 +130,12 @@ func (a *Client) DeleteDeclareCapture(params *DeleteDeclareCaptureParams, authIn
 
   Returns one declare capture configuration by it's index in the specified frontend.
 */
-func (a *Client) GetDeclareCapture(params *GetDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter) (*GetDeclareCaptureOK, error) {
+func (a *Client) GetDeclareCapture(params *GetDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDeclareCaptureOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeclareCaptureParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDeclareCapture",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/captures/{index}",
@@ -137,7 +147,12 @@ func (a *Client) GetDeclareCapture(params *GetDeclareCaptureParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -155,13 +170,12 @@ func (a *Client) GetDeclareCapture(params *GetDeclareCaptureParams, authInfo run
 
   Returns an array of all declare capture records that are configured in specified frontend.
 */
-func (a *Client) GetDeclareCaptures(params *GetDeclareCapturesParams, authInfo runtime.ClientAuthInfoWriter) (*GetDeclareCapturesOK, error) {
+func (a *Client) GetDeclareCaptures(params *GetDeclareCapturesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDeclareCapturesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeclareCapturesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDeclareCaptures",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/captures",
@@ -173,7 +187,12 @@ func (a *Client) GetDeclareCaptures(params *GetDeclareCapturesParams, authInfo r
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -191,13 +210,12 @@ func (a *Client) GetDeclareCaptures(params *GetDeclareCapturesParams, authInfo r
 
   Replaces a declare capture configuration by it's index in the specified frontend.
 */
-func (a *Client) ReplaceDeclareCapture(params *ReplaceDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceDeclareCaptureOK, *ReplaceDeclareCaptureAccepted, error) {
+func (a *Client) ReplaceDeclareCapture(params *ReplaceDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceDeclareCaptureOK, *ReplaceDeclareCaptureAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceDeclareCaptureParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceDeclareCapture",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/captures/{index}",
@@ -209,7 +227,12 @@ func (a *Client) ReplaceDeclareCapture(params *ReplaceDeclareCaptureParams, auth
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}

@@ -23,17 +23,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreatePeerEntry(params *CreatePeerEntryParams, authInfo runtime.ClientAuthInfoWriter) (*CreatePeerEntryCreated, *CreatePeerEntryAccepted, error)
+	CreatePeerEntry(params *CreatePeerEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreatePeerEntryCreated, *CreatePeerEntryAccepted, error)
 
-	DeletePeerEntry(params *DeletePeerEntryParams, authInfo runtime.ClientAuthInfoWriter) (*DeletePeerEntryAccepted, *DeletePeerEntryNoContent, error)
+	DeletePeerEntry(params *DeletePeerEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeletePeerEntryAccepted, *DeletePeerEntryNoContent, error)
 
-	GetPeerEntries(params *GetPeerEntriesParams, authInfo runtime.ClientAuthInfoWriter) (*GetPeerEntriesOK, error)
+	GetPeerEntries(params *GetPeerEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPeerEntriesOK, error)
 
-	GetPeerEntry(params *GetPeerEntryParams, authInfo runtime.ClientAuthInfoWriter) (*GetPeerEntryOK, error)
+	GetPeerEntry(params *GetPeerEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPeerEntryOK, error)
 
-	ReplacePeerEntry(params *ReplacePeerEntryParams, authInfo runtime.ClientAuthInfoWriter) (*ReplacePeerEntryOK, *ReplacePeerEntryAccepted, error)
+	ReplacePeerEntry(params *ReplacePeerEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplacePeerEntryOK, *ReplacePeerEntryAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +46,12 @@ type ClientService interface {
 
   Adds a new peer entry in the specified peer section in the configuration file.
 */
-func (a *Client) CreatePeerEntry(params *CreatePeerEntryParams, authInfo runtime.ClientAuthInfoWriter) (*CreatePeerEntryCreated, *CreatePeerEntryAccepted, error) {
+func (a *Client) CreatePeerEntry(params *CreatePeerEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreatePeerEntryCreated, *CreatePeerEntryAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreatePeerEntryParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createPeerEntry",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/peer_entries",
@@ -61,7 +63,12 @@ func (a *Client) CreatePeerEntry(params *CreatePeerEntryParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -81,13 +88,12 @@ func (a *Client) CreatePeerEntry(params *CreatePeerEntryParams, authInfo runtime
 
   Deletes a peer entry configuration by it's name in the specified peer section.
 */
-func (a *Client) DeletePeerEntry(params *DeletePeerEntryParams, authInfo runtime.ClientAuthInfoWriter) (*DeletePeerEntryAccepted, *DeletePeerEntryNoContent, error) {
+func (a *Client) DeletePeerEntry(params *DeletePeerEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeletePeerEntryAccepted, *DeletePeerEntryNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeletePeerEntryParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deletePeerEntry",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/peer_entries/{name}",
@@ -99,7 +105,12 @@ func (a *Client) DeletePeerEntry(params *DeletePeerEntryParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -119,13 +130,12 @@ func (a *Client) DeletePeerEntry(params *DeletePeerEntryParams, authInfo runtime
 
   Returns an array of all peer_entries that are configured in specified peer section.
 */
-func (a *Client) GetPeerEntries(params *GetPeerEntriesParams, authInfo runtime.ClientAuthInfoWriter) (*GetPeerEntriesOK, error) {
+func (a *Client) GetPeerEntries(params *GetPeerEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPeerEntriesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPeerEntriesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getPeerEntries",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/peer_entries",
@@ -137,7 +147,12 @@ func (a *Client) GetPeerEntries(params *GetPeerEntriesParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -155,13 +170,12 @@ func (a *Client) GetPeerEntries(params *GetPeerEntriesParams, authInfo runtime.C
 
   Returns one peer_entry configuration by it's name in the specified peer section.
 */
-func (a *Client) GetPeerEntry(params *GetPeerEntryParams, authInfo runtime.ClientAuthInfoWriter) (*GetPeerEntryOK, error) {
+func (a *Client) GetPeerEntry(params *GetPeerEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPeerEntryOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPeerEntryParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getPeerEntry",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/peer_entries/{name}",
@@ -173,7 +187,12 @@ func (a *Client) GetPeerEntry(params *GetPeerEntryParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -191,13 +210,12 @@ func (a *Client) GetPeerEntry(params *GetPeerEntryParams, authInfo runtime.Clien
 
   Replaces a peer entry configuration by it's name in the specified peer section.
 */
-func (a *Client) ReplacePeerEntry(params *ReplacePeerEntryParams, authInfo runtime.ClientAuthInfoWriter) (*ReplacePeerEntryOK, *ReplacePeerEntryAccepted, error) {
+func (a *Client) ReplacePeerEntry(params *ReplacePeerEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplacePeerEntryOK, *ReplacePeerEntryAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplacePeerEntryParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replacePeerEntry",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/peer_entries/{name}",
@@ -209,7 +227,12 @@ func (a *Client) ReplacePeerEntry(params *ReplacePeerEntryParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}

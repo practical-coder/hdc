@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetHaproxyProcessInfoReader is a Reader for the GetHaproxyProcessInfo structure.
@@ -46,7 +46,7 @@ func NewGetHaproxyProcessInfoOK() *GetHaproxyProcessInfoOK {
 	return &GetHaproxyProcessInfoOK{}
 }
 
-/*GetHaproxyProcessInfoOK handles this case with default header values.
+/* GetHaproxyProcessInfoOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -57,7 +57,6 @@ type GetHaproxyProcessInfoOK struct {
 func (o *GetHaproxyProcessInfoOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/info][%d] getHaproxyProcessInfoOK  %+v", 200, o.Payload)
 }
-
 func (o *GetHaproxyProcessInfoOK) GetPayload() models.ProcessInfos {
 	return o.Payload
 }
@@ -79,14 +78,14 @@ func NewGetHaproxyProcessInfoDefault(code int) *GetHaproxyProcessInfoDefault {
 	}
 }
 
-/*GetHaproxyProcessInfoDefault handles this case with default header values.
+/* GetHaproxyProcessInfoDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetHaproxyProcessInfoDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -101,15 +100,18 @@ func (o *GetHaproxyProcessInfoDefault) Code() int {
 func (o *GetHaproxyProcessInfoDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/info][%d] getHaproxyProcessInfo default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetHaproxyProcessInfoDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetHaproxyProcessInfoDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

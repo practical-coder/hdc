@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetOneStorageGeneralFileParams creates a new GetOneStorageGeneralFileParams object
-// with the default values initialized.
+// NewGetOneStorageGeneralFileParams creates a new GetOneStorageGeneralFileParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetOneStorageGeneralFileParams() *GetOneStorageGeneralFileParams {
-	var ()
 	return &GetOneStorageGeneralFileParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetOneStorageGeneralFileParamsWithTimeout creates a new GetOneStorageGeneralFileParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetOneStorageGeneralFileParamsWithTimeout(timeout time.Duration) *GetOneStorageGeneralFileParams {
-	var ()
 	return &GetOneStorageGeneralFileParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetOneStorageGeneralFileParamsWithContext creates a new GetOneStorageGeneralFileParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetOneStorageGeneralFileParamsWithContext(ctx context.Context) *GetOneStorageGeneralFileParams {
-	var ()
 	return &GetOneStorageGeneralFileParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetOneStorageGeneralFileParamsWithHTTPClient creates a new GetOneStorageGeneralFileParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetOneStorageGeneralFileParamsWithHTTPClient(client *http.Client) *GetOneStorageGeneralFileParams {
-	var ()
 	return &GetOneStorageGeneralFileParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetOneStorageGeneralFileParams contains all the parameters to send to the API endpoint
-for the get one storage general file operation typically these are written to a http.Request
+/* GetOneStorageGeneralFileParams contains all the parameters to send to the API endpoint
+   for the get one storage general file operation.
+
+   Typically these are written to a http.Request.
 */
 type GetOneStorageGeneralFileParams struct {
 
-	/*Name
-	  General use file storage_name
+	/* Name.
 
+	   General use file storage_name
 	*/
 	Name string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get one storage general file params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetOneStorageGeneralFileParams) WithDefaults() *GetOneStorageGeneralFileParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get one storage general file params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetOneStorageGeneralFileParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get one storage general file params

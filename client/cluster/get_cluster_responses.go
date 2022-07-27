@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetClusterReader is a Reader for the GetCluster structure.
@@ -46,7 +46,7 @@ func NewGetClusterOK() *GetClusterOK {
 	return &GetClusterOK{}
 }
 
-/*GetClusterOK handles this case with default header values.
+/* GetClusterOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -57,7 +57,6 @@ type GetClusterOK struct {
 func (o *GetClusterOK) Error() string {
 	return fmt.Sprintf("[GET /cluster][%d] getClusterOK  %+v", 200, o.Payload)
 }
-
 func (o *GetClusterOK) GetPayload() *models.ClusterSettings {
 	return o.Payload
 }
@@ -81,14 +80,14 @@ func NewGetClusterDefault(code int) *GetClusterDefault {
 	}
 }
 
-/*GetClusterDefault handles this case with default header values.
+/* GetClusterDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetClusterDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -103,15 +102,18 @@ func (o *GetClusterDefault) Code() int {
 func (o *GetClusterDefault) Error() string {
 	return fmt.Sprintf("[GET /cluster][%d] getCluster default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetClusterDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetClusterDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

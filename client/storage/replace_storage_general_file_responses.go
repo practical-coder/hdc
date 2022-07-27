@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // ReplaceStorageGeneralFileReader is a Reader for the ReplaceStorageGeneralFile structure.
@@ -64,12 +64,13 @@ func NewReplaceStorageGeneralFileAccepted() *ReplaceStorageGeneralFileAccepted {
 	return &ReplaceStorageGeneralFileAccepted{}
 }
 
-/*ReplaceStorageGeneralFileAccepted handles this case with default header values.
+/* ReplaceStorageGeneralFileAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceStorageGeneralFileAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -80,8 +81,12 @@ func (o *ReplaceStorageGeneralFileAccepted) Error() string {
 
 func (o *ReplaceStorageGeneralFileAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	return nil
 }
@@ -91,7 +96,7 @@ func NewReplaceStorageGeneralFileNoContent() *ReplaceStorageGeneralFileNoContent
 	return &ReplaceStorageGeneralFileNoContent{}
 }
 
-/*ReplaceStorageGeneralFileNoContent handles this case with default header values.
+/* ReplaceStorageGeneralFileNoContent describes a response with status code 204, with default header values.
 
 General use file replaced
 */
@@ -112,12 +117,13 @@ func NewReplaceStorageGeneralFileBadRequest() *ReplaceStorageGeneralFileBadReque
 	return &ReplaceStorageGeneralFileBadRequest{}
 }
 
-/*ReplaceStorageGeneralFileBadRequest handles this case with default header values.
+/* ReplaceStorageGeneralFileBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type ReplaceStorageGeneralFileBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -127,15 +133,18 @@ type ReplaceStorageGeneralFileBadRequest struct {
 func (o *ReplaceStorageGeneralFileBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/general/{name}][%d] replaceStorageGeneralFileBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ReplaceStorageGeneralFileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceStorageGeneralFileBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -152,12 +161,13 @@ func NewReplaceStorageGeneralFileNotFound() *ReplaceStorageGeneralFileNotFound {
 	return &ReplaceStorageGeneralFileNotFound{}
 }
 
-/*ReplaceStorageGeneralFileNotFound handles this case with default header values.
+/* ReplaceStorageGeneralFileNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type ReplaceStorageGeneralFileNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -167,15 +177,18 @@ type ReplaceStorageGeneralFileNotFound struct {
 func (o *ReplaceStorageGeneralFileNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/general/{name}][%d] replaceStorageGeneralFileNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ReplaceStorageGeneralFileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceStorageGeneralFileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -194,14 +207,14 @@ func NewReplaceStorageGeneralFileDefault(code int) *ReplaceStorageGeneralFileDef
 	}
 }
 
-/*ReplaceStorageGeneralFileDefault handles this case with default header values.
+/* ReplaceStorageGeneralFileDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type ReplaceStorageGeneralFileDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -216,15 +229,18 @@ func (o *ReplaceStorageGeneralFileDefault) Code() int {
 func (o *ReplaceStorageGeneralFileDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/general/{name}][%d] replaceStorageGeneralFile default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *ReplaceStorageGeneralFileDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceStorageGeneralFileDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

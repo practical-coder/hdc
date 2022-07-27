@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetDeclareCapturesParams creates a new GetDeclareCapturesParams object
-// with the default values initialized.
+// NewGetDeclareCapturesParams creates a new GetDeclareCapturesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetDeclareCapturesParams() *GetDeclareCapturesParams {
-	var ()
 	return &GetDeclareCapturesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetDeclareCapturesParamsWithTimeout creates a new GetDeclareCapturesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetDeclareCapturesParamsWithTimeout(timeout time.Duration) *GetDeclareCapturesParams {
-	var ()
 	return &GetDeclareCapturesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetDeclareCapturesParamsWithContext creates a new GetDeclareCapturesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetDeclareCapturesParamsWithContext(ctx context.Context) *GetDeclareCapturesParams {
-	var ()
 	return &GetDeclareCapturesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetDeclareCapturesParamsWithHTTPClient creates a new GetDeclareCapturesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetDeclareCapturesParamsWithHTTPClient(client *http.Client) *GetDeclareCapturesParams {
-	var ()
 	return &GetDeclareCapturesParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetDeclareCapturesParams contains all the parameters to send to the API endpoint
-for the get declare captures operation typically these are written to a http.Request
+/* GetDeclareCapturesParams contains all the parameters to send to the API endpoint
+   for the get declare captures operation.
+
+   Typically these are written to a http.Request.
 */
 type GetDeclareCapturesParams struct {
 
-	/*Frontend
-	  Parent frontend name
+	/* Frontend.
 
+	   Parent frontend name
 	*/
 	Frontend string
-	/*TransactionID
-	  ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 
+	/* TransactionID.
+
+	   ID of the transaction where we want to add the operation. Cannot be used when version is specified.
 	*/
 	TransactionID *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get declare captures params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeclareCapturesParams) WithDefaults() *GetDeclareCapturesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get declare captures params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeclareCapturesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get declare captures params
@@ -143,6 +158,7 @@ func (o *GetDeclareCapturesParams) WriteToRequest(r runtime.ClientRequest, reg s
 	qrFrontend := o.Frontend
 	qFrontend := qrFrontend
 	if qFrontend != "" {
+
 		if err := r.SetQueryParam("frontend", qFrontend); err != nil {
 			return err
 		}
@@ -152,16 +168,17 @@ func (o *GetDeclareCapturesParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 		// query param transaction_id
 		var qrTransactionID string
+
 		if o.TransactionID != nil {
 			qrTransactionID = *o.TransactionID
 		}
 		qTransactionID := qrTransactionID
 		if qTransactionID != "" {
+
 			if err := r.SetQueryParam("transaction_id", qTransactionID); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // CreateUserReader is a Reader for the CreateUser structure.
@@ -64,7 +64,7 @@ func NewCreateUserCreated() *CreateUserCreated {
 	return &CreateUserCreated{}
 }
 
-/*CreateUserCreated handles this case with default header values.
+/* CreateUserCreated describes a response with status code 201, with default header values.
 
 User created
 */
@@ -75,7 +75,6 @@ type CreateUserCreated struct {
 func (o *CreateUserCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/users][%d] createUserCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateUserCreated) GetPayload() *models.User {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewCreateUserAccepted() *CreateUserAccepted {
 	return &CreateUserAccepted{}
 }
 
-/*CreateUserAccepted handles this case with default header values.
+/* CreateUserAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type CreateUserAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type CreateUserAccepted struct {
 func (o *CreateUserAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/users][%d] createUserAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateUserAccepted) GetPayload() *models.User {
 	return o.Payload
 }
 
 func (o *CreateUserAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.User)
 
@@ -137,12 +140,13 @@ func NewCreateUserBadRequest() *CreateUserBadRequest {
 	return &CreateUserBadRequest{}
 }
 
-/*CreateUserBadRequest handles this case with default header values.
+/* CreateUserBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type CreateUserBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type CreateUserBadRequest struct {
 func (o *CreateUserBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/users][%d] createUserBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateUserBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateUserBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewCreateUserConflict() *CreateUserConflict {
 	return &CreateUserConflict{}
 }
 
-/*CreateUserConflict handles this case with default header values.
+/* CreateUserConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
 type CreateUserConflict struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type CreateUserConflict struct {
 func (o *CreateUserConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/users][%d] createUserConflict  %+v", 409, o.Payload)
 }
-
 func (o *CreateUserConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateUserConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewCreateUserDefault(code int) *CreateUserDefault {
 	}
 }
 
-/*CreateUserDefault handles this case with default header values.
+/* CreateUserDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type CreateUserDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *CreateUserDefault) Code() int {
 func (o *CreateUserDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/users][%d] createUser default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *CreateUserDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateUserDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -17,6 +18,7 @@ import (
 // Backend Backend
 //
 // HAProxy backend configuration
+// Example: {"adv_check":"httpchk","balance":{"algorithm":"roundrobin"},"forwardfor":{"enabled":"enabled"},"httpchk_params":{"method":"GET","uri":"/check","version":"HTTP/1.1"},"mode":"http","name":"test_backend"}
 //
 // swagger:model backend
 type Backend struct {
@@ -46,6 +48,10 @@ type Backend struct {
 
 	// check timeout
 	CheckTimeout *int64 `json:"check_timeout,omitempty"`
+
+	// checkcache
+	// Enum: [enabled disabled]
+	Checkcache string `json:"checkcache,omitempty"`
 
 	// compression
 	Compression *Compression `json:"compression,omitempty"`
@@ -138,6 +144,10 @@ type Backend struct {
 	// Enum: [enabled disabled]
 	Httpclose string `json:"httpclose,omitempty"`
 
+	// independent streams
+	// Enum: [enabled disabled]
+	IndependentStreams string `json:"independent_streams,omitempty"`
+
 	// log health checks
 	// Enum: [enabled disabled]
 	LogHealthChecks string `json:"log_health_checks,omitempty"`
@@ -158,8 +168,24 @@ type Backend struct {
 	// Pattern: ^[A-Za-z0-9-_.:]+$
 	Name string `json:"name"`
 
+	// nolinger
+	// Enum: [enabled disabled]
+	Nolinger string `json:"nolinger,omitempty"`
+
+	// originalto
+	// Enum: [enabled disabled]
+	Originalto string `json:"originalto,omitempty"`
+
+	// persist
+	// Enum: [enabled disabled]
+	Persist string `json:"persist,omitempty"`
+
 	// pgsql check params
 	PgsqlCheckParams *PgsqlCheckParams `json:"pgsql_check_params,omitempty"`
+
+	// prefer last server
+	// Enum: [enabled disabled]
+	PreferLastServer string `json:"prefer_last_server,omitempty"`
 
 	// queue timeout
 	QueueTimeout *int64 `json:"queue_timeout,omitempty"`
@@ -176,9 +202,34 @@ type Backend struct {
 	// smtpchk params
 	SmtpchkParams *SmtpchkParams `json:"smtpchk_params,omitempty"`
 
+	// splice auto
+	// Enum: [enabled disabled]
+	SpliceAuto string `json:"splice_auto,omitempty"`
+
+	// splice request
+	// Enum: [enabled disabled]
+	SpliceRequest string `json:"splice_request,omitempty"`
+
+	// splice response
+	// Enum: [enabled disabled]
+	SpliceResponse string `json:"splice_response,omitempty"`
+
+	// spop check
+	// Enum: [enabled disabled]
+	SpopCheck string `json:"spop_check,omitempty"`
+
 	// srvtcpka
 	// Enum: [enabled disabled]
 	Srvtcpka string `json:"srvtcpka,omitempty"`
+
+	// srvtcpka cnt
+	SrvtcpkaCnt *int64 `json:"srvtcpka_cnt,omitempty"`
+
+	// srvtcpka idle
+	SrvtcpkaIdle *int64 `json:"srvtcpka_idle,omitempty"`
+
+	// srvtcpka intvl
+	SrvtcpkaIntvl *int64 `json:"srvtcpka_intvl,omitempty"`
 
 	// stats options
 	StatsOptions *StatsOptions `json:"stats_options,omitempty"`
@@ -186,9 +237,17 @@ type Backend struct {
 	// stick table
 	StickTable *ConfigStickTable `json:"stick_table,omitempty"`
 
+	// tcp smart connect
+	// Enum: [enabled disabled]
+	TCPSmartConnect string `json:"tcp_smart_connect,omitempty"`
+
 	// tcpka
 	// Enum: [enabled disabled]
 	Tcpka string `json:"tcpka,omitempty"`
+
+	// transparent
+	// Enum: [enabled disabled]
+	Transparent string `json:"transparent,omitempty"`
 
 	// tunnel timeout
 	TunnelTimeout *int64 `json:"tunnel_timeout,omitempty"`
@@ -219,6 +278,10 @@ func (m *Backend) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateBindProcess(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCheckcache(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -310,6 +373,10 @@ func (m *Backend) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateIndependentStreams(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateLogHealthChecks(formats); err != nil {
 		res = append(res, err)
 	}
@@ -330,7 +397,23 @@ func (m *Backend) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateNolinger(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOriginalto(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePersist(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validatePgsqlCheckParams(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePreferLastServer(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -339,6 +422,22 @@ func (m *Backend) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSmtpchkParams(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSpliceAuto(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSpliceRequest(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSpliceResponse(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSpopCheck(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -354,7 +453,15 @@ func (m *Backend) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateTCPSmartConnect(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTcpka(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTransparent(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -387,14 +494,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateAbortoncloseEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeAbortonclosePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeAbortonclosePropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateAbortonclose(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Abortonclose) { // not required
 		return nil
 	}
@@ -430,14 +536,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateAcceptInvalidHTTPResponseEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeAcceptInvalidHTTPResponsePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeAcceptInvalidHTTPResponsePropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateAcceptInvalidHTTPResponse(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AcceptInvalidHTTPResponse) { // not required
 		return nil
 	}
@@ -464,26 +569,26 @@ func init() {
 
 const (
 
-	// BackendAdvCheckSslHelloChk captures enum value "ssl-hello-chk"
-	BackendAdvCheckSslHelloChk string = "ssl-hello-chk"
+	// BackendAdvCheckSslDashHelloDashChk captures enum value "ssl-hello-chk"
+	BackendAdvCheckSslDashHelloDashChk string = "ssl-hello-chk"
 
 	// BackendAdvCheckSmtpchk captures enum value "smtpchk"
 	BackendAdvCheckSmtpchk string = "smtpchk"
 
-	// BackendAdvCheckLdapCheck captures enum value "ldap-check"
-	BackendAdvCheckLdapCheck string = "ldap-check"
+	// BackendAdvCheckLdapDashCheck captures enum value "ldap-check"
+	BackendAdvCheckLdapDashCheck string = "ldap-check"
 
-	// BackendAdvCheckMysqlCheck captures enum value "mysql-check"
-	BackendAdvCheckMysqlCheck string = "mysql-check"
+	// BackendAdvCheckMysqlDashCheck captures enum value "mysql-check"
+	BackendAdvCheckMysqlDashCheck string = "mysql-check"
 
-	// BackendAdvCheckPgsqlCheck captures enum value "pgsql-check"
-	BackendAdvCheckPgsqlCheck string = "pgsql-check"
+	// BackendAdvCheckPgsqlDashCheck captures enum value "pgsql-check"
+	BackendAdvCheckPgsqlDashCheck string = "pgsql-check"
 
-	// BackendAdvCheckTCPCheck captures enum value "tcp-check"
-	BackendAdvCheckTCPCheck string = "tcp-check"
+	// BackendAdvCheckTCPDashCheck captures enum value "tcp-check"
+	BackendAdvCheckTCPDashCheck string = "tcp-check"
 
-	// BackendAdvCheckRedisCheck captures enum value "redis-check"
-	BackendAdvCheckRedisCheck string = "redis-check"
+	// BackendAdvCheckRedisDashCheck captures enum value "redis-check"
+	BackendAdvCheckRedisDashCheck string = "redis-check"
 
 	// BackendAdvCheckHttpchk captures enum value "httpchk"
 	BackendAdvCheckHttpchk string = "httpchk"
@@ -491,14 +596,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateAdvCheckEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeAdvCheckPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeAdvCheckPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateAdvCheck(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AdvCheck) { // not required
 		return nil
 	}
@@ -534,14 +638,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateAllbackupsEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeAllbackupsPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeAllbackupsPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateAllbackups(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Allbackups) { // not required
 		return nil
 	}
@@ -555,7 +658,6 @@ func (m *Backend) validateAllbackups(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateBalance(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Balance) { // not required
 		return nil
 	}
@@ -564,6 +666,8 @@ func (m *Backend) validateBalance(formats strfmt.Registry) error {
 		if err := m.Balance.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("balance")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("balance")
 			}
 			return err
 		}
@@ -573,12 +677,53 @@ func (m *Backend) validateBalance(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateBindProcess(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.BindProcess) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("bind_process", "body", string(m.BindProcess), `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("bind_process", "body", m.BindProcess, `^[^\s]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var backendTypeCheckcachePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypeCheckcachePropEnum = append(backendTypeCheckcachePropEnum, v)
+	}
+}
+
+const (
+
+	// BackendCheckcacheEnabled captures enum value "enabled"
+	BackendCheckcacheEnabled string = "enabled"
+
+	// BackendCheckcacheDisabled captures enum value "disabled"
+	BackendCheckcacheDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validateCheckcacheEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, backendTypeCheckcachePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validateCheckcache(formats strfmt.Registry) error {
+	if swag.IsZero(m.Checkcache) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateCheckcacheEnum("checkcache", "body", m.Checkcache); err != nil {
 		return err
 	}
 
@@ -586,7 +731,6 @@ func (m *Backend) validateBindProcess(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateCompression(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Compression) { // not required
 		return nil
 	}
@@ -595,6 +739,8 @@ func (m *Backend) validateCompression(formats strfmt.Registry) error {
 		if err := m.Compression.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("compression")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("compression")
 			}
 			return err
 		}
@@ -604,7 +750,6 @@ func (m *Backend) validateCompression(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateCookie(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Cookie) { // not required
 		return nil
 	}
@@ -613,6 +758,8 @@ func (m *Backend) validateCookie(formats strfmt.Registry) error {
 		if err := m.Cookie.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("cookie")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("cookie")
 			}
 			return err
 		}
@@ -622,7 +769,6 @@ func (m *Backend) validateCookie(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateDefaultServer(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.DefaultServer) { // not required
 		return nil
 	}
@@ -631,6 +777,8 @@ func (m *Backend) validateDefaultServer(formats strfmt.Registry) error {
 		if err := m.DefaultServer.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("default_server")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_server")
 			}
 			return err
 		}
@@ -640,12 +788,11 @@ func (m *Backend) validateDefaultServer(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateDynamicCookieKey(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.DynamicCookieKey) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("dynamic_cookie_key", "body", string(m.DynamicCookieKey), `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("dynamic_cookie_key", "body", m.DynamicCookieKey, `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -675,14 +822,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateExternalCheckEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeExternalCheckPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeExternalCheckPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateExternalCheck(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ExternalCheck) { // not required
 		return nil
 	}
@@ -696,12 +842,11 @@ func (m *Backend) validateExternalCheck(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateExternalCheckCommand(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ExternalCheckCommand) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("external_check_command", "body", string(m.ExternalCheckCommand), `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("external_check_command", "body", m.ExternalCheckCommand, `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -709,12 +854,11 @@ func (m *Backend) validateExternalCheckCommand(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateExternalCheckPath(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ExternalCheckPath) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("external_check_path", "body", string(m.ExternalCheckPath), `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("external_check_path", "body", m.ExternalCheckPath, `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -722,7 +866,6 @@ func (m *Backend) validateExternalCheckPath(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateForwardfor(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Forwardfor) { // not required
 		return nil
 	}
@@ -731,6 +874,8 @@ func (m *Backend) validateForwardfor(formats strfmt.Registry) error {
 		if err := m.Forwardfor.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("forwardfor")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("forwardfor")
 			}
 			return err
 		}
@@ -762,14 +907,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateH1CaseAdjustBogusServerEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeH1CaseAdjustBogusServerPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeH1CaseAdjustBogusServerPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateH1CaseAdjustBogusServer(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.H1CaseAdjustBogusServer) { // not required
 		return nil
 	}
@@ -783,7 +927,6 @@ func (m *Backend) validateH1CaseAdjustBogusServer(formats strfmt.Registry) error
 }
 
 func (m *Backend) validateHashType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HashType) { // not required
 		return nil
 	}
@@ -792,6 +935,8 @@ func (m *Backend) validateHashType(formats strfmt.Registry) error {
 		if err := m.HashType.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("hash_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("hash_type")
 			}
 			return err
 		}
@@ -823,14 +968,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateHTTPBufferRequestEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeHTTPBufferRequestPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeHTTPBufferRequestPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateHTTPBufferRequest(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HTTPBufferRequest) { // not required
 		return nil
 	}
@@ -844,7 +988,6 @@ func (m *Backend) validateHTTPBufferRequest(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateHTTPCheck(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HTTPCheck) { // not required
 		return nil
 	}
@@ -853,6 +996,8 @@ func (m *Backend) validateHTTPCheck(formats strfmt.Registry) error {
 		if err := m.HTTPCheck.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("http-check")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("http-check")
 			}
 			return err
 		}
@@ -884,14 +1029,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateHTTPKeepAliveEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeHTTPKeepAlivePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeHTTPKeepAlivePropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateHTTPKeepAlive(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HTTPKeepAlive) { // not required
 		return nil
 	}
@@ -927,14 +1071,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateHTTPNoDelayEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeHTTPNoDelayPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeHTTPNoDelayPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateHTTPNoDelay(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HTTPNoDelay) { // not required
 		return nil
 	}
@@ -970,14 +1113,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateHTTPServerCloseEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeHTTPServerClosePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeHTTPServerClosePropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateHTTPServerClose(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HTTPServerClose) { // not required
 		return nil
 	}
@@ -1013,19 +1155,18 @@ const (
 
 // prop value enum
 func (m *Backend) validateHTTPUseHtxEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeHTTPUseHtxPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeHTTPUseHtxPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateHTTPUseHtx(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HTTPUseHtx) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("http-use-htx", "body", string(m.HTTPUseHtx), `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("http-use-htx", "body", m.HTTPUseHtx, `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -1054,23 +1195,22 @@ const (
 	// BackendHTTPConnectionModeHttpclose captures enum value "httpclose"
 	BackendHTTPConnectionModeHttpclose string = "httpclose"
 
-	// BackendHTTPConnectionModeHTTPServerClose captures enum value "http-server-close"
-	BackendHTTPConnectionModeHTTPServerClose string = "http-server-close"
+	// BackendHTTPConnectionModeHTTPDashServerDashClose captures enum value "http-server-close"
+	BackendHTTPConnectionModeHTTPDashServerDashClose string = "http-server-close"
 
-	// BackendHTTPConnectionModeHTTPKeepAlive captures enum value "http-keep-alive"
-	BackendHTTPConnectionModeHTTPKeepAlive string = "http-keep-alive"
+	// BackendHTTPConnectionModeHTTPDashKeepDashAlive captures enum value "http-keep-alive"
+	BackendHTTPConnectionModeHTTPDashKeepDashAlive string = "http-keep-alive"
 )
 
 // prop value enum
 func (m *Backend) validateHTTPConnectionModeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeHTTPConnectionModePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeHTTPConnectionModePropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateHTTPConnectionMode(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HTTPConnectionMode) { // not required
 		return nil
 	}
@@ -1106,14 +1246,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateHTTPPretendKeepaliveEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeHTTPPretendKeepalivePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeHTTPPretendKeepalivePropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateHTTPPretendKeepalive(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HTTPPretendKeepalive) { // not required
 		return nil
 	}
@@ -1149,14 +1288,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateHTTPProxyEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeHTTPProxyPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeHTTPProxyPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateHTTPProxy(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HTTPProxy) { // not required
 		return nil
 	}
@@ -1198,14 +1336,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateHTTPReuseEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeHTTPReusePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeHTTPReusePropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateHTTPReuse(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HTTPReuse) { // not required
 		return nil
 	}
@@ -1219,7 +1356,6 @@ func (m *Backend) validateHTTPReuse(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateHttpchkParams(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HttpchkParams) { // not required
 		return nil
 	}
@@ -1228,6 +1364,8 @@ func (m *Backend) validateHttpchkParams(formats strfmt.Registry) error {
 		if err := m.HttpchkParams.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("httpchk_params")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("httpchk_params")
 			}
 			return err
 		}
@@ -1259,20 +1397,61 @@ const (
 
 // prop value enum
 func (m *Backend) validateHttpcloseEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeHttpclosePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeHttpclosePropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateHttpclose(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Httpclose) { // not required
 		return nil
 	}
 
 	// value enum
 	if err := m.validateHttpcloseEnum("httpclose", "body", m.Httpclose); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var backendTypeIndependentStreamsPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypeIndependentStreamsPropEnum = append(backendTypeIndependentStreamsPropEnum, v)
+	}
+}
+
+const (
+
+	// BackendIndependentStreamsEnabled captures enum value "enabled"
+	BackendIndependentStreamsEnabled string = "enabled"
+
+	// BackendIndependentStreamsDisabled captures enum value "disabled"
+	BackendIndependentStreamsDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validateIndependentStreamsEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, backendTypeIndependentStreamsPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validateIndependentStreams(formats strfmt.Registry) error {
+	if swag.IsZero(m.IndependentStreams) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateIndependentStreamsEnum("independent_streams", "body", m.IndependentStreams); err != nil {
 		return err
 	}
 
@@ -1302,14 +1481,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateLogHealthChecksEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeLogHealthChecksPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeLogHealthChecksPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateLogHealthChecks(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LogHealthChecks) { // not required
 		return nil
 	}
@@ -1323,12 +1501,11 @@ func (m *Backend) validateLogHealthChecks(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateLogTag(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LogTag) { // not required
 		return nil
 	}
 
-	if err := validate.Pattern("log_tag", "body", string(m.LogTag), `^[^\s]+$`); err != nil {
+	if err := validate.Pattern("log_tag", "body", m.LogTag, `^[^\s]+$`); err != nil {
 		return err
 	}
 
@@ -1358,14 +1535,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateModeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeModePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeModePropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateMode(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Mode) { // not required
 		return nil
 	}
@@ -1379,7 +1555,6 @@ func (m *Backend) validateMode(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateMysqlCheckParams(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.MysqlCheckParams) { // not required
 		return nil
 	}
@@ -1388,6 +1563,8 @@ func (m *Backend) validateMysqlCheckParams(formats strfmt.Registry) error {
 		if err := m.MysqlCheckParams.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("mysql_check_params")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mysql_check_params")
 			}
 			return err
 		}
@@ -1398,11 +1575,137 @@ func (m *Backend) validateMysqlCheckParams(formats strfmt.Registry) error {
 
 func (m *Backend) validateName(formats strfmt.Registry) error {
 
-	if err := validate.RequiredString("name", "body", string(m.Name)); err != nil {
+	if err := validate.RequiredString("name", "body", m.Name); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("name", "body", string(m.Name), `^[A-Za-z0-9-_.:]+$`); err != nil {
+	if err := validate.Pattern("name", "body", m.Name, `^[A-Za-z0-9-_.:]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var backendTypeNolingerPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypeNolingerPropEnum = append(backendTypeNolingerPropEnum, v)
+	}
+}
+
+const (
+
+	// BackendNolingerEnabled captures enum value "enabled"
+	BackendNolingerEnabled string = "enabled"
+
+	// BackendNolingerDisabled captures enum value "disabled"
+	BackendNolingerDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validateNolingerEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, backendTypeNolingerPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validateNolinger(formats strfmt.Registry) error {
+	if swag.IsZero(m.Nolinger) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateNolingerEnum("nolinger", "body", m.Nolinger); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var backendTypeOriginaltoPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypeOriginaltoPropEnum = append(backendTypeOriginaltoPropEnum, v)
+	}
+}
+
+const (
+
+	// BackendOriginaltoEnabled captures enum value "enabled"
+	BackendOriginaltoEnabled string = "enabled"
+
+	// BackendOriginaltoDisabled captures enum value "disabled"
+	BackendOriginaltoDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validateOriginaltoEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, backendTypeOriginaltoPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validateOriginalto(formats strfmt.Registry) error {
+	if swag.IsZero(m.Originalto) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateOriginaltoEnum("originalto", "body", m.Originalto); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var backendTypePersistPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypePersistPropEnum = append(backendTypePersistPropEnum, v)
+	}
+}
+
+const (
+
+	// BackendPersistEnabled captures enum value "enabled"
+	BackendPersistEnabled string = "enabled"
+
+	// BackendPersistDisabled captures enum value "disabled"
+	BackendPersistDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validatePersistEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, backendTypePersistPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validatePersist(formats strfmt.Registry) error {
+	if swag.IsZero(m.Persist) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validatePersistEnum("persist", "body", m.Persist); err != nil {
 		return err
 	}
 
@@ -1410,7 +1713,6 @@ func (m *Backend) validateName(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validatePgsqlCheckParams(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.PgsqlCheckParams) { // not required
 		return nil
 	}
@@ -1419,6 +1721,8 @@ func (m *Backend) validatePgsqlCheckParams(formats strfmt.Registry) error {
 		if err := m.PgsqlCheckParams.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pgsql_check_params")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pgsql_check_params")
 			}
 			return err
 		}
@@ -1427,8 +1731,49 @@ func (m *Backend) validatePgsqlCheckParams(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Backend) validateRedispatch(formats strfmt.Registry) error {
+var backendTypePreferLastServerPropEnum []interface{}
 
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypePreferLastServerPropEnum = append(backendTypePreferLastServerPropEnum, v)
+	}
+}
+
+const (
+
+	// BackendPreferLastServerEnabled captures enum value "enabled"
+	BackendPreferLastServerEnabled string = "enabled"
+
+	// BackendPreferLastServerDisabled captures enum value "disabled"
+	BackendPreferLastServerDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validatePreferLastServerEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, backendTypePreferLastServerPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validatePreferLastServer(formats strfmt.Registry) error {
+	if swag.IsZero(m.PreferLastServer) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validatePreferLastServerEnum("prefer_last_server", "body", m.PreferLastServer); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Backend) validateRedispatch(formats strfmt.Registry) error {
 	if swag.IsZero(m.Redispatch) { // not required
 		return nil
 	}
@@ -1437,6 +1782,8 @@ func (m *Backend) validateRedispatch(formats strfmt.Registry) error {
 		if err := m.Redispatch.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("redispatch")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("redispatch")
 			}
 			return err
 		}
@@ -1446,7 +1793,6 @@ func (m *Backend) validateRedispatch(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateSmtpchkParams(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.SmtpchkParams) { // not required
 		return nil
 	}
@@ -1455,9 +1801,179 @@ func (m *Backend) validateSmtpchkParams(formats strfmt.Registry) error {
 		if err := m.SmtpchkParams.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("smtpchk_params")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("smtpchk_params")
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+var backendTypeSpliceAutoPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypeSpliceAutoPropEnum = append(backendTypeSpliceAutoPropEnum, v)
+	}
+}
+
+const (
+
+	// BackendSpliceAutoEnabled captures enum value "enabled"
+	BackendSpliceAutoEnabled string = "enabled"
+
+	// BackendSpliceAutoDisabled captures enum value "disabled"
+	BackendSpliceAutoDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validateSpliceAutoEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, backendTypeSpliceAutoPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validateSpliceAuto(formats strfmt.Registry) error {
+	if swag.IsZero(m.SpliceAuto) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateSpliceAutoEnum("splice_auto", "body", m.SpliceAuto); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var backendTypeSpliceRequestPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypeSpliceRequestPropEnum = append(backendTypeSpliceRequestPropEnum, v)
+	}
+}
+
+const (
+
+	// BackendSpliceRequestEnabled captures enum value "enabled"
+	BackendSpliceRequestEnabled string = "enabled"
+
+	// BackendSpliceRequestDisabled captures enum value "disabled"
+	BackendSpliceRequestDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validateSpliceRequestEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, backendTypeSpliceRequestPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validateSpliceRequest(formats strfmt.Registry) error {
+	if swag.IsZero(m.SpliceRequest) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateSpliceRequestEnum("splice_request", "body", m.SpliceRequest); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var backendTypeSpliceResponsePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypeSpliceResponsePropEnum = append(backendTypeSpliceResponsePropEnum, v)
+	}
+}
+
+const (
+
+	// BackendSpliceResponseEnabled captures enum value "enabled"
+	BackendSpliceResponseEnabled string = "enabled"
+
+	// BackendSpliceResponseDisabled captures enum value "disabled"
+	BackendSpliceResponseDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validateSpliceResponseEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, backendTypeSpliceResponsePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validateSpliceResponse(formats strfmt.Registry) error {
+	if swag.IsZero(m.SpliceResponse) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateSpliceResponseEnum("splice_response", "body", m.SpliceResponse); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var backendTypeSpopCheckPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypeSpopCheckPropEnum = append(backendTypeSpopCheckPropEnum, v)
+	}
+}
+
+const (
+
+	// BackendSpopCheckEnabled captures enum value "enabled"
+	BackendSpopCheckEnabled string = "enabled"
+
+	// BackendSpopCheckDisabled captures enum value "disabled"
+	BackendSpopCheckDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validateSpopCheckEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, backendTypeSpopCheckPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validateSpopCheck(formats strfmt.Registry) error {
+	if swag.IsZero(m.SpopCheck) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateSpopCheckEnum("spop_check", "body", m.SpopCheck); err != nil {
+		return err
 	}
 
 	return nil
@@ -1486,14 +2002,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateSrvtcpkaEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeSrvtcpkaPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeSrvtcpkaPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateSrvtcpka(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Srvtcpka) { // not required
 		return nil
 	}
@@ -1507,7 +2022,6 @@ func (m *Backend) validateSrvtcpka(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateStatsOptions(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.StatsOptions) { // not required
 		return nil
 	}
@@ -1516,6 +2030,8 @@ func (m *Backend) validateStatsOptions(formats strfmt.Registry) error {
 		if err := m.StatsOptions.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stats_options")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("stats_options")
 			}
 			return err
 		}
@@ -1525,7 +2041,6 @@ func (m *Backend) validateStatsOptions(formats strfmt.Registry) error {
 }
 
 func (m *Backend) validateStickTable(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.StickTable) { // not required
 		return nil
 	}
@@ -1534,9 +2049,53 @@ func (m *Backend) validateStickTable(formats strfmt.Registry) error {
 		if err := m.StickTable.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stick_table")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("stick_table")
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+var backendTypeTCPSmartConnectPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypeTCPSmartConnectPropEnum = append(backendTypeTCPSmartConnectPropEnum, v)
+	}
+}
+
+const (
+
+	// BackendTCPSmartConnectEnabled captures enum value "enabled"
+	BackendTCPSmartConnectEnabled string = "enabled"
+
+	// BackendTCPSmartConnectDisabled captures enum value "disabled"
+	BackendTCPSmartConnectDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validateTCPSmartConnectEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, backendTypeTCPSmartConnectPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validateTCPSmartConnect(formats strfmt.Registry) error {
+	if swag.IsZero(m.TCPSmartConnect) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateTCPSmartConnectEnum("tcp_smart_connect", "body", m.TCPSmartConnect); err != nil {
+		return err
 	}
 
 	return nil
@@ -1565,14 +2124,13 @@ const (
 
 // prop value enum
 func (m *Backend) validateTcpkaEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendTypeTcpkaPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendTypeTcpkaPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *Backend) validateTcpka(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tcpka) { // not required
 		return nil
 	}
@@ -1580,6 +2138,338 @@ func (m *Backend) validateTcpka(formats strfmt.Registry) error {
 	// value enum
 	if err := m.validateTcpkaEnum("tcpka", "body", m.Tcpka); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+var backendTypeTransparentPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		backendTypeTransparentPropEnum = append(backendTypeTransparentPropEnum, v)
+	}
+}
+
+const (
+
+	// BackendTransparentEnabled captures enum value "enabled"
+	BackendTransparentEnabled string = "enabled"
+
+	// BackendTransparentDisabled captures enum value "disabled"
+	BackendTransparentDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Backend) validateTransparentEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, backendTypeTransparentPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Backend) validateTransparent(formats strfmt.Registry) error {
+	if swag.IsZero(m.Transparent) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateTransparentEnum("transparent", "body", m.Transparent); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this backend based on the context it is used
+func (m *Backend) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateBalance(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCompression(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCookie(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDefaultServer(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateForwardfor(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateHashType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateHTTPCheck(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateHttpchkParams(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMysqlCheckParams(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePgsqlCheckParams(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRedispatch(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSmtpchkParams(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatsOptions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStickTable(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Backend) contextValidateBalance(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Balance != nil {
+		if err := m.Balance.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("balance")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("balance")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Backend) contextValidateCompression(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Compression != nil {
+		if err := m.Compression.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("compression")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("compression")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Backend) contextValidateCookie(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Cookie != nil {
+		if err := m.Cookie.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("cookie")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("cookie")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Backend) contextValidateDefaultServer(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DefaultServer != nil {
+		if err := m.DefaultServer.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("default_server")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_server")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Backend) contextValidateForwardfor(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Forwardfor != nil {
+		if err := m.Forwardfor.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("forwardfor")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("forwardfor")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Backend) contextValidateHashType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HashType != nil {
+		if err := m.HashType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("hash_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("hash_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Backend) contextValidateHTTPCheck(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HTTPCheck != nil {
+		if err := m.HTTPCheck.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("http-check")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("http-check")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Backend) contextValidateHttpchkParams(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HttpchkParams != nil {
+		if err := m.HttpchkParams.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("httpchk_params")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("httpchk_params")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Backend) contextValidateMysqlCheckParams(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MysqlCheckParams != nil {
+		if err := m.MysqlCheckParams.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("mysql_check_params")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mysql_check_params")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Backend) contextValidatePgsqlCheckParams(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.PgsqlCheckParams != nil {
+		if err := m.PgsqlCheckParams.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pgsql_check_params")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pgsql_check_params")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Backend) contextValidateRedispatch(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Redispatch != nil {
+		if err := m.Redispatch.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("redispatch")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("redispatch")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Backend) contextValidateSmtpchkParams(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SmtpchkParams != nil {
+		if err := m.SmtpchkParams.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("smtpchk_params")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("smtpchk_params")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Backend) contextValidateStatsOptions(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StatsOptions != nil {
+		if err := m.StatsOptions.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("stats_options")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("stats_options")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Backend) contextValidateStickTable(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StickTable != nil {
+		if err := m.StickTable.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("stick_table")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("stick_table")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -1672,14 +2562,13 @@ const (
 
 // prop value enum
 func (m *BackendHashType) validateFunctionEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendHashTypeTypeFunctionPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendHashTypeTypeFunctionPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *BackendHashType) validateFunction(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Function) { // not required
 		return nil
 	}
@@ -1706,8 +2595,8 @@ func init() {
 
 const (
 
-	// BackendHashTypeMethodMapBased captures enum value "map-based"
-	BackendHashTypeMethodMapBased string = "map-based"
+	// BackendHashTypeMethodMapDashBased captures enum value "map-based"
+	BackendHashTypeMethodMapDashBased string = "map-based"
 
 	// BackendHashTypeMethodConsistent captures enum value "consistent"
 	BackendHashTypeMethodConsistent string = "consistent"
@@ -1715,14 +2604,13 @@ const (
 
 // prop value enum
 func (m *BackendHashType) validateMethodEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendHashTypeTypeMethodPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendHashTypeTypeMethodPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *BackendHashType) validateMethod(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Method) { // not required
 		return nil
 	}
@@ -1755,14 +2643,13 @@ const (
 
 // prop value enum
 func (m *BackendHashType) validateModifierEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, backendHashTypeTypeModifierPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, backendHashTypeTypeModifierPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *BackendHashType) validateModifier(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Modifier) { // not required
 		return nil
 	}
@@ -1772,6 +2659,11 @@ func (m *BackendHashType) validateModifier(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this backend hash type based on context it is used
+func (m *BackendHashType) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

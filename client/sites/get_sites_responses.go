@@ -6,6 +6,7 @@ package sites
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -15,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetSitesReader is a Reader for the GetSites structure.
@@ -49,12 +50,13 @@ func NewGetSitesOK() *GetSitesOK {
 	return &GetSitesOK{}
 }
 
-/*GetSitesOK handles this case with default header values.
+/* GetSitesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
 type GetSitesOK struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -64,15 +66,18 @@ type GetSitesOK struct {
 func (o *GetSitesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/sites][%d] getSitesOK  %+v", 200, o.Payload)
 }
-
 func (o *GetSitesOK) GetPayload() *GetSitesOKBody {
 	return o.Payload
 }
 
 func (o *GetSitesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(GetSitesOKBody)
 
@@ -91,14 +96,14 @@ func NewGetSitesDefault(code int) *GetSitesDefault {
 	}
 }
 
-/*GetSitesDefault handles this case with default header values.
+/* GetSitesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetSitesDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -113,15 +118,18 @@ func (o *GetSitesDefault) Code() int {
 func (o *GetSitesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/sites][%d] getSites default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetSitesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetSitesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -169,6 +177,36 @@ func (o *GetSitesOKBody) validateData(formats strfmt.Registry) error {
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getSitesOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getSitesOK" + "." + "data")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get sites o k body based on the context it is used
+func (o *GetSitesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetSitesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := o.Data.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("getSitesOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getSitesOK" + "." + "data")
 		}
 		return err
 	}

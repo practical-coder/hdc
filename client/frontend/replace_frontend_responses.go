@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // ReplaceFrontendReader is a Reader for the ReplaceFrontend structure.
@@ -64,7 +64,7 @@ func NewReplaceFrontendOK() *ReplaceFrontendOK {
 	return &ReplaceFrontendOK{}
 }
 
-/*ReplaceFrontendOK handles this case with default header values.
+/* ReplaceFrontendOK describes a response with status code 200, with default header values.
 
 Frontend replaced
 */
@@ -75,7 +75,6 @@ type ReplaceFrontendOK struct {
 func (o *ReplaceFrontendOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/frontends/{name}][%d] replaceFrontendOK  %+v", 200, o.Payload)
 }
-
 func (o *ReplaceFrontendOK) GetPayload() *models.Frontend {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewReplaceFrontendAccepted() *ReplaceFrontendAccepted {
 	return &ReplaceFrontendAccepted{}
 }
 
-/*ReplaceFrontendAccepted handles this case with default header values.
+/* ReplaceFrontendAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceFrontendAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type ReplaceFrontendAccepted struct {
 func (o *ReplaceFrontendAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/frontends/{name}][%d] replaceFrontendAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ReplaceFrontendAccepted) GetPayload() *models.Frontend {
 	return o.Payload
 }
 
 func (o *ReplaceFrontendAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.Frontend)
 
@@ -137,12 +140,13 @@ func NewReplaceFrontendBadRequest() *ReplaceFrontendBadRequest {
 	return &ReplaceFrontendBadRequest{}
 }
 
-/*ReplaceFrontendBadRequest handles this case with default header values.
+/* ReplaceFrontendBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type ReplaceFrontendBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type ReplaceFrontendBadRequest struct {
 func (o *ReplaceFrontendBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/frontends/{name}][%d] replaceFrontendBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ReplaceFrontendBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceFrontendBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewReplaceFrontendNotFound() *ReplaceFrontendNotFound {
 	return &ReplaceFrontendNotFound{}
 }
 
-/*ReplaceFrontendNotFound handles this case with default header values.
+/* ReplaceFrontendNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type ReplaceFrontendNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type ReplaceFrontendNotFound struct {
 func (o *ReplaceFrontendNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/frontends/{name}][%d] replaceFrontendNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ReplaceFrontendNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceFrontendNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewReplaceFrontendDefault(code int) *ReplaceFrontendDefault {
 	}
 }
 
-/*ReplaceFrontendDefault handles this case with default header values.
+/* ReplaceFrontendDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type ReplaceFrontendDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *ReplaceFrontendDefault) Code() int {
 func (o *ReplaceFrontendDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/frontends/{name}][%d] replaceFrontend default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *ReplaceFrontendDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceFrontendDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // DeleteStorageGeneralFileReader is a Reader for the DeleteStorageGeneralFile structure.
@@ -52,7 +52,7 @@ func NewDeleteStorageGeneralFileNoContent() *DeleteStorageGeneralFileNoContent {
 	return &DeleteStorageGeneralFileNoContent{}
 }
 
-/*DeleteStorageGeneralFileNoContent handles this case with default header values.
+/* DeleteStorageGeneralFileNoContent describes a response with status code 204, with default header values.
 
 General use file deleted
 */
@@ -73,12 +73,13 @@ func NewDeleteStorageGeneralFileNotFound() *DeleteStorageGeneralFileNotFound {
 	return &DeleteStorageGeneralFileNotFound{}
 }
 
-/*DeleteStorageGeneralFileNotFound handles this case with default header values.
+/* DeleteStorageGeneralFileNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type DeleteStorageGeneralFileNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -88,15 +89,18 @@ type DeleteStorageGeneralFileNotFound struct {
 func (o *DeleteStorageGeneralFileNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/general/{name}][%d] deleteStorageGeneralFileNotFound  %+v", 404, o.Payload)
 }
-
 func (o *DeleteStorageGeneralFileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteStorageGeneralFileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -115,14 +119,14 @@ func NewDeleteStorageGeneralFileDefault(code int) *DeleteStorageGeneralFileDefau
 	}
 }
 
-/*DeleteStorageGeneralFileDefault handles this case with default header values.
+/* DeleteStorageGeneralFileDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type DeleteStorageGeneralFileDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -137,15 +141,18 @@ func (o *DeleteStorageGeneralFileDefault) Code() int {
 func (o *DeleteStorageGeneralFileDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/general/{name}][%d] deleteStorageGeneralFile default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteStorageGeneralFileDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteStorageGeneralFileDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

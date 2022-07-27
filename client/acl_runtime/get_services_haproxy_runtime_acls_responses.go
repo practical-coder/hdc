@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetServicesHaproxyRuntimeAclsReader is a Reader for the GetServicesHaproxyRuntimeAcls structure.
@@ -46,7 +46,7 @@ func NewGetServicesHaproxyRuntimeAclsOK() *GetServicesHaproxyRuntimeAclsOK {
 	return &GetServicesHaproxyRuntimeAclsOK{}
 }
 
-/*GetServicesHaproxyRuntimeAclsOK handles this case with default header values.
+/* GetServicesHaproxyRuntimeAclsOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -57,7 +57,6 @@ type GetServicesHaproxyRuntimeAclsOK struct {
 func (o *GetServicesHaproxyRuntimeAclsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acls][%d] getServicesHaproxyRuntimeAclsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetServicesHaproxyRuntimeAclsOK) GetPayload() models.ACLFiles {
 	return o.Payload
 }
@@ -79,14 +78,14 @@ func NewGetServicesHaproxyRuntimeAclsDefault(code int) *GetServicesHaproxyRuntim
 	}
 }
 
-/*GetServicesHaproxyRuntimeAclsDefault handles this case with default header values.
+/* GetServicesHaproxyRuntimeAclsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetServicesHaproxyRuntimeAclsDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -101,15 +100,18 @@ func (o *GetServicesHaproxyRuntimeAclsDefault) Code() int {
 func (o *GetServicesHaproxyRuntimeAclsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acls][%d] GetServicesHaproxyRuntimeAcls default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetServicesHaproxyRuntimeAclsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetServicesHaproxyRuntimeAclsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

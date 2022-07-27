@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetOneStorageGeneralFileReader is a Reader for the GetOneStorageGeneralFile structure.
@@ -51,11 +51,12 @@ func (o *GetOneStorageGeneralFileReader) ReadResponse(response runtime.ClientRes
 // NewGetOneStorageGeneralFileOK creates a GetOneStorageGeneralFileOK with default headers values
 func NewGetOneStorageGeneralFileOK(writer io.Writer) *GetOneStorageGeneralFileOK {
 	return &GetOneStorageGeneralFileOK{
+
 		Payload: writer,
 	}
 }
 
-/*GetOneStorageGeneralFileOK handles this case with default header values.
+/* GetOneStorageGeneralFileOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -66,7 +67,6 @@ type GetOneStorageGeneralFileOK struct {
 func (o *GetOneStorageGeneralFileOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/general/{name}][%d] getOneStorageGeneralFileOK  %+v", 200, o.Payload)
 }
-
 func (o *GetOneStorageGeneralFileOK) GetPayload() io.Writer {
 	return o.Payload
 }
@@ -86,12 +86,13 @@ func NewGetOneStorageGeneralFileNotFound() *GetOneStorageGeneralFileNotFound {
 	return &GetOneStorageGeneralFileNotFound{}
 }
 
-/*GetOneStorageGeneralFileNotFound handles this case with default header values.
+/* GetOneStorageGeneralFileNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type GetOneStorageGeneralFileNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -101,15 +102,18 @@ type GetOneStorageGeneralFileNotFound struct {
 func (o *GetOneStorageGeneralFileNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/general/{name}][%d] getOneStorageGeneralFileNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetOneStorageGeneralFileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetOneStorageGeneralFileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -128,14 +132,14 @@ func NewGetOneStorageGeneralFileDefault(code int) *GetOneStorageGeneralFileDefau
 	}
 }
 
-/*GetOneStorageGeneralFileDefault handles this case with default header values.
+/* GetOneStorageGeneralFileDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetOneStorageGeneralFileDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -150,15 +154,18 @@ func (o *GetOneStorageGeneralFileDefault) Code() int {
 func (o *GetOneStorageGeneralFileDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/general/{name}][%d] getOneStorageGeneralFile default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetOneStorageGeneralFileDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetOneStorageGeneralFileDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

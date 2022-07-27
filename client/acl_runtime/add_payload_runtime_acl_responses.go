@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // AddPayloadRuntimeACLReader is a Reader for the AddPayloadRuntimeACL structure.
@@ -52,7 +52,7 @@ func NewAddPayloadRuntimeACLCreated() *AddPayloadRuntimeACLCreated {
 	return &AddPayloadRuntimeACLCreated{}
 }
 
-/*AddPayloadRuntimeACLCreated handles this case with default header values.
+/* AddPayloadRuntimeACLCreated describes a response with status code 201, with default header values.
 
 ACL payload added
 */
@@ -63,7 +63,6 @@ type AddPayloadRuntimeACLCreated struct {
 func (o *AddPayloadRuntimeACLCreated) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/acl_file_entries][%d] addPayloadRuntimeAclCreated  %+v", 201, o.Payload)
 }
-
 func (o *AddPayloadRuntimeACLCreated) GetPayload() models.ACLFilesEntries {
 	return o.Payload
 }
@@ -83,12 +82,13 @@ func NewAddPayloadRuntimeACLBadRequest() *AddPayloadRuntimeACLBadRequest {
 	return &AddPayloadRuntimeACLBadRequest{}
 }
 
-/*AddPayloadRuntimeACLBadRequest handles this case with default header values.
+/* AddPayloadRuntimeACLBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type AddPayloadRuntimeACLBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -98,15 +98,18 @@ type AddPayloadRuntimeACLBadRequest struct {
 func (o *AddPayloadRuntimeACLBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/acl_file_entries][%d] addPayloadRuntimeAclBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *AddPayloadRuntimeACLBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *AddPayloadRuntimeACLBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -125,14 +128,14 @@ func NewAddPayloadRuntimeACLDefault(code int) *AddPayloadRuntimeACLDefault {
 	}
 }
 
-/*AddPayloadRuntimeACLDefault handles this case with default header values.
+/* AddPayloadRuntimeACLDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type AddPayloadRuntimeACLDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -147,15 +150,18 @@ func (o *AddPayloadRuntimeACLDefault) Code() int {
 func (o *AddPayloadRuntimeACLDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/acl_file_entries][%d] addPayloadRuntimeACL default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *AddPayloadRuntimeACLDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *AddPayloadRuntimeACLDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

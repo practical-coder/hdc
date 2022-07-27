@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // CreateGroupReader is a Reader for the CreateGroup structure.
@@ -64,7 +64,7 @@ func NewCreateGroupCreated() *CreateGroupCreated {
 	return &CreateGroupCreated{}
 }
 
-/*CreateGroupCreated handles this case with default header values.
+/* CreateGroupCreated describes a response with status code 201, with default header values.
 
 Group created
 */
@@ -75,7 +75,6 @@ type CreateGroupCreated struct {
 func (o *CreateGroupCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateGroupCreated) GetPayload() *models.Group {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewCreateGroupAccepted() *CreateGroupAccepted {
 	return &CreateGroupAccepted{}
 }
 
-/*CreateGroupAccepted handles this case with default header values.
+/* CreateGroupAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type CreateGroupAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type CreateGroupAccepted struct {
 func (o *CreateGroupAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateGroupAccepted) GetPayload() *models.Group {
 	return o.Payload
 }
 
 func (o *CreateGroupAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.Group)
 
@@ -137,12 +140,13 @@ func NewCreateGroupBadRequest() *CreateGroupBadRequest {
 	return &CreateGroupBadRequest{}
 }
 
-/*CreateGroupBadRequest handles this case with default header values.
+/* CreateGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type CreateGroupBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type CreateGroupBadRequest struct {
 func (o *CreateGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateGroupBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewCreateGroupConflict() *CreateGroupConflict {
 	return &CreateGroupConflict{}
 }
 
-/*CreateGroupConflict handles this case with default header values.
+/* CreateGroupConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
 type CreateGroupConflict struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type CreateGroupConflict struct {
 func (o *CreateGroupConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupConflict  %+v", 409, o.Payload)
 }
-
 func (o *CreateGroupConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateGroupConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewCreateGroupDefault(code int) *CreateGroupDefault {
 	}
 }
 
-/*CreateGroupDefault handles this case with default header values.
+/* CreateGroupDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type CreateGroupDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *CreateGroupDefault) Code() int {
 func (o *CreateGroupDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroup default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *CreateGroupDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateGroupDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

@@ -6,6 +6,7 @@ package server_switching_rule
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -15,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // GetServerSwitchingRulesReader is a Reader for the GetServerSwitchingRules structure.
@@ -49,12 +50,13 @@ func NewGetServerSwitchingRulesOK() *GetServerSwitchingRulesOK {
 	return &GetServerSwitchingRulesOK{}
 }
 
-/*GetServerSwitchingRulesOK handles this case with default header values.
+/* GetServerSwitchingRulesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
 type GetServerSwitchingRulesOK struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -64,15 +66,18 @@ type GetServerSwitchingRulesOK struct {
 func (o *GetServerSwitchingRulesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_switching_rules][%d] getServerSwitchingRulesOK  %+v", 200, o.Payload)
 }
-
 func (o *GetServerSwitchingRulesOK) GetPayload() *GetServerSwitchingRulesOKBody {
 	return o.Payload
 }
 
 func (o *GetServerSwitchingRulesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(GetServerSwitchingRulesOKBody)
 
@@ -91,14 +96,14 @@ func NewGetServerSwitchingRulesDefault(code int) *GetServerSwitchingRulesDefault
 	}
 }
 
-/*GetServerSwitchingRulesDefault handles this case with default header values.
+/* GetServerSwitchingRulesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type GetServerSwitchingRulesDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -113,15 +118,18 @@ func (o *GetServerSwitchingRulesDefault) Code() int {
 func (o *GetServerSwitchingRulesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_switching_rules][%d] getServerSwitchingRules default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetServerSwitchingRulesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *GetServerSwitchingRulesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -169,6 +177,36 @@ func (o *GetServerSwitchingRulesOKBody) validateData(formats strfmt.Registry) er
 	if err := o.Data.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("getServerSwitchingRulesOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getServerSwitchingRulesOK" + "." + "data")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get server switching rules o k body based on the context it is used
+func (o *GetServerSwitchingRulesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetServerSwitchingRulesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := o.Data.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("getServerSwitchingRulesOK" + "." + "data")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("getServerSwitchingRulesOK" + "." + "data")
 		}
 		return err
 	}

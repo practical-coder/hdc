@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // DeleteDeclareCaptureReader is a Reader for the DeleteDeclareCapture structure.
@@ -58,12 +58,13 @@ func NewDeleteDeclareCaptureAccepted() *DeleteDeclareCaptureAccepted {
 	return &DeleteDeclareCaptureAccepted{}
 }
 
-/*DeleteDeclareCaptureAccepted handles this case with default header values.
+/* DeleteDeclareCaptureAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type DeleteDeclareCaptureAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 }
@@ -74,8 +75,12 @@ func (o *DeleteDeclareCaptureAccepted) Error() string {
 
 func (o *DeleteDeclareCaptureAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	return nil
 }
@@ -85,7 +90,7 @@ func NewDeleteDeclareCaptureNoContent() *DeleteDeclareCaptureNoContent {
 	return &DeleteDeclareCaptureNoContent{}
 }
 
-/*DeleteDeclareCaptureNoContent handles this case with default header values.
+/* DeleteDeclareCaptureNoContent describes a response with status code 204, with default header values.
 
 Declare Capture deleted
 */
@@ -106,12 +111,13 @@ func NewDeleteDeclareCaptureNotFound() *DeleteDeclareCaptureNotFound {
 	return &DeleteDeclareCaptureNotFound{}
 }
 
-/*DeleteDeclareCaptureNotFound handles this case with default header values.
+/* DeleteDeclareCaptureNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type DeleteDeclareCaptureNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -121,15 +127,18 @@ type DeleteDeclareCaptureNotFound struct {
 func (o *DeleteDeclareCaptureNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/captures/{index}][%d] deleteDeclareCaptureNotFound  %+v", 404, o.Payload)
 }
-
 func (o *DeleteDeclareCaptureNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteDeclareCaptureNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -148,14 +157,14 @@ func NewDeleteDeclareCaptureDefault(code int) *DeleteDeclareCaptureDefault {
 	}
 }
 
-/*DeleteDeclareCaptureDefault handles this case with default header values.
+/* DeleteDeclareCaptureDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type DeleteDeclareCaptureDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -170,15 +179,18 @@ func (o *DeleteDeclareCaptureDefault) Code() int {
 func (o *DeleteDeclareCaptureDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/captures/{index}][%d] deleteDeclareCapture default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteDeclareCaptureDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteDeclareCaptureDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

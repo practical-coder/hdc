@@ -23,17 +23,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateGroup(params *CreateGroupParams, authInfo runtime.ClientAuthInfoWriter) (*CreateGroupCreated, *CreateGroupAccepted, error)
+	CreateGroup(params *CreateGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateGroupCreated, *CreateGroupAccepted, error)
 
-	DeleteGroup(params *DeleteGroupParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteGroupAccepted, *DeleteGroupNoContent, error)
+	DeleteGroup(params *DeleteGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteGroupAccepted, *DeleteGroupNoContent, error)
 
-	GetGroup(params *GetGroupParams, authInfo runtime.ClientAuthInfoWriter) (*GetGroupOK, error)
+	GetGroup(params *GetGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGroupOK, error)
 
-	GetGroups(params *GetGroupsParams, authInfo runtime.ClientAuthInfoWriter) (*GetGroupsOK, error)
+	GetGroups(params *GetGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGroupsOK, error)
 
-	ReplaceGroup(params *ReplaceGroupParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceGroupOK, *ReplaceGroupAccepted, error)
+	ReplaceGroup(params *ReplaceGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceGroupOK, *ReplaceGroupAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -41,13 +44,12 @@ type ClientService interface {
 /*
   CreateGroup adds a new userlist group
 */
-func (a *Client) CreateGroup(params *CreateGroupParams, authInfo runtime.ClientAuthInfoWriter) (*CreateGroupCreated, *CreateGroupAccepted, error) {
+func (a *Client) CreateGroup(params *CreateGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateGroupCreated, *CreateGroupAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateGroupParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createGroup",
 		Method:             "POST",
 		PathPattern:        "/services/haproxy/configuration/groups",
@@ -59,7 +61,12 @@ func (a *Client) CreateGroup(params *CreateGroupParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -77,13 +84,12 @@ func (a *Client) CreateGroup(params *CreateGroupParams, authInfo runtime.ClientA
 /*
   DeleteGroup deletes a group
 */
-func (a *Client) DeleteGroup(params *DeleteGroupParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteGroupAccepted, *DeleteGroupNoContent, error) {
+func (a *Client) DeleteGroup(params *DeleteGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteGroupAccepted, *DeleteGroupNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteGroupParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteGroup",
 		Method:             "DELETE",
 		PathPattern:        "/services/haproxy/configuration/groups/{name}",
@@ -95,7 +101,12 @@ func (a *Client) DeleteGroup(params *DeleteGroupParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -113,13 +124,12 @@ func (a *Client) DeleteGroup(params *DeleteGroupParams, authInfo runtime.ClientA
 /*
   GetGroup returns one userlist group
 */
-func (a *Client) GetGroup(params *GetGroupParams, authInfo runtime.ClientAuthInfoWriter) (*GetGroupOK, error) {
+func (a *Client) GetGroup(params *GetGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGroupParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getGroup",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/groups/{name}",
@@ -131,7 +141,12 @@ func (a *Client) GetGroup(params *GetGroupParams, authInfo runtime.ClientAuthInf
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -147,13 +162,12 @@ func (a *Client) GetGroup(params *GetGroupParams, authInfo runtime.ClientAuthInf
 /*
   GetGroups returns an array of userlist groups
 */
-func (a *Client) GetGroups(params *GetGroupsParams, authInfo runtime.ClientAuthInfoWriter) (*GetGroupsOK, error) {
+func (a *Client) GetGroups(params *GetGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGroupsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGroupsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getGroups",
 		Method:             "GET",
 		PathPattern:        "/services/haproxy/configuration/groups",
@@ -165,7 +179,12 @@ func (a *Client) GetGroups(params *GetGroupsParams, authInfo runtime.ClientAuthI
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -181,13 +200,12 @@ func (a *Client) GetGroups(params *GetGroupsParams, authInfo runtime.ClientAuthI
 /*
   ReplaceGroup replaces a group
 */
-func (a *Client) ReplaceGroup(params *ReplaceGroupParams, authInfo runtime.ClientAuthInfoWriter) (*ReplaceGroupOK, *ReplaceGroupAccepted, error) {
+func (a *Client) ReplaceGroup(params *ReplaceGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceGroupOK, *ReplaceGroupAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceGroupParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceGroup",
 		Method:             "PUT",
 		PathPattern:        "/services/haproxy/configuration/groups/{name}",
@@ -199,7 +217,12 @@ func (a *Client) ReplaceGroup(params *ReplaceGroupParams, authInfo runtime.Clien
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}

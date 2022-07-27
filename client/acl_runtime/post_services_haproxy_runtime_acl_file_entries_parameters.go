@@ -15,64 +15,79 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
-// NewPostServicesHaproxyRuntimeACLFileEntriesParams creates a new PostServicesHaproxyRuntimeACLFileEntriesParams object
-// with the default values initialized.
+// NewPostServicesHaproxyRuntimeACLFileEntriesParams creates a new PostServicesHaproxyRuntimeACLFileEntriesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostServicesHaproxyRuntimeACLFileEntriesParams() *PostServicesHaproxyRuntimeACLFileEntriesParams {
-	var ()
 	return &PostServicesHaproxyRuntimeACLFileEntriesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostServicesHaproxyRuntimeACLFileEntriesParamsWithTimeout creates a new PostServicesHaproxyRuntimeACLFileEntriesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostServicesHaproxyRuntimeACLFileEntriesParamsWithTimeout(timeout time.Duration) *PostServicesHaproxyRuntimeACLFileEntriesParams {
-	var ()
 	return &PostServicesHaproxyRuntimeACLFileEntriesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostServicesHaproxyRuntimeACLFileEntriesParamsWithContext creates a new PostServicesHaproxyRuntimeACLFileEntriesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostServicesHaproxyRuntimeACLFileEntriesParamsWithContext(ctx context.Context) *PostServicesHaproxyRuntimeACLFileEntriesParams {
-	var ()
 	return &PostServicesHaproxyRuntimeACLFileEntriesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostServicesHaproxyRuntimeACLFileEntriesParamsWithHTTPClient creates a new PostServicesHaproxyRuntimeACLFileEntriesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostServicesHaproxyRuntimeACLFileEntriesParamsWithHTTPClient(client *http.Client) *PostServicesHaproxyRuntimeACLFileEntriesParams {
-	var ()
 	return &PostServicesHaproxyRuntimeACLFileEntriesParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostServicesHaproxyRuntimeACLFileEntriesParams contains all the parameters to send to the API endpoint
-for the post services haproxy runtime ACL file entries operation typically these are written to a http.Request
+/* PostServicesHaproxyRuntimeACLFileEntriesParams contains all the parameters to send to the API endpoint
+   for the post services haproxy runtime ACL file entries operation.
+
+   Typically these are written to a http.Request.
 */
 type PostServicesHaproxyRuntimeACLFileEntriesParams struct {
 
-	/*ACLID
-	  ACL ID
+	/* ACLID.
 
+	   ACL ID
 	*/
 	ACLID string
-	/*Data*/
+
+	// Data.
 	Data *models.ACLFileEntry
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post services haproxy runtime ACL file entries params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostServicesHaproxyRuntimeACLFileEntriesParams) WithDefaults() *PostServicesHaproxyRuntimeACLFileEntriesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post services haproxy runtime ACL file entries params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostServicesHaproxyRuntimeACLFileEntriesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post services haproxy runtime ACL file entries params
@@ -142,11 +157,11 @@ func (o *PostServicesHaproxyRuntimeACLFileEntriesParams) WriteToRequest(r runtim
 	qrACLID := o.ACLID
 	qACLID := qrACLID
 	if qACLID != "" {
+
 		if err := r.SetQueryParam("acl_id", qACLID); err != nil {
 			return err
 		}
 	}
-
 	if o.Data != nil {
 		if err := r.SetBodyParam(o.Data); err != nil {
 			return err

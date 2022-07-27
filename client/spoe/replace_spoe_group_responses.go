@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // ReplaceSpoeGroupReader is a Reader for the ReplaceSpoeGroup structure.
@@ -58,7 +58,7 @@ func NewReplaceSpoeGroupOK() *ReplaceSpoeGroupOK {
 	return &ReplaceSpoeGroupOK{}
 }
 
-/*ReplaceSpoeGroupOK handles this case with default header values.
+/* ReplaceSpoeGroupOK describes a response with status code 200, with default header values.
 
 Spoe groups replaced
 */
@@ -69,7 +69,6 @@ type ReplaceSpoeGroupOK struct {
 func (o *ReplaceSpoeGroupOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_groups/{name}][%d] replaceSpoeGroupOK  %+v", 200, o.Payload)
 }
-
 func (o *ReplaceSpoeGroupOK) GetPayload() *models.SpoeGroup {
 	return o.Payload
 }
@@ -91,12 +90,13 @@ func NewReplaceSpoeGroupBadRequest() *ReplaceSpoeGroupBadRequest {
 	return &ReplaceSpoeGroupBadRequest{}
 }
 
-/*ReplaceSpoeGroupBadRequest handles this case with default header values.
+/* ReplaceSpoeGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type ReplaceSpoeGroupBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -106,15 +106,18 @@ type ReplaceSpoeGroupBadRequest struct {
 func (o *ReplaceSpoeGroupBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_groups/{name}][%d] replaceSpoeGroupBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ReplaceSpoeGroupBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceSpoeGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -131,12 +134,13 @@ func NewReplaceSpoeGroupNotFound() *ReplaceSpoeGroupNotFound {
 	return &ReplaceSpoeGroupNotFound{}
 }
 
-/*ReplaceSpoeGroupNotFound handles this case with default header values.
+/* ReplaceSpoeGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type ReplaceSpoeGroupNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -146,15 +150,18 @@ type ReplaceSpoeGroupNotFound struct {
 func (o *ReplaceSpoeGroupNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_groups/{name}][%d] replaceSpoeGroupNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ReplaceSpoeGroupNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceSpoeGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -173,14 +180,14 @@ func NewReplaceSpoeGroupDefault(code int) *ReplaceSpoeGroupDefault {
 	}
 }
 
-/*ReplaceSpoeGroupDefault handles this case with default header values.
+/* ReplaceSpoeGroupDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type ReplaceSpoeGroupDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -195,15 +202,18 @@ func (o *ReplaceSpoeGroupDefault) Code() int {
 func (o *ReplaceSpoeGroupDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_groups/{name}][%d] replaceSpoeGroup default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *ReplaceSpoeGroupDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceSpoeGroupDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

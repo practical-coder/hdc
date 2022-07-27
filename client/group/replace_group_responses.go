@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // ReplaceGroupReader is a Reader for the ReplaceGroup structure.
@@ -64,7 +64,7 @@ func NewReplaceGroupOK() *ReplaceGroupOK {
 	return &ReplaceGroupOK{}
 }
 
-/*ReplaceGroupOK handles this case with default header values.
+/* ReplaceGroupOK describes a response with status code 200, with default header values.
 
 Group replaced
 */
@@ -75,7 +75,6 @@ type ReplaceGroupOK struct {
 func (o *ReplaceGroupOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupOK  %+v", 200, o.Payload)
 }
-
 func (o *ReplaceGroupOK) GetPayload() *models.Group {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewReplaceGroupAccepted() *ReplaceGroupAccepted {
 	return &ReplaceGroupAccepted{}
 }
 
-/*ReplaceGroupAccepted handles this case with default header values.
+/* ReplaceGroupAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceGroupAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type ReplaceGroupAccepted struct {
 func (o *ReplaceGroupAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ReplaceGroupAccepted) GetPayload() *models.Group {
 	return o.Payload
 }
 
 func (o *ReplaceGroupAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.Group)
 
@@ -137,12 +140,13 @@ func NewReplaceGroupBadRequest() *ReplaceGroupBadRequest {
 	return &ReplaceGroupBadRequest{}
 }
 
-/*ReplaceGroupBadRequest handles this case with default header values.
+/* ReplaceGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type ReplaceGroupBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type ReplaceGroupBadRequest struct {
 func (o *ReplaceGroupBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ReplaceGroupBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewReplaceGroupNotFound() *ReplaceGroupNotFound {
 	return &ReplaceGroupNotFound{}
 }
 
-/*ReplaceGroupNotFound handles this case with default header values.
+/* ReplaceGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type ReplaceGroupNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type ReplaceGroupNotFound struct {
 func (o *ReplaceGroupNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ReplaceGroupNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewReplaceGroupDefault(code int) *ReplaceGroupDefault {
 	}
 }
 
-/*ReplaceGroupDefault handles this case with default header values.
+/* ReplaceGroupDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type ReplaceGroupDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *ReplaceGroupDefault) Code() int {
 func (o *ReplaceGroupDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroup default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *ReplaceGroupDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceGroupDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

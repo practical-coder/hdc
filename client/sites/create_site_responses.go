@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // CreateSiteReader is a Reader for the CreateSite structure.
@@ -64,7 +64,7 @@ func NewCreateSiteCreated() *CreateSiteCreated {
 	return &CreateSiteCreated{}
 }
 
-/*CreateSiteCreated handles this case with default header values.
+/* CreateSiteCreated describes a response with status code 201, with default header values.
 
 Site created
 */
@@ -75,7 +75,6 @@ type CreateSiteCreated struct {
 func (o *CreateSiteCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSiteCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateSiteCreated) GetPayload() *models.Site {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewCreateSiteAccepted() *CreateSiteAccepted {
 	return &CreateSiteAccepted{}
 }
 
-/*CreateSiteAccepted handles this case with default header values.
+/* CreateSiteAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type CreateSiteAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type CreateSiteAccepted struct {
 func (o *CreateSiteAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSiteAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateSiteAccepted) GetPayload() *models.Site {
 	return o.Payload
 }
 
 func (o *CreateSiteAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.Site)
 
@@ -137,12 +140,13 @@ func NewCreateSiteBadRequest() *CreateSiteBadRequest {
 	return &CreateSiteBadRequest{}
 }
 
-/*CreateSiteBadRequest handles this case with default header values.
+/* CreateSiteBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type CreateSiteBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type CreateSiteBadRequest struct {
 func (o *CreateSiteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSiteBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateSiteBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateSiteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewCreateSiteConflict() *CreateSiteConflict {
 	return &CreateSiteConflict{}
 }
 
-/*CreateSiteConflict handles this case with default header values.
+/* CreateSiteConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
 type CreateSiteConflict struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type CreateSiteConflict struct {
 func (o *CreateSiteConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSiteConflict  %+v", 409, o.Payload)
 }
-
 func (o *CreateSiteConflict) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateSiteConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewCreateSiteDefault(code int) *CreateSiteDefault {
 	}
 }
 
-/*CreateSiteDefault handles this case with default header values.
+/* CreateSiteDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type CreateSiteDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *CreateSiteDefault) Code() int {
 func (o *CreateSiteDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSite default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *CreateSiteDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *CreateSiteDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

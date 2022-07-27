@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // ReplaceTCPCheckReader is a Reader for the ReplaceTCPCheck structure.
@@ -64,7 +64,7 @@ func NewReplaceTCPCheckOK() *ReplaceTCPCheckOK {
 	return &ReplaceTCPCheckOK{}
 }
 
-/*ReplaceTCPCheckOK handles this case with default header values.
+/* ReplaceTCPCheckOK describes a response with status code 200, with default header values.
 
 TCP check replaced
 */
@@ -75,7 +75,6 @@ type ReplaceTCPCheckOK struct {
 func (o *ReplaceTCPCheckOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTcpCheckOK  %+v", 200, o.Payload)
 }
-
 func (o *ReplaceTCPCheckOK) GetPayload() *models.TCPCheck {
 	return o.Payload
 }
@@ -97,12 +96,13 @@ func NewReplaceTCPCheckAccepted() *ReplaceTCPCheckAccepted {
 	return &ReplaceTCPCheckAccepted{}
 }
 
-/*ReplaceTCPCheckAccepted handles this case with default header values.
+/* ReplaceTCPCheckAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
 type ReplaceTCPCheckAccepted struct {
-	/*ID of the requested reload
+
+	/* ID of the requested reload
 	 */
 	ReloadID string
 
@@ -112,15 +112,18 @@ type ReplaceTCPCheckAccepted struct {
 func (o *ReplaceTCPCheckAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTcpCheckAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ReplaceTCPCheckAccepted) GetPayload() *models.TCPCheck {
 	return o.Payload
 }
 
 func (o *ReplaceTCPCheckAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Reload-ID
-	o.ReloadID = response.GetHeader("Reload-ID")
+	// hydrates response header Reload-ID
+	hdrReloadID := response.GetHeader("Reload-ID")
+
+	if hdrReloadID != "" {
+		o.ReloadID = hdrReloadID
+	}
 
 	o.Payload = new(models.TCPCheck)
 
@@ -137,12 +140,13 @@ func NewReplaceTCPCheckBadRequest() *ReplaceTCPCheckBadRequest {
 	return &ReplaceTCPCheckBadRequest{}
 }
 
-/*ReplaceTCPCheckBadRequest handles this case with default header values.
+/* ReplaceTCPCheckBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
 type ReplaceTCPCheckBadRequest struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -152,15 +156,18 @@ type ReplaceTCPCheckBadRequest struct {
 func (o *ReplaceTCPCheckBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTcpCheckBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ReplaceTCPCheckBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceTCPCheckBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -177,12 +184,13 @@ func NewReplaceTCPCheckNotFound() *ReplaceTCPCheckNotFound {
 	return &ReplaceTCPCheckNotFound{}
 }
 
-/*ReplaceTCPCheckNotFound handles this case with default header values.
+/* ReplaceTCPCheckNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type ReplaceTCPCheckNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -192,15 +200,18 @@ type ReplaceTCPCheckNotFound struct {
 func (o *ReplaceTCPCheckNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTcpCheckNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ReplaceTCPCheckNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceTCPCheckNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -219,14 +230,14 @@ func NewReplaceTCPCheckDefault(code int) *ReplaceTCPCheckDefault {
 	}
 }
 
-/*ReplaceTCPCheckDefault handles this case with default header values.
+/* ReplaceTCPCheckDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type ReplaceTCPCheckDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -241,15 +252,18 @@ func (o *ReplaceTCPCheckDefault) Code() int {
 func (o *ReplaceTCPCheckDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTCPCheck default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *ReplaceTCPCheckDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ReplaceTCPCheckDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

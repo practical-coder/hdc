@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // ShowRuntimeMapReader is a Reader for the ShowRuntimeMap structure.
@@ -52,7 +52,7 @@ func NewShowRuntimeMapOK() *ShowRuntimeMapOK {
 	return &ShowRuntimeMapOK{}
 }
 
-/*ShowRuntimeMapOK handles this case with default header values.
+/* ShowRuntimeMapOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,7 +63,6 @@ type ShowRuntimeMapOK struct {
 func (o *ShowRuntimeMapOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps_entries][%d] showRuntimeMapOK  %+v", 200, o.Payload)
 }
-
 func (o *ShowRuntimeMapOK) GetPayload() models.MapEntries {
 	return o.Payload
 }
@@ -83,12 +82,13 @@ func NewShowRuntimeMapNotFound() *ShowRuntimeMapNotFound {
 	return &ShowRuntimeMapNotFound{}
 }
 
-/*ShowRuntimeMapNotFound handles this case with default header values.
+/* ShowRuntimeMapNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
 type ShowRuntimeMapNotFound struct {
-	/*Configuration file version
+
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -98,15 +98,18 @@ type ShowRuntimeMapNotFound struct {
 func (o *ShowRuntimeMapNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps_entries][%d] showRuntimeMapNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ShowRuntimeMapNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ShowRuntimeMapNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
@@ -125,14 +128,14 @@ func NewShowRuntimeMapDefault(code int) *ShowRuntimeMapDefault {
 	}
 }
 
-/*ShowRuntimeMapDefault handles this case with default header values.
+/* ShowRuntimeMapDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type ShowRuntimeMapDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -147,15 +150,18 @@ func (o *ShowRuntimeMapDefault) Code() int {
 func (o *ShowRuntimeMapDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps_entries][%d] showRuntimeMap default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *ShowRuntimeMapDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *ShowRuntimeMapDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v3/models"
+	"github.com/haproxytech/client-native/v4/models"
 )
 
 // DeleteClusterReader is a Reader for the DeleteCluster structure.
@@ -46,7 +46,7 @@ func NewDeleteClusterNoContent() *DeleteClusterNoContent {
 	return &DeleteClusterNoContent{}
 }
 
-/*DeleteClusterNoContent handles this case with default header values.
+/* DeleteClusterNoContent describes a response with status code 204, with default header values.
 
 Cluster settings deleted and node moved to single mode
 */
@@ -69,14 +69,14 @@ func NewDeleteClusterDefault(code int) *DeleteClusterDefault {
 	}
 }
 
-/*DeleteClusterDefault handles this case with default header values.
+/* DeleteClusterDefault describes a response with status code -1, with default header values.
 
 General Error
 */
 type DeleteClusterDefault struct {
 	_statusCode int
 
-	/*Configuration file version
+	/* Configuration file version
 	 */
 	ConfigurationVersion string
 
@@ -91,15 +91,18 @@ func (o *DeleteClusterDefault) Code() int {
 func (o *DeleteClusterDefault) Error() string {
 	return fmt.Sprintf("[DELETE /cluster][%d] deleteCluster default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteClusterDefault) GetPayload() *models.Error {
 	return o.Payload
 }
 
 func (o *DeleteClusterDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response header Configuration-Version
-	o.ConfigurationVersion = response.GetHeader("Configuration-Version")
+	// hydrates response header Configuration-Version
+	hdrConfigurationVersion := response.GetHeader("Configuration-Version")
+
+	if hdrConfigurationVersion != "" {
+		o.ConfigurationVersion = hdrConfigurationVersion
+	}
 
 	o.Payload = new(models.Error)
 
