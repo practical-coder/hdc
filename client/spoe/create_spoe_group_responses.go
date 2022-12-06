@@ -58,7 +58,8 @@ func NewCreateSpoeGroupCreated() *CreateSpoeGroupCreated {
 	return &CreateSpoeGroupCreated{}
 }
 
-/* CreateSpoeGroupCreated describes a response with status code 201, with default header values.
+/*
+CreateSpoeGroupCreated describes a response with status code 201, with default header values.
 
 Spoe groups created
 */
@@ -66,9 +67,39 @@ type CreateSpoeGroupCreated struct {
 	Payload *models.SpoeGroup
 }
 
+// IsSuccess returns true when this create spoe group created response has a 2xx status code
+func (o *CreateSpoeGroupCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create spoe group created response has a 3xx status code
+func (o *CreateSpoeGroupCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create spoe group created response has a 4xx status code
+func (o *CreateSpoeGroupCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create spoe group created response has a 5xx status code
+func (o *CreateSpoeGroupCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create spoe group created response a status code equal to that given
+func (o *CreateSpoeGroupCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateSpoeGroupCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_groups][%d] createSpoeGroupCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateSpoeGroupCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_groups][%d] createSpoeGroupCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateSpoeGroupCreated) GetPayload() *models.SpoeGroup {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewCreateSpoeGroupBadRequest() *CreateSpoeGroupBadRequest {
 	return &CreateSpoeGroupBadRequest{}
 }
 
-/* CreateSpoeGroupBadRequest describes a response with status code 400, with default header values.
+/*
+CreateSpoeGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -103,9 +135,39 @@ type CreateSpoeGroupBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create spoe group bad request response has a 2xx status code
+func (o *CreateSpoeGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create spoe group bad request response has a 3xx status code
+func (o *CreateSpoeGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create spoe group bad request response has a 4xx status code
+func (o *CreateSpoeGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create spoe group bad request response has a 5xx status code
+func (o *CreateSpoeGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create spoe group bad request response a status code equal to that given
+func (o *CreateSpoeGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateSpoeGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_groups][%d] createSpoeGroupBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateSpoeGroupBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_groups][%d] createSpoeGroupBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateSpoeGroupBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewCreateSpoeGroupConflict() *CreateSpoeGroupConflict {
 	return &CreateSpoeGroupConflict{}
 }
 
-/* CreateSpoeGroupConflict describes a response with status code 409, with default header values.
+/*
+CreateSpoeGroupConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -147,9 +210,39 @@ type CreateSpoeGroupConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create spoe group conflict response has a 2xx status code
+func (o *CreateSpoeGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create spoe group conflict response has a 3xx status code
+func (o *CreateSpoeGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create spoe group conflict response has a 4xx status code
+func (o *CreateSpoeGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create spoe group conflict response has a 5xx status code
+func (o *CreateSpoeGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create spoe group conflict response a status code equal to that given
+func (o *CreateSpoeGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateSpoeGroupConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_groups][%d] createSpoeGroupConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateSpoeGroupConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_groups][%d] createSpoeGroupConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateSpoeGroupConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewCreateSpoeGroupDefault(code int) *CreateSpoeGroupDefault {
 	}
 }
 
-/* CreateSpoeGroupDefault describes a response with status code -1, with default header values.
+/*
+CreateSpoeGroupDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *CreateSpoeGroupDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create spoe group default response has a 2xx status code
+func (o *CreateSpoeGroupDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create spoe group default response has a 3xx status code
+func (o *CreateSpoeGroupDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create spoe group default response has a 4xx status code
+func (o *CreateSpoeGroupDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create spoe group default response has a 5xx status code
+func (o *CreateSpoeGroupDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create spoe group default response a status code equal to that given
+func (o *CreateSpoeGroupDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateSpoeGroupDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_groups][%d] createSpoeGroup default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateSpoeGroupDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_groups][%d] createSpoeGroup default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateSpoeGroupDefault) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewGetPeerSectionParamsWithHTTPClient(client *http.Client) *GetPeerSectionP
 	}
 }
 
-/* GetPeerSectionParams contains all the parameters to send to the API endpoint
-   for the get peer section operation.
+/*
+GetPeerSectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get peer section operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPeerSectionParams struct {
 

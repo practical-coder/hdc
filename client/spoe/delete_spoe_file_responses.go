@@ -52,14 +52,44 @@ func NewDeleteSpoeFileNoContent() *DeleteSpoeFileNoContent {
 	return &DeleteSpoeFileNoContent{}
 }
 
-/* DeleteSpoeFileNoContent describes a response with status code 204, with default header values.
+/*
+DeleteSpoeFileNoContent describes a response with status code 204, with default header values.
 
 SPOE file deleted
 */
 type DeleteSpoeFileNoContent struct {
 }
 
+// IsSuccess returns true when this delete spoe file no content response has a 2xx status code
+func (o *DeleteSpoeFileNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete spoe file no content response has a 3xx status code
+func (o *DeleteSpoeFileNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete spoe file no content response has a 4xx status code
+func (o *DeleteSpoeFileNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete spoe file no content response has a 5xx status code
+func (o *DeleteSpoeFileNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete spoe file no content response a status code equal to that given
+func (o *DeleteSpoeFileNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteSpoeFileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_files/{name}][%d] deleteSpoeFileNoContent ", 204)
+}
+
+func (o *DeleteSpoeFileNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_files/{name}][%d] deleteSpoeFileNoContent ", 204)
 }
 
@@ -73,7 +103,8 @@ func NewDeleteSpoeFileNotFound() *DeleteSpoeFileNotFound {
 	return &DeleteSpoeFileNotFound{}
 }
 
-/* DeleteSpoeFileNotFound describes a response with status code 404, with default header values.
+/*
+DeleteSpoeFileNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -86,9 +117,39 @@ type DeleteSpoeFileNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete spoe file not found response has a 2xx status code
+func (o *DeleteSpoeFileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete spoe file not found response has a 3xx status code
+func (o *DeleteSpoeFileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete spoe file not found response has a 4xx status code
+func (o *DeleteSpoeFileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete spoe file not found response has a 5xx status code
+func (o *DeleteSpoeFileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete spoe file not found response a status code equal to that given
+func (o *DeleteSpoeFileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteSpoeFileNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_files/{name}][%d] deleteSpoeFileNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteSpoeFileNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_files/{name}][%d] deleteSpoeFileNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteSpoeFileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -119,7 +180,8 @@ func NewDeleteSpoeFileDefault(code int) *DeleteSpoeFileDefault {
 	}
 }
 
-/* DeleteSpoeFileDefault describes a response with status code -1, with default header values.
+/*
+DeleteSpoeFileDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -138,9 +200,39 @@ func (o *DeleteSpoeFileDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete spoe file default response has a 2xx status code
+func (o *DeleteSpoeFileDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete spoe file default response has a 3xx status code
+func (o *DeleteSpoeFileDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete spoe file default response has a 4xx status code
+func (o *DeleteSpoeFileDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete spoe file default response has a 5xx status code
+func (o *DeleteSpoeFileDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete spoe file default response a status code equal to that given
+func (o *DeleteSpoeFileDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteSpoeFileDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_files/{name}][%d] deleteSpoeFile default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteSpoeFileDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_files/{name}][%d] deleteSpoeFile default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteSpoeFileDefault) GetPayload() *models.Error {
 	return o.Payload
 }

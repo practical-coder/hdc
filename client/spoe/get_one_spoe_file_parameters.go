@@ -52,10 +52,12 @@ func NewGetOneSpoeFileParamsWithHTTPClient(client *http.Client) *GetOneSpoeFileP
 	}
 }
 
-/* GetOneSpoeFileParams contains all the parameters to send to the API endpoint
-   for the get one spoe file operation.
+/*
+GetOneSpoeFileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get one spoe file operation.
+
+	Typically these are written to a http.Request.
 */
 type GetOneSpoeFileParams struct {
 

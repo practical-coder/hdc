@@ -52,10 +52,12 @@ func NewGetRingParamsWithHTTPClient(client *http.Client) *GetRingParams {
 	}
 }
 
-/* GetRingParams contains all the parameters to send to the API endpoint
-   for the get ring operation.
+/*
+GetRingParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get ring operation.
+
+	Typically these are written to a http.Request.
 */
 type GetRingParams struct {
 

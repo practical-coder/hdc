@@ -55,10 +55,12 @@ func NewReplaceGroupParamsWithHTTPClient(client *http.Client) *ReplaceGroupParam
 	}
 }
 
-/* ReplaceGroupParams contains all the parameters to send to the API endpoint
-   for the replace group operation.
+/*
+ReplaceGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace group operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceGroupParams struct {
 

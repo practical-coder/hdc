@@ -53,10 +53,12 @@ func NewDeleteFrontendParamsWithHTTPClient(client *http.Client) *DeleteFrontendP
 	}
 }
 
-/* DeleteFrontendParams contains all the parameters to send to the API endpoint
-   for the delete frontend operation.
+/*
+DeleteFrontendParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete frontend operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteFrontendParams struct {
 

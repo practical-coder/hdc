@@ -55,10 +55,12 @@ func NewCreateBackendParamsWithHTTPClient(client *http.Client) *CreateBackendPar
 	}
 }
 
-/* CreateBackendParams contains all the parameters to send to the API endpoint
-   for the create backend operation.
+/*
+CreateBackendParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create backend operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateBackendParams struct {
 

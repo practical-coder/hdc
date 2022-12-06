@@ -53,10 +53,12 @@ func NewGetStickTablesParamsWithHTTPClient(client *http.Client) *GetStickTablesP
 	}
 }
 
-/* GetStickTablesParams contains all the parameters to send to the API endpoint
-   for the get stick tables operation.
+/*
+GetStickTablesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get stick tables operation.
+
+	Typically these are written to a http.Request.
 */
 type GetStickTablesParams struct {
 

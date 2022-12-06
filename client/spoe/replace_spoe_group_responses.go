@@ -58,7 +58,8 @@ func NewReplaceSpoeGroupOK() *ReplaceSpoeGroupOK {
 	return &ReplaceSpoeGroupOK{}
 }
 
-/* ReplaceSpoeGroupOK describes a response with status code 200, with default header values.
+/*
+ReplaceSpoeGroupOK describes a response with status code 200, with default header values.
 
 Spoe groups replaced
 */
@@ -66,9 +67,39 @@ type ReplaceSpoeGroupOK struct {
 	Payload *models.SpoeGroup
 }
 
+// IsSuccess returns true when this replace spoe group o k response has a 2xx status code
+func (o *ReplaceSpoeGroupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace spoe group o k response has a 3xx status code
+func (o *ReplaceSpoeGroupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace spoe group o k response has a 4xx status code
+func (o *ReplaceSpoeGroupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace spoe group o k response has a 5xx status code
+func (o *ReplaceSpoeGroupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace spoe group o k response a status code equal to that given
+func (o *ReplaceSpoeGroupOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceSpoeGroupOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_groups/{name}][%d] replaceSpoeGroupOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceSpoeGroupOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_groups/{name}][%d] replaceSpoeGroupOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceSpoeGroupOK) GetPayload() *models.SpoeGroup {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewReplaceSpoeGroupBadRequest() *ReplaceSpoeGroupBadRequest {
 	return &ReplaceSpoeGroupBadRequest{}
 }
 
-/* ReplaceSpoeGroupBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceSpoeGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -103,9 +135,39 @@ type ReplaceSpoeGroupBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace spoe group bad request response has a 2xx status code
+func (o *ReplaceSpoeGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace spoe group bad request response has a 3xx status code
+func (o *ReplaceSpoeGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace spoe group bad request response has a 4xx status code
+func (o *ReplaceSpoeGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace spoe group bad request response has a 5xx status code
+func (o *ReplaceSpoeGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace spoe group bad request response a status code equal to that given
+func (o *ReplaceSpoeGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceSpoeGroupBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_groups/{name}][%d] replaceSpoeGroupBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceSpoeGroupBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_groups/{name}][%d] replaceSpoeGroupBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceSpoeGroupBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewReplaceSpoeGroupNotFound() *ReplaceSpoeGroupNotFound {
 	return &ReplaceSpoeGroupNotFound{}
 }
 
-/* ReplaceSpoeGroupNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceSpoeGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -147,9 +210,39 @@ type ReplaceSpoeGroupNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace spoe group not found response has a 2xx status code
+func (o *ReplaceSpoeGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace spoe group not found response has a 3xx status code
+func (o *ReplaceSpoeGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace spoe group not found response has a 4xx status code
+func (o *ReplaceSpoeGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace spoe group not found response has a 5xx status code
+func (o *ReplaceSpoeGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace spoe group not found response a status code equal to that given
+func (o *ReplaceSpoeGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceSpoeGroupNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_groups/{name}][%d] replaceSpoeGroupNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceSpoeGroupNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_groups/{name}][%d] replaceSpoeGroupNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceSpoeGroupNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewReplaceSpoeGroupDefault(code int) *ReplaceSpoeGroupDefault {
 	}
 }
 
-/* ReplaceSpoeGroupDefault describes a response with status code -1, with default header values.
+/*
+ReplaceSpoeGroupDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *ReplaceSpoeGroupDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace spoe group default response has a 2xx status code
+func (o *ReplaceSpoeGroupDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace spoe group default response has a 3xx status code
+func (o *ReplaceSpoeGroupDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace spoe group default response has a 4xx status code
+func (o *ReplaceSpoeGroupDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace spoe group default response has a 5xx status code
+func (o *ReplaceSpoeGroupDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace spoe group default response a status code equal to that given
+func (o *ReplaceSpoeGroupDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceSpoeGroupDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_groups/{name}][%d] replaceSpoeGroup default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceSpoeGroupDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_groups/{name}][%d] replaceSpoeGroup default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceSpoeGroupDefault) GetPayload() *models.Error {
 	return o.Payload
 }

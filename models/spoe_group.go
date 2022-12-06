@@ -16,7 +16,7 @@ import (
 
 // SpoeGroup SPOE group
 //
-// SPOE group section configuration
+// # SPOE group section configuration
 //
 // swagger:model spoe_group
 type SpoeGroup struct {

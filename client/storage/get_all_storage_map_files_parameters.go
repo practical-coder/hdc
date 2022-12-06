@@ -52,10 +52,12 @@ func NewGetAllStorageMapFilesParamsWithHTTPClient(client *http.Client) *GetAllSt
 	}
 }
 
-/* GetAllStorageMapFilesParams contains all the parameters to send to the API endpoint
-   for the get all storage map files operation.
+/*
+GetAllStorageMapFilesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get all storage map files operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAllStorageMapFilesParams struct {
 	timeout    time.Duration

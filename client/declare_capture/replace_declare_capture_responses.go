@@ -64,7 +64,8 @@ func NewReplaceDeclareCaptureOK() *ReplaceDeclareCaptureOK {
 	return &ReplaceDeclareCaptureOK{}
 }
 
-/* ReplaceDeclareCaptureOK describes a response with status code 200, with default header values.
+/*
+ReplaceDeclareCaptureOK describes a response with status code 200, with default header values.
 
 Declare Capture replaced
 */
@@ -72,9 +73,39 @@ type ReplaceDeclareCaptureOK struct {
 	Payload *models.Capture
 }
 
+// IsSuccess returns true when this replace declare capture o k response has a 2xx status code
+func (o *ReplaceDeclareCaptureOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace declare capture o k response has a 3xx status code
+func (o *ReplaceDeclareCaptureOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace declare capture o k response has a 4xx status code
+func (o *ReplaceDeclareCaptureOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace declare capture o k response has a 5xx status code
+func (o *ReplaceDeclareCaptureOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace declare capture o k response a status code equal to that given
+func (o *ReplaceDeclareCaptureOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceDeclareCaptureOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceDeclareCaptureOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceDeclareCaptureOK) GetPayload() *models.Capture {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceDeclareCaptureAccepted() *ReplaceDeclareCaptureAccepted {
 	return &ReplaceDeclareCaptureAccepted{}
 }
 
-/* ReplaceDeclareCaptureAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceDeclareCaptureAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceDeclareCaptureAccepted struct {
 	Payload *models.Capture
 }
 
+// IsSuccess returns true when this replace declare capture accepted response has a 2xx status code
+func (o *ReplaceDeclareCaptureAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace declare capture accepted response has a 3xx status code
+func (o *ReplaceDeclareCaptureAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace declare capture accepted response has a 4xx status code
+func (o *ReplaceDeclareCaptureAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace declare capture accepted response has a 5xx status code
+func (o *ReplaceDeclareCaptureAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace declare capture accepted response a status code equal to that given
+func (o *ReplaceDeclareCaptureAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceDeclareCaptureAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceDeclareCaptureAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceDeclareCaptureAccepted) GetPayload() *models.Capture {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceDeclareCaptureBadRequest() *ReplaceDeclareCaptureBadRequest {
 	return &ReplaceDeclareCaptureBadRequest{}
 }
 
-/* ReplaceDeclareCaptureBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceDeclareCaptureBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceDeclareCaptureBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace declare capture bad request response has a 2xx status code
+func (o *ReplaceDeclareCaptureBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace declare capture bad request response has a 3xx status code
+func (o *ReplaceDeclareCaptureBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace declare capture bad request response has a 4xx status code
+func (o *ReplaceDeclareCaptureBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace declare capture bad request response has a 5xx status code
+func (o *ReplaceDeclareCaptureBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace declare capture bad request response a status code equal to that given
+func (o *ReplaceDeclareCaptureBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceDeclareCaptureBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceDeclareCaptureBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceDeclareCaptureBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceDeclareCaptureNotFound() *ReplaceDeclareCaptureNotFound {
 	return &ReplaceDeclareCaptureNotFound{}
 }
 
-/* ReplaceDeclareCaptureNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceDeclareCaptureNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceDeclareCaptureNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace declare capture not found response has a 2xx status code
+func (o *ReplaceDeclareCaptureNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace declare capture not found response has a 3xx status code
+func (o *ReplaceDeclareCaptureNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace declare capture not found response has a 4xx status code
+func (o *ReplaceDeclareCaptureNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace declare capture not found response has a 5xx status code
+func (o *ReplaceDeclareCaptureNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace declare capture not found response a status code equal to that given
+func (o *ReplaceDeclareCaptureNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceDeclareCaptureNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceDeclareCaptureNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceDeclareCaptureNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceDeclareCaptureDefault(code int) *ReplaceDeclareCaptureDefault {
 	}
 }
 
-/* ReplaceDeclareCaptureDefault describes a response with status code -1, with default header values.
+/*
+ReplaceDeclareCaptureDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceDeclareCaptureDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace declare capture default response has a 2xx status code
+func (o *ReplaceDeclareCaptureDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace declare capture default response has a 3xx status code
+func (o *ReplaceDeclareCaptureDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace declare capture default response has a 4xx status code
+func (o *ReplaceDeclareCaptureDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace declare capture default response has a 5xx status code
+func (o *ReplaceDeclareCaptureDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace declare capture default response a status code equal to that given
+func (o *ReplaceDeclareCaptureDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceDeclareCaptureDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCapture default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceDeclareCaptureDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCapture default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceDeclareCaptureDefault) GetPayload() *models.Error {
 	return o.Payload
 }

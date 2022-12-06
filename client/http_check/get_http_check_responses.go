@@ -55,7 +55,8 @@ func NewGetHTTPCheckOK() *GetHTTPCheckOK {
 	return &GetHTTPCheckOK{}
 }
 
-/* GetHTTPCheckOK describes a response with status code 200, with default header values.
+/*
+GetHTTPCheckOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetHTTPCheckOK struct {
 	Payload *GetHTTPCheckOKBody
 }
 
+// IsSuccess returns true when this get Http check o k response has a 2xx status code
+func (o *GetHTTPCheckOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get Http check o k response has a 3xx status code
+func (o *GetHTTPCheckOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get Http check o k response has a 4xx status code
+func (o *GetHTTPCheckOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get Http check o k response has a 5xx status code
+func (o *GetHTTPCheckOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get Http check o k response a status code equal to that given
+func (o *GetHTTPCheckOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetHTTPCheckOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_checks/{index}][%d] getHttpCheckOK  %+v", 200, o.Payload)
 }
+
+func (o *GetHTTPCheckOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/http_checks/{index}][%d] getHttpCheckOK  %+v", 200, o.Payload)
+}
+
 func (o *GetHTTPCheckOK) GetPayload() *GetHTTPCheckOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetHTTPCheckNotFound() *GetHTTPCheckNotFound {
 	return &GetHTTPCheckNotFound{}
 }
 
-/* GetHTTPCheckNotFound describes a response with status code 404, with default header values.
+/*
+GetHTTPCheckNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -112,9 +144,39 @@ type GetHTTPCheckNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get Http check not found response has a 2xx status code
+func (o *GetHTTPCheckNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get Http check not found response has a 3xx status code
+func (o *GetHTTPCheckNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get Http check not found response has a 4xx status code
+func (o *GetHTTPCheckNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get Http check not found response has a 5xx status code
+func (o *GetHTTPCheckNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get Http check not found response a status code equal to that given
+func (o *GetHTTPCheckNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetHTTPCheckNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_checks/{index}][%d] getHttpCheckNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetHTTPCheckNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/http_checks/{index}][%d] getHttpCheckNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetHTTPCheckNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetHTTPCheckDefault(code int) *GetHTTPCheckDefault {
 	}
 }
 
-/* GetHTTPCheckDefault describes a response with status code -1, with default header values.
+/*
+GetHTTPCheckDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetHTTPCheckDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get HTTP check default response has a 2xx status code
+func (o *GetHTTPCheckDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get HTTP check default response has a 3xx status code
+func (o *GetHTTPCheckDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get HTTP check default response has a 4xx status code
+func (o *GetHTTPCheckDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get HTTP check default response has a 5xx status code
+func (o *GetHTTPCheckDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get HTTP check default response a status code equal to that given
+func (o *GetHTTPCheckDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetHTTPCheckDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_checks/{index}][%d] getHTTPCheck default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetHTTPCheckDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/http_checks/{index}][%d] getHTTPCheck default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetHTTPCheckDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetHTTPCheckDefault) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-/*GetHTTPCheckOKBody get HTTP check o k body
+/*
+GetHTTPCheckOKBody get HTTP check o k body
 swagger:model GetHTTPCheckOKBody
 */
 type GetHTTPCheckOKBody struct {

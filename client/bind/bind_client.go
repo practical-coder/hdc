@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateBind adds a new bind
+CreateBind adds a new bind
 
-  Adds a new bind in the specified frontend in the configuration file.
+Adds a new bind in the specified frontend in the configuration file.
 */
 func (a *Client) CreateBind(params *CreateBindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateBindCreated, *CreateBindAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateBind(params *CreateBindParams, authInfo runtime.ClientAut
 }
 
 /*
-  DeleteBind deletes a bind
+DeleteBind deletes a bind
 
-  Deletes a bind configuration by it's name in the specified frontend.
+Deletes a bind configuration by it's name in the specified frontend.
 */
 func (a *Client) DeleteBind(params *DeleteBindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteBindAccepted, *DeleteBindNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteBind(params *DeleteBindParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetBind returns one bind
+GetBind returns one bind
 
-  Returns one bind configuration by it's name in the specified frontend.
+Returns one bind configuration by it's name in the specified frontend.
 */
 func (a *Client) GetBind(params *GetBindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBindOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetBind(params *GetBindParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  GetBinds returns an array of binds
+GetBinds returns an array of binds
 
-  Returns an array of all binds that are configured in specified frontend.
+Returns an array of all binds that are configured in specified frontend.
 */
 func (a *Client) GetBinds(params *GetBindsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBindsOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetBinds(params *GetBindsParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  ReplaceBind replaces a bind
+ReplaceBind replaces a bind
 
-  Replaces a bind configuration by it's name in the specified frontend.
+Replaces a bind configuration by it's name in the specified frontend.
 */
 func (a *Client) ReplaceBind(params *ReplaceBindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceBindOK, *ReplaceBindAccepted, error) {
 	// TODO: Validate the params before sending

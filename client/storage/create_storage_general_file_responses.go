@@ -58,7 +58,8 @@ func NewCreateStorageGeneralFileCreated() *CreateStorageGeneralFileCreated {
 	return &CreateStorageGeneralFileCreated{}
 }
 
-/* CreateStorageGeneralFileCreated describes a response with status code 201, with default header values.
+/*
+CreateStorageGeneralFileCreated describes a response with status code 201, with default header values.
 
 General use file created with its contents
 */
@@ -66,9 +67,39 @@ type CreateStorageGeneralFileCreated struct {
 	Payload *models.GeneralFile
 }
 
+// IsSuccess returns true when this create storage general file created response has a 2xx status code
+func (o *CreateStorageGeneralFileCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create storage general file created response has a 3xx status code
+func (o *CreateStorageGeneralFileCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create storage general file created response has a 4xx status code
+func (o *CreateStorageGeneralFileCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create storage general file created response has a 5xx status code
+func (o *CreateStorageGeneralFileCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create storage general file created response a status code equal to that given
+func (o *CreateStorageGeneralFileCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateStorageGeneralFileCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/general][%d] createStorageGeneralFileCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateStorageGeneralFileCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/storage/general][%d] createStorageGeneralFileCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateStorageGeneralFileCreated) GetPayload() *models.GeneralFile {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewCreateStorageGeneralFileBadRequest() *CreateStorageGeneralFileBadRequest
 	return &CreateStorageGeneralFileBadRequest{}
 }
 
-/* CreateStorageGeneralFileBadRequest describes a response with status code 400, with default header values.
+/*
+CreateStorageGeneralFileBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -103,9 +135,39 @@ type CreateStorageGeneralFileBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create storage general file bad request response has a 2xx status code
+func (o *CreateStorageGeneralFileBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create storage general file bad request response has a 3xx status code
+func (o *CreateStorageGeneralFileBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create storage general file bad request response has a 4xx status code
+func (o *CreateStorageGeneralFileBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create storage general file bad request response has a 5xx status code
+func (o *CreateStorageGeneralFileBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create storage general file bad request response a status code equal to that given
+func (o *CreateStorageGeneralFileBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateStorageGeneralFileBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/general][%d] createStorageGeneralFileBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateStorageGeneralFileBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/storage/general][%d] createStorageGeneralFileBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateStorageGeneralFileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewCreateStorageGeneralFileConflict() *CreateStorageGeneralFileConflict {
 	return &CreateStorageGeneralFileConflict{}
 }
 
-/* CreateStorageGeneralFileConflict describes a response with status code 409, with default header values.
+/*
+CreateStorageGeneralFileConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -147,9 +210,39 @@ type CreateStorageGeneralFileConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create storage general file conflict response has a 2xx status code
+func (o *CreateStorageGeneralFileConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create storage general file conflict response has a 3xx status code
+func (o *CreateStorageGeneralFileConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create storage general file conflict response has a 4xx status code
+func (o *CreateStorageGeneralFileConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create storage general file conflict response has a 5xx status code
+func (o *CreateStorageGeneralFileConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create storage general file conflict response a status code equal to that given
+func (o *CreateStorageGeneralFileConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateStorageGeneralFileConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/general][%d] createStorageGeneralFileConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateStorageGeneralFileConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/storage/general][%d] createStorageGeneralFileConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateStorageGeneralFileConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewCreateStorageGeneralFileDefault(code int) *CreateStorageGeneralFileDefau
 	}
 }
 
-/* CreateStorageGeneralFileDefault describes a response with status code -1, with default header values.
+/*
+CreateStorageGeneralFileDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *CreateStorageGeneralFileDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create storage general file default response has a 2xx status code
+func (o *CreateStorageGeneralFileDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create storage general file default response has a 3xx status code
+func (o *CreateStorageGeneralFileDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create storage general file default response has a 4xx status code
+func (o *CreateStorageGeneralFileDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create storage general file default response has a 5xx status code
+func (o *CreateStorageGeneralFileDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create storage general file default response a status code equal to that given
+func (o *CreateStorageGeneralFileDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateStorageGeneralFileDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/general][%d] createStorageGeneralFile default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateStorageGeneralFileDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/storage/general][%d] createStorageGeneralFile default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateStorageGeneralFileDefault) GetPayload() *models.Error {
 	return o.Payload
 }

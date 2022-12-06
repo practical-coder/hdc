@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateSite adds a site
+CreateSite adds a site
 
-  Adds a new site to the configuration file.
+Adds a new site to the configuration file.
 */
 func (a *Client) CreateSite(params *CreateSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSiteCreated, *CreateSiteAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateSite(params *CreateSiteParams, authInfo runtime.ClientAut
 }
 
 /*
-  DeleteSite deletes a site
+DeleteSite deletes a site
 
-  Deletes a site from the configuration by it's name.
+Deletes a site from the configuration by it's name.
 */
 func (a *Client) DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSiteAccepted, *DeleteSiteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteSite(params *DeleteSiteParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetSite returns a site
+GetSite returns a site
 
-  Returns one site configuration by it's name.
+Returns one site configuration by it's name.
 */
 func (a *Client) GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSiteOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetSite(params *GetSiteParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  GetSites returns an array of sites
+GetSites returns an array of sites
 
-  Returns an array of all configured sites.
+Returns an array of all configured sites.
 */
 func (a *Client) GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSitesOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetSites(params *GetSitesParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  ReplaceSite replaces a site
+ReplaceSite replaces a site
 
-  Replaces a site configuration by it's name.
+Replaces a site configuration by it's name.
 */
 func (a *Client) ReplaceSite(params *ReplaceSiteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceSiteOK, *ReplaceSiteAccepted, error) {
 	// TODO: Validate the params before sending

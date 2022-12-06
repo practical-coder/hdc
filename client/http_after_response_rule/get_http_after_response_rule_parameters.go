@@ -53,10 +53,12 @@ func NewGetHTTPAfterResponseRuleParamsWithHTTPClient(client *http.Client) *GetHT
 	}
 }
 
-/* GetHTTPAfterResponseRuleParams contains all the parameters to send to the API endpoint
-   for the get HTTP after response rule operation.
+/*
+GetHTTPAfterResponseRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get HTTP after response rule operation.
+
+	Typically these are written to a http.Request.
 */
 type GetHTTPAfterResponseRuleParams struct {
 

@@ -58,7 +58,8 @@ func NewDeleteFilterAccepted() *DeleteFilterAccepted {
 	return &DeleteFilterAccepted{}
 }
 
-/* DeleteFilterAccepted describes a response with status code 202, with default header values.
+/*
+DeleteFilterAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteFilterAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete filter accepted response has a 2xx status code
+func (o *DeleteFilterAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete filter accepted response has a 3xx status code
+func (o *DeleteFilterAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete filter accepted response has a 4xx status code
+func (o *DeleteFilterAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete filter accepted response has a 5xx status code
+func (o *DeleteFilterAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete filter accepted response a status code equal to that given
+func (o *DeleteFilterAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteFilterAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/filters/{index}][%d] deleteFilterAccepted ", 202)
+}
+
+func (o *DeleteFilterAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/filters/{index}][%d] deleteFilterAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteFilterNoContent() *DeleteFilterNoContent {
 	return &DeleteFilterNoContent{}
 }
 
-/* DeleteFilterNoContent describes a response with status code 204, with default header values.
+/*
+DeleteFilterNoContent describes a response with status code 204, with default header values.
 
 Filter deleted
 */
 type DeleteFilterNoContent struct {
 }
 
+// IsSuccess returns true when this delete filter no content response has a 2xx status code
+func (o *DeleteFilterNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete filter no content response has a 3xx status code
+func (o *DeleteFilterNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete filter no content response has a 4xx status code
+func (o *DeleteFilterNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete filter no content response has a 5xx status code
+func (o *DeleteFilterNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete filter no content response a status code equal to that given
+func (o *DeleteFilterNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteFilterNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/filters/{index}][%d] deleteFilterNoContent ", 204)
+}
+
+func (o *DeleteFilterNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/filters/{index}][%d] deleteFilterNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteFilterNotFound() *DeleteFilterNotFound {
 	return &DeleteFilterNotFound{}
 }
 
-/* DeleteFilterNotFound describes a response with status code 404, with default header values.
+/*
+DeleteFilterNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteFilterNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete filter not found response has a 2xx status code
+func (o *DeleteFilterNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete filter not found response has a 3xx status code
+func (o *DeleteFilterNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete filter not found response has a 4xx status code
+func (o *DeleteFilterNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete filter not found response has a 5xx status code
+func (o *DeleteFilterNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete filter not found response a status code equal to that given
+func (o *DeleteFilterNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteFilterNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/filters/{index}][%d] deleteFilterNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteFilterNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/filters/{index}][%d] deleteFilterNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteFilterNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteFilterDefault(code int) *DeleteFilterDefault {
 	}
 }
 
-/* DeleteFilterDefault describes a response with status code -1, with default header values.
+/*
+DeleteFilterDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteFilterDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete filter default response has a 2xx status code
+func (o *DeleteFilterDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete filter default response has a 3xx status code
+func (o *DeleteFilterDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete filter default response has a 4xx status code
+func (o *DeleteFilterDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete filter default response has a 5xx status code
+func (o *DeleteFilterDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete filter default response a status code equal to that given
+func (o *DeleteFilterDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteFilterDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/filters/{index}][%d] deleteFilter default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteFilterDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/filters/{index}][%d] deleteFilter default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteFilterDefault) GetPayload() *models.Error {
 	return o.Payload
 }

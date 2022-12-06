@@ -13,7 +13,7 @@ import (
 
 // SpoeFiles SPOE files
 //
-// SPOE files
+// # SPOE files
 //
 // swagger:model spoe_files
 type SpoeFiles []string

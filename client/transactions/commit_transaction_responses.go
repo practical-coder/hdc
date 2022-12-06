@@ -70,7 +70,8 @@ func NewCommitTransactionOK() *CommitTransactionOK {
 	return &CommitTransactionOK{}
 }
 
-/* CommitTransactionOK describes a response with status code 200, with default header values.
+/*
+CommitTransactionOK describes a response with status code 200, with default header values.
 
 Transaction successfully committed
 */
@@ -78,9 +79,39 @@ type CommitTransactionOK struct {
 	Payload *models.Transaction
 }
 
+// IsSuccess returns true when this commit transaction o k response has a 2xx status code
+func (o *CommitTransactionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this commit transaction o k response has a 3xx status code
+func (o *CommitTransactionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this commit transaction o k response has a 4xx status code
+func (o *CommitTransactionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this commit transaction o k response has a 5xx status code
+func (o *CommitTransactionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this commit transaction o k response a status code equal to that given
+func (o *CommitTransactionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CommitTransactionOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionOK  %+v", 200, o.Payload)
 }
+
+func (o *CommitTransactionOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionOK  %+v", 200, o.Payload)
+}
+
 func (o *CommitTransactionOK) GetPayload() *models.Transaction {
 	return o.Payload
 }
@@ -102,7 +133,8 @@ func NewCommitTransactionAccepted() *CommitTransactionAccepted {
 	return &CommitTransactionAccepted{}
 }
 
-/* CommitTransactionAccepted describes a response with status code 202, with default header values.
+/*
+CommitTransactionAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -115,9 +147,39 @@ type CommitTransactionAccepted struct {
 	Payload *models.Transaction
 }
 
+// IsSuccess returns true when this commit transaction accepted response has a 2xx status code
+func (o *CommitTransactionAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this commit transaction accepted response has a 3xx status code
+func (o *CommitTransactionAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this commit transaction accepted response has a 4xx status code
+func (o *CommitTransactionAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this commit transaction accepted response has a 5xx status code
+func (o *CommitTransactionAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this commit transaction accepted response a status code equal to that given
+func (o *CommitTransactionAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CommitTransactionAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CommitTransactionAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CommitTransactionAccepted) GetPayload() *models.Transaction {
 	return o.Payload
 }
@@ -146,7 +208,8 @@ func NewCommitTransactionBadRequest() *CommitTransactionBadRequest {
 	return &CommitTransactionBadRequest{}
 }
 
-/* CommitTransactionBadRequest describes a response with status code 400, with default header values.
+/*
+CommitTransactionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -159,9 +222,39 @@ type CommitTransactionBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this commit transaction bad request response has a 2xx status code
+func (o *CommitTransactionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this commit transaction bad request response has a 3xx status code
+func (o *CommitTransactionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this commit transaction bad request response has a 4xx status code
+func (o *CommitTransactionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this commit transaction bad request response has a 5xx status code
+func (o *CommitTransactionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this commit transaction bad request response a status code equal to that given
+func (o *CommitTransactionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CommitTransactionBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CommitTransactionBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CommitTransactionBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func NewCommitTransactionNotFound() *CommitTransactionNotFound {
 	return &CommitTransactionNotFound{}
 }
 
-/* CommitTransactionNotFound describes a response with status code 404, with default header values.
+/*
+CommitTransactionNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -203,9 +297,39 @@ type CommitTransactionNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this commit transaction not found response has a 2xx status code
+func (o *CommitTransactionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this commit transaction not found response has a 3xx status code
+func (o *CommitTransactionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this commit transaction not found response has a 4xx status code
+func (o *CommitTransactionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this commit transaction not found response has a 5xx status code
+func (o *CommitTransactionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this commit transaction not found response a status code equal to that given
+func (o *CommitTransactionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CommitTransactionNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CommitTransactionNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CommitTransactionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -234,7 +358,8 @@ func NewCommitTransactionNotAcceptable() *CommitTransactionNotAcceptable {
 	return &CommitTransactionNotAcceptable{}
 }
 
-/* CommitTransactionNotAcceptable describes a response with status code 406, with default header values.
+/*
+CommitTransactionNotAcceptable describes a response with status code 406, with default header values.
 
 The specified resource cannot be handled
 */
@@ -247,9 +372,39 @@ type CommitTransactionNotAcceptable struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this commit transaction not acceptable response has a 2xx status code
+func (o *CommitTransactionNotAcceptable) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this commit transaction not acceptable response has a 3xx status code
+func (o *CommitTransactionNotAcceptable) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this commit transaction not acceptable response has a 4xx status code
+func (o *CommitTransactionNotAcceptable) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this commit transaction not acceptable response has a 5xx status code
+func (o *CommitTransactionNotAcceptable) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this commit transaction not acceptable response a status code equal to that given
+func (o *CommitTransactionNotAcceptable) IsCode(code int) bool {
+	return code == 406
+}
+
 func (o *CommitTransactionNotAcceptable) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionNotAcceptable  %+v", 406, o.Payload)
 }
+
+func (o *CommitTransactionNotAcceptable) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionNotAcceptable  %+v", 406, o.Payload)
+}
+
 func (o *CommitTransactionNotAcceptable) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -280,7 +435,8 @@ func NewCommitTransactionDefault(code int) *CommitTransactionDefault {
 	}
 }
 
-/* CommitTransactionDefault describes a response with status code -1, with default header values.
+/*
+CommitTransactionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -299,9 +455,39 @@ func (o *CommitTransactionDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this commit transaction default response has a 2xx status code
+func (o *CommitTransactionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this commit transaction default response has a 3xx status code
+func (o *CommitTransactionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this commit transaction default response has a 4xx status code
+func (o *CommitTransactionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this commit transaction default response has a 5xx status code
+func (o *CommitTransactionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this commit transaction default response a status code equal to that given
+func (o *CommitTransactionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CommitTransactionDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransaction default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CommitTransactionDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransaction default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CommitTransactionDefault) GetPayload() *models.Error {
 	return o.Payload
 }

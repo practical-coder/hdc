@@ -52,10 +52,12 @@ func NewGetRuntimeServersParamsWithHTTPClient(client *http.Client) *GetRuntimeSe
 	}
 }
 
-/* GetRuntimeServersParams contains all the parameters to send to the API endpoint
-   for the get runtime servers operation.
+/*
+GetRuntimeServersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get runtime servers operation.
+
+	Typically these are written to a http.Request.
 */
 type GetRuntimeServersParams struct {
 

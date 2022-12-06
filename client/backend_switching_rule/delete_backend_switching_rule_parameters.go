@@ -53,10 +53,12 @@ func NewDeleteBackendSwitchingRuleParamsWithHTTPClient(client *http.Client) *Del
 	}
 }
 
-/* DeleteBackendSwitchingRuleParams contains all the parameters to send to the API endpoint
-   for the delete backend switching rule operation.
+/*
+DeleteBackendSwitchingRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete backend switching rule operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteBackendSwitchingRuleParams struct {
 

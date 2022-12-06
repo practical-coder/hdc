@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateHTTPAfterResponseRule adds a new HTTP after response rule
+CreateHTTPAfterResponseRule adds a new HTTP after response rule
 
-  Adds a new HTTP After Response Rule of the specified type in the specified parent.
+Adds a new HTTP After Response Rule of the specified type in the specified parent.
 */
 func (a *Client) CreateHTTPAfterResponseRule(params *CreateHTTPAfterResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateHTTPAfterResponseRuleCreated, *CreateHTTPAfterResponseRuleAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateHTTPAfterResponseRule(params *CreateHTTPAfterResponseRule
 }
 
 /*
-  DeleteHTTPAfterResponseRule deletes a HTTP after response rule
+DeleteHTTPAfterResponseRule deletes a HTTP after response rule
 
-  Deletes a HTTP After Response Rule configuration by it's index from the specified parent.
+Deletes a HTTP After Response Rule configuration by it's index from the specified parent.
 */
 func (a *Client) DeleteHTTPAfterResponseRule(params *DeleteHTTPAfterResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteHTTPAfterResponseRuleAccepted, *DeleteHTTPAfterResponseRuleNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteHTTPAfterResponseRule(params *DeleteHTTPAfterResponseRule
 }
 
 /*
-  GetHTTPAfterResponseRule returns one HTTP after response rule
+GetHTTPAfterResponseRule returns one HTTP after response rule
 
-  Returns one HTTP After Response Rule configuration by it's index in the specified parent.
+Returns one HTTP After Response Rule configuration by it's index in the specified parent.
 */
 func (a *Client) GetHTTPAfterResponseRule(params *GetHTTPAfterResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPAfterResponseRuleOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetHTTPAfterResponseRule(params *GetHTTPAfterResponseRuleParams
 }
 
 /*
-  GetHTTPAfterResponseRules returns an array of all HTTP after response rules
+GetHTTPAfterResponseRules returns an array of all HTTP after response rules
 
-  Returns all HTTP After Response Rules that are configured in specified parent.
+Returns all HTTP After Response Rules that are configured in specified parent.
 */
 func (a *Client) GetHTTPAfterResponseRules(params *GetHTTPAfterResponseRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPAfterResponseRulesOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetHTTPAfterResponseRules(params *GetHTTPAfterResponseRulesPara
 }
 
 /*
-  ReplaceHTTPAfterResponseRule replaces a HTTP after response rule
+ReplaceHTTPAfterResponseRule replaces a HTTP after response rule
 
-  Replaces a HTTP After Response Rule configuration by it's index in the specified parent.
+Replaces a HTTP After Response Rule configuration by it's index in the specified parent.
 */
 func (a *Client) ReplaceHTTPAfterResponseRule(params *ReplaceHTTPAfterResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceHTTPAfterResponseRuleOK, *ReplaceHTTPAfterResponseRuleAccepted, error) {
 	// TODO: Validate the params before sending

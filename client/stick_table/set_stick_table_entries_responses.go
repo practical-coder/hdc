@@ -50,14 +50,44 @@ func NewSetStickTableEntriesNoContent() *SetStickTableEntriesNoContent {
 	return &SetStickTableEntriesNoContent{}
 }
 
-/* SetStickTableEntriesNoContent describes a response with status code 204, with default header values.
+/*
+SetStickTableEntriesNoContent describes a response with status code 204, with default header values.
 
 Successful operation
 */
 type SetStickTableEntriesNoContent struct {
 }
 
+// IsSuccess returns true when this set stick table entries no content response has a 2xx status code
+func (o *SetStickTableEntriesNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this set stick table entries no content response has a 3xx status code
+func (o *SetStickTableEntriesNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this set stick table entries no content response has a 4xx status code
+func (o *SetStickTableEntriesNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this set stick table entries no content response has a 5xx status code
+func (o *SetStickTableEntriesNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this set stick table entries no content response a status code equal to that given
+func (o *SetStickTableEntriesNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *SetStickTableEntriesNoContent) Error() string {
+	return fmt.Sprintf("[POST /services/haproxy/runtime/stick_table_entries][%d] setStickTableEntriesNoContent ", 204)
+}
+
+func (o *SetStickTableEntriesNoContent) String() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/stick_table_entries][%d] setStickTableEntriesNoContent ", 204)
 }
 
@@ -73,7 +103,8 @@ func NewSetStickTableEntriesDefault(code int) *SetStickTableEntriesDefault {
 	}
 }
 
-/* SetStickTableEntriesDefault describes a response with status code -1, with default header values.
+/*
+SetStickTableEntriesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -92,9 +123,39 @@ func (o *SetStickTableEntriesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this set stick table entries default response has a 2xx status code
+func (o *SetStickTableEntriesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this set stick table entries default response has a 3xx status code
+func (o *SetStickTableEntriesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this set stick table entries default response has a 4xx status code
+func (o *SetStickTableEntriesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this set stick table entries default response has a 5xx status code
+func (o *SetStickTableEntriesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this set stick table entries default response a status code equal to that given
+func (o *SetStickTableEntriesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *SetStickTableEntriesDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/stick_table_entries][%d] setStickTableEntries default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *SetStickTableEntriesDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/runtime/stick_table_entries][%d] setStickTableEntries default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *SetStickTableEntriesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,7 +179,8 @@ func (o *SetStickTableEntriesDefault) readResponse(response runtime.ClientRespon
 	return nil
 }
 
-/*SetStickTableEntriesBody set stick table entries body
+/*
+SetStickTableEntriesBody set stick table entries body
 swagger:model SetStickTableEntriesBody
 */
 type SetStickTableEntriesBody struct {

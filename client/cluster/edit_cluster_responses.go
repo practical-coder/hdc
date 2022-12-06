@@ -52,7 +52,8 @@ func NewEditClusterOK() *EditClusterOK {
 	return &EditClusterOK{}
 }
 
-/* EditClusterOK describes a response with status code 200, with default header values.
+/*
+EditClusterOK describes a response with status code 200, with default header values.
 
 Cluster settings changed
 */
@@ -60,9 +61,39 @@ type EditClusterOK struct {
 	Payload *models.ClusterSettings
 }
 
+// IsSuccess returns true when this edit cluster o k response has a 2xx status code
+func (o *EditClusterOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this edit cluster o k response has a 3xx status code
+func (o *EditClusterOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this edit cluster o k response has a 4xx status code
+func (o *EditClusterOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this edit cluster o k response has a 5xx status code
+func (o *EditClusterOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this edit cluster o k response a status code equal to that given
+func (o *EditClusterOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *EditClusterOK) Error() string {
 	return fmt.Sprintf("[PUT /cluster][%d] editClusterOK  %+v", 200, o.Payload)
 }
+
+func (o *EditClusterOK) String() string {
+	return fmt.Sprintf("[PUT /cluster][%d] editClusterOK  %+v", 200, o.Payload)
+}
+
 func (o *EditClusterOK) GetPayload() *models.ClusterSettings {
 	return o.Payload
 }
@@ -84,7 +115,8 @@ func NewEditClusterBadRequest() *EditClusterBadRequest {
 	return &EditClusterBadRequest{}
 }
 
-/* EditClusterBadRequest describes a response with status code 400, with default header values.
+/*
+EditClusterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -97,9 +129,39 @@ type EditClusterBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this edit cluster bad request response has a 2xx status code
+func (o *EditClusterBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this edit cluster bad request response has a 3xx status code
+func (o *EditClusterBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this edit cluster bad request response has a 4xx status code
+func (o *EditClusterBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this edit cluster bad request response has a 5xx status code
+func (o *EditClusterBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this edit cluster bad request response a status code equal to that given
+func (o *EditClusterBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *EditClusterBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /cluster][%d] editClusterBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *EditClusterBadRequest) String() string {
+	return fmt.Sprintf("[PUT /cluster][%d] editClusterBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *EditClusterBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -130,7 +192,8 @@ func NewEditClusterDefault(code int) *EditClusterDefault {
 	}
 }
 
-/* EditClusterDefault describes a response with status code -1, with default header values.
+/*
+EditClusterDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -149,9 +212,39 @@ func (o *EditClusterDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this edit cluster default response has a 2xx status code
+func (o *EditClusterDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this edit cluster default response has a 3xx status code
+func (o *EditClusterDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this edit cluster default response has a 4xx status code
+func (o *EditClusterDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this edit cluster default response has a 5xx status code
+func (o *EditClusterDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this edit cluster default response a status code equal to that given
+func (o *EditClusterDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *EditClusterDefault) Error() string {
 	return fmt.Sprintf("[PUT /cluster][%d] editCluster default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *EditClusterDefault) String() string {
+	return fmt.Sprintf("[PUT /cluster][%d] editCluster default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *EditClusterDefault) GetPayload() *models.Error {
 	return o.Payload
 }

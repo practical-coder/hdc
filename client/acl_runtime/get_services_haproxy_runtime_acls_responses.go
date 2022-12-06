@@ -46,7 +46,8 @@ func NewGetServicesHaproxyRuntimeAclsOK() *GetServicesHaproxyRuntimeAclsOK {
 	return &GetServicesHaproxyRuntimeAclsOK{}
 }
 
-/* GetServicesHaproxyRuntimeAclsOK describes a response with status code 200, with default header values.
+/*
+GetServicesHaproxyRuntimeAclsOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -54,9 +55,39 @@ type GetServicesHaproxyRuntimeAclsOK struct {
 	Payload models.ACLFiles
 }
 
+// IsSuccess returns true when this get services haproxy runtime acls o k response has a 2xx status code
+func (o *GetServicesHaproxyRuntimeAclsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get services haproxy runtime acls o k response has a 3xx status code
+func (o *GetServicesHaproxyRuntimeAclsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get services haproxy runtime acls o k response has a 4xx status code
+func (o *GetServicesHaproxyRuntimeAclsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get services haproxy runtime acls o k response has a 5xx status code
+func (o *GetServicesHaproxyRuntimeAclsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get services haproxy runtime acls o k response a status code equal to that given
+func (o *GetServicesHaproxyRuntimeAclsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetServicesHaproxyRuntimeAclsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acls][%d] getServicesHaproxyRuntimeAclsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetServicesHaproxyRuntimeAclsOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/acls][%d] getServicesHaproxyRuntimeAclsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetServicesHaproxyRuntimeAclsOK) GetPayload() models.ACLFiles {
 	return o.Payload
 }
@@ -78,7 +109,8 @@ func NewGetServicesHaproxyRuntimeAclsDefault(code int) *GetServicesHaproxyRuntim
 	}
 }
 
-/* GetServicesHaproxyRuntimeAclsDefault describes a response with status code -1, with default header values.
+/*
+GetServicesHaproxyRuntimeAclsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -97,9 +129,39 @@ func (o *GetServicesHaproxyRuntimeAclsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get services haproxy runtime acls default response has a 2xx status code
+func (o *GetServicesHaproxyRuntimeAclsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get services haproxy runtime acls default response has a 3xx status code
+func (o *GetServicesHaproxyRuntimeAclsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get services haproxy runtime acls default response has a 4xx status code
+func (o *GetServicesHaproxyRuntimeAclsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get services haproxy runtime acls default response has a 5xx status code
+func (o *GetServicesHaproxyRuntimeAclsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get services haproxy runtime acls default response a status code equal to that given
+func (o *GetServicesHaproxyRuntimeAclsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetServicesHaproxyRuntimeAclsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acls][%d] GetServicesHaproxyRuntimeAcls default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetServicesHaproxyRuntimeAclsDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/acls][%d] GetServicesHaproxyRuntimeAcls default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetServicesHaproxyRuntimeAclsDefault) GetPayload() *models.Error {
 	return o.Payload
 }

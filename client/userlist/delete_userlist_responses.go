@@ -58,7 +58,8 @@ func NewDeleteUserlistAccepted() *DeleteUserlistAccepted {
 	return &DeleteUserlistAccepted{}
 }
 
-/* DeleteUserlistAccepted describes a response with status code 202, with default header values.
+/*
+DeleteUserlistAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteUserlistAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete userlist accepted response has a 2xx status code
+func (o *DeleteUserlistAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete userlist accepted response has a 3xx status code
+func (o *DeleteUserlistAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete userlist accepted response has a 4xx status code
+func (o *DeleteUserlistAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete userlist accepted response has a 5xx status code
+func (o *DeleteUserlistAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete userlist accepted response a status code equal to that given
+func (o *DeleteUserlistAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteUserlistAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/userlists/{name}][%d] deleteUserlistAccepted ", 202)
+}
+
+func (o *DeleteUserlistAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/userlists/{name}][%d] deleteUserlistAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteUserlistNoContent() *DeleteUserlistNoContent {
 	return &DeleteUserlistNoContent{}
 }
 
-/* DeleteUserlistNoContent describes a response with status code 204, with default header values.
+/*
+DeleteUserlistNoContent describes a response with status code 204, with default header values.
 
 Userlist deleted
 */
 type DeleteUserlistNoContent struct {
 }
 
+// IsSuccess returns true when this delete userlist no content response has a 2xx status code
+func (o *DeleteUserlistNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete userlist no content response has a 3xx status code
+func (o *DeleteUserlistNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete userlist no content response has a 4xx status code
+func (o *DeleteUserlistNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete userlist no content response has a 5xx status code
+func (o *DeleteUserlistNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete userlist no content response a status code equal to that given
+func (o *DeleteUserlistNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteUserlistNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/userlists/{name}][%d] deleteUserlistNoContent ", 204)
+}
+
+func (o *DeleteUserlistNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/userlists/{name}][%d] deleteUserlistNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteUserlistNotFound() *DeleteUserlistNotFound {
 	return &DeleteUserlistNotFound{}
 }
 
-/* DeleteUserlistNotFound describes a response with status code 404, with default header values.
+/*
+DeleteUserlistNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteUserlistNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete userlist not found response has a 2xx status code
+func (o *DeleteUserlistNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete userlist not found response has a 3xx status code
+func (o *DeleteUserlistNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete userlist not found response has a 4xx status code
+func (o *DeleteUserlistNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete userlist not found response has a 5xx status code
+func (o *DeleteUserlistNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete userlist not found response a status code equal to that given
+func (o *DeleteUserlistNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteUserlistNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/userlists/{name}][%d] deleteUserlistNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteUserlistNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/userlists/{name}][%d] deleteUserlistNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteUserlistNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteUserlistDefault(code int) *DeleteUserlistDefault {
 	}
 }
 
-/* DeleteUserlistDefault describes a response with status code -1, with default header values.
+/*
+DeleteUserlistDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteUserlistDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete userlist default response has a 2xx status code
+func (o *DeleteUserlistDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete userlist default response has a 3xx status code
+func (o *DeleteUserlistDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete userlist default response has a 4xx status code
+func (o *DeleteUserlistDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete userlist default response has a 5xx status code
+func (o *DeleteUserlistDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete userlist default response a status code equal to that given
+func (o *DeleteUserlistDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteUserlistDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/userlists/{name}][%d] deleteUserlist default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteUserlistDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/userlists/{name}][%d] deleteUserlist default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteUserlistDefault) GetPayload() *models.Error {
 	return o.Payload
 }

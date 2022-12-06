@@ -52,10 +52,12 @@ func NewGetDgramBindsParamsWithHTTPClient(client *http.Client) *GetDgramBindsPar
 	}
 }
 
-/* GetDgramBindsParams contains all the parameters to send to the API endpoint
-   for the get dgram binds operation.
+/*
+GetDgramBindsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get dgram binds operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDgramBindsParams struct {
 

@@ -58,7 +58,8 @@ func NewDeleteGroupAccepted() *DeleteGroupAccepted {
 	return &DeleteGroupAccepted{}
 }
 
-/* DeleteGroupAccepted describes a response with status code 202, with default header values.
+/*
+DeleteGroupAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteGroupAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete group accepted response has a 2xx status code
+func (o *DeleteGroupAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete group accepted response has a 3xx status code
+func (o *DeleteGroupAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete group accepted response has a 4xx status code
+func (o *DeleteGroupAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete group accepted response has a 5xx status code
+func (o *DeleteGroupAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete group accepted response a status code equal to that given
+func (o *DeleteGroupAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteGroupAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/groups/{name}][%d] deleteGroupAccepted ", 202)
+}
+
+func (o *DeleteGroupAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/groups/{name}][%d] deleteGroupAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteGroupNoContent() *DeleteGroupNoContent {
 	return &DeleteGroupNoContent{}
 }
 
-/* DeleteGroupNoContent describes a response with status code 204, with default header values.
+/*
+DeleteGroupNoContent describes a response with status code 204, with default header values.
 
 Group deleted
 */
 type DeleteGroupNoContent struct {
 }
 
+// IsSuccess returns true when this delete group no content response has a 2xx status code
+func (o *DeleteGroupNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete group no content response has a 3xx status code
+func (o *DeleteGroupNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete group no content response has a 4xx status code
+func (o *DeleteGroupNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete group no content response has a 5xx status code
+func (o *DeleteGroupNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete group no content response a status code equal to that given
+func (o *DeleteGroupNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteGroupNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/groups/{name}][%d] deleteGroupNoContent ", 204)
+}
+
+func (o *DeleteGroupNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/groups/{name}][%d] deleteGroupNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteGroupNotFound() *DeleteGroupNotFound {
 	return &DeleteGroupNotFound{}
 }
 
-/* DeleteGroupNotFound describes a response with status code 404, with default header values.
+/*
+DeleteGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteGroupNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete group not found response has a 2xx status code
+func (o *DeleteGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete group not found response has a 3xx status code
+func (o *DeleteGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete group not found response has a 4xx status code
+func (o *DeleteGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete group not found response has a 5xx status code
+func (o *DeleteGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete group not found response a status code equal to that given
+func (o *DeleteGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteGroupNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/groups/{name}][%d] deleteGroupNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteGroupNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/groups/{name}][%d] deleteGroupNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteGroupNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteGroupDefault(code int) *DeleteGroupDefault {
 	}
 }
 
-/* DeleteGroupDefault describes a response with status code -1, with default header values.
+/*
+DeleteGroupDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteGroupDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete group default response has a 2xx status code
+func (o *DeleteGroupDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete group default response has a 3xx status code
+func (o *DeleteGroupDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete group default response has a 4xx status code
+func (o *DeleteGroupDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete group default response has a 5xx status code
+func (o *DeleteGroupDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete group default response a status code equal to that given
+func (o *DeleteGroupDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteGroupDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/groups/{name}][%d] deleteGroup default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteGroupDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/groups/{name}][%d] deleteGroup default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteGroupDefault) GetPayload() *models.Error {
 	return o.Payload
 }

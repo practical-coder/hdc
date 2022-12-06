@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateResolver adds a resolver
+CreateResolver adds a resolver
 
-  Adds a new resolver section to the configuration file.
+Adds a new resolver section to the configuration file.
 */
 func (a *Client) CreateResolver(params *CreateResolverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateResolverCreated, *CreateResolverAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateResolver(params *CreateResolverParams, authInfo runtime.C
 }
 
 /*
-  DeleteResolver deletes a resolver
+DeleteResolver deletes a resolver
 
-  Deletes a resolver from the configuration by it's name.
+Deletes a resolver from the configuration by it's name.
 */
 func (a *Client) DeleteResolver(params *DeleteResolverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteResolverAccepted, *DeleteResolverNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteResolver(params *DeleteResolverParams, authInfo runtime.C
 }
 
 /*
-  GetResolver returns a resolver
+GetResolver returns a resolver
 
-  Returns one resolver section configuration by it's name.
+Returns one resolver section configuration by it's name.
 */
 func (a *Client) GetResolver(params *GetResolverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetResolverOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetResolver(params *GetResolverParams, authInfo runtime.ClientA
 }
 
 /*
-  GetResolvers returns an array of resolvers
+GetResolvers returns an array of resolvers
 
-  Returns an array of all configured resolvers.
+Returns an array of all configured resolvers.
 */
 func (a *Client) GetResolvers(params *GetResolversParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetResolversOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetResolvers(params *GetResolversParams, authInfo runtime.Clien
 }
 
 /*
-  ReplaceResolver replaces a resolver
+ReplaceResolver replaces a resolver
 
-  Replaces a resolver configuration by it's name.
+Replaces a resolver configuration by it's name.
 */
 func (a *Client) ReplaceResolver(params *ReplaceResolverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceResolverOK, *ReplaceResolverAccepted, error) {
 	// TODO: Validate the params before sending

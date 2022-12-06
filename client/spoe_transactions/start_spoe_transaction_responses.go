@@ -54,7 +54,8 @@ func NewStartSpoeTransactionCreated() *StartSpoeTransactionCreated {
 	return &StartSpoeTransactionCreated{}
 }
 
-/* StartSpoeTransactionCreated describes a response with status code 201, with default header values.
+/*
+StartSpoeTransactionCreated describes a response with status code 201, with default header values.
 
 Transaction started
 */
@@ -62,9 +63,39 @@ type StartSpoeTransactionCreated struct {
 	Payload *models.SpoeTransaction
 }
 
+// IsSuccess returns true when this start spoe transaction created response has a 2xx status code
+func (o *StartSpoeTransactionCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this start spoe transaction created response has a 3xx status code
+func (o *StartSpoeTransactionCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this start spoe transaction created response has a 4xx status code
+func (o *StartSpoeTransactionCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this start spoe transaction created response has a 5xx status code
+func (o *StartSpoeTransactionCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this start spoe transaction created response a status code equal to that given
+func (o *StartSpoeTransactionCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *StartSpoeTransactionCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe_transactions][%d] startSpoeTransactionCreated  %+v", 201, o.Payload)
 }
+
+func (o *StartSpoeTransactionCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe_transactions][%d] startSpoeTransactionCreated  %+v", 201, o.Payload)
+}
+
 func (o *StartSpoeTransactionCreated) GetPayload() *models.SpoeTransaction {
 	return o.Payload
 }
@@ -86,7 +117,8 @@ func NewStartSpoeTransactionTooManyRequests() *StartSpoeTransactionTooManyReques
 	return &StartSpoeTransactionTooManyRequests{}
 }
 
-/* StartSpoeTransactionTooManyRequests describes a response with status code 429, with default header values.
+/*
+StartSpoeTransactionTooManyRequests describes a response with status code 429, with default header values.
 
 Too many open transactions
 */
@@ -94,9 +126,39 @@ type StartSpoeTransactionTooManyRequests struct {
 	Payload *StartSpoeTransactionTooManyRequestsBody
 }
 
+// IsSuccess returns true when this start spoe transaction too many requests response has a 2xx status code
+func (o *StartSpoeTransactionTooManyRequests) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this start spoe transaction too many requests response has a 3xx status code
+func (o *StartSpoeTransactionTooManyRequests) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this start spoe transaction too many requests response has a 4xx status code
+func (o *StartSpoeTransactionTooManyRequests) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this start spoe transaction too many requests response has a 5xx status code
+func (o *StartSpoeTransactionTooManyRequests) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this start spoe transaction too many requests response a status code equal to that given
+func (o *StartSpoeTransactionTooManyRequests) IsCode(code int) bool {
+	return code == 429
+}
+
 func (o *StartSpoeTransactionTooManyRequests) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe_transactions][%d] startSpoeTransactionTooManyRequests  %+v", 429, o.Payload)
 }
+
+func (o *StartSpoeTransactionTooManyRequests) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe_transactions][%d] startSpoeTransactionTooManyRequests  %+v", 429, o.Payload)
+}
+
 func (o *StartSpoeTransactionTooManyRequests) GetPayload() *StartSpoeTransactionTooManyRequestsBody {
 	return o.Payload
 }
@@ -120,7 +182,8 @@ func NewStartSpoeTransactionDefault(code int) *StartSpoeTransactionDefault {
 	}
 }
 
-/* StartSpoeTransactionDefault describes a response with status code -1, with default header values.
+/*
+StartSpoeTransactionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -139,9 +202,39 @@ func (o *StartSpoeTransactionDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this start spoe transaction default response has a 2xx status code
+func (o *StartSpoeTransactionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this start spoe transaction default response has a 3xx status code
+func (o *StartSpoeTransactionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this start spoe transaction default response has a 4xx status code
+func (o *StartSpoeTransactionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this start spoe transaction default response has a 5xx status code
+func (o *StartSpoeTransactionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this start spoe transaction default response a status code equal to that given
+func (o *StartSpoeTransactionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *StartSpoeTransactionDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe_transactions][%d] startSpoeTransaction default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *StartSpoeTransactionDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe_transactions][%d] startSpoeTransaction default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *StartSpoeTransactionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func (o *StartSpoeTransactionDefault) readResponse(response runtime.ClientRespon
 	return nil
 }
 
-/*StartSpoeTransactionTooManyRequestsBody start spoe transaction too many requests body
+/*
+StartSpoeTransactionTooManyRequestsBody start spoe transaction too many requests body
 // Example: {"code":429,"message":"cannot start a new transaction, reached the maximum amount of 20 active transactions available"}
 swagger:model StartSpoeTransactionTooManyRequestsBody
 */

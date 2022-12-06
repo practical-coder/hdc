@@ -55,10 +55,12 @@ func NewCreateResolverParamsWithHTTPClient(client *http.Client) *CreateResolverP
 	}
 }
 
-/* CreateResolverParams contains all the parameters to send to the API endpoint
-   for the create resolver operation.
+/*
+CreateResolverParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create resolver operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateResolverParams struct {
 

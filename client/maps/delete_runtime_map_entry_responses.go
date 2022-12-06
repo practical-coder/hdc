@@ -52,14 +52,44 @@ func NewDeleteRuntimeMapEntryNoContent() *DeleteRuntimeMapEntryNoContent {
 	return &DeleteRuntimeMapEntryNoContent{}
 }
 
-/* DeleteRuntimeMapEntryNoContent describes a response with status code 204, with default header values.
+/*
+DeleteRuntimeMapEntryNoContent describes a response with status code 204, with default header values.
 
 Map key/value deleted
 */
 type DeleteRuntimeMapEntryNoContent struct {
 }
 
+// IsSuccess returns true when this delete runtime map entry no content response has a 2xx status code
+func (o *DeleteRuntimeMapEntryNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete runtime map entry no content response has a 3xx status code
+func (o *DeleteRuntimeMapEntryNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete runtime map entry no content response has a 4xx status code
+func (o *DeleteRuntimeMapEntryNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete runtime map entry no content response has a 5xx status code
+func (o *DeleteRuntimeMapEntryNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete runtime map entry no content response a status code equal to that given
+func (o *DeleteRuntimeMapEntryNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteRuntimeMapEntryNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/runtime/maps_entries/{id}][%d] deleteRuntimeMapEntryNoContent ", 204)
+}
+
+func (o *DeleteRuntimeMapEntryNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/maps_entries/{id}][%d] deleteRuntimeMapEntryNoContent ", 204)
 }
 
@@ -73,7 +103,8 @@ func NewDeleteRuntimeMapEntryNotFound() *DeleteRuntimeMapEntryNotFound {
 	return &DeleteRuntimeMapEntryNotFound{}
 }
 
-/* DeleteRuntimeMapEntryNotFound describes a response with status code 404, with default header values.
+/*
+DeleteRuntimeMapEntryNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -86,9 +117,39 @@ type DeleteRuntimeMapEntryNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete runtime map entry not found response has a 2xx status code
+func (o *DeleteRuntimeMapEntryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete runtime map entry not found response has a 3xx status code
+func (o *DeleteRuntimeMapEntryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete runtime map entry not found response has a 4xx status code
+func (o *DeleteRuntimeMapEntryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete runtime map entry not found response has a 5xx status code
+func (o *DeleteRuntimeMapEntryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete runtime map entry not found response a status code equal to that given
+func (o *DeleteRuntimeMapEntryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteRuntimeMapEntryNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/maps_entries/{id}][%d] deleteRuntimeMapEntryNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteRuntimeMapEntryNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/runtime/maps_entries/{id}][%d] deleteRuntimeMapEntryNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteRuntimeMapEntryNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -119,7 +180,8 @@ func NewDeleteRuntimeMapEntryDefault(code int) *DeleteRuntimeMapEntryDefault {
 	}
 }
 
-/* DeleteRuntimeMapEntryDefault describes a response with status code -1, with default header values.
+/*
+DeleteRuntimeMapEntryDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -138,9 +200,39 @@ func (o *DeleteRuntimeMapEntryDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete runtime map entry default response has a 2xx status code
+func (o *DeleteRuntimeMapEntryDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete runtime map entry default response has a 3xx status code
+func (o *DeleteRuntimeMapEntryDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete runtime map entry default response has a 4xx status code
+func (o *DeleteRuntimeMapEntryDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete runtime map entry default response has a 5xx status code
+func (o *DeleteRuntimeMapEntryDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete runtime map entry default response a status code equal to that given
+func (o *DeleteRuntimeMapEntryDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteRuntimeMapEntryDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/maps_entries/{id}][%d] deleteRuntimeMapEntry default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteRuntimeMapEntryDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/runtime/maps_entries/{id}][%d] deleteRuntimeMapEntry default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteRuntimeMapEntryDefault) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  CreateGroup adds a new userlist group
+CreateGroup adds a new userlist group
 */
 func (a *Client) CreateGroup(params *CreateGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateGroupCreated, *CreateGroupAccepted, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateGroup(params *CreateGroupParams, authInfo runtime.ClientA
 }
 
 /*
-  DeleteGroup deletes a group
+DeleteGroup deletes a group
 */
 func (a *Client) DeleteGroup(params *DeleteGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteGroupAccepted, *DeleteGroupNoContent, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) DeleteGroup(params *DeleteGroupParams, authInfo runtime.ClientA
 }
 
 /*
-  GetGroup returns one userlist group
+GetGroup returns one userlist group
 */
 func (a *Client) GetGroup(params *GetGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -160,7 +160,7 @@ func (a *Client) GetGroup(params *GetGroupParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  GetGroups returns an array of userlist groups
+GetGroups returns an array of userlist groups
 */
 func (a *Client) GetGroups(params *GetGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -198,7 +198,7 @@ func (a *Client) GetGroups(params *GetGroupsParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  ReplaceGroup replaces a group
+ReplaceGroup replaces a group
 */
 func (a *Client) ReplaceGroup(params *ReplaceGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceGroupOK, *ReplaceGroupAccepted, error) {
 	// TODO: Validate the params before sending

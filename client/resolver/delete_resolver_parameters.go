@@ -53,10 +53,12 @@ func NewDeleteResolverParamsWithHTTPClient(client *http.Client) *DeleteResolverP
 	}
 }
 
-/* DeleteResolverParams contains all the parameters to send to the API endpoint
-   for the delete resolver operation.
+/*
+DeleteResolverParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete resolver operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteResolverParams struct {
 

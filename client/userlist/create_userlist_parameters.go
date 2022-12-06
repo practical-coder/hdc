@@ -55,10 +55,12 @@ func NewCreateUserlistParamsWithHTTPClient(client *http.Client) *CreateUserlistP
 	}
 }
 
-/* CreateUserlistParams contains all the parameters to send to the API endpoint
-   for the create userlist operation.
+/*
+CreateUserlistParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create userlist operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateUserlistParams struct {
 

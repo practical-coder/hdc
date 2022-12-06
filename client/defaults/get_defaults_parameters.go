@@ -52,10 +52,12 @@ func NewGetDefaultsParamsWithHTTPClient(client *http.Client) *GetDefaultsParams 
 	}
 }
 
-/* GetDefaultsParams contains all the parameters to send to the API endpoint
-   for the get defaults operation.
+/*
+GetDefaultsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get defaults operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDefaultsParams struct {
 

@@ -55,7 +55,8 @@ func NewGetFrontendOK() *GetFrontendOK {
 	return &GetFrontendOK{}
 }
 
-/* GetFrontendOK describes a response with status code 200, with default header values.
+/*
+GetFrontendOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetFrontendOK struct {
 	Payload *GetFrontendOKBody
 }
 
+// IsSuccess returns true when this get frontend o k response has a 2xx status code
+func (o *GetFrontendOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get frontend o k response has a 3xx status code
+func (o *GetFrontendOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get frontend o k response has a 4xx status code
+func (o *GetFrontendOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get frontend o k response has a 5xx status code
+func (o *GetFrontendOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get frontend o k response a status code equal to that given
+func (o *GetFrontendOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetFrontendOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/frontends/{name}][%d] getFrontendOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFrontendOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/frontends/{name}][%d] getFrontendOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFrontendOK) GetPayload() *GetFrontendOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetFrontendNotFound() *GetFrontendNotFound {
 	return &GetFrontendNotFound{}
 }
 
-/* GetFrontendNotFound describes a response with status code 404, with default header values.
+/*
+GetFrontendNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -112,9 +144,39 @@ type GetFrontendNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get frontend not found response has a 2xx status code
+func (o *GetFrontendNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get frontend not found response has a 3xx status code
+func (o *GetFrontendNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get frontend not found response has a 4xx status code
+func (o *GetFrontendNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get frontend not found response has a 5xx status code
+func (o *GetFrontendNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get frontend not found response a status code equal to that given
+func (o *GetFrontendNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetFrontendNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/frontends/{name}][%d] getFrontendNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetFrontendNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/frontends/{name}][%d] getFrontendNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetFrontendNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetFrontendDefault(code int) *GetFrontendDefault {
 	}
 }
 
-/* GetFrontendDefault describes a response with status code -1, with default header values.
+/*
+GetFrontendDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetFrontendDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get frontend default response has a 2xx status code
+func (o *GetFrontendDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get frontend default response has a 3xx status code
+func (o *GetFrontendDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get frontend default response has a 4xx status code
+func (o *GetFrontendDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get frontend default response has a 5xx status code
+func (o *GetFrontendDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get frontend default response a status code equal to that given
+func (o *GetFrontendDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetFrontendDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/frontends/{name}][%d] getFrontend default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetFrontendDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/frontends/{name}][%d] getFrontend default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetFrontendDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetFrontendDefault) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-/*GetFrontendOKBody get frontend o k body
+/*
+GetFrontendOKBody get frontend o k body
 swagger:model GetFrontendOKBody
 */
 type GetFrontendOKBody struct {

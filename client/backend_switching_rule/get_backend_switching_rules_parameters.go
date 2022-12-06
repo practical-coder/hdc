@@ -52,10 +52,12 @@ func NewGetBackendSwitchingRulesParamsWithHTTPClient(client *http.Client) *GetBa
 	}
 }
 
-/* GetBackendSwitchingRulesParams contains all the parameters to send to the API endpoint
-   for the get backend switching rules operation.
+/*
+GetBackendSwitchingRulesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get backend switching rules operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBackendSwitchingRulesParams struct {
 

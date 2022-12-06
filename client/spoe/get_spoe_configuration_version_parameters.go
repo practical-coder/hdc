@@ -52,10 +52,12 @@ func NewGetSpoeConfigurationVersionParamsWithHTTPClient(client *http.Client) *Ge
 	}
 }
 
-/* GetSpoeConfigurationVersionParams contains all the parameters to send to the API endpoint
-   for the get spoe configuration version operation.
+/*
+GetSpoeConfigurationVersionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get spoe configuration version operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSpoeConfigurationVersionParams struct {
 

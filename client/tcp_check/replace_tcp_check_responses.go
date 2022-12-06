@@ -64,7 +64,8 @@ func NewReplaceTCPCheckOK() *ReplaceTCPCheckOK {
 	return &ReplaceTCPCheckOK{}
 }
 
-/* ReplaceTCPCheckOK describes a response with status code 200, with default header values.
+/*
+ReplaceTCPCheckOK describes a response with status code 200, with default header values.
 
 TCP check replaced
 */
@@ -72,9 +73,39 @@ type ReplaceTCPCheckOK struct {
 	Payload *models.TCPCheck
 }
 
+// IsSuccess returns true when this replace Tcp check o k response has a 2xx status code
+func (o *ReplaceTCPCheckOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace Tcp check o k response has a 3xx status code
+func (o *ReplaceTCPCheckOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace Tcp check o k response has a 4xx status code
+func (o *ReplaceTCPCheckOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace Tcp check o k response has a 5xx status code
+func (o *ReplaceTCPCheckOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace Tcp check o k response a status code equal to that given
+func (o *ReplaceTCPCheckOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceTCPCheckOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTcpCheckOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceTCPCheckOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTcpCheckOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceTCPCheckOK) GetPayload() *models.TCPCheck {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceTCPCheckAccepted() *ReplaceTCPCheckAccepted {
 	return &ReplaceTCPCheckAccepted{}
 }
 
-/* ReplaceTCPCheckAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceTCPCheckAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceTCPCheckAccepted struct {
 	Payload *models.TCPCheck
 }
 
+// IsSuccess returns true when this replace Tcp check accepted response has a 2xx status code
+func (o *ReplaceTCPCheckAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace Tcp check accepted response has a 3xx status code
+func (o *ReplaceTCPCheckAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace Tcp check accepted response has a 4xx status code
+func (o *ReplaceTCPCheckAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace Tcp check accepted response has a 5xx status code
+func (o *ReplaceTCPCheckAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace Tcp check accepted response a status code equal to that given
+func (o *ReplaceTCPCheckAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceTCPCheckAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTcpCheckAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceTCPCheckAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTcpCheckAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceTCPCheckAccepted) GetPayload() *models.TCPCheck {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceTCPCheckBadRequest() *ReplaceTCPCheckBadRequest {
 	return &ReplaceTCPCheckBadRequest{}
 }
 
-/* ReplaceTCPCheckBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceTCPCheckBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceTCPCheckBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace Tcp check bad request response has a 2xx status code
+func (o *ReplaceTCPCheckBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace Tcp check bad request response has a 3xx status code
+func (o *ReplaceTCPCheckBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace Tcp check bad request response has a 4xx status code
+func (o *ReplaceTCPCheckBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace Tcp check bad request response has a 5xx status code
+func (o *ReplaceTCPCheckBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace Tcp check bad request response a status code equal to that given
+func (o *ReplaceTCPCheckBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceTCPCheckBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTcpCheckBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceTCPCheckBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTcpCheckBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceTCPCheckBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceTCPCheckNotFound() *ReplaceTCPCheckNotFound {
 	return &ReplaceTCPCheckNotFound{}
 }
 
-/* ReplaceTCPCheckNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceTCPCheckNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceTCPCheckNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace Tcp check not found response has a 2xx status code
+func (o *ReplaceTCPCheckNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace Tcp check not found response has a 3xx status code
+func (o *ReplaceTCPCheckNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace Tcp check not found response has a 4xx status code
+func (o *ReplaceTCPCheckNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace Tcp check not found response has a 5xx status code
+func (o *ReplaceTCPCheckNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace Tcp check not found response a status code equal to that given
+func (o *ReplaceTCPCheckNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceTCPCheckNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTcpCheckNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceTCPCheckNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTcpCheckNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceTCPCheckNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceTCPCheckDefault(code int) *ReplaceTCPCheckDefault {
 	}
 }
 
-/* ReplaceTCPCheckDefault describes a response with status code -1, with default header values.
+/*
+ReplaceTCPCheckDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceTCPCheckDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace TCP check default response has a 2xx status code
+func (o *ReplaceTCPCheckDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace TCP check default response has a 3xx status code
+func (o *ReplaceTCPCheckDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace TCP check default response has a 4xx status code
+func (o *ReplaceTCPCheckDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace TCP check default response has a 5xx status code
+func (o *ReplaceTCPCheckDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace TCP check default response a status code equal to that given
+func (o *ReplaceTCPCheckDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceTCPCheckDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTCPCheck default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceTCPCheckDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_checks/{index}][%d] replaceTCPCheck default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceTCPCheckDefault) GetPayload() *models.Error {
 	return o.Payload
 }

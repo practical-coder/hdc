@@ -50,9 +50,9 @@ type ClientService interface {
 }
 
 /*
-  AddMapEntry adds an entry into the map file
+AddMapEntry adds an entry into the map file
 
-  Adds an entry into the map file.
+Adds an entry into the map file.
 */
 func (a *Client) AddMapEntry(params *AddMapEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddMapEntryCreated, error) {
 	// TODO: Validate the params before sending
@@ -90,9 +90,9 @@ func (a *Client) AddMapEntry(params *AddMapEntryParams, authInfo runtime.ClientA
 }
 
 /*
-  AddPayloadRuntimeMap adds a new map payload
+AddPayloadRuntimeMap adds a new map payload
 
-  Adds a new map payload.
+Adds a new map payload.
 */
 func (a *Client) AddPayloadRuntimeMap(params *AddPayloadRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddPayloadRuntimeMapCreated, error) {
 	// TODO: Validate the params before sending
@@ -130,9 +130,9 @@ func (a *Client) AddPayloadRuntimeMap(params *AddPayloadRuntimeMapParams, authIn
 }
 
 /*
-  ClearRuntimeMap removes all map entries from the map file
+ClearRuntimeMap removes all map entries from the map file
 
-  Remove all map entries from the map file.
+Remove all map entries from the map file.
 */
 func (a *Client) ClearRuntimeMap(params *ClearRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ClearRuntimeMapNoContent, error) {
 	// TODO: Validate the params before sending
@@ -170,9 +170,9 @@ func (a *Client) ClearRuntimeMap(params *ClearRuntimeMapParams, authInfo runtime
 }
 
 /*
-  DeleteRuntimeMapEntry deletes all the map entries from the map by its id
+DeleteRuntimeMapEntry deletes all the map entries from the map by its id
 
-  Delete all the map entries from the map by its id.
+Delete all the map entries from the map by its id.
 */
 func (a *Client) DeleteRuntimeMapEntry(params *DeleteRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRuntimeMapEntryNoContent, error) {
 	// TODO: Validate the params before sending
@@ -210,9 +210,9 @@ func (a *Client) DeleteRuntimeMapEntry(params *DeleteRuntimeMapEntryParams, auth
 }
 
 /*
-  GetAllRuntimeMapFiles returns runtime map files
+GetAllRuntimeMapFiles returns runtime map files
 
-  Returns runtime map files.
+Returns runtime map files.
 */
 func (a *Client) GetAllRuntimeMapFiles(params *GetAllRuntimeMapFilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAllRuntimeMapFilesOK, error) {
 	// TODO: Validate the params before sending
@@ -250,9 +250,9 @@ func (a *Client) GetAllRuntimeMapFiles(params *GetAllRuntimeMapFilesParams, auth
 }
 
 /*
-  GetOneRuntimeMap returns one runtime map file
+GetOneRuntimeMap returns one runtime map file
 
-  Returns one runtime map file.
+Returns one runtime map file.
 */
 func (a *Client) GetOneRuntimeMap(params *GetOneRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOneRuntimeMapOK, error) {
 	// TODO: Validate the params before sending
@@ -290,9 +290,9 @@ func (a *Client) GetOneRuntimeMap(params *GetOneRuntimeMapParams, authInfo runti
 }
 
 /*
-  GetRuntimeMapEntry returns one map runtime setting
+GetRuntimeMapEntry returns one map runtime setting
 
-  Returns one map runtime setting by it's id.
+Returns one map runtime setting by it's id.
 */
 func (a *Client) GetRuntimeMapEntry(params *GetRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRuntimeMapEntryOK, error) {
 	// TODO: Validate the params before sending
@@ -330,9 +330,9 @@ func (a *Client) GetRuntimeMapEntry(params *GetRuntimeMapEntryParams, authInfo r
 }
 
 /*
-  ReplaceRuntimeMapEntry replaces the value corresponding to each id in a map
+ReplaceRuntimeMapEntry replaces the value corresponding to each id in a map
 
-  Replaces the value corresponding to each id in a map.
+Replaces the value corresponding to each id in a map.
 */
 func (a *Client) ReplaceRuntimeMapEntry(params *ReplaceRuntimeMapEntryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceRuntimeMapEntryOK, error) {
 	// TODO: Validate the params before sending
@@ -370,9 +370,9 @@ func (a *Client) ReplaceRuntimeMapEntry(params *ReplaceRuntimeMapEntryParams, au
 }
 
 /*
-  ShowRuntimeMap returns one map runtime entries
+ShowRuntimeMap returns one map runtime entries
 
-  Returns an array of all entries in a given runtime map file.
+Returns an array of all entries in a given runtime map file.
 */
 func (a *Client) ShowRuntimeMap(params *ShowRuntimeMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowRuntimeMapOK, error) {
 	// TODO: Validate the params before sending

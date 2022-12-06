@@ -58,7 +58,8 @@ func NewDeleteServerTemplateAccepted() *DeleteServerTemplateAccepted {
 	return &DeleteServerTemplateAccepted{}
 }
 
-/* DeleteServerTemplateAccepted describes a response with status code 202, with default header values.
+/*
+DeleteServerTemplateAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteServerTemplateAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete server template accepted response has a 2xx status code
+func (o *DeleteServerTemplateAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete server template accepted response has a 3xx status code
+func (o *DeleteServerTemplateAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete server template accepted response has a 4xx status code
+func (o *DeleteServerTemplateAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete server template accepted response has a 5xx status code
+func (o *DeleteServerTemplateAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete server template accepted response a status code equal to that given
+func (o *DeleteServerTemplateAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteServerTemplateAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_templates/{prefix}][%d] deleteServerTemplateAccepted ", 202)
+}
+
+func (o *DeleteServerTemplateAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_templates/{prefix}][%d] deleteServerTemplateAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteServerTemplateNoContent() *DeleteServerTemplateNoContent {
 	return &DeleteServerTemplateNoContent{}
 }
 
-/* DeleteServerTemplateNoContent describes a response with status code 204, with default header values.
+/*
+DeleteServerTemplateNoContent describes a response with status code 204, with default header values.
 
 Server template deleted
 */
 type DeleteServerTemplateNoContent struct {
 }
 
+// IsSuccess returns true when this delete server template no content response has a 2xx status code
+func (o *DeleteServerTemplateNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete server template no content response has a 3xx status code
+func (o *DeleteServerTemplateNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete server template no content response has a 4xx status code
+func (o *DeleteServerTemplateNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete server template no content response has a 5xx status code
+func (o *DeleteServerTemplateNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete server template no content response a status code equal to that given
+func (o *DeleteServerTemplateNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteServerTemplateNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_templates/{prefix}][%d] deleteServerTemplateNoContent ", 204)
+}
+
+func (o *DeleteServerTemplateNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_templates/{prefix}][%d] deleteServerTemplateNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteServerTemplateNotFound() *DeleteServerTemplateNotFound {
 	return &DeleteServerTemplateNotFound{}
 }
 
-/* DeleteServerTemplateNotFound describes a response with status code 404, with default header values.
+/*
+DeleteServerTemplateNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteServerTemplateNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete server template not found response has a 2xx status code
+func (o *DeleteServerTemplateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete server template not found response has a 3xx status code
+func (o *DeleteServerTemplateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete server template not found response has a 4xx status code
+func (o *DeleteServerTemplateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete server template not found response has a 5xx status code
+func (o *DeleteServerTemplateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete server template not found response a status code equal to that given
+func (o *DeleteServerTemplateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteServerTemplateNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_templates/{prefix}][%d] deleteServerTemplateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteServerTemplateNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_templates/{prefix}][%d] deleteServerTemplateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteServerTemplateNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteServerTemplateDefault(code int) *DeleteServerTemplateDefault {
 	}
 }
 
-/* DeleteServerTemplateDefault describes a response with status code -1, with default header values.
+/*
+DeleteServerTemplateDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteServerTemplateDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete server template default response has a 2xx status code
+func (o *DeleteServerTemplateDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete server template default response has a 3xx status code
+func (o *DeleteServerTemplateDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete server template default response has a 4xx status code
+func (o *DeleteServerTemplateDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete server template default response has a 5xx status code
+func (o *DeleteServerTemplateDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete server template default response a status code equal to that given
+func (o *DeleteServerTemplateDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteServerTemplateDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_templates/{prefix}][%d] deleteServerTemplate default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteServerTemplateDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_templates/{prefix}][%d] deleteServerTemplate default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteServerTemplateDefault) GetPayload() *models.Error {
 	return o.Payload
 }

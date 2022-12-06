@@ -53,10 +53,12 @@ func NewDeleteSpoeMessageParamsWithHTTPClient(client *http.Client) *DeleteSpoeMe
 	}
 }
 
-/* DeleteSpoeMessageParams contains all the parameters to send to the API endpoint
-   for the delete spoe message operation.
+/*
+DeleteSpoeMessageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete spoe message operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteSpoeMessageParams struct {
 

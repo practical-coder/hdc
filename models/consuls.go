@@ -16,7 +16,7 @@ import (
 
 // Consuls Consuls
 //
-// Consuls array
+// # Consuls array
 //
 // swagger:model consuls
 type Consuls []*Consul

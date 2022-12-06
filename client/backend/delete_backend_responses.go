@@ -58,7 +58,8 @@ func NewDeleteBackendAccepted() *DeleteBackendAccepted {
 	return &DeleteBackendAccepted{}
 }
 
-/* DeleteBackendAccepted describes a response with status code 202, with default header values.
+/*
+DeleteBackendAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteBackendAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete backend accepted response has a 2xx status code
+func (o *DeleteBackendAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete backend accepted response has a 3xx status code
+func (o *DeleteBackendAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete backend accepted response has a 4xx status code
+func (o *DeleteBackendAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete backend accepted response has a 5xx status code
+func (o *DeleteBackendAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete backend accepted response a status code equal to that given
+func (o *DeleteBackendAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteBackendAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/backends/{name}][%d] deleteBackendAccepted ", 202)
+}
+
+func (o *DeleteBackendAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/backends/{name}][%d] deleteBackendAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteBackendNoContent() *DeleteBackendNoContent {
 	return &DeleteBackendNoContent{}
 }
 
-/* DeleteBackendNoContent describes a response with status code 204, with default header values.
+/*
+DeleteBackendNoContent describes a response with status code 204, with default header values.
 
 Backend deleted
 */
 type DeleteBackendNoContent struct {
 }
 
+// IsSuccess returns true when this delete backend no content response has a 2xx status code
+func (o *DeleteBackendNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete backend no content response has a 3xx status code
+func (o *DeleteBackendNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete backend no content response has a 4xx status code
+func (o *DeleteBackendNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete backend no content response has a 5xx status code
+func (o *DeleteBackendNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete backend no content response a status code equal to that given
+func (o *DeleteBackendNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteBackendNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/backends/{name}][%d] deleteBackendNoContent ", 204)
+}
+
+func (o *DeleteBackendNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/backends/{name}][%d] deleteBackendNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteBackendNotFound() *DeleteBackendNotFound {
 	return &DeleteBackendNotFound{}
 }
 
-/* DeleteBackendNotFound describes a response with status code 404, with default header values.
+/*
+DeleteBackendNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteBackendNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete backend not found response has a 2xx status code
+func (o *DeleteBackendNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete backend not found response has a 3xx status code
+func (o *DeleteBackendNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete backend not found response has a 4xx status code
+func (o *DeleteBackendNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete backend not found response has a 5xx status code
+func (o *DeleteBackendNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete backend not found response a status code equal to that given
+func (o *DeleteBackendNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteBackendNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/backends/{name}][%d] deleteBackendNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteBackendNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/backends/{name}][%d] deleteBackendNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteBackendNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteBackendDefault(code int) *DeleteBackendDefault {
 	}
 }
 
-/* DeleteBackendDefault describes a response with status code -1, with default header values.
+/*
+DeleteBackendDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteBackendDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete backend default response has a 2xx status code
+func (o *DeleteBackendDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete backend default response has a 3xx status code
+func (o *DeleteBackendDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete backend default response has a 4xx status code
+func (o *DeleteBackendDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete backend default response has a 5xx status code
+func (o *DeleteBackendDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete backend default response a status code equal to that given
+func (o *DeleteBackendDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteBackendDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/backends/{name}][%d] deleteBackend default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteBackendDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/backends/{name}][%d] deleteBackend default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteBackendDefault) GetPayload() *models.Error {
 	return o.Payload
 }

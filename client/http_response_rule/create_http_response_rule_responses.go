@@ -64,7 +64,8 @@ func NewCreateHTTPResponseRuleCreated() *CreateHTTPResponseRuleCreated {
 	return &CreateHTTPResponseRuleCreated{}
 }
 
-/* CreateHTTPResponseRuleCreated describes a response with status code 201, with default header values.
+/*
+CreateHTTPResponseRuleCreated describes a response with status code 201, with default header values.
 
 HTTP Response Rule created
 */
@@ -72,9 +73,39 @@ type CreateHTTPResponseRuleCreated struct {
 	Payload *models.HTTPResponseRule
 }
 
+// IsSuccess returns true when this create Http response rule created response has a 2xx status code
+func (o *CreateHTTPResponseRuleCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create Http response rule created response has a 3xx status code
+func (o *CreateHTTPResponseRuleCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Http response rule created response has a 4xx status code
+func (o *CreateHTTPResponseRuleCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create Http response rule created response has a 5xx status code
+func (o *CreateHTTPResponseRuleCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Http response rule created response a status code equal to that given
+func (o *CreateHTTPResponseRuleCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateHTTPResponseRuleCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHttpResponseRuleCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateHTTPResponseRuleCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHttpResponseRuleCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateHTTPResponseRuleCreated) GetPayload() *models.HTTPResponseRule {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateHTTPResponseRuleAccepted() *CreateHTTPResponseRuleAccepted {
 	return &CreateHTTPResponseRuleAccepted{}
 }
 
-/* CreateHTTPResponseRuleAccepted describes a response with status code 202, with default header values.
+/*
+CreateHTTPResponseRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateHTTPResponseRuleAccepted struct {
 	Payload *models.HTTPResponseRule
 }
 
+// IsSuccess returns true when this create Http response rule accepted response has a 2xx status code
+func (o *CreateHTTPResponseRuleAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create Http response rule accepted response has a 3xx status code
+func (o *CreateHTTPResponseRuleAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Http response rule accepted response has a 4xx status code
+func (o *CreateHTTPResponseRuleAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create Http response rule accepted response has a 5xx status code
+func (o *CreateHTTPResponseRuleAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Http response rule accepted response a status code equal to that given
+func (o *CreateHTTPResponseRuleAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateHTTPResponseRuleAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHttpResponseRuleAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateHTTPResponseRuleAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHttpResponseRuleAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateHTTPResponseRuleAccepted) GetPayload() *models.HTTPResponseRule {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateHTTPResponseRuleBadRequest() *CreateHTTPResponseRuleBadRequest {
 	return &CreateHTTPResponseRuleBadRequest{}
 }
 
-/* CreateHTTPResponseRuleBadRequest describes a response with status code 400, with default header values.
+/*
+CreateHTTPResponseRuleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateHTTPResponseRuleBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create Http response rule bad request response has a 2xx status code
+func (o *CreateHTTPResponseRuleBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create Http response rule bad request response has a 3xx status code
+func (o *CreateHTTPResponseRuleBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Http response rule bad request response has a 4xx status code
+func (o *CreateHTTPResponseRuleBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create Http response rule bad request response has a 5xx status code
+func (o *CreateHTTPResponseRuleBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Http response rule bad request response a status code equal to that given
+func (o *CreateHTTPResponseRuleBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateHTTPResponseRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHttpResponseRuleBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateHTTPResponseRuleBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHttpResponseRuleBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateHTTPResponseRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateHTTPResponseRuleConflict() *CreateHTTPResponseRuleConflict {
 	return &CreateHTTPResponseRuleConflict{}
 }
 
-/* CreateHTTPResponseRuleConflict describes a response with status code 409, with default header values.
+/*
+CreateHTTPResponseRuleConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateHTTPResponseRuleConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create Http response rule conflict response has a 2xx status code
+func (o *CreateHTTPResponseRuleConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create Http response rule conflict response has a 3xx status code
+func (o *CreateHTTPResponseRuleConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Http response rule conflict response has a 4xx status code
+func (o *CreateHTTPResponseRuleConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create Http response rule conflict response has a 5xx status code
+func (o *CreateHTTPResponseRuleConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Http response rule conflict response a status code equal to that given
+func (o *CreateHTTPResponseRuleConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateHTTPResponseRuleConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHttpResponseRuleConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateHTTPResponseRuleConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHttpResponseRuleConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateHTTPResponseRuleConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateHTTPResponseRuleDefault(code int) *CreateHTTPResponseRuleDefault {
 	}
 }
 
-/* CreateHTTPResponseRuleDefault describes a response with status code -1, with default header values.
+/*
+CreateHTTPResponseRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateHTTPResponseRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create HTTP response rule default response has a 2xx status code
+func (o *CreateHTTPResponseRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create HTTP response rule default response has a 3xx status code
+func (o *CreateHTTPResponseRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create HTTP response rule default response has a 4xx status code
+func (o *CreateHTTPResponseRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create HTTP response rule default response has a 5xx status code
+func (o *CreateHTTPResponseRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create HTTP response rule default response a status code equal to that given
+func (o *CreateHTTPResponseRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateHTTPResponseRuleDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHTTPResponseRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateHTTPResponseRuleDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/http_response_rules][%d] createHTTPResponseRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateHTTPResponseRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }

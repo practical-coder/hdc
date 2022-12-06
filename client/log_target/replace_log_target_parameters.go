@@ -55,10 +55,12 @@ func NewReplaceLogTargetParamsWithHTTPClient(client *http.Client) *ReplaceLogTar
 	}
 }
 
-/* ReplaceLogTargetParams contains all the parameters to send to the API endpoint
-   for the replace log target operation.
+/*
+ReplaceLogTargetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace log target operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceLogTargetParams struct {
 

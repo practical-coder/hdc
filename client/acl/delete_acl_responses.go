@@ -58,7 +58,8 @@ func NewDeleteACLAccepted() *DeleteACLAccepted {
 	return &DeleteACLAccepted{}
 }
 
-/* DeleteACLAccepted describes a response with status code 202, with default header values.
+/*
+DeleteACLAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteACLAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete Acl accepted response has a 2xx status code
+func (o *DeleteACLAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete Acl accepted response has a 3xx status code
+func (o *DeleteACLAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Acl accepted response has a 4xx status code
+func (o *DeleteACLAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete Acl accepted response has a 5xx status code
+func (o *DeleteACLAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Acl accepted response a status code equal to that given
+func (o *DeleteACLAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteACLAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/acls/{index}][%d] deleteAclAccepted ", 202)
+}
+
+func (o *DeleteACLAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/acls/{index}][%d] deleteAclAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteACLNoContent() *DeleteACLNoContent {
 	return &DeleteACLNoContent{}
 }
 
-/* DeleteACLNoContent describes a response with status code 204, with default header values.
+/*
+DeleteACLNoContent describes a response with status code 204, with default header values.
 
 ACL line deleted
 */
 type DeleteACLNoContent struct {
 }
 
+// IsSuccess returns true when this delete Acl no content response has a 2xx status code
+func (o *DeleteACLNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete Acl no content response has a 3xx status code
+func (o *DeleteACLNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Acl no content response has a 4xx status code
+func (o *DeleteACLNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete Acl no content response has a 5xx status code
+func (o *DeleteACLNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Acl no content response a status code equal to that given
+func (o *DeleteACLNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteACLNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/acls/{index}][%d] deleteAclNoContent ", 204)
+}
+
+func (o *DeleteACLNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/acls/{index}][%d] deleteAclNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteACLNotFound() *DeleteACLNotFound {
 	return &DeleteACLNotFound{}
 }
 
-/* DeleteACLNotFound describes a response with status code 404, with default header values.
+/*
+DeleteACLNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteACLNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete Acl not found response has a 2xx status code
+func (o *DeleteACLNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete Acl not found response has a 3xx status code
+func (o *DeleteACLNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Acl not found response has a 4xx status code
+func (o *DeleteACLNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete Acl not found response has a 5xx status code
+func (o *DeleteACLNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Acl not found response a status code equal to that given
+func (o *DeleteACLNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteACLNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/acls/{index}][%d] deleteAclNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteACLNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/acls/{index}][%d] deleteAclNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteACLNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteACLDefault(code int) *DeleteACLDefault {
 	}
 }
 
-/* DeleteACLDefault describes a response with status code -1, with default header values.
+/*
+DeleteACLDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteACLDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete Acl default response has a 2xx status code
+func (o *DeleteACLDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete Acl default response has a 3xx status code
+func (o *DeleteACLDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete Acl default response has a 4xx status code
+func (o *DeleteACLDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete Acl default response has a 5xx status code
+func (o *DeleteACLDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete Acl default response a status code equal to that given
+func (o *DeleteACLDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteACLDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/acls/{index}][%d] deleteAcl default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteACLDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/acls/{index}][%d] deleteAcl default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteACLDefault) GetPayload() *models.Error {
 	return o.Payload
 }

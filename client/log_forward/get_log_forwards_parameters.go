@@ -52,10 +52,12 @@ func NewGetLogForwardsParamsWithHTTPClient(client *http.Client) *GetLogForwardsP
 	}
 }
 
-/* GetLogForwardsParams contains all the parameters to send to the API endpoint
-   for the get log forwards operation.
+/*
+GetLogForwardsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get log forwards operation.
+
+	Typically these are written to a http.Request.
 */
 type GetLogForwardsParams struct {
 

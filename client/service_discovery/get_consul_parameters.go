@@ -52,10 +52,12 @@ func NewGetConsulParamsWithHTTPClient(client *http.Client) *GetConsulParams {
 	}
 }
 
-/* GetConsulParams contains all the parameters to send to the API endpoint
-   for the get consul operation.
+/*
+GetConsulParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get consul operation.
+
+	Typically these are written to a http.Request.
 */
 type GetConsulParams struct {
 

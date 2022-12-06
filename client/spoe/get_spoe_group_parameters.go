@@ -52,10 +52,12 @@ func NewGetSpoeGroupParamsWithHTTPClient(client *http.Client) *GetSpoeGroupParam
 	}
 }
 
-/* GetSpoeGroupParams contains all the parameters to send to the API endpoint
-   for the get spoe group operation.
+/*
+GetSpoeGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get spoe group operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSpoeGroupParams struct {
 

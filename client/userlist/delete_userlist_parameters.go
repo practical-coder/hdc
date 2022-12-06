@@ -53,10 +53,12 @@ func NewDeleteUserlistParamsWithHTTPClient(client *http.Client) *DeleteUserlistP
 	}
 }
 
-/* DeleteUserlistParams contains all the parameters to send to the API endpoint
-   for the delete userlist operation.
+/*
+DeleteUserlistParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete userlist operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteUserlistParams struct {
 

@@ -64,9 +64,9 @@ type ClientService interface {
 }
 
 /*
-  CreateStorageGeneralFile creates a managed storage general use file with contents
+CreateStorageGeneralFile creates a managed storage general use file with contents
 
-  Creates a managed storage general use file with contents.
+Creates a managed storage general use file with contents.
 */
 func (a *Client) CreateStorageGeneralFile(params *CreateStorageGeneralFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateStorageGeneralFileCreated, error) {
 	// TODO: Validate the params before sending
@@ -104,9 +104,9 @@ func (a *Client) CreateStorageGeneralFile(params *CreateStorageGeneralFileParams
 }
 
 /*
-  CreateStorageMapFile creates a managed storage map file with its entries
+CreateStorageMapFile creates a managed storage map file with its entries
 
-  Creates a managed storage map file with its entries.
+Creates a managed storage map file with its entries.
 */
 func (a *Client) CreateStorageMapFile(params *CreateStorageMapFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateStorageMapFileCreated, error) {
 	// TODO: Validate the params before sending
@@ -144,9 +144,9 @@ func (a *Client) CreateStorageMapFile(params *CreateStorageMapFileParams, authIn
 }
 
 /*
-  CreateStorageSSLCertificate creates s s l certificate
+CreateStorageSSLCertificate creates s s l certificate
 
-  Creates SSL certificate.
+Creates SSL certificate.
 */
 func (a *Client) CreateStorageSSLCertificate(params *CreateStorageSSLCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateStorageSSLCertificateCreated, error) {
 	// TODO: Validate the params before sending
@@ -184,9 +184,9 @@ func (a *Client) CreateStorageSSLCertificate(params *CreateStorageSSLCertificate
 }
 
 /*
-  DeleteStorageGeneralFile deletes a managed general use file from disk
+DeleteStorageGeneralFile deletes a managed general use file from disk
 
-  Deletes a managed general use file from disk.
+Deletes a managed general use file from disk.
 */
 func (a *Client) DeleteStorageGeneralFile(params *DeleteStorageGeneralFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteStorageGeneralFileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -224,9 +224,9 @@ func (a *Client) DeleteStorageGeneralFile(params *DeleteStorageGeneralFileParams
 }
 
 /*
-  DeleteStorageMap deletes a managed map file from disk
+DeleteStorageMap deletes a managed map file from disk
 
-  Deletes a managed map file from disk.
+Deletes a managed map file from disk.
 */
 func (a *Client) DeleteStorageMap(params *DeleteStorageMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteStorageMapNoContent, error) {
 	// TODO: Validate the params before sending
@@ -264,9 +264,9 @@ func (a *Client) DeleteStorageMap(params *DeleteStorageMapParams, authInfo runti
 }
 
 /*
-  DeleteStorageSSLCertificate deletes s s l certificate from disk
+DeleteStorageSSLCertificate deletes s s l certificate from disk
 
-  Deletes SSL certificate from disk.
+Deletes SSL certificate from disk.
 */
 func (a *Client) DeleteStorageSSLCertificate(params *DeleteStorageSSLCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteStorageSSLCertificateAccepted, *DeleteStorageSSLCertificateNoContent, error) {
 	// TODO: Validate the params before sending
@@ -306,9 +306,9 @@ func (a *Client) DeleteStorageSSLCertificate(params *DeleteStorageSSLCertificate
 }
 
 /*
-  GetAllStorageGeneralFiles returns a list of all managed general use files
+GetAllStorageGeneralFiles returns a list of all managed general use files
 
-  Returns a list of all managed general use files
+Returns a list of all managed general use files
 */
 func (a *Client) GetAllStorageGeneralFiles(params *GetAllStorageGeneralFilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAllStorageGeneralFilesOK, error) {
 	// TODO: Validate the params before sending
@@ -346,9 +346,9 @@ func (a *Client) GetAllStorageGeneralFiles(params *GetAllStorageGeneralFilesPara
 }
 
 /*
-  GetAllStorageMapFiles returns a list of all managed map files
+GetAllStorageMapFiles returns a list of all managed map files
 
-  Returns a list of all managed map files
+Returns a list of all managed map files
 */
 func (a *Client) GetAllStorageMapFiles(params *GetAllStorageMapFilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAllStorageMapFilesOK, error) {
 	// TODO: Validate the params before sending
@@ -386,9 +386,9 @@ func (a *Client) GetAllStorageMapFiles(params *GetAllStorageMapFilesParams, auth
 }
 
 /*
-  GetAllStorageSSLCertificates returns all available s s l certificates on disk
+GetAllStorageSSLCertificates returns all available s s l certificates on disk
 
-  Returns all available SSL certificates on disk.
+Returns all available SSL certificates on disk.
 */
 func (a *Client) GetAllStorageSSLCertificates(params *GetAllStorageSSLCertificatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAllStorageSSLCertificatesOK, error) {
 	// TODO: Validate the params before sending
@@ -426,9 +426,9 @@ func (a *Client) GetAllStorageSSLCertificates(params *GetAllStorageSSLCertificat
 }
 
 /*
-  GetOneStorageGeneralFile returns the contents of one managed general use file from disk
+GetOneStorageGeneralFile returns the contents of one managed general use file from disk
 
-  Returns the contents of one managed general use file from disk
+Returns the contents of one managed general use file from disk
 */
 func (a *Client) GetOneStorageGeneralFile(params *GetOneStorageGeneralFileParams, authInfo runtime.ClientAuthInfoWriter, writer io.Writer, opts ...ClientOption) (*GetOneStorageGeneralFileOK, error) {
 	// TODO: Validate the params before sending
@@ -466,9 +466,9 @@ func (a *Client) GetOneStorageGeneralFile(params *GetOneStorageGeneralFileParams
 }
 
 /*
-  GetOneStorageMap returns the contents of one managed map file from disk
+GetOneStorageMap returns the contents of one managed map file from disk
 
-  Returns the contents of one managed map file from disk
+Returns the contents of one managed map file from disk
 */
 func (a *Client) GetOneStorageMap(params *GetOneStorageMapParams, authInfo runtime.ClientAuthInfoWriter, writer io.Writer, opts ...ClientOption) (*GetOneStorageMapOK, error) {
 	// TODO: Validate the params before sending
@@ -506,9 +506,9 @@ func (a *Client) GetOneStorageMap(params *GetOneStorageMapParams, authInfo runti
 }
 
 /*
-  GetOneStorageSSLCertificate returns one s s l certificate from disk
+GetOneStorageSSLCertificate returns one s s l certificate from disk
 
-  Returns one SSL certificate from disk.
+Returns one SSL certificate from disk.
 */
 func (a *Client) GetOneStorageSSLCertificate(params *GetOneStorageSSLCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOneStorageSSLCertificateOK, error) {
 	// TODO: Validate the params before sending
@@ -546,9 +546,9 @@ func (a *Client) GetOneStorageSSLCertificate(params *GetOneStorageSSLCertificate
 }
 
 /*
-  ReplaceStorageGeneralFile replaces contents of a managed general use file on disk
+ReplaceStorageGeneralFile replaces contents of a managed general use file on disk
 
-  Replaces the contents of a managed general use file on disk
+Replaces the contents of a managed general use file on disk
 */
 func (a *Client) ReplaceStorageGeneralFile(params *ReplaceStorageGeneralFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceStorageGeneralFileAccepted, *ReplaceStorageGeneralFileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -588,9 +588,9 @@ func (a *Client) ReplaceStorageGeneralFile(params *ReplaceStorageGeneralFilePara
 }
 
 /*
-  ReplaceStorageMapFile replaces contents of a managed map file on disk
+ReplaceStorageMapFile replaces contents of a managed map file on disk
 
-  Replaces the contents of a managed map file on disk
+Replaces the contents of a managed map file on disk
 */
 func (a *Client) ReplaceStorageMapFile(params *ReplaceStorageMapFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceStorageMapFileAccepted, *ReplaceStorageMapFileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -630,9 +630,9 @@ func (a *Client) ReplaceStorageMapFile(params *ReplaceStorageMapFileParams, auth
 }
 
 /*
-  ReplaceStorageSSLCertificate replaces s s l certificates on disk
+ReplaceStorageSSLCertificate replaces s s l certificates on disk
 
-  Replaces SSL certificate on disk.
+Replaces SSL certificate on disk.
 */
 func (a *Client) ReplaceStorageSSLCertificate(params *ReplaceStorageSSLCertificateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceStorageSSLCertificateOK, *ReplaceStorageSSLCertificateAccepted, error) {
 	// TODO: Validate the params before sending

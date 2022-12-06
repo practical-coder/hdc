@@ -55,10 +55,12 @@ func NewCreateDeclareCaptureParamsWithHTTPClient(client *http.Client) *CreateDec
 	}
 }
 
-/* CreateDeclareCaptureParams contains all the parameters to send to the API endpoint
-   for the create declare capture operation.
+/*
+CreateDeclareCaptureParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create declare capture operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateDeclareCaptureParams struct {
 

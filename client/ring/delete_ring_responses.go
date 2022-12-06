@@ -58,7 +58,8 @@ func NewDeleteRingAccepted() *DeleteRingAccepted {
 	return &DeleteRingAccepted{}
 }
 
-/* DeleteRingAccepted describes a response with status code 202, with default header values.
+/*
+DeleteRingAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteRingAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete ring accepted response has a 2xx status code
+func (o *DeleteRingAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete ring accepted response has a 3xx status code
+func (o *DeleteRingAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete ring accepted response has a 4xx status code
+func (o *DeleteRingAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete ring accepted response has a 5xx status code
+func (o *DeleteRingAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete ring accepted response a status code equal to that given
+func (o *DeleteRingAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteRingAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/rings/{name}][%d] deleteRingAccepted ", 202)
+}
+
+func (o *DeleteRingAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/rings/{name}][%d] deleteRingAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteRingNoContent() *DeleteRingNoContent {
 	return &DeleteRingNoContent{}
 }
 
-/* DeleteRingNoContent describes a response with status code 204, with default header values.
+/*
+DeleteRingNoContent describes a response with status code 204, with default header values.
 
 Ring deleted
 */
 type DeleteRingNoContent struct {
 }
 
+// IsSuccess returns true when this delete ring no content response has a 2xx status code
+func (o *DeleteRingNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete ring no content response has a 3xx status code
+func (o *DeleteRingNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete ring no content response has a 4xx status code
+func (o *DeleteRingNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete ring no content response has a 5xx status code
+func (o *DeleteRingNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete ring no content response a status code equal to that given
+func (o *DeleteRingNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteRingNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/rings/{name}][%d] deleteRingNoContent ", 204)
+}
+
+func (o *DeleteRingNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/rings/{name}][%d] deleteRingNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteRingNotFound() *DeleteRingNotFound {
 	return &DeleteRingNotFound{}
 }
 
-/* DeleteRingNotFound describes a response with status code 404, with default header values.
+/*
+DeleteRingNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteRingNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete ring not found response has a 2xx status code
+func (o *DeleteRingNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete ring not found response has a 3xx status code
+func (o *DeleteRingNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete ring not found response has a 4xx status code
+func (o *DeleteRingNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete ring not found response has a 5xx status code
+func (o *DeleteRingNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete ring not found response a status code equal to that given
+func (o *DeleteRingNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteRingNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/rings/{name}][%d] deleteRingNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteRingNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/rings/{name}][%d] deleteRingNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteRingNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteRingDefault(code int) *DeleteRingDefault {
 	}
 }
 
-/* DeleteRingDefault describes a response with status code -1, with default header values.
+/*
+DeleteRingDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteRingDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete ring default response has a 2xx status code
+func (o *DeleteRingDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete ring default response has a 3xx status code
+func (o *DeleteRingDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete ring default response has a 4xx status code
+func (o *DeleteRingDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete ring default response has a 5xx status code
+func (o *DeleteRingDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete ring default response a status code equal to that given
+func (o *DeleteRingDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteRingDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/rings/{name}][%d] deleteRing default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteRingDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/rings/{name}][%d] deleteRing default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteRingDefault) GetPayload() *models.Error {
 	return o.Payload
 }

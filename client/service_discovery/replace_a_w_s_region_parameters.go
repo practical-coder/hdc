@@ -54,10 +54,12 @@ func NewReplaceAWSRegionParamsWithHTTPClient(client *http.Client) *ReplaceAWSReg
 	}
 }
 
-/* ReplaceAWSRegionParams contains all the parameters to send to the API endpoint
-   for the replace a w s region operation.
+/*
+ReplaceAWSRegionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace a w s region operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceAWSRegionParams struct {
 

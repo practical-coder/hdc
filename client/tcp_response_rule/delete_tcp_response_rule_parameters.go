@@ -53,10 +53,12 @@ func NewDeleteTCPResponseRuleParamsWithHTTPClient(client *http.Client) *DeleteTC
 	}
 }
 
-/* DeleteTCPResponseRuleParams contains all the parameters to send to the API endpoint
-   for the delete TCP response rule operation.
+/*
+DeleteTCPResponseRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete TCP response rule operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteTCPResponseRuleParams struct {
 

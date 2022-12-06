@@ -50,7 +50,8 @@ func NewGetBackendsOK() *GetBackendsOK {
 	return &GetBackendsOK{}
 }
 
-/* GetBackendsOK describes a response with status code 200, with default header values.
+/*
+GetBackendsOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetBackendsOK struct {
 	Payload *GetBackendsOKBody
 }
 
+// IsSuccess returns true when this get backends o k response has a 2xx status code
+func (o *GetBackendsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get backends o k response has a 3xx status code
+func (o *GetBackendsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get backends o k response has a 4xx status code
+func (o *GetBackendsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get backends o k response has a 5xx status code
+func (o *GetBackendsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get backends o k response a status code equal to that given
+func (o *GetBackendsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetBackendsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/backends][%d] getBackendsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetBackendsOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/backends][%d] getBackendsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetBackendsOK) GetPayload() *GetBackendsOKBody {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewGetBackendsDefault(code int) *GetBackendsDefault {
 	}
 }
 
-/* GetBackendsDefault describes a response with status code -1, with default header values.
+/*
+GetBackendsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +147,39 @@ func (o *GetBackendsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get backends default response has a 2xx status code
+func (o *GetBackendsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get backends default response has a 3xx status code
+func (o *GetBackendsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get backends default response has a 4xx status code
+func (o *GetBackendsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get backends default response has a 5xx status code
+func (o *GetBackendsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get backends default response a status code equal to that given
+func (o *GetBackendsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetBackendsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/backends][%d] getBackends default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetBackendsDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/backends][%d] getBackends default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetBackendsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -141,7 +203,8 @@ func (o *GetBackendsDefault) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-/*GetBackendsOKBody get backends o k body
+/*
+GetBackendsOKBody get backends o k body
 swagger:model GetBackendsOKBody
 */
 type GetBackendsOKBody struct {

@@ -58,7 +58,8 @@ func NewDeleteHTTPAfterResponseRuleAccepted() *DeleteHTTPAfterResponseRuleAccept
 	return &DeleteHTTPAfterResponseRuleAccepted{}
 }
 
-/* DeleteHTTPAfterResponseRuleAccepted describes a response with status code 202, with default header values.
+/*
+DeleteHTTPAfterResponseRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteHTTPAfterResponseRuleAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete Http after response rule accepted response has a 2xx status code
+func (o *DeleteHTTPAfterResponseRuleAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete Http after response rule accepted response has a 3xx status code
+func (o *DeleteHTTPAfterResponseRuleAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Http after response rule accepted response has a 4xx status code
+func (o *DeleteHTTPAfterResponseRuleAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete Http after response rule accepted response has a 5xx status code
+func (o *DeleteHTTPAfterResponseRuleAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Http after response rule accepted response a status code equal to that given
+func (o *DeleteHTTPAfterResponseRuleAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteHTTPAfterResponseRuleAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_after_response_rules/{index}][%d] deleteHttpAfterResponseRuleAccepted ", 202)
+}
+
+func (o *DeleteHTTPAfterResponseRuleAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_after_response_rules/{index}][%d] deleteHttpAfterResponseRuleAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteHTTPAfterResponseRuleNoContent() *DeleteHTTPAfterResponseRuleNoCon
 	return &DeleteHTTPAfterResponseRuleNoContent{}
 }
 
-/* DeleteHTTPAfterResponseRuleNoContent describes a response with status code 204, with default header values.
+/*
+DeleteHTTPAfterResponseRuleNoContent describes a response with status code 204, with default header values.
 
 HTTP After Response Rule deleted
 */
 type DeleteHTTPAfterResponseRuleNoContent struct {
 }
 
+// IsSuccess returns true when this delete Http after response rule no content response has a 2xx status code
+func (o *DeleteHTTPAfterResponseRuleNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete Http after response rule no content response has a 3xx status code
+func (o *DeleteHTTPAfterResponseRuleNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Http after response rule no content response has a 4xx status code
+func (o *DeleteHTTPAfterResponseRuleNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete Http after response rule no content response has a 5xx status code
+func (o *DeleteHTTPAfterResponseRuleNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Http after response rule no content response a status code equal to that given
+func (o *DeleteHTTPAfterResponseRuleNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteHTTPAfterResponseRuleNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_after_response_rules/{index}][%d] deleteHttpAfterResponseRuleNoContent ", 204)
+}
+
+func (o *DeleteHTTPAfterResponseRuleNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_after_response_rules/{index}][%d] deleteHttpAfterResponseRuleNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteHTTPAfterResponseRuleNotFound() *DeleteHTTPAfterResponseRuleNotFou
 	return &DeleteHTTPAfterResponseRuleNotFound{}
 }
 
-/* DeleteHTTPAfterResponseRuleNotFound describes a response with status code 404, with default header values.
+/*
+DeleteHTTPAfterResponseRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteHTTPAfterResponseRuleNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete Http after response rule not found response has a 2xx status code
+func (o *DeleteHTTPAfterResponseRuleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete Http after response rule not found response has a 3xx status code
+func (o *DeleteHTTPAfterResponseRuleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Http after response rule not found response has a 4xx status code
+func (o *DeleteHTTPAfterResponseRuleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete Http after response rule not found response has a 5xx status code
+func (o *DeleteHTTPAfterResponseRuleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Http after response rule not found response a status code equal to that given
+func (o *DeleteHTTPAfterResponseRuleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteHTTPAfterResponseRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_after_response_rules/{index}][%d] deleteHttpAfterResponseRuleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteHTTPAfterResponseRuleNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_after_response_rules/{index}][%d] deleteHttpAfterResponseRuleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteHTTPAfterResponseRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteHTTPAfterResponseRuleDefault(code int) *DeleteHTTPAfterResponseRul
 	}
 }
 
-/* DeleteHTTPAfterResponseRuleDefault describes a response with status code -1, with default header values.
+/*
+DeleteHTTPAfterResponseRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteHTTPAfterResponseRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete HTTP after response rule default response has a 2xx status code
+func (o *DeleteHTTPAfterResponseRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete HTTP after response rule default response has a 3xx status code
+func (o *DeleteHTTPAfterResponseRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete HTTP after response rule default response has a 4xx status code
+func (o *DeleteHTTPAfterResponseRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete HTTP after response rule default response has a 5xx status code
+func (o *DeleteHTTPAfterResponseRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete HTTP after response rule default response a status code equal to that given
+func (o *DeleteHTTPAfterResponseRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteHTTPAfterResponseRuleDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_after_response_rules/{index}][%d] deleteHTTPAfterResponseRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteHTTPAfterResponseRuleDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_after_response_rules/{index}][%d] deleteHTTPAfterResponseRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteHTTPAfterResponseRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }

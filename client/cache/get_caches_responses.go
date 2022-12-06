@@ -50,7 +50,8 @@ func NewGetCachesOK() *GetCachesOK {
 	return &GetCachesOK{}
 }
 
-/* GetCachesOK describes a response with status code 200, with default header values.
+/*
+GetCachesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetCachesOK struct {
 	Payload *GetCachesOKBody
 }
 
+// IsSuccess returns true when this get caches o k response has a 2xx status code
+func (o *GetCachesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get caches o k response has a 3xx status code
+func (o *GetCachesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get caches o k response has a 4xx status code
+func (o *GetCachesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get caches o k response has a 5xx status code
+func (o *GetCachesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get caches o k response a status code equal to that given
+func (o *GetCachesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCachesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/caches][%d] getCachesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCachesOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/caches][%d] getCachesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCachesOK) GetPayload() *GetCachesOKBody {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewGetCachesDefault(code int) *GetCachesDefault {
 	}
 }
 
-/* GetCachesDefault describes a response with status code -1, with default header values.
+/*
+GetCachesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +147,39 @@ func (o *GetCachesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get caches default response has a 2xx status code
+func (o *GetCachesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get caches default response has a 3xx status code
+func (o *GetCachesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get caches default response has a 4xx status code
+func (o *GetCachesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get caches default response has a 5xx status code
+func (o *GetCachesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get caches default response a status code equal to that given
+func (o *GetCachesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetCachesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/caches][%d] getCaches default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetCachesDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/caches][%d] getCaches default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetCachesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -141,7 +203,8 @@ func (o *GetCachesDefault) readResponse(response runtime.ClientResponse, consume
 	return nil
 }
 
-/*GetCachesOKBody get caches o k body
+/*
+GetCachesOKBody get caches o k body
 swagger:model GetCachesOKBody
 */
 type GetCachesOKBody struct {

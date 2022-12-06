@@ -56,7 +56,8 @@ func NewGetSpoeGroupOK() *GetSpoeGroupOK {
 	return &GetSpoeGroupOK{}
 }
 
-/* GetSpoeGroupOK describes a response with status code 200, with default header values.
+/*
+GetSpoeGroupOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -69,9 +70,39 @@ type GetSpoeGroupOK struct {
 	Payload *GetSpoeGroupOKBody
 }
 
+// IsSuccess returns true when this get spoe group o k response has a 2xx status code
+func (o *GetSpoeGroupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get spoe group o k response has a 3xx status code
+func (o *GetSpoeGroupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get spoe group o k response has a 4xx status code
+func (o *GetSpoeGroupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get spoe group o k response has a 5xx status code
+func (o *GetSpoeGroupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get spoe group o k response a status code equal to that given
+func (o *GetSpoeGroupOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetSpoeGroupOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_groups/{name}][%d] getSpoeGroupOK  %+v", 200, o.Payload)
 }
+
+func (o *GetSpoeGroupOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_groups/{name}][%d] getSpoeGroupOK  %+v", 200, o.Payload)
+}
+
 func (o *GetSpoeGroupOK) GetPayload() *GetSpoeGroupOKBody {
 	return o.Payload
 }
@@ -100,7 +131,8 @@ func NewGetSpoeGroupNotFound() *GetSpoeGroupNotFound {
 	return &GetSpoeGroupNotFound{}
 }
 
-/* GetSpoeGroupNotFound describes a response with status code 404, with default header values.
+/*
+GetSpoeGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -113,9 +145,39 @@ type GetSpoeGroupNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get spoe group not found response has a 2xx status code
+func (o *GetSpoeGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get spoe group not found response has a 3xx status code
+func (o *GetSpoeGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get spoe group not found response has a 4xx status code
+func (o *GetSpoeGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get spoe group not found response has a 5xx status code
+func (o *GetSpoeGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get spoe group not found response a status code equal to that given
+func (o *GetSpoeGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetSpoeGroupNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_groups/{name}][%d] getSpoeGroupNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetSpoeGroupNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_groups/{name}][%d] getSpoeGroupNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetSpoeGroupNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -146,7 +208,8 @@ func NewGetSpoeGroupDefault(code int) *GetSpoeGroupDefault {
 	}
 }
 
-/* GetSpoeGroupDefault describes a response with status code -1, with default header values.
+/*
+GetSpoeGroupDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -165,9 +228,39 @@ func (o *GetSpoeGroupDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get spoe group default response has a 2xx status code
+func (o *GetSpoeGroupDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get spoe group default response has a 3xx status code
+func (o *GetSpoeGroupDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get spoe group default response has a 4xx status code
+func (o *GetSpoeGroupDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get spoe group default response has a 5xx status code
+func (o *GetSpoeGroupDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get spoe group default response a status code equal to that given
+func (o *GetSpoeGroupDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetSpoeGroupDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_groups/{name}][%d] getSpoeGroup default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetSpoeGroupDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_groups/{name}][%d] getSpoeGroup default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetSpoeGroupDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -191,7 +284,8 @@ func (o *GetSpoeGroupDefault) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-/*GetSpoeGroupOKBody get spoe group o k body
+/*
+GetSpoeGroupOKBody get spoe group o k body
 swagger:model GetSpoeGroupOKBody
 */
 type GetSpoeGroupOKBody struct {

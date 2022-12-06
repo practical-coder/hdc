@@ -52,7 +52,8 @@ func NewGetTransactionOK() *GetTransactionOK {
 	return &GetTransactionOK{}
 }
 
-/* GetTransactionOK describes a response with status code 200, with default header values.
+/*
+GetTransactionOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -60,9 +61,39 @@ type GetTransactionOK struct {
 	Payload *models.Transaction
 }
 
+// IsSuccess returns true when this get transaction o k response has a 2xx status code
+func (o *GetTransactionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get transaction o k response has a 3xx status code
+func (o *GetTransactionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get transaction o k response has a 4xx status code
+func (o *GetTransactionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get transaction o k response has a 5xx status code
+func (o *GetTransactionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get transaction o k response a status code equal to that given
+func (o *GetTransactionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetTransactionOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/transactions/{id}][%d] getTransactionOK  %+v", 200, o.Payload)
 }
+
+func (o *GetTransactionOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/transactions/{id}][%d] getTransactionOK  %+v", 200, o.Payload)
+}
+
 func (o *GetTransactionOK) GetPayload() *models.Transaction {
 	return o.Payload
 }
@@ -84,7 +115,8 @@ func NewGetTransactionNotFound() *GetTransactionNotFound {
 	return &GetTransactionNotFound{}
 }
 
-/* GetTransactionNotFound describes a response with status code 404, with default header values.
+/*
+GetTransactionNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -97,9 +129,39 @@ type GetTransactionNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get transaction not found response has a 2xx status code
+func (o *GetTransactionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get transaction not found response has a 3xx status code
+func (o *GetTransactionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get transaction not found response has a 4xx status code
+func (o *GetTransactionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get transaction not found response has a 5xx status code
+func (o *GetTransactionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get transaction not found response a status code equal to that given
+func (o *GetTransactionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetTransactionNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/transactions/{id}][%d] getTransactionNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetTransactionNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/transactions/{id}][%d] getTransactionNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetTransactionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -130,7 +192,8 @@ func NewGetTransactionDefault(code int) *GetTransactionDefault {
 	}
 }
 
-/* GetTransactionDefault describes a response with status code -1, with default header values.
+/*
+GetTransactionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -149,9 +212,39 @@ func (o *GetTransactionDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get transaction default response has a 2xx status code
+func (o *GetTransactionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get transaction default response has a 3xx status code
+func (o *GetTransactionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get transaction default response has a 4xx status code
+func (o *GetTransactionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get transaction default response has a 5xx status code
+func (o *GetTransactionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get transaction default response a status code equal to that given
+func (o *GetTransactionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetTransactionDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/transactions/{id}][%d] getTransaction default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetTransactionDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/transactions/{id}][%d] getTransaction default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetTransactionDefault) GetPayload() *models.Error {
 	return o.Payload
 }

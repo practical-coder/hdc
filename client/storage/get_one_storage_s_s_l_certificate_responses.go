@@ -52,7 +52,8 @@ func NewGetOneStorageSSLCertificateOK() *GetOneStorageSSLCertificateOK {
 	return &GetOneStorageSSLCertificateOK{}
 }
 
-/* GetOneStorageSSLCertificateOK describes a response with status code 200, with default header values.
+/*
+GetOneStorageSSLCertificateOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -60,9 +61,39 @@ type GetOneStorageSSLCertificateOK struct {
 	Payload *models.SslCertificate
 }
 
+// IsSuccess returns true when this get one storage s s l certificate o k response has a 2xx status code
+func (o *GetOneStorageSSLCertificateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get one storage s s l certificate o k response has a 3xx status code
+func (o *GetOneStorageSSLCertificateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get one storage s s l certificate o k response has a 4xx status code
+func (o *GetOneStorageSSLCertificateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get one storage s s l certificate o k response has a 5xx status code
+func (o *GetOneStorageSSLCertificateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get one storage s s l certificate o k response a status code equal to that given
+func (o *GetOneStorageSSLCertificateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetOneStorageSSLCertificateOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/ssl_certificates/{name}][%d] getOneStorageSSLCertificateOK  %+v", 200, o.Payload)
 }
+
+func (o *GetOneStorageSSLCertificateOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/storage/ssl_certificates/{name}][%d] getOneStorageSSLCertificateOK  %+v", 200, o.Payload)
+}
+
 func (o *GetOneStorageSSLCertificateOK) GetPayload() *models.SslCertificate {
 	return o.Payload
 }
@@ -84,7 +115,8 @@ func NewGetOneStorageSSLCertificateNotFound() *GetOneStorageSSLCertificateNotFou
 	return &GetOneStorageSSLCertificateNotFound{}
 }
 
-/* GetOneStorageSSLCertificateNotFound describes a response with status code 404, with default header values.
+/*
+GetOneStorageSSLCertificateNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -97,9 +129,39 @@ type GetOneStorageSSLCertificateNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get one storage s s l certificate not found response has a 2xx status code
+func (o *GetOneStorageSSLCertificateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get one storage s s l certificate not found response has a 3xx status code
+func (o *GetOneStorageSSLCertificateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get one storage s s l certificate not found response has a 4xx status code
+func (o *GetOneStorageSSLCertificateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get one storage s s l certificate not found response has a 5xx status code
+func (o *GetOneStorageSSLCertificateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get one storage s s l certificate not found response a status code equal to that given
+func (o *GetOneStorageSSLCertificateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetOneStorageSSLCertificateNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/ssl_certificates/{name}][%d] getOneStorageSSLCertificateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetOneStorageSSLCertificateNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/storage/ssl_certificates/{name}][%d] getOneStorageSSLCertificateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetOneStorageSSLCertificateNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -130,7 +192,8 @@ func NewGetOneStorageSSLCertificateDefault(code int) *GetOneStorageSSLCertificat
 	}
 }
 
-/* GetOneStorageSSLCertificateDefault describes a response with status code -1, with default header values.
+/*
+GetOneStorageSSLCertificateDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -149,9 +212,39 @@ func (o *GetOneStorageSSLCertificateDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get one storage s s l certificate default response has a 2xx status code
+func (o *GetOneStorageSSLCertificateDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get one storage s s l certificate default response has a 3xx status code
+func (o *GetOneStorageSSLCertificateDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get one storage s s l certificate default response has a 4xx status code
+func (o *GetOneStorageSSLCertificateDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get one storage s s l certificate default response has a 5xx status code
+func (o *GetOneStorageSSLCertificateDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get one storage s s l certificate default response a status code equal to that given
+func (o *GetOneStorageSSLCertificateDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetOneStorageSSLCertificateDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/ssl_certificates/{name}][%d] getOneStorageSSLCertificate default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetOneStorageSSLCertificateDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/storage/ssl_certificates/{name}][%d] getOneStorageSSLCertificate default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetOneStorageSSLCertificateDefault) GetPayload() *models.Error {
 	return o.Payload
 }

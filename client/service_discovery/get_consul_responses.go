@@ -55,7 +55,8 @@ func NewGetConsulOK() *GetConsulOK {
 	return &GetConsulOK{}
 }
 
-/* GetConsulOK describes a response with status code 200, with default header values.
+/*
+GetConsulOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetConsulOK struct {
 	Payload *GetConsulOKBody
 }
 
+// IsSuccess returns true when this get consul o k response has a 2xx status code
+func (o *GetConsulOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get consul o k response has a 3xx status code
+func (o *GetConsulOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get consul o k response has a 4xx status code
+func (o *GetConsulOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get consul o k response has a 5xx status code
+func (o *GetConsulOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get consul o k response a status code equal to that given
+func (o *GetConsulOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetConsulOK) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/consul/{id}][%d] getConsulOK  %+v", 200, o.Payload)
 }
+
+func (o *GetConsulOK) String() string {
+	return fmt.Sprintf("[GET /service_discovery/consul/{id}][%d] getConsulOK  %+v", 200, o.Payload)
+}
+
 func (o *GetConsulOK) GetPayload() *GetConsulOKBody {
 	return o.Payload
 }
@@ -87,7 +118,8 @@ func NewGetConsulNotFound() *GetConsulNotFound {
 	return &GetConsulNotFound{}
 }
 
-/* GetConsulNotFound describes a response with status code 404, with default header values.
+/*
+GetConsulNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -100,9 +132,39 @@ type GetConsulNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get consul not found response has a 2xx status code
+func (o *GetConsulNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get consul not found response has a 3xx status code
+func (o *GetConsulNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get consul not found response has a 4xx status code
+func (o *GetConsulNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get consul not found response has a 5xx status code
+func (o *GetConsulNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get consul not found response a status code equal to that given
+func (o *GetConsulNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetConsulNotFound) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/consul/{id}][%d] getConsulNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetConsulNotFound) String() string {
+	return fmt.Sprintf("[GET /service_discovery/consul/{id}][%d] getConsulNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetConsulNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewGetConsulDefault(code int) *GetConsulDefault {
 	}
 }
 
-/* GetConsulDefault describes a response with status code -1, with default header values.
+/*
+GetConsulDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -152,9 +215,39 @@ func (o *GetConsulDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get consul default response has a 2xx status code
+func (o *GetConsulDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get consul default response has a 3xx status code
+func (o *GetConsulDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get consul default response has a 4xx status code
+func (o *GetConsulDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get consul default response has a 5xx status code
+func (o *GetConsulDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get consul default response a status code equal to that given
+func (o *GetConsulDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetConsulDefault) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/consul/{id}][%d] getConsul default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetConsulDefault) String() string {
+	return fmt.Sprintf("[GET /service_discovery/consul/{id}][%d] getConsul default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetConsulDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -178,7 +271,8 @@ func (o *GetConsulDefault) readResponse(response runtime.ClientResponse, consume
 	return nil
 }
 
-/*GetConsulOKBody get consul o k body
+/*
+GetConsulOKBody get consul o k body
 swagger:model GetConsulOKBody
 */
 type GetConsulOKBody struct {

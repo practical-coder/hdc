@@ -52,7 +52,8 @@ func NewAddPayloadRuntimeMapCreated() *AddPayloadRuntimeMapCreated {
 	return &AddPayloadRuntimeMapCreated{}
 }
 
-/* AddPayloadRuntimeMapCreated describes a response with status code 201, with default header values.
+/*
+AddPayloadRuntimeMapCreated describes a response with status code 201, with default header values.
 
 Map payload added
 */
@@ -60,9 +61,39 @@ type AddPayloadRuntimeMapCreated struct {
 	Payload models.MapEntries
 }
 
+// IsSuccess returns true when this add payload runtime map created response has a 2xx status code
+func (o *AddPayloadRuntimeMapCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this add payload runtime map created response has a 3xx status code
+func (o *AddPayloadRuntimeMapCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this add payload runtime map created response has a 4xx status code
+func (o *AddPayloadRuntimeMapCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this add payload runtime map created response has a 5xx status code
+func (o *AddPayloadRuntimeMapCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this add payload runtime map created response a status code equal to that given
+func (o *AddPayloadRuntimeMapCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *AddPayloadRuntimeMapCreated) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps/{name}][%d] addPayloadRuntimeMapCreated  %+v", 201, o.Payload)
 }
+
+func (o *AddPayloadRuntimeMapCreated) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps/{name}][%d] addPayloadRuntimeMapCreated  %+v", 201, o.Payload)
+}
+
 func (o *AddPayloadRuntimeMapCreated) GetPayload() models.MapEntries {
 	return o.Payload
 }
@@ -82,7 +113,8 @@ func NewAddPayloadRuntimeMapBadRequest() *AddPayloadRuntimeMapBadRequest {
 	return &AddPayloadRuntimeMapBadRequest{}
 }
 
-/* AddPayloadRuntimeMapBadRequest describes a response with status code 400, with default header values.
+/*
+AddPayloadRuntimeMapBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -95,9 +127,39 @@ type AddPayloadRuntimeMapBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this add payload runtime map bad request response has a 2xx status code
+func (o *AddPayloadRuntimeMapBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this add payload runtime map bad request response has a 3xx status code
+func (o *AddPayloadRuntimeMapBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this add payload runtime map bad request response has a 4xx status code
+func (o *AddPayloadRuntimeMapBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this add payload runtime map bad request response has a 5xx status code
+func (o *AddPayloadRuntimeMapBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this add payload runtime map bad request response a status code equal to that given
+func (o *AddPayloadRuntimeMapBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AddPayloadRuntimeMapBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps/{name}][%d] addPayloadRuntimeMapBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AddPayloadRuntimeMapBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps/{name}][%d] addPayloadRuntimeMapBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AddPayloadRuntimeMapBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -128,7 +190,8 @@ func NewAddPayloadRuntimeMapDefault(code int) *AddPayloadRuntimeMapDefault {
 	}
 }
 
-/* AddPayloadRuntimeMapDefault describes a response with status code -1, with default header values.
+/*
+AddPayloadRuntimeMapDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -147,9 +210,39 @@ func (o *AddPayloadRuntimeMapDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this add payload runtime map default response has a 2xx status code
+func (o *AddPayloadRuntimeMapDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this add payload runtime map default response has a 3xx status code
+func (o *AddPayloadRuntimeMapDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this add payload runtime map default response has a 4xx status code
+func (o *AddPayloadRuntimeMapDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this add payload runtime map default response has a 5xx status code
+func (o *AddPayloadRuntimeMapDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this add payload runtime map default response a status code equal to that given
+func (o *AddPayloadRuntimeMapDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *AddPayloadRuntimeMapDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps/{name}][%d] addPayloadRuntimeMap default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *AddPayloadRuntimeMapDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps/{name}][%d] addPayloadRuntimeMap default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *AddPayloadRuntimeMapDefault) GetPayload() *models.Error {
 	return o.Payload
 }

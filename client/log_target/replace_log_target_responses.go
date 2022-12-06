@@ -64,7 +64,8 @@ func NewReplaceLogTargetOK() *ReplaceLogTargetOK {
 	return &ReplaceLogTargetOK{}
 }
 
-/* ReplaceLogTargetOK describes a response with status code 200, with default header values.
+/*
+ReplaceLogTargetOK describes a response with status code 200, with default header values.
 
 Log Target replaced
 */
@@ -72,9 +73,39 @@ type ReplaceLogTargetOK struct {
 	Payload *models.LogTarget
 }
 
+// IsSuccess returns true when this replace log target o k response has a 2xx status code
+func (o *ReplaceLogTargetOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace log target o k response has a 3xx status code
+func (o *ReplaceLogTargetOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace log target o k response has a 4xx status code
+func (o *ReplaceLogTargetOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace log target o k response has a 5xx status code
+func (o *ReplaceLogTargetOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace log target o k response a status code equal to that given
+func (o *ReplaceLogTargetOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceLogTargetOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_targets/{index}][%d] replaceLogTargetOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceLogTargetOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_targets/{index}][%d] replaceLogTargetOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceLogTargetOK) GetPayload() *models.LogTarget {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceLogTargetAccepted() *ReplaceLogTargetAccepted {
 	return &ReplaceLogTargetAccepted{}
 }
 
-/* ReplaceLogTargetAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceLogTargetAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceLogTargetAccepted struct {
 	Payload *models.LogTarget
 }
 
+// IsSuccess returns true when this replace log target accepted response has a 2xx status code
+func (o *ReplaceLogTargetAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace log target accepted response has a 3xx status code
+func (o *ReplaceLogTargetAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace log target accepted response has a 4xx status code
+func (o *ReplaceLogTargetAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace log target accepted response has a 5xx status code
+func (o *ReplaceLogTargetAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace log target accepted response a status code equal to that given
+func (o *ReplaceLogTargetAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceLogTargetAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_targets/{index}][%d] replaceLogTargetAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceLogTargetAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_targets/{index}][%d] replaceLogTargetAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceLogTargetAccepted) GetPayload() *models.LogTarget {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceLogTargetBadRequest() *ReplaceLogTargetBadRequest {
 	return &ReplaceLogTargetBadRequest{}
 }
 
-/* ReplaceLogTargetBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceLogTargetBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceLogTargetBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace log target bad request response has a 2xx status code
+func (o *ReplaceLogTargetBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace log target bad request response has a 3xx status code
+func (o *ReplaceLogTargetBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace log target bad request response has a 4xx status code
+func (o *ReplaceLogTargetBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace log target bad request response has a 5xx status code
+func (o *ReplaceLogTargetBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace log target bad request response a status code equal to that given
+func (o *ReplaceLogTargetBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceLogTargetBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_targets/{index}][%d] replaceLogTargetBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceLogTargetBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_targets/{index}][%d] replaceLogTargetBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceLogTargetBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceLogTargetNotFound() *ReplaceLogTargetNotFound {
 	return &ReplaceLogTargetNotFound{}
 }
 
-/* ReplaceLogTargetNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceLogTargetNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceLogTargetNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace log target not found response has a 2xx status code
+func (o *ReplaceLogTargetNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace log target not found response has a 3xx status code
+func (o *ReplaceLogTargetNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace log target not found response has a 4xx status code
+func (o *ReplaceLogTargetNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace log target not found response has a 5xx status code
+func (o *ReplaceLogTargetNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace log target not found response a status code equal to that given
+func (o *ReplaceLogTargetNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceLogTargetNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_targets/{index}][%d] replaceLogTargetNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceLogTargetNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_targets/{index}][%d] replaceLogTargetNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceLogTargetNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceLogTargetDefault(code int) *ReplaceLogTargetDefault {
 	}
 }
 
-/* ReplaceLogTargetDefault describes a response with status code -1, with default header values.
+/*
+ReplaceLogTargetDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceLogTargetDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace log target default response has a 2xx status code
+func (o *ReplaceLogTargetDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace log target default response has a 3xx status code
+func (o *ReplaceLogTargetDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace log target default response has a 4xx status code
+func (o *ReplaceLogTargetDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace log target default response has a 5xx status code
+func (o *ReplaceLogTargetDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace log target default response a status code equal to that given
+func (o *ReplaceLogTargetDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceLogTargetDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_targets/{index}][%d] replaceLogTarget default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceLogTargetDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_targets/{index}][%d] replaceLogTarget default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceLogTargetDefault) GetPayload() *models.Error {
 	return o.Payload
 }

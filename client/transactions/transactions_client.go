@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CommitTransaction commits transaction
+CommitTransaction commits transaction
 
-  Commit transaction, execute all operations in transaction and return msg
+Commit transaction, execute all operations in transaction and return msg
 */
 func (a *Client) CommitTransaction(params *CommitTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommitTransactionOK, *CommitTransactionAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CommitTransaction(params *CommitTransactionParams, authInfo run
 }
 
 /*
-  DeleteTransaction deletes a transaction
+DeleteTransaction deletes a transaction
 
-  Deletes a transaction.
+Deletes a transaction.
 */
 func (a *Client) DeleteTransaction(params *DeleteTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteTransactionNoContent, error) {
 	// TODO: Validate the params before sending
@@ -124,9 +124,9 @@ func (a *Client) DeleteTransaction(params *DeleteTransactionParams, authInfo run
 }
 
 /*
-  GetTransaction returns one h a proxy configuration transactions
+GetTransaction returns one h a proxy configuration transactions
 
-  Returns one HAProxy configuration transactions.
+Returns one HAProxy configuration transactions.
 */
 func (a *Client) GetTransaction(params *GetTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTransactionOK, error) {
 	// TODO: Validate the params before sending
@@ -164,9 +164,9 @@ func (a *Client) GetTransaction(params *GetTransactionParams, authInfo runtime.C
 }
 
 /*
-  GetTransactions returns list of h a proxy configuration transactions
+GetTransactions returns list of h a proxy configuration transactions
 
-  Returns a list of HAProxy configuration transactions. Transactions can be filtered by their status.
+Returns a list of HAProxy configuration transactions. Transactions can be filtered by their status.
 */
 func (a *Client) GetTransactions(params *GetTransactionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTransactionsOK, error) {
 	// TODO: Validate the params before sending
@@ -204,9 +204,9 @@ func (a *Client) GetTransactions(params *GetTransactionsParams, authInfo runtime
 }
 
 /*
-  StartTransaction starts a new transaction
+StartTransaction starts a new transaction
 
-  Starts a new transaction and returns it's id
+Starts a new transaction and returns it's id
 */
 func (a *Client) StartTransaction(params *StartTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StartTransactionCreated, error) {
 	// TODO: Validate the params before sending

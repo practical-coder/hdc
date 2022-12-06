@@ -50,7 +50,8 @@ func NewGetBackendSwitchingRulesOK() *GetBackendSwitchingRulesOK {
 	return &GetBackendSwitchingRulesOK{}
 }
 
-/* GetBackendSwitchingRulesOK describes a response with status code 200, with default header values.
+/*
+GetBackendSwitchingRulesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetBackendSwitchingRulesOK struct {
 	Payload *GetBackendSwitchingRulesOKBody
 }
 
+// IsSuccess returns true when this get backend switching rules o k response has a 2xx status code
+func (o *GetBackendSwitchingRulesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get backend switching rules o k response has a 3xx status code
+func (o *GetBackendSwitchingRulesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get backend switching rules o k response has a 4xx status code
+func (o *GetBackendSwitchingRulesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get backend switching rules o k response has a 5xx status code
+func (o *GetBackendSwitchingRulesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get backend switching rules o k response a status code equal to that given
+func (o *GetBackendSwitchingRulesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetBackendSwitchingRulesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/backend_switching_rules][%d] getBackendSwitchingRulesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetBackendSwitchingRulesOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/backend_switching_rules][%d] getBackendSwitchingRulesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetBackendSwitchingRulesOK) GetPayload() *GetBackendSwitchingRulesOKBody {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewGetBackendSwitchingRulesDefault(code int) *GetBackendSwitchingRulesDefau
 	}
 }
 
-/* GetBackendSwitchingRulesDefault describes a response with status code -1, with default header values.
+/*
+GetBackendSwitchingRulesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +147,39 @@ func (o *GetBackendSwitchingRulesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get backend switching rules default response has a 2xx status code
+func (o *GetBackendSwitchingRulesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get backend switching rules default response has a 3xx status code
+func (o *GetBackendSwitchingRulesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get backend switching rules default response has a 4xx status code
+func (o *GetBackendSwitchingRulesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get backend switching rules default response has a 5xx status code
+func (o *GetBackendSwitchingRulesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get backend switching rules default response a status code equal to that given
+func (o *GetBackendSwitchingRulesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetBackendSwitchingRulesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/backend_switching_rules][%d] getBackendSwitchingRules default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetBackendSwitchingRulesDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/backend_switching_rules][%d] getBackendSwitchingRules default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetBackendSwitchingRulesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -141,7 +203,8 @@ func (o *GetBackendSwitchingRulesDefault) readResponse(response runtime.ClientRe
 	return nil
 }
 
-/*GetBackendSwitchingRulesOKBody get backend switching rules o k body
+/*
+GetBackendSwitchingRulesOKBody get backend switching rules o k body
 swagger:model GetBackendSwitchingRulesOKBody
 */
 type GetBackendSwitchingRulesOKBody struct {

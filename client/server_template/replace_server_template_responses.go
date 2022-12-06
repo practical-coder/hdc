@@ -64,7 +64,8 @@ func NewReplaceServerTemplateOK() *ReplaceServerTemplateOK {
 	return &ReplaceServerTemplateOK{}
 }
 
-/* ReplaceServerTemplateOK describes a response with status code 200, with default header values.
+/*
+ReplaceServerTemplateOK describes a response with status code 200, with default header values.
 
 Server template replaced
 */
@@ -72,9 +73,39 @@ type ReplaceServerTemplateOK struct {
 	Payload *models.ServerTemplate
 }
 
+// IsSuccess returns true when this replace server template o k response has a 2xx status code
+func (o *ReplaceServerTemplateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace server template o k response has a 3xx status code
+func (o *ReplaceServerTemplateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace server template o k response has a 4xx status code
+func (o *ReplaceServerTemplateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace server template o k response has a 5xx status code
+func (o *ReplaceServerTemplateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace server template o k response a status code equal to that given
+func (o *ReplaceServerTemplateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceServerTemplateOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplateOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceServerTemplateOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplateOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceServerTemplateOK) GetPayload() *models.ServerTemplate {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceServerTemplateAccepted() *ReplaceServerTemplateAccepted {
 	return &ReplaceServerTemplateAccepted{}
 }
 
-/* ReplaceServerTemplateAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceServerTemplateAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceServerTemplateAccepted struct {
 	Payload *models.ServerTemplate
 }
 
+// IsSuccess returns true when this replace server template accepted response has a 2xx status code
+func (o *ReplaceServerTemplateAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace server template accepted response has a 3xx status code
+func (o *ReplaceServerTemplateAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace server template accepted response has a 4xx status code
+func (o *ReplaceServerTemplateAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace server template accepted response has a 5xx status code
+func (o *ReplaceServerTemplateAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace server template accepted response a status code equal to that given
+func (o *ReplaceServerTemplateAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceServerTemplateAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplateAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceServerTemplateAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplateAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceServerTemplateAccepted) GetPayload() *models.ServerTemplate {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceServerTemplateBadRequest() *ReplaceServerTemplateBadRequest {
 	return &ReplaceServerTemplateBadRequest{}
 }
 
-/* ReplaceServerTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceServerTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceServerTemplateBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace server template bad request response has a 2xx status code
+func (o *ReplaceServerTemplateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace server template bad request response has a 3xx status code
+func (o *ReplaceServerTemplateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace server template bad request response has a 4xx status code
+func (o *ReplaceServerTemplateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace server template bad request response has a 5xx status code
+func (o *ReplaceServerTemplateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace server template bad request response a status code equal to that given
+func (o *ReplaceServerTemplateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceServerTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceServerTemplateBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceServerTemplateBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceServerTemplateNotFound() *ReplaceServerTemplateNotFound {
 	return &ReplaceServerTemplateNotFound{}
 }
 
-/* ReplaceServerTemplateNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceServerTemplateNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceServerTemplateNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace server template not found response has a 2xx status code
+func (o *ReplaceServerTemplateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace server template not found response has a 3xx status code
+func (o *ReplaceServerTemplateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace server template not found response has a 4xx status code
+func (o *ReplaceServerTemplateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace server template not found response has a 5xx status code
+func (o *ReplaceServerTemplateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace server template not found response a status code equal to that given
+func (o *ReplaceServerTemplateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceServerTemplateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceServerTemplateNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceServerTemplateNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceServerTemplateDefault(code int) *ReplaceServerTemplateDefault {
 	}
 }
 
-/* ReplaceServerTemplateDefault describes a response with status code -1, with default header values.
+/*
+ReplaceServerTemplateDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceServerTemplateDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace server template default response has a 2xx status code
+func (o *ReplaceServerTemplateDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace server template default response has a 3xx status code
+func (o *ReplaceServerTemplateDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace server template default response has a 4xx status code
+func (o *ReplaceServerTemplateDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace server template default response has a 5xx status code
+func (o *ReplaceServerTemplateDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace server template default response a status code equal to that given
+func (o *ReplaceServerTemplateDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceServerTemplateDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplate default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceServerTemplateDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_templates/{prefix}][%d] replaceServerTemplate default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceServerTemplateDefault) GetPayload() *models.Error {
 	return o.Payload
 }

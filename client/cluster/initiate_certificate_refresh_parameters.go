@@ -52,10 +52,12 @@ func NewInitiateCertificateRefreshParamsWithHTTPClient(client *http.Client) *Ini
 	}
 }
 
-/* InitiateCertificateRefreshParams contains all the parameters to send to the API endpoint
-   for the initiate certificate refresh operation.
+/*
+InitiateCertificateRefreshParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the initiate certificate refresh operation.
+
+	Typically these are written to a http.Request.
 */
 type InitiateCertificateRefreshParams struct {
 	timeout    time.Duration

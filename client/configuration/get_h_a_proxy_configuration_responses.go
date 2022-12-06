@@ -50,7 +50,8 @@ func NewGetHAProxyConfigurationOK() *GetHAProxyConfigurationOK {
 	return &GetHAProxyConfigurationOK{}
 }
 
-/* GetHAProxyConfigurationOK describes a response with status code 200, with default header values.
+/*
+GetHAProxyConfigurationOK describes a response with status code 200, with default header values.
 
 Operation successful
 */
@@ -63,9 +64,39 @@ type GetHAProxyConfigurationOK struct {
 	Payload *GetHAProxyConfigurationOKBody
 }
 
+// IsSuccess returns true when this get h a proxy configuration o k response has a 2xx status code
+func (o *GetHAProxyConfigurationOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get h a proxy configuration o k response has a 3xx status code
+func (o *GetHAProxyConfigurationOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get h a proxy configuration o k response has a 4xx status code
+func (o *GetHAProxyConfigurationOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get h a proxy configuration o k response has a 5xx status code
+func (o *GetHAProxyConfigurationOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get h a proxy configuration o k response a status code equal to that given
+func (o *GetHAProxyConfigurationOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetHAProxyConfigurationOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/raw][%d] getHAProxyConfigurationOK  %+v", 200, o.Payload)
 }
+
+func (o *GetHAProxyConfigurationOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/raw][%d] getHAProxyConfigurationOK  %+v", 200, o.Payload)
+}
+
 func (o *GetHAProxyConfigurationOK) GetPayload() *GetHAProxyConfigurationOKBody {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewGetHAProxyConfigurationDefault(code int) *GetHAProxyConfigurationDefault
 	}
 }
 
-/* GetHAProxyConfigurationDefault describes a response with status code -1, with default header values.
+/*
+GetHAProxyConfigurationDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +147,39 @@ func (o *GetHAProxyConfigurationDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get h a proxy configuration default response has a 2xx status code
+func (o *GetHAProxyConfigurationDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get h a proxy configuration default response has a 3xx status code
+func (o *GetHAProxyConfigurationDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get h a proxy configuration default response has a 4xx status code
+func (o *GetHAProxyConfigurationDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get h a proxy configuration default response has a 5xx status code
+func (o *GetHAProxyConfigurationDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get h a proxy configuration default response a status code equal to that given
+func (o *GetHAProxyConfigurationDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetHAProxyConfigurationDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/raw][%d] getHAProxyConfiguration default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetHAProxyConfigurationDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/raw][%d] getHAProxyConfiguration default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetHAProxyConfigurationDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -141,7 +203,8 @@ func (o *GetHAProxyConfigurationDefault) readResponse(response runtime.ClientRes
 	return nil
 }
 
-/*GetHAProxyConfigurationOKBody get h a proxy configuration o k body
+/*
+GetHAProxyConfigurationOKBody get h a proxy configuration o k body
 swagger:model GetHAProxyConfigurationOKBody
 */
 type GetHAProxyConfigurationOKBody struct {

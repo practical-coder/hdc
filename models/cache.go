@@ -16,7 +16,7 @@ import (
 
 // Cache Cache
 //
-// HAPRoxy Cache section
+// # HAPRoxy Cache section
 //
 // swagger:model cache
 type Cache struct {

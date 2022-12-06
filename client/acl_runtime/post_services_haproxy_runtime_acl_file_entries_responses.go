@@ -58,7 +58,8 @@ func NewPostServicesHaproxyRuntimeACLFileEntriesCreated() *PostServicesHaproxyRu
 	return &PostServicesHaproxyRuntimeACLFileEntriesCreated{}
 }
 
-/* PostServicesHaproxyRuntimeACLFileEntriesCreated describes a response with status code 201, with default header values.
+/*
+PostServicesHaproxyRuntimeACLFileEntriesCreated describes a response with status code 201, with default header values.
 
 ACL entry created
 */
@@ -66,9 +67,39 @@ type PostServicesHaproxyRuntimeACLFileEntriesCreated struct {
 	Payload *models.ACLFileEntry
 }
 
+// IsSuccess returns true when this post services haproxy runtime Acl file entries created response has a 2xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post services haproxy runtime Acl file entries created response has a 3xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post services haproxy runtime Acl file entries created response has a 4xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post services haproxy runtime Acl file entries created response has a 5xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post services haproxy runtime Acl file entries created response a status code equal to that given
+func (o *PostServicesHaproxyRuntimeACLFileEntriesCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostServicesHaproxyRuntimeACLFileEntriesCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/acl_file_entries][%d] postServicesHaproxyRuntimeAclFileEntriesCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostServicesHaproxyRuntimeACLFileEntriesCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/runtime/acl_file_entries][%d] postServicesHaproxyRuntimeAclFileEntriesCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostServicesHaproxyRuntimeACLFileEntriesCreated) GetPayload() *models.ACLFileEntry {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewPostServicesHaproxyRuntimeACLFileEntriesBadRequest() *PostServicesHaprox
 	return &PostServicesHaproxyRuntimeACLFileEntriesBadRequest{}
 }
 
-/* PostServicesHaproxyRuntimeACLFileEntriesBadRequest describes a response with status code 400, with default header values.
+/*
+PostServicesHaproxyRuntimeACLFileEntriesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -103,9 +135,39 @@ type PostServicesHaproxyRuntimeACLFileEntriesBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this post services haproxy runtime Acl file entries bad request response has a 2xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post services haproxy runtime Acl file entries bad request response has a 3xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post services haproxy runtime Acl file entries bad request response has a 4xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post services haproxy runtime Acl file entries bad request response has a 5xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post services haproxy runtime Acl file entries bad request response a status code equal to that given
+func (o *PostServicesHaproxyRuntimeACLFileEntriesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PostServicesHaproxyRuntimeACLFileEntriesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/acl_file_entries][%d] postServicesHaproxyRuntimeAclFileEntriesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PostServicesHaproxyRuntimeACLFileEntriesBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/runtime/acl_file_entries][%d] postServicesHaproxyRuntimeAclFileEntriesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PostServicesHaproxyRuntimeACLFileEntriesBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewPostServicesHaproxyRuntimeACLFileEntriesConflict() *PostServicesHaproxyR
 	return &PostServicesHaproxyRuntimeACLFileEntriesConflict{}
 }
 
-/* PostServicesHaproxyRuntimeACLFileEntriesConflict describes a response with status code 409, with default header values.
+/*
+PostServicesHaproxyRuntimeACLFileEntriesConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -147,9 +210,39 @@ type PostServicesHaproxyRuntimeACLFileEntriesConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this post services haproxy runtime Acl file entries conflict response has a 2xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post services haproxy runtime Acl file entries conflict response has a 3xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post services haproxy runtime Acl file entries conflict response has a 4xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post services haproxy runtime Acl file entries conflict response has a 5xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post services haproxy runtime Acl file entries conflict response a status code equal to that given
+func (o *PostServicesHaproxyRuntimeACLFileEntriesConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *PostServicesHaproxyRuntimeACLFileEntriesConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/acl_file_entries][%d] postServicesHaproxyRuntimeAclFileEntriesConflict  %+v", 409, o.Payload)
 }
+
+func (o *PostServicesHaproxyRuntimeACLFileEntriesConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/runtime/acl_file_entries][%d] postServicesHaproxyRuntimeAclFileEntriesConflict  %+v", 409, o.Payload)
+}
+
 func (o *PostServicesHaproxyRuntimeACLFileEntriesConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewPostServicesHaproxyRuntimeACLFileEntriesDefault(code int) *PostServicesH
 	}
 }
 
-/* PostServicesHaproxyRuntimeACLFileEntriesDefault describes a response with status code -1, with default header values.
+/*
+PostServicesHaproxyRuntimeACLFileEntriesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *PostServicesHaproxyRuntimeACLFileEntriesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post services haproxy runtime ACL file entries default response has a 2xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post services haproxy runtime ACL file entries default response has a 3xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post services haproxy runtime ACL file entries default response has a 4xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post services haproxy runtime ACL file entries default response has a 5xx status code
+func (o *PostServicesHaproxyRuntimeACLFileEntriesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post services haproxy runtime ACL file entries default response a status code equal to that given
+func (o *PostServicesHaproxyRuntimeACLFileEntriesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostServicesHaproxyRuntimeACLFileEntriesDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/acl_file_entries][%d] PostServicesHaproxyRuntimeACLFileEntries default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostServicesHaproxyRuntimeACLFileEntriesDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/runtime/acl_file_entries][%d] PostServicesHaproxyRuntimeACLFileEntries default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostServicesHaproxyRuntimeACLFileEntriesDefault) GetPayload() *models.Error {
 	return o.Payload
 }

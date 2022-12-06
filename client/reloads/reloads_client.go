@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetReload returns one h a proxy reload status
+GetReload returns one h a proxy reload status
 
-  Returns one HAProxy reload status.
+Returns one HAProxy reload status.
 */
 func (a *Client) GetReload(params *GetReloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReloadOK, error) {
 	// TODO: Validate the params before sending
@@ -76,9 +76,9 @@ func (a *Client) GetReload(params *GetReloadParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  GetReloads returns list of h a proxy reloads
+GetReloads returns list of h a proxy reloads
 
-  Returns a list of HAProxy reloads.
+Returns a list of HAProxy reloads.
 */
 func (a *Client) GetReloads(params *GetReloadsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReloadsOK, error) {
 	// TODO: Validate the params before sending

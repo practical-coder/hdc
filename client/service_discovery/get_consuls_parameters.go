@@ -52,10 +52,12 @@ func NewGetConsulsParamsWithHTTPClient(client *http.Client) *GetConsulsParams {
 	}
 }
 
-/* GetConsulsParams contains all the parameters to send to the API endpoint
-   for the get consuls operation.
+/*
+GetConsulsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get consuls operation.
+
+	Typically these are written to a http.Request.
 */
 type GetConsulsParams struct {
 	timeout    time.Duration

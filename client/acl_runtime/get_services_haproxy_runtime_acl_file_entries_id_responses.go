@@ -58,7 +58,8 @@ func NewGetServicesHaproxyRuntimeACLFileEntriesIDOK() *GetServicesHaproxyRuntime
 	return &GetServicesHaproxyRuntimeACLFileEntriesIDOK{}
 }
 
-/* GetServicesHaproxyRuntimeACLFileEntriesIDOK describes a response with status code 200, with default header values.
+/*
+GetServicesHaproxyRuntimeACLFileEntriesIDOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -66,9 +67,39 @@ type GetServicesHaproxyRuntimeACLFileEntriesIDOK struct {
 	Payload *models.ACLFileEntry
 }
 
+// IsSuccess returns true when this get services haproxy runtime Acl file entries Id o k response has a 2xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get services haproxy runtime Acl file entries Id o k response has a 3xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get services haproxy runtime Acl file entries Id o k response has a 4xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get services haproxy runtime Acl file entries Id o k response has a 5xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get services haproxy runtime Acl file entries Id o k response a status code equal to that given
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acl_file_entries/{id}][%d] getServicesHaproxyRuntimeAclFileEntriesIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/acl_file_entries/{id}][%d] getServicesHaproxyRuntimeAclFileEntriesIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDOK) GetPayload() *models.ACLFileEntry {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewGetServicesHaproxyRuntimeACLFileEntriesIDBadRequest() *GetServicesHaprox
 	return &GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest{}
 }
 
-/* GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest describes a response with status code 400, with default header values.
+/*
+GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -103,9 +135,39 @@ type GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get services haproxy runtime Acl file entries Id bad request response has a 2xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get services haproxy runtime Acl file entries Id bad request response has a 3xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get services haproxy runtime Acl file entries Id bad request response has a 4xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get services haproxy runtime Acl file entries Id bad request response has a 5xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get services haproxy runtime Acl file entries Id bad request response a status code equal to that given
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acl_file_entries/{id}][%d] getServicesHaproxyRuntimeAclFileEntriesIdBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/acl_file_entries/{id}][%d] getServicesHaproxyRuntimeAclFileEntriesIdBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewGetServicesHaproxyRuntimeACLFileEntriesIDNotFound() *GetServicesHaproxyR
 	return &GetServicesHaproxyRuntimeACLFileEntriesIDNotFound{}
 }
 
-/* GetServicesHaproxyRuntimeACLFileEntriesIDNotFound describes a response with status code 404, with default header values.
+/*
+GetServicesHaproxyRuntimeACLFileEntriesIDNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -147,9 +210,39 @@ type GetServicesHaproxyRuntimeACLFileEntriesIDNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get services haproxy runtime Acl file entries Id not found response has a 2xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get services haproxy runtime Acl file entries Id not found response has a 3xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get services haproxy runtime Acl file entries Id not found response has a 4xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get services haproxy runtime Acl file entries Id not found response has a 5xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get services haproxy runtime Acl file entries Id not found response a status code equal to that given
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acl_file_entries/{id}][%d] getServicesHaproxyRuntimeAclFileEntriesIdNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/acl_file_entries/{id}][%d] getServicesHaproxyRuntimeAclFileEntriesIdNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewGetServicesHaproxyRuntimeACLFileEntriesIDDefault(code int) *GetServicesH
 	}
 }
 
-/* GetServicesHaproxyRuntimeACLFileEntriesIDDefault describes a response with status code -1, with default header values.
+/*
+GetServicesHaproxyRuntimeACLFileEntriesIDDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *GetServicesHaproxyRuntimeACLFileEntriesIDDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get services haproxy runtime ACL file entries ID default response has a 2xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get services haproxy runtime ACL file entries ID default response has a 3xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get services haproxy runtime ACL file entries ID default response has a 4xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get services haproxy runtime ACL file entries ID default response has a 5xx status code
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get services haproxy runtime ACL file entries ID default response a status code equal to that given
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acl_file_entries/{id}][%d] GetServicesHaproxyRuntimeACLFileEntriesID default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetServicesHaproxyRuntimeACLFileEntriesIDDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/acl_file_entries/{id}][%d] GetServicesHaproxyRuntimeACLFileEntriesID default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetServicesHaproxyRuntimeACLFileEntriesIDDefault) GetPayload() *models.Error {
 	return o.Payload
 }

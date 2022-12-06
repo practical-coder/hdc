@@ -50,7 +50,8 @@ func NewGetResolversOK() *GetResolversOK {
 	return &GetResolversOK{}
 }
 
-/* GetResolversOK describes a response with status code 200, with default header values.
+/*
+GetResolversOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetResolversOK struct {
 	Payload *GetResolversOKBody
 }
 
+// IsSuccess returns true when this get resolvers o k response has a 2xx status code
+func (o *GetResolversOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get resolvers o k response has a 3xx status code
+func (o *GetResolversOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resolvers o k response has a 4xx status code
+func (o *GetResolversOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get resolvers o k response has a 5xx status code
+func (o *GetResolversOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resolvers o k response a status code equal to that given
+func (o *GetResolversOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetResolversOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/resolvers][%d] getResolversOK  %+v", 200, o.Payload)
 }
+
+func (o *GetResolversOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/resolvers][%d] getResolversOK  %+v", 200, o.Payload)
+}
+
 func (o *GetResolversOK) GetPayload() *GetResolversOKBody {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewGetResolversDefault(code int) *GetResolversDefault {
 	}
 }
 
-/* GetResolversDefault describes a response with status code -1, with default header values.
+/*
+GetResolversDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +147,39 @@ func (o *GetResolversDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get resolvers default response has a 2xx status code
+func (o *GetResolversDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get resolvers default response has a 3xx status code
+func (o *GetResolversDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get resolvers default response has a 4xx status code
+func (o *GetResolversDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get resolvers default response has a 5xx status code
+func (o *GetResolversDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get resolvers default response a status code equal to that given
+func (o *GetResolversDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetResolversDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/resolvers][%d] getResolvers default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetResolversDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/resolvers][%d] getResolvers default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetResolversDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -141,7 +203,8 @@ func (o *GetResolversDefault) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-/*GetResolversOKBody get resolvers o k body
+/*
+GetResolversOKBody get resolvers o k body
 swagger:model GetResolversOKBody
 */
 type GetResolversOKBody struct {

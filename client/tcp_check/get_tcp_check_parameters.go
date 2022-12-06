@@ -53,10 +53,12 @@ func NewGetTCPCheckParamsWithHTTPClient(client *http.Client) *GetTCPCheckParams 
 	}
 }
 
-/* GetTCPCheckParams contains all the parameters to send to the API endpoint
-   for the get TCP check operation.
+/*
+GetTCPCheckParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get TCP check operation.
+
+	Typically these are written to a http.Request.
 */
 type GetTCPCheckParams struct {
 

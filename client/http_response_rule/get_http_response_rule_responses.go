@@ -55,7 +55,8 @@ func NewGetHTTPResponseRuleOK() *GetHTTPResponseRuleOK {
 	return &GetHTTPResponseRuleOK{}
 }
 
-/* GetHTTPResponseRuleOK describes a response with status code 200, with default header values.
+/*
+GetHTTPResponseRuleOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetHTTPResponseRuleOK struct {
 	Payload *GetHTTPResponseRuleOKBody
 }
 
+// IsSuccess returns true when this get Http response rule o k response has a 2xx status code
+func (o *GetHTTPResponseRuleOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get Http response rule o k response has a 3xx status code
+func (o *GetHTTPResponseRuleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get Http response rule o k response has a 4xx status code
+func (o *GetHTTPResponseRuleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get Http response rule o k response has a 5xx status code
+func (o *GetHTTPResponseRuleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get Http response rule o k response a status code equal to that given
+func (o *GetHTTPResponseRuleOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetHTTPResponseRuleOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_response_rules/{index}][%d] getHttpResponseRuleOK  %+v", 200, o.Payload)
 }
+
+func (o *GetHTTPResponseRuleOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/http_response_rules/{index}][%d] getHttpResponseRuleOK  %+v", 200, o.Payload)
+}
+
 func (o *GetHTTPResponseRuleOK) GetPayload() *GetHTTPResponseRuleOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetHTTPResponseRuleNotFound() *GetHTTPResponseRuleNotFound {
 	return &GetHTTPResponseRuleNotFound{}
 }
 
-/* GetHTTPResponseRuleNotFound describes a response with status code 404, with default header values.
+/*
+GetHTTPResponseRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -112,9 +144,39 @@ type GetHTTPResponseRuleNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get Http response rule not found response has a 2xx status code
+func (o *GetHTTPResponseRuleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get Http response rule not found response has a 3xx status code
+func (o *GetHTTPResponseRuleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get Http response rule not found response has a 4xx status code
+func (o *GetHTTPResponseRuleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get Http response rule not found response has a 5xx status code
+func (o *GetHTTPResponseRuleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get Http response rule not found response a status code equal to that given
+func (o *GetHTTPResponseRuleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetHTTPResponseRuleNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_response_rules/{index}][%d] getHttpResponseRuleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetHTTPResponseRuleNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/http_response_rules/{index}][%d] getHttpResponseRuleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetHTTPResponseRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetHTTPResponseRuleDefault(code int) *GetHTTPResponseRuleDefault {
 	}
 }
 
-/* GetHTTPResponseRuleDefault describes a response with status code -1, with default header values.
+/*
+GetHTTPResponseRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetHTTPResponseRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get HTTP response rule default response has a 2xx status code
+func (o *GetHTTPResponseRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get HTTP response rule default response has a 3xx status code
+func (o *GetHTTPResponseRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get HTTP response rule default response has a 4xx status code
+func (o *GetHTTPResponseRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get HTTP response rule default response has a 5xx status code
+func (o *GetHTTPResponseRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get HTTP response rule default response a status code equal to that given
+func (o *GetHTTPResponseRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetHTTPResponseRuleDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_response_rules/{index}][%d] getHTTPResponseRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetHTTPResponseRuleDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/http_response_rules/{index}][%d] getHTTPResponseRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetHTTPResponseRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetHTTPResponseRuleDefault) readResponse(response runtime.ClientRespons
 	return nil
 }
 
-/*GetHTTPResponseRuleOKBody get HTTP response rule o k body
+/*
+GetHTTPResponseRuleOKBody get HTTP response rule o k body
 swagger:model GetHTTPResponseRuleOKBody
 */
 type GetHTTPResponseRuleOKBody struct {

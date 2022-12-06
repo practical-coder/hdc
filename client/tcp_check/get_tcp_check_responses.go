@@ -55,7 +55,8 @@ func NewGetTCPCheckOK() *GetTCPCheckOK {
 	return &GetTCPCheckOK{}
 }
 
-/* GetTCPCheckOK describes a response with status code 200, with default header values.
+/*
+GetTCPCheckOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetTCPCheckOK struct {
 	Payload *GetTCPCheckOKBody
 }
 
+// IsSuccess returns true when this get Tcp check o k response has a 2xx status code
+func (o *GetTCPCheckOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get Tcp check o k response has a 3xx status code
+func (o *GetTCPCheckOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get Tcp check o k response has a 4xx status code
+func (o *GetTCPCheckOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get Tcp check o k response has a 5xx status code
+func (o *GetTCPCheckOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get Tcp check o k response a status code equal to that given
+func (o *GetTCPCheckOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetTCPCheckOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_checks/{index}][%d] getTcpCheckOK  %+v", 200, o.Payload)
 }
+
+func (o *GetTCPCheckOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_checks/{index}][%d] getTcpCheckOK  %+v", 200, o.Payload)
+}
+
 func (o *GetTCPCheckOK) GetPayload() *GetTCPCheckOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetTCPCheckNotFound() *GetTCPCheckNotFound {
 	return &GetTCPCheckNotFound{}
 }
 
-/* GetTCPCheckNotFound describes a response with status code 404, with default header values.
+/*
+GetTCPCheckNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -112,9 +144,39 @@ type GetTCPCheckNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get Tcp check not found response has a 2xx status code
+func (o *GetTCPCheckNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get Tcp check not found response has a 3xx status code
+func (o *GetTCPCheckNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get Tcp check not found response has a 4xx status code
+func (o *GetTCPCheckNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get Tcp check not found response has a 5xx status code
+func (o *GetTCPCheckNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get Tcp check not found response a status code equal to that given
+func (o *GetTCPCheckNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetTCPCheckNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_checks/{index}][%d] getTcpCheckNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetTCPCheckNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_checks/{index}][%d] getTcpCheckNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetTCPCheckNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetTCPCheckDefault(code int) *GetTCPCheckDefault {
 	}
 }
 
-/* GetTCPCheckDefault describes a response with status code -1, with default header values.
+/*
+GetTCPCheckDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetTCPCheckDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get TCP check default response has a 2xx status code
+func (o *GetTCPCheckDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get TCP check default response has a 3xx status code
+func (o *GetTCPCheckDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get TCP check default response has a 4xx status code
+func (o *GetTCPCheckDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get TCP check default response has a 5xx status code
+func (o *GetTCPCheckDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get TCP check default response a status code equal to that given
+func (o *GetTCPCheckDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetTCPCheckDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_checks/{index}][%d] getTCPCheck default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetTCPCheckDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_checks/{index}][%d] getTCPCheck default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetTCPCheckDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetTCPCheckDefault) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-/*GetTCPCheckOKBody get TCP check o k body
+/*
+GetTCPCheckOKBody get TCP check o k body
 swagger:model GetTCPCheckOKBody
 */
 type GetTCPCheckOKBody struct {

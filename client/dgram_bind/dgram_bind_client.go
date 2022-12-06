@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateDgramBind adds a new dgram bind
+CreateDgramBind adds a new dgram bind
 
-  Adds a new dgram bind in the specified log forward in the configuration file.
+Adds a new dgram bind in the specified log forward in the configuration file.
 */
 func (a *Client) CreateDgramBind(params *CreateDgramBindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateDgramBindCreated, *CreateDgramBindAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateDgramBind(params *CreateDgramBindParams, authInfo runtime
 }
 
 /*
-  DeleteDgramBind deletes a dgram bind
+DeleteDgramBind deletes a dgram bind
 
-  Deletes a dgram bind configuration by it's name in the specified log forward.
+Deletes a dgram bind configuration by it's name in the specified log forward.
 */
 func (a *Client) DeleteDgramBind(params *DeleteDgramBindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteDgramBindAccepted, *DeleteDgramBindNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteDgramBind(params *DeleteDgramBindParams, authInfo runtime
 }
 
 /*
-  GetDgramBind returns one dgram bind
+GetDgramBind returns one dgram bind
 
-  Returns one dgram bind configuration by it's name in the specified log forward.
+Returns one dgram bind configuration by it's name in the specified log forward.
 */
 func (a *Client) GetDgramBind(params *GetDgramBindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDgramBindOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetDgramBind(params *GetDgramBindParams, authInfo runtime.Clien
 }
 
 /*
-  GetDgramBinds returns an array of dgram binds
+GetDgramBinds returns an array of dgram binds
 
-  Returns an array of all dgram binds that are configured in specified log forward.
+Returns an array of all dgram binds that are configured in specified log forward.
 */
 func (a *Client) GetDgramBinds(params *GetDgramBindsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDgramBindsOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetDgramBinds(params *GetDgramBindsParams, authInfo runtime.Cli
 }
 
 /*
-  ReplaceDgramBind replaces a dgram bind
+ReplaceDgramBind replaces a dgram bind
 
-  Replaces a dgram bind configuration by it's name in the specified log forward.
+Replaces a dgram bind configuration by it's name in the specified log forward.
 */
 func (a *Client) ReplaceDgramBind(params *ReplaceDgramBindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceDgramBindOK, *ReplaceDgramBindAccepted, error) {
 	// TODO: Validate the params before sending

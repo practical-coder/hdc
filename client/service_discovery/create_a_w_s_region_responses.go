@@ -58,7 +58,8 @@ func NewCreateAWSRegionCreated() *CreateAWSRegionCreated {
 	return &CreateAWSRegionCreated{}
 }
 
-/* CreateAWSRegionCreated describes a response with status code 201, with default header values.
+/*
+CreateAWSRegionCreated describes a response with status code 201, with default header values.
 
 Resource created
 */
@@ -66,9 +67,39 @@ type CreateAWSRegionCreated struct {
 	Payload *models.AwsRegion
 }
 
+// IsSuccess returns true when this create a w s region created response has a 2xx status code
+func (o *CreateAWSRegionCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create a w s region created response has a 3xx status code
+func (o *CreateAWSRegionCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create a w s region created response has a 4xx status code
+func (o *CreateAWSRegionCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create a w s region created response has a 5xx status code
+func (o *CreateAWSRegionCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create a w s region created response a status code equal to that given
+func (o *CreateAWSRegionCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateAWSRegionCreated) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/aws][%d] createAWSRegionCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateAWSRegionCreated) String() string {
+	return fmt.Sprintf("[POST /service_discovery/aws][%d] createAWSRegionCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateAWSRegionCreated) GetPayload() *models.AwsRegion {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewCreateAWSRegionBadRequest() *CreateAWSRegionBadRequest {
 	return &CreateAWSRegionBadRequest{}
 }
 
-/* CreateAWSRegionBadRequest describes a response with status code 400, with default header values.
+/*
+CreateAWSRegionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -103,9 +135,39 @@ type CreateAWSRegionBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create a w s region bad request response has a 2xx status code
+func (o *CreateAWSRegionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create a w s region bad request response has a 3xx status code
+func (o *CreateAWSRegionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create a w s region bad request response has a 4xx status code
+func (o *CreateAWSRegionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create a w s region bad request response has a 5xx status code
+func (o *CreateAWSRegionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create a w s region bad request response a status code equal to that given
+func (o *CreateAWSRegionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateAWSRegionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/aws][%d] createAWSRegionBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateAWSRegionBadRequest) String() string {
+	return fmt.Sprintf("[POST /service_discovery/aws][%d] createAWSRegionBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateAWSRegionBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewCreateAWSRegionConflict() *CreateAWSRegionConflict {
 	return &CreateAWSRegionConflict{}
 }
 
-/* CreateAWSRegionConflict describes a response with status code 409, with default header values.
+/*
+CreateAWSRegionConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -147,9 +210,39 @@ type CreateAWSRegionConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create a w s region conflict response has a 2xx status code
+func (o *CreateAWSRegionConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create a w s region conflict response has a 3xx status code
+func (o *CreateAWSRegionConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create a w s region conflict response has a 4xx status code
+func (o *CreateAWSRegionConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create a w s region conflict response has a 5xx status code
+func (o *CreateAWSRegionConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create a w s region conflict response a status code equal to that given
+func (o *CreateAWSRegionConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateAWSRegionConflict) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/aws][%d] createAWSRegionConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateAWSRegionConflict) String() string {
+	return fmt.Sprintf("[POST /service_discovery/aws][%d] createAWSRegionConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateAWSRegionConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewCreateAWSRegionDefault(code int) *CreateAWSRegionDefault {
 	}
 }
 
-/* CreateAWSRegionDefault describes a response with status code -1, with default header values.
+/*
+CreateAWSRegionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *CreateAWSRegionDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create a w s region default response has a 2xx status code
+func (o *CreateAWSRegionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create a w s region default response has a 3xx status code
+func (o *CreateAWSRegionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create a w s region default response has a 4xx status code
+func (o *CreateAWSRegionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create a w s region default response has a 5xx status code
+func (o *CreateAWSRegionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create a w s region default response a status code equal to that given
+func (o *CreateAWSRegionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateAWSRegionDefault) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/aws][%d] createAWSRegion default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateAWSRegionDefault) String() string {
+	return fmt.Sprintf("[POST /service_discovery/aws][%d] createAWSRegion default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateAWSRegionDefault) GetPayload() *models.Error {
 	return o.Payload
 }

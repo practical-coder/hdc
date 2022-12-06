@@ -54,10 +54,12 @@ func NewCreateConsulParamsWithHTTPClient(client *http.Client) *CreateConsulParam
 	}
 }
 
-/* CreateConsulParams contains all the parameters to send to the API endpoint
-   for the create consul operation.
+/*
+CreateConsulParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create consul operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateConsulParams struct {
 

@@ -64,7 +64,8 @@ func NewCreateStickRuleCreated() *CreateStickRuleCreated {
 	return &CreateStickRuleCreated{}
 }
 
-/* CreateStickRuleCreated describes a response with status code 201, with default header values.
+/*
+CreateStickRuleCreated describes a response with status code 201, with default header values.
 
 Stick Rule created
 */
@@ -72,9 +73,39 @@ type CreateStickRuleCreated struct {
 	Payload *models.StickRule
 }
 
+// IsSuccess returns true when this create stick rule created response has a 2xx status code
+func (o *CreateStickRuleCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create stick rule created response has a 3xx status code
+func (o *CreateStickRuleCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create stick rule created response has a 4xx status code
+func (o *CreateStickRuleCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create stick rule created response has a 5xx status code
+func (o *CreateStickRuleCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create stick rule created response a status code equal to that given
+func (o *CreateStickRuleCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateStickRuleCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/stick_rules][%d] createStickRuleCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateStickRuleCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/stick_rules][%d] createStickRuleCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateStickRuleCreated) GetPayload() *models.StickRule {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateStickRuleAccepted() *CreateStickRuleAccepted {
 	return &CreateStickRuleAccepted{}
 }
 
-/* CreateStickRuleAccepted describes a response with status code 202, with default header values.
+/*
+CreateStickRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateStickRuleAccepted struct {
 	Payload *models.StickRule
 }
 
+// IsSuccess returns true when this create stick rule accepted response has a 2xx status code
+func (o *CreateStickRuleAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create stick rule accepted response has a 3xx status code
+func (o *CreateStickRuleAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create stick rule accepted response has a 4xx status code
+func (o *CreateStickRuleAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create stick rule accepted response has a 5xx status code
+func (o *CreateStickRuleAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create stick rule accepted response a status code equal to that given
+func (o *CreateStickRuleAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateStickRuleAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/stick_rules][%d] createStickRuleAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateStickRuleAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/stick_rules][%d] createStickRuleAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateStickRuleAccepted) GetPayload() *models.StickRule {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateStickRuleBadRequest() *CreateStickRuleBadRequest {
 	return &CreateStickRuleBadRequest{}
 }
 
-/* CreateStickRuleBadRequest describes a response with status code 400, with default header values.
+/*
+CreateStickRuleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateStickRuleBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create stick rule bad request response has a 2xx status code
+func (o *CreateStickRuleBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create stick rule bad request response has a 3xx status code
+func (o *CreateStickRuleBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create stick rule bad request response has a 4xx status code
+func (o *CreateStickRuleBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create stick rule bad request response has a 5xx status code
+func (o *CreateStickRuleBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create stick rule bad request response a status code equal to that given
+func (o *CreateStickRuleBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateStickRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/stick_rules][%d] createStickRuleBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateStickRuleBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/stick_rules][%d] createStickRuleBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateStickRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateStickRuleConflict() *CreateStickRuleConflict {
 	return &CreateStickRuleConflict{}
 }
 
-/* CreateStickRuleConflict describes a response with status code 409, with default header values.
+/*
+CreateStickRuleConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateStickRuleConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create stick rule conflict response has a 2xx status code
+func (o *CreateStickRuleConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create stick rule conflict response has a 3xx status code
+func (o *CreateStickRuleConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create stick rule conflict response has a 4xx status code
+func (o *CreateStickRuleConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create stick rule conflict response has a 5xx status code
+func (o *CreateStickRuleConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create stick rule conflict response a status code equal to that given
+func (o *CreateStickRuleConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateStickRuleConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/stick_rules][%d] createStickRuleConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateStickRuleConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/stick_rules][%d] createStickRuleConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateStickRuleConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateStickRuleDefault(code int) *CreateStickRuleDefault {
 	}
 }
 
-/* CreateStickRuleDefault describes a response with status code -1, with default header values.
+/*
+CreateStickRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateStickRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create stick rule default response has a 2xx status code
+func (o *CreateStickRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create stick rule default response has a 3xx status code
+func (o *CreateStickRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create stick rule default response has a 4xx status code
+func (o *CreateStickRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create stick rule default response has a 5xx status code
+func (o *CreateStickRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create stick rule default response a status code equal to that given
+func (o *CreateStickRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateStickRuleDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/stick_rules][%d] createStickRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateStickRuleDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/stick_rules][%d] createStickRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateStickRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }

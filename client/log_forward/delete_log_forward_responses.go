@@ -58,7 +58,8 @@ func NewDeleteLogForwardAccepted() *DeleteLogForwardAccepted {
 	return &DeleteLogForwardAccepted{}
 }
 
-/* DeleteLogForwardAccepted describes a response with status code 202, with default header values.
+/*
+DeleteLogForwardAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteLogForwardAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete log forward accepted response has a 2xx status code
+func (o *DeleteLogForwardAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete log forward accepted response has a 3xx status code
+func (o *DeleteLogForwardAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete log forward accepted response has a 4xx status code
+func (o *DeleteLogForwardAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete log forward accepted response has a 5xx status code
+func (o *DeleteLogForwardAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete log forward accepted response a status code equal to that given
+func (o *DeleteLogForwardAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteLogForwardAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/log_forwards/{name}][%d] deleteLogForwardAccepted ", 202)
+}
+
+func (o *DeleteLogForwardAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/log_forwards/{name}][%d] deleteLogForwardAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteLogForwardNoContent() *DeleteLogForwardNoContent {
 	return &DeleteLogForwardNoContent{}
 }
 
-/* DeleteLogForwardNoContent describes a response with status code 204, with default header values.
+/*
+DeleteLogForwardNoContent describes a response with status code 204, with default header values.
 
 Log Forward deleted
 */
 type DeleteLogForwardNoContent struct {
 }
 
+// IsSuccess returns true when this delete log forward no content response has a 2xx status code
+func (o *DeleteLogForwardNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete log forward no content response has a 3xx status code
+func (o *DeleteLogForwardNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete log forward no content response has a 4xx status code
+func (o *DeleteLogForwardNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete log forward no content response has a 5xx status code
+func (o *DeleteLogForwardNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete log forward no content response a status code equal to that given
+func (o *DeleteLogForwardNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteLogForwardNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/log_forwards/{name}][%d] deleteLogForwardNoContent ", 204)
+}
+
+func (o *DeleteLogForwardNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/log_forwards/{name}][%d] deleteLogForwardNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteLogForwardNotFound() *DeleteLogForwardNotFound {
 	return &DeleteLogForwardNotFound{}
 }
 
-/* DeleteLogForwardNotFound describes a response with status code 404, with default header values.
+/*
+DeleteLogForwardNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteLogForwardNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete log forward not found response has a 2xx status code
+func (o *DeleteLogForwardNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete log forward not found response has a 3xx status code
+func (o *DeleteLogForwardNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete log forward not found response has a 4xx status code
+func (o *DeleteLogForwardNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete log forward not found response has a 5xx status code
+func (o *DeleteLogForwardNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete log forward not found response a status code equal to that given
+func (o *DeleteLogForwardNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteLogForwardNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/log_forwards/{name}][%d] deleteLogForwardNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteLogForwardNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/log_forwards/{name}][%d] deleteLogForwardNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteLogForwardNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteLogForwardDefault(code int) *DeleteLogForwardDefault {
 	}
 }
 
-/* DeleteLogForwardDefault describes a response with status code -1, with default header values.
+/*
+DeleteLogForwardDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteLogForwardDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete log forward default response has a 2xx status code
+func (o *DeleteLogForwardDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete log forward default response has a 3xx status code
+func (o *DeleteLogForwardDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete log forward default response has a 4xx status code
+func (o *DeleteLogForwardDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete log forward default response has a 5xx status code
+func (o *DeleteLogForwardDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete log forward default response a status code equal to that given
+func (o *DeleteLogForwardDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteLogForwardDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/log_forwards/{name}][%d] deleteLogForward default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteLogForwardDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/log_forwards/{name}][%d] deleteLogForward default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteLogForwardDefault) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -64,7 +64,8 @@ func NewReplaceServerOK() *ReplaceServerOK {
 	return &ReplaceServerOK{}
 }
 
-/* ReplaceServerOK describes a response with status code 200, with default header values.
+/*
+ReplaceServerOK describes a response with status code 200, with default header values.
 
 Server replaced
 */
@@ -72,9 +73,39 @@ type ReplaceServerOK struct {
 	Payload *models.Server
 }
 
+// IsSuccess returns true when this replace server o k response has a 2xx status code
+func (o *ReplaceServerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace server o k response has a 3xx status code
+func (o *ReplaceServerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace server o k response has a 4xx status code
+func (o *ReplaceServerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace server o k response has a 5xx status code
+func (o *ReplaceServerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace server o k response a status code equal to that given
+func (o *ReplaceServerOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceServerOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/servers/{name}][%d] replaceServerOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceServerOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/servers/{name}][%d] replaceServerOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceServerOK) GetPayload() *models.Server {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceServerAccepted() *ReplaceServerAccepted {
 	return &ReplaceServerAccepted{}
 }
 
-/* ReplaceServerAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceServerAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceServerAccepted struct {
 	Payload *models.Server
 }
 
+// IsSuccess returns true when this replace server accepted response has a 2xx status code
+func (o *ReplaceServerAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace server accepted response has a 3xx status code
+func (o *ReplaceServerAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace server accepted response has a 4xx status code
+func (o *ReplaceServerAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace server accepted response has a 5xx status code
+func (o *ReplaceServerAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace server accepted response a status code equal to that given
+func (o *ReplaceServerAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceServerAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/servers/{name}][%d] replaceServerAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceServerAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/servers/{name}][%d] replaceServerAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceServerAccepted) GetPayload() *models.Server {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceServerBadRequest() *ReplaceServerBadRequest {
 	return &ReplaceServerBadRequest{}
 }
 
-/* ReplaceServerBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceServerBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceServerBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace server bad request response has a 2xx status code
+func (o *ReplaceServerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace server bad request response has a 3xx status code
+func (o *ReplaceServerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace server bad request response has a 4xx status code
+func (o *ReplaceServerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace server bad request response has a 5xx status code
+func (o *ReplaceServerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace server bad request response a status code equal to that given
+func (o *ReplaceServerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceServerBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/servers/{name}][%d] replaceServerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceServerBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/servers/{name}][%d] replaceServerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceServerBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceServerNotFound() *ReplaceServerNotFound {
 	return &ReplaceServerNotFound{}
 }
 
-/* ReplaceServerNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceServerNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceServerNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace server not found response has a 2xx status code
+func (o *ReplaceServerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace server not found response has a 3xx status code
+func (o *ReplaceServerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace server not found response has a 4xx status code
+func (o *ReplaceServerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace server not found response has a 5xx status code
+func (o *ReplaceServerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace server not found response a status code equal to that given
+func (o *ReplaceServerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceServerNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/servers/{name}][%d] replaceServerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceServerNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/servers/{name}][%d] replaceServerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceServerNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceServerDefault(code int) *ReplaceServerDefault {
 	}
 }
 
-/* ReplaceServerDefault describes a response with status code -1, with default header values.
+/*
+ReplaceServerDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceServerDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace server default response has a 2xx status code
+func (o *ReplaceServerDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace server default response has a 3xx status code
+func (o *ReplaceServerDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace server default response has a 4xx status code
+func (o *ReplaceServerDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace server default response has a 5xx status code
+func (o *ReplaceServerDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace server default response a status code equal to that given
+func (o *ReplaceServerDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceServerDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/servers/{name}][%d] replaceServer default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceServerDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/servers/{name}][%d] replaceServer default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceServerDefault) GetPayload() *models.Error {
 	return o.Payload
 }

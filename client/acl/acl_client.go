@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateACL adds a new ACL line
+CreateACL adds a new ACL line
 
-  Adds a new ACL line of the specified type in the specified parent.
+Adds a new ACL line of the specified type in the specified parent.
 */
 func (a *Client) CreateACL(params *CreateACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateACLCreated, *CreateACLAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateACL(params *CreateACLParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  DeleteACL deletes a ACL line
+DeleteACL deletes a ACL line
 
-  Deletes a ACL line configuration by it's index from the specified parent.
+Deletes a ACL line configuration by it's index from the specified parent.
 */
 func (a *Client) DeleteACL(params *DeleteACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteACLAccepted, *DeleteACLNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteACL(params *DeleteACLParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  GetACL returns one ACL line
+GetACL returns one ACL line
 
-  Returns one ACL line configuration by it's index in the specified parent.
+Returns one ACL line configuration by it's index in the specified parent.
 */
 func (a *Client) GetACL(params *GetACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetACLOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetACL(params *GetACLParams, authInfo runtime.ClientAuthInfoWri
 }
 
 /*
-  GetAcls returns an array of all ACL lines
+GetAcls returns an array of all ACL lines
 
-  Returns all ACL lines that are configured in specified parent.
+Returns all ACL lines that are configured in specified parent.
 */
 func (a *Client) GetAcls(params *GetAclsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAclsOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetAcls(params *GetAclsParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  ReplaceACL replaces a ACL line
+ReplaceACL replaces a ACL line
 
-  Replaces a ACL line configuration by it's index in the specified parent.
+Replaces a ACL line configuration by it's index in the specified parent.
 */
 func (a *Client) ReplaceACL(params *ReplaceACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceACLOK, *ReplaceACLAccepted, error) {
 	// TODO: Validate the params before sending

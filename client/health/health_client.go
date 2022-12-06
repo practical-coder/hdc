@@ -34,9 +34,9 @@ type ClientService interface {
 }
 
 /*
-  GetHealth returns managed services health
+GetHealth returns managed services health
 
-  Return managed services health
+Return managed services health
 */
 func (a *Client) GetHealth(params *GetHealthParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHealthOK, error) {
 	// TODO: Validate the params before sending

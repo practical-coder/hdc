@@ -64,7 +64,8 @@ func NewCreateTCPResponseRuleCreated() *CreateTCPResponseRuleCreated {
 	return &CreateTCPResponseRuleCreated{}
 }
 
-/* CreateTCPResponseRuleCreated describes a response with status code 201, with default header values.
+/*
+CreateTCPResponseRuleCreated describes a response with status code 201, with default header values.
 
 TCP Response Rule created
 */
@@ -72,9 +73,39 @@ type CreateTCPResponseRuleCreated struct {
 	Payload *models.TCPResponseRule
 }
 
+// IsSuccess returns true when this create Tcp response rule created response has a 2xx status code
+func (o *CreateTCPResponseRuleCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create Tcp response rule created response has a 3xx status code
+func (o *CreateTCPResponseRuleCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Tcp response rule created response has a 4xx status code
+func (o *CreateTCPResponseRuleCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create Tcp response rule created response has a 5xx status code
+func (o *CreateTCPResponseRuleCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Tcp response rule created response a status code equal to that given
+func (o *CreateTCPResponseRuleCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateTCPResponseRuleCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_response_rules][%d] createTcpResponseRuleCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateTCPResponseRuleCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_response_rules][%d] createTcpResponseRuleCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateTCPResponseRuleCreated) GetPayload() *models.TCPResponseRule {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateTCPResponseRuleAccepted() *CreateTCPResponseRuleAccepted {
 	return &CreateTCPResponseRuleAccepted{}
 }
 
-/* CreateTCPResponseRuleAccepted describes a response with status code 202, with default header values.
+/*
+CreateTCPResponseRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateTCPResponseRuleAccepted struct {
 	Payload *models.TCPResponseRule
 }
 
+// IsSuccess returns true when this create Tcp response rule accepted response has a 2xx status code
+func (o *CreateTCPResponseRuleAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create Tcp response rule accepted response has a 3xx status code
+func (o *CreateTCPResponseRuleAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Tcp response rule accepted response has a 4xx status code
+func (o *CreateTCPResponseRuleAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create Tcp response rule accepted response has a 5xx status code
+func (o *CreateTCPResponseRuleAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Tcp response rule accepted response a status code equal to that given
+func (o *CreateTCPResponseRuleAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateTCPResponseRuleAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_response_rules][%d] createTcpResponseRuleAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateTCPResponseRuleAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_response_rules][%d] createTcpResponseRuleAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateTCPResponseRuleAccepted) GetPayload() *models.TCPResponseRule {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateTCPResponseRuleBadRequest() *CreateTCPResponseRuleBadRequest {
 	return &CreateTCPResponseRuleBadRequest{}
 }
 
-/* CreateTCPResponseRuleBadRequest describes a response with status code 400, with default header values.
+/*
+CreateTCPResponseRuleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateTCPResponseRuleBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create Tcp response rule bad request response has a 2xx status code
+func (o *CreateTCPResponseRuleBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create Tcp response rule bad request response has a 3xx status code
+func (o *CreateTCPResponseRuleBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Tcp response rule bad request response has a 4xx status code
+func (o *CreateTCPResponseRuleBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create Tcp response rule bad request response has a 5xx status code
+func (o *CreateTCPResponseRuleBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Tcp response rule bad request response a status code equal to that given
+func (o *CreateTCPResponseRuleBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateTCPResponseRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_response_rules][%d] createTcpResponseRuleBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateTCPResponseRuleBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_response_rules][%d] createTcpResponseRuleBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateTCPResponseRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateTCPResponseRuleConflict() *CreateTCPResponseRuleConflict {
 	return &CreateTCPResponseRuleConflict{}
 }
 
-/* CreateTCPResponseRuleConflict describes a response with status code 409, with default header values.
+/*
+CreateTCPResponseRuleConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateTCPResponseRuleConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create Tcp response rule conflict response has a 2xx status code
+func (o *CreateTCPResponseRuleConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create Tcp response rule conflict response has a 3xx status code
+func (o *CreateTCPResponseRuleConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Tcp response rule conflict response has a 4xx status code
+func (o *CreateTCPResponseRuleConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create Tcp response rule conflict response has a 5xx status code
+func (o *CreateTCPResponseRuleConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Tcp response rule conflict response a status code equal to that given
+func (o *CreateTCPResponseRuleConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateTCPResponseRuleConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_response_rules][%d] createTcpResponseRuleConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateTCPResponseRuleConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_response_rules][%d] createTcpResponseRuleConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateTCPResponseRuleConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateTCPResponseRuleDefault(code int) *CreateTCPResponseRuleDefault {
 	}
 }
 
-/* CreateTCPResponseRuleDefault describes a response with status code -1, with default header values.
+/*
+CreateTCPResponseRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateTCPResponseRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create TCP response rule default response has a 2xx status code
+func (o *CreateTCPResponseRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create TCP response rule default response has a 3xx status code
+func (o *CreateTCPResponseRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create TCP response rule default response has a 4xx status code
+func (o *CreateTCPResponseRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create TCP response rule default response has a 5xx status code
+func (o *CreateTCPResponseRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create TCP response rule default response a status code equal to that given
+func (o *CreateTCPResponseRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateTCPResponseRuleDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_response_rules][%d] createTCPResponseRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateTCPResponseRuleDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_response_rules][%d] createTCPResponseRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateTCPResponseRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }

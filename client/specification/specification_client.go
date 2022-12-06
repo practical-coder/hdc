@@ -34,9 +34,9 @@ type ClientService interface {
 }
 
 /*
-  GetSpecification data plane API specification
+GetSpecification data plane API specification
 
-  Return Data Plane API OpenAPI specification
+Return Data Plane API OpenAPI specification
 */
 func (a *Client) GetSpecification(params *GetSpecificationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpecificationOK, error) {
 	// TODO: Validate the params before sending

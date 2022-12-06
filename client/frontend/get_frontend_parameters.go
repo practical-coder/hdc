@@ -52,10 +52,12 @@ func NewGetFrontendParamsWithHTTPClient(client *http.Client) *GetFrontendParams 
 	}
 }
 
-/* GetFrontendParams contains all the parameters to send to the API endpoint
-   for the get frontend operation.
+/*
+GetFrontendParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get frontend operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFrontendParams struct {
 

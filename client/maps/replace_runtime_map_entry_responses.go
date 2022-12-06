@@ -62,7 +62,8 @@ func NewReplaceRuntimeMapEntryOK() *ReplaceRuntimeMapEntryOK {
 	return &ReplaceRuntimeMapEntryOK{}
 }
 
-/* ReplaceRuntimeMapEntryOK describes a response with status code 200, with default header values.
+/*
+ReplaceRuntimeMapEntryOK describes a response with status code 200, with default header values.
 
 Map value replaced
 */
@@ -70,9 +71,39 @@ type ReplaceRuntimeMapEntryOK struct {
 	Payload *models.MapEntry
 }
 
+// IsSuccess returns true when this replace runtime map entry o k response has a 2xx status code
+func (o *ReplaceRuntimeMapEntryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace runtime map entry o k response has a 3xx status code
+func (o *ReplaceRuntimeMapEntryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace runtime map entry o k response has a 4xx status code
+func (o *ReplaceRuntimeMapEntryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace runtime map entry o k response has a 5xx status code
+func (o *ReplaceRuntimeMapEntryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace runtime map entry o k response a status code equal to that given
+func (o *ReplaceRuntimeMapEntryOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceRuntimeMapEntryOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntryOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceRuntimeMapEntryOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntryOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceRuntimeMapEntryOK) GetPayload() *models.MapEntry {
 	return o.Payload
 }
@@ -94,7 +125,8 @@ func NewReplaceRuntimeMapEntryBadRequest() *ReplaceRuntimeMapEntryBadRequest {
 	return &ReplaceRuntimeMapEntryBadRequest{}
 }
 
-/* ReplaceRuntimeMapEntryBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceRuntimeMapEntryBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -107,9 +139,39 @@ type ReplaceRuntimeMapEntryBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace runtime map entry bad request response has a 2xx status code
+func (o *ReplaceRuntimeMapEntryBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace runtime map entry bad request response has a 3xx status code
+func (o *ReplaceRuntimeMapEntryBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace runtime map entry bad request response has a 4xx status code
+func (o *ReplaceRuntimeMapEntryBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace runtime map entry bad request response has a 5xx status code
+func (o *ReplaceRuntimeMapEntryBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace runtime map entry bad request response a status code equal to that given
+func (o *ReplaceRuntimeMapEntryBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceRuntimeMapEntryBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntryBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceRuntimeMapEntryBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntryBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceRuntimeMapEntryBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -138,7 +200,8 @@ func NewReplaceRuntimeMapEntryNotFound() *ReplaceRuntimeMapEntryNotFound {
 	return &ReplaceRuntimeMapEntryNotFound{}
 }
 
-/* ReplaceRuntimeMapEntryNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceRuntimeMapEntryNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -151,9 +214,39 @@ type ReplaceRuntimeMapEntryNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace runtime map entry not found response has a 2xx status code
+func (o *ReplaceRuntimeMapEntryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace runtime map entry not found response has a 3xx status code
+func (o *ReplaceRuntimeMapEntryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace runtime map entry not found response has a 4xx status code
+func (o *ReplaceRuntimeMapEntryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace runtime map entry not found response has a 5xx status code
+func (o *ReplaceRuntimeMapEntryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace runtime map entry not found response a status code equal to that given
+func (o *ReplaceRuntimeMapEntryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceRuntimeMapEntryNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntryNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceRuntimeMapEntryNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntryNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceRuntimeMapEntryNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceRuntimeMapEntryDefault(code int) *ReplaceRuntimeMapEntryDefault {
 	}
 }
 
-/* ReplaceRuntimeMapEntryDefault describes a response with status code -1, with default header values.
+/*
+ReplaceRuntimeMapEntryDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -203,9 +297,39 @@ func (o *ReplaceRuntimeMapEntryDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace runtime map entry default response has a 2xx status code
+func (o *ReplaceRuntimeMapEntryDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace runtime map entry default response has a 3xx status code
+func (o *ReplaceRuntimeMapEntryDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace runtime map entry default response has a 4xx status code
+func (o *ReplaceRuntimeMapEntryDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace runtime map entry default response has a 5xx status code
+func (o *ReplaceRuntimeMapEntryDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace runtime map entry default response a status code equal to that given
+func (o *ReplaceRuntimeMapEntryDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceRuntimeMapEntryDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntry default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceRuntimeMapEntryDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntry default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceRuntimeMapEntryDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -229,7 +353,8 @@ func (o *ReplaceRuntimeMapEntryDefault) readResponse(response runtime.ClientResp
 	return nil
 }
 
-/*ReplaceRuntimeMapEntryBody replace runtime map entry body
+/*
+ReplaceRuntimeMapEntryBody replace runtime map entry body
 swagger:model ReplaceRuntimeMapEntryBody
 */
 type ReplaceRuntimeMapEntryBody struct {

@@ -16,7 +16,7 @@ import (
 
 // Resolvers Resolvers
 //
-// HAProxy resolvers array
+// # HAProxy resolvers array
 //
 // swagger:model resolvers
 type Resolvers []*Resolver

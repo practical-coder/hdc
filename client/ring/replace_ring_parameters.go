@@ -55,10 +55,12 @@ func NewReplaceRingParamsWithHTTPClient(client *http.Client) *ReplaceRingParams 
 	}
 }
 
-/* ReplaceRingParams contains all the parameters to send to the API endpoint
-   for the replace ring operation.
+/*
+ReplaceRingParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace ring operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceRingParams struct {
 

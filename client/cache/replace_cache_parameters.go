@@ -55,10 +55,12 @@ func NewReplaceCacheParamsWithHTTPClient(client *http.Client) *ReplaceCacheParam
 	}
 }
 
-/* ReplaceCacheParams contains all the parameters to send to the API endpoint
-   for the replace cache operation.
+/*
+ReplaceCacheParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace cache operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceCacheParams struct {
 

@@ -53,10 +53,12 @@ func NewCreateStorageSSLCertificateParamsWithHTTPClient(client *http.Client) *Cr
 	}
 }
 
-/* CreateStorageSSLCertificateParams contains all the parameters to send to the API endpoint
-   for the create storage s s l certificate operation.
+/*
+CreateStorageSSLCertificateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create storage s s l certificate operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateStorageSSLCertificateParams struct {
 

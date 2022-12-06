@@ -52,10 +52,12 @@ func NewGetSpoeTransactionsParamsWithHTTPClient(client *http.Client) *GetSpoeTra
 	}
 }
 
-/* GetSpoeTransactionsParams contains all the parameters to send to the API endpoint
-   for the get spoe transactions operation.
+/*
+GetSpoeTransactionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get spoe transactions operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSpoeTransactionsParams struct {
 

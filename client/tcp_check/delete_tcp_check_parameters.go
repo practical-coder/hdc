@@ -53,10 +53,12 @@ func NewDeleteTCPCheckParamsWithHTTPClient(client *http.Client) *DeleteTCPCheckP
 	}
 }
 
-/* DeleteTCPCheckParams contains all the parameters to send to the API endpoint
-   for the delete TCP check operation.
+/*
+DeleteTCPCheckParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete TCP check operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteTCPCheckParams struct {
 

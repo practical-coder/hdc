@@ -54,7 +54,8 @@ func NewStartTransactionCreated() *StartTransactionCreated {
 	return &StartTransactionCreated{}
 }
 
-/* StartTransactionCreated describes a response with status code 201, with default header values.
+/*
+StartTransactionCreated describes a response with status code 201, with default header values.
 
 Transaction started
 */
@@ -62,9 +63,39 @@ type StartTransactionCreated struct {
 	Payload *models.Transaction
 }
 
+// IsSuccess returns true when this start transaction created response has a 2xx status code
+func (o *StartTransactionCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this start transaction created response has a 3xx status code
+func (o *StartTransactionCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this start transaction created response has a 4xx status code
+func (o *StartTransactionCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this start transaction created response has a 5xx status code
+func (o *StartTransactionCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this start transaction created response a status code equal to that given
+func (o *StartTransactionCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *StartTransactionCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/transactions][%d] startTransactionCreated  %+v", 201, o.Payload)
 }
+
+func (o *StartTransactionCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/transactions][%d] startTransactionCreated  %+v", 201, o.Payload)
+}
+
 func (o *StartTransactionCreated) GetPayload() *models.Transaction {
 	return o.Payload
 }
@@ -86,7 +117,8 @@ func NewStartTransactionTooManyRequests() *StartTransactionTooManyRequests {
 	return &StartTransactionTooManyRequests{}
 }
 
-/* StartTransactionTooManyRequests describes a response with status code 429, with default header values.
+/*
+StartTransactionTooManyRequests describes a response with status code 429, with default header values.
 
 Too many open transactions
 */
@@ -94,9 +126,39 @@ type StartTransactionTooManyRequests struct {
 	Payload *StartTransactionTooManyRequestsBody
 }
 
+// IsSuccess returns true when this start transaction too many requests response has a 2xx status code
+func (o *StartTransactionTooManyRequests) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this start transaction too many requests response has a 3xx status code
+func (o *StartTransactionTooManyRequests) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this start transaction too many requests response has a 4xx status code
+func (o *StartTransactionTooManyRequests) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this start transaction too many requests response has a 5xx status code
+func (o *StartTransactionTooManyRequests) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this start transaction too many requests response a status code equal to that given
+func (o *StartTransactionTooManyRequests) IsCode(code int) bool {
+	return code == 429
+}
+
 func (o *StartTransactionTooManyRequests) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/transactions][%d] startTransactionTooManyRequests  %+v", 429, o.Payload)
 }
+
+func (o *StartTransactionTooManyRequests) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/transactions][%d] startTransactionTooManyRequests  %+v", 429, o.Payload)
+}
+
 func (o *StartTransactionTooManyRequests) GetPayload() *StartTransactionTooManyRequestsBody {
 	return o.Payload
 }
@@ -120,7 +182,8 @@ func NewStartTransactionDefault(code int) *StartTransactionDefault {
 	}
 }
 
-/* StartTransactionDefault describes a response with status code -1, with default header values.
+/*
+StartTransactionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -139,9 +202,39 @@ func (o *StartTransactionDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this start transaction default response has a 2xx status code
+func (o *StartTransactionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this start transaction default response has a 3xx status code
+func (o *StartTransactionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this start transaction default response has a 4xx status code
+func (o *StartTransactionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this start transaction default response has a 5xx status code
+func (o *StartTransactionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this start transaction default response a status code equal to that given
+func (o *StartTransactionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *StartTransactionDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/transactions][%d] startTransaction default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *StartTransactionDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/transactions][%d] startTransaction default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *StartTransactionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func (o *StartTransactionDefault) readResponse(response runtime.ClientResponse, 
 	return nil
 }
 
-/*StartTransactionTooManyRequestsBody start transaction too many requests body
+/*
+StartTransactionTooManyRequestsBody start transaction too many requests body
 // Example: {"code":429,"message":"cannot start a new transaction, reached the maximum amount of 20 active transactions available"}
 swagger:model StartTransactionTooManyRequestsBody
 */

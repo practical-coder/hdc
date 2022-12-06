@@ -58,7 +58,8 @@ func NewDeleteFrontendAccepted() *DeleteFrontendAccepted {
 	return &DeleteFrontendAccepted{}
 }
 
-/* DeleteFrontendAccepted describes a response with status code 202, with default header values.
+/*
+DeleteFrontendAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteFrontendAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete frontend accepted response has a 2xx status code
+func (o *DeleteFrontendAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete frontend accepted response has a 3xx status code
+func (o *DeleteFrontendAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete frontend accepted response has a 4xx status code
+func (o *DeleteFrontendAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete frontend accepted response has a 5xx status code
+func (o *DeleteFrontendAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete frontend accepted response a status code equal to that given
+func (o *DeleteFrontendAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteFrontendAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/frontends/{name}][%d] deleteFrontendAccepted ", 202)
+}
+
+func (o *DeleteFrontendAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/frontends/{name}][%d] deleteFrontendAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteFrontendNoContent() *DeleteFrontendNoContent {
 	return &DeleteFrontendNoContent{}
 }
 
-/* DeleteFrontendNoContent describes a response with status code 204, with default header values.
+/*
+DeleteFrontendNoContent describes a response with status code 204, with default header values.
 
 Frontend deleted
 */
 type DeleteFrontendNoContent struct {
 }
 
+// IsSuccess returns true when this delete frontend no content response has a 2xx status code
+func (o *DeleteFrontendNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete frontend no content response has a 3xx status code
+func (o *DeleteFrontendNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete frontend no content response has a 4xx status code
+func (o *DeleteFrontendNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete frontend no content response has a 5xx status code
+func (o *DeleteFrontendNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete frontend no content response a status code equal to that given
+func (o *DeleteFrontendNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteFrontendNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/frontends/{name}][%d] deleteFrontendNoContent ", 204)
+}
+
+func (o *DeleteFrontendNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/frontends/{name}][%d] deleteFrontendNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteFrontendNotFound() *DeleteFrontendNotFound {
 	return &DeleteFrontendNotFound{}
 }
 
-/* DeleteFrontendNotFound describes a response with status code 404, with default header values.
+/*
+DeleteFrontendNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteFrontendNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete frontend not found response has a 2xx status code
+func (o *DeleteFrontendNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete frontend not found response has a 3xx status code
+func (o *DeleteFrontendNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete frontend not found response has a 4xx status code
+func (o *DeleteFrontendNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete frontend not found response has a 5xx status code
+func (o *DeleteFrontendNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete frontend not found response a status code equal to that given
+func (o *DeleteFrontendNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteFrontendNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/frontends/{name}][%d] deleteFrontendNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteFrontendNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/frontends/{name}][%d] deleteFrontendNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteFrontendNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteFrontendDefault(code int) *DeleteFrontendDefault {
 	}
 }
 
-/* DeleteFrontendDefault describes a response with status code -1, with default header values.
+/*
+DeleteFrontendDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteFrontendDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete frontend default response has a 2xx status code
+func (o *DeleteFrontendDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete frontend default response has a 3xx status code
+func (o *DeleteFrontendDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete frontend default response has a 4xx status code
+func (o *DeleteFrontendDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete frontend default response has a 5xx status code
+func (o *DeleteFrontendDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete frontend default response a status code equal to that given
+func (o *DeleteFrontendDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteFrontendDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/frontends/{name}][%d] deleteFrontend default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteFrontendDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/frontends/{name}][%d] deleteFrontend default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteFrontendDefault) GetPayload() *models.Error {
 	return o.Payload
 }

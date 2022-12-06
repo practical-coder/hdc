@@ -25,7 +25,7 @@ import (
 type HTTPResponseRule struct {
 
 	// return headers
-	ReturnHeaders []*ReturnHeader `json:"return_hdrs"`
+	ReturnHeaders []*ReturnHeader `json:"return_hdrs,omitempty"`
 
 	// acl file
 	// Pattern: ^[^\s]+$
@@ -34,6 +34,15 @@ type HTTPResponseRule struct {
 	// acl keyfmt
 	// Pattern: ^[^\s]+$
 	ACLKeyfmt string `json:"acl_keyfmt,omitempty"`
+
+	// bandwidth limit limit
+	BandwidthLimitLimit string `json:"bandwidth_limit_limit,omitempty"`
+
+	// bandwidth limit name
+	BandwidthLimitName string `json:"bandwidth_limit_name,omitempty"`
+
+	// bandwidth limit period
+	BandwidthLimitPeriod string `json:"bandwidth_limit_period,omitempty"`
 
 	// cache name
 	// Pattern: ^[^\s]+$
@@ -195,7 +204,7 @@ type HTTPResponseRule struct {
 
 	// type
 	// Required: true
-	// Enum: [add-acl add-header allow cache-store capture del-acl del-header del-map deny redirect replace-header replace-value return sc-inc-gpc0 sc-inc-gpc1 sc-set-gpt0 send-spoe-group set-header set-log-level set-map set-mark set-nice set-status set-tos set-var set-var-fmt silent-drop strict-mode track-sc0 track-sc1 track-sc2 unset-var wait-for-body]
+	// Enum: [add-acl add-header allow cache-store capture del-acl del-header del-map deny redirect replace-header replace-value return sc-inc-gpc0 sc-inc-gpc1 sc-set-gpt0 send-spoe-group set-header set-log-level set-map set-mark set-nice set-status set-tos set-var set-var-fmt silent-drop strict-mode track-sc0 track-sc1 track-sc2 unset-var wait-for-body set-bandwidth-limit]
 	Type string `json:"type"`
 
 	// var expr
@@ -978,7 +987,7 @@ var httpResponseRuleTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["add-acl","add-header","allow","cache-store","capture","del-acl","del-header","del-map","deny","redirect","replace-header","replace-value","return","sc-inc-gpc0","sc-inc-gpc1","sc-set-gpt0","send-spoe-group","set-header","set-log-level","set-map","set-mark","set-nice","set-status","set-tos","set-var","set-var-fmt","silent-drop","strict-mode","track-sc0","track-sc1","track-sc2","unset-var","wait-for-body"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["add-acl","add-header","allow","cache-store","capture","del-acl","del-header","del-map","deny","redirect","replace-header","replace-value","return","sc-inc-gpc0","sc-inc-gpc1","sc-set-gpt0","send-spoe-group","set-header","set-log-level","set-map","set-mark","set-nice","set-status","set-tos","set-var","set-var-fmt","silent-drop","strict-mode","track-sc0","track-sc1","track-sc2","unset-var","wait-for-body","set-bandwidth-limit"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -1086,6 +1095,9 @@ const (
 
 	// HTTPResponseRuleTypeWaitDashForDashBody captures enum value "wait-for-body"
 	HTTPResponseRuleTypeWaitDashForDashBody string = "wait-for-body"
+
+	// HTTPResponseRuleTypeSetDashBandwidthDashLimit captures enum value "set-bandwidth-limit"
+	HTTPResponseRuleTypeSetDashBandwidthDashLimit string = "set-bandwidth-limit"
 )
 
 // prop value enum

@@ -53,10 +53,12 @@ func NewDeleteStickRuleParamsWithHTTPClient(client *http.Client) *DeleteStickRul
 	}
 }
 
-/* DeleteStickRuleParams contains all the parameters to send to the API endpoint
-   for the delete stick rule operation.
+/*
+DeleteStickRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete stick rule operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteStickRuleParams struct {
 

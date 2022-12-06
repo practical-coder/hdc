@@ -16,7 +16,7 @@ import (
 
 // ACLFiles ACL Files Array
 //
-// Array of runtime acl files
+// # Array of runtime acl files
 //
 // swagger:model acl_files
 type ACLFiles []*ACLFile

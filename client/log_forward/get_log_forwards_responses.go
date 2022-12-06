@@ -50,7 +50,8 @@ func NewGetLogForwardsOK() *GetLogForwardsOK {
 	return &GetLogForwardsOK{}
 }
 
-/* GetLogForwardsOK describes a response with status code 200, with default header values.
+/*
+GetLogForwardsOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetLogForwardsOK struct {
 	Payload *GetLogForwardsOKBody
 }
 
+// IsSuccess returns true when this get log forwards o k response has a 2xx status code
+func (o *GetLogForwardsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get log forwards o k response has a 3xx status code
+func (o *GetLogForwardsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get log forwards o k response has a 4xx status code
+func (o *GetLogForwardsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get log forwards o k response has a 5xx status code
+func (o *GetLogForwardsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get log forwards o k response a status code equal to that given
+func (o *GetLogForwardsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetLogForwardsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_forwards][%d] getLogForwardsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetLogForwardsOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/log_forwards][%d] getLogForwardsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetLogForwardsOK) GetPayload() *GetLogForwardsOKBody {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewGetLogForwardsDefault(code int) *GetLogForwardsDefault {
 	}
 }
 
-/* GetLogForwardsDefault describes a response with status code -1, with default header values.
+/*
+GetLogForwardsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +147,39 @@ func (o *GetLogForwardsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get log forwards default response has a 2xx status code
+func (o *GetLogForwardsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get log forwards default response has a 3xx status code
+func (o *GetLogForwardsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get log forwards default response has a 4xx status code
+func (o *GetLogForwardsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get log forwards default response has a 5xx status code
+func (o *GetLogForwardsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get log forwards default response a status code equal to that given
+func (o *GetLogForwardsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetLogForwardsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_forwards][%d] getLogForwards default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetLogForwardsDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/log_forwards][%d] getLogForwards default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetLogForwardsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -141,7 +203,8 @@ func (o *GetLogForwardsDefault) readResponse(response runtime.ClientResponse, co
 	return nil
 }
 
-/*GetLogForwardsOKBody get log forwards o k body
+/*
+GetLogForwardsOKBody get log forwards o k body
 swagger:model GetLogForwardsOKBody
 */
 type GetLogForwardsOKBody struct {

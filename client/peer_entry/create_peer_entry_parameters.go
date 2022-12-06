@@ -55,10 +55,12 @@ func NewCreatePeerEntryParamsWithHTTPClient(client *http.Client) *CreatePeerEntr
 	}
 }
 
-/* CreatePeerEntryParams contains all the parameters to send to the API endpoint
-   for the create peer entry operation.
+/*
+CreatePeerEntryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create peer entry operation.
+
+	Typically these are written to a http.Request.
 */
 type CreatePeerEntryParams struct {
 

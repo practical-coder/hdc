@@ -55,10 +55,12 @@ func NewReplaceFilterParamsWithHTTPClient(client *http.Client) *ReplaceFilterPar
 	}
 }
 
-/* ReplaceFilterParams contains all the parameters to send to the API endpoint
-   for the replace filter operation.
+/*
+ReplaceFilterParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace filter operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceFilterParams struct {
 

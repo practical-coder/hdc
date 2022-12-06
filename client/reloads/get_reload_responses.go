@@ -52,7 +52,8 @@ func NewGetReloadOK() *GetReloadOK {
 	return &GetReloadOK{}
 }
 
-/* GetReloadOK describes a response with status code 200, with default header values.
+/*
+GetReloadOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -60,9 +61,39 @@ type GetReloadOK struct {
 	Payload *models.Reload
 }
 
+// IsSuccess returns true when this get reload o k response has a 2xx status code
+func (o *GetReloadOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get reload o k response has a 3xx status code
+func (o *GetReloadOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get reload o k response has a 4xx status code
+func (o *GetReloadOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get reload o k response has a 5xx status code
+func (o *GetReloadOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get reload o k response a status code equal to that given
+func (o *GetReloadOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetReloadOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/reloads/{id}][%d] getReloadOK  %+v", 200, o.Payload)
 }
+
+func (o *GetReloadOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/reloads/{id}][%d] getReloadOK  %+v", 200, o.Payload)
+}
+
 func (o *GetReloadOK) GetPayload() *models.Reload {
 	return o.Payload
 }
@@ -84,7 +115,8 @@ func NewGetReloadNotFound() *GetReloadNotFound {
 	return &GetReloadNotFound{}
 }
 
-/* GetReloadNotFound describes a response with status code 404, with default header values.
+/*
+GetReloadNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -97,9 +129,39 @@ type GetReloadNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get reload not found response has a 2xx status code
+func (o *GetReloadNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get reload not found response has a 3xx status code
+func (o *GetReloadNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get reload not found response has a 4xx status code
+func (o *GetReloadNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get reload not found response has a 5xx status code
+func (o *GetReloadNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get reload not found response a status code equal to that given
+func (o *GetReloadNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetReloadNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/reloads/{id}][%d] getReloadNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetReloadNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/reloads/{id}][%d] getReloadNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetReloadNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -130,7 +192,8 @@ func NewGetReloadDefault(code int) *GetReloadDefault {
 	}
 }
 
-/* GetReloadDefault describes a response with status code -1, with default header values.
+/*
+GetReloadDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -149,9 +212,39 @@ func (o *GetReloadDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get reload default response has a 2xx status code
+func (o *GetReloadDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get reload default response has a 3xx status code
+func (o *GetReloadDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get reload default response has a 4xx status code
+func (o *GetReloadDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get reload default response has a 5xx status code
+func (o *GetReloadDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get reload default response a status code equal to that given
+func (o *GetReloadDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetReloadDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/reloads/{id}][%d] getReload default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetReloadDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/reloads/{id}][%d] getReload default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetReloadDefault) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -55,7 +55,8 @@ func NewGetServerSwitchingRuleOK() *GetServerSwitchingRuleOK {
 	return &GetServerSwitchingRuleOK{}
 }
 
-/* GetServerSwitchingRuleOK describes a response with status code 200, with default header values.
+/*
+GetServerSwitchingRuleOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetServerSwitchingRuleOK struct {
 	Payload *GetServerSwitchingRuleOKBody
 }
 
+// IsSuccess returns true when this get server switching rule o k response has a 2xx status code
+func (o *GetServerSwitchingRuleOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get server switching rule o k response has a 3xx status code
+func (o *GetServerSwitchingRuleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get server switching rule o k response has a 4xx status code
+func (o *GetServerSwitchingRuleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get server switching rule o k response has a 5xx status code
+func (o *GetServerSwitchingRuleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get server switching rule o k response a status code equal to that given
+func (o *GetServerSwitchingRuleOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetServerSwitchingRuleOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_switching_rules/{index}][%d] getServerSwitchingRuleOK  %+v", 200, o.Payload)
 }
+
+func (o *GetServerSwitchingRuleOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/server_switching_rules/{index}][%d] getServerSwitchingRuleOK  %+v", 200, o.Payload)
+}
+
 func (o *GetServerSwitchingRuleOK) GetPayload() *GetServerSwitchingRuleOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetServerSwitchingRuleNotFound() *GetServerSwitchingRuleNotFound {
 	return &GetServerSwitchingRuleNotFound{}
 }
 
-/* GetServerSwitchingRuleNotFound describes a response with status code 404, with default header values.
+/*
+GetServerSwitchingRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -112,9 +144,39 @@ type GetServerSwitchingRuleNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get server switching rule not found response has a 2xx status code
+func (o *GetServerSwitchingRuleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get server switching rule not found response has a 3xx status code
+func (o *GetServerSwitchingRuleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get server switching rule not found response has a 4xx status code
+func (o *GetServerSwitchingRuleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get server switching rule not found response has a 5xx status code
+func (o *GetServerSwitchingRuleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get server switching rule not found response a status code equal to that given
+func (o *GetServerSwitchingRuleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetServerSwitchingRuleNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_switching_rules/{index}][%d] getServerSwitchingRuleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetServerSwitchingRuleNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/server_switching_rules/{index}][%d] getServerSwitchingRuleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetServerSwitchingRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetServerSwitchingRuleDefault(code int) *GetServerSwitchingRuleDefault {
 	}
 }
 
-/* GetServerSwitchingRuleDefault describes a response with status code -1, with default header values.
+/*
+GetServerSwitchingRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetServerSwitchingRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get server switching rule default response has a 2xx status code
+func (o *GetServerSwitchingRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get server switching rule default response has a 3xx status code
+func (o *GetServerSwitchingRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get server switching rule default response has a 4xx status code
+func (o *GetServerSwitchingRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get server switching rule default response has a 5xx status code
+func (o *GetServerSwitchingRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get server switching rule default response a status code equal to that given
+func (o *GetServerSwitchingRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetServerSwitchingRuleDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_switching_rules/{index}][%d] getServerSwitchingRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetServerSwitchingRuleDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/server_switching_rules/{index}][%d] getServerSwitchingRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetServerSwitchingRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetServerSwitchingRuleDefault) readResponse(response runtime.ClientResp
 	return nil
 }
 
-/*GetServerSwitchingRuleOKBody get server switching rule o k body
+/*
+GetServerSwitchingRuleOKBody get server switching rule o k body
 swagger:model GetServerSwitchingRuleOKBody
 */
 type GetServerSwitchingRuleOKBody struct {

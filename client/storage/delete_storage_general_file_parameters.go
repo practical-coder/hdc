@@ -52,10 +52,12 @@ func NewDeleteStorageGeneralFileParamsWithHTTPClient(client *http.Client) *Delet
 	}
 }
 
-/* DeleteStorageGeneralFileParams contains all the parameters to send to the API endpoint
-   for the delete storage general file operation.
+/*
+DeleteStorageGeneralFileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete storage general file operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteStorageGeneralFileParams struct {
 

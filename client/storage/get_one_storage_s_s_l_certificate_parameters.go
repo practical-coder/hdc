@@ -52,10 +52,12 @@ func NewGetOneStorageSSLCertificateParamsWithHTTPClient(client *http.Client) *Ge
 	}
 }
 
-/* GetOneStorageSSLCertificateParams contains all the parameters to send to the API endpoint
-   for the get one storage s s l certificate operation.
+/*
+GetOneStorageSSLCertificateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get one storage s s l certificate operation.
+
+	Typically these are written to a http.Request.
 */
 type GetOneStorageSSLCertificateParams struct {
 

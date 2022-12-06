@@ -64,7 +64,8 @@ func NewReplaceLogForwardOK() *ReplaceLogForwardOK {
 	return &ReplaceLogForwardOK{}
 }
 
-/* ReplaceLogForwardOK describes a response with status code 200, with default header values.
+/*
+ReplaceLogForwardOK describes a response with status code 200, with default header values.
 
 Log Forward replaced
 */
@@ -72,9 +73,39 @@ type ReplaceLogForwardOK struct {
 	Payload *models.LogForward
 }
 
+// IsSuccess returns true when this replace log forward o k response has a 2xx status code
+func (o *ReplaceLogForwardOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace log forward o k response has a 3xx status code
+func (o *ReplaceLogForwardOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace log forward o k response has a 4xx status code
+func (o *ReplaceLogForwardOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace log forward o k response has a 5xx status code
+func (o *ReplaceLogForwardOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace log forward o k response a status code equal to that given
+func (o *ReplaceLogForwardOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceLogForwardOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_forwards/{name}][%d] replaceLogForwardOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceLogForwardOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_forwards/{name}][%d] replaceLogForwardOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceLogForwardOK) GetPayload() *models.LogForward {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceLogForwardAccepted() *ReplaceLogForwardAccepted {
 	return &ReplaceLogForwardAccepted{}
 }
 
-/* ReplaceLogForwardAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceLogForwardAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceLogForwardAccepted struct {
 	Payload *models.LogForward
 }
 
+// IsSuccess returns true when this replace log forward accepted response has a 2xx status code
+func (o *ReplaceLogForwardAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace log forward accepted response has a 3xx status code
+func (o *ReplaceLogForwardAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace log forward accepted response has a 4xx status code
+func (o *ReplaceLogForwardAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace log forward accepted response has a 5xx status code
+func (o *ReplaceLogForwardAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace log forward accepted response a status code equal to that given
+func (o *ReplaceLogForwardAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceLogForwardAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_forwards/{name}][%d] replaceLogForwardAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceLogForwardAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_forwards/{name}][%d] replaceLogForwardAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceLogForwardAccepted) GetPayload() *models.LogForward {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceLogForwardBadRequest() *ReplaceLogForwardBadRequest {
 	return &ReplaceLogForwardBadRequest{}
 }
 
-/* ReplaceLogForwardBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceLogForwardBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceLogForwardBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace log forward bad request response has a 2xx status code
+func (o *ReplaceLogForwardBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace log forward bad request response has a 3xx status code
+func (o *ReplaceLogForwardBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace log forward bad request response has a 4xx status code
+func (o *ReplaceLogForwardBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace log forward bad request response has a 5xx status code
+func (o *ReplaceLogForwardBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace log forward bad request response a status code equal to that given
+func (o *ReplaceLogForwardBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceLogForwardBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_forwards/{name}][%d] replaceLogForwardBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceLogForwardBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_forwards/{name}][%d] replaceLogForwardBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceLogForwardBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceLogForwardNotFound() *ReplaceLogForwardNotFound {
 	return &ReplaceLogForwardNotFound{}
 }
 
-/* ReplaceLogForwardNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceLogForwardNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceLogForwardNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace log forward not found response has a 2xx status code
+func (o *ReplaceLogForwardNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace log forward not found response has a 3xx status code
+func (o *ReplaceLogForwardNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace log forward not found response has a 4xx status code
+func (o *ReplaceLogForwardNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace log forward not found response has a 5xx status code
+func (o *ReplaceLogForwardNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace log forward not found response a status code equal to that given
+func (o *ReplaceLogForwardNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceLogForwardNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_forwards/{name}][%d] replaceLogForwardNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceLogForwardNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_forwards/{name}][%d] replaceLogForwardNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceLogForwardNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceLogForwardDefault(code int) *ReplaceLogForwardDefault {
 	}
 }
 
-/* ReplaceLogForwardDefault describes a response with status code -1, with default header values.
+/*
+ReplaceLogForwardDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceLogForwardDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace log forward default response has a 2xx status code
+func (o *ReplaceLogForwardDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace log forward default response has a 3xx status code
+func (o *ReplaceLogForwardDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace log forward default response has a 4xx status code
+func (o *ReplaceLogForwardDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace log forward default response has a 5xx status code
+func (o *ReplaceLogForwardDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace log forward default response a status code equal to that given
+func (o *ReplaceLogForwardDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceLogForwardDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_forwards/{name}][%d] replaceLogForward default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceLogForwardDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/log_forwards/{name}][%d] replaceLogForward default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceLogForwardDefault) GetPayload() *models.Error {
 	return o.Payload
 }

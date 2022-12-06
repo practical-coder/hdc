@@ -52,14 +52,44 @@ func NewDeleteTransactionNoContent() *DeleteTransactionNoContent {
 	return &DeleteTransactionNoContent{}
 }
 
-/* DeleteTransactionNoContent describes a response with status code 204, with default header values.
+/*
+DeleteTransactionNoContent describes a response with status code 204, with default header values.
 
 Transaction deleted
 */
 type DeleteTransactionNoContent struct {
 }
 
+// IsSuccess returns true when this delete transaction no content response has a 2xx status code
+func (o *DeleteTransactionNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete transaction no content response has a 3xx status code
+func (o *DeleteTransactionNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete transaction no content response has a 4xx status code
+func (o *DeleteTransactionNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete transaction no content response has a 5xx status code
+func (o *DeleteTransactionNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete transaction no content response a status code equal to that given
+func (o *DeleteTransactionNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteTransactionNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/transactions/{id}][%d] deleteTransactionNoContent ", 204)
+}
+
+func (o *DeleteTransactionNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/transactions/{id}][%d] deleteTransactionNoContent ", 204)
 }
 
@@ -73,7 +103,8 @@ func NewDeleteTransactionNotFound() *DeleteTransactionNotFound {
 	return &DeleteTransactionNotFound{}
 }
 
-/* DeleteTransactionNotFound describes a response with status code 404, with default header values.
+/*
+DeleteTransactionNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -86,9 +117,39 @@ type DeleteTransactionNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete transaction not found response has a 2xx status code
+func (o *DeleteTransactionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete transaction not found response has a 3xx status code
+func (o *DeleteTransactionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete transaction not found response has a 4xx status code
+func (o *DeleteTransactionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete transaction not found response has a 5xx status code
+func (o *DeleteTransactionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete transaction not found response a status code equal to that given
+func (o *DeleteTransactionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteTransactionNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/transactions/{id}][%d] deleteTransactionNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteTransactionNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/transactions/{id}][%d] deleteTransactionNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteTransactionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -119,7 +180,8 @@ func NewDeleteTransactionDefault(code int) *DeleteTransactionDefault {
 	}
 }
 
-/* DeleteTransactionDefault describes a response with status code -1, with default header values.
+/*
+DeleteTransactionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -138,9 +200,39 @@ func (o *DeleteTransactionDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete transaction default response has a 2xx status code
+func (o *DeleteTransactionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete transaction default response has a 3xx status code
+func (o *DeleteTransactionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete transaction default response has a 4xx status code
+func (o *DeleteTransactionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete transaction default response has a 5xx status code
+func (o *DeleteTransactionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete transaction default response a status code equal to that given
+func (o *DeleteTransactionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteTransactionDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/transactions/{id}][%d] deleteTransaction default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteTransactionDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/transactions/{id}][%d] deleteTransaction default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteTransactionDefault) GetPayload() *models.Error {
 	return o.Payload
 }

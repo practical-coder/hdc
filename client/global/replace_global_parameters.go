@@ -55,10 +55,12 @@ func NewReplaceGlobalParamsWithHTTPClient(client *http.Client) *ReplaceGlobalPar
 	}
 }
 
-/* ReplaceGlobalParams contains all the parameters to send to the API endpoint
-   for the replace global operation.
+/*
+ReplaceGlobalParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace global operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceGlobalParams struct {
 

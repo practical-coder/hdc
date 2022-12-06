@@ -58,7 +58,8 @@ func NewDeleteTCPResponseRuleAccepted() *DeleteTCPResponseRuleAccepted {
 	return &DeleteTCPResponseRuleAccepted{}
 }
 
-/* DeleteTCPResponseRuleAccepted describes a response with status code 202, with default header values.
+/*
+DeleteTCPResponseRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteTCPResponseRuleAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete Tcp response rule accepted response has a 2xx status code
+func (o *DeleteTCPResponseRuleAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete Tcp response rule accepted response has a 3xx status code
+func (o *DeleteTCPResponseRuleAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Tcp response rule accepted response has a 4xx status code
+func (o *DeleteTCPResponseRuleAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete Tcp response rule accepted response has a 5xx status code
+func (o *DeleteTCPResponseRuleAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Tcp response rule accepted response a status code equal to that given
+func (o *DeleteTCPResponseRuleAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteTCPResponseRuleAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_response_rules/{index}][%d] deleteTcpResponseRuleAccepted ", 202)
+}
+
+func (o *DeleteTCPResponseRuleAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_response_rules/{index}][%d] deleteTcpResponseRuleAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteTCPResponseRuleNoContent() *DeleteTCPResponseRuleNoContent {
 	return &DeleteTCPResponseRuleNoContent{}
 }
 
-/* DeleteTCPResponseRuleNoContent describes a response with status code 204, with default header values.
+/*
+DeleteTCPResponseRuleNoContent describes a response with status code 204, with default header values.
 
 TCP Response Rule deleted
 */
 type DeleteTCPResponseRuleNoContent struct {
 }
 
+// IsSuccess returns true when this delete Tcp response rule no content response has a 2xx status code
+func (o *DeleteTCPResponseRuleNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete Tcp response rule no content response has a 3xx status code
+func (o *DeleteTCPResponseRuleNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Tcp response rule no content response has a 4xx status code
+func (o *DeleteTCPResponseRuleNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete Tcp response rule no content response has a 5xx status code
+func (o *DeleteTCPResponseRuleNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Tcp response rule no content response a status code equal to that given
+func (o *DeleteTCPResponseRuleNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteTCPResponseRuleNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_response_rules/{index}][%d] deleteTcpResponseRuleNoContent ", 204)
+}
+
+func (o *DeleteTCPResponseRuleNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_response_rules/{index}][%d] deleteTcpResponseRuleNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteTCPResponseRuleNotFound() *DeleteTCPResponseRuleNotFound {
 	return &DeleteTCPResponseRuleNotFound{}
 }
 
-/* DeleteTCPResponseRuleNotFound describes a response with status code 404, with default header values.
+/*
+DeleteTCPResponseRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteTCPResponseRuleNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete Tcp response rule not found response has a 2xx status code
+func (o *DeleteTCPResponseRuleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete Tcp response rule not found response has a 3xx status code
+func (o *DeleteTCPResponseRuleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Tcp response rule not found response has a 4xx status code
+func (o *DeleteTCPResponseRuleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete Tcp response rule not found response has a 5xx status code
+func (o *DeleteTCPResponseRuleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Tcp response rule not found response a status code equal to that given
+func (o *DeleteTCPResponseRuleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteTCPResponseRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_response_rules/{index}][%d] deleteTcpResponseRuleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteTCPResponseRuleNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_response_rules/{index}][%d] deleteTcpResponseRuleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteTCPResponseRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteTCPResponseRuleDefault(code int) *DeleteTCPResponseRuleDefault {
 	}
 }
 
-/* DeleteTCPResponseRuleDefault describes a response with status code -1, with default header values.
+/*
+DeleteTCPResponseRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteTCPResponseRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete TCP response rule default response has a 2xx status code
+func (o *DeleteTCPResponseRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete TCP response rule default response has a 3xx status code
+func (o *DeleteTCPResponseRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete TCP response rule default response has a 4xx status code
+func (o *DeleteTCPResponseRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete TCP response rule default response has a 5xx status code
+func (o *DeleteTCPResponseRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete TCP response rule default response a status code equal to that given
+func (o *DeleteTCPResponseRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteTCPResponseRuleDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_response_rules/{index}][%d] deleteTCPResponseRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteTCPResponseRuleDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_response_rules/{index}][%d] deleteTCPResponseRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteTCPResponseRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }

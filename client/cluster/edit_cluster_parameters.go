@@ -55,10 +55,12 @@ func NewEditClusterParamsWithHTTPClient(client *http.Client) *EditClusterParams 
 	}
 }
 
-/* EditClusterParams contains all the parameters to send to the API endpoint
-   for the edit cluster operation.
+/*
+EditClusterParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the edit cluster operation.
+
+	Typically these are written to a http.Request.
 */
 type EditClusterParams struct {
 

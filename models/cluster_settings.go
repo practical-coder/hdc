@@ -234,7 +234,7 @@ func (m *ClusterSettings) UnmarshalBinary(b []byte) error {
 type ClusterSettingsCluster struct {
 
 	// cluster log targets
-	ClusterLogTargets []*ClusterLogTarget `json:"log_targets"`
+	ClusterLogTargets []*ClusterLogTarget `json:"log_targets,omitempty"`
 
 	// address
 	// Read Only: true

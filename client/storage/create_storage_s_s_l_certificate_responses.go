@@ -58,7 +58,8 @@ func NewCreateStorageSSLCertificateCreated() *CreateStorageSSLCertificateCreated
 	return &CreateStorageSSLCertificateCreated{}
 }
 
-/* CreateStorageSSLCertificateCreated describes a response with status code 201, with default header values.
+/*
+CreateStorageSSLCertificateCreated describes a response with status code 201, with default header values.
 
 SSL certificate created
 */
@@ -66,9 +67,39 @@ type CreateStorageSSLCertificateCreated struct {
 	Payload *models.SslCertificate
 }
 
+// IsSuccess returns true when this create storage s s l certificate created response has a 2xx status code
+func (o *CreateStorageSSLCertificateCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create storage s s l certificate created response has a 3xx status code
+func (o *CreateStorageSSLCertificateCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create storage s s l certificate created response has a 4xx status code
+func (o *CreateStorageSSLCertificateCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create storage s s l certificate created response has a 5xx status code
+func (o *CreateStorageSSLCertificateCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create storage s s l certificate created response a status code equal to that given
+func (o *CreateStorageSSLCertificateCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateStorageSSLCertificateCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificateCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateStorageSSLCertificateCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificateCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateStorageSSLCertificateCreated) GetPayload() *models.SslCertificate {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewCreateStorageSSLCertificateBadRequest() *CreateStorageSSLCertificateBadR
 	return &CreateStorageSSLCertificateBadRequest{}
 }
 
-/* CreateStorageSSLCertificateBadRequest describes a response with status code 400, with default header values.
+/*
+CreateStorageSSLCertificateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -103,9 +135,39 @@ type CreateStorageSSLCertificateBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create storage s s l certificate bad request response has a 2xx status code
+func (o *CreateStorageSSLCertificateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create storage s s l certificate bad request response has a 3xx status code
+func (o *CreateStorageSSLCertificateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create storage s s l certificate bad request response has a 4xx status code
+func (o *CreateStorageSSLCertificateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create storage s s l certificate bad request response has a 5xx status code
+func (o *CreateStorageSSLCertificateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create storage s s l certificate bad request response a status code equal to that given
+func (o *CreateStorageSSLCertificateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateStorageSSLCertificateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateStorageSSLCertificateBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateStorageSSLCertificateBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewCreateStorageSSLCertificateConflict() *CreateStorageSSLCertificateConfli
 	return &CreateStorageSSLCertificateConflict{}
 }
 
-/* CreateStorageSSLCertificateConflict describes a response with status code 409, with default header values.
+/*
+CreateStorageSSLCertificateConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -147,9 +210,39 @@ type CreateStorageSSLCertificateConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create storage s s l certificate conflict response has a 2xx status code
+func (o *CreateStorageSSLCertificateConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create storage s s l certificate conflict response has a 3xx status code
+func (o *CreateStorageSSLCertificateConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create storage s s l certificate conflict response has a 4xx status code
+func (o *CreateStorageSSLCertificateConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create storage s s l certificate conflict response has a 5xx status code
+func (o *CreateStorageSSLCertificateConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create storage s s l certificate conflict response a status code equal to that given
+func (o *CreateStorageSSLCertificateConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateStorageSSLCertificateConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificateConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateStorageSSLCertificateConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificateConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateStorageSSLCertificateConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewCreateStorageSSLCertificateDefault(code int) *CreateStorageSSLCertificat
 	}
 }
 
-/* CreateStorageSSLCertificateDefault describes a response with status code -1, with default header values.
+/*
+CreateStorageSSLCertificateDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *CreateStorageSSLCertificateDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create storage s s l certificate default response has a 2xx status code
+func (o *CreateStorageSSLCertificateDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create storage s s l certificate default response has a 3xx status code
+func (o *CreateStorageSSLCertificateDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create storage s s l certificate default response has a 4xx status code
+func (o *CreateStorageSSLCertificateDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create storage s s l certificate default response has a 5xx status code
+func (o *CreateStorageSSLCertificateDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create storage s s l certificate default response a status code equal to that given
+func (o *CreateStorageSSLCertificateDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateStorageSSLCertificateDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificate default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateStorageSSLCertificateDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificate default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateStorageSSLCertificateDefault) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CommitSpoeTransaction commits transaction
+CommitSpoeTransaction commits transaction
 
-  Commit transaction, execute all operations in transaction and return msg
+Commit transaction, execute all operations in transaction and return msg
 */
 func (a *Client) CommitSpoeTransaction(params *CommitSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommitSpoeTransactionOK, *CommitSpoeTransactionAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CommitSpoeTransaction(params *CommitSpoeTransactionParams, auth
 }
 
 /*
-  DeleteSpoeTransaction deletes a transaction
+DeleteSpoeTransaction deletes a transaction
 
-  Deletes a transaction.
+Deletes a transaction.
 */
 func (a *Client) DeleteSpoeTransaction(params *DeleteSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeTransactionNoContent, error) {
 	// TODO: Validate the params before sending
@@ -124,9 +124,9 @@ func (a *Client) DeleteSpoeTransaction(params *DeleteSpoeTransactionParams, auth
 }
 
 /*
-  GetSpoeTransaction returns one s p o e configuration transactions
+GetSpoeTransaction returns one s p o e configuration transactions
 
-  Returns one SPOE configuration transactions.
+Returns one SPOE configuration transactions.
 */
 func (a *Client) GetSpoeTransaction(params *GetSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeTransactionOK, error) {
 	// TODO: Validate the params before sending
@@ -164,9 +164,9 @@ func (a *Client) GetSpoeTransaction(params *GetSpoeTransactionParams, authInfo r
 }
 
 /*
-  GetSpoeTransactions returns list of s p o e configuration transactions
+GetSpoeTransactions returns list of s p o e configuration transactions
 
-  Returns a list of SPOE configuration transactions. Transactions can be filtered by their status.
+Returns a list of SPOE configuration transactions. Transactions can be filtered by their status.
 */
 func (a *Client) GetSpoeTransactions(params *GetSpoeTransactionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeTransactionsOK, error) {
 	// TODO: Validate the params before sending
@@ -204,9 +204,9 @@ func (a *Client) GetSpoeTransactions(params *GetSpoeTransactionsParams, authInfo
 }
 
 /*
-  StartSpoeTransaction starts a new transaction
+StartSpoeTransaction starts a new transaction
 
-  Starts a new transaction and returns it's id
+Starts a new transaction and returns it's id
 */
 func (a *Client) StartSpoeTransaction(params *StartSpoeTransactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StartSpoeTransactionCreated, error) {
 	// TODO: Validate the params before sending

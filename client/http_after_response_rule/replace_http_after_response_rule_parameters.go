@@ -55,10 +55,12 @@ func NewReplaceHTTPAfterResponseRuleParamsWithHTTPClient(client *http.Client) *R
 	}
 }
 
-/* ReplaceHTTPAfterResponseRuleParams contains all the parameters to send to the API endpoint
-   for the replace HTTP after response rule operation.
+/*
+ReplaceHTTPAfterResponseRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace HTTP after response rule operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceHTTPAfterResponseRuleParams struct {
 

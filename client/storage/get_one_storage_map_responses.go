@@ -56,7 +56,8 @@ func NewGetOneStorageMapOK(writer io.Writer) *GetOneStorageMapOK {
 	}
 }
 
-/* GetOneStorageMapOK describes a response with status code 200, with default header values.
+/*
+GetOneStorageMapOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -64,9 +65,39 @@ type GetOneStorageMapOK struct {
 	Payload io.Writer
 }
 
+// IsSuccess returns true when this get one storage map o k response has a 2xx status code
+func (o *GetOneStorageMapOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get one storage map o k response has a 3xx status code
+func (o *GetOneStorageMapOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get one storage map o k response has a 4xx status code
+func (o *GetOneStorageMapOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get one storage map o k response has a 5xx status code
+func (o *GetOneStorageMapOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get one storage map o k response a status code equal to that given
+func (o *GetOneStorageMapOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetOneStorageMapOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/maps/{name}][%d] getOneStorageMapOK  %+v", 200, o.Payload)
 }
+
+func (o *GetOneStorageMapOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/storage/maps/{name}][%d] getOneStorageMapOK  %+v", 200, o.Payload)
+}
+
 func (o *GetOneStorageMapOK) GetPayload() io.Writer {
 	return o.Payload
 }
@@ -86,7 +117,8 @@ func NewGetOneStorageMapNotFound() *GetOneStorageMapNotFound {
 	return &GetOneStorageMapNotFound{}
 }
 
-/* GetOneStorageMapNotFound describes a response with status code 404, with default header values.
+/*
+GetOneStorageMapNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -99,9 +131,39 @@ type GetOneStorageMapNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get one storage map not found response has a 2xx status code
+func (o *GetOneStorageMapNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get one storage map not found response has a 3xx status code
+func (o *GetOneStorageMapNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get one storage map not found response has a 4xx status code
+func (o *GetOneStorageMapNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get one storage map not found response has a 5xx status code
+func (o *GetOneStorageMapNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get one storage map not found response a status code equal to that given
+func (o *GetOneStorageMapNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetOneStorageMapNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/maps/{name}][%d] getOneStorageMapNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetOneStorageMapNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/storage/maps/{name}][%d] getOneStorageMapNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetOneStorageMapNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -132,7 +194,8 @@ func NewGetOneStorageMapDefault(code int) *GetOneStorageMapDefault {
 	}
 }
 
-/* GetOneStorageMapDefault describes a response with status code -1, with default header values.
+/*
+GetOneStorageMapDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -151,9 +214,39 @@ func (o *GetOneStorageMapDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get one storage map default response has a 2xx status code
+func (o *GetOneStorageMapDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get one storage map default response has a 3xx status code
+func (o *GetOneStorageMapDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get one storage map default response has a 4xx status code
+func (o *GetOneStorageMapDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get one storage map default response has a 5xx status code
+func (o *GetOneStorageMapDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get one storage map default response a status code equal to that given
+func (o *GetOneStorageMapDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetOneStorageMapDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/maps/{name}][%d] getOneStorageMap default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetOneStorageMapDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/storage/maps/{name}][%d] getOneStorageMap default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetOneStorageMapDefault) GetPayload() *models.Error {
 	return o.Payload
 }

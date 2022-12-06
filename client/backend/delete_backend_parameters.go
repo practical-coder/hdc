@@ -53,10 +53,12 @@ func NewDeleteBackendParamsWithHTTPClient(client *http.Client) *DeleteBackendPar
 	}
 }
 
-/* DeleteBackendParams contains all the parameters to send to the API endpoint
-   for the delete backend operation.
+/*
+DeleteBackendParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete backend operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteBackendParams struct {
 

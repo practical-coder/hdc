@@ -38,9 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetConfigurationVersion returns a configuration version
+GetConfigurationVersion returns a configuration version
 
-  Returns configuration version.
+Returns configuration version.
 */
 func (a *Client) GetConfigurationVersion(params *GetConfigurationVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConfigurationVersionOK, error) {
 	// TODO: Validate the params before sending
@@ -78,9 +78,9 @@ func (a *Client) GetConfigurationVersion(params *GetConfigurationVersionParams, 
 }
 
 /*
-  GetHAProxyConfiguration returns h a proxy configuration
+GetHAProxyConfiguration returns h a proxy configuration
 
-  Returns HAProxy configuration file in plain text
+Returns HAProxy configuration file in plain text
 */
 func (a *Client) GetHAProxyConfiguration(params *GetHAProxyConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHAProxyConfigurationOK, error) {
 	// TODO: Validate the params before sending
@@ -118,9 +118,9 @@ func (a *Client) GetHAProxyConfiguration(params *GetHAProxyConfigurationParams, 
 }
 
 /*
-  PostHAProxyConfiguration pushes new haproxy configuration
+PostHAProxyConfiguration pushes new haproxy configuration
 
-  Push a new haproxy configuration file in plain text
+Push a new haproxy configuration file in plain text
 */
 func (a *Client) PostHAProxyConfiguration(params *PostHAProxyConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostHAProxyConfigurationCreated, *PostHAProxyConfigurationAccepted, error) {
 	// TODO: Validate the params before sending

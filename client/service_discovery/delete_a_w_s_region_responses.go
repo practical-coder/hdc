@@ -52,14 +52,44 @@ func NewDeleteAWSRegionNoContent() *DeleteAWSRegionNoContent {
 	return &DeleteAWSRegionNoContent{}
 }
 
-/* DeleteAWSRegionNoContent describes a response with status code 204, with default header values.
+/*
+DeleteAWSRegionNoContent describes a response with status code 204, with default header values.
 
 Resource deleted
 */
 type DeleteAWSRegionNoContent struct {
 }
 
+// IsSuccess returns true when this delete a w s region no content response has a 2xx status code
+func (o *DeleteAWSRegionNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete a w s region no content response has a 3xx status code
+func (o *DeleteAWSRegionNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete a w s region no content response has a 4xx status code
+func (o *DeleteAWSRegionNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete a w s region no content response has a 5xx status code
+func (o *DeleteAWSRegionNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete a w s region no content response a status code equal to that given
+func (o *DeleteAWSRegionNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteAWSRegionNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /service_discovery/aws/{id}][%d] deleteAWSRegionNoContent ", 204)
+}
+
+func (o *DeleteAWSRegionNoContent) String() string {
 	return fmt.Sprintf("[DELETE /service_discovery/aws/{id}][%d] deleteAWSRegionNoContent ", 204)
 }
 
@@ -73,7 +103,8 @@ func NewDeleteAWSRegionNotFound() *DeleteAWSRegionNotFound {
 	return &DeleteAWSRegionNotFound{}
 }
 
-/* DeleteAWSRegionNotFound describes a response with status code 404, with default header values.
+/*
+DeleteAWSRegionNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -86,9 +117,39 @@ type DeleteAWSRegionNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete a w s region not found response has a 2xx status code
+func (o *DeleteAWSRegionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete a w s region not found response has a 3xx status code
+func (o *DeleteAWSRegionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete a w s region not found response has a 4xx status code
+func (o *DeleteAWSRegionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete a w s region not found response has a 5xx status code
+func (o *DeleteAWSRegionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete a w s region not found response a status code equal to that given
+func (o *DeleteAWSRegionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteAWSRegionNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /service_discovery/aws/{id}][%d] deleteAWSRegionNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteAWSRegionNotFound) String() string {
+	return fmt.Sprintf("[DELETE /service_discovery/aws/{id}][%d] deleteAWSRegionNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteAWSRegionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -119,7 +180,8 @@ func NewDeleteAWSRegionDefault(code int) *DeleteAWSRegionDefault {
 	}
 }
 
-/* DeleteAWSRegionDefault describes a response with status code -1, with default header values.
+/*
+DeleteAWSRegionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -138,9 +200,39 @@ func (o *DeleteAWSRegionDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete a w s region default response has a 2xx status code
+func (o *DeleteAWSRegionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete a w s region default response has a 3xx status code
+func (o *DeleteAWSRegionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete a w s region default response has a 4xx status code
+func (o *DeleteAWSRegionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete a w s region default response has a 5xx status code
+func (o *DeleteAWSRegionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete a w s region default response a status code equal to that given
+func (o *DeleteAWSRegionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteAWSRegionDefault) Error() string {
 	return fmt.Sprintf("[DELETE /service_discovery/aws/{id}][%d] deleteAWSRegion default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteAWSRegionDefault) String() string {
+	return fmt.Sprintf("[DELETE /service_discovery/aws/{id}][%d] deleteAWSRegion default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteAWSRegionDefault) GetPayload() *models.Error {
 	return o.Payload
 }

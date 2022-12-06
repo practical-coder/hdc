@@ -53,10 +53,12 @@ func NewReplaceStorageMapFileParamsWithHTTPClient(client *http.Client) *ReplaceS
 	}
 }
 
-/* ReplaceStorageMapFileParams contains all the parameters to send to the API endpoint
-   for the replace storage map file operation.
+/*
+ReplaceStorageMapFileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace storage map file operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceStorageMapFileParams struct {
 

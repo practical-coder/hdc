@@ -53,10 +53,12 @@ func NewStartSpoeTransactionParamsWithHTTPClient(client *http.Client) *StartSpoe
 	}
 }
 
-/* StartSpoeTransactionParams contains all the parameters to send to the API endpoint
-   for the start spoe transaction operation.
+/*
+StartSpoeTransactionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the start spoe transaction operation.
+
+	Typically these are written to a http.Request.
 */
 type StartSpoeTransactionParams struct {
 

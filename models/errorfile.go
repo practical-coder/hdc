@@ -21,7 +21,7 @@ import (
 type Errorfile struct {
 
 	// code
-	// Enum: [200 400 403 405 408 425 429 500 502 503 504]
+	// Enum: [200 400 401 403 404 405 407 408 410 413 425 429 500 501 502 503 504]
 	Code int64 `json:"code,omitempty"`
 
 	// file
@@ -46,7 +46,7 @@ var errorfileTypeCodePropEnum []interface{}
 
 func init() {
 	var res []int64
-	if err := json.Unmarshal([]byte(`[200,400,403,405,408,425,429,500,502,503,504]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`[200,400,401,403,404,405,407,408,410,413,425,429,500,501,502,503,504]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

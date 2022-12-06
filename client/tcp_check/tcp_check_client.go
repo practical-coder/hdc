@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateTCPCheck adds a new TCP check
+CreateTCPCheck adds a new TCP check
 
-  Adds a new TCP check of the specified type in the specified parent.
+Adds a new TCP check of the specified type in the specified parent.
 */
 func (a *Client) CreateTCPCheck(params *CreateTCPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateTCPCheckCreated, *CreateTCPCheckAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateTCPCheck(params *CreateTCPCheckParams, authInfo runtime.C
 }
 
 /*
-  DeleteTCPCheck deletes a TCP check
+DeleteTCPCheck deletes a TCP check
 
-  Deletes a TCP check configuration by it's index from the specified parent.
+Deletes a TCP check configuration by it's index from the specified parent.
 */
 func (a *Client) DeleteTCPCheck(params *DeleteTCPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteTCPCheckAccepted, *DeleteTCPCheckNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteTCPCheck(params *DeleteTCPCheckParams, authInfo runtime.C
 }
 
 /*
-  GetTCPCheck returns one TCP check
+GetTCPCheck returns one TCP check
 
-  Returns one TCP check configuration by it's index in the specified parent.
+Returns one TCP check configuration by it's index in the specified parent.
 */
 func (a *Client) GetTCPCheck(params *GetTCPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPCheckOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetTCPCheck(params *GetTCPCheckParams, authInfo runtime.ClientA
 }
 
 /*
-  GetTCPChecks returns an array of TCP checks
+GetTCPChecks returns an array of TCP checks
 
-  Returns all TCP checks that are configured in specified parent.
+Returns all TCP checks that are configured in specified parent.
 */
 func (a *Client) GetTCPChecks(params *GetTCPChecksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPChecksOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetTCPChecks(params *GetTCPChecksParams, authInfo runtime.Clien
 }
 
 /*
-  ReplaceTCPCheck replaces a TCP check
+ReplaceTCPCheck replaces a TCP check
 
-  Replaces a TCP Check configuration by it's index in the specified parent.
+Replaces a TCP Check configuration by it's index in the specified parent.
 */
 func (a *Client) ReplaceTCPCheck(params *ReplaceTCPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceTCPCheckOK, *ReplaceTCPCheckAccepted, error) {
 	// TODO: Validate the params before sending

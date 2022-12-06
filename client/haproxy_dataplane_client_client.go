@@ -22,6 +22,7 @@ import (
 	"github.com/practical-coder/hdc/client/defaults"
 	"github.com/practical-coder/hdc/client/dgram_bind"
 	"github.com/practical-coder/hdc/client/discovery"
+	"github.com/practical-coder/hdc/client/f_c_g_i_app"
 	"github.com/practical-coder/hdc/client/filter"
 	"github.com/practical-coder/hdc/client/frontend"
 	"github.com/practical-coder/hdc/client/global"
@@ -29,15 +30,20 @@ import (
 	"github.com/practical-coder/hdc/client/health"
 	"github.com/practical-coder/hdc/client/http_after_response_rule"
 	"github.com/practical-coder/hdc/client/http_check"
+	"github.com/practical-coder/hdc/client/http_error_rule"
+	"github.com/practical-coder/hdc/client/http_errors"
 	"github.com/practical-coder/hdc/client/http_request_rule"
 	"github.com/practical-coder/hdc/client/http_response_rule"
 	"github.com/practical-coder/hdc/client/information"
 	"github.com/practical-coder/hdc/client/log_forward"
 	"github.com/practical-coder/hdc/client/log_target"
+	"github.com/practical-coder/hdc/client/mailer_entry"
+	"github.com/practical-coder/hdc/client/mailers"
 	"github.com/practical-coder/hdc/client/maps"
 	"github.com/practical-coder/hdc/client/nameserver"
 	"github.com/practical-coder/hdc/client/peer"
 	"github.com/practical-coder/hdc/client/peer_entry"
+	"github.com/practical-coder/hdc/client/process_manager"
 	"github.com/practical-coder/hdc/client/reloads"
 	"github.com/practical-coder/hdc/client/resolver"
 	"github.com/practical-coder/hdc/client/ring"
@@ -116,6 +122,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.Defaults = defaults.New(transport, formats)
 	cli.DgramBind = dgram_bind.New(transport, formats)
 	cli.Discovery = discovery.New(transport, formats)
+	cli.FcgiApp = f_c_g_i_app.New(transport, formats)
 	cli.Filter = filter.New(transport, formats)
 	cli.Frontend = frontend.New(transport, formats)
 	cli.Global = global.New(transport, formats)
@@ -123,15 +130,20 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.Health = health.New(transport, formats)
 	cli.HTTPAfterResponseRule = http_after_response_rule.New(transport, formats)
 	cli.HTTPCheck = http_check.New(transport, formats)
+	cli.HTTPErrorRule = http_error_rule.New(transport, formats)
+	cli.HTTPErrors = http_errors.New(transport, formats)
 	cli.HTTPRequestRule = http_request_rule.New(transport, formats)
 	cli.HTTPResponseRule = http_response_rule.New(transport, formats)
 	cli.Information = information.New(transport, formats)
 	cli.LogForward = log_forward.New(transport, formats)
 	cli.LogTarget = log_target.New(transport, formats)
+	cli.MailerEntry = mailer_entry.New(transport, formats)
+	cli.Mailers = mailers.New(transport, formats)
 	cli.Maps = maps.New(transport, formats)
 	cli.Nameserver = nameserver.New(transport, formats)
 	cli.Peer = peer.New(transport, formats)
 	cli.PeerEntry = peer_entry.New(transport, formats)
+	cli.ProcessManager = process_manager.New(transport, formats)
 	cli.Reloads = reloads.New(transport, formats)
 	cli.Resolver = resolver.New(transport, formats)
 	cli.Ring = ring.New(transport, formats)
@@ -222,6 +234,8 @@ type HaproxyDataplaneClient struct {
 
 	Discovery discovery.ClientService
 
+	FcgiApp f_c_g_i_app.ClientService
+
 	Filter filter.ClientService
 
 	Frontend frontend.ClientService
@@ -236,6 +250,10 @@ type HaproxyDataplaneClient struct {
 
 	HTTPCheck http_check.ClientService
 
+	HTTPErrorRule http_error_rule.ClientService
+
+	HTTPErrors http_errors.ClientService
+
 	HTTPRequestRule http_request_rule.ClientService
 
 	HTTPResponseRule http_response_rule.ClientService
@@ -246,6 +264,10 @@ type HaproxyDataplaneClient struct {
 
 	LogTarget log_target.ClientService
 
+	MailerEntry mailer_entry.ClientService
+
+	Mailers mailers.ClientService
+
 	Maps maps.ClientService
 
 	Nameserver nameserver.ClientService
@@ -253,6 +275,8 @@ type HaproxyDataplaneClient struct {
 	Peer peer.ClientService
 
 	PeerEntry peer_entry.ClientService
+
+	ProcessManager process_manager.ClientService
 
 	Reloads reloads.ClientService
 
@@ -316,6 +340,7 @@ func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport)
 	c.Defaults.SetTransport(transport)
 	c.DgramBind.SetTransport(transport)
 	c.Discovery.SetTransport(transport)
+	c.FcgiApp.SetTransport(transport)
 	c.Filter.SetTransport(transport)
 	c.Frontend.SetTransport(transport)
 	c.Global.SetTransport(transport)
@@ -323,15 +348,20 @@ func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport)
 	c.Health.SetTransport(transport)
 	c.HTTPAfterResponseRule.SetTransport(transport)
 	c.HTTPCheck.SetTransport(transport)
+	c.HTTPErrorRule.SetTransport(transport)
+	c.HTTPErrors.SetTransport(transport)
 	c.HTTPRequestRule.SetTransport(transport)
 	c.HTTPResponseRule.SetTransport(transport)
 	c.Information.SetTransport(transport)
 	c.LogForward.SetTransport(transport)
 	c.LogTarget.SetTransport(transport)
+	c.MailerEntry.SetTransport(transport)
+	c.Mailers.SetTransport(transport)
 	c.Maps.SetTransport(transport)
 	c.Nameserver.SetTransport(transport)
 	c.Peer.SetTransport(transport)
 	c.PeerEntry.SetTransport(transport)
+	c.ProcessManager.SetTransport(transport)
 	c.Reloads.SetTransport(transport)
 	c.Resolver.SetTransport(transport)
 	c.Ring.SetTransport(transport)

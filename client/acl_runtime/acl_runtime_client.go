@@ -46,9 +46,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteServicesHaproxyRuntimeACLFileEntriesID deletes an ACL entry
+DeleteServicesHaproxyRuntimeACLFileEntriesID deletes an ACL entry
 
-  Deletes the entry from the ACL by its value using the runtime socket.
+Deletes the entry from the ACL by its value using the runtime socket.
 */
 func (a *Client) DeleteServicesHaproxyRuntimeACLFileEntriesID(params *DeleteServicesHaproxyRuntimeACLFileEntriesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteServicesHaproxyRuntimeACLFileEntriesIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -86,9 +86,9 @@ func (a *Client) DeleteServicesHaproxyRuntimeACLFileEntriesID(params *DeleteServ
 }
 
 /*
-  GetServicesHaproxyRuntimeACLFileEntries returns an ACL entries
+GetServicesHaproxyRuntimeACLFileEntries returns an ACL entries
 
-  Returns an ACL runtime setting using the runtime socket.
+Returns an ACL runtime setting using the runtime socket.
 */
 func (a *Client) GetServicesHaproxyRuntimeACLFileEntries(params *GetServicesHaproxyRuntimeACLFileEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesHaproxyRuntimeACLFileEntriesOK, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) GetServicesHaproxyRuntimeACLFileEntries(params *GetServicesHapr
 }
 
 /*
-  GetServicesHaproxyRuntimeACLFileEntriesID returns an ACL entry
+GetServicesHaproxyRuntimeACLFileEntriesID returns an ACL entry
 
-  Returns the ACL entry by its ID using the runtime socket.
+Returns the ACL entry by its ID using the runtime socket.
 */
 func (a *Client) GetServicesHaproxyRuntimeACLFileEntriesID(params *GetServicesHaproxyRuntimeACLFileEntriesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesHaproxyRuntimeACLFileEntriesIDOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetServicesHaproxyRuntimeACLFileEntriesID(params *GetServicesHa
 }
 
 /*
-  GetServicesHaproxyRuntimeAcls returns an array of all ACL files
+GetServicesHaproxyRuntimeAcls returns an array of all ACL files
 
-  Returns all ACL files using the runtime socket.
+Returns all ACL files using the runtime socket.
 */
 func (a *Client) GetServicesHaproxyRuntimeAcls(params *GetServicesHaproxyRuntimeAclsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesHaproxyRuntimeAclsOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetServicesHaproxyRuntimeAcls(params *GetServicesHaproxyRuntime
 }
 
 /*
-  GetServicesHaproxyRuntimeAclsID returns an ACL file
+GetServicesHaproxyRuntimeAclsID returns an ACL file
 
-  Returns an ACL file by id using the runtime socket.
+Returns an ACL file by id using the runtime socket.
 */
 func (a *Client) GetServicesHaproxyRuntimeAclsID(params *GetServicesHaproxyRuntimeAclsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesHaproxyRuntimeAclsIDOK, error) {
 	// TODO: Validate the params before sending
@@ -246,9 +246,9 @@ func (a *Client) GetServicesHaproxyRuntimeAclsID(params *GetServicesHaproxyRunti
 }
 
 /*
-  PostServicesHaproxyRuntimeACLFileEntries adds entry to an ACL file
+PostServicesHaproxyRuntimeACLFileEntries adds entry to an ACL file
 
-  Adds an entry into the ACL file using the runtime socket.
+Adds an entry into the ACL file using the runtime socket.
 */
 func (a *Client) PostServicesHaproxyRuntimeACLFileEntries(params *PostServicesHaproxyRuntimeACLFileEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostServicesHaproxyRuntimeACLFileEntriesCreated, error) {
 	// TODO: Validate the params before sending
@@ -286,9 +286,9 @@ func (a *Client) PostServicesHaproxyRuntimeACLFileEntries(params *PostServicesHa
 }
 
 /*
-  AddPayloadRuntimeACL adds a new ACL payload
+AddPayloadRuntimeACL adds a new ACL payload
 
-  Adds a new ACL payload.
+Adds a new ACL payload.
 */
 func (a *Client) AddPayloadRuntimeACL(params *AddPayloadRuntimeACLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddPayloadRuntimeACLCreated, error) {
 	// TODO: Validate the params before sending

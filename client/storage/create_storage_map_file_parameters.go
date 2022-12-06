@@ -52,10 +52,12 @@ func NewCreateStorageMapFileParamsWithHTTPClient(client *http.Client) *CreateSto
 	}
 }
 
-/* CreateStorageMapFileParams contains all the parameters to send to the API endpoint
-   for the create storage map file operation.
+/*
+CreateStorageMapFileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create storage map file operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateStorageMapFileParams struct {
 

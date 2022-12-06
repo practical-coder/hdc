@@ -58,7 +58,8 @@ func NewDeleteHTTPCheckAccepted() *DeleteHTTPCheckAccepted {
 	return &DeleteHTTPCheckAccepted{}
 }
 
-/* DeleteHTTPCheckAccepted describes a response with status code 202, with default header values.
+/*
+DeleteHTTPCheckAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteHTTPCheckAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete Http check accepted response has a 2xx status code
+func (o *DeleteHTTPCheckAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete Http check accepted response has a 3xx status code
+func (o *DeleteHTTPCheckAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Http check accepted response has a 4xx status code
+func (o *DeleteHTTPCheckAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete Http check accepted response has a 5xx status code
+func (o *DeleteHTTPCheckAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Http check accepted response a status code equal to that given
+func (o *DeleteHTTPCheckAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteHTTPCheckAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_checks/{index}][%d] deleteHttpCheckAccepted ", 202)
+}
+
+func (o *DeleteHTTPCheckAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_checks/{index}][%d] deleteHttpCheckAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteHTTPCheckNoContent() *DeleteHTTPCheckNoContent {
 	return &DeleteHTTPCheckNoContent{}
 }
 
-/* DeleteHTTPCheckNoContent describes a response with status code 204, with default header values.
+/*
+DeleteHTTPCheckNoContent describes a response with status code 204, with default header values.
 
 HTTP check deleted
 */
 type DeleteHTTPCheckNoContent struct {
 }
 
+// IsSuccess returns true when this delete Http check no content response has a 2xx status code
+func (o *DeleteHTTPCheckNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete Http check no content response has a 3xx status code
+func (o *DeleteHTTPCheckNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Http check no content response has a 4xx status code
+func (o *DeleteHTTPCheckNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete Http check no content response has a 5xx status code
+func (o *DeleteHTTPCheckNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Http check no content response a status code equal to that given
+func (o *DeleteHTTPCheckNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteHTTPCheckNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_checks/{index}][%d] deleteHttpCheckNoContent ", 204)
+}
+
+func (o *DeleteHTTPCheckNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_checks/{index}][%d] deleteHttpCheckNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteHTTPCheckNotFound() *DeleteHTTPCheckNotFound {
 	return &DeleteHTTPCheckNotFound{}
 }
 
-/* DeleteHTTPCheckNotFound describes a response with status code 404, with default header values.
+/*
+DeleteHTTPCheckNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteHTTPCheckNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete Http check not found response has a 2xx status code
+func (o *DeleteHTTPCheckNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete Http check not found response has a 3xx status code
+func (o *DeleteHTTPCheckNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Http check not found response has a 4xx status code
+func (o *DeleteHTTPCheckNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete Http check not found response has a 5xx status code
+func (o *DeleteHTTPCheckNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Http check not found response a status code equal to that given
+func (o *DeleteHTTPCheckNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteHTTPCheckNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_checks/{index}][%d] deleteHttpCheckNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteHTTPCheckNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_checks/{index}][%d] deleteHttpCheckNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteHTTPCheckNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteHTTPCheckDefault(code int) *DeleteHTTPCheckDefault {
 	}
 }
 
-/* DeleteHTTPCheckDefault describes a response with status code -1, with default header values.
+/*
+DeleteHTTPCheckDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteHTTPCheckDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete HTTP check default response has a 2xx status code
+func (o *DeleteHTTPCheckDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete HTTP check default response has a 3xx status code
+func (o *DeleteHTTPCheckDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete HTTP check default response has a 4xx status code
+func (o *DeleteHTTPCheckDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete HTTP check default response has a 5xx status code
+func (o *DeleteHTTPCheckDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete HTTP check default response a status code equal to that given
+func (o *DeleteHTTPCheckDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteHTTPCheckDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_checks/{index}][%d] deleteHTTPCheck default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteHTTPCheckDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_checks/{index}][%d] deleteHTTPCheck default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteHTTPCheckDefault) GetPayload() *models.Error {
 	return o.Payload
 }

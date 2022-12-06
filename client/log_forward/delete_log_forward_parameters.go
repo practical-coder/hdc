@@ -53,10 +53,12 @@ func NewDeleteLogForwardParamsWithHTTPClient(client *http.Client) *DeleteLogForw
 	}
 }
 
-/* DeleteLogForwardParams contains all the parameters to send to the API endpoint
-   for the delete log forward operation.
+/*
+DeleteLogForwardParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete log forward operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteLogForwardParams struct {
 

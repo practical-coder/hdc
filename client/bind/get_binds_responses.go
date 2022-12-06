@@ -50,7 +50,8 @@ func NewGetBindsOK() *GetBindsOK {
 	return &GetBindsOK{}
 }
 
-/* GetBindsOK describes a response with status code 200, with default header values.
+/*
+GetBindsOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetBindsOK struct {
 	Payload *GetBindsOKBody
 }
 
+// IsSuccess returns true when this get binds o k response has a 2xx status code
+func (o *GetBindsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get binds o k response has a 3xx status code
+func (o *GetBindsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get binds o k response has a 4xx status code
+func (o *GetBindsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get binds o k response has a 5xx status code
+func (o *GetBindsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get binds o k response a status code equal to that given
+func (o *GetBindsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetBindsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/binds][%d] getBindsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetBindsOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/binds][%d] getBindsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetBindsOK) GetPayload() *GetBindsOKBody {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewGetBindsDefault(code int) *GetBindsDefault {
 	}
 }
 
-/* GetBindsDefault describes a response with status code -1, with default header values.
+/*
+GetBindsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +147,39 @@ func (o *GetBindsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get binds default response has a 2xx status code
+func (o *GetBindsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get binds default response has a 3xx status code
+func (o *GetBindsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get binds default response has a 4xx status code
+func (o *GetBindsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get binds default response has a 5xx status code
+func (o *GetBindsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get binds default response a status code equal to that given
+func (o *GetBindsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetBindsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/binds][%d] getBinds default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetBindsDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/binds][%d] getBinds default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetBindsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -141,7 +203,8 @@ func (o *GetBindsDefault) readResponse(response runtime.ClientResponse, consumer
 	return nil
 }
 
-/*GetBindsOKBody get binds o k body
+/*
+GetBindsOKBody get binds o k body
 swagger:model GetBindsOKBody
 */
 type GetBindsOKBody struct {

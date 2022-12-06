@@ -52,10 +52,12 @@ func NewDeleteSpoeFileParamsWithHTTPClient(client *http.Client) *DeleteSpoeFileP
 	}
 }
 
-/* DeleteSpoeFileParams contains all the parameters to send to the API endpoint
-   for the delete spoe file operation.
+/*
+DeleteSpoeFileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete spoe file operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteSpoeFileParams struct {
 

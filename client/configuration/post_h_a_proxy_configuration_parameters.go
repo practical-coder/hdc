@@ -53,10 +53,12 @@ func NewPostHAProxyConfigurationParamsWithHTTPClient(client *http.Client) *PostH
 	}
 }
 
-/* PostHAProxyConfigurationParams contains all the parameters to send to the API endpoint
-   for the post h a proxy configuration operation.
+/*
+PostHAProxyConfigurationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post h a proxy configuration operation.
+
+	Typically these are written to a http.Request.
 */
 type PostHAProxyConfigurationParams struct {
 

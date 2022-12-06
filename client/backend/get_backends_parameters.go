@@ -52,10 +52,12 @@ func NewGetBackendsParamsWithHTTPClient(client *http.Client) *GetBackendsParams 
 	}
 }
 
-/* GetBackendsParams contains all the parameters to send to the API endpoint
-   for the get backends operation.
+/*
+GetBackendsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get backends operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBackendsParams struct {
 

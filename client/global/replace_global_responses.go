@@ -58,7 +58,8 @@ func NewReplaceGlobalOK() *ReplaceGlobalOK {
 	return &ReplaceGlobalOK{}
 }
 
-/* ReplaceGlobalOK describes a response with status code 200, with default header values.
+/*
+ReplaceGlobalOK describes a response with status code 200, with default header values.
 
 Global replaced
 */
@@ -66,9 +67,39 @@ type ReplaceGlobalOK struct {
 	Payload *models.Global
 }
 
+// IsSuccess returns true when this replace global o k response has a 2xx status code
+func (o *ReplaceGlobalOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace global o k response has a 3xx status code
+func (o *ReplaceGlobalOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace global o k response has a 4xx status code
+func (o *ReplaceGlobalOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace global o k response has a 5xx status code
+func (o *ReplaceGlobalOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace global o k response a status code equal to that given
+func (o *ReplaceGlobalOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceGlobalOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/global][%d] replaceGlobalOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceGlobalOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/global][%d] replaceGlobalOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceGlobalOK) GetPayload() *models.Global {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewReplaceGlobalAccepted() *ReplaceGlobalAccepted {
 	return &ReplaceGlobalAccepted{}
 }
 
-/* ReplaceGlobalAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceGlobalAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -103,9 +135,39 @@ type ReplaceGlobalAccepted struct {
 	Payload *models.Global
 }
 
+// IsSuccess returns true when this replace global accepted response has a 2xx status code
+func (o *ReplaceGlobalAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace global accepted response has a 3xx status code
+func (o *ReplaceGlobalAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace global accepted response has a 4xx status code
+func (o *ReplaceGlobalAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace global accepted response has a 5xx status code
+func (o *ReplaceGlobalAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace global accepted response a status code equal to that given
+func (o *ReplaceGlobalAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceGlobalAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/global][%d] replaceGlobalAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceGlobalAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/global][%d] replaceGlobalAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceGlobalAccepted) GetPayload() *models.Global {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewReplaceGlobalBadRequest() *ReplaceGlobalBadRequest {
 	return &ReplaceGlobalBadRequest{}
 }
 
-/* ReplaceGlobalBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceGlobalBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -147,9 +210,39 @@ type ReplaceGlobalBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace global bad request response has a 2xx status code
+func (o *ReplaceGlobalBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace global bad request response has a 3xx status code
+func (o *ReplaceGlobalBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace global bad request response has a 4xx status code
+func (o *ReplaceGlobalBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace global bad request response has a 5xx status code
+func (o *ReplaceGlobalBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace global bad request response a status code equal to that given
+func (o *ReplaceGlobalBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceGlobalBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/global][%d] replaceGlobalBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceGlobalBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/global][%d] replaceGlobalBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceGlobalBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewReplaceGlobalDefault(code int) *ReplaceGlobalDefault {
 	}
 }
 
-/* ReplaceGlobalDefault describes a response with status code -1, with default header values.
+/*
+ReplaceGlobalDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *ReplaceGlobalDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace global default response has a 2xx status code
+func (o *ReplaceGlobalDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace global default response has a 3xx status code
+func (o *ReplaceGlobalDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace global default response has a 4xx status code
+func (o *ReplaceGlobalDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace global default response has a 5xx status code
+func (o *ReplaceGlobalDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace global default response a status code equal to that given
+func (o *ReplaceGlobalDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceGlobalDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/global][%d] replaceGlobal default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceGlobalDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/global][%d] replaceGlobal default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceGlobalDefault) GetPayload() *models.Error {
 	return o.Payload
 }

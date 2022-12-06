@@ -80,9 +80,9 @@ type ClientService interface {
 }
 
 /*
-  CreateSpoe creates s p o e file with its entries
+CreateSpoe creates s p o e file with its entries
 
-  Creates SPOE file with its entries.
+Creates SPOE file with its entries.
 */
 func (a *Client) CreateSpoe(params *CreateSpoeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeCreated, error) {
 	// TODO: Validate the params before sending
@@ -120,9 +120,9 @@ func (a *Client) CreateSpoe(params *CreateSpoeParams, authInfo runtime.ClientAut
 }
 
 /*
-  CreateSpoeAgent adds a new spoe agent to scope
+CreateSpoeAgent adds a new spoe agent to scope
 
-  Adds a new spoe agent to the spoe scope.
+Adds a new spoe agent to the spoe scope.
 */
 func (a *Client) CreateSpoeAgent(params *CreateSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeAgentCreated, error) {
 	// TODO: Validate the params before sending
@@ -160,9 +160,9 @@ func (a *Client) CreateSpoeAgent(params *CreateSpoeAgentParams, authInfo runtime
 }
 
 /*
-  CreateSpoeGroup adds a new s p o e groups
+CreateSpoeGroup adds a new s p o e groups
 
-  Adds a new SPOE groups to the SPOE scope.
+Adds a new SPOE groups to the SPOE scope.
 */
 func (a *Client) CreateSpoeGroup(params *CreateSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeGroupCreated, error) {
 	// TODO: Validate the params before sending
@@ -200,9 +200,9 @@ func (a *Client) CreateSpoeGroup(params *CreateSpoeGroupParams, authInfo runtime
 }
 
 /*
-  CreateSpoeMessage adds a new spoe message to scope
+CreateSpoeMessage adds a new spoe message to scope
 
-  Adds a new spoe message to the spoe scope.
+Adds a new spoe message to the spoe scope.
 */
 func (a *Client) CreateSpoeMessage(params *CreateSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeMessageCreated, error) {
 	// TODO: Validate the params before sending
@@ -240,9 +240,9 @@ func (a *Client) CreateSpoeMessage(params *CreateSpoeMessageParams, authInfo run
 }
 
 /*
-  CreateSpoeScope adds a new spoe scope
+CreateSpoeScope adds a new spoe scope
 
-  Adds a new spoe scope.
+Adds a new spoe scope.
 */
 func (a *Client) CreateSpoeScope(params *CreateSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSpoeScopeCreated, error) {
 	// TODO: Validate the params before sending
@@ -280,9 +280,9 @@ func (a *Client) CreateSpoeScope(params *CreateSpoeScopeParams, authInfo runtime
 }
 
 /*
-  DeleteSpoeAgent deletes a s p o e agent
+DeleteSpoeAgent deletes a s p o e agent
 
-  Deletes a SPOE agent from the configuration in one SPOE scope.
+Deletes a SPOE agent from the configuration in one SPOE scope.
 */
 func (a *Client) DeleteSpoeAgent(params *DeleteSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeAgentNoContent, error) {
 	// TODO: Validate the params before sending
@@ -320,9 +320,9 @@ func (a *Client) DeleteSpoeAgent(params *DeleteSpoeAgentParams, authInfo runtime
 }
 
 /*
-  DeleteSpoeFile deletes s p o e file
+DeleteSpoeFile deletes s p o e file
 
-  Deletes SPOE file.
+Deletes SPOE file.
 */
 func (a *Client) DeleteSpoeFile(params *DeleteSpoeFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeFileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -360,9 +360,9 @@ func (a *Client) DeleteSpoeFile(params *DeleteSpoeFileParams, authInfo runtime.C
 }
 
 /*
-  DeleteSpoeGroup deletes a s p o e groups
+DeleteSpoeGroup deletes a s p o e groups
 
-  Deletes a SPOE groups from the one SPOE scope.
+Deletes a SPOE groups from the one SPOE scope.
 */
 func (a *Client) DeleteSpoeGroup(params *DeleteSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeGroupNoContent, error) {
 	// TODO: Validate the params before sending
@@ -400,9 +400,9 @@ func (a *Client) DeleteSpoeGroup(params *DeleteSpoeGroupParams, authInfo runtime
 }
 
 /*
-  DeleteSpoeMessage deletes a spoe message
+DeleteSpoeMessage deletes a spoe message
 
-  Deletes a spoe message from the SPOE scope.
+Deletes a spoe message from the SPOE scope.
 */
 func (a *Client) DeleteSpoeMessage(params *DeleteSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeMessageNoContent, error) {
 	// TODO: Validate the params before sending
@@ -440,9 +440,9 @@ func (a *Client) DeleteSpoeMessage(params *DeleteSpoeMessageParams, authInfo run
 }
 
 /*
-  DeleteSpoeScope deletes a s p o e scope
+DeleteSpoeScope deletes a s p o e scope
 
-  Deletes a SPOE scope from the configuration file.
+Deletes a SPOE scope from the configuration file.
 */
 func (a *Client) DeleteSpoeScope(params *DeleteSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSpoeScopeNoContent, error) {
 	// TODO: Validate the params before sending
@@ -480,9 +480,9 @@ func (a *Client) DeleteSpoeScope(params *DeleteSpoeScopeParams, authInfo runtime
 }
 
 /*
-  GetAllSpoeFiles returns all available s p o e files
+GetAllSpoeFiles returns all available s p o e files
 
-  Returns all available SPOE files.
+Returns all available SPOE files.
 */
 func (a *Client) GetAllSpoeFiles(params *GetAllSpoeFilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAllSpoeFilesOK, error) {
 	// TODO: Validate the params before sending
@@ -520,9 +520,9 @@ func (a *Client) GetAllSpoeFiles(params *GetAllSpoeFilesParams, authInfo runtime
 }
 
 /*
-  GetOneSpoeFile returns one s p o e file
+GetOneSpoeFile returns one s p o e file
 
-  Returns one SPOE file.
+Returns one SPOE file.
 */
 func (a *Client) GetOneSpoeFile(params *GetOneSpoeFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOneSpoeFileOK, error) {
 	// TODO: Validate the params before sending
@@ -560,9 +560,9 @@ func (a *Client) GetOneSpoeFile(params *GetOneSpoeFileParams, authInfo runtime.C
 }
 
 /*
-  GetSpoeAgent returns a spoe agent
+GetSpoeAgent returns a spoe agent
 
-  Returns one spoe agent configuration in one SPOE scope.
+Returns one spoe agent configuration in one SPOE scope.
 */
 func (a *Client) GetSpoeAgent(params *GetSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeAgentOK, error) {
 	// TODO: Validate the params before sending
@@ -600,9 +600,9 @@ func (a *Client) GetSpoeAgent(params *GetSpoeAgentParams, authInfo runtime.Clien
 }
 
 /*
-  GetSpoeAgents returns an array of spoe agents in one scope
+GetSpoeAgents returns an array of spoe agents in one scope
 
-  Returns an array of all configured spoe agents in one scope.
+Returns an array of all configured spoe agents in one scope.
 */
 func (a *Client) GetSpoeAgents(params *GetSpoeAgentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeAgentsOK, error) {
 	// TODO: Validate the params before sending
@@ -640,9 +640,9 @@ func (a *Client) GetSpoeAgents(params *GetSpoeAgentsParams, authInfo runtime.Cli
 }
 
 /*
-  GetSpoeConfigurationVersion returns a s p o e configuration version
+GetSpoeConfigurationVersion returns a s p o e configuration version
 
-  Returns SPOE configuration version.
+Returns SPOE configuration version.
 */
 func (a *Client) GetSpoeConfigurationVersion(params *GetSpoeConfigurationVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeConfigurationVersionOK, error) {
 	// TODO: Validate the params before sending
@@ -680,9 +680,9 @@ func (a *Client) GetSpoeConfigurationVersion(params *GetSpoeConfigurationVersion
 }
 
 /*
-  GetSpoeGroup returns a s p o e groups
+GetSpoeGroup returns a s p o e groups
 
-  Returns one SPOE groups configuration in one SPOE scope.
+Returns one SPOE groups configuration in one SPOE scope.
 */
 func (a *Client) GetSpoeGroup(params *GetSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -720,9 +720,9 @@ func (a *Client) GetSpoeGroup(params *GetSpoeGroupParams, authInfo runtime.Clien
 }
 
 /*
-  GetSpoeGroups returns an array of s p o e groups
+GetSpoeGroups returns an array of s p o e groups
 
-  Returns an array of all configured SPOE groups in one SPOE scope.
+Returns an array of all configured SPOE groups in one SPOE scope.
 */
 func (a *Client) GetSpoeGroups(params *GetSpoeGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -760,9 +760,9 @@ func (a *Client) GetSpoeGroups(params *GetSpoeGroupsParams, authInfo runtime.Cli
 }
 
 /*
-  GetSpoeMessage returns a spoe message
+GetSpoeMessage returns a spoe message
 
-  Returns one spoe message configuration in SPOE scope.
+Returns one spoe message configuration in SPOE scope.
 */
 func (a *Client) GetSpoeMessage(params *GetSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeMessageOK, error) {
 	// TODO: Validate the params before sending
@@ -800,9 +800,9 @@ func (a *Client) GetSpoeMessage(params *GetSpoeMessageParams, authInfo runtime.C
 }
 
 /*
-  GetSpoeMessages returns an array of spoe messages in one scope
+GetSpoeMessages returns an array of spoe messages in one scope
 
-  Returns an array of all configured spoe messages in one scope.
+Returns an array of all configured spoe messages in one scope.
 */
 func (a *Client) GetSpoeMessages(params *GetSpoeMessagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeMessagesOK, error) {
 	// TODO: Validate the params before sending
@@ -840,9 +840,9 @@ func (a *Client) GetSpoeMessages(params *GetSpoeMessagesParams, authInfo runtime
 }
 
 /*
-  GetSpoeScope returns one s p o e scope
+GetSpoeScope returns one s p o e scope
 
-  Returns one SPOE scope in one SPOE file.
+Returns one SPOE scope in one SPOE file.
 */
 func (a *Client) GetSpoeScope(params *GetSpoeScopeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeScopeOK, error) {
 	// TODO: Validate the params before sending
@@ -880,9 +880,9 @@ func (a *Client) GetSpoeScope(params *GetSpoeScopeParams, authInfo runtime.Clien
 }
 
 /*
-  GetSpoeScopes returns an array of spoe scopes
+GetSpoeScopes returns an array of spoe scopes
 
-  Returns an array of all configured spoe scopes.
+Returns an array of all configured spoe scopes.
 */
 func (a *Client) GetSpoeScopes(params *GetSpoeScopesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeScopesOK, error) {
 	// TODO: Validate the params before sending
@@ -920,9 +920,9 @@ func (a *Client) GetSpoeScopes(params *GetSpoeScopesParams, authInfo runtime.Cli
 }
 
 /*
-  ReplaceSpoeAgent replaces a s p o e agent
+ReplaceSpoeAgent replaces a s p o e agent
 
-  Replaces a SPOE agent configuration in one SPOE scope.
+Replaces a SPOE agent configuration in one SPOE scope.
 */
 func (a *Client) ReplaceSpoeAgent(params *ReplaceSpoeAgentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceSpoeAgentOK, error) {
 	// TODO: Validate the params before sending
@@ -960,9 +960,9 @@ func (a *Client) ReplaceSpoeAgent(params *ReplaceSpoeAgentParams, authInfo runti
 }
 
 /*
-  ReplaceSpoeGroup replaces a s p o e groups
+ReplaceSpoeGroup replaces a s p o e groups
 
-  Replaces a SPOE groups configuration in one SPOE scope.
+Replaces a SPOE groups configuration in one SPOE scope.
 */
 func (a *Client) ReplaceSpoeGroup(params *ReplaceSpoeGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceSpoeGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -1000,9 +1000,9 @@ func (a *Client) ReplaceSpoeGroup(params *ReplaceSpoeGroupParams, authInfo runti
 }
 
 /*
-  ReplaceSpoeMessage replaces a spoe message
+ReplaceSpoeMessage replaces a spoe message
 
-  Replaces a spoe message configuration in one SPOE scope.
+Replaces a spoe message configuration in one SPOE scope.
 */
 func (a *Client) ReplaceSpoeMessage(params *ReplaceSpoeMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceSpoeMessageOK, error) {
 	// TODO: Validate the params before sending

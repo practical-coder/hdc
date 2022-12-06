@@ -52,7 +52,8 @@ func NewPostClusterOK() *PostClusterOK {
 	return &PostClusterOK{}
 }
 
-/* PostClusterOK describes a response with status code 200, with default header values.
+/*
+PostClusterOK describes a response with status code 200, with default header values.
 
 Cluster settings changed
 */
@@ -60,9 +61,39 @@ type PostClusterOK struct {
 	Payload *models.ClusterSettings
 }
 
+// IsSuccess returns true when this post cluster o k response has a 2xx status code
+func (o *PostClusterOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post cluster o k response has a 3xx status code
+func (o *PostClusterOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post cluster o k response has a 4xx status code
+func (o *PostClusterOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post cluster o k response has a 5xx status code
+func (o *PostClusterOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post cluster o k response a status code equal to that given
+func (o *PostClusterOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostClusterOK) Error() string {
 	return fmt.Sprintf("[POST /cluster][%d] postClusterOK  %+v", 200, o.Payload)
 }
+
+func (o *PostClusterOK) String() string {
+	return fmt.Sprintf("[POST /cluster][%d] postClusterOK  %+v", 200, o.Payload)
+}
+
 func (o *PostClusterOK) GetPayload() *models.ClusterSettings {
 	return o.Payload
 }
@@ -84,7 +115,8 @@ func NewPostClusterBadRequest() *PostClusterBadRequest {
 	return &PostClusterBadRequest{}
 }
 
-/* PostClusterBadRequest describes a response with status code 400, with default header values.
+/*
+PostClusterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -97,9 +129,39 @@ type PostClusterBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this post cluster bad request response has a 2xx status code
+func (o *PostClusterBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post cluster bad request response has a 3xx status code
+func (o *PostClusterBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post cluster bad request response has a 4xx status code
+func (o *PostClusterBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post cluster bad request response has a 5xx status code
+func (o *PostClusterBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post cluster bad request response a status code equal to that given
+func (o *PostClusterBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PostClusterBadRequest) Error() string {
 	return fmt.Sprintf("[POST /cluster][%d] postClusterBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PostClusterBadRequest) String() string {
+	return fmt.Sprintf("[POST /cluster][%d] postClusterBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PostClusterBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -130,7 +192,8 @@ func NewPostClusterDefault(code int) *PostClusterDefault {
 	}
 }
 
-/* PostClusterDefault describes a response with status code -1, with default header values.
+/*
+PostClusterDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -149,9 +212,39 @@ func (o *PostClusterDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post cluster default response has a 2xx status code
+func (o *PostClusterDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post cluster default response has a 3xx status code
+func (o *PostClusterDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post cluster default response has a 4xx status code
+func (o *PostClusterDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post cluster default response has a 5xx status code
+func (o *PostClusterDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post cluster default response a status code equal to that given
+func (o *PostClusterDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostClusterDefault) Error() string {
 	return fmt.Sprintf("[POST /cluster][%d] postCluster default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostClusterDefault) String() string {
+	return fmt.Sprintf("[POST /cluster][%d] postCluster default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostClusterDefault) GetPayload() *models.Error {
 	return o.Payload
 }

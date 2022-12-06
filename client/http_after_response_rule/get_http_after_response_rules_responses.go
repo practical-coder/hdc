@@ -50,7 +50,8 @@ func NewGetHTTPAfterResponseRulesOK() *GetHTTPAfterResponseRulesOK {
 	return &GetHTTPAfterResponseRulesOK{}
 }
 
-/* GetHTTPAfterResponseRulesOK describes a response with status code 200, with default header values.
+/*
+GetHTTPAfterResponseRulesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetHTTPAfterResponseRulesOK struct {
 	Payload *GetHTTPAfterResponseRulesOKBody
 }
 
+// IsSuccess returns true when this get Http after response rules o k response has a 2xx status code
+func (o *GetHTTPAfterResponseRulesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get Http after response rules o k response has a 3xx status code
+func (o *GetHTTPAfterResponseRulesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get Http after response rules o k response has a 4xx status code
+func (o *GetHTTPAfterResponseRulesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get Http after response rules o k response has a 5xx status code
+func (o *GetHTTPAfterResponseRulesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get Http after response rules o k response a status code equal to that given
+func (o *GetHTTPAfterResponseRulesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetHTTPAfterResponseRulesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_after_response_rules][%d] getHttpAfterResponseRulesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetHTTPAfterResponseRulesOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/http_after_response_rules][%d] getHttpAfterResponseRulesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetHTTPAfterResponseRulesOK) GetPayload() *GetHTTPAfterResponseRulesOKBody {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewGetHTTPAfterResponseRulesDefault(code int) *GetHTTPAfterResponseRulesDef
 	}
 }
 
-/* GetHTTPAfterResponseRulesDefault describes a response with status code -1, with default header values.
+/*
+GetHTTPAfterResponseRulesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +147,39 @@ func (o *GetHTTPAfterResponseRulesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get HTTP after response rules default response has a 2xx status code
+func (o *GetHTTPAfterResponseRulesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get HTTP after response rules default response has a 3xx status code
+func (o *GetHTTPAfterResponseRulesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get HTTP after response rules default response has a 4xx status code
+func (o *GetHTTPAfterResponseRulesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get HTTP after response rules default response has a 5xx status code
+func (o *GetHTTPAfterResponseRulesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get HTTP after response rules default response a status code equal to that given
+func (o *GetHTTPAfterResponseRulesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetHTTPAfterResponseRulesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_after_response_rules][%d] getHTTPAfterResponseRules default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetHTTPAfterResponseRulesDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/http_after_response_rules][%d] getHTTPAfterResponseRules default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetHTTPAfterResponseRulesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -141,7 +203,8 @@ func (o *GetHTTPAfterResponseRulesDefault) readResponse(response runtime.ClientR
 	return nil
 }
 
-/*GetHTTPAfterResponseRulesOKBody get HTTP after response rules o k body
+/*
+GetHTTPAfterResponseRulesOKBody get HTTP after response rules o k body
 swagger:model GetHTTPAfterResponseRulesOKBody
 */
 type GetHTTPAfterResponseRulesOKBody struct {

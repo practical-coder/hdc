@@ -52,10 +52,12 @@ func NewGetAPIEndpointsParamsWithHTTPClient(client *http.Client) *GetAPIEndpoint
 	}
 }
 
-/* GetAPIEndpointsParams contains all the parameters to send to the API endpoint
-   for the get API endpoints operation.
+/*
+GetAPIEndpointsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get API endpoints operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAPIEndpointsParams struct {
 	timeout    time.Duration

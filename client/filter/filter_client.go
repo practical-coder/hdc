@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateFilter adds a new filter
+CreateFilter adds a new filter
 
-  Adds a new Filter of the specified type in the specified parent.
+Adds a new Filter of the specified type in the specified parent.
 */
 func (a *Client) CreateFilter(params *CreateFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateFilterCreated, *CreateFilterAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateFilter(params *CreateFilterParams, authInfo runtime.Clien
 }
 
 /*
-  DeleteFilter deletes a filter
+DeleteFilter deletes a filter
 
-  Deletes a Filter configuration by it's index from the specified parent.
+Deletes a Filter configuration by it's index from the specified parent.
 */
 func (a *Client) DeleteFilter(params *DeleteFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteFilterAccepted, *DeleteFilterNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteFilter(params *DeleteFilterParams, authInfo runtime.Clien
 }
 
 /*
-  GetFilter returns one filter
+GetFilter returns one filter
 
-  Returns one Filter configuration by it's index in the specified parent.
+Returns one Filter configuration by it's index in the specified parent.
 */
 func (a *Client) GetFilter(params *GetFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFilterOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetFilter(params *GetFilterParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  GetFilters returns an array of all filters
+GetFilters returns an array of all filters
 
-  Returns all Filters that are configured in specified parent.
+Returns all Filters that are configured in specified parent.
 */
 func (a *Client) GetFilters(params *GetFiltersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFiltersOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetFilters(params *GetFiltersParams, authInfo runtime.ClientAut
 }
 
 /*
-  ReplaceFilter replaces a filter
+ReplaceFilter replaces a filter
 
-  Replaces a Filter configuration by it's index in the specified parent.
+Replaces a Filter configuration by it's index in the specified parent.
 */
 func (a *Client) ReplaceFilter(params *ReplaceFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceFilterOK, *ReplaceFilterAccepted, error) {
 	// TODO: Validate the params before sending

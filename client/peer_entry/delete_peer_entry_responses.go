@@ -58,7 +58,8 @@ func NewDeletePeerEntryAccepted() *DeletePeerEntryAccepted {
 	return &DeletePeerEntryAccepted{}
 }
 
-/* DeletePeerEntryAccepted describes a response with status code 202, with default header values.
+/*
+DeletePeerEntryAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeletePeerEntryAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete peer entry accepted response has a 2xx status code
+func (o *DeletePeerEntryAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete peer entry accepted response has a 3xx status code
+func (o *DeletePeerEntryAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete peer entry accepted response has a 4xx status code
+func (o *DeletePeerEntryAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete peer entry accepted response has a 5xx status code
+func (o *DeletePeerEntryAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete peer entry accepted response a status code equal to that given
+func (o *DeletePeerEntryAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeletePeerEntryAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/peer_entries/{name}][%d] deletePeerEntryAccepted ", 202)
+}
+
+func (o *DeletePeerEntryAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/peer_entries/{name}][%d] deletePeerEntryAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeletePeerEntryNoContent() *DeletePeerEntryNoContent {
 	return &DeletePeerEntryNoContent{}
 }
 
-/* DeletePeerEntryNoContent describes a response with status code 204, with default header values.
+/*
+DeletePeerEntryNoContent describes a response with status code 204, with default header values.
 
 PeerEntry deleted
 */
 type DeletePeerEntryNoContent struct {
 }
 
+// IsSuccess returns true when this delete peer entry no content response has a 2xx status code
+func (o *DeletePeerEntryNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete peer entry no content response has a 3xx status code
+func (o *DeletePeerEntryNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete peer entry no content response has a 4xx status code
+func (o *DeletePeerEntryNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete peer entry no content response has a 5xx status code
+func (o *DeletePeerEntryNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete peer entry no content response a status code equal to that given
+func (o *DeletePeerEntryNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeletePeerEntryNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/peer_entries/{name}][%d] deletePeerEntryNoContent ", 204)
+}
+
+func (o *DeletePeerEntryNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/peer_entries/{name}][%d] deletePeerEntryNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeletePeerEntryNotFound() *DeletePeerEntryNotFound {
 	return &DeletePeerEntryNotFound{}
 }
 
-/* DeletePeerEntryNotFound describes a response with status code 404, with default header values.
+/*
+DeletePeerEntryNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeletePeerEntryNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete peer entry not found response has a 2xx status code
+func (o *DeletePeerEntryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete peer entry not found response has a 3xx status code
+func (o *DeletePeerEntryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete peer entry not found response has a 4xx status code
+func (o *DeletePeerEntryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete peer entry not found response has a 5xx status code
+func (o *DeletePeerEntryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete peer entry not found response a status code equal to that given
+func (o *DeletePeerEntryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeletePeerEntryNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/peer_entries/{name}][%d] deletePeerEntryNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeletePeerEntryNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/peer_entries/{name}][%d] deletePeerEntryNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeletePeerEntryNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeletePeerEntryDefault(code int) *DeletePeerEntryDefault {
 	}
 }
 
-/* DeletePeerEntryDefault describes a response with status code -1, with default header values.
+/*
+DeletePeerEntryDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeletePeerEntryDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete peer entry default response has a 2xx status code
+func (o *DeletePeerEntryDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete peer entry default response has a 3xx status code
+func (o *DeletePeerEntryDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete peer entry default response has a 4xx status code
+func (o *DeletePeerEntryDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete peer entry default response has a 5xx status code
+func (o *DeletePeerEntryDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete peer entry default response a status code equal to that given
+func (o *DeletePeerEntryDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeletePeerEntryDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/peer_entries/{name}][%d] deletePeerEntry default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeletePeerEntryDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/peer_entries/{name}][%d] deletePeerEntry default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeletePeerEntryDefault) GetPayload() *models.Error {
 	return o.Payload
 }

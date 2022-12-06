@@ -48,9 +48,9 @@ type ClientService interface {
 }
 
 /*
-  GetAPIEndpoints returns list of root endpoints
+GetAPIEndpoints returns list of root endpoints
 
-  Returns a list of root endpoints.
+Returns a list of root endpoints.
 */
 func (a *Client) GetAPIEndpoints(params *GetAPIEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAPIEndpointsOK, error) {
 	// TODO: Validate the params before sending
@@ -88,9 +88,9 @@ func (a *Client) GetAPIEndpoints(params *GetAPIEndpointsParams, authInfo runtime
 }
 
 /*
-  GetConfigurationEndpoints returns list of h a proxy advanced configuration endpoints
+GetConfigurationEndpoints returns list of h a proxy advanced configuration endpoints
 
-  Returns a list of endpoints to be used for advanced configuration of HAProxy objects.
+Returns a list of endpoints to be used for advanced configuration of HAProxy objects.
 */
 func (a *Client) GetConfigurationEndpoints(params *GetConfigurationEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConfigurationEndpointsOK, error) {
 	// TODO: Validate the params before sending
@@ -128,9 +128,9 @@ func (a *Client) GetConfigurationEndpoints(params *GetConfigurationEndpointsPara
 }
 
 /*
-  GetHaproxyEndpoints returns list of h a proxy related endpoints
+GetHaproxyEndpoints returns list of h a proxy related endpoints
 
-  Returns a list of HAProxy related endpoints.
+Returns a list of HAProxy related endpoints.
 */
 func (a *Client) GetHaproxyEndpoints(params *GetHaproxyEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHaproxyEndpointsOK, error) {
 	// TODO: Validate the params before sending
@@ -168,9 +168,9 @@ func (a *Client) GetHaproxyEndpoints(params *GetHaproxyEndpointsParams, authInfo
 }
 
 /*
-  GetRuntimeEndpoints returns list of h a proxy advanced runtime endpoints
+GetRuntimeEndpoints returns list of h a proxy advanced runtime endpoints
 
-  Returns a list of endpoints to be used for advanced runtime settings of HAProxy objects.
+Returns a list of endpoints to be used for advanced runtime settings of HAProxy objects.
 */
 func (a *Client) GetRuntimeEndpoints(params *GetRuntimeEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRuntimeEndpointsOK, error) {
 	// TODO: Validate the params before sending
@@ -208,9 +208,9 @@ func (a *Client) GetRuntimeEndpoints(params *GetRuntimeEndpointsParams, authInfo
 }
 
 /*
-  GetServicesEndpoints returns list of service endpoints
+GetServicesEndpoints returns list of service endpoints
 
-  Returns a list of API managed services endpoints.
+Returns a list of API managed services endpoints.
 */
 func (a *Client) GetServicesEndpoints(params *GetServicesEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesEndpointsOK, error) {
 	// TODO: Validate the params before sending
@@ -248,9 +248,9 @@ func (a *Client) GetServicesEndpoints(params *GetServicesEndpointsParams, authIn
 }
 
 /*
-  GetSpoeEndpoints returns list of h a proxy s p o e endpoints
+GetSpoeEndpoints returns list of h a proxy s p o e endpoints
 
-  Returns a list of endpoints to be used for SPOE settings of HAProxy.
+Returns a list of endpoints to be used for SPOE settings of HAProxy.
 */
 func (a *Client) GetSpoeEndpoints(params *GetSpoeEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSpoeEndpointsOK, error) {
 	// TODO: Validate the params before sending
@@ -288,9 +288,9 @@ func (a *Client) GetSpoeEndpoints(params *GetSpoeEndpointsParams, authInfo runti
 }
 
 /*
-  GetStatsEndpoints returns list of h a proxy stats endpoints
+GetStatsEndpoints returns list of h a proxy stats endpoints
 
-  Returns a list of HAProxy stats endpoints.
+Returns a list of HAProxy stats endpoints.
 */
 func (a *Client) GetStatsEndpoints(params *GetStatsEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStatsEndpointsOK, error) {
 	// TODO: Validate the params before sending
@@ -328,9 +328,9 @@ func (a *Client) GetStatsEndpoints(params *GetStatsEndpointsParams, authInfo run
 }
 
 /*
-  GetStorageEndpoints returns list of h a proxy storage endpoints
+GetStorageEndpoints returns list of h a proxy storage endpoints
 
-  Returns a list of endpoints that use HAProxy storage for persistency, e.g. maps, ssl certificates...
+Returns a list of endpoints that use HAProxy storage for persistency, e.g. maps, ssl certificates...
 */
 func (a *Client) GetStorageEndpoints(params *GetStorageEndpointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStorageEndpointsOK, error) {
 	// TODO: Validate the params before sending

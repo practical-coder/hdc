@@ -64,7 +64,8 @@ func NewReplaceUserOK() *ReplaceUserOK {
 	return &ReplaceUserOK{}
 }
 
-/* ReplaceUserOK describes a response with status code 200, with default header values.
+/*
+ReplaceUserOK describes a response with status code 200, with default header values.
 
 User replaced
 */
@@ -72,9 +73,39 @@ type ReplaceUserOK struct {
 	Payload *models.User
 }
 
+// IsSuccess returns true when this replace user o k response has a 2xx status code
+func (o *ReplaceUserOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace user o k response has a 3xx status code
+func (o *ReplaceUserOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace user o k response has a 4xx status code
+func (o *ReplaceUserOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace user o k response has a 5xx status code
+func (o *ReplaceUserOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace user o k response a status code equal to that given
+func (o *ReplaceUserOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceUserOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/users/{username}][%d] replaceUserOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceUserOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/users/{username}][%d] replaceUserOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceUserOK) GetPayload() *models.User {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceUserAccepted() *ReplaceUserAccepted {
 	return &ReplaceUserAccepted{}
 }
 
-/* ReplaceUserAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceUserAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceUserAccepted struct {
 	Payload *models.User
 }
 
+// IsSuccess returns true when this replace user accepted response has a 2xx status code
+func (o *ReplaceUserAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace user accepted response has a 3xx status code
+func (o *ReplaceUserAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace user accepted response has a 4xx status code
+func (o *ReplaceUserAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace user accepted response has a 5xx status code
+func (o *ReplaceUserAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace user accepted response a status code equal to that given
+func (o *ReplaceUserAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceUserAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/users/{username}][%d] replaceUserAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceUserAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/users/{username}][%d] replaceUserAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceUserAccepted) GetPayload() *models.User {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceUserBadRequest() *ReplaceUserBadRequest {
 	return &ReplaceUserBadRequest{}
 }
 
-/* ReplaceUserBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceUserBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceUserBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace user bad request response has a 2xx status code
+func (o *ReplaceUserBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace user bad request response has a 3xx status code
+func (o *ReplaceUserBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace user bad request response has a 4xx status code
+func (o *ReplaceUserBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace user bad request response has a 5xx status code
+func (o *ReplaceUserBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace user bad request response a status code equal to that given
+func (o *ReplaceUserBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceUserBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/users/{username}][%d] replaceUserBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceUserBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/users/{username}][%d] replaceUserBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceUserBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceUserNotFound() *ReplaceUserNotFound {
 	return &ReplaceUserNotFound{}
 }
 
-/* ReplaceUserNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceUserNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceUserNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace user not found response has a 2xx status code
+func (o *ReplaceUserNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace user not found response has a 3xx status code
+func (o *ReplaceUserNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace user not found response has a 4xx status code
+func (o *ReplaceUserNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace user not found response has a 5xx status code
+func (o *ReplaceUserNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace user not found response a status code equal to that given
+func (o *ReplaceUserNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceUserNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/users/{username}][%d] replaceUserNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceUserNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/users/{username}][%d] replaceUserNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceUserNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceUserDefault(code int) *ReplaceUserDefault {
 	}
 }
 
-/* ReplaceUserDefault describes a response with status code -1, with default header values.
+/*
+ReplaceUserDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceUserDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace user default response has a 2xx status code
+func (o *ReplaceUserDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace user default response has a 3xx status code
+func (o *ReplaceUserDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace user default response has a 4xx status code
+func (o *ReplaceUserDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace user default response has a 5xx status code
+func (o *ReplaceUserDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace user default response a status code equal to that given
+func (o *ReplaceUserDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceUserDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/users/{username}][%d] replaceUser default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceUserDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/users/{username}][%d] replaceUser default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceUserDefault) GetPayload() *models.Error {
 	return o.Payload
 }

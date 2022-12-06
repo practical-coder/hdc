@@ -16,7 +16,7 @@ import (
 
 // SpoeAgents SPOE Agents
 //
-// SPOE Agents of one scope in SPOE file
+// # SPOE Agents of one scope in SPOE file
 //
 // swagger:model spoe_agents
 type SpoeAgents []*SpoeAgent

@@ -58,7 +58,8 @@ func NewDeleteBindAccepted() *DeleteBindAccepted {
 	return &DeleteBindAccepted{}
 }
 
-/* DeleteBindAccepted describes a response with status code 202, with default header values.
+/*
+DeleteBindAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteBindAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete bind accepted response has a 2xx status code
+func (o *DeleteBindAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete bind accepted response has a 3xx status code
+func (o *DeleteBindAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete bind accepted response has a 4xx status code
+func (o *DeleteBindAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete bind accepted response has a 5xx status code
+func (o *DeleteBindAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete bind accepted response a status code equal to that given
+func (o *DeleteBindAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteBindAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/binds/{name}][%d] deleteBindAccepted ", 202)
+}
+
+func (o *DeleteBindAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/binds/{name}][%d] deleteBindAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteBindNoContent() *DeleteBindNoContent {
 	return &DeleteBindNoContent{}
 }
 
-/* DeleteBindNoContent describes a response with status code 204, with default header values.
+/*
+DeleteBindNoContent describes a response with status code 204, with default header values.
 
 Bind deleted
 */
 type DeleteBindNoContent struct {
 }
 
+// IsSuccess returns true when this delete bind no content response has a 2xx status code
+func (o *DeleteBindNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete bind no content response has a 3xx status code
+func (o *DeleteBindNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete bind no content response has a 4xx status code
+func (o *DeleteBindNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete bind no content response has a 5xx status code
+func (o *DeleteBindNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete bind no content response a status code equal to that given
+func (o *DeleteBindNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteBindNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/binds/{name}][%d] deleteBindNoContent ", 204)
+}
+
+func (o *DeleteBindNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/binds/{name}][%d] deleteBindNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteBindNotFound() *DeleteBindNotFound {
 	return &DeleteBindNotFound{}
 }
 
-/* DeleteBindNotFound describes a response with status code 404, with default header values.
+/*
+DeleteBindNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteBindNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete bind not found response has a 2xx status code
+func (o *DeleteBindNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete bind not found response has a 3xx status code
+func (o *DeleteBindNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete bind not found response has a 4xx status code
+func (o *DeleteBindNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete bind not found response has a 5xx status code
+func (o *DeleteBindNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete bind not found response a status code equal to that given
+func (o *DeleteBindNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteBindNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/binds/{name}][%d] deleteBindNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteBindNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/binds/{name}][%d] deleteBindNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteBindNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteBindDefault(code int) *DeleteBindDefault {
 	}
 }
 
-/* DeleteBindDefault describes a response with status code -1, with default header values.
+/*
+DeleteBindDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteBindDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete bind default response has a 2xx status code
+func (o *DeleteBindDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete bind default response has a 3xx status code
+func (o *DeleteBindDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete bind default response has a 4xx status code
+func (o *DeleteBindDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete bind default response has a 5xx status code
+func (o *DeleteBindDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete bind default response a status code equal to that given
+func (o *DeleteBindDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteBindDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/binds/{name}][%d] deleteBind default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteBindDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/binds/{name}][%d] deleteBind default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteBindDefault) GetPayload() *models.Error {
 	return o.Payload
 }

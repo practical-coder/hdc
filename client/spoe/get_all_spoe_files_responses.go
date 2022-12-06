@@ -52,7 +52,8 @@ func NewGetAllSpoeFilesOK() *GetAllSpoeFilesOK {
 	return &GetAllSpoeFilesOK{}
 }
 
-/* GetAllSpoeFilesOK describes a response with status code 200, with default header values.
+/*
+GetAllSpoeFilesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -60,9 +61,39 @@ type GetAllSpoeFilesOK struct {
 	Payload models.SpoeFiles
 }
 
+// IsSuccess returns true when this get all spoe files o k response has a 2xx status code
+func (o *GetAllSpoeFilesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get all spoe files o k response has a 3xx status code
+func (o *GetAllSpoeFilesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all spoe files o k response has a 4xx status code
+func (o *GetAllSpoeFilesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all spoe files o k response has a 5xx status code
+func (o *GetAllSpoeFilesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all spoe files o k response a status code equal to that given
+func (o *GetAllSpoeFilesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAllSpoeFilesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files][%d] getAllSpoeFilesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAllSpoeFilesOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files][%d] getAllSpoeFilesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAllSpoeFilesOK) GetPayload() models.SpoeFiles {
 	return o.Payload
 }
@@ -82,7 +113,8 @@ func NewGetAllSpoeFilesNotFound() *GetAllSpoeFilesNotFound {
 	return &GetAllSpoeFilesNotFound{}
 }
 
-/* GetAllSpoeFilesNotFound describes a response with status code 404, with default header values.
+/*
+GetAllSpoeFilesNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -95,9 +127,39 @@ type GetAllSpoeFilesNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get all spoe files not found response has a 2xx status code
+func (o *GetAllSpoeFilesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all spoe files not found response has a 3xx status code
+func (o *GetAllSpoeFilesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all spoe files not found response has a 4xx status code
+func (o *GetAllSpoeFilesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all spoe files not found response has a 5xx status code
+func (o *GetAllSpoeFilesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all spoe files not found response a status code equal to that given
+func (o *GetAllSpoeFilesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetAllSpoeFilesNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files][%d] getAllSpoeFilesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetAllSpoeFilesNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files][%d] getAllSpoeFilesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetAllSpoeFilesNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -128,7 +190,8 @@ func NewGetAllSpoeFilesDefault(code int) *GetAllSpoeFilesDefault {
 	}
 }
 
-/* GetAllSpoeFilesDefault describes a response with status code -1, with default header values.
+/*
+GetAllSpoeFilesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -147,9 +210,39 @@ func (o *GetAllSpoeFilesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get all spoe files default response has a 2xx status code
+func (o *GetAllSpoeFilesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get all spoe files default response has a 3xx status code
+func (o *GetAllSpoeFilesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get all spoe files default response has a 4xx status code
+func (o *GetAllSpoeFilesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get all spoe files default response has a 5xx status code
+func (o *GetAllSpoeFilesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get all spoe files default response a status code equal to that given
+func (o *GetAllSpoeFilesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetAllSpoeFilesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files][%d] getAllSpoeFiles default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetAllSpoeFilesDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files][%d] getAllSpoeFiles default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetAllSpoeFilesDefault) GetPayload() *models.Error {
 	return o.Payload
 }

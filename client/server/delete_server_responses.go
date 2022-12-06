@@ -58,7 +58,8 @@ func NewDeleteServerAccepted() *DeleteServerAccepted {
 	return &DeleteServerAccepted{}
 }
 
-/* DeleteServerAccepted describes a response with status code 202, with default header values.
+/*
+DeleteServerAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteServerAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete server accepted response has a 2xx status code
+func (o *DeleteServerAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete server accepted response has a 3xx status code
+func (o *DeleteServerAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete server accepted response has a 4xx status code
+func (o *DeleteServerAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete server accepted response has a 5xx status code
+func (o *DeleteServerAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete server accepted response a status code equal to that given
+func (o *DeleteServerAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteServerAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/servers/{name}][%d] deleteServerAccepted ", 202)
+}
+
+func (o *DeleteServerAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/servers/{name}][%d] deleteServerAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteServerNoContent() *DeleteServerNoContent {
 	return &DeleteServerNoContent{}
 }
 
-/* DeleteServerNoContent describes a response with status code 204, with default header values.
+/*
+DeleteServerNoContent describes a response with status code 204, with default header values.
 
 Server deleted
 */
 type DeleteServerNoContent struct {
 }
 
+// IsSuccess returns true when this delete server no content response has a 2xx status code
+func (o *DeleteServerNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete server no content response has a 3xx status code
+func (o *DeleteServerNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete server no content response has a 4xx status code
+func (o *DeleteServerNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete server no content response has a 5xx status code
+func (o *DeleteServerNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete server no content response a status code equal to that given
+func (o *DeleteServerNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteServerNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/servers/{name}][%d] deleteServerNoContent ", 204)
+}
+
+func (o *DeleteServerNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/servers/{name}][%d] deleteServerNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteServerNotFound() *DeleteServerNotFound {
 	return &DeleteServerNotFound{}
 }
 
-/* DeleteServerNotFound describes a response with status code 404, with default header values.
+/*
+DeleteServerNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteServerNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete server not found response has a 2xx status code
+func (o *DeleteServerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete server not found response has a 3xx status code
+func (o *DeleteServerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete server not found response has a 4xx status code
+func (o *DeleteServerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete server not found response has a 5xx status code
+func (o *DeleteServerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete server not found response a status code equal to that given
+func (o *DeleteServerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteServerNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/servers/{name}][%d] deleteServerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteServerNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/servers/{name}][%d] deleteServerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteServerNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteServerDefault(code int) *DeleteServerDefault {
 	}
 }
 
-/* DeleteServerDefault describes a response with status code -1, with default header values.
+/*
+DeleteServerDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteServerDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete server default response has a 2xx status code
+func (o *DeleteServerDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete server default response has a 3xx status code
+func (o *DeleteServerDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete server default response has a 4xx status code
+func (o *DeleteServerDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete server default response has a 5xx status code
+func (o *DeleteServerDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete server default response a status code equal to that given
+func (o *DeleteServerDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteServerDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/servers/{name}][%d] deleteServer default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteServerDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/servers/{name}][%d] deleteServer default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteServerDefault) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -64,7 +64,8 @@ func NewCreateBindCreated() *CreateBindCreated {
 	return &CreateBindCreated{}
 }
 
-/* CreateBindCreated describes a response with status code 201, with default header values.
+/*
+CreateBindCreated describes a response with status code 201, with default header values.
 
 Bind created
 */
@@ -72,9 +73,39 @@ type CreateBindCreated struct {
 	Payload *models.Bind
 }
 
+// IsSuccess returns true when this create bind created response has a 2xx status code
+func (o *CreateBindCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create bind created response has a 3xx status code
+func (o *CreateBindCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create bind created response has a 4xx status code
+func (o *CreateBindCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create bind created response has a 5xx status code
+func (o *CreateBindCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create bind created response a status code equal to that given
+func (o *CreateBindCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateBindCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/binds][%d] createBindCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateBindCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/binds][%d] createBindCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateBindCreated) GetPayload() *models.Bind {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateBindAccepted() *CreateBindAccepted {
 	return &CreateBindAccepted{}
 }
 
-/* CreateBindAccepted describes a response with status code 202, with default header values.
+/*
+CreateBindAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateBindAccepted struct {
 	Payload *models.Bind
 }
 
+// IsSuccess returns true when this create bind accepted response has a 2xx status code
+func (o *CreateBindAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create bind accepted response has a 3xx status code
+func (o *CreateBindAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create bind accepted response has a 4xx status code
+func (o *CreateBindAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create bind accepted response has a 5xx status code
+func (o *CreateBindAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create bind accepted response a status code equal to that given
+func (o *CreateBindAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateBindAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/binds][%d] createBindAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateBindAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/binds][%d] createBindAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateBindAccepted) GetPayload() *models.Bind {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateBindBadRequest() *CreateBindBadRequest {
 	return &CreateBindBadRequest{}
 }
 
-/* CreateBindBadRequest describes a response with status code 400, with default header values.
+/*
+CreateBindBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateBindBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create bind bad request response has a 2xx status code
+func (o *CreateBindBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create bind bad request response has a 3xx status code
+func (o *CreateBindBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create bind bad request response has a 4xx status code
+func (o *CreateBindBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create bind bad request response has a 5xx status code
+func (o *CreateBindBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create bind bad request response a status code equal to that given
+func (o *CreateBindBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateBindBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/binds][%d] createBindBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateBindBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/binds][%d] createBindBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateBindBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateBindConflict() *CreateBindConflict {
 	return &CreateBindConflict{}
 }
 
-/* CreateBindConflict describes a response with status code 409, with default header values.
+/*
+CreateBindConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateBindConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create bind conflict response has a 2xx status code
+func (o *CreateBindConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create bind conflict response has a 3xx status code
+func (o *CreateBindConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create bind conflict response has a 4xx status code
+func (o *CreateBindConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create bind conflict response has a 5xx status code
+func (o *CreateBindConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create bind conflict response a status code equal to that given
+func (o *CreateBindConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateBindConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/binds][%d] createBindConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateBindConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/binds][%d] createBindConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateBindConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateBindDefault(code int) *CreateBindDefault {
 	}
 }
 
-/* CreateBindDefault describes a response with status code -1, with default header values.
+/*
+CreateBindDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateBindDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create bind default response has a 2xx status code
+func (o *CreateBindDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create bind default response has a 3xx status code
+func (o *CreateBindDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create bind default response has a 4xx status code
+func (o *CreateBindDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create bind default response has a 5xx status code
+func (o *CreateBindDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create bind default response a status code equal to that given
+func (o *CreateBindDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateBindDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/binds][%d] createBind default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateBindDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/binds][%d] createBind default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateBindDefault) GetPayload() *models.Error {
 	return o.Payload
 }

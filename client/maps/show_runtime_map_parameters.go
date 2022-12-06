@@ -52,10 +52,12 @@ func NewShowRuntimeMapParamsWithHTTPClient(client *http.Client) *ShowRuntimeMapP
 	}
 }
 
-/* ShowRuntimeMapParams contains all the parameters to send to the API endpoint
-   for the show runtime map operation.
+/*
+ShowRuntimeMapParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the show runtime map operation.
+
+	Typically these are written to a http.Request.
 */
 type ShowRuntimeMapParams struct {
 

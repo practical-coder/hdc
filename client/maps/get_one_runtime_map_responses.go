@@ -52,7 +52,8 @@ func NewGetOneRuntimeMapOK() *GetOneRuntimeMapOK {
 	return &GetOneRuntimeMapOK{}
 }
 
-/* GetOneRuntimeMapOK describes a response with status code 200, with default header values.
+/*
+GetOneRuntimeMapOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -60,9 +61,39 @@ type GetOneRuntimeMapOK struct {
 	Payload *models.Map
 }
 
+// IsSuccess returns true when this get one runtime map o k response has a 2xx status code
+func (o *GetOneRuntimeMapOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get one runtime map o k response has a 3xx status code
+func (o *GetOneRuntimeMapOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get one runtime map o k response has a 4xx status code
+func (o *GetOneRuntimeMapOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get one runtime map o k response has a 5xx status code
+func (o *GetOneRuntimeMapOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get one runtime map o k response a status code equal to that given
+func (o *GetOneRuntimeMapOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetOneRuntimeMapOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps/{name}][%d] getOneRuntimeMapOK  %+v", 200, o.Payload)
 }
+
+func (o *GetOneRuntimeMapOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/maps/{name}][%d] getOneRuntimeMapOK  %+v", 200, o.Payload)
+}
+
 func (o *GetOneRuntimeMapOK) GetPayload() *models.Map {
 	return o.Payload
 }
@@ -84,7 +115,8 @@ func NewGetOneRuntimeMapNotFound() *GetOneRuntimeMapNotFound {
 	return &GetOneRuntimeMapNotFound{}
 }
 
-/* GetOneRuntimeMapNotFound describes a response with status code 404, with default header values.
+/*
+GetOneRuntimeMapNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -97,9 +129,39 @@ type GetOneRuntimeMapNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get one runtime map not found response has a 2xx status code
+func (o *GetOneRuntimeMapNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get one runtime map not found response has a 3xx status code
+func (o *GetOneRuntimeMapNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get one runtime map not found response has a 4xx status code
+func (o *GetOneRuntimeMapNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get one runtime map not found response has a 5xx status code
+func (o *GetOneRuntimeMapNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get one runtime map not found response a status code equal to that given
+func (o *GetOneRuntimeMapNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetOneRuntimeMapNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps/{name}][%d] getOneRuntimeMapNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetOneRuntimeMapNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/maps/{name}][%d] getOneRuntimeMapNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetOneRuntimeMapNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -130,7 +192,8 @@ func NewGetOneRuntimeMapDefault(code int) *GetOneRuntimeMapDefault {
 	}
 }
 
-/* GetOneRuntimeMapDefault describes a response with status code -1, with default header values.
+/*
+GetOneRuntimeMapDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -149,9 +212,39 @@ func (o *GetOneRuntimeMapDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get one runtime map default response has a 2xx status code
+func (o *GetOneRuntimeMapDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get one runtime map default response has a 3xx status code
+func (o *GetOneRuntimeMapDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get one runtime map default response has a 4xx status code
+func (o *GetOneRuntimeMapDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get one runtime map default response has a 5xx status code
+func (o *GetOneRuntimeMapDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get one runtime map default response a status code equal to that given
+func (o *GetOneRuntimeMapDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetOneRuntimeMapDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps/{name}][%d] getOneRuntimeMap default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetOneRuntimeMapDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/maps/{name}][%d] getOneRuntimeMap default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetOneRuntimeMapDefault) GetPayload() *models.Error {
 	return o.Payload
 }

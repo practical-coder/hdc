@@ -52,10 +52,12 @@ func NewDeleteServicesHaproxyRuntimeACLFileEntriesIDParamsWithHTTPClient(client 
 	}
 }
 
-/* DeleteServicesHaproxyRuntimeACLFileEntriesIDParams contains all the parameters to send to the API endpoint
-   for the delete services haproxy runtime ACL file entries ID operation.
+/*
+DeleteServicesHaproxyRuntimeACLFileEntriesIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete services haproxy runtime ACL file entries ID operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteServicesHaproxyRuntimeACLFileEntriesIDParams struct {
 

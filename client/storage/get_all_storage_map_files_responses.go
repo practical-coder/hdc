@@ -52,7 +52,8 @@ func NewGetAllStorageMapFilesOK() *GetAllStorageMapFilesOK {
 	return &GetAllStorageMapFilesOK{}
 }
 
-/* GetAllStorageMapFilesOK describes a response with status code 200, with default header values.
+/*
+GetAllStorageMapFilesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -60,9 +61,39 @@ type GetAllStorageMapFilesOK struct {
 	Payload models.Maps
 }
 
+// IsSuccess returns true when this get all storage map files o k response has a 2xx status code
+func (o *GetAllStorageMapFilesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get all storage map files o k response has a 3xx status code
+func (o *GetAllStorageMapFilesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all storage map files o k response has a 4xx status code
+func (o *GetAllStorageMapFilesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all storage map files o k response has a 5xx status code
+func (o *GetAllStorageMapFilesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all storage map files o k response a status code equal to that given
+func (o *GetAllStorageMapFilesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAllStorageMapFilesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/maps][%d] getAllStorageMapFilesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAllStorageMapFilesOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/storage/maps][%d] getAllStorageMapFilesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAllStorageMapFilesOK) GetPayload() models.Maps {
 	return o.Payload
 }
@@ -82,7 +113,8 @@ func NewGetAllStorageMapFilesNotFound() *GetAllStorageMapFilesNotFound {
 	return &GetAllStorageMapFilesNotFound{}
 }
 
-/* GetAllStorageMapFilesNotFound describes a response with status code 404, with default header values.
+/*
+GetAllStorageMapFilesNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -95,9 +127,39 @@ type GetAllStorageMapFilesNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get all storage map files not found response has a 2xx status code
+func (o *GetAllStorageMapFilesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all storage map files not found response has a 3xx status code
+func (o *GetAllStorageMapFilesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all storage map files not found response has a 4xx status code
+func (o *GetAllStorageMapFilesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all storage map files not found response has a 5xx status code
+func (o *GetAllStorageMapFilesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all storage map files not found response a status code equal to that given
+func (o *GetAllStorageMapFilesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetAllStorageMapFilesNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/maps][%d] getAllStorageMapFilesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetAllStorageMapFilesNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/storage/maps][%d] getAllStorageMapFilesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetAllStorageMapFilesNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -128,7 +190,8 @@ func NewGetAllStorageMapFilesDefault(code int) *GetAllStorageMapFilesDefault {
 	}
 }
 
-/* GetAllStorageMapFilesDefault describes a response with status code -1, with default header values.
+/*
+GetAllStorageMapFilesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -147,9 +210,39 @@ func (o *GetAllStorageMapFilesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get all storage map files default response has a 2xx status code
+func (o *GetAllStorageMapFilesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get all storage map files default response has a 3xx status code
+func (o *GetAllStorageMapFilesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get all storage map files default response has a 4xx status code
+func (o *GetAllStorageMapFilesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get all storage map files default response has a 5xx status code
+func (o *GetAllStorageMapFilesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get all storage map files default response a status code equal to that given
+func (o *GetAllStorageMapFilesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetAllStorageMapFilesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/maps][%d] getAllStorageMapFiles default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetAllStorageMapFilesDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/storage/maps][%d] getAllStorageMapFiles default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetAllStorageMapFilesDefault) GetPayload() *models.Error {
 	return o.Payload
 }

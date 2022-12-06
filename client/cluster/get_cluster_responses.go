@@ -46,7 +46,8 @@ func NewGetClusterOK() *GetClusterOK {
 	return &GetClusterOK{}
 }
 
-/* GetClusterOK describes a response with status code 200, with default header values.
+/*
+GetClusterOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -54,9 +55,39 @@ type GetClusterOK struct {
 	Payload *models.ClusterSettings
 }
 
+// IsSuccess returns true when this get cluster o k response has a 2xx status code
+func (o *GetClusterOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get cluster o k response has a 3xx status code
+func (o *GetClusterOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cluster o k response has a 4xx status code
+func (o *GetClusterOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get cluster o k response has a 5xx status code
+func (o *GetClusterOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cluster o k response a status code equal to that given
+func (o *GetClusterOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetClusterOK) Error() string {
 	return fmt.Sprintf("[GET /cluster][%d] getClusterOK  %+v", 200, o.Payload)
 }
+
+func (o *GetClusterOK) String() string {
+	return fmt.Sprintf("[GET /cluster][%d] getClusterOK  %+v", 200, o.Payload)
+}
+
 func (o *GetClusterOK) GetPayload() *models.ClusterSettings {
 	return o.Payload
 }
@@ -80,7 +111,8 @@ func NewGetClusterDefault(code int) *GetClusterDefault {
 	}
 }
 
-/* GetClusterDefault describes a response with status code -1, with default header values.
+/*
+GetClusterDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -99,9 +131,39 @@ func (o *GetClusterDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get cluster default response has a 2xx status code
+func (o *GetClusterDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get cluster default response has a 3xx status code
+func (o *GetClusterDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get cluster default response has a 4xx status code
+func (o *GetClusterDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get cluster default response has a 5xx status code
+func (o *GetClusterDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get cluster default response a status code equal to that given
+func (o *GetClusterDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetClusterDefault) Error() string {
 	return fmt.Sprintf("[GET /cluster][%d] getCluster default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetClusterDefault) String() string {
+	return fmt.Sprintf("[GET /cluster][%d] getCluster default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetClusterDefault) GetPayload() *models.Error {
 	return o.Payload
 }

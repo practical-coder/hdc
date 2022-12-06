@@ -50,7 +50,8 @@ func NewGetGroupsOK() *GetGroupsOK {
 	return &GetGroupsOK{}
 }
 
-/* GetGroupsOK describes a response with status code 200, with default header values.
+/*
+GetGroupsOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetGroupsOK struct {
 	Payload *GetGroupsOKBody
 }
 
+// IsSuccess returns true when this get groups o k response has a 2xx status code
+func (o *GetGroupsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get groups o k response has a 3xx status code
+func (o *GetGroupsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get groups o k response has a 4xx status code
+func (o *GetGroupsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get groups o k response has a 5xx status code
+func (o *GetGroupsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get groups o k response a status code equal to that given
+func (o *GetGroupsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetGroupsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/groups][%d] getGroupsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetGroupsOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/groups][%d] getGroupsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetGroupsOK) GetPayload() *GetGroupsOKBody {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewGetGroupsDefault(code int) *GetGroupsDefault {
 	}
 }
 
-/* GetGroupsDefault describes a response with status code -1, with default header values.
+/*
+GetGroupsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +147,39 @@ func (o *GetGroupsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get groups default response has a 2xx status code
+func (o *GetGroupsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get groups default response has a 3xx status code
+func (o *GetGroupsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get groups default response has a 4xx status code
+func (o *GetGroupsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get groups default response has a 5xx status code
+func (o *GetGroupsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get groups default response a status code equal to that given
+func (o *GetGroupsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetGroupsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/groups][%d] getGroups default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetGroupsDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/groups][%d] getGroups default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetGroupsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -141,7 +203,8 @@ func (o *GetGroupsDefault) readResponse(response runtime.ClientResponse, consume
 	return nil
 }
 
-/*GetGroupsOKBody get groups o k body
+/*
+GetGroupsOKBody get groups o k body
 swagger:model GetGroupsOKBody
 */
 type GetGroupsOKBody struct {

@@ -52,10 +52,12 @@ func NewGetFiltersParamsWithHTTPClient(client *http.Client) *GetFiltersParams {
 	}
 }
 
-/* GetFiltersParams contains all the parameters to send to the API endpoint
-   for the get filters operation.
+/*
+GetFiltersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get filters operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFiltersParams struct {
 

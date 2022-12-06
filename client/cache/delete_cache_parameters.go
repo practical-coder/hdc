@@ -53,10 +53,12 @@ func NewDeleteCacheParamsWithHTTPClient(client *http.Client) *DeleteCacheParams 
 	}
 }
 
-/* DeleteCacheParams contains all the parameters to send to the API endpoint
-   for the delete cache operation.
+/*
+DeleteCacheParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete cache operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteCacheParams struct {
 

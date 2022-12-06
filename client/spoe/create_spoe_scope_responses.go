@@ -58,7 +58,8 @@ func NewCreateSpoeScopeCreated() *CreateSpoeScopeCreated {
 	return &CreateSpoeScopeCreated{}
 }
 
-/* CreateSpoeScopeCreated describes a response with status code 201, with default header values.
+/*
+CreateSpoeScopeCreated describes a response with status code 201, with default header values.
 
 Spoe scope created
 */
@@ -66,9 +67,39 @@ type CreateSpoeScopeCreated struct {
 	Payload models.SpoeScope
 }
 
+// IsSuccess returns true when this create spoe scope created response has a 2xx status code
+func (o *CreateSpoeScopeCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create spoe scope created response has a 3xx status code
+func (o *CreateSpoeScopeCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create spoe scope created response has a 4xx status code
+func (o *CreateSpoeScopeCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create spoe scope created response has a 5xx status code
+func (o *CreateSpoeScopeCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create spoe scope created response a status code equal to that given
+func (o *CreateSpoeScopeCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateSpoeScopeCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_scopes][%d] createSpoeScopeCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateSpoeScopeCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_scopes][%d] createSpoeScopeCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateSpoeScopeCreated) GetPayload() models.SpoeScope {
 	return o.Payload
 }
@@ -88,7 +119,8 @@ func NewCreateSpoeScopeBadRequest() *CreateSpoeScopeBadRequest {
 	return &CreateSpoeScopeBadRequest{}
 }
 
-/* CreateSpoeScopeBadRequest describes a response with status code 400, with default header values.
+/*
+CreateSpoeScopeBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -101,9 +133,39 @@ type CreateSpoeScopeBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create spoe scope bad request response has a 2xx status code
+func (o *CreateSpoeScopeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create spoe scope bad request response has a 3xx status code
+func (o *CreateSpoeScopeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create spoe scope bad request response has a 4xx status code
+func (o *CreateSpoeScopeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create spoe scope bad request response has a 5xx status code
+func (o *CreateSpoeScopeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create spoe scope bad request response a status code equal to that given
+func (o *CreateSpoeScopeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateSpoeScopeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_scopes][%d] createSpoeScopeBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateSpoeScopeBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_scopes][%d] createSpoeScopeBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateSpoeScopeBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -132,7 +194,8 @@ func NewCreateSpoeScopeConflict() *CreateSpoeScopeConflict {
 	return &CreateSpoeScopeConflict{}
 }
 
-/* CreateSpoeScopeConflict describes a response with status code 409, with default header values.
+/*
+CreateSpoeScopeConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -145,9 +208,39 @@ type CreateSpoeScopeConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create spoe scope conflict response has a 2xx status code
+func (o *CreateSpoeScopeConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create spoe scope conflict response has a 3xx status code
+func (o *CreateSpoeScopeConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create spoe scope conflict response has a 4xx status code
+func (o *CreateSpoeScopeConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create spoe scope conflict response has a 5xx status code
+func (o *CreateSpoeScopeConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create spoe scope conflict response a status code equal to that given
+func (o *CreateSpoeScopeConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateSpoeScopeConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_scopes][%d] createSpoeScopeConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateSpoeScopeConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_scopes][%d] createSpoeScopeConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateSpoeScopeConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -178,7 +271,8 @@ func NewCreateSpoeScopeDefault(code int) *CreateSpoeScopeDefault {
 	}
 }
 
-/* CreateSpoeScopeDefault describes a response with status code -1, with default header values.
+/*
+CreateSpoeScopeDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -197,9 +291,39 @@ func (o *CreateSpoeScopeDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create spoe scope default response has a 2xx status code
+func (o *CreateSpoeScopeDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create spoe scope default response has a 3xx status code
+func (o *CreateSpoeScopeDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create spoe scope default response has a 4xx status code
+func (o *CreateSpoeScopeDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create spoe scope default response has a 5xx status code
+func (o *CreateSpoeScopeDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create spoe scope default response a status code equal to that given
+func (o *CreateSpoeScopeDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateSpoeScopeDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_scopes][%d] createSpoeScope default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateSpoeScopeDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_scopes][%d] createSpoeScope default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateSpoeScopeDefault) GetPayload() *models.Error {
 	return o.Payload
 }

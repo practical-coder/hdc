@@ -55,10 +55,12 @@ func NewReplaceSpoeGroupParamsWithHTTPClient(client *http.Client) *ReplaceSpoeGr
 	}
 }
 
-/* ReplaceSpoeGroupParams contains all the parameters to send to the API endpoint
-   for the replace spoe group operation.
+/*
+ReplaceSpoeGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace spoe group operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceSpoeGroupParams struct {
 

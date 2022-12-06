@@ -55,10 +55,12 @@ func NewReplaceServerSwitchingRuleParamsWithHTTPClient(client *http.Client) *Rep
 	}
 }
 
-/* ReplaceServerSwitchingRuleParams contains all the parameters to send to the API endpoint
-   for the replace server switching rule operation.
+/*
+ReplaceServerSwitchingRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace server switching rule operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceServerSwitchingRuleParams struct {
 

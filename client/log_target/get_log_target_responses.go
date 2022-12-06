@@ -55,7 +55,8 @@ func NewGetLogTargetOK() *GetLogTargetOK {
 	return &GetLogTargetOK{}
 }
 
-/* GetLogTargetOK describes a response with status code 200, with default header values.
+/*
+GetLogTargetOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetLogTargetOK struct {
 	Payload *GetLogTargetOKBody
 }
 
+// IsSuccess returns true when this get log target o k response has a 2xx status code
+func (o *GetLogTargetOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get log target o k response has a 3xx status code
+func (o *GetLogTargetOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get log target o k response has a 4xx status code
+func (o *GetLogTargetOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get log target o k response has a 5xx status code
+func (o *GetLogTargetOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get log target o k response a status code equal to that given
+func (o *GetLogTargetOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetLogTargetOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_targets/{index}][%d] getLogTargetOK  %+v", 200, o.Payload)
 }
+
+func (o *GetLogTargetOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/log_targets/{index}][%d] getLogTargetOK  %+v", 200, o.Payload)
+}
+
 func (o *GetLogTargetOK) GetPayload() *GetLogTargetOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetLogTargetNotFound() *GetLogTargetNotFound {
 	return &GetLogTargetNotFound{}
 }
 
-/* GetLogTargetNotFound describes a response with status code 404, with default header values.
+/*
+GetLogTargetNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -112,9 +144,39 @@ type GetLogTargetNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get log target not found response has a 2xx status code
+func (o *GetLogTargetNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get log target not found response has a 3xx status code
+func (o *GetLogTargetNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get log target not found response has a 4xx status code
+func (o *GetLogTargetNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get log target not found response has a 5xx status code
+func (o *GetLogTargetNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get log target not found response a status code equal to that given
+func (o *GetLogTargetNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetLogTargetNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_targets/{index}][%d] getLogTargetNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetLogTargetNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/log_targets/{index}][%d] getLogTargetNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetLogTargetNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetLogTargetDefault(code int) *GetLogTargetDefault {
 	}
 }
 
-/* GetLogTargetDefault describes a response with status code -1, with default header values.
+/*
+GetLogTargetDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetLogTargetDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get log target default response has a 2xx status code
+func (o *GetLogTargetDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get log target default response has a 3xx status code
+func (o *GetLogTargetDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get log target default response has a 4xx status code
+func (o *GetLogTargetDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get log target default response has a 5xx status code
+func (o *GetLogTargetDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get log target default response a status code equal to that given
+func (o *GetLogTargetDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetLogTargetDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_targets/{index}][%d] getLogTarget default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetLogTargetDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/log_targets/{index}][%d] getLogTarget default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetLogTargetDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetLogTargetDefault) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-/*GetLogTargetOKBody get log target o k body
+/*
+GetLogTargetOKBody get log target o k body
 swagger:model GetLogTargetOKBody
 */
 type GetLogTargetOKBody struct {

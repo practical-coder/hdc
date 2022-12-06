@@ -58,7 +58,8 @@ func NewDeleteTCPCheckAccepted() *DeleteTCPCheckAccepted {
 	return &DeleteTCPCheckAccepted{}
 }
 
-/* DeleteTCPCheckAccepted describes a response with status code 202, with default header values.
+/*
+DeleteTCPCheckAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteTCPCheckAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete Tcp check accepted response has a 2xx status code
+func (o *DeleteTCPCheckAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete Tcp check accepted response has a 3xx status code
+func (o *DeleteTCPCheckAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Tcp check accepted response has a 4xx status code
+func (o *DeleteTCPCheckAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete Tcp check accepted response has a 5xx status code
+func (o *DeleteTCPCheckAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Tcp check accepted response a status code equal to that given
+func (o *DeleteTCPCheckAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteTCPCheckAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_checks/{index}][%d] deleteTcpCheckAccepted ", 202)
+}
+
+func (o *DeleteTCPCheckAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_checks/{index}][%d] deleteTcpCheckAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteTCPCheckNoContent() *DeleteTCPCheckNoContent {
 	return &DeleteTCPCheckNoContent{}
 }
 
-/* DeleteTCPCheckNoContent describes a response with status code 204, with default header values.
+/*
+DeleteTCPCheckNoContent describes a response with status code 204, with default header values.
 
 TCP check deleted
 */
 type DeleteTCPCheckNoContent struct {
 }
 
+// IsSuccess returns true when this delete Tcp check no content response has a 2xx status code
+func (o *DeleteTCPCheckNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete Tcp check no content response has a 3xx status code
+func (o *DeleteTCPCheckNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Tcp check no content response has a 4xx status code
+func (o *DeleteTCPCheckNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete Tcp check no content response has a 5xx status code
+func (o *DeleteTCPCheckNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Tcp check no content response a status code equal to that given
+func (o *DeleteTCPCheckNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteTCPCheckNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_checks/{index}][%d] deleteTcpCheckNoContent ", 204)
+}
+
+func (o *DeleteTCPCheckNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_checks/{index}][%d] deleteTcpCheckNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteTCPCheckNotFound() *DeleteTCPCheckNotFound {
 	return &DeleteTCPCheckNotFound{}
 }
 
-/* DeleteTCPCheckNotFound describes a response with status code 404, with default header values.
+/*
+DeleteTCPCheckNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteTCPCheckNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete Tcp check not found response has a 2xx status code
+func (o *DeleteTCPCheckNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete Tcp check not found response has a 3xx status code
+func (o *DeleteTCPCheckNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Tcp check not found response has a 4xx status code
+func (o *DeleteTCPCheckNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete Tcp check not found response has a 5xx status code
+func (o *DeleteTCPCheckNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Tcp check not found response a status code equal to that given
+func (o *DeleteTCPCheckNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteTCPCheckNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_checks/{index}][%d] deleteTcpCheckNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteTCPCheckNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_checks/{index}][%d] deleteTcpCheckNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteTCPCheckNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteTCPCheckDefault(code int) *DeleteTCPCheckDefault {
 	}
 }
 
-/* DeleteTCPCheckDefault describes a response with status code -1, with default header values.
+/*
+DeleteTCPCheckDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteTCPCheckDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete TCP check default response has a 2xx status code
+func (o *DeleteTCPCheckDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete TCP check default response has a 3xx status code
+func (o *DeleteTCPCheckDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete TCP check default response has a 4xx status code
+func (o *DeleteTCPCheckDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete TCP check default response has a 5xx status code
+func (o *DeleteTCPCheckDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete TCP check default response a status code equal to that given
+func (o *DeleteTCPCheckDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteTCPCheckDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_checks/{index}][%d] deleteTCPCheck default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteTCPCheckDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_checks/{index}][%d] deleteTCPCheck default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteTCPCheckDefault) GetPayload() *models.Error {
 	return o.Payload
 }

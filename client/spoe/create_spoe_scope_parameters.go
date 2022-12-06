@@ -55,10 +55,12 @@ func NewCreateSpoeScopeParamsWithHTTPClient(client *http.Client) *CreateSpoeScop
 	}
 }
 
-/* CreateSpoeScopeParams contains all the parameters to send to the API endpoint
-   for the create spoe scope operation.
+/*
+CreateSpoeScopeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create spoe scope operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateSpoeScopeParams struct {
 

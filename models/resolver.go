@@ -16,7 +16,7 @@ import (
 
 // Resolver Resolver
 //
-// Runtime DNS configuration
+// # Runtime DNS configuration
 //
 // swagger:model resolver
 type Resolver struct {

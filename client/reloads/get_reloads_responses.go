@@ -46,7 +46,8 @@ func NewGetReloadsOK() *GetReloadsOK {
 	return &GetReloadsOK{}
 }
 
-/* GetReloadsOK describes a response with status code 200, with default header values.
+/*
+GetReloadsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -54,9 +55,39 @@ type GetReloadsOK struct {
 	Payload models.Reloads
 }
 
+// IsSuccess returns true when this get reloads o k response has a 2xx status code
+func (o *GetReloadsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get reloads o k response has a 3xx status code
+func (o *GetReloadsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get reloads o k response has a 4xx status code
+func (o *GetReloadsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get reloads o k response has a 5xx status code
+func (o *GetReloadsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get reloads o k response a status code equal to that given
+func (o *GetReloadsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetReloadsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/reloads][%d] getReloadsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetReloadsOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/reloads][%d] getReloadsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetReloadsOK) GetPayload() models.Reloads {
 	return o.Payload
 }
@@ -78,7 +109,8 @@ func NewGetReloadsDefault(code int) *GetReloadsDefault {
 	}
 }
 
-/* GetReloadsDefault describes a response with status code -1, with default header values.
+/*
+GetReloadsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -97,9 +129,39 @@ func (o *GetReloadsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get reloads default response has a 2xx status code
+func (o *GetReloadsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get reloads default response has a 3xx status code
+func (o *GetReloadsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get reloads default response has a 4xx status code
+func (o *GetReloadsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get reloads default response has a 5xx status code
+func (o *GetReloadsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get reloads default response a status code equal to that given
+func (o *GetReloadsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetReloadsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/reloads][%d] getReloads default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetReloadsDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/reloads][%d] getReloads default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetReloadsDefault) GetPayload() *models.Error {
 	return o.Payload
 }

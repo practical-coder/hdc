@@ -50,7 +50,8 @@ func NewGetDeclareCapturesOK() *GetDeclareCapturesOK {
 	return &GetDeclareCapturesOK{}
 }
 
-/* GetDeclareCapturesOK describes a response with status code 200, with default header values.
+/*
+GetDeclareCapturesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetDeclareCapturesOK struct {
 	Payload *GetDeclareCapturesOKBody
 }
 
+// IsSuccess returns true when this get declare captures o k response has a 2xx status code
+func (o *GetDeclareCapturesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get declare captures o k response has a 3xx status code
+func (o *GetDeclareCapturesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get declare captures o k response has a 4xx status code
+func (o *GetDeclareCapturesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get declare captures o k response has a 5xx status code
+func (o *GetDeclareCapturesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get declare captures o k response a status code equal to that given
+func (o *GetDeclareCapturesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDeclareCapturesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/captures][%d] getDeclareCapturesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetDeclareCapturesOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/captures][%d] getDeclareCapturesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetDeclareCapturesOK) GetPayload() *GetDeclareCapturesOKBody {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewGetDeclareCapturesDefault(code int) *GetDeclareCapturesDefault {
 	}
 }
 
-/* GetDeclareCapturesDefault describes a response with status code -1, with default header values.
+/*
+GetDeclareCapturesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +147,39 @@ func (o *GetDeclareCapturesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get declare captures default response has a 2xx status code
+func (o *GetDeclareCapturesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get declare captures default response has a 3xx status code
+func (o *GetDeclareCapturesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get declare captures default response has a 4xx status code
+func (o *GetDeclareCapturesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get declare captures default response has a 5xx status code
+func (o *GetDeclareCapturesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get declare captures default response a status code equal to that given
+func (o *GetDeclareCapturesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetDeclareCapturesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/captures][%d] getDeclareCaptures default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetDeclareCapturesDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/captures][%d] getDeclareCaptures default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetDeclareCapturesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -141,7 +203,8 @@ func (o *GetDeclareCapturesDefault) readResponse(response runtime.ClientResponse
 	return nil
 }
 
-/*GetDeclareCapturesOKBody get declare captures o k body
+/*
+GetDeclareCapturesOKBody get declare captures o k body
 swagger:model GetDeclareCapturesOKBody
 */
 type GetDeclareCapturesOKBody struct {

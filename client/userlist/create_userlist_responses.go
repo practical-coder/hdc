@@ -64,7 +64,8 @@ func NewCreateUserlistCreated() *CreateUserlistCreated {
 	return &CreateUserlistCreated{}
 }
 
-/* CreateUserlistCreated describes a response with status code 201, with default header values.
+/*
+CreateUserlistCreated describes a response with status code 201, with default header values.
 
 Userlist created
 */
@@ -72,9 +73,39 @@ type CreateUserlistCreated struct {
 	Payload *models.Userlist
 }
 
+// IsSuccess returns true when this create userlist created response has a 2xx status code
+func (o *CreateUserlistCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create userlist created response has a 3xx status code
+func (o *CreateUserlistCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create userlist created response has a 4xx status code
+func (o *CreateUserlistCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create userlist created response has a 5xx status code
+func (o *CreateUserlistCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create userlist created response a status code equal to that given
+func (o *CreateUserlistCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateUserlistCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateUserlistCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateUserlistCreated) GetPayload() *models.Userlist {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateUserlistAccepted() *CreateUserlistAccepted {
 	return &CreateUserlistAccepted{}
 }
 
-/* CreateUserlistAccepted describes a response with status code 202, with default header values.
+/*
+CreateUserlistAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateUserlistAccepted struct {
 	Payload *models.Userlist
 }
 
+// IsSuccess returns true when this create userlist accepted response has a 2xx status code
+func (o *CreateUserlistAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create userlist accepted response has a 3xx status code
+func (o *CreateUserlistAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create userlist accepted response has a 4xx status code
+func (o *CreateUserlistAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create userlist accepted response has a 5xx status code
+func (o *CreateUserlistAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create userlist accepted response a status code equal to that given
+func (o *CreateUserlistAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateUserlistAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateUserlistAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateUserlistAccepted) GetPayload() *models.Userlist {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateUserlistBadRequest() *CreateUserlistBadRequest {
 	return &CreateUserlistBadRequest{}
 }
 
-/* CreateUserlistBadRequest describes a response with status code 400, with default header values.
+/*
+CreateUserlistBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateUserlistBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create userlist bad request response has a 2xx status code
+func (o *CreateUserlistBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create userlist bad request response has a 3xx status code
+func (o *CreateUserlistBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create userlist bad request response has a 4xx status code
+func (o *CreateUserlistBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create userlist bad request response has a 5xx status code
+func (o *CreateUserlistBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create userlist bad request response a status code equal to that given
+func (o *CreateUserlistBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateUserlistBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateUserlistBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateUserlistBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateUserlistConflict() *CreateUserlistConflict {
 	return &CreateUserlistConflict{}
 }
 
-/* CreateUserlistConflict describes a response with status code 409, with default header values.
+/*
+CreateUserlistConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateUserlistConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create userlist conflict response has a 2xx status code
+func (o *CreateUserlistConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create userlist conflict response has a 3xx status code
+func (o *CreateUserlistConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create userlist conflict response has a 4xx status code
+func (o *CreateUserlistConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create userlist conflict response has a 5xx status code
+func (o *CreateUserlistConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create userlist conflict response a status code equal to that given
+func (o *CreateUserlistConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateUserlistConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateUserlistConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateUserlistConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateUserlistDefault(code int) *CreateUserlistDefault {
 	}
 }
 
-/* CreateUserlistDefault describes a response with status code -1, with default header values.
+/*
+CreateUserlistDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateUserlistDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create userlist default response has a 2xx status code
+func (o *CreateUserlistDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create userlist default response has a 3xx status code
+func (o *CreateUserlistDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create userlist default response has a 4xx status code
+func (o *CreateUserlistDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create userlist default response has a 5xx status code
+func (o *CreateUserlistDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create userlist default response a status code equal to that given
+func (o *CreateUserlistDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateUserlistDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlist default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateUserlistDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlist default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateUserlistDefault) GetPayload() *models.Error {
 	return o.Payload
 }

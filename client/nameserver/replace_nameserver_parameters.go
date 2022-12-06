@@ -55,10 +55,12 @@ func NewReplaceNameserverParamsWithHTTPClient(client *http.Client) *ReplaceNames
 	}
 }
 
-/* ReplaceNameserverParams contains all the parameters to send to the API endpoint
-   for the replace nameserver operation.
+/*
+ReplaceNameserverParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace nameserver operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceNameserverParams struct {
 

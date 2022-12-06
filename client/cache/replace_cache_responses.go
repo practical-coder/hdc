@@ -64,7 +64,8 @@ func NewReplaceCacheOK() *ReplaceCacheOK {
 	return &ReplaceCacheOK{}
 }
 
-/* ReplaceCacheOK describes a response with status code 200, with default header values.
+/*
+ReplaceCacheOK describes a response with status code 200, with default header values.
 
 Cache replaced
 */
@@ -72,9 +73,39 @@ type ReplaceCacheOK struct {
 	Payload *models.Cache
 }
 
+// IsSuccess returns true when this replace cache o k response has a 2xx status code
+func (o *ReplaceCacheOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace cache o k response has a 3xx status code
+func (o *ReplaceCacheOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace cache o k response has a 4xx status code
+func (o *ReplaceCacheOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace cache o k response has a 5xx status code
+func (o *ReplaceCacheOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace cache o k response a status code equal to that given
+func (o *ReplaceCacheOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceCacheOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceCacheOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceCacheOK) GetPayload() *models.Cache {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceCacheAccepted() *ReplaceCacheAccepted {
 	return &ReplaceCacheAccepted{}
 }
 
-/* ReplaceCacheAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceCacheAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceCacheAccepted struct {
 	Payload *models.Cache
 }
 
+// IsSuccess returns true when this replace cache accepted response has a 2xx status code
+func (o *ReplaceCacheAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace cache accepted response has a 3xx status code
+func (o *ReplaceCacheAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace cache accepted response has a 4xx status code
+func (o *ReplaceCacheAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace cache accepted response has a 5xx status code
+func (o *ReplaceCacheAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace cache accepted response a status code equal to that given
+func (o *ReplaceCacheAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceCacheAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceCacheAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceCacheAccepted) GetPayload() *models.Cache {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceCacheBadRequest() *ReplaceCacheBadRequest {
 	return &ReplaceCacheBadRequest{}
 }
 
-/* ReplaceCacheBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceCacheBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceCacheBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace cache bad request response has a 2xx status code
+func (o *ReplaceCacheBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace cache bad request response has a 3xx status code
+func (o *ReplaceCacheBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace cache bad request response has a 4xx status code
+func (o *ReplaceCacheBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace cache bad request response has a 5xx status code
+func (o *ReplaceCacheBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace cache bad request response a status code equal to that given
+func (o *ReplaceCacheBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceCacheBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceCacheBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceCacheBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceCacheNotFound() *ReplaceCacheNotFound {
 	return &ReplaceCacheNotFound{}
 }
 
-/* ReplaceCacheNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceCacheNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceCacheNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace cache not found response has a 2xx status code
+func (o *ReplaceCacheNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace cache not found response has a 3xx status code
+func (o *ReplaceCacheNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace cache not found response has a 4xx status code
+func (o *ReplaceCacheNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace cache not found response has a 5xx status code
+func (o *ReplaceCacheNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace cache not found response a status code equal to that given
+func (o *ReplaceCacheNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceCacheNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceCacheNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceCacheNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceCacheDefault(code int) *ReplaceCacheDefault {
 	}
 }
 
-/* ReplaceCacheDefault describes a response with status code -1, with default header values.
+/*
+ReplaceCacheDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceCacheDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace cache default response has a 2xx status code
+func (o *ReplaceCacheDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace cache default response has a 3xx status code
+func (o *ReplaceCacheDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace cache default response has a 4xx status code
+func (o *ReplaceCacheDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace cache default response has a 5xx status code
+func (o *ReplaceCacheDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace cache default response a status code equal to that given
+func (o *ReplaceCacheDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceCacheDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCache default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceCacheDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCache default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceCacheDefault) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -55,10 +55,12 @@ func NewReplaceDeclareCaptureParamsWithHTTPClient(client *http.Client) *ReplaceD
 	}
 }
 
-/* ReplaceDeclareCaptureParams contains all the parameters to send to the API endpoint
-   for the replace declare capture operation.
+/*
+ReplaceDeclareCaptureParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace declare capture operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceDeclareCaptureParams struct {
 

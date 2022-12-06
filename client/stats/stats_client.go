@@ -34,9 +34,9 @@ type ClientService interface {
 }
 
 /*
-  GetStats gets stats
+GetStats gets stats
 
-  Getting stats from the HAProxy.
+Getting stats from the HAProxy.
 */
 func (a *Client) GetStats(params *GetStatsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStatsOK, error) {
 	// TODO: Validate the params before sending

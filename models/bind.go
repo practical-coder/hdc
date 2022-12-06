@@ -16,7 +16,7 @@ import (
 
 // Bind Bind
 //
-// HAProxy frontend bind configuration
+// # HAProxy frontend bind configuration
 //
 // swagger:model bind
 type Bind struct {

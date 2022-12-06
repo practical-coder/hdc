@@ -52,10 +52,12 @@ func NewGetResolversParamsWithHTTPClient(client *http.Client) *GetResolversParam
 	}
 }
 
-/* GetResolversParams contains all the parameters to send to the API endpoint
-   for the get resolvers operation.
+/*
+GetResolversParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get resolvers operation.
+
+	Typically these are written to a http.Request.
 */
 type GetResolversParams struct {
 

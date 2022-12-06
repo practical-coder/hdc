@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  CreateUser adds a new userlist user
+CreateUser adds a new userlist user
 */
 func (a *Client) CreateUser(params *CreateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserCreated, *CreateUserAccepted, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateUser(params *CreateUserParams, authInfo runtime.ClientAut
 }
 
 /*
-  DeleteUser deletes a user
+DeleteUser deletes a user
 */
 func (a *Client) DeleteUser(params *DeleteUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteUserAccepted, *DeleteUserNoContent, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) DeleteUser(params *DeleteUserParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetUser returns one userlist user
+GetUser returns one userlist user
 */
 func (a *Client) GetUser(params *GetUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserOK, error) {
 	// TODO: Validate the params before sending
@@ -160,7 +160,7 @@ func (a *Client) GetUser(params *GetUserParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  GetUsers returns an array of userlist users
+GetUsers returns an array of userlist users
 */
 func (a *Client) GetUsers(params *GetUsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUsersOK, error) {
 	// TODO: Validate the params before sending
@@ -198,7 +198,7 @@ func (a *Client) GetUsers(params *GetUsersParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  ReplaceUser replaces a user
+ReplaceUser replaces a user
 */
 func (a *Client) ReplaceUser(params *ReplaceUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceUserOK, *ReplaceUserAccepted, error) {
 	// TODO: Validate the params before sending

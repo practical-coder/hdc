@@ -64,7 +64,8 @@ func NewCreateGroupCreated() *CreateGroupCreated {
 	return &CreateGroupCreated{}
 }
 
-/* CreateGroupCreated describes a response with status code 201, with default header values.
+/*
+CreateGroupCreated describes a response with status code 201, with default header values.
 
 Group created
 */
@@ -72,9 +73,39 @@ type CreateGroupCreated struct {
 	Payload *models.Group
 }
 
+// IsSuccess returns true when this create group created response has a 2xx status code
+func (o *CreateGroupCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create group created response has a 3xx status code
+func (o *CreateGroupCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create group created response has a 4xx status code
+func (o *CreateGroupCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create group created response has a 5xx status code
+func (o *CreateGroupCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create group created response a status code equal to that given
+func (o *CreateGroupCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateGroupCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateGroupCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateGroupCreated) GetPayload() *models.Group {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateGroupAccepted() *CreateGroupAccepted {
 	return &CreateGroupAccepted{}
 }
 
-/* CreateGroupAccepted describes a response with status code 202, with default header values.
+/*
+CreateGroupAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateGroupAccepted struct {
 	Payload *models.Group
 }
 
+// IsSuccess returns true when this create group accepted response has a 2xx status code
+func (o *CreateGroupAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create group accepted response has a 3xx status code
+func (o *CreateGroupAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create group accepted response has a 4xx status code
+func (o *CreateGroupAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create group accepted response has a 5xx status code
+func (o *CreateGroupAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create group accepted response a status code equal to that given
+func (o *CreateGroupAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateGroupAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateGroupAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateGroupAccepted) GetPayload() *models.Group {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateGroupBadRequest() *CreateGroupBadRequest {
 	return &CreateGroupBadRequest{}
 }
 
-/* CreateGroupBadRequest describes a response with status code 400, with default header values.
+/*
+CreateGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateGroupBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create group bad request response has a 2xx status code
+func (o *CreateGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create group bad request response has a 3xx status code
+func (o *CreateGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create group bad request response has a 4xx status code
+func (o *CreateGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create group bad request response has a 5xx status code
+func (o *CreateGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create group bad request response a status code equal to that given
+func (o *CreateGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateGroupBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateGroupBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateGroupConflict() *CreateGroupConflict {
 	return &CreateGroupConflict{}
 }
 
-/* CreateGroupConflict describes a response with status code 409, with default header values.
+/*
+CreateGroupConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateGroupConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create group conflict response has a 2xx status code
+func (o *CreateGroupConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create group conflict response has a 3xx status code
+func (o *CreateGroupConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create group conflict response has a 4xx status code
+func (o *CreateGroupConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create group conflict response has a 5xx status code
+func (o *CreateGroupConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create group conflict response a status code equal to that given
+func (o *CreateGroupConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateGroupConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateGroupConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateGroupConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateGroupDefault(code int) *CreateGroupDefault {
 	}
 }
 
-/* CreateGroupDefault describes a response with status code -1, with default header values.
+/*
+CreateGroupDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateGroupDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create group default response has a 2xx status code
+func (o *CreateGroupDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create group default response has a 3xx status code
+func (o *CreateGroupDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create group default response has a 4xx status code
+func (o *CreateGroupDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create group default response has a 5xx status code
+func (o *CreateGroupDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create group default response a status code equal to that given
+func (o *CreateGroupDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateGroupDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroup default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateGroupDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroup default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateGroupDefault) GetPayload() *models.Error {
 	return o.Payload
 }

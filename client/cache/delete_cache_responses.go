@@ -58,7 +58,8 @@ func NewDeleteCacheAccepted() *DeleteCacheAccepted {
 	return &DeleteCacheAccepted{}
 }
 
-/* DeleteCacheAccepted describes a response with status code 202, with default header values.
+/*
+DeleteCacheAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteCacheAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete cache accepted response has a 2xx status code
+func (o *DeleteCacheAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete cache accepted response has a 3xx status code
+func (o *DeleteCacheAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete cache accepted response has a 4xx status code
+func (o *DeleteCacheAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete cache accepted response has a 5xx status code
+func (o *DeleteCacheAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete cache accepted response a status code equal to that given
+func (o *DeleteCacheAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteCacheAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/caches/{name}][%d] deleteCacheAccepted ", 202)
+}
+
+func (o *DeleteCacheAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/caches/{name}][%d] deleteCacheAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteCacheNoContent() *DeleteCacheNoContent {
 	return &DeleteCacheNoContent{}
 }
 
-/* DeleteCacheNoContent describes a response with status code 204, with default header values.
+/*
+DeleteCacheNoContent describes a response with status code 204, with default header values.
 
 Cache deleted
 */
 type DeleteCacheNoContent struct {
 }
 
+// IsSuccess returns true when this delete cache no content response has a 2xx status code
+func (o *DeleteCacheNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete cache no content response has a 3xx status code
+func (o *DeleteCacheNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete cache no content response has a 4xx status code
+func (o *DeleteCacheNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete cache no content response has a 5xx status code
+func (o *DeleteCacheNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete cache no content response a status code equal to that given
+func (o *DeleteCacheNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteCacheNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/caches/{name}][%d] deleteCacheNoContent ", 204)
+}
+
+func (o *DeleteCacheNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/caches/{name}][%d] deleteCacheNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteCacheNotFound() *DeleteCacheNotFound {
 	return &DeleteCacheNotFound{}
 }
 
-/* DeleteCacheNotFound describes a response with status code 404, with default header values.
+/*
+DeleteCacheNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteCacheNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete cache not found response has a 2xx status code
+func (o *DeleteCacheNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete cache not found response has a 3xx status code
+func (o *DeleteCacheNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete cache not found response has a 4xx status code
+func (o *DeleteCacheNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete cache not found response has a 5xx status code
+func (o *DeleteCacheNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete cache not found response a status code equal to that given
+func (o *DeleteCacheNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteCacheNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/caches/{name}][%d] deleteCacheNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteCacheNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/caches/{name}][%d] deleteCacheNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteCacheNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteCacheDefault(code int) *DeleteCacheDefault {
 	}
 }
 
-/* DeleteCacheDefault describes a response with status code -1, with default header values.
+/*
+DeleteCacheDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteCacheDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete cache default response has a 2xx status code
+func (o *DeleteCacheDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete cache default response has a 3xx status code
+func (o *DeleteCacheDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete cache default response has a 4xx status code
+func (o *DeleteCacheDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete cache default response has a 5xx status code
+func (o *DeleteCacheDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete cache default response a status code equal to that given
+func (o *DeleteCacheDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteCacheDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/caches/{name}][%d] deleteCache default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteCacheDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/caches/{name}][%d] deleteCache default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteCacheDefault) GetPayload() *models.Error {
 	return o.Payload
 }

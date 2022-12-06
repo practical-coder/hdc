@@ -64,7 +64,8 @@ func NewReplaceSiteOK() *ReplaceSiteOK {
 	return &ReplaceSiteOK{}
 }
 
-/* ReplaceSiteOK describes a response with status code 200, with default header values.
+/*
+ReplaceSiteOK describes a response with status code 200, with default header values.
 
 Site replaced
 */
@@ -72,9 +73,39 @@ type ReplaceSiteOK struct {
 	Payload *models.Site
 }
 
+// IsSuccess returns true when this replace site o k response has a 2xx status code
+func (o *ReplaceSiteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace site o k response has a 3xx status code
+func (o *ReplaceSiteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace site o k response has a 4xx status code
+func (o *ReplaceSiteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace site o k response has a 5xx status code
+func (o *ReplaceSiteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace site o k response a status code equal to that given
+func (o *ReplaceSiteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceSiteOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceSiteOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceSiteOK) GetPayload() *models.Site {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceSiteAccepted() *ReplaceSiteAccepted {
 	return &ReplaceSiteAccepted{}
 }
 
-/* ReplaceSiteAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceSiteAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceSiteAccepted struct {
 	Payload *models.Site
 }
 
+// IsSuccess returns true when this replace site accepted response has a 2xx status code
+func (o *ReplaceSiteAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace site accepted response has a 3xx status code
+func (o *ReplaceSiteAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace site accepted response has a 4xx status code
+func (o *ReplaceSiteAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace site accepted response has a 5xx status code
+func (o *ReplaceSiteAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace site accepted response a status code equal to that given
+func (o *ReplaceSiteAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceSiteAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceSiteAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceSiteAccepted) GetPayload() *models.Site {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceSiteBadRequest() *ReplaceSiteBadRequest {
 	return &ReplaceSiteBadRequest{}
 }
 
-/* ReplaceSiteBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceSiteBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceSiteBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace site bad request response has a 2xx status code
+func (o *ReplaceSiteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace site bad request response has a 3xx status code
+func (o *ReplaceSiteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace site bad request response has a 4xx status code
+func (o *ReplaceSiteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace site bad request response has a 5xx status code
+func (o *ReplaceSiteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace site bad request response a status code equal to that given
+func (o *ReplaceSiteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceSiteBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceSiteBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceSiteBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceSiteNotFound() *ReplaceSiteNotFound {
 	return &ReplaceSiteNotFound{}
 }
 
-/* ReplaceSiteNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceSiteNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceSiteNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace site not found response has a 2xx status code
+func (o *ReplaceSiteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace site not found response has a 3xx status code
+func (o *ReplaceSiteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace site not found response has a 4xx status code
+func (o *ReplaceSiteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace site not found response has a 5xx status code
+func (o *ReplaceSiteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace site not found response a status code equal to that given
+func (o *ReplaceSiteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceSiteNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceSiteNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceSiteNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceSiteDefault(code int) *ReplaceSiteDefault {
 	}
 }
 
-/* ReplaceSiteDefault describes a response with status code -1, with default header values.
+/*
+ReplaceSiteDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceSiteDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace site default response has a 2xx status code
+func (o *ReplaceSiteDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace site default response has a 3xx status code
+func (o *ReplaceSiteDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace site default response has a 4xx status code
+func (o *ReplaceSiteDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace site default response has a 5xx status code
+func (o *ReplaceSiteDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace site default response a status code equal to that given
+func (o *ReplaceSiteDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceSiteDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSite default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceSiteDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSite default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceSiteDefault) GetPayload() *models.Error {
 	return o.Payload
 }

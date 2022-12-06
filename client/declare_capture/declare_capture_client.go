@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateDeclareCapture adds a new declare capture
+CreateDeclareCapture adds a new declare capture
 
-  Adds a new declare capture in the specified frontend in the configuration file.
+Adds a new declare capture in the specified frontend in the configuration file.
 */
 func (a *Client) CreateDeclareCapture(params *CreateDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateDeclareCaptureCreated, *CreateDeclareCaptureAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateDeclareCapture(params *CreateDeclareCaptureParams, authIn
 }
 
 /*
-  DeleteDeclareCapture deletes a declare capture
+DeleteDeclareCapture deletes a declare capture
 
-  Deletes a declare capture configuration by it's index in the specified frontend.
+Deletes a declare capture configuration by it's index in the specified frontend.
 */
 func (a *Client) DeleteDeclareCapture(params *DeleteDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteDeclareCaptureAccepted, *DeleteDeclareCaptureNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteDeclareCapture(params *DeleteDeclareCaptureParams, authIn
 }
 
 /*
-  GetDeclareCapture returns one declare capture
+GetDeclareCapture returns one declare capture
 
-  Returns one declare capture configuration by it's index in the specified frontend.
+Returns one declare capture configuration by it's index in the specified frontend.
 */
 func (a *Client) GetDeclareCapture(params *GetDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDeclareCaptureOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetDeclareCapture(params *GetDeclareCaptureParams, authInfo run
 }
 
 /*
-  GetDeclareCaptures returns an array of declare captures
+GetDeclareCaptures returns an array of declare captures
 
-  Returns an array of all declare capture records that are configured in specified frontend.
+Returns an array of all declare capture records that are configured in specified frontend.
 */
 func (a *Client) GetDeclareCaptures(params *GetDeclareCapturesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDeclareCapturesOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetDeclareCaptures(params *GetDeclareCapturesParams, authInfo r
 }
 
 /*
-  ReplaceDeclareCapture replaces a declare capture
+ReplaceDeclareCapture replaces a declare capture
 
-  Replaces a declare capture configuration by it's index in the specified frontend.
+Replaces a declare capture configuration by it's index in the specified frontend.
 */
 func (a *Client) ReplaceDeclareCapture(params *ReplaceDeclareCaptureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceDeclareCaptureOK, *ReplaceDeclareCaptureAccepted, error) {
 	// TODO: Validate the params before sending

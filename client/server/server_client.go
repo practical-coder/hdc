@@ -28,7 +28,11 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	AddRuntimeServer(params *AddRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddRuntimeServerCreated, error)
+
 	CreateServer(params *CreateServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateServerCreated, *CreateServerAccepted, error)
+
+	DeleteRuntimeServer(params *DeleteRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRuntimeServerNoContent, error)
 
 	DeleteServer(params *DeleteServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteServerAccepted, *DeleteServerNoContent, error)
 
@@ -48,9 +52,49 @@ type ClientService interface {
 }
 
 /*
-  CreateServer adds a new server
+AddRuntimeServer adds a new server to a backend
 
-  Adds a new server in the specified backend in the configuration file.
+Adds a new server to the specified backend
+*/
+func (a *Client) AddRuntimeServer(params *AddRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddRuntimeServerCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAddRuntimeServerParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "addRuntimeServer",
+		Method:             "POST",
+		PathPattern:        "/services/haproxy/runtime/servers",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &AddRuntimeServerReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AddRuntimeServerCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*AddRuntimeServerDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+CreateServer adds a new server
+
+Adds a new server in the specified backend in the configuration file.
 */
 func (a *Client) CreateServer(params *CreateServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateServerCreated, *CreateServerAccepted, error) {
 	// TODO: Validate the params before sending
@@ -90,9 +134,49 @@ func (a *Client) CreateServer(params *CreateServerParams, authInfo runtime.Clien
 }
 
 /*
-  DeleteServer deletes a server
+DeleteRuntimeServer deletes a server from a backend
 
-  Deletes a server configuration by it's name in the specified backend.
+Deletes a server from the specified backend
+*/
+func (a *Client) DeleteRuntimeServer(params *DeleteRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRuntimeServerNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteRuntimeServerParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteRuntimeServer",
+		Method:             "DELETE",
+		PathPattern:        "/services/haproxy/runtime/servers/{name}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &DeleteRuntimeServerReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteRuntimeServerNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DeleteRuntimeServerDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+DeleteServer deletes a server
+
+Deletes a server configuration by it's name in the specified backend.
 */
 func (a *Client) DeleteServer(params *DeleteServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteServerAccepted, *DeleteServerNoContent, error) {
 	// TODO: Validate the params before sending
@@ -132,9 +216,9 @@ func (a *Client) DeleteServer(params *DeleteServerParams, authInfo runtime.Clien
 }
 
 /*
-  GetRuntimeServer returns one server runtime settings
+GetRuntimeServer returns one server runtime settings
 
-  Returns one server runtime settings by it's name in the specified backend.
+Returns one server runtime settings by it's name in the specified backend.
 */
 func (a *Client) GetRuntimeServer(params *GetRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRuntimeServerOK, error) {
 	// TODO: Validate the params before sending
@@ -172,9 +256,9 @@ func (a *Client) GetRuntimeServer(params *GetRuntimeServerParams, authInfo runti
 }
 
 /*
-  GetRuntimeServers returns an array of runtime servers settings
+GetRuntimeServers returns an array of runtime servers settings
 
-  Returns an array of all servers' runtime settings.
+Returns an array of all servers' runtime settings.
 */
 func (a *Client) GetRuntimeServers(params *GetRuntimeServersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRuntimeServersOK, error) {
 	// TODO: Validate the params before sending
@@ -212,9 +296,9 @@ func (a *Client) GetRuntimeServers(params *GetRuntimeServersParams, authInfo run
 }
 
 /*
-  GetServer returns one server
+GetServer returns one server
 
-  Returns one server configuration by it's name in the specified backend.
+Returns one server configuration by it's name in the specified backend.
 */
 func (a *Client) GetServer(params *GetServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServerOK, error) {
 	// TODO: Validate the params before sending
@@ -252,9 +336,9 @@ func (a *Client) GetServer(params *GetServerParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  GetServers returns an array of servers
+GetServers returns an array of servers
 
-  Returns an array of all servers that are configured in specified backend.
+Returns an array of all servers that are configured in specified backend.
 */
 func (a *Client) GetServers(params *GetServersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServersOK, error) {
 	// TODO: Validate the params before sending
@@ -292,9 +376,9 @@ func (a *Client) GetServers(params *GetServersParams, authInfo runtime.ClientAut
 }
 
 /*
-  ReplaceRuntimeServer replaces server transient settings
+ReplaceRuntimeServer replaces server transient settings
 
-  Replaces a server transient settings by it's name in the specified backend.
+Replaces a server transient settings by it's name in the specified backend.
 */
 func (a *Client) ReplaceRuntimeServer(params *ReplaceRuntimeServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceRuntimeServerOK, error) {
 	// TODO: Validate the params before sending
@@ -332,9 +416,9 @@ func (a *Client) ReplaceRuntimeServer(params *ReplaceRuntimeServerParams, authIn
 }
 
 /*
-  ReplaceServer replaces a server
+ReplaceServer replaces a server
 
-  Replaces a server configuration by it's name in the specified backend.
+Replaces a server configuration by it's name in the specified backend.
 */
 func (a *Client) ReplaceServer(params *ReplaceServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceServerOK, *ReplaceServerAccepted, error) {
 	// TODO: Validate the params before sending

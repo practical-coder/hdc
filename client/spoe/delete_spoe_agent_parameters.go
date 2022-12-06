@@ -53,10 +53,12 @@ func NewDeleteSpoeAgentParamsWithHTTPClient(client *http.Client) *DeleteSpoeAgen
 	}
 }
 
-/* DeleteSpoeAgentParams contains all the parameters to send to the API endpoint
-   for the delete spoe agent operation.
+/*
+DeleteSpoeAgentParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete spoe agent operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteSpoeAgentParams struct {
 

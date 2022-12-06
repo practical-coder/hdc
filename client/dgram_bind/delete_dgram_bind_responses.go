@@ -58,7 +58,8 @@ func NewDeleteDgramBindAccepted() *DeleteDgramBindAccepted {
 	return &DeleteDgramBindAccepted{}
 }
 
-/* DeleteDgramBindAccepted describes a response with status code 202, with default header values.
+/*
+DeleteDgramBindAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteDgramBindAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete dgram bind accepted response has a 2xx status code
+func (o *DeleteDgramBindAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete dgram bind accepted response has a 3xx status code
+func (o *DeleteDgramBindAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete dgram bind accepted response has a 4xx status code
+func (o *DeleteDgramBindAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete dgram bind accepted response has a 5xx status code
+func (o *DeleteDgramBindAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete dgram bind accepted response a status code equal to that given
+func (o *DeleteDgramBindAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteDgramBindAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/dgram_binds/{name}][%d] deleteDgramBindAccepted ", 202)
+}
+
+func (o *DeleteDgramBindAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/dgram_binds/{name}][%d] deleteDgramBindAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteDgramBindNoContent() *DeleteDgramBindNoContent {
 	return &DeleteDgramBindNoContent{}
 }
 
-/* DeleteDgramBindNoContent describes a response with status code 204, with default header values.
+/*
+DeleteDgramBindNoContent describes a response with status code 204, with default header values.
 
 Bind deleted
 */
 type DeleteDgramBindNoContent struct {
 }
 
+// IsSuccess returns true when this delete dgram bind no content response has a 2xx status code
+func (o *DeleteDgramBindNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete dgram bind no content response has a 3xx status code
+func (o *DeleteDgramBindNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete dgram bind no content response has a 4xx status code
+func (o *DeleteDgramBindNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete dgram bind no content response has a 5xx status code
+func (o *DeleteDgramBindNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete dgram bind no content response a status code equal to that given
+func (o *DeleteDgramBindNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteDgramBindNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/dgram_binds/{name}][%d] deleteDgramBindNoContent ", 204)
+}
+
+func (o *DeleteDgramBindNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/dgram_binds/{name}][%d] deleteDgramBindNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteDgramBindNotFound() *DeleteDgramBindNotFound {
 	return &DeleteDgramBindNotFound{}
 }
 
-/* DeleteDgramBindNotFound describes a response with status code 404, with default header values.
+/*
+DeleteDgramBindNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteDgramBindNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete dgram bind not found response has a 2xx status code
+func (o *DeleteDgramBindNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete dgram bind not found response has a 3xx status code
+func (o *DeleteDgramBindNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete dgram bind not found response has a 4xx status code
+func (o *DeleteDgramBindNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete dgram bind not found response has a 5xx status code
+func (o *DeleteDgramBindNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete dgram bind not found response a status code equal to that given
+func (o *DeleteDgramBindNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteDgramBindNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/dgram_binds/{name}][%d] deleteDgramBindNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteDgramBindNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/dgram_binds/{name}][%d] deleteDgramBindNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteDgramBindNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteDgramBindDefault(code int) *DeleteDgramBindDefault {
 	}
 }
 
-/* DeleteDgramBindDefault describes a response with status code -1, with default header values.
+/*
+DeleteDgramBindDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteDgramBindDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete dgram bind default response has a 2xx status code
+func (o *DeleteDgramBindDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete dgram bind default response has a 3xx status code
+func (o *DeleteDgramBindDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete dgram bind default response has a 4xx status code
+func (o *DeleteDgramBindDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete dgram bind default response has a 5xx status code
+func (o *DeleteDgramBindDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete dgram bind default response a status code equal to that given
+func (o *DeleteDgramBindDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteDgramBindDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/dgram_binds/{name}][%d] deleteDgramBind default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteDgramBindDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/dgram_binds/{name}][%d] deleteDgramBind default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteDgramBindDefault) GetPayload() *models.Error {
 	return o.Payload
 }

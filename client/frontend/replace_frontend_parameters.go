@@ -55,10 +55,12 @@ func NewReplaceFrontendParamsWithHTTPClient(client *http.Client) *ReplaceFronten
 	}
 }
 
-/* ReplaceFrontendParams contains all the parameters to send to the API endpoint
-   for the replace frontend operation.
+/*
+ReplaceFrontendParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace frontend operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceFrontendParams struct {
 

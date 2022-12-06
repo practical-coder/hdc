@@ -64,7 +64,8 @@ func NewCreateResolverCreated() *CreateResolverCreated {
 	return &CreateResolverCreated{}
 }
 
-/* CreateResolverCreated describes a response with status code 201, with default header values.
+/*
+CreateResolverCreated describes a response with status code 201, with default header values.
 
 Resolver created
 */
@@ -72,9 +73,39 @@ type CreateResolverCreated struct {
 	Payload *models.Resolver
 }
 
+// IsSuccess returns true when this create resolver created response has a 2xx status code
+func (o *CreateResolverCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create resolver created response has a 3xx status code
+func (o *CreateResolverCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create resolver created response has a 4xx status code
+func (o *CreateResolverCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create resolver created response has a 5xx status code
+func (o *CreateResolverCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create resolver created response a status code equal to that given
+func (o *CreateResolverCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateResolverCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/resolvers][%d] createResolverCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateResolverCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/resolvers][%d] createResolverCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateResolverCreated) GetPayload() *models.Resolver {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateResolverAccepted() *CreateResolverAccepted {
 	return &CreateResolverAccepted{}
 }
 
-/* CreateResolverAccepted describes a response with status code 202, with default header values.
+/*
+CreateResolverAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateResolverAccepted struct {
 	Payload *models.Resolver
 }
 
+// IsSuccess returns true when this create resolver accepted response has a 2xx status code
+func (o *CreateResolverAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create resolver accepted response has a 3xx status code
+func (o *CreateResolverAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create resolver accepted response has a 4xx status code
+func (o *CreateResolverAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create resolver accepted response has a 5xx status code
+func (o *CreateResolverAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create resolver accepted response a status code equal to that given
+func (o *CreateResolverAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateResolverAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/resolvers][%d] createResolverAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateResolverAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/resolvers][%d] createResolverAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateResolverAccepted) GetPayload() *models.Resolver {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateResolverBadRequest() *CreateResolverBadRequest {
 	return &CreateResolverBadRequest{}
 }
 
-/* CreateResolverBadRequest describes a response with status code 400, with default header values.
+/*
+CreateResolverBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateResolverBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create resolver bad request response has a 2xx status code
+func (o *CreateResolverBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create resolver bad request response has a 3xx status code
+func (o *CreateResolverBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create resolver bad request response has a 4xx status code
+func (o *CreateResolverBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create resolver bad request response has a 5xx status code
+func (o *CreateResolverBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create resolver bad request response a status code equal to that given
+func (o *CreateResolverBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateResolverBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/resolvers][%d] createResolverBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateResolverBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/resolvers][%d] createResolverBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateResolverBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateResolverConflict() *CreateResolverConflict {
 	return &CreateResolverConflict{}
 }
 
-/* CreateResolverConflict describes a response with status code 409, with default header values.
+/*
+CreateResolverConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateResolverConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create resolver conflict response has a 2xx status code
+func (o *CreateResolverConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create resolver conflict response has a 3xx status code
+func (o *CreateResolverConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create resolver conflict response has a 4xx status code
+func (o *CreateResolverConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create resolver conflict response has a 5xx status code
+func (o *CreateResolverConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create resolver conflict response a status code equal to that given
+func (o *CreateResolverConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateResolverConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/resolvers][%d] createResolverConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateResolverConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/resolvers][%d] createResolverConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateResolverConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateResolverDefault(code int) *CreateResolverDefault {
 	}
 }
 
-/* CreateResolverDefault describes a response with status code -1, with default header values.
+/*
+CreateResolverDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateResolverDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create resolver default response has a 2xx status code
+func (o *CreateResolverDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create resolver default response has a 3xx status code
+func (o *CreateResolverDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create resolver default response has a 4xx status code
+func (o *CreateResolverDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create resolver default response has a 5xx status code
+func (o *CreateResolverDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create resolver default response a status code equal to that given
+func (o *CreateResolverDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateResolverDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/resolvers][%d] createResolver default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateResolverDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/resolvers][%d] createResolver default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateResolverDefault) GetPayload() *models.Error {
 	return o.Payload
 }

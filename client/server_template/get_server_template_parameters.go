@@ -52,10 +52,12 @@ func NewGetServerTemplateParamsWithHTTPClient(client *http.Client) *GetServerTem
 	}
 }
 
-/* GetServerTemplateParams contains all the parameters to send to the API endpoint
-   for the get server template operation.
+/*
+GetServerTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get server template operation.
+
+	Typically these are written to a http.Request.
 */
 type GetServerTemplateParams struct {
 

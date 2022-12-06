@@ -64,7 +64,8 @@ func NewReplaceDgramBindOK() *ReplaceDgramBindOK {
 	return &ReplaceDgramBindOK{}
 }
 
-/* ReplaceDgramBindOK describes a response with status code 200, with default header values.
+/*
+ReplaceDgramBindOK describes a response with status code 200, with default header values.
 
 Bind replaced
 */
@@ -72,9 +73,39 @@ type ReplaceDgramBindOK struct {
 	Payload *models.DgramBind
 }
 
+// IsSuccess returns true when this replace dgram bind o k response has a 2xx status code
+func (o *ReplaceDgramBindOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace dgram bind o k response has a 3xx status code
+func (o *ReplaceDgramBindOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace dgram bind o k response has a 4xx status code
+func (o *ReplaceDgramBindOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace dgram bind o k response has a 5xx status code
+func (o *ReplaceDgramBindOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace dgram bind o k response a status code equal to that given
+func (o *ReplaceDgramBindOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceDgramBindOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/dgram_binds/{name}][%d] replaceDgramBindOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceDgramBindOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/dgram_binds/{name}][%d] replaceDgramBindOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceDgramBindOK) GetPayload() *models.DgramBind {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceDgramBindAccepted() *ReplaceDgramBindAccepted {
 	return &ReplaceDgramBindAccepted{}
 }
 
-/* ReplaceDgramBindAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceDgramBindAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceDgramBindAccepted struct {
 	Payload *models.DgramBind
 }
 
+// IsSuccess returns true when this replace dgram bind accepted response has a 2xx status code
+func (o *ReplaceDgramBindAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace dgram bind accepted response has a 3xx status code
+func (o *ReplaceDgramBindAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace dgram bind accepted response has a 4xx status code
+func (o *ReplaceDgramBindAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace dgram bind accepted response has a 5xx status code
+func (o *ReplaceDgramBindAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace dgram bind accepted response a status code equal to that given
+func (o *ReplaceDgramBindAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceDgramBindAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/dgram_binds/{name}][%d] replaceDgramBindAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceDgramBindAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/dgram_binds/{name}][%d] replaceDgramBindAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceDgramBindAccepted) GetPayload() *models.DgramBind {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceDgramBindBadRequest() *ReplaceDgramBindBadRequest {
 	return &ReplaceDgramBindBadRequest{}
 }
 
-/* ReplaceDgramBindBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceDgramBindBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceDgramBindBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace dgram bind bad request response has a 2xx status code
+func (o *ReplaceDgramBindBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace dgram bind bad request response has a 3xx status code
+func (o *ReplaceDgramBindBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace dgram bind bad request response has a 4xx status code
+func (o *ReplaceDgramBindBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace dgram bind bad request response has a 5xx status code
+func (o *ReplaceDgramBindBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace dgram bind bad request response a status code equal to that given
+func (o *ReplaceDgramBindBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceDgramBindBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/dgram_binds/{name}][%d] replaceDgramBindBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceDgramBindBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/dgram_binds/{name}][%d] replaceDgramBindBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceDgramBindBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceDgramBindNotFound() *ReplaceDgramBindNotFound {
 	return &ReplaceDgramBindNotFound{}
 }
 
-/* ReplaceDgramBindNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceDgramBindNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceDgramBindNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace dgram bind not found response has a 2xx status code
+func (o *ReplaceDgramBindNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace dgram bind not found response has a 3xx status code
+func (o *ReplaceDgramBindNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace dgram bind not found response has a 4xx status code
+func (o *ReplaceDgramBindNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace dgram bind not found response has a 5xx status code
+func (o *ReplaceDgramBindNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace dgram bind not found response a status code equal to that given
+func (o *ReplaceDgramBindNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceDgramBindNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/dgram_binds/{name}][%d] replaceDgramBindNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceDgramBindNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/dgram_binds/{name}][%d] replaceDgramBindNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceDgramBindNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceDgramBindDefault(code int) *ReplaceDgramBindDefault {
 	}
 }
 
-/* ReplaceDgramBindDefault describes a response with status code -1, with default header values.
+/*
+ReplaceDgramBindDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceDgramBindDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace dgram bind default response has a 2xx status code
+func (o *ReplaceDgramBindDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace dgram bind default response has a 3xx status code
+func (o *ReplaceDgramBindDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace dgram bind default response has a 4xx status code
+func (o *ReplaceDgramBindDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace dgram bind default response has a 5xx status code
+func (o *ReplaceDgramBindDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace dgram bind default response a status code equal to that given
+func (o *ReplaceDgramBindDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceDgramBindDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/dgram_binds/{name}][%d] replaceDgramBind default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceDgramBindDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/dgram_binds/{name}][%d] replaceDgramBind default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceDgramBindDefault) GetPayload() *models.Error {
 	return o.Payload
 }

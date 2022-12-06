@@ -16,7 +16,7 @@ import (
 
 // NativeStatsCollection Stats collection
 //
-// Stats from one runtime API
+// # Stats from one runtime API
 //
 // swagger:model native_stats_collection
 type NativeStatsCollection struct {
@@ -28,7 +28,7 @@ type NativeStatsCollection struct {
 	RuntimeAPI string `json:"runtimeAPI,omitempty"`
 
 	// stats
-	Stats []*NativeStat `json:"stats"`
+	Stats []*NativeStat `json:"stats,omitempty"`
 }
 
 // Validate validates this native stats collection

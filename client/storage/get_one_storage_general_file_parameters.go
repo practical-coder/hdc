@@ -52,10 +52,12 @@ func NewGetOneStorageGeneralFileParamsWithHTTPClient(client *http.Client) *GetOn
 	}
 }
 
-/* GetOneStorageGeneralFileParams contains all the parameters to send to the API endpoint
-   for the get one storage general file operation.
+/*
+GetOneStorageGeneralFileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get one storage general file operation.
+
+	Typically these are written to a http.Request.
 */
 type GetOneStorageGeneralFileParams struct {
 

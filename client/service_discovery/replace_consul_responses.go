@@ -58,7 +58,8 @@ func NewReplaceConsulOK() *ReplaceConsulOK {
 	return &ReplaceConsulOK{}
 }
 
-/* ReplaceConsulOK describes a response with status code 200, with default header values.
+/*
+ReplaceConsulOK describes a response with status code 200, with default header values.
 
 Consul server replaced
 */
@@ -66,9 +67,39 @@ type ReplaceConsulOK struct {
 	Payload *models.Consul
 }
 
+// IsSuccess returns true when this replace consul o k response has a 2xx status code
+func (o *ReplaceConsulOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace consul o k response has a 3xx status code
+func (o *ReplaceConsulOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace consul o k response has a 4xx status code
+func (o *ReplaceConsulOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace consul o k response has a 5xx status code
+func (o *ReplaceConsulOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace consul o k response a status code equal to that given
+func (o *ReplaceConsulOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceConsulOK) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/consul/{id}][%d] replaceConsulOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceConsulOK) String() string {
+	return fmt.Sprintf("[PUT /service_discovery/consul/{id}][%d] replaceConsulOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceConsulOK) GetPayload() *models.Consul {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewReplaceConsulBadRequest() *ReplaceConsulBadRequest {
 	return &ReplaceConsulBadRequest{}
 }
 
-/* ReplaceConsulBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceConsulBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -103,9 +135,39 @@ type ReplaceConsulBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace consul bad request response has a 2xx status code
+func (o *ReplaceConsulBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace consul bad request response has a 3xx status code
+func (o *ReplaceConsulBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace consul bad request response has a 4xx status code
+func (o *ReplaceConsulBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace consul bad request response has a 5xx status code
+func (o *ReplaceConsulBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace consul bad request response a status code equal to that given
+func (o *ReplaceConsulBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceConsulBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/consul/{id}][%d] replaceConsulBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceConsulBadRequest) String() string {
+	return fmt.Sprintf("[PUT /service_discovery/consul/{id}][%d] replaceConsulBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceConsulBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewReplaceConsulNotFound() *ReplaceConsulNotFound {
 	return &ReplaceConsulNotFound{}
 }
 
-/* ReplaceConsulNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceConsulNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -147,9 +210,39 @@ type ReplaceConsulNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace consul not found response has a 2xx status code
+func (o *ReplaceConsulNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace consul not found response has a 3xx status code
+func (o *ReplaceConsulNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace consul not found response has a 4xx status code
+func (o *ReplaceConsulNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace consul not found response has a 5xx status code
+func (o *ReplaceConsulNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace consul not found response a status code equal to that given
+func (o *ReplaceConsulNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceConsulNotFound) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/consul/{id}][%d] replaceConsulNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceConsulNotFound) String() string {
+	return fmt.Sprintf("[PUT /service_discovery/consul/{id}][%d] replaceConsulNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceConsulNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewReplaceConsulDefault(code int) *ReplaceConsulDefault {
 	}
 }
 
-/* ReplaceConsulDefault describes a response with status code -1, with default header values.
+/*
+ReplaceConsulDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *ReplaceConsulDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace consul default response has a 2xx status code
+func (o *ReplaceConsulDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace consul default response has a 3xx status code
+func (o *ReplaceConsulDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace consul default response has a 4xx status code
+func (o *ReplaceConsulDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace consul default response has a 5xx status code
+func (o *ReplaceConsulDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace consul default response a status code equal to that given
+func (o *ReplaceConsulDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceConsulDefault) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/consul/{id}][%d] replaceConsul default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceConsulDefault) String() string {
+	return fmt.Sprintf("[PUT /service_discovery/consul/{id}][%d] replaceConsul default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceConsulDefault) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewGetHTTPRequestRulesParamsWithHTTPClient(client *http.Client) *GetHTTPReq
 	}
 }
 
-/* GetHTTPRequestRulesParams contains all the parameters to send to the API endpoint
-   for the get HTTP request rules operation.
+/*
+GetHTTPRequestRulesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get HTTP request rules operation.
+
+	Typically these are written to a http.Request.
 */
 type GetHTTPRequestRulesParams struct {
 

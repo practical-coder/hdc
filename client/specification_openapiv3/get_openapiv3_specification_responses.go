@@ -46,7 +46,8 @@ func NewGetOpenapiv3SpecificationOK() *GetOpenapiv3SpecificationOK {
 	return &GetOpenapiv3SpecificationOK{}
 }
 
-/* GetOpenapiv3SpecificationOK describes a response with status code 200, with default header values.
+/*
+GetOpenapiv3SpecificationOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -54,9 +55,39 @@ type GetOpenapiv3SpecificationOK struct {
 	Payload interface{}
 }
 
+// IsSuccess returns true when this get openapiv3 specification o k response has a 2xx status code
+func (o *GetOpenapiv3SpecificationOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get openapiv3 specification o k response has a 3xx status code
+func (o *GetOpenapiv3SpecificationOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get openapiv3 specification o k response has a 4xx status code
+func (o *GetOpenapiv3SpecificationOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get openapiv3 specification o k response has a 5xx status code
+func (o *GetOpenapiv3SpecificationOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get openapiv3 specification o k response a status code equal to that given
+func (o *GetOpenapiv3SpecificationOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetOpenapiv3SpecificationOK) Error() string {
 	return fmt.Sprintf("[GET /specification_openapiv3][%d] getOpenapiv3SpecificationOK  %+v", 200, o.Payload)
 }
+
+func (o *GetOpenapiv3SpecificationOK) String() string {
+	return fmt.Sprintf("[GET /specification_openapiv3][%d] getOpenapiv3SpecificationOK  %+v", 200, o.Payload)
+}
+
 func (o *GetOpenapiv3SpecificationOK) GetPayload() interface{} {
 	return o.Payload
 }
@@ -78,7 +109,8 @@ func NewGetOpenapiv3SpecificationDefault(code int) *GetOpenapiv3SpecificationDef
 	}
 }
 
-/* GetOpenapiv3SpecificationDefault describes a response with status code -1, with default header values.
+/*
+GetOpenapiv3SpecificationDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -97,9 +129,39 @@ func (o *GetOpenapiv3SpecificationDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get openapiv3 specification default response has a 2xx status code
+func (o *GetOpenapiv3SpecificationDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get openapiv3 specification default response has a 3xx status code
+func (o *GetOpenapiv3SpecificationDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get openapiv3 specification default response has a 4xx status code
+func (o *GetOpenapiv3SpecificationDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get openapiv3 specification default response has a 5xx status code
+func (o *GetOpenapiv3SpecificationDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get openapiv3 specification default response a status code equal to that given
+func (o *GetOpenapiv3SpecificationDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetOpenapiv3SpecificationDefault) Error() string {
 	return fmt.Sprintf("[GET /specification_openapiv3][%d] getOpenapiv3Specification default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetOpenapiv3SpecificationDefault) String() string {
+	return fmt.Sprintf("[GET /specification_openapiv3][%d] getOpenapiv3Specification default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetOpenapiv3SpecificationDefault) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewGetSpoeAgentsParamsWithHTTPClient(client *http.Client) *GetSpoeAgentsPar
 	}
 }
 
-/* GetSpoeAgentsParams contains all the parameters to send to the API endpoint
-   for the get spoe agents operation.
+/*
+GetSpoeAgentsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get spoe agents operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSpoeAgentsParams struct {
 

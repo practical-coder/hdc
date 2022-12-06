@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteCluster deletes cluster settings
+DeleteCluster deletes cluster settings
 
-  Delete cluster settings and move the node back to single mode
+Delete cluster settings and move the node back to single mode
 */
 func (a *Client) DeleteCluster(params *DeleteClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteClusterNoContent, error) {
 	// TODO: Validate the params before sending
@@ -82,9 +82,9 @@ func (a *Client) DeleteCluster(params *DeleteClusterParams, authInfo runtime.Cli
 }
 
 /*
-  EditCluster edits cluster settings
+EditCluster edits cluster settings
 
-  Edit cluster settings
+Edit cluster settings
 */
 func (a *Client) EditCluster(params *EditClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*EditClusterOK, error) {
 	// TODO: Validate the params before sending
@@ -122,9 +122,9 @@ func (a *Client) EditCluster(params *EditClusterParams, authInfo runtime.ClientA
 }
 
 /*
-  GetCluster returns cluster data
+GetCluster returns cluster data
 
-  Returns cluster data
+Returns cluster data
 */
 func (a *Client) GetCluster(params *GetClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterOK, error) {
 	// TODO: Validate the params before sending
@@ -162,9 +162,9 @@ func (a *Client) GetCluster(params *GetClusterParams, authInfo runtime.ClientAut
 }
 
 /*
-  InitiateCertificateRefresh initiates a certificate refresh
+InitiateCertificateRefresh initiates a certificate refresh
 
-  Initiates a certificate refresh
+Initiates a certificate refresh
 */
 func (a *Client) InitiateCertificateRefresh(params *InitiateCertificateRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InitiateCertificateRefreshOK, error) {
 	// TODO: Validate the params before sending
@@ -202,9 +202,9 @@ func (a *Client) InitiateCertificateRefresh(params *InitiateCertificateRefreshPa
 }
 
 /*
-  PostCluster posts cluster settings
+PostCluster posts cluster settings
 
-  Post cluster settings
+Post cluster settings
 */
 func (a *Client) PostCluster(params *PostClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostClusterOK, error) {
 	// TODO: Validate the params before sending

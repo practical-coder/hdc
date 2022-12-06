@@ -29,7 +29,7 @@ import (
 type Site struct {
 
 	// farms
-	Farms []*SiteFarm `json:"farms"`
+	Farms []*SiteFarm `json:"farms,omitempty"`
 
 	// name
 	// Required: true
@@ -220,7 +220,7 @@ type SiteFarm struct {
 	Name string `json:"name"`
 
 	// servers
-	Servers []*Server `json:"servers"`
+	Servers []*Server `json:"servers,omitempty"`
 
 	// use as
 	// Required: true
@@ -572,7 +572,7 @@ type SiteService struct {
 	HTTPConnectionMode string `json:"http_connection_mode,omitempty"`
 
 	// listeners
-	Listeners []*Bind `json:"listeners"`
+	Listeners []*Bind `json:"listeners,omitempty"`
 
 	// maxconn
 	Maxconn *int64 `json:"maxconn,omitempty"`

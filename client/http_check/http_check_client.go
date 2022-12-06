@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateHTTPCheck adds a new HTTP check
+CreateHTTPCheck adds a new HTTP check
 
-  Adds a new HTTP check of the specified type in the specified parent.
+Adds a new HTTP check of the specified type in the specified parent.
 */
 func (a *Client) CreateHTTPCheck(params *CreateHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateHTTPCheckCreated, *CreateHTTPCheckAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateHTTPCheck(params *CreateHTTPCheckParams, authInfo runtime
 }
 
 /*
-  DeleteHTTPCheck deletes a HTTP check
+DeleteHTTPCheck deletes a HTTP check
 
-  Deletes a HTTP check configuration by it's index from the specified parent.
+Deletes a HTTP check configuration by it's index from the specified parent.
 */
 func (a *Client) DeleteHTTPCheck(params *DeleteHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteHTTPCheckAccepted, *DeleteHTTPCheckNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteHTTPCheck(params *DeleteHTTPCheckParams, authInfo runtime
 }
 
 /*
-  GetHTTPCheck returns one HTTP check
+GetHTTPCheck returns one HTTP check
 
-  Returns one HTTP check configuration by it's index in the specified parent.
+Returns one HTTP check configuration by it's index in the specified parent.
 */
 func (a *Client) GetHTTPCheck(params *GetHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPCheckOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetHTTPCheck(params *GetHTTPCheckParams, authInfo runtime.Clien
 }
 
 /*
-  GetHTTPChecks returns an array of HTTP checks
+GetHTTPChecks returns an array of HTTP checks
 
-  Returns all HTTP checks that are configured in specified parent.
+Returns all HTTP checks that are configured in specified parent.
 */
 func (a *Client) GetHTTPChecks(params *GetHTTPChecksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPChecksOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetHTTPChecks(params *GetHTTPChecksParams, authInfo runtime.Cli
 }
 
 /*
-  ReplaceHTTPCheck replaces a HTTP check
+ReplaceHTTPCheck replaces a HTTP check
 
-  Replaces a HTTP Check configuration by it's index in the specified parent.
+Replaces a HTTP Check configuration by it's index in the specified parent.
 */
 func (a *Client) ReplaceHTTPCheck(params *ReplaceHTTPCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceHTTPCheckOK, *ReplaceHTTPCheckAccepted, error) {
 	// TODO: Validate the params before sending

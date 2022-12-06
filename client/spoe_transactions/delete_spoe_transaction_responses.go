@@ -52,14 +52,44 @@ func NewDeleteSpoeTransactionNoContent() *DeleteSpoeTransactionNoContent {
 	return &DeleteSpoeTransactionNoContent{}
 }
 
-/* DeleteSpoeTransactionNoContent describes a response with status code 204, with default header values.
+/*
+DeleteSpoeTransactionNoContent describes a response with status code 204, with default header values.
 
 Transaction deleted
 */
 type DeleteSpoeTransactionNoContent struct {
 }
 
+// IsSuccess returns true when this delete spoe transaction no content response has a 2xx status code
+func (o *DeleteSpoeTransactionNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete spoe transaction no content response has a 3xx status code
+func (o *DeleteSpoeTransactionNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete spoe transaction no content response has a 4xx status code
+func (o *DeleteSpoeTransactionNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete spoe transaction no content response has a 5xx status code
+func (o *DeleteSpoeTransactionNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete spoe transaction no content response a status code equal to that given
+func (o *DeleteSpoeTransactionNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteSpoeTransactionNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/spoe_transactions/{id}][%d] deleteSpoeTransactionNoContent ", 204)
+}
+
+func (o *DeleteSpoeTransactionNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe_transactions/{id}][%d] deleteSpoeTransactionNoContent ", 204)
 }
 
@@ -73,7 +103,8 @@ func NewDeleteSpoeTransactionNotFound() *DeleteSpoeTransactionNotFound {
 	return &DeleteSpoeTransactionNotFound{}
 }
 
-/* DeleteSpoeTransactionNotFound describes a response with status code 404, with default header values.
+/*
+DeleteSpoeTransactionNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -86,9 +117,39 @@ type DeleteSpoeTransactionNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete spoe transaction not found response has a 2xx status code
+func (o *DeleteSpoeTransactionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete spoe transaction not found response has a 3xx status code
+func (o *DeleteSpoeTransactionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete spoe transaction not found response has a 4xx status code
+func (o *DeleteSpoeTransactionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete spoe transaction not found response has a 5xx status code
+func (o *DeleteSpoeTransactionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete spoe transaction not found response a status code equal to that given
+func (o *DeleteSpoeTransactionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteSpoeTransactionNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe_transactions/{id}][%d] deleteSpoeTransactionNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteSpoeTransactionNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/spoe_transactions/{id}][%d] deleteSpoeTransactionNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteSpoeTransactionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -119,7 +180,8 @@ func NewDeleteSpoeTransactionDefault(code int) *DeleteSpoeTransactionDefault {
 	}
 }
 
-/* DeleteSpoeTransactionDefault describes a response with status code -1, with default header values.
+/*
+DeleteSpoeTransactionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -138,9 +200,39 @@ func (o *DeleteSpoeTransactionDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete spoe transaction default response has a 2xx status code
+func (o *DeleteSpoeTransactionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete spoe transaction default response has a 3xx status code
+func (o *DeleteSpoeTransactionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete spoe transaction default response has a 4xx status code
+func (o *DeleteSpoeTransactionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete spoe transaction default response has a 5xx status code
+func (o *DeleteSpoeTransactionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete spoe transaction default response a status code equal to that given
+func (o *DeleteSpoeTransactionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteSpoeTransactionDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe_transactions/{id}][%d] deleteSpoeTransaction default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteSpoeTransactionDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/spoe_transactions/{id}][%d] deleteSpoeTransaction default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteSpoeTransactionDefault) GetPayload() *models.Error {
 	return o.Payload
 }

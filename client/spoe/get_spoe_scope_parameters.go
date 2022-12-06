@@ -52,10 +52,12 @@ func NewGetSpoeScopeParamsWithHTTPClient(client *http.Client) *GetSpoeScopeParam
 	}
 }
 
-/* GetSpoeScopeParams contains all the parameters to send to the API endpoint
-   for the get spoe scope operation.
+/*
+GetSpoeScopeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get spoe scope operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSpoeScopeParams struct {
 

@@ -52,10 +52,12 @@ func NewGetReloadsParamsWithHTTPClient(client *http.Client) *GetReloadsParams {
 	}
 }
 
-/* GetReloadsParams contains all the parameters to send to the API endpoint
-   for the get reloads operation.
+/*
+GetReloadsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get reloads operation.
+
+	Typically these are written to a http.Request.
 */
 type GetReloadsParams struct {
 	timeout    time.Duration

@@ -14,7 +14,7 @@ import (
 
 // Endpoint Endpoint
 //
-// Endpoint definition
+// # Endpoint definition
 //
 // swagger:model endpoint
 type Endpoint struct {

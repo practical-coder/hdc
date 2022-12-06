@@ -52,7 +52,8 @@ func NewGetStickTableOK() *GetStickTableOK {
 	return &GetStickTableOK{}
 }
 
-/* GetStickTableOK describes a response with status code 200, with default header values.
+/*
+GetStickTableOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -60,9 +61,39 @@ type GetStickTableOK struct {
 	Payload *models.StickTable
 }
 
+// IsSuccess returns true when this get stick table o k response has a 2xx status code
+func (o *GetStickTableOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get stick table o k response has a 3xx status code
+func (o *GetStickTableOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get stick table o k response has a 4xx status code
+func (o *GetStickTableOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get stick table o k response has a 5xx status code
+func (o *GetStickTableOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get stick table o k response a status code equal to that given
+func (o *GetStickTableOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetStickTableOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_tables/{name}][%d] getStickTableOK  %+v", 200, o.Payload)
 }
+
+func (o *GetStickTableOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_tables/{name}][%d] getStickTableOK  %+v", 200, o.Payload)
+}
+
 func (o *GetStickTableOK) GetPayload() *models.StickTable {
 	return o.Payload
 }
@@ -84,7 +115,8 @@ func NewGetStickTableNotFound() *GetStickTableNotFound {
 	return &GetStickTableNotFound{}
 }
 
-/* GetStickTableNotFound describes a response with status code 404, with default header values.
+/*
+GetStickTableNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -97,9 +129,39 @@ type GetStickTableNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get stick table not found response has a 2xx status code
+func (o *GetStickTableNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get stick table not found response has a 3xx status code
+func (o *GetStickTableNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get stick table not found response has a 4xx status code
+func (o *GetStickTableNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get stick table not found response has a 5xx status code
+func (o *GetStickTableNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get stick table not found response a status code equal to that given
+func (o *GetStickTableNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetStickTableNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_tables/{name}][%d] getStickTableNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetStickTableNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_tables/{name}][%d] getStickTableNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetStickTableNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -130,7 +192,8 @@ func NewGetStickTableDefault(code int) *GetStickTableDefault {
 	}
 }
 
-/* GetStickTableDefault describes a response with status code -1, with default header values.
+/*
+GetStickTableDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -149,9 +212,39 @@ func (o *GetStickTableDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get stick table default response has a 2xx status code
+func (o *GetStickTableDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get stick table default response has a 3xx status code
+func (o *GetStickTableDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get stick table default response has a 4xx status code
+func (o *GetStickTableDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get stick table default response has a 5xx status code
+func (o *GetStickTableDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get stick table default response a status code equal to that given
+func (o *GetStickTableDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetStickTableDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_tables/{name}][%d] getStickTable default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetStickTableDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_tables/{name}][%d] getStickTable default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetStickTableDefault) GetPayload() *models.Error {
 	return o.Payload
 }

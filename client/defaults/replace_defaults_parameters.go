@@ -55,10 +55,12 @@ func NewReplaceDefaultsParamsWithHTTPClient(client *http.Client) *ReplaceDefault
 	}
 }
 
-/* ReplaceDefaultsParams contains all the parameters to send to the API endpoint
-   for the replace defaults operation.
+/*
+ReplaceDefaultsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace defaults operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceDefaultsParams struct {
 

@@ -64,7 +64,8 @@ func NewCreateDgramBindCreated() *CreateDgramBindCreated {
 	return &CreateDgramBindCreated{}
 }
 
-/* CreateDgramBindCreated describes a response with status code 201, with default header values.
+/*
+CreateDgramBindCreated describes a response with status code 201, with default header values.
 
 Bind created
 */
@@ -72,9 +73,39 @@ type CreateDgramBindCreated struct {
 	Payload *models.DgramBind
 }
 
+// IsSuccess returns true when this create dgram bind created response has a 2xx status code
+func (o *CreateDgramBindCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create dgram bind created response has a 3xx status code
+func (o *CreateDgramBindCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create dgram bind created response has a 4xx status code
+func (o *CreateDgramBindCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create dgram bind created response has a 5xx status code
+func (o *CreateDgramBindCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create dgram bind created response a status code equal to that given
+func (o *CreateDgramBindCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateDgramBindCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/dgram_binds][%d] createDgramBindCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateDgramBindCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/dgram_binds][%d] createDgramBindCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateDgramBindCreated) GetPayload() *models.DgramBind {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateDgramBindAccepted() *CreateDgramBindAccepted {
 	return &CreateDgramBindAccepted{}
 }
 
-/* CreateDgramBindAccepted describes a response with status code 202, with default header values.
+/*
+CreateDgramBindAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateDgramBindAccepted struct {
 	Payload *models.DgramBind
 }
 
+// IsSuccess returns true when this create dgram bind accepted response has a 2xx status code
+func (o *CreateDgramBindAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create dgram bind accepted response has a 3xx status code
+func (o *CreateDgramBindAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create dgram bind accepted response has a 4xx status code
+func (o *CreateDgramBindAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create dgram bind accepted response has a 5xx status code
+func (o *CreateDgramBindAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create dgram bind accepted response a status code equal to that given
+func (o *CreateDgramBindAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateDgramBindAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/dgram_binds][%d] createDgramBindAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateDgramBindAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/dgram_binds][%d] createDgramBindAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateDgramBindAccepted) GetPayload() *models.DgramBind {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateDgramBindBadRequest() *CreateDgramBindBadRequest {
 	return &CreateDgramBindBadRequest{}
 }
 
-/* CreateDgramBindBadRequest describes a response with status code 400, with default header values.
+/*
+CreateDgramBindBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateDgramBindBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create dgram bind bad request response has a 2xx status code
+func (o *CreateDgramBindBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create dgram bind bad request response has a 3xx status code
+func (o *CreateDgramBindBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create dgram bind bad request response has a 4xx status code
+func (o *CreateDgramBindBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create dgram bind bad request response has a 5xx status code
+func (o *CreateDgramBindBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create dgram bind bad request response a status code equal to that given
+func (o *CreateDgramBindBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateDgramBindBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/dgram_binds][%d] createDgramBindBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateDgramBindBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/dgram_binds][%d] createDgramBindBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateDgramBindBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateDgramBindConflict() *CreateDgramBindConflict {
 	return &CreateDgramBindConflict{}
 }
 
-/* CreateDgramBindConflict describes a response with status code 409, with default header values.
+/*
+CreateDgramBindConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateDgramBindConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create dgram bind conflict response has a 2xx status code
+func (o *CreateDgramBindConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create dgram bind conflict response has a 3xx status code
+func (o *CreateDgramBindConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create dgram bind conflict response has a 4xx status code
+func (o *CreateDgramBindConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create dgram bind conflict response has a 5xx status code
+func (o *CreateDgramBindConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create dgram bind conflict response a status code equal to that given
+func (o *CreateDgramBindConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateDgramBindConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/dgram_binds][%d] createDgramBindConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateDgramBindConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/dgram_binds][%d] createDgramBindConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateDgramBindConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateDgramBindDefault(code int) *CreateDgramBindDefault {
 	}
 }
 
-/* CreateDgramBindDefault describes a response with status code -1, with default header values.
+/*
+CreateDgramBindDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateDgramBindDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create dgram bind default response has a 2xx status code
+func (o *CreateDgramBindDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create dgram bind default response has a 3xx status code
+func (o *CreateDgramBindDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create dgram bind default response has a 4xx status code
+func (o *CreateDgramBindDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create dgram bind default response has a 5xx status code
+func (o *CreateDgramBindDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create dgram bind default response a status code equal to that given
+func (o *CreateDgramBindDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateDgramBindDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/dgram_binds][%d] createDgramBind default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateDgramBindDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/dgram_binds][%d] createDgramBind default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateDgramBindDefault) GetPayload() *models.Error {
 	return o.Payload
 }

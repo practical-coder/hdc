@@ -55,10 +55,12 @@ func NewReplaceHTTPCheckParamsWithHTTPClient(client *http.Client) *ReplaceHTTPCh
 	}
 }
 
-/* ReplaceHTTPCheckParams contains all the parameters to send to the API endpoint
-   for the replace HTTP check operation.
+/*
+ReplaceHTTPCheckParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace HTTP check operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceHTTPCheckParams struct {
 

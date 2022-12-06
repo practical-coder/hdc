@@ -53,10 +53,12 @@ func NewDeletePeerParamsWithHTTPClient(client *http.Client) *DeletePeerParams {
 	}
 }
 
-/* DeletePeerParams contains all the parameters to send to the API endpoint
-   for the delete peer operation.
+/*
+DeletePeerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete peer operation.
+
+	Typically these are written to a http.Request.
 */
 type DeletePeerParams struct {
 

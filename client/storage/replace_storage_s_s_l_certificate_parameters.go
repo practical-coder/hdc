@@ -53,10 +53,12 @@ func NewReplaceStorageSSLCertificateParamsWithHTTPClient(client *http.Client) *R
 	}
 }
 
-/* ReplaceStorageSSLCertificateParams contains all the parameters to send to the API endpoint
-   for the replace storage s s l certificate operation.
+/*
+ReplaceStorageSSLCertificateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace storage s s l certificate operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceStorageSSLCertificateParams struct {
 

@@ -40,9 +40,9 @@ type ClientService interface {
 }
 
 /*
-  CreateUserlist adds a new userlist
+CreateUserlist adds a new userlist
 
-  Adds a new userlist to the configuration file.
+Adds a new userlist to the configuration file.
 */
 func (a *Client) CreateUserlist(params *CreateUserlistParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserlistCreated, *CreateUserlistAccepted, error) {
 	// TODO: Validate the params before sending
@@ -82,9 +82,9 @@ func (a *Client) CreateUserlist(params *CreateUserlistParams, authInfo runtime.C
 }
 
 /*
-  DeleteUserlist deletes a userlist
+DeleteUserlist deletes a userlist
 
-  Deletes a userlist configuration by it's name.
+Deletes a userlist configuration by it's name.
 */
 func (a *Client) DeleteUserlist(params *DeleteUserlistParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteUserlistAccepted, *DeleteUserlistNoContent, error) {
 	// TODO: Validate the params before sending
@@ -124,9 +124,9 @@ func (a *Client) DeleteUserlist(params *DeleteUserlistParams, authInfo runtime.C
 }
 
 /*
-  GetUserlist returns one userlist
+GetUserlist returns one userlist
 
-  Returns one userlist configuration by it's name.
+Returns one userlist configuration by it's name.
 */
 func (a *Client) GetUserlist(params *GetUserlistParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserlistOK, error) {
 	// TODO: Validate the params before sending
@@ -164,9 +164,9 @@ func (a *Client) GetUserlist(params *GetUserlistParams, authInfo runtime.ClientA
 }
 
 /*
-  GetUserlists returns an array of userlists
+GetUserlists returns an array of userlists
 
-  Returns an array of all configured userlists.
+Returns an array of all configured userlists.
 */
 func (a *Client) GetUserlists(params *GetUserlistsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserlistsOK, error) {
 	// TODO: Validate the params before sending

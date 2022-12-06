@@ -50,7 +50,8 @@ func NewGetTCPResponseRulesOK() *GetTCPResponseRulesOK {
 	return &GetTCPResponseRulesOK{}
 }
 
-/* GetTCPResponseRulesOK describes a response with status code 200, with default header values.
+/*
+GetTCPResponseRulesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetTCPResponseRulesOK struct {
 	Payload *GetTCPResponseRulesOKBody
 }
 
+// IsSuccess returns true when this get Tcp response rules o k response has a 2xx status code
+func (o *GetTCPResponseRulesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get Tcp response rules o k response has a 3xx status code
+func (o *GetTCPResponseRulesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get Tcp response rules o k response has a 4xx status code
+func (o *GetTCPResponseRulesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get Tcp response rules o k response has a 5xx status code
+func (o *GetTCPResponseRulesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get Tcp response rules o k response a status code equal to that given
+func (o *GetTCPResponseRulesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetTCPResponseRulesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_response_rules][%d] getTcpResponseRulesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetTCPResponseRulesOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_response_rules][%d] getTcpResponseRulesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetTCPResponseRulesOK) GetPayload() *GetTCPResponseRulesOKBody {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewGetTCPResponseRulesDefault(code int) *GetTCPResponseRulesDefault {
 	}
 }
 
-/* GetTCPResponseRulesDefault describes a response with status code -1, with default header values.
+/*
+GetTCPResponseRulesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +147,39 @@ func (o *GetTCPResponseRulesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get TCP response rules default response has a 2xx status code
+func (o *GetTCPResponseRulesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get TCP response rules default response has a 3xx status code
+func (o *GetTCPResponseRulesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get TCP response rules default response has a 4xx status code
+func (o *GetTCPResponseRulesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get TCP response rules default response has a 5xx status code
+func (o *GetTCPResponseRulesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get TCP response rules default response a status code equal to that given
+func (o *GetTCPResponseRulesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetTCPResponseRulesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_response_rules][%d] getTCPResponseRules default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetTCPResponseRulesDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_response_rules][%d] getTCPResponseRules default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetTCPResponseRulesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -141,7 +203,8 @@ func (o *GetTCPResponseRulesDefault) readResponse(response runtime.ClientRespons
 	return nil
 }
 
-/*GetTCPResponseRulesOKBody get TCP response rules o k body
+/*
+GetTCPResponseRulesOKBody get TCP response rules o k body
 swagger:model GetTCPResponseRulesOKBody
 */
 type GetTCPResponseRulesOKBody struct {

@@ -15,7 +15,7 @@ import (
 
 // SpoeScopes SPOE Scopes
 //
-// All SPOE Scopes
+// # All SPOE Scopes
 //
 // swagger:model spoe_scopes
 type SpoeScopes []SpoeScope

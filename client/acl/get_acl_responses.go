@@ -55,7 +55,8 @@ func NewGetACLOK() *GetACLOK {
 	return &GetACLOK{}
 }
 
-/* GetACLOK describes a response with status code 200, with default header values.
+/*
+GetACLOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetACLOK struct {
 	Payload *GetACLOKBody
 }
 
+// IsSuccess returns true when this get Acl o k response has a 2xx status code
+func (o *GetACLOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get Acl o k response has a 3xx status code
+func (o *GetACLOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get Acl o k response has a 4xx status code
+func (o *GetACLOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get Acl o k response has a 5xx status code
+func (o *GetACLOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get Acl o k response a status code equal to that given
+func (o *GetACLOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetACLOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/acls/{index}][%d] getAclOK  %+v", 200, o.Payload)
 }
+
+func (o *GetACLOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/acls/{index}][%d] getAclOK  %+v", 200, o.Payload)
+}
+
 func (o *GetACLOK) GetPayload() *GetACLOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetACLNotFound() *GetACLNotFound {
 	return &GetACLNotFound{}
 }
 
-/* GetACLNotFound describes a response with status code 404, with default header values.
+/*
+GetACLNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -112,9 +144,39 @@ type GetACLNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get Acl not found response has a 2xx status code
+func (o *GetACLNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get Acl not found response has a 3xx status code
+func (o *GetACLNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get Acl not found response has a 4xx status code
+func (o *GetACLNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get Acl not found response has a 5xx status code
+func (o *GetACLNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get Acl not found response a status code equal to that given
+func (o *GetACLNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetACLNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/acls/{index}][%d] getAclNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetACLNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/acls/{index}][%d] getAclNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetACLNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetACLDefault(code int) *GetACLDefault {
 	}
 }
 
-/* GetACLDefault describes a response with status code -1, with default header values.
+/*
+GetACLDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetACLDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get Acl default response has a 2xx status code
+func (o *GetACLDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get Acl default response has a 3xx status code
+func (o *GetACLDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get Acl default response has a 4xx status code
+func (o *GetACLDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get Acl default response has a 5xx status code
+func (o *GetACLDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get Acl default response a status code equal to that given
+func (o *GetACLDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetACLDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/acls/{index}][%d] getAcl default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetACLDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/acls/{index}][%d] getAcl default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetACLDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetACLDefault) readResponse(response runtime.ClientResponse, consumer r
 	return nil
 }
 
-/*GetACLOKBody get ACL o k body
+/*
+GetACLOKBody get ACL o k body
 swagger:model GetACLOKBody
 */
 type GetACLOKBody struct {

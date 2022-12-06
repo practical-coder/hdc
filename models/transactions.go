@@ -16,7 +16,7 @@ import (
 
 // Transactions Transactions array
 //
-// Configuration transactions array
+// # Configuration transactions array
 //
 // swagger:model transactions
 type Transactions []*Transaction

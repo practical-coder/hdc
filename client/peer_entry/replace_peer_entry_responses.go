@@ -64,7 +64,8 @@ func NewReplacePeerEntryOK() *ReplacePeerEntryOK {
 	return &ReplacePeerEntryOK{}
 }
 
-/* ReplacePeerEntryOK describes a response with status code 200, with default header values.
+/*
+ReplacePeerEntryOK describes a response with status code 200, with default header values.
 
 PeerEntry replaced
 */
@@ -72,9 +73,39 @@ type ReplacePeerEntryOK struct {
 	Payload *models.PeerEntry
 }
 
+// IsSuccess returns true when this replace peer entry o k response has a 2xx status code
+func (o *ReplacePeerEntryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace peer entry o k response has a 3xx status code
+func (o *ReplacePeerEntryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace peer entry o k response has a 4xx status code
+func (o *ReplacePeerEntryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace peer entry o k response has a 5xx status code
+func (o *ReplacePeerEntryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace peer entry o k response a status code equal to that given
+func (o *ReplacePeerEntryOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplacePeerEntryOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/peer_entries/{name}][%d] replacePeerEntryOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplacePeerEntryOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/peer_entries/{name}][%d] replacePeerEntryOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplacePeerEntryOK) GetPayload() *models.PeerEntry {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplacePeerEntryAccepted() *ReplacePeerEntryAccepted {
 	return &ReplacePeerEntryAccepted{}
 }
 
-/* ReplacePeerEntryAccepted describes a response with status code 202, with default header values.
+/*
+ReplacePeerEntryAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplacePeerEntryAccepted struct {
 	Payload *models.PeerEntry
 }
 
+// IsSuccess returns true when this replace peer entry accepted response has a 2xx status code
+func (o *ReplacePeerEntryAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace peer entry accepted response has a 3xx status code
+func (o *ReplacePeerEntryAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace peer entry accepted response has a 4xx status code
+func (o *ReplacePeerEntryAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace peer entry accepted response has a 5xx status code
+func (o *ReplacePeerEntryAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace peer entry accepted response a status code equal to that given
+func (o *ReplacePeerEntryAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplacePeerEntryAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/peer_entries/{name}][%d] replacePeerEntryAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplacePeerEntryAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/peer_entries/{name}][%d] replacePeerEntryAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplacePeerEntryAccepted) GetPayload() *models.PeerEntry {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplacePeerEntryBadRequest() *ReplacePeerEntryBadRequest {
 	return &ReplacePeerEntryBadRequest{}
 }
 
-/* ReplacePeerEntryBadRequest describes a response with status code 400, with default header values.
+/*
+ReplacePeerEntryBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplacePeerEntryBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace peer entry bad request response has a 2xx status code
+func (o *ReplacePeerEntryBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace peer entry bad request response has a 3xx status code
+func (o *ReplacePeerEntryBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace peer entry bad request response has a 4xx status code
+func (o *ReplacePeerEntryBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace peer entry bad request response has a 5xx status code
+func (o *ReplacePeerEntryBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace peer entry bad request response a status code equal to that given
+func (o *ReplacePeerEntryBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplacePeerEntryBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/peer_entries/{name}][%d] replacePeerEntryBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplacePeerEntryBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/peer_entries/{name}][%d] replacePeerEntryBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplacePeerEntryBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplacePeerEntryNotFound() *ReplacePeerEntryNotFound {
 	return &ReplacePeerEntryNotFound{}
 }
 
-/* ReplacePeerEntryNotFound describes a response with status code 404, with default header values.
+/*
+ReplacePeerEntryNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplacePeerEntryNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace peer entry not found response has a 2xx status code
+func (o *ReplacePeerEntryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace peer entry not found response has a 3xx status code
+func (o *ReplacePeerEntryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace peer entry not found response has a 4xx status code
+func (o *ReplacePeerEntryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace peer entry not found response has a 5xx status code
+func (o *ReplacePeerEntryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace peer entry not found response a status code equal to that given
+func (o *ReplacePeerEntryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplacePeerEntryNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/peer_entries/{name}][%d] replacePeerEntryNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplacePeerEntryNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/peer_entries/{name}][%d] replacePeerEntryNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplacePeerEntryNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplacePeerEntryDefault(code int) *ReplacePeerEntryDefault {
 	}
 }
 
-/* ReplacePeerEntryDefault describes a response with status code -1, with default header values.
+/*
+ReplacePeerEntryDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplacePeerEntryDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace peer entry default response has a 2xx status code
+func (o *ReplacePeerEntryDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace peer entry default response has a 3xx status code
+func (o *ReplacePeerEntryDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace peer entry default response has a 4xx status code
+func (o *ReplacePeerEntryDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace peer entry default response has a 5xx status code
+func (o *ReplacePeerEntryDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace peer entry default response a status code equal to that given
+func (o *ReplacePeerEntryDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplacePeerEntryDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/peer_entries/{name}][%d] replacePeerEntry default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplacePeerEntryDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/peer_entries/{name}][%d] replacePeerEntry default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplacePeerEntryDefault) GetPayload() *models.Error {
 	return o.Payload
 }

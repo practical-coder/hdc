@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetHaproxyProcessInfo returns h a proxy process information
+GetHaproxyProcessInfo returns h a proxy process information
 
-  Return HAProxy process information
+Return HAProxy process information
 */
 func (a *Client) GetHaproxyProcessInfo(params *GetHaproxyProcessInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHaproxyProcessInfoOK, error) {
 	// TODO: Validate the params before sending
@@ -76,9 +76,9 @@ func (a *Client) GetHaproxyProcessInfo(params *GetHaproxyProcessInfoParams, auth
 }
 
 /*
-  GetInfo returns API hardware and o s information
+GetInfo returns API hardware and o s information
 
-  Return API, hardware and OS information
+Return API, hardware and OS information
 */
 func (a *Client) GetInfo(params *GetInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetInfoOK, error) {
 	// TODO: Validate the params before sending

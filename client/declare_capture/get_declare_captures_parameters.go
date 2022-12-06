@@ -52,10 +52,12 @@ func NewGetDeclareCapturesParamsWithHTTPClient(client *http.Client) *GetDeclareC
 	}
 }
 
-/* GetDeclareCapturesParams contains all the parameters to send to the API endpoint
-   for the get declare captures operation.
+/*
+GetDeclareCapturesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get declare captures operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDeclareCapturesParams struct {
 

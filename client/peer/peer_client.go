@@ -40,9 +40,9 @@ type ClientService interface {
 }
 
 /*
-  CreatePeer adds a peer
+CreatePeer adds a peer
 
-  Adds a new peer to the configuration file.
+Adds a new peer to the configuration file.
 */
 func (a *Client) CreatePeer(params *CreatePeerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreatePeerCreated, *CreatePeerAccepted, error) {
 	// TODO: Validate the params before sending
@@ -82,9 +82,9 @@ func (a *Client) CreatePeer(params *CreatePeerParams, authInfo runtime.ClientAut
 }
 
 /*
-  DeletePeer deletes a peer
+DeletePeer deletes a peer
 
-  Deletes a peer from the configuration by it's name.
+Deletes a peer from the configuration by it's name.
 */
 func (a *Client) DeletePeer(params *DeletePeerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeletePeerAccepted, *DeletePeerNoContent, error) {
 	// TODO: Validate the params before sending
@@ -124,9 +124,9 @@ func (a *Client) DeletePeer(params *DeletePeerParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetPeerSection returns a peer
+GetPeerSection returns a peer
 
-  Returns one peer configuration by it's name.
+Returns one peer configuration by it's name.
 */
 func (a *Client) GetPeerSection(params *GetPeerSectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPeerSectionOK, error) {
 	// TODO: Validate the params before sending
@@ -164,9 +164,9 @@ func (a *Client) GetPeerSection(params *GetPeerSectionParams, authInfo runtime.C
 }
 
 /*
-  GetPeerSections returns an array of peer section
+GetPeerSections returns an array of peer section
 
-  Returns an array of all configured peer_section.
+Returns an array of all configured peer_section.
 */
 func (a *Client) GetPeerSections(params *GetPeerSectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPeerSectionsOK, error) {
 	// TODO: Validate the params before sending

@@ -52,7 +52,8 @@ func NewAddPayloadRuntimeACLCreated() *AddPayloadRuntimeACLCreated {
 	return &AddPayloadRuntimeACLCreated{}
 }
 
-/* AddPayloadRuntimeACLCreated describes a response with status code 201, with default header values.
+/*
+AddPayloadRuntimeACLCreated describes a response with status code 201, with default header values.
 
 ACL payload added
 */
@@ -60,9 +61,39 @@ type AddPayloadRuntimeACLCreated struct {
 	Payload models.ACLFilesEntries
 }
 
+// IsSuccess returns true when this add payload runtime Acl created response has a 2xx status code
+func (o *AddPayloadRuntimeACLCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this add payload runtime Acl created response has a 3xx status code
+func (o *AddPayloadRuntimeACLCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this add payload runtime Acl created response has a 4xx status code
+func (o *AddPayloadRuntimeACLCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this add payload runtime Acl created response has a 5xx status code
+func (o *AddPayloadRuntimeACLCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this add payload runtime Acl created response a status code equal to that given
+func (o *AddPayloadRuntimeACLCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *AddPayloadRuntimeACLCreated) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/acl_file_entries][%d] addPayloadRuntimeAclCreated  %+v", 201, o.Payload)
 }
+
+func (o *AddPayloadRuntimeACLCreated) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/runtime/acl_file_entries][%d] addPayloadRuntimeAclCreated  %+v", 201, o.Payload)
+}
+
 func (o *AddPayloadRuntimeACLCreated) GetPayload() models.ACLFilesEntries {
 	return o.Payload
 }
@@ -82,7 +113,8 @@ func NewAddPayloadRuntimeACLBadRequest() *AddPayloadRuntimeACLBadRequest {
 	return &AddPayloadRuntimeACLBadRequest{}
 }
 
-/* AddPayloadRuntimeACLBadRequest describes a response with status code 400, with default header values.
+/*
+AddPayloadRuntimeACLBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -95,9 +127,39 @@ type AddPayloadRuntimeACLBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this add payload runtime Acl bad request response has a 2xx status code
+func (o *AddPayloadRuntimeACLBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this add payload runtime Acl bad request response has a 3xx status code
+func (o *AddPayloadRuntimeACLBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this add payload runtime Acl bad request response has a 4xx status code
+func (o *AddPayloadRuntimeACLBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this add payload runtime Acl bad request response has a 5xx status code
+func (o *AddPayloadRuntimeACLBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this add payload runtime Acl bad request response a status code equal to that given
+func (o *AddPayloadRuntimeACLBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AddPayloadRuntimeACLBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/acl_file_entries][%d] addPayloadRuntimeAclBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AddPayloadRuntimeACLBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/runtime/acl_file_entries][%d] addPayloadRuntimeAclBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AddPayloadRuntimeACLBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -128,7 +190,8 @@ func NewAddPayloadRuntimeACLDefault(code int) *AddPayloadRuntimeACLDefault {
 	}
 }
 
-/* AddPayloadRuntimeACLDefault describes a response with status code -1, with default header values.
+/*
+AddPayloadRuntimeACLDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -147,9 +210,39 @@ func (o *AddPayloadRuntimeACLDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this add payload runtime ACL default response has a 2xx status code
+func (o *AddPayloadRuntimeACLDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this add payload runtime ACL default response has a 3xx status code
+func (o *AddPayloadRuntimeACLDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this add payload runtime ACL default response has a 4xx status code
+func (o *AddPayloadRuntimeACLDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this add payload runtime ACL default response has a 5xx status code
+func (o *AddPayloadRuntimeACLDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this add payload runtime ACL default response a status code equal to that given
+func (o *AddPayloadRuntimeACLDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *AddPayloadRuntimeACLDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/acl_file_entries][%d] addPayloadRuntimeACL default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *AddPayloadRuntimeACLDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/runtime/acl_file_entries][%d] addPayloadRuntimeACL default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *AddPayloadRuntimeACLDefault) GetPayload() *models.Error {
 	return o.Payload
 }

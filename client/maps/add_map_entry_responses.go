@@ -58,7 +58,8 @@ func NewAddMapEntryCreated() *AddMapEntryCreated {
 	return &AddMapEntryCreated{}
 }
 
-/* AddMapEntryCreated describes a response with status code 201, with default header values.
+/*
+AddMapEntryCreated describes a response with status code 201, with default header values.
 
 Map entry created
 */
@@ -66,9 +67,39 @@ type AddMapEntryCreated struct {
 	Payload *models.MapEntry
 }
 
+// IsSuccess returns true when this add map entry created response has a 2xx status code
+func (o *AddMapEntryCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this add map entry created response has a 3xx status code
+func (o *AddMapEntryCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this add map entry created response has a 4xx status code
+func (o *AddMapEntryCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this add map entry created response has a 5xx status code
+func (o *AddMapEntryCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this add map entry created response a status code equal to that given
+func (o *AddMapEntryCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *AddMapEntryCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntryCreated  %+v", 201, o.Payload)
 }
+
+func (o *AddMapEntryCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntryCreated  %+v", 201, o.Payload)
+}
+
 func (o *AddMapEntryCreated) GetPayload() *models.MapEntry {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewAddMapEntryBadRequest() *AddMapEntryBadRequest {
 	return &AddMapEntryBadRequest{}
 }
 
-/* AddMapEntryBadRequest describes a response with status code 400, with default header values.
+/*
+AddMapEntryBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -103,9 +135,39 @@ type AddMapEntryBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this add map entry bad request response has a 2xx status code
+func (o *AddMapEntryBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this add map entry bad request response has a 3xx status code
+func (o *AddMapEntryBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this add map entry bad request response has a 4xx status code
+func (o *AddMapEntryBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this add map entry bad request response has a 5xx status code
+func (o *AddMapEntryBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this add map entry bad request response a status code equal to that given
+func (o *AddMapEntryBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AddMapEntryBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntryBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AddMapEntryBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntryBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AddMapEntryBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewAddMapEntryConflict() *AddMapEntryConflict {
 	return &AddMapEntryConflict{}
 }
 
-/* AddMapEntryConflict describes a response with status code 409, with default header values.
+/*
+AddMapEntryConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -147,9 +210,39 @@ type AddMapEntryConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this add map entry conflict response has a 2xx status code
+func (o *AddMapEntryConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this add map entry conflict response has a 3xx status code
+func (o *AddMapEntryConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this add map entry conflict response has a 4xx status code
+func (o *AddMapEntryConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this add map entry conflict response has a 5xx status code
+func (o *AddMapEntryConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this add map entry conflict response a status code equal to that given
+func (o *AddMapEntryConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *AddMapEntryConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntryConflict  %+v", 409, o.Payload)
 }
+
+func (o *AddMapEntryConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntryConflict  %+v", 409, o.Payload)
+}
+
 func (o *AddMapEntryConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewAddMapEntryDefault(code int) *AddMapEntryDefault {
 	}
 }
 
-/* AddMapEntryDefault describes a response with status code -1, with default header values.
+/*
+AddMapEntryDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *AddMapEntryDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this add map entry default response has a 2xx status code
+func (o *AddMapEntryDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this add map entry default response has a 3xx status code
+func (o *AddMapEntryDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this add map entry default response has a 4xx status code
+func (o *AddMapEntryDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this add map entry default response has a 5xx status code
+func (o *AddMapEntryDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this add map entry default response a status code equal to that given
+func (o *AddMapEntryDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *AddMapEntryDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntry default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *AddMapEntryDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntry default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *AddMapEntryDefault) GetPayload() *models.Error {
 	return o.Payload
 }

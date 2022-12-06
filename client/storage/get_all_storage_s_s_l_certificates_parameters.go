@@ -52,10 +52,12 @@ func NewGetAllStorageSSLCertificatesParamsWithHTTPClient(client *http.Client) *G
 	}
 }
 
-/* GetAllStorageSSLCertificatesParams contains all the parameters to send to the API endpoint
-   for the get all storage s s l certificates operation.
+/*
+GetAllStorageSSLCertificatesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get all storage s s l certificates operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAllStorageSSLCertificatesParams struct {
 	timeout    time.Duration

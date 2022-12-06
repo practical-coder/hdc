@@ -58,7 +58,8 @@ func NewReplaceSpoeAgentOK() *ReplaceSpoeAgentOK {
 	return &ReplaceSpoeAgentOK{}
 }
 
-/* ReplaceSpoeAgentOK describes a response with status code 200, with default header values.
+/*
+ReplaceSpoeAgentOK describes a response with status code 200, with default header values.
 
 Spoe agent replaced
 */
@@ -66,9 +67,39 @@ type ReplaceSpoeAgentOK struct {
 	Payload *models.SpoeAgent
 }
 
+// IsSuccess returns true when this replace spoe agent o k response has a 2xx status code
+func (o *ReplaceSpoeAgentOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace spoe agent o k response has a 3xx status code
+func (o *ReplaceSpoeAgentOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace spoe agent o k response has a 4xx status code
+func (o *ReplaceSpoeAgentOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace spoe agent o k response has a 5xx status code
+func (o *ReplaceSpoeAgentOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace spoe agent o k response a status code equal to that given
+func (o *ReplaceSpoeAgentOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceSpoeAgentOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgentOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceSpoeAgentOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgentOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceSpoeAgentOK) GetPayload() *models.SpoeAgent {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewReplaceSpoeAgentBadRequest() *ReplaceSpoeAgentBadRequest {
 	return &ReplaceSpoeAgentBadRequest{}
 }
 
-/* ReplaceSpoeAgentBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceSpoeAgentBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -103,9 +135,39 @@ type ReplaceSpoeAgentBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace spoe agent bad request response has a 2xx status code
+func (o *ReplaceSpoeAgentBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace spoe agent bad request response has a 3xx status code
+func (o *ReplaceSpoeAgentBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace spoe agent bad request response has a 4xx status code
+func (o *ReplaceSpoeAgentBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace spoe agent bad request response has a 5xx status code
+func (o *ReplaceSpoeAgentBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace spoe agent bad request response a status code equal to that given
+func (o *ReplaceSpoeAgentBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceSpoeAgentBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgentBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceSpoeAgentBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgentBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceSpoeAgentBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewReplaceSpoeAgentNotFound() *ReplaceSpoeAgentNotFound {
 	return &ReplaceSpoeAgentNotFound{}
 }
 
-/* ReplaceSpoeAgentNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceSpoeAgentNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -147,9 +210,39 @@ type ReplaceSpoeAgentNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace spoe agent not found response has a 2xx status code
+func (o *ReplaceSpoeAgentNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace spoe agent not found response has a 3xx status code
+func (o *ReplaceSpoeAgentNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace spoe agent not found response has a 4xx status code
+func (o *ReplaceSpoeAgentNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace spoe agent not found response has a 5xx status code
+func (o *ReplaceSpoeAgentNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace spoe agent not found response a status code equal to that given
+func (o *ReplaceSpoeAgentNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceSpoeAgentNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgentNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceSpoeAgentNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgentNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceSpoeAgentNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewReplaceSpoeAgentDefault(code int) *ReplaceSpoeAgentDefault {
 	}
 }
 
-/* ReplaceSpoeAgentDefault describes a response with status code -1, with default header values.
+/*
+ReplaceSpoeAgentDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *ReplaceSpoeAgentDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace spoe agent default response has a 2xx status code
+func (o *ReplaceSpoeAgentDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace spoe agent default response has a 3xx status code
+func (o *ReplaceSpoeAgentDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace spoe agent default response has a 4xx status code
+func (o *ReplaceSpoeAgentDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace spoe agent default response has a 5xx status code
+func (o *ReplaceSpoeAgentDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace spoe agent default response a status code equal to that given
+func (o *ReplaceSpoeAgentDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceSpoeAgentDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgent default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceSpoeAgentDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgent default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceSpoeAgentDefault) GetPayload() *models.Error {
 	return o.Payload
 }

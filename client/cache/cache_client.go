@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateCache adds a cache
+CreateCache adds a cache
 
-  Adds a new cache section to the configuration file.
+Adds a new cache section to the configuration file.
 */
 func (a *Client) CreateCache(params *CreateCacheParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateCacheCreated, *CreateCacheAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateCache(params *CreateCacheParams, authInfo runtime.ClientA
 }
 
 /*
-  DeleteCache deletes a cache
+DeleteCache deletes a cache
 
-  Deletes a cache from the configuration by it's name.
+Deletes a cache from the configuration by it's name.
 */
 func (a *Client) DeleteCache(params *DeleteCacheParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCacheAccepted, *DeleteCacheNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteCache(params *DeleteCacheParams, authInfo runtime.ClientA
 }
 
 /*
-  GetCache returns a cache
+GetCache returns a cache
 
-  Returns one cache section configuration by it's name.
+Returns one cache section configuration by it's name.
 */
 func (a *Client) GetCache(params *GetCacheParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCacheOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetCache(params *GetCacheParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  GetCaches returns an array of caches
+GetCaches returns an array of caches
 
-  Returns an array of all configured caches.
+Returns an array of all configured caches.
 */
 func (a *Client) GetCaches(params *GetCachesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCachesOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetCaches(params *GetCachesParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  ReplaceCache replaces a cache
+ReplaceCache replaces a cache
 
-  Replaces a cache configuration by it's name.
+Replaces a cache configuration by it's name.
 */
 func (a *Client) ReplaceCache(params *ReplaceCacheParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceCacheOK, *ReplaceCacheAccepted, error) {
 	// TODO: Validate the params before sending

@@ -64,7 +64,8 @@ func NewReplaceGroupOK() *ReplaceGroupOK {
 	return &ReplaceGroupOK{}
 }
 
-/* ReplaceGroupOK describes a response with status code 200, with default header values.
+/*
+ReplaceGroupOK describes a response with status code 200, with default header values.
 
 Group replaced
 */
@@ -72,9 +73,39 @@ type ReplaceGroupOK struct {
 	Payload *models.Group
 }
 
+// IsSuccess returns true when this replace group o k response has a 2xx status code
+func (o *ReplaceGroupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace group o k response has a 3xx status code
+func (o *ReplaceGroupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace group o k response has a 4xx status code
+func (o *ReplaceGroupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace group o k response has a 5xx status code
+func (o *ReplaceGroupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace group o k response a status code equal to that given
+func (o *ReplaceGroupOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceGroupOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceGroupOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceGroupOK) GetPayload() *models.Group {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceGroupAccepted() *ReplaceGroupAccepted {
 	return &ReplaceGroupAccepted{}
 }
 
-/* ReplaceGroupAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceGroupAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceGroupAccepted struct {
 	Payload *models.Group
 }
 
+// IsSuccess returns true when this replace group accepted response has a 2xx status code
+func (o *ReplaceGroupAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace group accepted response has a 3xx status code
+func (o *ReplaceGroupAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace group accepted response has a 4xx status code
+func (o *ReplaceGroupAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace group accepted response has a 5xx status code
+func (o *ReplaceGroupAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace group accepted response a status code equal to that given
+func (o *ReplaceGroupAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceGroupAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceGroupAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceGroupAccepted) GetPayload() *models.Group {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceGroupBadRequest() *ReplaceGroupBadRequest {
 	return &ReplaceGroupBadRequest{}
 }
 
-/* ReplaceGroupBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceGroupBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace group bad request response has a 2xx status code
+func (o *ReplaceGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace group bad request response has a 3xx status code
+func (o *ReplaceGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace group bad request response has a 4xx status code
+func (o *ReplaceGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace group bad request response has a 5xx status code
+func (o *ReplaceGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace group bad request response a status code equal to that given
+func (o *ReplaceGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceGroupBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceGroupBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceGroupBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceGroupNotFound() *ReplaceGroupNotFound {
 	return &ReplaceGroupNotFound{}
 }
 
-/* ReplaceGroupNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceGroupNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace group not found response has a 2xx status code
+func (o *ReplaceGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace group not found response has a 3xx status code
+func (o *ReplaceGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace group not found response has a 4xx status code
+func (o *ReplaceGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace group not found response has a 5xx status code
+func (o *ReplaceGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace group not found response a status code equal to that given
+func (o *ReplaceGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceGroupNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceGroupNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceGroupNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceGroupDefault(code int) *ReplaceGroupDefault {
 	}
 }
 
-/* ReplaceGroupDefault describes a response with status code -1, with default header values.
+/*
+ReplaceGroupDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceGroupDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace group default response has a 2xx status code
+func (o *ReplaceGroupDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace group default response has a 3xx status code
+func (o *ReplaceGroupDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace group default response has a 4xx status code
+func (o *ReplaceGroupDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace group default response has a 5xx status code
+func (o *ReplaceGroupDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace group default response a status code equal to that given
+func (o *ReplaceGroupDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceGroupDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroup default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceGroupDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroup default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceGroupDefault) GetPayload() *models.Error {
 	return o.Payload
 }

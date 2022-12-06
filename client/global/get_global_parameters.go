@@ -52,10 +52,12 @@ func NewGetGlobalParamsWithHTTPClient(client *http.Client) *GetGlobalParams {
 	}
 }
 
-/* GetGlobalParams contains all the parameters to send to the API endpoint
-   for the get global operation.
+/*
+GetGlobalParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get global operation.
+
+	Typically these are written to a http.Request.
 */
 type GetGlobalParams struct {
 

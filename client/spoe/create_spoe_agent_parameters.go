@@ -55,10 +55,12 @@ func NewCreateSpoeAgentParamsWithHTTPClient(client *http.Client) *CreateSpoeAgen
 	}
 }
 
-/* CreateSpoeAgentParams contains all the parameters to send to the API endpoint
-   for the create spoe agent operation.
+/*
+CreateSpoeAgentParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create spoe agent operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateSpoeAgentParams struct {
 

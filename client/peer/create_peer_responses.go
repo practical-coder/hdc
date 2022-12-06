@@ -64,7 +64,8 @@ func NewCreatePeerCreated() *CreatePeerCreated {
 	return &CreatePeerCreated{}
 }
 
-/* CreatePeerCreated describes a response with status code 201, with default header values.
+/*
+CreatePeerCreated describes a response with status code 201, with default header values.
 
 Peer created
 */
@@ -72,9 +73,39 @@ type CreatePeerCreated struct {
 	Payload *models.PeerSection
 }
 
+// IsSuccess returns true when this create peer created response has a 2xx status code
+func (o *CreatePeerCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create peer created response has a 3xx status code
+func (o *CreatePeerCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create peer created response has a 4xx status code
+func (o *CreatePeerCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create peer created response has a 5xx status code
+func (o *CreatePeerCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create peer created response a status code equal to that given
+func (o *CreatePeerCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreatePeerCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeerCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreatePeerCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeerCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreatePeerCreated) GetPayload() *models.PeerSection {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreatePeerAccepted() *CreatePeerAccepted {
 	return &CreatePeerAccepted{}
 }
 
-/* CreatePeerAccepted describes a response with status code 202, with default header values.
+/*
+CreatePeerAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreatePeerAccepted struct {
 	Payload *models.PeerSection
 }
 
+// IsSuccess returns true when this create peer accepted response has a 2xx status code
+func (o *CreatePeerAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create peer accepted response has a 3xx status code
+func (o *CreatePeerAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create peer accepted response has a 4xx status code
+func (o *CreatePeerAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create peer accepted response has a 5xx status code
+func (o *CreatePeerAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create peer accepted response a status code equal to that given
+func (o *CreatePeerAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreatePeerAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeerAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreatePeerAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeerAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreatePeerAccepted) GetPayload() *models.PeerSection {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreatePeerBadRequest() *CreatePeerBadRequest {
 	return &CreatePeerBadRequest{}
 }
 
-/* CreatePeerBadRequest describes a response with status code 400, with default header values.
+/*
+CreatePeerBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreatePeerBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create peer bad request response has a 2xx status code
+func (o *CreatePeerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create peer bad request response has a 3xx status code
+func (o *CreatePeerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create peer bad request response has a 4xx status code
+func (o *CreatePeerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create peer bad request response has a 5xx status code
+func (o *CreatePeerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create peer bad request response a status code equal to that given
+func (o *CreatePeerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreatePeerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreatePeerBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreatePeerBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreatePeerConflict() *CreatePeerConflict {
 	return &CreatePeerConflict{}
 }
 
-/* CreatePeerConflict describes a response with status code 409, with default header values.
+/*
+CreatePeerConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreatePeerConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create peer conflict response has a 2xx status code
+func (o *CreatePeerConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create peer conflict response has a 3xx status code
+func (o *CreatePeerConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create peer conflict response has a 4xx status code
+func (o *CreatePeerConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create peer conflict response has a 5xx status code
+func (o *CreatePeerConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create peer conflict response a status code equal to that given
+func (o *CreatePeerConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreatePeerConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeerConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreatePeerConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeerConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreatePeerConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreatePeerDefault(code int) *CreatePeerDefault {
 	}
 }
 
-/* CreatePeerDefault describes a response with status code -1, with default header values.
+/*
+CreatePeerDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreatePeerDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create peer default response has a 2xx status code
+func (o *CreatePeerDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create peer default response has a 3xx status code
+func (o *CreatePeerDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create peer default response has a 4xx status code
+func (o *CreatePeerDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create peer default response has a 5xx status code
+func (o *CreatePeerDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create peer default response a status code equal to that given
+func (o *CreatePeerDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreatePeerDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeer default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreatePeerDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_section][%d] createPeer default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreatePeerDefault) GetPayload() *models.Error {
 	return o.Payload
 }

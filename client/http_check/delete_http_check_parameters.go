@@ -53,10 +53,12 @@ func NewDeleteHTTPCheckParamsWithHTTPClient(client *http.Client) *DeleteHTTPChec
 	}
 }
 
-/* DeleteHTTPCheckParams contains all the parameters to send to the API endpoint
-   for the delete HTTP check operation.
+/*
+DeleteHTTPCheckParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete HTTP check operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteHTTPCheckParams struct {
 

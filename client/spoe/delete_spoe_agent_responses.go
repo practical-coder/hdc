@@ -52,14 +52,44 @@ func NewDeleteSpoeAgentNoContent() *DeleteSpoeAgentNoContent {
 	return &DeleteSpoeAgentNoContent{}
 }
 
-/* DeleteSpoeAgentNoContent describes a response with status code 204, with default header values.
+/*
+DeleteSpoeAgentNoContent describes a response with status code 204, with default header values.
 
 Spoe agent deleted
 */
 type DeleteSpoeAgentNoContent struct {
 }
 
+// IsSuccess returns true when this delete spoe agent no content response has a 2xx status code
+func (o *DeleteSpoeAgentNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete spoe agent no content response has a 3xx status code
+func (o *DeleteSpoeAgentNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete spoe agent no content response has a 4xx status code
+func (o *DeleteSpoeAgentNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete spoe agent no content response has a 5xx status code
+func (o *DeleteSpoeAgentNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete spoe agent no content response a status code equal to that given
+func (o *DeleteSpoeAgentNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteSpoeAgentNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_agents/{name}][%d] deleteSpoeAgentNoContent ", 204)
+}
+
+func (o *DeleteSpoeAgentNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_agents/{name}][%d] deleteSpoeAgentNoContent ", 204)
 }
 
@@ -73,7 +103,8 @@ func NewDeleteSpoeAgentNotFound() *DeleteSpoeAgentNotFound {
 	return &DeleteSpoeAgentNotFound{}
 }
 
-/* DeleteSpoeAgentNotFound describes a response with status code 404, with default header values.
+/*
+DeleteSpoeAgentNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -86,9 +117,39 @@ type DeleteSpoeAgentNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete spoe agent not found response has a 2xx status code
+func (o *DeleteSpoeAgentNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete spoe agent not found response has a 3xx status code
+func (o *DeleteSpoeAgentNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete spoe agent not found response has a 4xx status code
+func (o *DeleteSpoeAgentNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete spoe agent not found response has a 5xx status code
+func (o *DeleteSpoeAgentNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete spoe agent not found response a status code equal to that given
+func (o *DeleteSpoeAgentNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteSpoeAgentNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_agents/{name}][%d] deleteSpoeAgentNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteSpoeAgentNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_agents/{name}][%d] deleteSpoeAgentNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteSpoeAgentNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -119,7 +180,8 @@ func NewDeleteSpoeAgentDefault(code int) *DeleteSpoeAgentDefault {
 	}
 }
 
-/* DeleteSpoeAgentDefault describes a response with status code -1, with default header values.
+/*
+DeleteSpoeAgentDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -138,9 +200,39 @@ func (o *DeleteSpoeAgentDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete spoe agent default response has a 2xx status code
+func (o *DeleteSpoeAgentDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete spoe agent default response has a 3xx status code
+func (o *DeleteSpoeAgentDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete spoe agent default response has a 4xx status code
+func (o *DeleteSpoeAgentDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete spoe agent default response has a 5xx status code
+func (o *DeleteSpoeAgentDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete spoe agent default response a status code equal to that given
+func (o *DeleteSpoeAgentDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteSpoeAgentDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_agents/{name}][%d] deleteSpoeAgent default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteSpoeAgentDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_agents/{name}][%d] deleteSpoeAgent default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteSpoeAgentDefault) GetPayload() *models.Error {
 	return o.Payload
 }

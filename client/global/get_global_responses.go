@@ -49,7 +49,8 @@ func NewGetGlobalOK() *GetGlobalOK {
 	return &GetGlobalOK{}
 }
 
-/* GetGlobalOK describes a response with status code 200, with default header values.
+/*
+GetGlobalOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -62,9 +63,39 @@ type GetGlobalOK struct {
 	Payload *GetGlobalOKBody
 }
 
+// IsSuccess returns true when this get global o k response has a 2xx status code
+func (o *GetGlobalOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get global o k response has a 3xx status code
+func (o *GetGlobalOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get global o k response has a 4xx status code
+func (o *GetGlobalOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get global o k response has a 5xx status code
+func (o *GetGlobalOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get global o k response a status code equal to that given
+func (o *GetGlobalOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetGlobalOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/global][%d] getGlobalOK  %+v", 200, o.Payload)
 }
+
+func (o *GetGlobalOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/global][%d] getGlobalOK  %+v", 200, o.Payload)
+}
+
 func (o *GetGlobalOK) GetPayload() *GetGlobalOKBody {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewGetGlobalDefault(code int) *GetGlobalDefault {
 	}
 }
 
-/* GetGlobalDefault describes a response with status code -1, with default header values.
+/*
+GetGlobalDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -114,9 +146,39 @@ func (o *GetGlobalDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get global default response has a 2xx status code
+func (o *GetGlobalDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get global default response has a 3xx status code
+func (o *GetGlobalDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get global default response has a 4xx status code
+func (o *GetGlobalDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get global default response has a 5xx status code
+func (o *GetGlobalDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get global default response a status code equal to that given
+func (o *GetGlobalDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetGlobalDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/global][%d] getGlobal default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetGlobalDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/global][%d] getGlobal default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetGlobalDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func (o *GetGlobalDefault) readResponse(response runtime.ClientResponse, consume
 	return nil
 }
 
-/*GetGlobalOKBody get global o k body
+/*
+GetGlobalOKBody get global o k body
 swagger:model GetGlobalOKBody
 */
 type GetGlobalOKBody struct {

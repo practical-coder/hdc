@@ -58,7 +58,8 @@ func NewCreateConsulCreated() *CreateConsulCreated {
 	return &CreateConsulCreated{}
 }
 
-/* CreateConsulCreated describes a response with status code 201, with default header values.
+/*
+CreateConsulCreated describes a response with status code 201, with default header values.
 
 Consul created
 */
@@ -66,9 +67,39 @@ type CreateConsulCreated struct {
 	Payload *models.Consul
 }
 
+// IsSuccess returns true when this create consul created response has a 2xx status code
+func (o *CreateConsulCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create consul created response has a 3xx status code
+func (o *CreateConsulCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create consul created response has a 4xx status code
+func (o *CreateConsulCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create consul created response has a 5xx status code
+func (o *CreateConsulCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create consul created response a status code equal to that given
+func (o *CreateConsulCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateConsulCreated) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsulCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateConsulCreated) String() string {
+	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsulCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateConsulCreated) GetPayload() *models.Consul {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewCreateConsulBadRequest() *CreateConsulBadRequest {
 	return &CreateConsulBadRequest{}
 }
 
-/* CreateConsulBadRequest describes a response with status code 400, with default header values.
+/*
+CreateConsulBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -103,9 +135,39 @@ type CreateConsulBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create consul bad request response has a 2xx status code
+func (o *CreateConsulBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create consul bad request response has a 3xx status code
+func (o *CreateConsulBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create consul bad request response has a 4xx status code
+func (o *CreateConsulBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create consul bad request response has a 5xx status code
+func (o *CreateConsulBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create consul bad request response a status code equal to that given
+func (o *CreateConsulBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateConsulBadRequest) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsulBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateConsulBadRequest) String() string {
+	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsulBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateConsulBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewCreateConsulConflict() *CreateConsulConflict {
 	return &CreateConsulConflict{}
 }
 
-/* CreateConsulConflict describes a response with status code 409, with default header values.
+/*
+CreateConsulConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -147,9 +210,39 @@ type CreateConsulConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create consul conflict response has a 2xx status code
+func (o *CreateConsulConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create consul conflict response has a 3xx status code
+func (o *CreateConsulConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create consul conflict response has a 4xx status code
+func (o *CreateConsulConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create consul conflict response has a 5xx status code
+func (o *CreateConsulConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create consul conflict response a status code equal to that given
+func (o *CreateConsulConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateConsulConflict) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsulConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateConsulConflict) String() string {
+	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsulConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateConsulConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewCreateConsulDefault(code int) *CreateConsulDefault {
 	}
 }
 
-/* CreateConsulDefault describes a response with status code -1, with default header values.
+/*
+CreateConsulDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *CreateConsulDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create consul default response has a 2xx status code
+func (o *CreateConsulDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create consul default response has a 3xx status code
+func (o *CreateConsulDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create consul default response has a 4xx status code
+func (o *CreateConsulDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create consul default response has a 5xx status code
+func (o *CreateConsulDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create consul default response a status code equal to that given
+func (o *CreateConsulDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateConsulDefault) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsul default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateConsulDefault) String() string {
+	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsul default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateConsulDefault) GetPayload() *models.Error {
 	return o.Payload
 }

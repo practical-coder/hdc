@@ -53,10 +53,12 @@ func NewSetStickTableEntriesParamsWithHTTPClient(client *http.Client) *SetStickT
 	}
 }
 
-/* SetStickTableEntriesParams contains all the parameters to send to the API endpoint
-   for the set stick table entries operation.
+/*
+SetStickTableEntriesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the set stick table entries operation.
+
+	Typically these are written to a http.Request.
 */
 type SetStickTableEntriesParams struct {
 

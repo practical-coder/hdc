@@ -64,7 +64,8 @@ func NewReplaceRingOK() *ReplaceRingOK {
 	return &ReplaceRingOK{}
 }
 
-/* ReplaceRingOK describes a response with status code 200, with default header values.
+/*
+ReplaceRingOK describes a response with status code 200, with default header values.
 
 Ring replaced
 */
@@ -72,9 +73,39 @@ type ReplaceRingOK struct {
 	Payload *models.Ring
 }
 
+// IsSuccess returns true when this replace ring o k response has a 2xx status code
+func (o *ReplaceRingOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace ring o k response has a 3xx status code
+func (o *ReplaceRingOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace ring o k response has a 4xx status code
+func (o *ReplaceRingOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace ring o k response has a 5xx status code
+func (o *ReplaceRingOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace ring o k response a status code equal to that given
+func (o *ReplaceRingOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceRingOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/rings/{name}][%d] replaceRingOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceRingOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/rings/{name}][%d] replaceRingOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceRingOK) GetPayload() *models.Ring {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceRingAccepted() *ReplaceRingAccepted {
 	return &ReplaceRingAccepted{}
 }
 
-/* ReplaceRingAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceRingAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceRingAccepted struct {
 	Payload *models.Ring
 }
 
+// IsSuccess returns true when this replace ring accepted response has a 2xx status code
+func (o *ReplaceRingAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace ring accepted response has a 3xx status code
+func (o *ReplaceRingAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace ring accepted response has a 4xx status code
+func (o *ReplaceRingAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace ring accepted response has a 5xx status code
+func (o *ReplaceRingAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace ring accepted response a status code equal to that given
+func (o *ReplaceRingAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceRingAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/rings/{name}][%d] replaceRingAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceRingAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/rings/{name}][%d] replaceRingAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceRingAccepted) GetPayload() *models.Ring {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceRingBadRequest() *ReplaceRingBadRequest {
 	return &ReplaceRingBadRequest{}
 }
 
-/* ReplaceRingBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceRingBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceRingBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace ring bad request response has a 2xx status code
+func (o *ReplaceRingBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace ring bad request response has a 3xx status code
+func (o *ReplaceRingBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace ring bad request response has a 4xx status code
+func (o *ReplaceRingBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace ring bad request response has a 5xx status code
+func (o *ReplaceRingBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace ring bad request response a status code equal to that given
+func (o *ReplaceRingBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceRingBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/rings/{name}][%d] replaceRingBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceRingBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/rings/{name}][%d] replaceRingBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceRingBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceRingNotFound() *ReplaceRingNotFound {
 	return &ReplaceRingNotFound{}
 }
 
-/* ReplaceRingNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceRingNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceRingNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace ring not found response has a 2xx status code
+func (o *ReplaceRingNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace ring not found response has a 3xx status code
+func (o *ReplaceRingNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace ring not found response has a 4xx status code
+func (o *ReplaceRingNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace ring not found response has a 5xx status code
+func (o *ReplaceRingNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace ring not found response a status code equal to that given
+func (o *ReplaceRingNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceRingNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/rings/{name}][%d] replaceRingNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceRingNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/rings/{name}][%d] replaceRingNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceRingNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceRingDefault(code int) *ReplaceRingDefault {
 	}
 }
 
-/* ReplaceRingDefault describes a response with status code -1, with default header values.
+/*
+ReplaceRingDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceRingDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace ring default response has a 2xx status code
+func (o *ReplaceRingDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace ring default response has a 3xx status code
+func (o *ReplaceRingDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace ring default response has a 4xx status code
+func (o *ReplaceRingDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace ring default response has a 5xx status code
+func (o *ReplaceRingDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace ring default response a status code equal to that given
+func (o *ReplaceRingDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceRingDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/rings/{name}][%d] replaceRing default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceRingDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/rings/{name}][%d] replaceRing default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceRingDefault) GetPayload() *models.Error {
 	return o.Payload
 }

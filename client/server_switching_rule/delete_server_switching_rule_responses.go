@@ -58,7 +58,8 @@ func NewDeleteServerSwitchingRuleAccepted() *DeleteServerSwitchingRuleAccepted {
 	return &DeleteServerSwitchingRuleAccepted{}
 }
 
-/* DeleteServerSwitchingRuleAccepted describes a response with status code 202, with default header values.
+/*
+DeleteServerSwitchingRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteServerSwitchingRuleAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete server switching rule accepted response has a 2xx status code
+func (o *DeleteServerSwitchingRuleAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete server switching rule accepted response has a 3xx status code
+func (o *DeleteServerSwitchingRuleAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete server switching rule accepted response has a 4xx status code
+func (o *DeleteServerSwitchingRuleAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete server switching rule accepted response has a 5xx status code
+func (o *DeleteServerSwitchingRuleAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete server switching rule accepted response a status code equal to that given
+func (o *DeleteServerSwitchingRuleAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteServerSwitchingRuleAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_switching_rules/{index}][%d] deleteServerSwitchingRuleAccepted ", 202)
+}
+
+func (o *DeleteServerSwitchingRuleAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_switching_rules/{index}][%d] deleteServerSwitchingRuleAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteServerSwitchingRuleNoContent() *DeleteServerSwitchingRuleNoContent
 	return &DeleteServerSwitchingRuleNoContent{}
 }
 
-/* DeleteServerSwitchingRuleNoContent describes a response with status code 204, with default header values.
+/*
+DeleteServerSwitchingRuleNoContent describes a response with status code 204, with default header values.
 
 Server Switching Rule deleted
 */
 type DeleteServerSwitchingRuleNoContent struct {
 }
 
+// IsSuccess returns true when this delete server switching rule no content response has a 2xx status code
+func (o *DeleteServerSwitchingRuleNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete server switching rule no content response has a 3xx status code
+func (o *DeleteServerSwitchingRuleNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete server switching rule no content response has a 4xx status code
+func (o *DeleteServerSwitchingRuleNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete server switching rule no content response has a 5xx status code
+func (o *DeleteServerSwitchingRuleNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete server switching rule no content response a status code equal to that given
+func (o *DeleteServerSwitchingRuleNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteServerSwitchingRuleNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_switching_rules/{index}][%d] deleteServerSwitchingRuleNoContent ", 204)
+}
+
+func (o *DeleteServerSwitchingRuleNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_switching_rules/{index}][%d] deleteServerSwitchingRuleNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteServerSwitchingRuleNotFound() *DeleteServerSwitchingRuleNotFound {
 	return &DeleteServerSwitchingRuleNotFound{}
 }
 
-/* DeleteServerSwitchingRuleNotFound describes a response with status code 404, with default header values.
+/*
+DeleteServerSwitchingRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteServerSwitchingRuleNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete server switching rule not found response has a 2xx status code
+func (o *DeleteServerSwitchingRuleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete server switching rule not found response has a 3xx status code
+func (o *DeleteServerSwitchingRuleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete server switching rule not found response has a 4xx status code
+func (o *DeleteServerSwitchingRuleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete server switching rule not found response has a 5xx status code
+func (o *DeleteServerSwitchingRuleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete server switching rule not found response a status code equal to that given
+func (o *DeleteServerSwitchingRuleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteServerSwitchingRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_switching_rules/{index}][%d] deleteServerSwitchingRuleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteServerSwitchingRuleNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_switching_rules/{index}][%d] deleteServerSwitchingRuleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteServerSwitchingRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteServerSwitchingRuleDefault(code int) *DeleteServerSwitchingRuleDef
 	}
 }
 
-/* DeleteServerSwitchingRuleDefault describes a response with status code -1, with default header values.
+/*
+DeleteServerSwitchingRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteServerSwitchingRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete server switching rule default response has a 2xx status code
+func (o *DeleteServerSwitchingRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete server switching rule default response has a 3xx status code
+func (o *DeleteServerSwitchingRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete server switching rule default response has a 4xx status code
+func (o *DeleteServerSwitchingRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete server switching rule default response has a 5xx status code
+func (o *DeleteServerSwitchingRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete server switching rule default response a status code equal to that given
+func (o *DeleteServerSwitchingRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteServerSwitchingRuleDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_switching_rules/{index}][%d] deleteServerSwitchingRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteServerSwitchingRuleDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_switching_rules/{index}][%d] deleteServerSwitchingRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteServerSwitchingRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }

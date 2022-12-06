@@ -53,10 +53,12 @@ func NewGetTCPRequestRuleParamsWithHTTPClient(client *http.Client) *GetTCPReques
 	}
 }
 
-/* GetTCPRequestRuleParams contains all the parameters to send to the API endpoint
-   for the get TCP request rule operation.
+/*
+GetTCPRequestRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get TCP request rule operation.
+
+	Typically these are written to a http.Request.
 */
 type GetTCPRequestRuleParams struct {
 

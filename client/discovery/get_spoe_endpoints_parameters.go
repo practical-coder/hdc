@@ -52,10 +52,12 @@ func NewGetSpoeEndpointsParamsWithHTTPClient(client *http.Client) *GetSpoeEndpoi
 	}
 }
 
-/* GetSpoeEndpointsParams contains all the parameters to send to the API endpoint
-   for the get spoe endpoints operation.
+/*
+GetSpoeEndpointsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get spoe endpoints operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSpoeEndpointsParams struct {
 	timeout    time.Duration

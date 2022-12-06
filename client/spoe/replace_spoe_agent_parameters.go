@@ -55,10 +55,12 @@ func NewReplaceSpoeAgentParamsWithHTTPClient(client *http.Client) *ReplaceSpoeAg
 	}
 }
 
-/* ReplaceSpoeAgentParams contains all the parameters to send to the API endpoint
-   for the replace spoe agent operation.
+/*
+ReplaceSpoeAgentParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace spoe agent operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceSpoeAgentParams struct {
 

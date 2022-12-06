@@ -58,7 +58,8 @@ func NewDeleteNameserverAccepted() *DeleteNameserverAccepted {
 	return &DeleteNameserverAccepted{}
 }
 
-/* DeleteNameserverAccepted describes a response with status code 202, with default header values.
+/*
+DeleteNameserverAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteNameserverAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete nameserver accepted response has a 2xx status code
+func (o *DeleteNameserverAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete nameserver accepted response has a 3xx status code
+func (o *DeleteNameserverAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete nameserver accepted response has a 4xx status code
+func (o *DeleteNameserverAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete nameserver accepted response has a 5xx status code
+func (o *DeleteNameserverAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete nameserver accepted response a status code equal to that given
+func (o *DeleteNameserverAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteNameserverAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/nameservers/{name}][%d] deleteNameserverAccepted ", 202)
+}
+
+func (o *DeleteNameserverAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/nameservers/{name}][%d] deleteNameserverAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteNameserverNoContent() *DeleteNameserverNoContent {
 	return &DeleteNameserverNoContent{}
 }
 
-/* DeleteNameserverNoContent describes a response with status code 204, with default header values.
+/*
+DeleteNameserverNoContent describes a response with status code 204, with default header values.
 
 Nameserver deleted
 */
 type DeleteNameserverNoContent struct {
 }
 
+// IsSuccess returns true when this delete nameserver no content response has a 2xx status code
+func (o *DeleteNameserverNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete nameserver no content response has a 3xx status code
+func (o *DeleteNameserverNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete nameserver no content response has a 4xx status code
+func (o *DeleteNameserverNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete nameserver no content response has a 5xx status code
+func (o *DeleteNameserverNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete nameserver no content response a status code equal to that given
+func (o *DeleteNameserverNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteNameserverNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/nameservers/{name}][%d] deleteNameserverNoContent ", 204)
+}
+
+func (o *DeleteNameserverNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/nameservers/{name}][%d] deleteNameserverNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteNameserverNotFound() *DeleteNameserverNotFound {
 	return &DeleteNameserverNotFound{}
 }
 
-/* DeleteNameserverNotFound describes a response with status code 404, with default header values.
+/*
+DeleteNameserverNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteNameserverNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete nameserver not found response has a 2xx status code
+func (o *DeleteNameserverNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete nameserver not found response has a 3xx status code
+func (o *DeleteNameserverNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete nameserver not found response has a 4xx status code
+func (o *DeleteNameserverNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete nameserver not found response has a 5xx status code
+func (o *DeleteNameserverNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete nameserver not found response a status code equal to that given
+func (o *DeleteNameserverNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteNameserverNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/nameservers/{name}][%d] deleteNameserverNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteNameserverNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/nameservers/{name}][%d] deleteNameserverNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteNameserverNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteNameserverDefault(code int) *DeleteNameserverDefault {
 	}
 }
 
-/* DeleteNameserverDefault describes a response with status code -1, with default header values.
+/*
+DeleteNameserverDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteNameserverDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete nameserver default response has a 2xx status code
+func (o *DeleteNameserverDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete nameserver default response has a 3xx status code
+func (o *DeleteNameserverDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete nameserver default response has a 4xx status code
+func (o *DeleteNameserverDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete nameserver default response has a 5xx status code
+func (o *DeleteNameserverDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete nameserver default response a status code equal to that given
+func (o *DeleteNameserverDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteNameserverDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/nameservers/{name}][%d] deleteNameserver default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteNameserverDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/nameservers/{name}][%d] deleteNameserver default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteNameserverDefault) GetPayload() *models.Error {
 	return o.Payload
 }

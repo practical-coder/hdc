@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetGlobal returns a global part of configuration
+GetGlobal returns a global part of configuration
 
-  Returns global part of configuration.
+Returns global part of configuration.
 */
 func (a *Client) GetGlobal(params *GetGlobalParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGlobalOK, error) {
 	// TODO: Validate the params before sending
@@ -76,9 +76,9 @@ func (a *Client) GetGlobal(params *GetGlobalParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  ReplaceGlobal replaces global
+ReplaceGlobal replaces global
 
-  Replace global part of config
+Replace global part of config
 */
 func (a *Client) ReplaceGlobal(params *ReplaceGlobalParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceGlobalOK, *ReplaceGlobalAccepted, error) {
 	// TODO: Validate the params before sending

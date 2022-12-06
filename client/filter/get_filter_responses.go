@@ -55,7 +55,8 @@ func NewGetFilterOK() *GetFilterOK {
 	return &GetFilterOK{}
 }
 
-/* GetFilterOK describes a response with status code 200, with default header values.
+/*
+GetFilterOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetFilterOK struct {
 	Payload *GetFilterOKBody
 }
 
+// IsSuccess returns true when this get filter o k response has a 2xx status code
+func (o *GetFilterOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get filter o k response has a 3xx status code
+func (o *GetFilterOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get filter o k response has a 4xx status code
+func (o *GetFilterOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get filter o k response has a 5xx status code
+func (o *GetFilterOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get filter o k response a status code equal to that given
+func (o *GetFilterOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetFilterOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/filters/{index}][%d] getFilterOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFilterOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/filters/{index}][%d] getFilterOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFilterOK) GetPayload() *GetFilterOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetFilterNotFound() *GetFilterNotFound {
 	return &GetFilterNotFound{}
 }
 
-/* GetFilterNotFound describes a response with status code 404, with default header values.
+/*
+GetFilterNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -112,9 +144,39 @@ type GetFilterNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get filter not found response has a 2xx status code
+func (o *GetFilterNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get filter not found response has a 3xx status code
+func (o *GetFilterNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get filter not found response has a 4xx status code
+func (o *GetFilterNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get filter not found response has a 5xx status code
+func (o *GetFilterNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get filter not found response a status code equal to that given
+func (o *GetFilterNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetFilterNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/filters/{index}][%d] getFilterNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetFilterNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/filters/{index}][%d] getFilterNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetFilterNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetFilterDefault(code int) *GetFilterDefault {
 	}
 }
 
-/* GetFilterDefault describes a response with status code -1, with default header values.
+/*
+GetFilterDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetFilterDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get filter default response has a 2xx status code
+func (o *GetFilterDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get filter default response has a 3xx status code
+func (o *GetFilterDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get filter default response has a 4xx status code
+func (o *GetFilterDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get filter default response has a 5xx status code
+func (o *GetFilterDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get filter default response a status code equal to that given
+func (o *GetFilterDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetFilterDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/filters/{index}][%d] getFilter default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetFilterDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/filters/{index}][%d] getFilter default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetFilterDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetFilterDefault) readResponse(response runtime.ClientResponse, consume
 	return nil
 }
 
-/*GetFilterOKBody get filter o k body
+/*
+GetFilterOKBody get filter o k body
 swagger:model GetFilterOKBody
 */
 type GetFilterOKBody struct {

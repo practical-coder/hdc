@@ -52,10 +52,12 @@ func NewGetSiteParamsWithHTTPClient(client *http.Client) *GetSiteParams {
 	}
 }
 
-/* GetSiteParams contains all the parameters to send to the API endpoint
-   for the get site operation.
+/*
+GetSiteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get site operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSiteParams struct {
 

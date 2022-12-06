@@ -58,7 +58,8 @@ func NewCreateSpoeCreated() *CreateSpoeCreated {
 	return &CreateSpoeCreated{}
 }
 
-/* CreateSpoeCreated describes a response with status code 201, with default header values.
+/*
+CreateSpoeCreated describes a response with status code 201, with default header values.
 
 SPOE file created with its entries
 */
@@ -66,9 +67,39 @@ type CreateSpoeCreated struct {
 	Payload string
 }
 
+// IsSuccess returns true when this create spoe created response has a 2xx status code
+func (o *CreateSpoeCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create spoe created response has a 3xx status code
+func (o *CreateSpoeCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create spoe created response has a 4xx status code
+func (o *CreateSpoeCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create spoe created response has a 5xx status code
+func (o *CreateSpoeCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create spoe created response a status code equal to that given
+func (o *CreateSpoeCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateSpoeCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoeCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateSpoeCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoeCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateSpoeCreated) GetPayload() string {
 	return o.Payload
 }
@@ -88,7 +119,8 @@ func NewCreateSpoeBadRequest() *CreateSpoeBadRequest {
 	return &CreateSpoeBadRequest{}
 }
 
-/* CreateSpoeBadRequest describes a response with status code 400, with default header values.
+/*
+CreateSpoeBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -101,9 +133,39 @@ type CreateSpoeBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create spoe bad request response has a 2xx status code
+func (o *CreateSpoeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create spoe bad request response has a 3xx status code
+func (o *CreateSpoeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create spoe bad request response has a 4xx status code
+func (o *CreateSpoeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create spoe bad request response has a 5xx status code
+func (o *CreateSpoeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create spoe bad request response a status code equal to that given
+func (o *CreateSpoeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateSpoeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoeBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateSpoeBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoeBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateSpoeBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -132,7 +194,8 @@ func NewCreateSpoeConflict() *CreateSpoeConflict {
 	return &CreateSpoeConflict{}
 }
 
-/* CreateSpoeConflict describes a response with status code 409, with default header values.
+/*
+CreateSpoeConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -145,9 +208,39 @@ type CreateSpoeConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create spoe conflict response has a 2xx status code
+func (o *CreateSpoeConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create spoe conflict response has a 3xx status code
+func (o *CreateSpoeConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create spoe conflict response has a 4xx status code
+func (o *CreateSpoeConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create spoe conflict response has a 5xx status code
+func (o *CreateSpoeConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create spoe conflict response a status code equal to that given
+func (o *CreateSpoeConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateSpoeConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoeConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateSpoeConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoeConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateSpoeConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -178,7 +271,8 @@ func NewCreateSpoeDefault(code int) *CreateSpoeDefault {
 	}
 }
 
-/* CreateSpoeDefault describes a response with status code -1, with default header values.
+/*
+CreateSpoeDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -197,9 +291,39 @@ func (o *CreateSpoeDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create spoe default response has a 2xx status code
+func (o *CreateSpoeDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create spoe default response has a 3xx status code
+func (o *CreateSpoeDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create spoe default response has a 4xx status code
+func (o *CreateSpoeDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create spoe default response has a 5xx status code
+func (o *CreateSpoeDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create spoe default response a status code equal to that given
+func (o *CreateSpoeDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateSpoeDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoe default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateSpoeDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoe default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateSpoeDefault) GetPayload() *models.Error {
 	return o.Payload
 }

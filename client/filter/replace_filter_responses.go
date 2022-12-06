@@ -64,7 +64,8 @@ func NewReplaceFilterOK() *ReplaceFilterOK {
 	return &ReplaceFilterOK{}
 }
 
-/* ReplaceFilterOK describes a response with status code 200, with default header values.
+/*
+ReplaceFilterOK describes a response with status code 200, with default header values.
 
 Filter replaced
 */
@@ -72,9 +73,39 @@ type ReplaceFilterOK struct {
 	Payload *models.Filter
 }
 
+// IsSuccess returns true when this replace filter o k response has a 2xx status code
+func (o *ReplaceFilterOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace filter o k response has a 3xx status code
+func (o *ReplaceFilterOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace filter o k response has a 4xx status code
+func (o *ReplaceFilterOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace filter o k response has a 5xx status code
+func (o *ReplaceFilterOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace filter o k response a status code equal to that given
+func (o *ReplaceFilterOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceFilterOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceFilterOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceFilterOK) GetPayload() *models.Filter {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceFilterAccepted() *ReplaceFilterAccepted {
 	return &ReplaceFilterAccepted{}
 }
 
-/* ReplaceFilterAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceFilterAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceFilterAccepted struct {
 	Payload *models.Filter
 }
 
+// IsSuccess returns true when this replace filter accepted response has a 2xx status code
+func (o *ReplaceFilterAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace filter accepted response has a 3xx status code
+func (o *ReplaceFilterAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace filter accepted response has a 4xx status code
+func (o *ReplaceFilterAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace filter accepted response has a 5xx status code
+func (o *ReplaceFilterAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace filter accepted response a status code equal to that given
+func (o *ReplaceFilterAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceFilterAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceFilterAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceFilterAccepted) GetPayload() *models.Filter {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceFilterBadRequest() *ReplaceFilterBadRequest {
 	return &ReplaceFilterBadRequest{}
 }
 
-/* ReplaceFilterBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceFilterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceFilterBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace filter bad request response has a 2xx status code
+func (o *ReplaceFilterBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace filter bad request response has a 3xx status code
+func (o *ReplaceFilterBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace filter bad request response has a 4xx status code
+func (o *ReplaceFilterBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace filter bad request response has a 5xx status code
+func (o *ReplaceFilterBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace filter bad request response a status code equal to that given
+func (o *ReplaceFilterBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceFilterBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceFilterBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceFilterBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceFilterNotFound() *ReplaceFilterNotFound {
 	return &ReplaceFilterNotFound{}
 }
 
-/* ReplaceFilterNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceFilterNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceFilterNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace filter not found response has a 2xx status code
+func (o *ReplaceFilterNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace filter not found response has a 3xx status code
+func (o *ReplaceFilterNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace filter not found response has a 4xx status code
+func (o *ReplaceFilterNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace filter not found response has a 5xx status code
+func (o *ReplaceFilterNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace filter not found response a status code equal to that given
+func (o *ReplaceFilterNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceFilterNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceFilterNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceFilterNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceFilterDefault(code int) *ReplaceFilterDefault {
 	}
 }
 
-/* ReplaceFilterDefault describes a response with status code -1, with default header values.
+/*
+ReplaceFilterDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceFilterDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace filter default response has a 2xx status code
+func (o *ReplaceFilterDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace filter default response has a 3xx status code
+func (o *ReplaceFilterDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace filter default response has a 4xx status code
+func (o *ReplaceFilterDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace filter default response has a 5xx status code
+func (o *ReplaceFilterDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace filter default response a status code equal to that given
+func (o *ReplaceFilterDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceFilterDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilter default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceFilterDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilter default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceFilterDefault) GetPayload() *models.Error {
 	return o.Payload
 }

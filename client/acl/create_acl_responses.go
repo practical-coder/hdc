@@ -64,7 +64,8 @@ func NewCreateACLCreated() *CreateACLCreated {
 	return &CreateACLCreated{}
 }
 
-/* CreateACLCreated describes a response with status code 201, with default header values.
+/*
+CreateACLCreated describes a response with status code 201, with default header values.
 
 ACL line created
 */
@@ -72,9 +73,39 @@ type CreateACLCreated struct {
 	Payload *models.ACL
 }
 
+// IsSuccess returns true when this create Acl created response has a 2xx status code
+func (o *CreateACLCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create Acl created response has a 3xx status code
+func (o *CreateACLCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Acl created response has a 4xx status code
+func (o *CreateACLCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create Acl created response has a 5xx status code
+func (o *CreateACLCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Acl created response a status code equal to that given
+func (o *CreateACLCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateACLCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateACLCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateACLCreated) GetPayload() *models.ACL {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateACLAccepted() *CreateACLAccepted {
 	return &CreateACLAccepted{}
 }
 
-/* CreateACLAccepted describes a response with status code 202, with default header values.
+/*
+CreateACLAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateACLAccepted struct {
 	Payload *models.ACL
 }
 
+// IsSuccess returns true when this create Acl accepted response has a 2xx status code
+func (o *CreateACLAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create Acl accepted response has a 3xx status code
+func (o *CreateACLAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Acl accepted response has a 4xx status code
+func (o *CreateACLAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create Acl accepted response has a 5xx status code
+func (o *CreateACLAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Acl accepted response a status code equal to that given
+func (o *CreateACLAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateACLAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateACLAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateACLAccepted) GetPayload() *models.ACL {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateACLBadRequest() *CreateACLBadRequest {
 	return &CreateACLBadRequest{}
 }
 
-/* CreateACLBadRequest describes a response with status code 400, with default header values.
+/*
+CreateACLBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateACLBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create Acl bad request response has a 2xx status code
+func (o *CreateACLBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create Acl bad request response has a 3xx status code
+func (o *CreateACLBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Acl bad request response has a 4xx status code
+func (o *CreateACLBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create Acl bad request response has a 5xx status code
+func (o *CreateACLBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Acl bad request response a status code equal to that given
+func (o *CreateACLBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateACLBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateACLBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateACLBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateACLConflict() *CreateACLConflict {
 	return &CreateACLConflict{}
 }
 
-/* CreateACLConflict describes a response with status code 409, with default header values.
+/*
+CreateACLConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateACLConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create Acl conflict response has a 2xx status code
+func (o *CreateACLConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create Acl conflict response has a 3xx status code
+func (o *CreateACLConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Acl conflict response has a 4xx status code
+func (o *CreateACLConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create Acl conflict response has a 5xx status code
+func (o *CreateACLConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Acl conflict response a status code equal to that given
+func (o *CreateACLConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateACLConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateACLConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateACLConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateACLDefault(code int) *CreateACLDefault {
 	}
 }
 
-/* CreateACLDefault describes a response with status code -1, with default header values.
+/*
+CreateACLDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateACLDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create Acl default response has a 2xx status code
+func (o *CreateACLDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create Acl default response has a 3xx status code
+func (o *CreateACLDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create Acl default response has a 4xx status code
+func (o *CreateACLDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create Acl default response has a 5xx status code
+func (o *CreateACLDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create Acl default response a status code equal to that given
+func (o *CreateACLDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateACLDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAcl default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateACLDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAcl default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateACLDefault) GetPayload() *models.Error {
 	return o.Payload
 }

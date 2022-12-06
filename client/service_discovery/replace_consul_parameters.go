@@ -54,10 +54,12 @@ func NewReplaceConsulParamsWithHTTPClient(client *http.Client) *ReplaceConsulPar
 	}
 }
 
-/* ReplaceConsulParams contains all the parameters to send to the API endpoint
-   for the replace consul operation.
+/*
+ReplaceConsulParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace consul operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceConsulParams struct {
 

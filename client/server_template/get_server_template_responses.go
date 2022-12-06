@@ -55,7 +55,8 @@ func NewGetServerTemplateOK() *GetServerTemplateOK {
 	return &GetServerTemplateOK{}
 }
 
-/* GetServerTemplateOK describes a response with status code 200, with default header values.
+/*
+GetServerTemplateOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetServerTemplateOK struct {
 	Payload *GetServerTemplateOKBody
 }
 
+// IsSuccess returns true when this get server template o k response has a 2xx status code
+func (o *GetServerTemplateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get server template o k response has a 3xx status code
+func (o *GetServerTemplateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get server template o k response has a 4xx status code
+func (o *GetServerTemplateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get server template o k response has a 5xx status code
+func (o *GetServerTemplateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get server template o k response a status code equal to that given
+func (o *GetServerTemplateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetServerTemplateOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_templates/{prefix}][%d] getServerTemplateOK  %+v", 200, o.Payload)
 }
+
+func (o *GetServerTemplateOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/server_templates/{prefix}][%d] getServerTemplateOK  %+v", 200, o.Payload)
+}
+
 func (o *GetServerTemplateOK) GetPayload() *GetServerTemplateOKBody {
 	return o.Payload
 }
@@ -103,7 +134,8 @@ func NewGetServerTemplateNotFound() *GetServerTemplateNotFound {
 	return &GetServerTemplateNotFound{}
 }
 
-/* GetServerTemplateNotFound describes a response with status code 404, with default header values.
+/*
+GetServerTemplateNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -116,9 +148,39 @@ type GetServerTemplateNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get server template not found response has a 2xx status code
+func (o *GetServerTemplateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get server template not found response has a 3xx status code
+func (o *GetServerTemplateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get server template not found response has a 4xx status code
+func (o *GetServerTemplateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get server template not found response has a 5xx status code
+func (o *GetServerTemplateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get server template not found response a status code equal to that given
+func (o *GetServerTemplateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetServerTemplateNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_templates/{prefix}][%d] getServerTemplateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetServerTemplateNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/server_templates/{prefix}][%d] getServerTemplateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetServerTemplateNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -149,7 +211,8 @@ func NewGetServerTemplateDefault(code int) *GetServerTemplateDefault {
 	}
 }
 
-/* GetServerTemplateDefault describes a response with status code -1, with default header values.
+/*
+GetServerTemplateDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -168,9 +231,39 @@ func (o *GetServerTemplateDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get server template default response has a 2xx status code
+func (o *GetServerTemplateDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get server template default response has a 3xx status code
+func (o *GetServerTemplateDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get server template default response has a 4xx status code
+func (o *GetServerTemplateDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get server template default response has a 5xx status code
+func (o *GetServerTemplateDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get server template default response a status code equal to that given
+func (o *GetServerTemplateDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetServerTemplateDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_templates/{prefix}][%d] getServerTemplate default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetServerTemplateDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/server_templates/{prefix}][%d] getServerTemplate default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetServerTemplateDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -194,7 +287,8 @@ func (o *GetServerTemplateDefault) readResponse(response runtime.ClientResponse,
 	return nil
 }
 
-/*GetServerTemplateOKBody get server template o k body
+/*
+GetServerTemplateOKBody get server template o k body
 swagger:model GetServerTemplateOKBody
 */
 type GetServerTemplateOKBody struct {

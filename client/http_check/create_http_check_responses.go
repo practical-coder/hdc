@@ -64,7 +64,8 @@ func NewCreateHTTPCheckCreated() *CreateHTTPCheckCreated {
 	return &CreateHTTPCheckCreated{}
 }
 
-/* CreateHTTPCheckCreated describes a response with status code 201, with default header values.
+/*
+CreateHTTPCheckCreated describes a response with status code 201, with default header values.
 
 HTTP check created
 */
@@ -72,9 +73,39 @@ type CreateHTTPCheckCreated struct {
 	Payload *models.HTTPCheck
 }
 
+// IsSuccess returns true when this create Http check created response has a 2xx status code
+func (o *CreateHTTPCheckCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create Http check created response has a 3xx status code
+func (o *CreateHTTPCheckCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Http check created response has a 4xx status code
+func (o *CreateHTTPCheckCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create Http check created response has a 5xx status code
+func (o *CreateHTTPCheckCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Http check created response a status code equal to that given
+func (o *CreateHTTPCheckCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateHTTPCheckCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_checks][%d] createHttpCheckCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateHTTPCheckCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/http_checks][%d] createHttpCheckCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateHTTPCheckCreated) GetPayload() *models.HTTPCheck {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateHTTPCheckAccepted() *CreateHTTPCheckAccepted {
 	return &CreateHTTPCheckAccepted{}
 }
 
-/* CreateHTTPCheckAccepted describes a response with status code 202, with default header values.
+/*
+CreateHTTPCheckAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateHTTPCheckAccepted struct {
 	Payload *models.HTTPCheck
 }
 
+// IsSuccess returns true when this create Http check accepted response has a 2xx status code
+func (o *CreateHTTPCheckAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create Http check accepted response has a 3xx status code
+func (o *CreateHTTPCheckAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Http check accepted response has a 4xx status code
+func (o *CreateHTTPCheckAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create Http check accepted response has a 5xx status code
+func (o *CreateHTTPCheckAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Http check accepted response a status code equal to that given
+func (o *CreateHTTPCheckAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateHTTPCheckAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_checks][%d] createHttpCheckAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateHTTPCheckAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/http_checks][%d] createHttpCheckAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateHTTPCheckAccepted) GetPayload() *models.HTTPCheck {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateHTTPCheckBadRequest() *CreateHTTPCheckBadRequest {
 	return &CreateHTTPCheckBadRequest{}
 }
 
-/* CreateHTTPCheckBadRequest describes a response with status code 400, with default header values.
+/*
+CreateHTTPCheckBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateHTTPCheckBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create Http check bad request response has a 2xx status code
+func (o *CreateHTTPCheckBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create Http check bad request response has a 3xx status code
+func (o *CreateHTTPCheckBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Http check bad request response has a 4xx status code
+func (o *CreateHTTPCheckBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create Http check bad request response has a 5xx status code
+func (o *CreateHTTPCheckBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Http check bad request response a status code equal to that given
+func (o *CreateHTTPCheckBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateHTTPCheckBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_checks][%d] createHttpCheckBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateHTTPCheckBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/http_checks][%d] createHttpCheckBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateHTTPCheckBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateHTTPCheckConflict() *CreateHTTPCheckConflict {
 	return &CreateHTTPCheckConflict{}
 }
 
-/* CreateHTTPCheckConflict describes a response with status code 409, with default header values.
+/*
+CreateHTTPCheckConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateHTTPCheckConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create Http check conflict response has a 2xx status code
+func (o *CreateHTTPCheckConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create Http check conflict response has a 3xx status code
+func (o *CreateHTTPCheckConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Http check conflict response has a 4xx status code
+func (o *CreateHTTPCheckConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create Http check conflict response has a 5xx status code
+func (o *CreateHTTPCheckConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Http check conflict response a status code equal to that given
+func (o *CreateHTTPCheckConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateHTTPCheckConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_checks][%d] createHttpCheckConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateHTTPCheckConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/http_checks][%d] createHttpCheckConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateHTTPCheckConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateHTTPCheckDefault(code int) *CreateHTTPCheckDefault {
 	}
 }
 
-/* CreateHTTPCheckDefault describes a response with status code -1, with default header values.
+/*
+CreateHTTPCheckDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateHTTPCheckDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create HTTP check default response has a 2xx status code
+func (o *CreateHTTPCheckDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create HTTP check default response has a 3xx status code
+func (o *CreateHTTPCheckDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create HTTP check default response has a 4xx status code
+func (o *CreateHTTPCheckDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create HTTP check default response has a 5xx status code
+func (o *CreateHTTPCheckDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create HTTP check default response a status code equal to that given
+func (o *CreateHTTPCheckDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateHTTPCheckDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_checks][%d] createHTTPCheck default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateHTTPCheckDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/http_checks][%d] createHTTPCheck default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateHTTPCheckDefault) GetPayload() *models.Error {
 	return o.Payload
 }

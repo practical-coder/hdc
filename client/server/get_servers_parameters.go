@@ -52,10 +52,12 @@ func NewGetServersParamsWithHTTPClient(client *http.Client) *GetServersParams {
 	}
 }
 
-/* GetServersParams contains all the parameters to send to the API endpoint
-   for the get servers operation.
+/*
+GetServersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get servers operation.
+
+	Typically these are written to a http.Request.
 */
 type GetServersParams struct {
 

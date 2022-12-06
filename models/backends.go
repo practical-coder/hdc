@@ -16,7 +16,7 @@ import (
 
 // Backends Backends
 //
-// HAProxy backends array
+// # HAProxy backends array
 //
 // swagger:model backends
 type Backends []*Backend

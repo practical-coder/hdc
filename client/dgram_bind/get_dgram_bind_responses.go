@@ -55,7 +55,8 @@ func NewGetDgramBindOK() *GetDgramBindOK {
 	return &GetDgramBindOK{}
 }
 
-/* GetDgramBindOK describes a response with status code 200, with default header values.
+/*
+GetDgramBindOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetDgramBindOK struct {
 	Payload *GetDgramBindOKBody
 }
 
+// IsSuccess returns true when this get dgram bind o k response has a 2xx status code
+func (o *GetDgramBindOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get dgram bind o k response has a 3xx status code
+func (o *GetDgramBindOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get dgram bind o k response has a 4xx status code
+func (o *GetDgramBindOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get dgram bind o k response has a 5xx status code
+func (o *GetDgramBindOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get dgram bind o k response a status code equal to that given
+func (o *GetDgramBindOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDgramBindOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/dgram_binds/{name}][%d] getDgramBindOK  %+v", 200, o.Payload)
 }
+
+func (o *GetDgramBindOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/dgram_binds/{name}][%d] getDgramBindOK  %+v", 200, o.Payload)
+}
+
 func (o *GetDgramBindOK) GetPayload() *GetDgramBindOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetDgramBindNotFound() *GetDgramBindNotFound {
 	return &GetDgramBindNotFound{}
 }
 
-/* GetDgramBindNotFound describes a response with status code 404, with default header values.
+/*
+GetDgramBindNotFound describes a response with status code 404, with default header values.
 
 The specified resource already exists
 */
@@ -112,9 +144,39 @@ type GetDgramBindNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get dgram bind not found response has a 2xx status code
+func (o *GetDgramBindNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get dgram bind not found response has a 3xx status code
+func (o *GetDgramBindNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get dgram bind not found response has a 4xx status code
+func (o *GetDgramBindNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get dgram bind not found response has a 5xx status code
+func (o *GetDgramBindNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get dgram bind not found response a status code equal to that given
+func (o *GetDgramBindNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetDgramBindNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/dgram_binds/{name}][%d] getDgramBindNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetDgramBindNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/dgram_binds/{name}][%d] getDgramBindNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetDgramBindNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetDgramBindDefault(code int) *GetDgramBindDefault {
 	}
 }
 
-/* GetDgramBindDefault describes a response with status code -1, with default header values.
+/*
+GetDgramBindDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetDgramBindDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get dgram bind default response has a 2xx status code
+func (o *GetDgramBindDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get dgram bind default response has a 3xx status code
+func (o *GetDgramBindDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get dgram bind default response has a 4xx status code
+func (o *GetDgramBindDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get dgram bind default response has a 5xx status code
+func (o *GetDgramBindDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get dgram bind default response a status code equal to that given
+func (o *GetDgramBindDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetDgramBindDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/dgram_binds/{name}][%d] getDgramBind default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetDgramBindDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/dgram_binds/{name}][%d] getDgramBind default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetDgramBindDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetDgramBindDefault) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-/*GetDgramBindOKBody get dgram bind o k body
+/*
+GetDgramBindOKBody get dgram bind o k body
 swagger:model GetDgramBindOKBody
 */
 type GetDgramBindOKBody struct {

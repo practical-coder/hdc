@@ -55,10 +55,12 @@ func NewCreateBindParamsWithHTTPClient(client *http.Client) *CreateBindParams {
 	}
 }
 
-/* CreateBindParams contains all the parameters to send to the API endpoint
-   for the create bind operation.
+/*
+CreateBindParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create bind operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateBindParams struct {
 

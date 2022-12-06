@@ -46,7 +46,8 @@ func NewGetConfigurationEndpointsOK() *GetConfigurationEndpointsOK {
 	return &GetConfigurationEndpointsOK{}
 }
 
-/* GetConfigurationEndpointsOK describes a response with status code 200, with default header values.
+/*
+GetConfigurationEndpointsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -54,9 +55,39 @@ type GetConfigurationEndpointsOK struct {
 	Payload models.Endpoints
 }
 
+// IsSuccess returns true when this get configuration endpoints o k response has a 2xx status code
+func (o *GetConfigurationEndpointsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get configuration endpoints o k response has a 3xx status code
+func (o *GetConfigurationEndpointsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get configuration endpoints o k response has a 4xx status code
+func (o *GetConfigurationEndpointsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get configuration endpoints o k response has a 5xx status code
+func (o *GetConfigurationEndpointsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get configuration endpoints o k response a status code equal to that given
+func (o *GetConfigurationEndpointsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetConfigurationEndpointsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration][%d] getConfigurationEndpointsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetConfigurationEndpointsOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration][%d] getConfigurationEndpointsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetConfigurationEndpointsOK) GetPayload() models.Endpoints {
 	return o.Payload
 }
@@ -78,7 +109,8 @@ func NewGetConfigurationEndpointsDefault(code int) *GetConfigurationEndpointsDef
 	}
 }
 
-/* GetConfigurationEndpointsDefault describes a response with status code -1, with default header values.
+/*
+GetConfigurationEndpointsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -97,9 +129,39 @@ func (o *GetConfigurationEndpointsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get configuration endpoints default response has a 2xx status code
+func (o *GetConfigurationEndpointsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get configuration endpoints default response has a 3xx status code
+func (o *GetConfigurationEndpointsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get configuration endpoints default response has a 4xx status code
+func (o *GetConfigurationEndpointsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get configuration endpoints default response has a 5xx status code
+func (o *GetConfigurationEndpointsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get configuration endpoints default response a status code equal to that given
+func (o *GetConfigurationEndpointsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetConfigurationEndpointsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration][%d] getConfigurationEndpoints default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetConfigurationEndpointsDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration][%d] getConfigurationEndpoints default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetConfigurationEndpointsDefault) GetPayload() *models.Error {
 	return o.Payload
 }

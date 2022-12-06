@@ -55,10 +55,12 @@ func NewReplaceServerTemplateParamsWithHTTPClient(client *http.Client) *ReplaceS
 	}
 }
 
-/* ReplaceServerTemplateParams contains all the parameters to send to the API endpoint
-   for the replace server template operation.
+/*
+ReplaceServerTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace server template operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceServerTemplateParams struct {
 

@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateBackend adds a backend
+CreateBackend adds a backend
 
-  Adds a new backend to the configuration file.
+Adds a new backend to the configuration file.
 */
 func (a *Client) CreateBackend(params *CreateBackendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateBackendCreated, *CreateBackendAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateBackend(params *CreateBackendParams, authInfo runtime.Cli
 }
 
 /*
-  DeleteBackend deletes a backend
+DeleteBackend deletes a backend
 
-  Deletes a backend from the configuration by it's name.
+Deletes a backend from the configuration by it's name.
 */
 func (a *Client) DeleteBackend(params *DeleteBackendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteBackendAccepted, *DeleteBackendNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteBackend(params *DeleteBackendParams, authInfo runtime.Cli
 }
 
 /*
-  GetBackend returns a backend
+GetBackend returns a backend
 
-  Returns one backend configuration by it's name.
+Returns one backend configuration by it's name.
 */
 func (a *Client) GetBackend(params *GetBackendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackendOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetBackend(params *GetBackendParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetBackends returns an array of backends
+GetBackends returns an array of backends
 
-  Returns an array of all configured backends.
+Returns an array of all configured backends.
 */
 func (a *Client) GetBackends(params *GetBackendsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackendsOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetBackends(params *GetBackendsParams, authInfo runtime.ClientA
 }
 
 /*
-  ReplaceBackend replaces a backend
+ReplaceBackend replaces a backend
 
-  Replaces a backend configuration by it's name.
+Replaces a backend configuration by it's name.
 */
 func (a *Client) ReplaceBackend(params *ReplaceBackendParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceBackendOK, *ReplaceBackendAccepted, error) {
 	// TODO: Validate the params before sending

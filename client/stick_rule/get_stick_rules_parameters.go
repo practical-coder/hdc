@@ -52,10 +52,12 @@ func NewGetStickRulesParamsWithHTTPClient(client *http.Client) *GetStickRulesPar
 	}
 }
 
-/* GetStickRulesParams contains all the parameters to send to the API endpoint
-   for the get stick rules operation.
+/*
+GetStickRulesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get stick rules operation.
+
+	Typically these are written to a http.Request.
 */
 type GetStickRulesParams struct {
 

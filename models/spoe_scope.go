@@ -13,7 +13,7 @@ import (
 
 // SpoeScope SPOE scope
 //
-// SPOE scope name
+// # SPOE scope name
 //
 // swagger:model spoe_scope
 type SpoeScope string

@@ -52,7 +52,8 @@ func NewGetConfigurationVersionOK() *GetConfigurationVersionOK {
 	return &GetConfigurationVersionOK{}
 }
 
-/* GetConfigurationVersionOK describes a response with status code 200, with default header values.
+/*
+GetConfigurationVersionOK describes a response with status code 200, with default header values.
 
 Configuration version
 */
@@ -60,9 +61,39 @@ type GetConfigurationVersionOK struct {
 	Payload int64
 }
 
+// IsSuccess returns true when this get configuration version o k response has a 2xx status code
+func (o *GetConfigurationVersionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get configuration version o k response has a 3xx status code
+func (o *GetConfigurationVersionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get configuration version o k response has a 4xx status code
+func (o *GetConfigurationVersionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get configuration version o k response has a 5xx status code
+func (o *GetConfigurationVersionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get configuration version o k response a status code equal to that given
+func (o *GetConfigurationVersionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetConfigurationVersionOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/version][%d] getConfigurationVersionOK  %+v", 200, o.Payload)
 }
+
+func (o *GetConfigurationVersionOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/version][%d] getConfigurationVersionOK  %+v", 200, o.Payload)
+}
+
 func (o *GetConfigurationVersionOK) GetPayload() int64 {
 	return o.Payload
 }
@@ -82,7 +113,8 @@ func NewGetConfigurationVersionNotFound() *GetConfigurationVersionNotFound {
 	return &GetConfigurationVersionNotFound{}
 }
 
-/* GetConfigurationVersionNotFound describes a response with status code 404, with default header values.
+/*
+GetConfigurationVersionNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -95,9 +127,39 @@ type GetConfigurationVersionNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get configuration version not found response has a 2xx status code
+func (o *GetConfigurationVersionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get configuration version not found response has a 3xx status code
+func (o *GetConfigurationVersionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get configuration version not found response has a 4xx status code
+func (o *GetConfigurationVersionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get configuration version not found response has a 5xx status code
+func (o *GetConfigurationVersionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get configuration version not found response a status code equal to that given
+func (o *GetConfigurationVersionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetConfigurationVersionNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/version][%d] getConfigurationVersionNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetConfigurationVersionNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/version][%d] getConfigurationVersionNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetConfigurationVersionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -128,7 +190,8 @@ func NewGetConfigurationVersionDefault(code int) *GetConfigurationVersionDefault
 	}
 }
 
-/* GetConfigurationVersionDefault describes a response with status code -1, with default header values.
+/*
+GetConfigurationVersionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -147,9 +210,39 @@ func (o *GetConfigurationVersionDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get configuration version default response has a 2xx status code
+func (o *GetConfigurationVersionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get configuration version default response has a 3xx status code
+func (o *GetConfigurationVersionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get configuration version default response has a 4xx status code
+func (o *GetConfigurationVersionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get configuration version default response has a 5xx status code
+func (o *GetConfigurationVersionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get configuration version default response a status code equal to that given
+func (o *GetConfigurationVersionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetConfigurationVersionDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/version][%d] getConfigurationVersion default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetConfigurationVersionDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/version][%d] getConfigurationVersion default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetConfigurationVersionDefault) GetPayload() *models.Error {
 	return o.Payload
 }

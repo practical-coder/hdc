@@ -53,10 +53,12 @@ func NewGetHAProxyConfigurationParamsWithHTTPClient(client *http.Client) *GetHAP
 	}
 }
 
-/* GetHAProxyConfigurationParams contains all the parameters to send to the API endpoint
-   for the get h a proxy configuration operation.
+/*
+GetHAProxyConfigurationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get h a proxy configuration operation.
+
+	Typically these are written to a http.Request.
 */
 type GetHAProxyConfigurationParams struct {
 

@@ -58,7 +58,8 @@ func NewDeleteStorageSSLCertificateAccepted() *DeleteStorageSSLCertificateAccept
 	return &DeleteStorageSSLCertificateAccepted{}
 }
 
-/* DeleteStorageSSLCertificateAccepted describes a response with status code 202, with default header values.
+/*
+DeleteStorageSSLCertificateAccepted describes a response with status code 202, with default header values.
 
 SSL certificate deleted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteStorageSSLCertificateAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete storage s s l certificate accepted response has a 2xx status code
+func (o *DeleteStorageSSLCertificateAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete storage s s l certificate accepted response has a 3xx status code
+func (o *DeleteStorageSSLCertificateAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete storage s s l certificate accepted response has a 4xx status code
+func (o *DeleteStorageSSLCertificateAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete storage s s l certificate accepted response has a 5xx status code
+func (o *DeleteStorageSSLCertificateAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete storage s s l certificate accepted response a status code equal to that given
+func (o *DeleteStorageSSLCertificateAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteStorageSSLCertificateAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/storage/ssl_certificates/{name}][%d] deleteStorageSSLCertificateAccepted ", 202)
+}
+
+func (o *DeleteStorageSSLCertificateAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/ssl_certificates/{name}][%d] deleteStorageSSLCertificateAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteStorageSSLCertificateNoContent() *DeleteStorageSSLCertificateNoCon
 	return &DeleteStorageSSLCertificateNoContent{}
 }
 
-/* DeleteStorageSSLCertificateNoContent describes a response with status code 204, with default header values.
+/*
+DeleteStorageSSLCertificateNoContent describes a response with status code 204, with default header values.
 
 SSL certificate deleted
 */
 type DeleteStorageSSLCertificateNoContent struct {
 }
 
+// IsSuccess returns true when this delete storage s s l certificate no content response has a 2xx status code
+func (o *DeleteStorageSSLCertificateNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete storage s s l certificate no content response has a 3xx status code
+func (o *DeleteStorageSSLCertificateNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete storage s s l certificate no content response has a 4xx status code
+func (o *DeleteStorageSSLCertificateNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete storage s s l certificate no content response has a 5xx status code
+func (o *DeleteStorageSSLCertificateNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete storage s s l certificate no content response a status code equal to that given
+func (o *DeleteStorageSSLCertificateNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteStorageSSLCertificateNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/storage/ssl_certificates/{name}][%d] deleteStorageSSLCertificateNoContent ", 204)
+}
+
+func (o *DeleteStorageSSLCertificateNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/ssl_certificates/{name}][%d] deleteStorageSSLCertificateNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteStorageSSLCertificateNotFound() *DeleteStorageSSLCertificateNotFou
 	return &DeleteStorageSSLCertificateNotFound{}
 }
 
-/* DeleteStorageSSLCertificateNotFound describes a response with status code 404, with default header values.
+/*
+DeleteStorageSSLCertificateNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteStorageSSLCertificateNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete storage s s l certificate not found response has a 2xx status code
+func (o *DeleteStorageSSLCertificateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete storage s s l certificate not found response has a 3xx status code
+func (o *DeleteStorageSSLCertificateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete storage s s l certificate not found response has a 4xx status code
+func (o *DeleteStorageSSLCertificateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete storage s s l certificate not found response has a 5xx status code
+func (o *DeleteStorageSSLCertificateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete storage s s l certificate not found response a status code equal to that given
+func (o *DeleteStorageSSLCertificateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteStorageSSLCertificateNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/ssl_certificates/{name}][%d] deleteStorageSSLCertificateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteStorageSSLCertificateNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/storage/ssl_certificates/{name}][%d] deleteStorageSSLCertificateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteStorageSSLCertificateNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteStorageSSLCertificateDefault(code int) *DeleteStorageSSLCertificat
 	}
 }
 
-/* DeleteStorageSSLCertificateDefault describes a response with status code -1, with default header values.
+/*
+DeleteStorageSSLCertificateDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteStorageSSLCertificateDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete storage s s l certificate default response has a 2xx status code
+func (o *DeleteStorageSSLCertificateDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete storage s s l certificate default response has a 3xx status code
+func (o *DeleteStorageSSLCertificateDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete storage s s l certificate default response has a 4xx status code
+func (o *DeleteStorageSSLCertificateDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete storage s s l certificate default response has a 5xx status code
+func (o *DeleteStorageSSLCertificateDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete storage s s l certificate default response a status code equal to that given
+func (o *DeleteStorageSSLCertificateDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteStorageSSLCertificateDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/ssl_certificates/{name}][%d] deleteStorageSSLCertificate default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteStorageSSLCertificateDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/storage/ssl_certificates/{name}][%d] deleteStorageSSLCertificate default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteStorageSSLCertificateDefault) GetPayload() *models.Error {
 	return o.Payload
 }

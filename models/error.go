@@ -17,7 +17,7 @@ import (
 
 // Error Error
 //
-// API Error
+// # API Error
 //
 // swagger:model error
 type Error struct {

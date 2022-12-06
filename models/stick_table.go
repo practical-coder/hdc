@@ -18,13 +18,13 @@ import (
 
 // StickTable Stick Table
 //
-// Stick Table Information
+// # Stick Table Information
 //
 // swagger:model stick_table
 type StickTable struct {
 
 	// fields
-	Fields []*StickTableField `json:"fields"`
+	Fields []*StickTableField `json:"fields,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`

@@ -55,10 +55,12 @@ func NewReplaceTCPResponseRuleParamsWithHTTPClient(client *http.Client) *Replace
 	}
 }
 
-/* ReplaceTCPResponseRuleParams contains all the parameters to send to the API endpoint
-   for the replace TCP response rule operation.
+/*
+ReplaceTCPResponseRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace TCP response rule operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceTCPResponseRuleParams struct {
 

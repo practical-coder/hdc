@@ -64,7 +64,8 @@ func NewCreateTCPCheckCreated() *CreateTCPCheckCreated {
 	return &CreateTCPCheckCreated{}
 }
 
-/* CreateTCPCheckCreated describes a response with status code 201, with default header values.
+/*
+CreateTCPCheckCreated describes a response with status code 201, with default header values.
 
 TCP check created
 */
@@ -72,9 +73,39 @@ type CreateTCPCheckCreated struct {
 	Payload *models.TCPCheck
 }
 
+// IsSuccess returns true when this create Tcp check created response has a 2xx status code
+func (o *CreateTCPCheckCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create Tcp check created response has a 3xx status code
+func (o *CreateTCPCheckCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Tcp check created response has a 4xx status code
+func (o *CreateTCPCheckCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create Tcp check created response has a 5xx status code
+func (o *CreateTCPCheckCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Tcp check created response a status code equal to that given
+func (o *CreateTCPCheckCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateTCPCheckCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_checks][%d] createTcpCheckCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateTCPCheckCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_checks][%d] createTcpCheckCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateTCPCheckCreated) GetPayload() *models.TCPCheck {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateTCPCheckAccepted() *CreateTCPCheckAccepted {
 	return &CreateTCPCheckAccepted{}
 }
 
-/* CreateTCPCheckAccepted describes a response with status code 202, with default header values.
+/*
+CreateTCPCheckAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateTCPCheckAccepted struct {
 	Payload *models.TCPCheck
 }
 
+// IsSuccess returns true when this create Tcp check accepted response has a 2xx status code
+func (o *CreateTCPCheckAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create Tcp check accepted response has a 3xx status code
+func (o *CreateTCPCheckAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Tcp check accepted response has a 4xx status code
+func (o *CreateTCPCheckAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create Tcp check accepted response has a 5xx status code
+func (o *CreateTCPCheckAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Tcp check accepted response a status code equal to that given
+func (o *CreateTCPCheckAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateTCPCheckAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_checks][%d] createTcpCheckAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateTCPCheckAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_checks][%d] createTcpCheckAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateTCPCheckAccepted) GetPayload() *models.TCPCheck {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateTCPCheckBadRequest() *CreateTCPCheckBadRequest {
 	return &CreateTCPCheckBadRequest{}
 }
 
-/* CreateTCPCheckBadRequest describes a response with status code 400, with default header values.
+/*
+CreateTCPCheckBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateTCPCheckBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create Tcp check bad request response has a 2xx status code
+func (o *CreateTCPCheckBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create Tcp check bad request response has a 3xx status code
+func (o *CreateTCPCheckBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Tcp check bad request response has a 4xx status code
+func (o *CreateTCPCheckBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create Tcp check bad request response has a 5xx status code
+func (o *CreateTCPCheckBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Tcp check bad request response a status code equal to that given
+func (o *CreateTCPCheckBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateTCPCheckBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_checks][%d] createTcpCheckBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateTCPCheckBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_checks][%d] createTcpCheckBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateTCPCheckBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateTCPCheckConflict() *CreateTCPCheckConflict {
 	return &CreateTCPCheckConflict{}
 }
 
-/* CreateTCPCheckConflict describes a response with status code 409, with default header values.
+/*
+CreateTCPCheckConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateTCPCheckConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create Tcp check conflict response has a 2xx status code
+func (o *CreateTCPCheckConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create Tcp check conflict response has a 3xx status code
+func (o *CreateTCPCheckConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create Tcp check conflict response has a 4xx status code
+func (o *CreateTCPCheckConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create Tcp check conflict response has a 5xx status code
+func (o *CreateTCPCheckConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create Tcp check conflict response a status code equal to that given
+func (o *CreateTCPCheckConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateTCPCheckConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_checks][%d] createTcpCheckConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateTCPCheckConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_checks][%d] createTcpCheckConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateTCPCheckConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateTCPCheckDefault(code int) *CreateTCPCheckDefault {
 	}
 }
 
-/* CreateTCPCheckDefault describes a response with status code -1, with default header values.
+/*
+CreateTCPCheckDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateTCPCheckDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create TCP check default response has a 2xx status code
+func (o *CreateTCPCheckDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create TCP check default response has a 3xx status code
+func (o *CreateTCPCheckDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create TCP check default response has a 4xx status code
+func (o *CreateTCPCheckDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create TCP check default response has a 5xx status code
+func (o *CreateTCPCheckDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create TCP check default response a status code equal to that given
+func (o *CreateTCPCheckDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateTCPCheckDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_checks][%d] createTCPCheck default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateTCPCheckDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_checks][%d] createTCPCheck default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateTCPCheckDefault) GetPayload() *models.Error {
 	return o.Payload
 }

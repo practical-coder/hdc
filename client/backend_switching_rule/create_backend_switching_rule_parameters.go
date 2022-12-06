@@ -55,10 +55,12 @@ func NewCreateBackendSwitchingRuleParamsWithHTTPClient(client *http.Client) *Cre
 	}
 }
 
-/* CreateBackendSwitchingRuleParams contains all the parameters to send to the API endpoint
-   for the create backend switching rule operation.
+/*
+CreateBackendSwitchingRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create backend switching rule operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateBackendSwitchingRuleParams struct {
 

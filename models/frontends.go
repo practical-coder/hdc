@@ -16,7 +16,7 @@ import (
 
 // Frontends Frontends
 //
-// HAProxy frontends array
+// # HAProxy frontends array
 //
 // swagger:model frontends
 type Frontends []*Frontend

@@ -52,10 +52,12 @@ func NewDeleteSpoeTransactionParamsWithHTTPClient(client *http.Client) *DeleteSp
 	}
 }
 
-/* DeleteSpoeTransactionParams contains all the parameters to send to the API endpoint
-   for the delete spoe transaction operation.
+/*
+DeleteSpoeTransactionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete spoe transaction operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteSpoeTransactionParams struct {
 

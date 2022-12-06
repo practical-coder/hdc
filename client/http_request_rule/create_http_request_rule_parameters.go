@@ -55,10 +55,12 @@ func NewCreateHTTPRequestRuleParamsWithHTTPClient(client *http.Client) *CreateHT
 	}
 }
 
-/* CreateHTTPRequestRuleParams contains all the parameters to send to the API endpoint
-   for the create HTTP request rule operation.
+/*
+CreateHTTPRequestRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create HTTP request rule operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateHTTPRequestRuleParams struct {
 

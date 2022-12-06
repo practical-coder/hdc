@@ -53,10 +53,12 @@ func NewClearRuntimeMapParamsWithHTTPClient(client *http.Client) *ClearRuntimeMa
 	}
 }
 
-/* ClearRuntimeMapParams contains all the parameters to send to the API endpoint
-   for the clear runtime map operation.
+/*
+ClearRuntimeMapParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the clear runtime map operation.
+
+	Typically these are written to a http.Request.
 */
 type ClearRuntimeMapParams struct {
 

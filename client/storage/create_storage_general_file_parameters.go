@@ -52,10 +52,12 @@ func NewCreateStorageGeneralFileParamsWithHTTPClient(client *http.Client) *Creat
 	}
 }
 
-/* CreateStorageGeneralFileParams contains all the parameters to send to the API endpoint
-   for the create storage general file operation.
+/*
+CreateStorageGeneralFileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create storage general file operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateStorageGeneralFileParams struct {
 

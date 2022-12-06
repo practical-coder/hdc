@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateNameserver adds a nameserver
+CreateNameserver adds a nameserver
 
-  Adds a new nameserver to the resolvers section.
+Adds a new nameserver to the resolvers section.
 */
 func (a *Client) CreateNameserver(params *CreateNameserverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNameserverCreated, *CreateNameserverAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateNameserver(params *CreateNameserverParams, authInfo runti
 }
 
 /*
-  DeleteNameserver deletes a nameserver
+DeleteNameserver deletes a nameserver
 
-  Deletes a nameserver from the resolvers section by it's name.
+Deletes a nameserver from the resolvers section by it's name.
 */
 func (a *Client) DeleteNameserver(params *DeleteNameserverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNameserverAccepted, *DeleteNameserverNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteNameserver(params *DeleteNameserverParams, authInfo runti
 }
 
 /*
-  GetNameserver returns a nameserver
+GetNameserver returns a nameserver
 
-  Returns one nameserver configuration by it's name.
+Returns one nameserver configuration by it's name.
 */
 func (a *Client) GetNameserver(params *GetNameserverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNameserverOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetNameserver(params *GetNameserverParams, authInfo runtime.Cli
 }
 
 /*
-  GetNameservers returns an array of nameservers
+GetNameservers returns an array of nameservers
 
-  Returns an array of all configured nameservers.
+Returns an array of all configured nameservers.
 */
 func (a *Client) GetNameservers(params *GetNameserversParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNameserversOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetNameservers(params *GetNameserversParams, authInfo runtime.C
 }
 
 /*
-  ReplaceNameserver replaces a nameserver
+ReplaceNameserver replaces a nameserver
 
-  Replaces a nameserver configuration by it's name.
+Replaces a nameserver configuration by it's name.
 */
 func (a *Client) ReplaceNameserver(params *ReplaceNameserverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceNameserverOK, *ReplaceNameserverAccepted, error) {
 	// TODO: Validate the params before sending

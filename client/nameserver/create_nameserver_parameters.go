@@ -55,10 +55,12 @@ func NewCreateNameserverParamsWithHTTPClient(client *http.Client) *CreateNameser
 	}
 }
 
-/* CreateNameserverParams contains all the parameters to send to the API endpoint
-   for the create nameserver operation.
+/*
+CreateNameserverParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create nameserver operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateNameserverParams struct {
 

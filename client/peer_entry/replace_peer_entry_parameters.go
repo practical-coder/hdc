@@ -55,10 +55,12 @@ func NewReplacePeerEntryParamsWithHTTPClient(client *http.Client) *ReplacePeerEn
 	}
 }
 
-/* ReplacePeerEntryParams contains all the parameters to send to the API endpoint
-   for the replace peer entry operation.
+/*
+ReplacePeerEntryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace peer entry operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplacePeerEntryParams struct {
 

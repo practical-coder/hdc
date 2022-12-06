@@ -53,10 +53,12 @@ func NewDeleteHTTPAfterResponseRuleParamsWithHTTPClient(client *http.Client) *De
 	}
 }
 
-/* DeleteHTTPAfterResponseRuleParams contains all the parameters to send to the API endpoint
-   for the delete HTTP after response rule operation.
+/*
+DeleteHTTPAfterResponseRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete HTTP after response rule operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteHTTPAfterResponseRuleParams struct {
 

@@ -52,14 +52,44 @@ func NewDeleteSpoeGroupNoContent() *DeleteSpoeGroupNoContent {
 	return &DeleteSpoeGroupNoContent{}
 }
 
-/* DeleteSpoeGroupNoContent describes a response with status code 204, with default header values.
+/*
+DeleteSpoeGroupNoContent describes a response with status code 204, with default header values.
 
 Spoe group deleted
 */
 type DeleteSpoeGroupNoContent struct {
 }
 
+// IsSuccess returns true when this delete spoe group no content response has a 2xx status code
+func (o *DeleteSpoeGroupNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete spoe group no content response has a 3xx status code
+func (o *DeleteSpoeGroupNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete spoe group no content response has a 4xx status code
+func (o *DeleteSpoeGroupNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete spoe group no content response has a 5xx status code
+func (o *DeleteSpoeGroupNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete spoe group no content response a status code equal to that given
+func (o *DeleteSpoeGroupNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteSpoeGroupNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_groups/{name}][%d] deleteSpoeGroupNoContent ", 204)
+}
+
+func (o *DeleteSpoeGroupNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_groups/{name}][%d] deleteSpoeGroupNoContent ", 204)
 }
 
@@ -73,7 +103,8 @@ func NewDeleteSpoeGroupNotFound() *DeleteSpoeGroupNotFound {
 	return &DeleteSpoeGroupNotFound{}
 }
 
-/* DeleteSpoeGroupNotFound describes a response with status code 404, with default header values.
+/*
+DeleteSpoeGroupNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -86,9 +117,39 @@ type DeleteSpoeGroupNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete spoe group not found response has a 2xx status code
+func (o *DeleteSpoeGroupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete spoe group not found response has a 3xx status code
+func (o *DeleteSpoeGroupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete spoe group not found response has a 4xx status code
+func (o *DeleteSpoeGroupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete spoe group not found response has a 5xx status code
+func (o *DeleteSpoeGroupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete spoe group not found response a status code equal to that given
+func (o *DeleteSpoeGroupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteSpoeGroupNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_groups/{name}][%d] deleteSpoeGroupNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteSpoeGroupNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_groups/{name}][%d] deleteSpoeGroupNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteSpoeGroupNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -119,7 +180,8 @@ func NewDeleteSpoeGroupDefault(code int) *DeleteSpoeGroupDefault {
 	}
 }
 
-/* DeleteSpoeGroupDefault describes a response with status code -1, with default header values.
+/*
+DeleteSpoeGroupDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -138,9 +200,39 @@ func (o *DeleteSpoeGroupDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete spoe group default response has a 2xx status code
+func (o *DeleteSpoeGroupDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete spoe group default response has a 3xx status code
+func (o *DeleteSpoeGroupDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete spoe group default response has a 4xx status code
+func (o *DeleteSpoeGroupDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete spoe group default response has a 5xx status code
+func (o *DeleteSpoeGroupDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete spoe group default response a status code equal to that given
+func (o *DeleteSpoeGroupDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteSpoeGroupDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_groups/{name}][%d] deleteSpoeGroup default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteSpoeGroupDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_groups/{name}][%d] deleteSpoeGroup default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteSpoeGroupDefault) GetPayload() *models.Error {
 	return o.Payload
 }

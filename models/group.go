@@ -16,7 +16,7 @@ import (
 
 // Group Group
 //
-// HAProxy userlist group
+// # HAProxy userlist group
 //
 // swagger:model group
 type Group struct {

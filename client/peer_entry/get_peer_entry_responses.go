@@ -55,7 +55,8 @@ func NewGetPeerEntryOK() *GetPeerEntryOK {
 	return &GetPeerEntryOK{}
 }
 
-/* GetPeerEntryOK describes a response with status code 200, with default header values.
+/*
+GetPeerEntryOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetPeerEntryOK struct {
 	Payload *GetPeerEntryOKBody
 }
 
+// IsSuccess returns true when this get peer entry o k response has a 2xx status code
+func (o *GetPeerEntryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get peer entry o k response has a 3xx status code
+func (o *GetPeerEntryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get peer entry o k response has a 4xx status code
+func (o *GetPeerEntryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get peer entry o k response has a 5xx status code
+func (o *GetPeerEntryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get peer entry o k response a status code equal to that given
+func (o *GetPeerEntryOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetPeerEntryOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/peer_entries/{name}][%d] getPeerEntryOK  %+v", 200, o.Payload)
 }
+
+func (o *GetPeerEntryOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/peer_entries/{name}][%d] getPeerEntryOK  %+v", 200, o.Payload)
+}
+
 func (o *GetPeerEntryOK) GetPayload() *GetPeerEntryOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetPeerEntryNotFound() *GetPeerEntryNotFound {
 	return &GetPeerEntryNotFound{}
 }
 
-/* GetPeerEntryNotFound describes a response with status code 404, with default header values.
+/*
+GetPeerEntryNotFound describes a response with status code 404, with default header values.
 
 The specified resource already exists
 */
@@ -112,9 +144,39 @@ type GetPeerEntryNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get peer entry not found response has a 2xx status code
+func (o *GetPeerEntryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get peer entry not found response has a 3xx status code
+func (o *GetPeerEntryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get peer entry not found response has a 4xx status code
+func (o *GetPeerEntryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get peer entry not found response has a 5xx status code
+func (o *GetPeerEntryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get peer entry not found response a status code equal to that given
+func (o *GetPeerEntryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetPeerEntryNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/peer_entries/{name}][%d] getPeerEntryNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetPeerEntryNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/peer_entries/{name}][%d] getPeerEntryNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetPeerEntryNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetPeerEntryDefault(code int) *GetPeerEntryDefault {
 	}
 }
 
-/* GetPeerEntryDefault describes a response with status code -1, with default header values.
+/*
+GetPeerEntryDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetPeerEntryDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get peer entry default response has a 2xx status code
+func (o *GetPeerEntryDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get peer entry default response has a 3xx status code
+func (o *GetPeerEntryDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get peer entry default response has a 4xx status code
+func (o *GetPeerEntryDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get peer entry default response has a 5xx status code
+func (o *GetPeerEntryDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get peer entry default response a status code equal to that given
+func (o *GetPeerEntryDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetPeerEntryDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/peer_entries/{name}][%d] getPeerEntry default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetPeerEntryDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/peer_entries/{name}][%d] getPeerEntry default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetPeerEntryDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetPeerEntryDefault) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-/*GetPeerEntryOKBody get peer entry o k body
+/*
+GetPeerEntryOKBody get peer entry o k body
 swagger:model GetPeerEntryOKBody
 */
 type GetPeerEntryOKBody struct {

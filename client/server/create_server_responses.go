@@ -64,7 +64,8 @@ func NewCreateServerCreated() *CreateServerCreated {
 	return &CreateServerCreated{}
 }
 
-/* CreateServerCreated describes a response with status code 201, with default header values.
+/*
+CreateServerCreated describes a response with status code 201, with default header values.
 
 Server created
 */
@@ -72,9 +73,39 @@ type CreateServerCreated struct {
 	Payload *models.Server
 }
 
+// IsSuccess returns true when this create server created response has a 2xx status code
+func (o *CreateServerCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create server created response has a 3xx status code
+func (o *CreateServerCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create server created response has a 4xx status code
+func (o *CreateServerCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create server created response has a 5xx status code
+func (o *CreateServerCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create server created response a status code equal to that given
+func (o *CreateServerCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateServerCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/servers][%d] createServerCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateServerCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/servers][%d] createServerCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateServerCreated) GetPayload() *models.Server {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateServerAccepted() *CreateServerAccepted {
 	return &CreateServerAccepted{}
 }
 
-/* CreateServerAccepted describes a response with status code 202, with default header values.
+/*
+CreateServerAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateServerAccepted struct {
 	Payload *models.Server
 }
 
+// IsSuccess returns true when this create server accepted response has a 2xx status code
+func (o *CreateServerAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create server accepted response has a 3xx status code
+func (o *CreateServerAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create server accepted response has a 4xx status code
+func (o *CreateServerAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create server accepted response has a 5xx status code
+func (o *CreateServerAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create server accepted response a status code equal to that given
+func (o *CreateServerAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateServerAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/servers][%d] createServerAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateServerAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/servers][%d] createServerAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateServerAccepted) GetPayload() *models.Server {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateServerBadRequest() *CreateServerBadRequest {
 	return &CreateServerBadRequest{}
 }
 
-/* CreateServerBadRequest describes a response with status code 400, with default header values.
+/*
+CreateServerBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateServerBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create server bad request response has a 2xx status code
+func (o *CreateServerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create server bad request response has a 3xx status code
+func (o *CreateServerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create server bad request response has a 4xx status code
+func (o *CreateServerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create server bad request response has a 5xx status code
+func (o *CreateServerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create server bad request response a status code equal to that given
+func (o *CreateServerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateServerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/servers][%d] createServerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateServerBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/servers][%d] createServerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateServerBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateServerConflict() *CreateServerConflict {
 	return &CreateServerConflict{}
 }
 
-/* CreateServerConflict describes a response with status code 409, with default header values.
+/*
+CreateServerConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateServerConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create server conflict response has a 2xx status code
+func (o *CreateServerConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create server conflict response has a 3xx status code
+func (o *CreateServerConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create server conflict response has a 4xx status code
+func (o *CreateServerConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create server conflict response has a 5xx status code
+func (o *CreateServerConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create server conflict response a status code equal to that given
+func (o *CreateServerConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateServerConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/servers][%d] createServerConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateServerConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/servers][%d] createServerConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateServerConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateServerDefault(code int) *CreateServerDefault {
 	}
 }
 
-/* CreateServerDefault describes a response with status code -1, with default header values.
+/*
+CreateServerDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateServerDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create server default response has a 2xx status code
+func (o *CreateServerDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create server default response has a 3xx status code
+func (o *CreateServerDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create server default response has a 4xx status code
+func (o *CreateServerDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create server default response has a 5xx status code
+func (o *CreateServerDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create server default response a status code equal to that given
+func (o *CreateServerDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateServerDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/servers][%d] createServer default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateServerDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/servers][%d] createServer default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateServerDefault) GetPayload() *models.Error {
 	return o.Payload
 }

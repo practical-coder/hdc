@@ -52,10 +52,12 @@ func NewDeleteConsulParamsWithHTTPClient(client *http.Client) *DeleteConsulParam
 	}
 }
 
-/* DeleteConsulParams contains all the parameters to send to the API endpoint
-   for the delete consul operation.
+/*
+DeleteConsulParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete consul operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteConsulParams struct {
 

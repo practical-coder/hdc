@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateLogForward adds a log forward
+CreateLogForward adds a log forward
 
-  Adds a new log_forward to the configuration file.
+Adds a new log_forward to the configuration file.
 */
 func (a *Client) CreateLogForward(params *CreateLogForwardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateLogForwardCreated, *CreateLogForwardAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateLogForward(params *CreateLogForwardParams, authInfo runti
 }
 
 /*
-  DeleteLogForward deletes a log forward
+DeleteLogForward deletes a log forward
 
-  Deletes a log forward from the configuration by it's name.
+Deletes a log forward from the configuration by it's name.
 */
 func (a *Client) DeleteLogForward(params *DeleteLogForwardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteLogForwardAccepted, *DeleteLogForwardNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteLogForward(params *DeleteLogForwardParams, authInfo runti
 }
 
 /*
-  GetLogForward returns a log forward
+GetLogForward returns a log forward
 
-  Returns one log forward configuration by it's name.
+Returns one log forward configuration by it's name.
 */
 func (a *Client) GetLogForward(params *GetLogForwardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogForwardOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetLogForward(params *GetLogForwardParams, authInfo runtime.Cli
 }
 
 /*
-  GetLogForwards returns an array of log forwards
+GetLogForwards returns an array of log forwards
 
-  Returns an array of all configured log forwards.
+Returns an array of all configured log forwards.
 */
 func (a *Client) GetLogForwards(params *GetLogForwardsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogForwardsOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetLogForwards(params *GetLogForwardsParams, authInfo runtime.C
 }
 
 /*
-  ReplaceLogForward replaces a log forward
+ReplaceLogForward replaces a log forward
 
-  Replaces a log forward configuration by it's name.
+Replaces a log forward configuration by it's name.
 */
 func (a *Client) ReplaceLogForward(params *ReplaceLogForwardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceLogForwardOK, *ReplaceLogForwardAccepted, error) {
 	// TODO: Validate the params before sending

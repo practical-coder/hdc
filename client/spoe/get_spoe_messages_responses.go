@@ -50,7 +50,8 @@ func NewGetSpoeMessagesOK() *GetSpoeMessagesOK {
 	return &GetSpoeMessagesOK{}
 }
 
-/* GetSpoeMessagesOK describes a response with status code 200, with default header values.
+/*
+GetSpoeMessagesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetSpoeMessagesOK struct {
 	Payload *GetSpoeMessagesOKBody
 }
 
+// IsSuccess returns true when this get spoe messages o k response has a 2xx status code
+func (o *GetSpoeMessagesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get spoe messages o k response has a 3xx status code
+func (o *GetSpoeMessagesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get spoe messages o k response has a 4xx status code
+func (o *GetSpoeMessagesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get spoe messages o k response has a 5xx status code
+func (o *GetSpoeMessagesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get spoe messages o k response a status code equal to that given
+func (o *GetSpoeMessagesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetSpoeMessagesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_messages][%d] getSpoeMessagesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetSpoeMessagesOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_messages][%d] getSpoeMessagesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetSpoeMessagesOK) GetPayload() *GetSpoeMessagesOKBody {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewGetSpoeMessagesDefault(code int) *GetSpoeMessagesDefault {
 	}
 }
 
-/* GetSpoeMessagesDefault describes a response with status code -1, with default header values.
+/*
+GetSpoeMessagesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +147,39 @@ func (o *GetSpoeMessagesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get spoe messages default response has a 2xx status code
+func (o *GetSpoeMessagesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get spoe messages default response has a 3xx status code
+func (o *GetSpoeMessagesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get spoe messages default response has a 4xx status code
+func (o *GetSpoeMessagesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get spoe messages default response has a 5xx status code
+func (o *GetSpoeMessagesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get spoe messages default response a status code equal to that given
+func (o *GetSpoeMessagesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetSpoeMessagesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_messages][%d] getSpoeMessages default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetSpoeMessagesDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_messages][%d] getSpoeMessages default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetSpoeMessagesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -141,7 +203,8 @@ func (o *GetSpoeMessagesDefault) readResponse(response runtime.ClientResponse, c
 	return nil
 }
 
-/*GetSpoeMessagesOKBody get spoe messages o k body
+/*
+GetSpoeMessagesOKBody get spoe messages o k body
 swagger:model GetSpoeMessagesOKBody
 */
 type GetSpoeMessagesOKBody struct {

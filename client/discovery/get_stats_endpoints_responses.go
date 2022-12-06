@@ -46,7 +46,8 @@ func NewGetStatsEndpointsOK() *GetStatsEndpointsOK {
 	return &GetStatsEndpointsOK{}
 }
 
-/* GetStatsEndpointsOK describes a response with status code 200, with default header values.
+/*
+GetStatsEndpointsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -54,9 +55,39 @@ type GetStatsEndpointsOK struct {
 	Payload models.Endpoints
 }
 
+// IsSuccess returns true when this get stats endpoints o k response has a 2xx status code
+func (o *GetStatsEndpointsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get stats endpoints o k response has a 3xx status code
+func (o *GetStatsEndpointsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get stats endpoints o k response has a 4xx status code
+func (o *GetStatsEndpointsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get stats endpoints o k response has a 5xx status code
+func (o *GetStatsEndpointsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get stats endpoints o k response a status code equal to that given
+func (o *GetStatsEndpointsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetStatsEndpointsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/stats][%d] getStatsEndpointsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetStatsEndpointsOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/stats][%d] getStatsEndpointsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetStatsEndpointsOK) GetPayload() models.Endpoints {
 	return o.Payload
 }
@@ -78,7 +109,8 @@ func NewGetStatsEndpointsDefault(code int) *GetStatsEndpointsDefault {
 	}
 }
 
-/* GetStatsEndpointsDefault describes a response with status code -1, with default header values.
+/*
+GetStatsEndpointsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -97,9 +129,39 @@ func (o *GetStatsEndpointsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get stats endpoints default response has a 2xx status code
+func (o *GetStatsEndpointsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get stats endpoints default response has a 3xx status code
+func (o *GetStatsEndpointsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get stats endpoints default response has a 4xx status code
+func (o *GetStatsEndpointsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get stats endpoints default response has a 5xx status code
+func (o *GetStatsEndpointsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get stats endpoints default response a status code equal to that given
+func (o *GetStatsEndpointsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetStatsEndpointsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/stats][%d] getStatsEndpoints default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetStatsEndpointsDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/stats][%d] getStatsEndpoints default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetStatsEndpointsDefault) GetPayload() *models.Error {
 	return o.Payload
 }

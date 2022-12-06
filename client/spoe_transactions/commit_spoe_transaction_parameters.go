@@ -53,10 +53,12 @@ func NewCommitSpoeTransactionParamsWithHTTPClient(client *http.Client) *CommitSp
 	}
 }
 
-/* CommitSpoeTransactionParams contains all the parameters to send to the API endpoint
-   for the commit spoe transaction operation.
+/*
+CommitSpoeTransactionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the commit spoe transaction operation.
+
+	Typically these are written to a http.Request.
 */
 type CommitSpoeTransactionParams struct {
 

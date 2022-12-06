@@ -40,9 +40,9 @@ type ClientService interface {
 }
 
 /*
-  GetStickTable returns stick table
+GetStickTable returns stick table
 
-  Returns one stick table from runtime.
+Returns one stick table from runtime.
 */
 func (a *Client) GetStickTable(params *GetStickTableParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStickTableOK, error) {
 	// TODO: Validate the params before sending
@@ -80,9 +80,9 @@ func (a *Client) GetStickTable(params *GetStickTableParams, authInfo runtime.Cli
 }
 
 /*
-  GetStickTableEntries returns stick table entries
+GetStickTableEntries returns stick table entries
 
-  Returns an array of all entries in a given stick tables.
+Returns an array of all entries in a given stick tables.
 */
 func (a *Client) GetStickTableEntries(params *GetStickTableEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStickTableEntriesOK, error) {
 	// TODO: Validate the params before sending
@@ -120,9 +120,9 @@ func (a *Client) GetStickTableEntries(params *GetStickTableEntriesParams, authIn
 }
 
 /*
-  GetStickTables returns stick tables
+GetStickTables returns stick tables
 
-  Returns an array of all stick tables.
+Returns an array of all stick tables.
 */
 func (a *Client) GetStickTables(params *GetStickTablesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStickTablesOK, error) {
 	// TODO: Validate the params before sending
@@ -160,9 +160,9 @@ func (a *Client) GetStickTables(params *GetStickTablesParams, authInfo runtime.C
 }
 
 /*
-  SetStickTableEntries sets entry to stick table
+SetStickTableEntries sets entry to stick table
 
-  Create or update a stick-table entry in the table.
+Create or update a stick-table entry in the table.
 */
 func (a *Client) SetStickTableEntries(params *SetStickTableEntriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SetStickTableEntriesNoContent, error) {
 	// TODO: Validate the params before sending

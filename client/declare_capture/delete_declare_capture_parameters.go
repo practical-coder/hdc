@@ -53,10 +53,12 @@ func NewDeleteDeclareCaptureParamsWithHTTPClient(client *http.Client) *DeleteDec
 	}
 }
 
-/* DeleteDeclareCaptureParams contains all the parameters to send to the API endpoint
-   for the delete declare capture operation.
+/*
+DeleteDeclareCaptureParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete declare capture operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteDeclareCaptureParams struct {
 

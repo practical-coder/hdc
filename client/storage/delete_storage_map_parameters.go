@@ -52,10 +52,12 @@ func NewDeleteStorageMapParamsWithHTTPClient(client *http.Client) *DeleteStorage
 	}
 }
 
-/* DeleteStorageMapParams contains all the parameters to send to the API endpoint
-   for the delete storage map operation.
+/*
+DeleteStorageMapParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete storage map operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteStorageMapParams struct {
 

@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateHTTPResponseRule adds a new HTTP response rule
+CreateHTTPResponseRule adds a new HTTP response rule
 
-  Adds a new HTTP Response Rule of the specified type in the specified parent.
+Adds a new HTTP Response Rule of the specified type in the specified parent.
 */
 func (a *Client) CreateHTTPResponseRule(params *CreateHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateHTTPResponseRuleCreated, *CreateHTTPResponseRuleAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateHTTPResponseRule(params *CreateHTTPResponseRuleParams, au
 }
 
 /*
-  DeleteHTTPResponseRule deletes a HTTP response rule
+DeleteHTTPResponseRule deletes a HTTP response rule
 
-  Deletes a HTTP Response Rule configuration by it's index from the specified parent.
+Deletes a HTTP Response Rule configuration by it's index from the specified parent.
 */
 func (a *Client) DeleteHTTPResponseRule(params *DeleteHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteHTTPResponseRuleAccepted, *DeleteHTTPResponseRuleNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteHTTPResponseRule(params *DeleteHTTPResponseRuleParams, au
 }
 
 /*
-  GetHTTPResponseRule returns one HTTP response rule
+GetHTTPResponseRule returns one HTTP response rule
 
-  Returns one HTTP Response Rule configuration by it's index in the specified parent.
+Returns one HTTP Response Rule configuration by it's index in the specified parent.
 */
 func (a *Client) GetHTTPResponseRule(params *GetHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPResponseRuleOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetHTTPResponseRule(params *GetHTTPResponseRuleParams, authInfo
 }
 
 /*
-  GetHTTPResponseRules returns an array of all HTTP response rules
+GetHTTPResponseRules returns an array of all HTTP response rules
 
-  Returns all HTTP Response Rules that are configured in specified parent.
+Returns all HTTP Response Rules that are configured in specified parent.
 */
 func (a *Client) GetHTTPResponseRules(params *GetHTTPResponseRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHTTPResponseRulesOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetHTTPResponseRules(params *GetHTTPResponseRulesParams, authIn
 }
 
 /*
-  ReplaceHTTPResponseRule replaces a HTTP response rule
+ReplaceHTTPResponseRule replaces a HTTP response rule
 
-  Replaces a HTTP Response Rule configuration by it's index in the specified parent.
+Replaces a HTTP Response Rule configuration by it's index in the specified parent.
 */
 func (a *Client) ReplaceHTTPResponseRule(params *ReplaceHTTPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceHTTPResponseRuleOK, *ReplaceHTTPResponseRuleAccepted, error) {
 	// TODO: Validate the params before sending

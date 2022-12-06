@@ -64,7 +64,8 @@ func NewCreateBackendCreated() *CreateBackendCreated {
 	return &CreateBackendCreated{}
 }
 
-/* CreateBackendCreated describes a response with status code 201, with default header values.
+/*
+CreateBackendCreated describes a response with status code 201, with default header values.
 
 Backend created
 */
@@ -72,9 +73,39 @@ type CreateBackendCreated struct {
 	Payload *models.Backend
 }
 
+// IsSuccess returns true when this create backend created response has a 2xx status code
+func (o *CreateBackendCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create backend created response has a 3xx status code
+func (o *CreateBackendCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create backend created response has a 4xx status code
+func (o *CreateBackendCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create backend created response has a 5xx status code
+func (o *CreateBackendCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create backend created response a status code equal to that given
+func (o *CreateBackendCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateBackendCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backends][%d] createBackendCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateBackendCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/backends][%d] createBackendCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateBackendCreated) GetPayload() *models.Backend {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateBackendAccepted() *CreateBackendAccepted {
 	return &CreateBackendAccepted{}
 }
 
-/* CreateBackendAccepted describes a response with status code 202, with default header values.
+/*
+CreateBackendAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateBackendAccepted struct {
 	Payload *models.Backend
 }
 
+// IsSuccess returns true when this create backend accepted response has a 2xx status code
+func (o *CreateBackendAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create backend accepted response has a 3xx status code
+func (o *CreateBackendAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create backend accepted response has a 4xx status code
+func (o *CreateBackendAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create backend accepted response has a 5xx status code
+func (o *CreateBackendAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create backend accepted response a status code equal to that given
+func (o *CreateBackendAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateBackendAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backends][%d] createBackendAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateBackendAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/backends][%d] createBackendAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateBackendAccepted) GetPayload() *models.Backend {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateBackendBadRequest() *CreateBackendBadRequest {
 	return &CreateBackendBadRequest{}
 }
 
-/* CreateBackendBadRequest describes a response with status code 400, with default header values.
+/*
+CreateBackendBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateBackendBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create backend bad request response has a 2xx status code
+func (o *CreateBackendBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create backend bad request response has a 3xx status code
+func (o *CreateBackendBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create backend bad request response has a 4xx status code
+func (o *CreateBackendBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create backend bad request response has a 5xx status code
+func (o *CreateBackendBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create backend bad request response a status code equal to that given
+func (o *CreateBackendBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateBackendBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backends][%d] createBackendBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateBackendBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/backends][%d] createBackendBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateBackendBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateBackendConflict() *CreateBackendConflict {
 	return &CreateBackendConflict{}
 }
 
-/* CreateBackendConflict describes a response with status code 409, with default header values.
+/*
+CreateBackendConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateBackendConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create backend conflict response has a 2xx status code
+func (o *CreateBackendConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create backend conflict response has a 3xx status code
+func (o *CreateBackendConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create backend conflict response has a 4xx status code
+func (o *CreateBackendConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create backend conflict response has a 5xx status code
+func (o *CreateBackendConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create backend conflict response a status code equal to that given
+func (o *CreateBackendConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateBackendConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backends][%d] createBackendConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateBackendConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/backends][%d] createBackendConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateBackendConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateBackendDefault(code int) *CreateBackendDefault {
 	}
 }
 
-/* CreateBackendDefault describes a response with status code -1, with default header values.
+/*
+CreateBackendDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateBackendDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create backend default response has a 2xx status code
+func (o *CreateBackendDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create backend default response has a 3xx status code
+func (o *CreateBackendDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create backend default response has a 4xx status code
+func (o *CreateBackendDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create backend default response has a 5xx status code
+func (o *CreateBackendDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create backend default response a status code equal to that given
+func (o *CreateBackendDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateBackendDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backends][%d] createBackend default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateBackendDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/backends][%d] createBackend default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateBackendDefault) GetPayload() *models.Error {
 	return o.Payload
 }

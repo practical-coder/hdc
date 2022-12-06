@@ -52,10 +52,12 @@ func NewDeleteAWSRegionParamsWithHTTPClient(client *http.Client) *DeleteAWSRegio
 	}
 }
 
-/* DeleteAWSRegionParams contains all the parameters to send to the API endpoint
-   for the delete a w s region operation.
+/*
+DeleteAWSRegionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete a w s region operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteAWSRegionParams struct {
 

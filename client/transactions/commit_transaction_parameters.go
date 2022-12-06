@@ -53,10 +53,12 @@ func NewCommitTransactionParamsWithHTTPClient(client *http.Client) *CommitTransa
 	}
 }
 
-/* CommitTransactionParams contains all the parameters to send to the API endpoint
-   for the commit transaction operation.
+/*
+CommitTransactionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the commit transaction operation.
+
+	Typically these are written to a http.Request.
 */
 type CommitTransactionParams struct {
 

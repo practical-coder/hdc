@@ -18,13 +18,16 @@ import (
 
 // Defaults Defaults
 //
-// HAProxy defaults configuration
+// # HAProxy defaults configuration
 //
 // swagger:model defaults
 type Defaults struct {
 
 	// error files
-	ErrorFiles []*Errorfile `json:"error_files"`
+	ErrorFiles []*Errorfile `json:"error_files,omitempty"`
+
+	// error files from HTTP errors
+	ErrorFilesFromHTTPErrors []*Errorfiles `json:"errorfiles_from_http_errors,omitempty"`
 
 	// abortonclose
 	// Enum: [enabled disabled]
@@ -109,6 +112,9 @@ type Defaults struct {
 	// Enum: [enabled disabled]
 	DisableH2Upgrade string `json:"disable_h2_upgrade,omitempty"`
 
+	// disabled
+	Disabled bool `json:"disabled,omitempty"`
+
 	// dontlog normal
 	// Enum: [enabled disabled]
 	DontlogNormal string `json:"dontlog_normal,omitempty"`
@@ -120,6 +126,21 @@ type Defaults struct {
 	// dynamic cookie key
 	// Pattern: ^[^\s]+$
 	DynamicCookieKey string `json:"dynamic_cookie_key,omitempty"`
+
+	// email alert
+	EmailAlert *EmailAlert `json:"email_alert,omitempty"`
+
+	// enabled
+	Enabled bool `json:"enabled,omitempty"`
+
+	// error log format
+	ErrorLogFormat string `json:"error_log_format,omitempty"`
+
+	// errorloc302
+	Errorloc302 *Errorloc `json:"errorloc302,omitempty"`
+
+	// errorloc303
+	Errorloc303 *Errorloc `json:"errorloc303,omitempty"`
 
 	// external check
 	// Enum: [enabled disabled]
@@ -136,6 +157,13 @@ type Defaults struct {
 	// forwardfor
 	Forwardfor *Forwardfor `json:"forwardfor,omitempty"`
 
+	// from
+	// Pattern: ^[A-Za-z0-9-_.:]+$
+	From string `json:"from,omitempty"`
+
+	// fullconn
+	Fullconn *int64 `json:"fullconn,omitempty"`
+
 	// h1 case adjust bogus client
 	// Enum: [enabled disabled]
 	H1CaseAdjustBogusClient string `json:"h1_case_adjust_bogus_client,omitempty"`
@@ -143,6 +171,9 @@ type Defaults struct {
 	// h1 case adjust bogus server
 	// Enum: [enabled disabled]
 	H1CaseAdjustBogusServer string `json:"h1_case_adjust_bogus_server,omitempty"`
+
+	// hash type
+	HashType *HashType `json:"hash_type,omitempty"`
 
 	// http buffer request
 	// Enum: [enabled disabled]
@@ -177,9 +208,16 @@ type Defaults struct {
 	// http request timeout
 	HTTPRequestTimeout *int64 `json:"http_request_timeout,omitempty"`
 
+	// http restrict req hdr names
+	// Enum: [preserve delete reject]
+	HTTPRestrictReqHdrNames string `json:"http_restrict_req_hdr_names,omitempty"`
+
 	// http reuse
 	// Enum: [aggressive always never safe]
 	HTTPReuse string `json:"http_reuse,omitempty"`
+
+	// http send name header
+	HTTPSendNameHeader *string `json:"http_send_name_header,omitempty"`
 
 	// http use proxy header
 	// Enum: [enabled disabled]
@@ -229,6 +267,9 @@ type Defaults struct {
 	// Enum: [enabled disabled]
 	Logasap string `json:"logasap,omitempty"`
 
+	// max keep alive queue
+	MaxKeepAliveQueue *int64 `json:"max_keep_alive_queue,omitempty"`
+
 	// maxconn
 	Maxconn *int64 `json:"maxconn,omitempty"`
 
@@ -242,17 +283,23 @@ type Defaults struct {
 	// mysql check params
 	MysqlCheckParams *MysqlCheckParams `json:"mysql_check_params,omitempty"`
 
+	// name
+	// Pattern: ^[A-Za-z0-9-_.:]+$
+	Name string `json:"name,omitempty"`
+
 	// nolinger
 	// Enum: [enabled disabled]
 	Nolinger string `json:"nolinger,omitempty"`
 
 	// originalto
-	// Enum: [enabled disabled]
-	Originalto string `json:"originalto,omitempty"`
+	Originalto *Originalto `json:"originalto,omitempty"`
 
 	// persist
 	// Enum: [enabled disabled]
 	Persist string `json:"persist,omitempty"`
+
+	// persist rule
+	PersistRule *PersistRule `json:"persist_rule,omitempty"`
 
 	// pgsql check params
 	PgsqlCheckParams *PgsqlCheckParams `json:"pgsql_check_params,omitempty"`
@@ -270,6 +317,9 @@ type Defaults struct {
 	// retries
 	Retries *int64 `json:"retries,omitempty"`
 
+	// retry on
+	RetryOn string `json:"retry_on,omitempty"`
+
 	// server fin timeout
 	ServerFinTimeout *int64 `json:"server_fin_timeout,omitempty"`
 
@@ -282,6 +332,9 @@ type Defaults struct {
 	// socket stats
 	// Enum: [enabled disabled]
 	SocketStats string `json:"socket_stats,omitempty"`
+
+	// source
+	Source *Source `json:"source,omitempty"`
 
 	// splice auto
 	// Enum: [enabled disabled]
@@ -310,6 +363,9 @@ type Defaults struct {
 
 	// stats options
 	StatsOptions *StatsOptions `json:"stats_options,omitempty"`
+
+	// tarpit timeout
+	TarpitTimeout *int64 `json:"tarpit_timeout,omitempty"`
 
 	// tcp smart accept
 	// Enum: [enabled disabled]
@@ -345,6 +401,10 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateErrorFiles(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateErrorFilesFromHTTPErrors(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -420,6 +480,18 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateEmailAlert(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateErrorloc302(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateErrorloc303(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateExternalCheck(formats); err != nil {
 		res = append(res, err)
 	}
@@ -436,11 +508,19 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateFrom(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateH1CaseAdjustBogusClient(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateH1CaseAdjustBogusServer(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateHashType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -469,6 +549,10 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateHTTPPretendKeepalive(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateHTTPRestrictReqHdrNames(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -528,6 +612,10 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateNolinger(formats); err != nil {
 		res = append(res, err)
 	}
@@ -537,6 +625,10 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validatePersist(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePersistRule(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -557,6 +649,10 @@ func (m *Defaults) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSocketStats(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSource(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -618,6 +714,32 @@ func (m *Defaults) validateErrorFiles(formats strfmt.Registry) error {
 					return ve.ValidateName("error_files" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("error_files" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Defaults) validateErrorFilesFromHTTPErrors(formats strfmt.Registry) error {
+	if swag.IsZero(m.ErrorFilesFromHTTPErrors) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ErrorFilesFromHTTPErrors); i++ {
+		if swag.IsZero(m.ErrorFilesFromHTTPErrors[i]) { // not required
+			continue
+		}
+
+		if m.ErrorFilesFromHTTPErrors[i] != nil {
+			if err := m.ErrorFilesFromHTTPErrors[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("errorfiles_from_http_errors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("errorfiles_from_http_errors" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -1217,6 +1339,63 @@ func (m *Defaults) validateDynamicCookieKey(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Defaults) validateEmailAlert(formats strfmt.Registry) error {
+	if swag.IsZero(m.EmailAlert) { // not required
+		return nil
+	}
+
+	if m.EmailAlert != nil {
+		if err := m.EmailAlert.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("email_alert")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("email_alert")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Defaults) validateErrorloc302(formats strfmt.Registry) error {
+	if swag.IsZero(m.Errorloc302) { // not required
+		return nil
+	}
+
+	if m.Errorloc302 != nil {
+		if err := m.Errorloc302.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("errorloc302")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorloc302")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Defaults) validateErrorloc303(formats strfmt.Registry) error {
+	if swag.IsZero(m.Errorloc303) { // not required
+		return nil
+	}
+
+	if m.Errorloc303 != nil {
+		if err := m.Errorloc303.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("errorloc303")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorloc303")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 var defaultsTypeExternalCheckPropEnum []interface{}
 
 func init() {
@@ -1302,6 +1481,18 @@ func (m *Defaults) validateForwardfor(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Defaults) validateFrom(formats strfmt.Registry) error {
+	if swag.IsZero(m.From) { // not required
+		return nil
+	}
+
+	if err := validate.Pattern("from", "body", m.From, `^[A-Za-z0-9-_.:]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 var defaultsTypeH1CaseAdjustBogusClientPropEnum []interface{}
 
 func init() {
@@ -1381,6 +1572,25 @@ func (m *Defaults) validateH1CaseAdjustBogusServer(formats strfmt.Registry) erro
 	// value enum
 	if err := m.validateH1CaseAdjustBogusServerEnum("h1_case_adjust_bogus_server", "body", m.H1CaseAdjustBogusServer); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Defaults) validateHashType(formats strfmt.Registry) error {
+	if swag.IsZero(m.HashType) { // not required
+		return nil
+	}
+
+	if m.HashType != nil {
+		if err := m.HashType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("hash_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("hash_type")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -1654,6 +1864,51 @@ func (m *Defaults) validateHTTPPretendKeepalive(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateHTTPPretendKeepaliveEnum("http_pretend_keepalive", "body", m.HTTPPretendKeepalive); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var defaultsTypeHTTPRestrictReqHdrNamesPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["preserve","delete","reject"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		defaultsTypeHTTPRestrictReqHdrNamesPropEnum = append(defaultsTypeHTTPRestrictReqHdrNamesPropEnum, v)
+	}
+}
+
+const (
+
+	// DefaultsHTTPRestrictReqHdrNamesPreserve captures enum value "preserve"
+	DefaultsHTTPRestrictReqHdrNamesPreserve string = "preserve"
+
+	// DefaultsHTTPRestrictReqHdrNamesDelete captures enum value "delete"
+	DefaultsHTTPRestrictReqHdrNamesDelete string = "delete"
+
+	// DefaultsHTTPRestrictReqHdrNamesReject captures enum value "reject"
+	DefaultsHTTPRestrictReqHdrNamesReject string = "reject"
+)
+
+// prop value enum
+func (m *Defaults) validateHTTPRestrictReqHdrNamesEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, defaultsTypeHTTPRestrictReqHdrNamesPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Defaults) validateHTTPRestrictReqHdrNames(formats strfmt.Registry) error {
+	if swag.IsZero(m.HTTPRestrictReqHdrNames) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateHTTPRestrictReqHdrNamesEnum("http_restrict_req_hdr_names", "body", m.HTTPRestrictReqHdrNames); err != nil {
 		return err
 	}
 
@@ -2156,6 +2411,18 @@ func (m *Defaults) validateMysqlCheckParams(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Defaults) validateName(formats strfmt.Registry) error {
+	if swag.IsZero(m.Name) { // not required
+		return nil
+	}
+
+	if err := validate.Pattern("name", "body", m.Name, `^[A-Za-z0-9-_.:]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 var defaultsTypeNolingerPropEnum []interface{}
 
 func init() {
@@ -2198,43 +2465,20 @@ func (m *Defaults) validateNolinger(formats strfmt.Registry) error {
 	return nil
 }
 
-var defaultsTypeOriginaltoPropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		defaultsTypeOriginaltoPropEnum = append(defaultsTypeOriginaltoPropEnum, v)
-	}
-}
-
-const (
-
-	// DefaultsOriginaltoEnabled captures enum value "enabled"
-	DefaultsOriginaltoEnabled string = "enabled"
-
-	// DefaultsOriginaltoDisabled captures enum value "disabled"
-	DefaultsOriginaltoDisabled string = "disabled"
-)
-
-// prop value enum
-func (m *Defaults) validateOriginaltoEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, defaultsTypeOriginaltoPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *Defaults) validateOriginalto(formats strfmt.Registry) error {
 	if swag.IsZero(m.Originalto) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateOriginaltoEnum("originalto", "body", m.Originalto); err != nil {
-		return err
+	if m.Originalto != nil {
+		if err := m.Originalto.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("originalto")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("originalto")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -2277,6 +2521,25 @@ func (m *Defaults) validatePersist(formats strfmt.Registry) error {
 	// value enum
 	if err := m.validatePersistEnum("persist", "body", m.Persist); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Defaults) validatePersistRule(formats strfmt.Registry) error {
+	if swag.IsZero(m.PersistRule) { // not required
+		return nil
+	}
+
+	if m.PersistRule != nil {
+		if err := m.PersistRule.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("persist_rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("persist_rule")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -2418,6 +2681,25 @@ func (m *Defaults) validateSocketStats(formats strfmt.Registry) error {
 	// value enum
 	if err := m.validateSocketStatsEnum("socket_stats", "body", m.SocketStats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Defaults) validateSource(formats strfmt.Registry) error {
+	if swag.IsZero(m.Source) { // not required
+		return nil
+	}
+
+	if m.Source != nil {
+		if err := m.Source.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("source")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("source")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -2786,6 +3068,10 @@ func (m *Defaults) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateErrorFilesFromHTTPErrors(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateBalance(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -2802,7 +3088,23 @@ func (m *Defaults) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateEmailAlert(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateErrorloc302(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateErrorloc303(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateForwardfor(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateHashType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2822,6 +3124,14 @@ func (m *Defaults) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateOriginalto(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePersistRule(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidatePgsqlCheckParams(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -2831,6 +3141,10 @@ func (m *Defaults) ContextValidate(ctx context.Context, formats strfmt.Registry)
 	}
 
 	if err := m.contextValidateSmtpchkParams(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSource(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2854,6 +3168,26 @@ func (m *Defaults) contextValidateErrorFiles(ctx context.Context, formats strfmt
 					return ve.ValidateName("error_files" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("error_files" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Defaults) contextValidateErrorFilesFromHTTPErrors(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ErrorFilesFromHTTPErrors); i++ {
+
+		if m.ErrorFilesFromHTTPErrors[i] != nil {
+			if err := m.ErrorFilesFromHTTPErrors[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("errorfiles_from_http_errors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("errorfiles_from_http_errors" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -2928,6 +3262,54 @@ func (m *Defaults) contextValidateDefaultServer(ctx context.Context, formats str
 	return nil
 }
 
+func (m *Defaults) contextValidateEmailAlert(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EmailAlert != nil {
+		if err := m.EmailAlert.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("email_alert")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("email_alert")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Defaults) contextValidateErrorloc302(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Errorloc302 != nil {
+		if err := m.Errorloc302.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("errorloc302")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorloc302")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Defaults) contextValidateErrorloc303(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Errorloc303 != nil {
+		if err := m.Errorloc303.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("errorloc303")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorloc303")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Defaults) contextValidateForwardfor(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Forwardfor != nil {
@@ -2936,6 +3318,22 @@ func (m *Defaults) contextValidateForwardfor(ctx context.Context, formats strfmt
 				return ve.ValidateName("forwardfor")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("forwardfor")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Defaults) contextValidateHashType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HashType != nil {
+		if err := m.HashType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("hash_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("hash_type")
 			}
 			return err
 		}
@@ -3006,6 +3404,38 @@ func (m *Defaults) contextValidateMysqlCheckParams(ctx context.Context, formats 
 	return nil
 }
 
+func (m *Defaults) contextValidateOriginalto(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Originalto != nil {
+		if err := m.Originalto.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("originalto")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("originalto")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Defaults) contextValidatePersistRule(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.PersistRule != nil {
+		if err := m.PersistRule.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("persist_rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("persist_rule")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Defaults) contextValidatePgsqlCheckParams(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PgsqlCheckParams != nil {
@@ -3046,6 +3476,22 @@ func (m *Defaults) contextValidateSmtpchkParams(ctx context.Context, formats str
 				return ve.ValidateName("smtpchk_params")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("smtpchk_params")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Defaults) contextValidateSource(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Source != nil {
+		if err := m.Source.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("source")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("source")
 			}
 			return err
 		}

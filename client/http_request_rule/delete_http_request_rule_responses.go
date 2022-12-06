@@ -58,7 +58,8 @@ func NewDeleteHTTPRequestRuleAccepted() *DeleteHTTPRequestRuleAccepted {
 	return &DeleteHTTPRequestRuleAccepted{}
 }
 
-/* DeleteHTTPRequestRuleAccepted describes a response with status code 202, with default header values.
+/*
+DeleteHTTPRequestRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteHTTPRequestRuleAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete Http request rule accepted response has a 2xx status code
+func (o *DeleteHTTPRequestRuleAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete Http request rule accepted response has a 3xx status code
+func (o *DeleteHTTPRequestRuleAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Http request rule accepted response has a 4xx status code
+func (o *DeleteHTTPRequestRuleAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete Http request rule accepted response has a 5xx status code
+func (o *DeleteHTTPRequestRuleAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Http request rule accepted response a status code equal to that given
+func (o *DeleteHTTPRequestRuleAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteHTTPRequestRuleAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_request_rules/{index}][%d] deleteHttpRequestRuleAccepted ", 202)
+}
+
+func (o *DeleteHTTPRequestRuleAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_request_rules/{index}][%d] deleteHttpRequestRuleAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteHTTPRequestRuleNoContent() *DeleteHTTPRequestRuleNoContent {
 	return &DeleteHTTPRequestRuleNoContent{}
 }
 
-/* DeleteHTTPRequestRuleNoContent describes a response with status code 204, with default header values.
+/*
+DeleteHTTPRequestRuleNoContent describes a response with status code 204, with default header values.
 
 HTTP Request Rule deleted
 */
 type DeleteHTTPRequestRuleNoContent struct {
 }
 
+// IsSuccess returns true when this delete Http request rule no content response has a 2xx status code
+func (o *DeleteHTTPRequestRuleNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete Http request rule no content response has a 3xx status code
+func (o *DeleteHTTPRequestRuleNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Http request rule no content response has a 4xx status code
+func (o *DeleteHTTPRequestRuleNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete Http request rule no content response has a 5xx status code
+func (o *DeleteHTTPRequestRuleNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Http request rule no content response a status code equal to that given
+func (o *DeleteHTTPRequestRuleNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteHTTPRequestRuleNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_request_rules/{index}][%d] deleteHttpRequestRuleNoContent ", 204)
+}
+
+func (o *DeleteHTTPRequestRuleNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_request_rules/{index}][%d] deleteHttpRequestRuleNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteHTTPRequestRuleNotFound() *DeleteHTTPRequestRuleNotFound {
 	return &DeleteHTTPRequestRuleNotFound{}
 }
 
-/* DeleteHTTPRequestRuleNotFound describes a response with status code 404, with default header values.
+/*
+DeleteHTTPRequestRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteHTTPRequestRuleNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete Http request rule not found response has a 2xx status code
+func (o *DeleteHTTPRequestRuleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete Http request rule not found response has a 3xx status code
+func (o *DeleteHTTPRequestRuleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete Http request rule not found response has a 4xx status code
+func (o *DeleteHTTPRequestRuleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete Http request rule not found response has a 5xx status code
+func (o *DeleteHTTPRequestRuleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete Http request rule not found response a status code equal to that given
+func (o *DeleteHTTPRequestRuleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteHTTPRequestRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_request_rules/{index}][%d] deleteHttpRequestRuleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteHTTPRequestRuleNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_request_rules/{index}][%d] deleteHttpRequestRuleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteHTTPRequestRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteHTTPRequestRuleDefault(code int) *DeleteHTTPRequestRuleDefault {
 	}
 }
 
-/* DeleteHTTPRequestRuleDefault describes a response with status code -1, with default header values.
+/*
+DeleteHTTPRequestRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteHTTPRequestRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete HTTP request rule default response has a 2xx status code
+func (o *DeleteHTTPRequestRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete HTTP request rule default response has a 3xx status code
+func (o *DeleteHTTPRequestRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete HTTP request rule default response has a 4xx status code
+func (o *DeleteHTTPRequestRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete HTTP request rule default response has a 5xx status code
+func (o *DeleteHTTPRequestRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete HTTP request rule default response a status code equal to that given
+func (o *DeleteHTTPRequestRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteHTTPRequestRuleDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_request_rules/{index}][%d] deleteHTTPRequestRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteHTTPRequestRuleDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_request_rules/{index}][%d] deleteHTTPRequestRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteHTTPRequestRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }

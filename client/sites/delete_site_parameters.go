@@ -53,10 +53,12 @@ func NewDeleteSiteParamsWithHTTPClient(client *http.Client) *DeleteSiteParams {
 	}
 }
 
-/* DeleteSiteParams contains all the parameters to send to the API endpoint
-   for the delete site operation.
+/*
+DeleteSiteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete site operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteSiteParams struct {
 

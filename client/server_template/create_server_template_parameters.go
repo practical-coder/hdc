@@ -55,10 +55,12 @@ func NewCreateServerTemplateParamsWithHTTPClient(client *http.Client) *CreateSer
 	}
 }
 
-/* CreateServerTemplateParams contains all the parameters to send to the API endpoint
-   for the create server template operation.
+/*
+CreateServerTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create server template operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateServerTemplateParams struct {
 

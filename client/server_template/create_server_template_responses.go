@@ -64,7 +64,8 @@ func NewCreateServerTemplateCreated() *CreateServerTemplateCreated {
 	return &CreateServerTemplateCreated{}
 }
 
-/* CreateServerTemplateCreated describes a response with status code 201, with default header values.
+/*
+CreateServerTemplateCreated describes a response with status code 201, with default header values.
 
 Server template created
 */
@@ -72,9 +73,39 @@ type CreateServerTemplateCreated struct {
 	Payload *models.ServerTemplate
 }
 
+// IsSuccess returns true when this create server template created response has a 2xx status code
+func (o *CreateServerTemplateCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create server template created response has a 3xx status code
+func (o *CreateServerTemplateCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create server template created response has a 4xx status code
+func (o *CreateServerTemplateCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create server template created response has a 5xx status code
+func (o *CreateServerTemplateCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create server template created response a status code equal to that given
+func (o *CreateServerTemplateCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateServerTemplateCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateServerTemplateCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateServerTemplateCreated) GetPayload() *models.ServerTemplate {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateServerTemplateAccepted() *CreateServerTemplateAccepted {
 	return &CreateServerTemplateAccepted{}
 }
 
-/* CreateServerTemplateAccepted describes a response with status code 202, with default header values.
+/*
+CreateServerTemplateAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateServerTemplateAccepted struct {
 	Payload *models.ServerTemplate
 }
 
+// IsSuccess returns true when this create server template accepted response has a 2xx status code
+func (o *CreateServerTemplateAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create server template accepted response has a 3xx status code
+func (o *CreateServerTemplateAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create server template accepted response has a 4xx status code
+func (o *CreateServerTemplateAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create server template accepted response has a 5xx status code
+func (o *CreateServerTemplateAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create server template accepted response a status code equal to that given
+func (o *CreateServerTemplateAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateServerTemplateAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateServerTemplateAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateServerTemplateAccepted) GetPayload() *models.ServerTemplate {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateServerTemplateBadRequest() *CreateServerTemplateBadRequest {
 	return &CreateServerTemplateBadRequest{}
 }
 
-/* CreateServerTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+CreateServerTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateServerTemplateBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create server template bad request response has a 2xx status code
+func (o *CreateServerTemplateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create server template bad request response has a 3xx status code
+func (o *CreateServerTemplateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create server template bad request response has a 4xx status code
+func (o *CreateServerTemplateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create server template bad request response has a 5xx status code
+func (o *CreateServerTemplateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create server template bad request response a status code equal to that given
+func (o *CreateServerTemplateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateServerTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateServerTemplateBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateServerTemplateBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateServerTemplateConflict() *CreateServerTemplateConflict {
 	return &CreateServerTemplateConflict{}
 }
 
-/* CreateServerTemplateConflict describes a response with status code 409, with default header values.
+/*
+CreateServerTemplateConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateServerTemplateConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create server template conflict response has a 2xx status code
+func (o *CreateServerTemplateConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create server template conflict response has a 3xx status code
+func (o *CreateServerTemplateConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create server template conflict response has a 4xx status code
+func (o *CreateServerTemplateConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create server template conflict response has a 5xx status code
+func (o *CreateServerTemplateConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create server template conflict response a status code equal to that given
+func (o *CreateServerTemplateConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateServerTemplateConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateServerTemplateConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateServerTemplateConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateServerTemplateDefault(code int) *CreateServerTemplateDefault {
 	}
 }
 
-/* CreateServerTemplateDefault describes a response with status code -1, with default header values.
+/*
+CreateServerTemplateDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateServerTemplateDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create server template default response has a 2xx status code
+func (o *CreateServerTemplateDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create server template default response has a 3xx status code
+func (o *CreateServerTemplateDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create server template default response has a 4xx status code
+func (o *CreateServerTemplateDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create server template default response has a 5xx status code
+func (o *CreateServerTemplateDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create server template default response a status code equal to that given
+func (o *CreateServerTemplateDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateServerTemplateDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplate default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateServerTemplateDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplate default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateServerTemplateDefault) GetPayload() *models.Error {
 	return o.Payload
 }

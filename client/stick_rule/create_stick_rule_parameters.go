@@ -55,10 +55,12 @@ func NewCreateStickRuleParamsWithHTTPClient(client *http.Client) *CreateStickRul
 	}
 }
 
-/* CreateStickRuleParams contains all the parameters to send to the API endpoint
-   for the create stick rule operation.
+/*
+CreateStickRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create stick rule operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateStickRuleParams struct {
 

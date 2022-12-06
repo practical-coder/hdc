@@ -64,7 +64,8 @@ func NewCreateLogForwardCreated() *CreateLogForwardCreated {
 	return &CreateLogForwardCreated{}
 }
 
-/* CreateLogForwardCreated describes a response with status code 201, with default header values.
+/*
+CreateLogForwardCreated describes a response with status code 201, with default header values.
 
 Log Forward created
 */
@@ -72,9 +73,39 @@ type CreateLogForwardCreated struct {
 	Payload *models.LogForward
 }
 
+// IsSuccess returns true when this create log forward created response has a 2xx status code
+func (o *CreateLogForwardCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create log forward created response has a 3xx status code
+func (o *CreateLogForwardCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create log forward created response has a 4xx status code
+func (o *CreateLogForwardCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create log forward created response has a 5xx status code
+func (o *CreateLogForwardCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create log forward created response a status code equal to that given
+func (o *CreateLogForwardCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateLogForwardCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/log_forwards][%d] createLogForwardCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateLogForwardCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/log_forwards][%d] createLogForwardCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateLogForwardCreated) GetPayload() *models.LogForward {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateLogForwardAccepted() *CreateLogForwardAccepted {
 	return &CreateLogForwardAccepted{}
 }
 
-/* CreateLogForwardAccepted describes a response with status code 202, with default header values.
+/*
+CreateLogForwardAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateLogForwardAccepted struct {
 	Payload *models.LogForward
 }
 
+// IsSuccess returns true when this create log forward accepted response has a 2xx status code
+func (o *CreateLogForwardAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create log forward accepted response has a 3xx status code
+func (o *CreateLogForwardAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create log forward accepted response has a 4xx status code
+func (o *CreateLogForwardAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create log forward accepted response has a 5xx status code
+func (o *CreateLogForwardAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create log forward accepted response a status code equal to that given
+func (o *CreateLogForwardAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateLogForwardAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/log_forwards][%d] createLogForwardAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateLogForwardAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/log_forwards][%d] createLogForwardAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateLogForwardAccepted) GetPayload() *models.LogForward {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateLogForwardBadRequest() *CreateLogForwardBadRequest {
 	return &CreateLogForwardBadRequest{}
 }
 
-/* CreateLogForwardBadRequest describes a response with status code 400, with default header values.
+/*
+CreateLogForwardBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateLogForwardBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create log forward bad request response has a 2xx status code
+func (o *CreateLogForwardBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create log forward bad request response has a 3xx status code
+func (o *CreateLogForwardBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create log forward bad request response has a 4xx status code
+func (o *CreateLogForwardBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create log forward bad request response has a 5xx status code
+func (o *CreateLogForwardBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create log forward bad request response a status code equal to that given
+func (o *CreateLogForwardBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateLogForwardBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/log_forwards][%d] createLogForwardBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateLogForwardBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/log_forwards][%d] createLogForwardBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateLogForwardBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateLogForwardConflict() *CreateLogForwardConflict {
 	return &CreateLogForwardConflict{}
 }
 
-/* CreateLogForwardConflict describes a response with status code 409, with default header values.
+/*
+CreateLogForwardConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateLogForwardConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create log forward conflict response has a 2xx status code
+func (o *CreateLogForwardConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create log forward conflict response has a 3xx status code
+func (o *CreateLogForwardConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create log forward conflict response has a 4xx status code
+func (o *CreateLogForwardConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create log forward conflict response has a 5xx status code
+func (o *CreateLogForwardConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create log forward conflict response a status code equal to that given
+func (o *CreateLogForwardConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateLogForwardConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/log_forwards][%d] createLogForwardConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateLogForwardConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/log_forwards][%d] createLogForwardConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateLogForwardConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateLogForwardDefault(code int) *CreateLogForwardDefault {
 	}
 }
 
-/* CreateLogForwardDefault describes a response with status code -1, with default header values.
+/*
+CreateLogForwardDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateLogForwardDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create log forward default response has a 2xx status code
+func (o *CreateLogForwardDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create log forward default response has a 3xx status code
+func (o *CreateLogForwardDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create log forward default response has a 4xx status code
+func (o *CreateLogForwardDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create log forward default response has a 5xx status code
+func (o *CreateLogForwardDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create log forward default response a status code equal to that given
+func (o *CreateLogForwardDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateLogForwardDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/log_forwards][%d] createLogForward default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateLogForwardDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/log_forwards][%d] createLogForward default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateLogForwardDefault) GetPayload() *models.Error {
 	return o.Payload
 }

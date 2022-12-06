@@ -18,37 +18,42 @@ import (
 
 // Global Global
 //
-// HAProxy global configuration
+// # HAProxy global configuration
 //
 // swagger:model global
 type Global struct {
 
 	// CPU maps
-	CPUMaps []*CPUMap `json:"cpu_maps"`
+	CPUMaps []*CPUMap `json:"cpu_maps,omitempty"`
 
 	// h1 case adjusts
-	H1CaseAdjusts []*H1CaseAdjust `json:"h1_case_adjust"`
+	H1CaseAdjusts []*H1CaseAdjust `json:"h1_case_adjust,omitempty"`
 
 	// preset envs
-	PresetEnvs []*PresetEnv `json:"presetenv"`
+	PresetEnvs []*PresetEnv `json:"presetenv,omitempty"`
 
 	// runtime a p is
-	RuntimeAPIs []*RuntimeAPI `json:"runtime_apis"`
+	RuntimeAPIs []*RuntimeAPI `json:"runtime_apis,omitempty"`
 
 	// set envs
-	SetEnvs []*SetEnv `json:"setenv"`
+	SetEnvs []*SetEnv `json:"setenv,omitempty"`
 
 	// set var fmts
-	SetVarFmts []*SetVarFmt `json:"set_var_fmt"`
+	SetVarFmts []*SetVarFmt `json:"set_var_fmt,omitempty"`
 
 	// set vars
-	SetVars []*SetVar `json:"set_var"`
+	SetVars []*SetVar `json:"set_var,omitempty"`
 
 	// ssl engines
-	SslEngines []*SslEngine `json:"ssl_engines"`
+	SslEngines []*SslEngine `json:"ssl_engines,omitempty"`
 
 	// thread group lines
-	ThreadGroupLines []*ThreadGroup `json:"thread_group_lines"`
+	ThreadGroupLines []*ThreadGroup `json:"thread_group_lines,omitempty"`
+
+	// anonkey
+	// Maximum: 4.294967295e+09
+	// Minimum: 0
+	Anonkey *int64 `json:"anonkey,omitempty"`
 
 	// busy polling
 	BusyPolling bool `json:"busy_polling,omitempty"`
@@ -66,6 +71,9 @@ type Global struct {
 	// daemon
 	// Enum: [enabled disabled]
 	Daemon string `json:"daemon,omitempty"`
+
+	// default path
+	DefaultPath *GlobalDefaultPath `json:"default_path,omitempty"`
 
 	// description
 	Description string `json:"description,omitempty"`
@@ -110,6 +118,10 @@ type Global struct {
 	// issuers chain path
 	IssuersChainPath string `json:"issuers_chain_path,omitempty"`
 
+	// load server state from file
+	// Enum: [global local none]
+	LoadServerStateFromFile string `json:"load_server_state_from_file,omitempty"`
+
 	// localpeer
 	// Pattern: ^[^\s]+$
 	Localpeer string `json:"localpeer,omitempty"`
@@ -121,10 +133,10 @@ type Global struct {
 	LuaLoadPerThread string `json:"lua_load_per_thread,omitempty"`
 
 	// lua loads
-	LuaLoads []*LuaLoad `json:"lua_loads"`
+	LuaLoads []*LuaLoad `json:"lua_loads,omitempty"`
 
 	// lua prepend path
-	LuaPrependPath []*LuaPrependPath `json:"lua_prepend_path"`
+	LuaPrependPath []*LuaPrependPath `json:"lua_prepend_path,omitempty"`
 
 	// master worker
 	MasterWorker bool `json:"master-worker,omitempty"`
@@ -160,7 +172,8 @@ type Global struct {
 	Maxzlibmem int64 `json:"maxzlibmem,omitempty"`
 
 	// mworker max reloads
-	MworkerMaxReloads int64 `json:"mworker_max_reloads,omitempty"`
+	// Minimum: 0
+	MworkerMaxReloads *int64 `json:"mworker_max_reloads,omitempty"`
 
 	// nbproc
 	Nbproc int64 `json:"nbproc,omitempty"`
@@ -193,7 +206,8 @@ type Global struct {
 	Nosplice bool `json:"nosplice,omitempty"`
 
 	// numa cpu mapping
-	NumaCPUMapping bool `json:"numa_cpu_mapping,omitempty"`
+	// Enum: [enabled disabled]
+	NumaCPUMapping string `json:"numa_cpu_mapping,omitempty"`
 
 	// pidfile
 	Pidfile string `json:"pidfile,omitempty"`
@@ -341,11 +355,19 @@ func (m *Global) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateAnonkey(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateChroot(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateDaemon(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDefaultPath(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -358,6 +380,10 @@ func (m *Global) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateGroup(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLoadServerStateFromFile(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -374,6 +400,14 @@ func (m *Global) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLuaPrependPath(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMworkerMaxReloads(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNumaCPUMapping(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -649,6 +683,22 @@ func (m *Global) validateThreadGroupLines(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Global) validateAnonkey(formats strfmt.Registry) error {
+	if swag.IsZero(m.Anonkey) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("anonkey", "body", *m.Anonkey, 0, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("anonkey", "body", *m.Anonkey, 4.294967295e+09, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *Global) validateChroot(formats strfmt.Registry) error {
 	if swag.IsZero(m.Chroot) { // not required
 		return nil
@@ -703,6 +753,25 @@ func (m *Global) validateDaemon(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Global) validateDefaultPath(formats strfmt.Registry) error {
+	if swag.IsZero(m.DefaultPath) { // not required
+		return nil
+	}
+
+	if m.DefaultPath != nil {
+		if err := m.DefaultPath.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("default_path")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_path")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Global) validateDeviceAtlasOptions(formats strfmt.Registry) error {
 	if swag.IsZero(m.DeviceAtlasOptions) { // not required
 		return nil
@@ -747,6 +816,51 @@ func (m *Global) validateGroup(formats strfmt.Registry) error {
 	}
 
 	if err := validate.Pattern("group", "body", m.Group, `^[^\s]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var globalTypeLoadServerStateFromFilePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["global","local","none"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		globalTypeLoadServerStateFromFilePropEnum = append(globalTypeLoadServerStateFromFilePropEnum, v)
+	}
+}
+
+const (
+
+	// GlobalLoadServerStateFromFileGlobal captures enum value "global"
+	GlobalLoadServerStateFromFileGlobal string = "global"
+
+	// GlobalLoadServerStateFromFileLocal captures enum value "local"
+	GlobalLoadServerStateFromFileLocal string = "local"
+
+	// GlobalLoadServerStateFromFileNone captures enum value "none"
+	GlobalLoadServerStateFromFileNone string = "none"
+)
+
+// prop value enum
+func (m *Global) validateLoadServerStateFromFileEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, globalTypeLoadServerStateFromFilePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Global) validateLoadServerStateFromFile(formats strfmt.Registry) error {
+	if swag.IsZero(m.LoadServerStateFromFile) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateLoadServerStateFromFileEnum("load_server_state_from_file", "body", m.LoadServerStateFromFile); err != nil {
 		return err
 	}
 
@@ -831,6 +945,60 @@ func (m *Global) validateLuaPrependPath(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *Global) validateMworkerMaxReloads(formats strfmt.Registry) error {
+	if swag.IsZero(m.MworkerMaxReloads) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("mworker_max_reloads", "body", *m.MworkerMaxReloads, 0, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var globalTypeNumaCPUMappingPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		globalTypeNumaCPUMappingPropEnum = append(globalTypeNumaCPUMappingPropEnum, v)
+	}
+}
+
+const (
+
+	// GlobalNumaCPUMappingEnabled captures enum value "enabled"
+	GlobalNumaCPUMappingEnabled string = "enabled"
+
+	// GlobalNumaCPUMappingDisabled captures enum value "disabled"
+	GlobalNumaCPUMappingDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Global) validateNumaCPUMappingEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, globalTypeNumaCPUMappingPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Global) validateNumaCPUMapping(formats strfmt.Registry) error {
+	if swag.IsZero(m.NumaCPUMapping) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateNumaCPUMappingEnum("numa_cpu_mapping", "body", m.NumaCPUMapping); err != nil {
+		return err
 	}
 
 	return nil
@@ -1079,6 +1247,10 @@ func (m *Global) ContextValidate(ctx context.Context, formats strfmt.Registry) e
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateDefaultPath(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateDeviceAtlasOptions(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1293,6 +1465,22 @@ func (m *Global) contextValidateThreadGroupLines(ctx context.Context, formats st
 	return nil
 }
 
+func (m *Global) contextValidateDefaultPath(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DefaultPath != nil {
+		if err := m.DefaultPath.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("default_path")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_path")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Global) contextValidateDeviceAtlasOptions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DeviceAtlasOptions != nil {
@@ -1497,6 +1685,123 @@ func (m *CPUMap) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CPUMap) UnmarshalBinary(b []byte) error {
 	var res CPUMap
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// GlobalDefaultPath global default path
+//
+// swagger:model GlobalDefaultPath
+type GlobalDefaultPath struct {
+
+	// path
+	// Pattern: ^[^\s]+$
+	Path string `json:"path,omitempty"`
+
+	// type
+	// Required: true
+	// Enum: [current config parent origin]
+	Type string `json:"type"`
+}
+
+// Validate validates this global default path
+func (m *GlobalDefaultPath) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validatePath(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *GlobalDefaultPath) validatePath(formats strfmt.Registry) error {
+	if swag.IsZero(m.Path) { // not required
+		return nil
+	}
+
+	if err := validate.Pattern("default_path"+"."+"path", "body", m.Path, `^[^\s]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var globalDefaultPathTypeTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["current","config","parent","origin"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		globalDefaultPathTypeTypePropEnum = append(globalDefaultPathTypeTypePropEnum, v)
+	}
+}
+
+const (
+
+	// GlobalDefaultPathTypeCurrent captures enum value "current"
+	GlobalDefaultPathTypeCurrent string = "current"
+
+	// GlobalDefaultPathTypeConfig captures enum value "config"
+	GlobalDefaultPathTypeConfig string = "config"
+
+	// GlobalDefaultPathTypeParent captures enum value "parent"
+	GlobalDefaultPathTypeParent string = "parent"
+
+	// GlobalDefaultPathTypeOrigin captures enum value "origin"
+	GlobalDefaultPathTypeOrigin string = "origin"
+)
+
+// prop value enum
+func (m *GlobalDefaultPath) validateTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, globalDefaultPathTypeTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *GlobalDefaultPath) validateType(formats strfmt.Registry) error {
+
+	if err := validate.RequiredString("default_path"+"."+"type", "body", m.Type); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateTypeEnum("default_path"+"."+"type", "body", m.Type); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this global default path based on context it is used
+func (m *GlobalDefaultPath) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *GlobalDefaultPath) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *GlobalDefaultPath) UnmarshalBinary(b []byte) error {
+	var res GlobalDefaultPath
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -2586,6 +2891,9 @@ type GlobalTuneOptions struct {
 
 	// pattern cache size
 	PatternCacheSize *int64 `json:"pattern_cache_size,omitempty"`
+
+	// peers max updates at once
+	PeersMaxUpdatesAtOnce int64 `json:"peers_max_updates_at_once,omitempty"`
 
 	// pipesize
 	Pipesize int64 `json:"pipesize,omitempty"`

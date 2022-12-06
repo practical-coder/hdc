@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateRing adds a ring
+CreateRing adds a ring
 
-  Adds a new ring to the configuration file.
+Adds a new ring to the configuration file.
 */
 func (a *Client) CreateRing(params *CreateRingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRingCreated, *CreateRingAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateRing(params *CreateRingParams, authInfo runtime.ClientAut
 }
 
 /*
-  DeleteRing deletes a ring
+DeleteRing deletes a ring
 
-  Deletes a ring from the configuration by it's name.
+Deletes a ring from the configuration by it's name.
 */
 func (a *Client) DeleteRing(params *DeleteRingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRingAccepted, *DeleteRingNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteRing(params *DeleteRingParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetRing returns a ring
+GetRing returns a ring
 
-  Returns one ring configuration by it's name.
+Returns one ring configuration by it's name.
 */
 func (a *Client) GetRing(params *GetRingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRingOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetRing(params *GetRingParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  GetRings returns an array of rings
+GetRings returns an array of rings
 
-  Returns an array of all configured rings.
+Returns an array of all configured rings.
 */
 func (a *Client) GetRings(params *GetRingsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRingsOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetRings(params *GetRingsParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  ReplaceRing replaces a ring
+ReplaceRing replaces a ring
 
-  Replaces a ring configuration by it's name.
+Replaces a ring configuration by it's name.
 */
 func (a *Client) ReplaceRing(params *ReplaceRingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceRingOK, *ReplaceRingAccepted, error) {
 	// TODO: Validate the params before sending

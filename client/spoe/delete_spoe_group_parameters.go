@@ -53,10 +53,12 @@ func NewDeleteSpoeGroupParamsWithHTTPClient(client *http.Client) *DeleteSpoeGrou
 	}
 }
 
-/* DeleteSpoeGroupParams contains all the parameters to send to the API endpoint
-   for the delete spoe group operation.
+/*
+DeleteSpoeGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete spoe group operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteSpoeGroupParams struct {
 

@@ -16,7 +16,7 @@ import (
 
 // ACLFileEntry One ACL File Entry
 //
-// One ACL File Entry
+// # One ACL File Entry
 //
 // swagger:model acl_file_entry
 type ACLFileEntry struct {

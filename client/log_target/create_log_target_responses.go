@@ -64,7 +64,8 @@ func NewCreateLogTargetCreated() *CreateLogTargetCreated {
 	return &CreateLogTargetCreated{}
 }
 
-/* CreateLogTargetCreated describes a response with status code 201, with default header values.
+/*
+CreateLogTargetCreated describes a response with status code 201, with default header values.
 
 Log Target created
 */
@@ -72,9 +73,39 @@ type CreateLogTargetCreated struct {
 	Payload *models.LogTarget
 }
 
+// IsSuccess returns true when this create log target created response has a 2xx status code
+func (o *CreateLogTargetCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create log target created response has a 3xx status code
+func (o *CreateLogTargetCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create log target created response has a 4xx status code
+func (o *CreateLogTargetCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create log target created response has a 5xx status code
+func (o *CreateLogTargetCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create log target created response a status code equal to that given
+func (o *CreateLogTargetCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateLogTargetCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/log_targets][%d] createLogTargetCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateLogTargetCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/log_targets][%d] createLogTargetCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateLogTargetCreated) GetPayload() *models.LogTarget {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateLogTargetAccepted() *CreateLogTargetAccepted {
 	return &CreateLogTargetAccepted{}
 }
 
-/* CreateLogTargetAccepted describes a response with status code 202, with default header values.
+/*
+CreateLogTargetAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateLogTargetAccepted struct {
 	Payload *models.LogTarget
 }
 
+// IsSuccess returns true when this create log target accepted response has a 2xx status code
+func (o *CreateLogTargetAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create log target accepted response has a 3xx status code
+func (o *CreateLogTargetAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create log target accepted response has a 4xx status code
+func (o *CreateLogTargetAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create log target accepted response has a 5xx status code
+func (o *CreateLogTargetAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create log target accepted response a status code equal to that given
+func (o *CreateLogTargetAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateLogTargetAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/log_targets][%d] createLogTargetAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateLogTargetAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/log_targets][%d] createLogTargetAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateLogTargetAccepted) GetPayload() *models.LogTarget {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateLogTargetBadRequest() *CreateLogTargetBadRequest {
 	return &CreateLogTargetBadRequest{}
 }
 
-/* CreateLogTargetBadRequest describes a response with status code 400, with default header values.
+/*
+CreateLogTargetBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateLogTargetBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create log target bad request response has a 2xx status code
+func (o *CreateLogTargetBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create log target bad request response has a 3xx status code
+func (o *CreateLogTargetBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create log target bad request response has a 4xx status code
+func (o *CreateLogTargetBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create log target bad request response has a 5xx status code
+func (o *CreateLogTargetBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create log target bad request response a status code equal to that given
+func (o *CreateLogTargetBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateLogTargetBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/log_targets][%d] createLogTargetBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateLogTargetBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/log_targets][%d] createLogTargetBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateLogTargetBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateLogTargetConflict() *CreateLogTargetConflict {
 	return &CreateLogTargetConflict{}
 }
 
-/* CreateLogTargetConflict describes a response with status code 409, with default header values.
+/*
+CreateLogTargetConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateLogTargetConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create log target conflict response has a 2xx status code
+func (o *CreateLogTargetConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create log target conflict response has a 3xx status code
+func (o *CreateLogTargetConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create log target conflict response has a 4xx status code
+func (o *CreateLogTargetConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create log target conflict response has a 5xx status code
+func (o *CreateLogTargetConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create log target conflict response a status code equal to that given
+func (o *CreateLogTargetConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateLogTargetConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/log_targets][%d] createLogTargetConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateLogTargetConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/log_targets][%d] createLogTargetConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateLogTargetConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateLogTargetDefault(code int) *CreateLogTargetDefault {
 	}
 }
 
-/* CreateLogTargetDefault describes a response with status code -1, with default header values.
+/*
+CreateLogTargetDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateLogTargetDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create log target default response has a 2xx status code
+func (o *CreateLogTargetDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create log target default response has a 3xx status code
+func (o *CreateLogTargetDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create log target default response has a 4xx status code
+func (o *CreateLogTargetDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create log target default response has a 5xx status code
+func (o *CreateLogTargetDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create log target default response a status code equal to that given
+func (o *CreateLogTargetDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateLogTargetDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/log_targets][%d] createLogTarget default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateLogTargetDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/log_targets][%d] createLogTarget default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateLogTargetDefault) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -52,7 +52,8 @@ func NewGetAllRuntimeMapFilesOK() *GetAllRuntimeMapFilesOK {
 	return &GetAllRuntimeMapFilesOK{}
 }
 
-/* GetAllRuntimeMapFilesOK describes a response with status code 200, with default header values.
+/*
+GetAllRuntimeMapFilesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -60,9 +61,39 @@ type GetAllRuntimeMapFilesOK struct {
 	Payload models.Maps
 }
 
+// IsSuccess returns true when this get all runtime map files o k response has a 2xx status code
+func (o *GetAllRuntimeMapFilesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get all runtime map files o k response has a 3xx status code
+func (o *GetAllRuntimeMapFilesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all runtime map files o k response has a 4xx status code
+func (o *GetAllRuntimeMapFilesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all runtime map files o k response has a 5xx status code
+func (o *GetAllRuntimeMapFilesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all runtime map files o k response a status code equal to that given
+func (o *GetAllRuntimeMapFilesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAllRuntimeMapFilesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps][%d] getAllRuntimeMapFilesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAllRuntimeMapFilesOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/maps][%d] getAllRuntimeMapFilesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAllRuntimeMapFilesOK) GetPayload() models.Maps {
 	return o.Payload
 }
@@ -82,7 +113,8 @@ func NewGetAllRuntimeMapFilesNotFound() *GetAllRuntimeMapFilesNotFound {
 	return &GetAllRuntimeMapFilesNotFound{}
 }
 
-/* GetAllRuntimeMapFilesNotFound describes a response with status code 404, with default header values.
+/*
+GetAllRuntimeMapFilesNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -95,9 +127,39 @@ type GetAllRuntimeMapFilesNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get all runtime map files not found response has a 2xx status code
+func (o *GetAllRuntimeMapFilesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all runtime map files not found response has a 3xx status code
+func (o *GetAllRuntimeMapFilesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all runtime map files not found response has a 4xx status code
+func (o *GetAllRuntimeMapFilesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all runtime map files not found response has a 5xx status code
+func (o *GetAllRuntimeMapFilesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all runtime map files not found response a status code equal to that given
+func (o *GetAllRuntimeMapFilesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetAllRuntimeMapFilesNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps][%d] getAllRuntimeMapFilesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetAllRuntimeMapFilesNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/maps][%d] getAllRuntimeMapFilesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetAllRuntimeMapFilesNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -128,7 +190,8 @@ func NewGetAllRuntimeMapFilesDefault(code int) *GetAllRuntimeMapFilesDefault {
 	}
 }
 
-/* GetAllRuntimeMapFilesDefault describes a response with status code -1, with default header values.
+/*
+GetAllRuntimeMapFilesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -147,9 +210,39 @@ func (o *GetAllRuntimeMapFilesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get all runtime map files default response has a 2xx status code
+func (o *GetAllRuntimeMapFilesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get all runtime map files default response has a 3xx status code
+func (o *GetAllRuntimeMapFilesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get all runtime map files default response has a 4xx status code
+func (o *GetAllRuntimeMapFilesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get all runtime map files default response has a 5xx status code
+func (o *GetAllRuntimeMapFilesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get all runtime map files default response a status code equal to that given
+func (o *GetAllRuntimeMapFilesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetAllRuntimeMapFilesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps][%d] getAllRuntimeMapFiles default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetAllRuntimeMapFilesDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/maps][%d] getAllRuntimeMapFiles default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetAllRuntimeMapFilesDefault) GetPayload() *models.Error {
 	return o.Payload
 }

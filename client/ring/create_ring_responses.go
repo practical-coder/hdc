@@ -64,7 +64,8 @@ func NewCreateRingCreated() *CreateRingCreated {
 	return &CreateRingCreated{}
 }
 
-/* CreateRingCreated describes a response with status code 201, with default header values.
+/*
+CreateRingCreated describes a response with status code 201, with default header values.
 
 Ring created
 */
@@ -72,9 +73,39 @@ type CreateRingCreated struct {
 	Payload *models.Ring
 }
 
+// IsSuccess returns true when this create ring created response has a 2xx status code
+func (o *CreateRingCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create ring created response has a 3xx status code
+func (o *CreateRingCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create ring created response has a 4xx status code
+func (o *CreateRingCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create ring created response has a 5xx status code
+func (o *CreateRingCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create ring created response a status code equal to that given
+func (o *CreateRingCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateRingCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/rings][%d] createRingCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateRingCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/rings][%d] createRingCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateRingCreated) GetPayload() *models.Ring {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateRingAccepted() *CreateRingAccepted {
 	return &CreateRingAccepted{}
 }
 
-/* CreateRingAccepted describes a response with status code 202, with default header values.
+/*
+CreateRingAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateRingAccepted struct {
 	Payload *models.Ring
 }
 
+// IsSuccess returns true when this create ring accepted response has a 2xx status code
+func (o *CreateRingAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create ring accepted response has a 3xx status code
+func (o *CreateRingAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create ring accepted response has a 4xx status code
+func (o *CreateRingAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create ring accepted response has a 5xx status code
+func (o *CreateRingAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create ring accepted response a status code equal to that given
+func (o *CreateRingAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateRingAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/rings][%d] createRingAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateRingAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/rings][%d] createRingAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateRingAccepted) GetPayload() *models.Ring {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateRingBadRequest() *CreateRingBadRequest {
 	return &CreateRingBadRequest{}
 }
 
-/* CreateRingBadRequest describes a response with status code 400, with default header values.
+/*
+CreateRingBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateRingBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create ring bad request response has a 2xx status code
+func (o *CreateRingBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create ring bad request response has a 3xx status code
+func (o *CreateRingBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create ring bad request response has a 4xx status code
+func (o *CreateRingBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create ring bad request response has a 5xx status code
+func (o *CreateRingBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create ring bad request response a status code equal to that given
+func (o *CreateRingBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateRingBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/rings][%d] createRingBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateRingBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/rings][%d] createRingBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateRingBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateRingConflict() *CreateRingConflict {
 	return &CreateRingConflict{}
 }
 
-/* CreateRingConflict describes a response with status code 409, with default header values.
+/*
+CreateRingConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateRingConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create ring conflict response has a 2xx status code
+func (o *CreateRingConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create ring conflict response has a 3xx status code
+func (o *CreateRingConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create ring conflict response has a 4xx status code
+func (o *CreateRingConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create ring conflict response has a 5xx status code
+func (o *CreateRingConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create ring conflict response a status code equal to that given
+func (o *CreateRingConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateRingConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/rings][%d] createRingConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateRingConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/rings][%d] createRingConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateRingConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateRingDefault(code int) *CreateRingDefault {
 	}
 }
 
-/* CreateRingDefault describes a response with status code -1, with default header values.
+/*
+CreateRingDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateRingDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create ring default response has a 2xx status code
+func (o *CreateRingDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create ring default response has a 3xx status code
+func (o *CreateRingDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create ring default response has a 4xx status code
+func (o *CreateRingDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create ring default response has a 5xx status code
+func (o *CreateRingDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create ring default response a status code equal to that given
+func (o *CreateRingDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateRingDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/rings][%d] createRing default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateRingDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/rings][%d] createRing default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateRingDefault) GetPayload() *models.Error {
 	return o.Payload
 }

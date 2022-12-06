@@ -64,7 +64,8 @@ func NewReplaceTCPResponseRuleOK() *ReplaceTCPResponseRuleOK {
 	return &ReplaceTCPResponseRuleOK{}
 }
 
-/* ReplaceTCPResponseRuleOK describes a response with status code 200, with default header values.
+/*
+ReplaceTCPResponseRuleOK describes a response with status code 200, with default header values.
 
 TCP Response Rule replaced
 */
@@ -72,9 +73,39 @@ type ReplaceTCPResponseRuleOK struct {
 	Payload *models.TCPResponseRule
 }
 
+// IsSuccess returns true when this replace Tcp response rule o k response has a 2xx status code
+func (o *ReplaceTCPResponseRuleOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace Tcp response rule o k response has a 3xx status code
+func (o *ReplaceTCPResponseRuleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace Tcp response rule o k response has a 4xx status code
+func (o *ReplaceTCPResponseRuleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace Tcp response rule o k response has a 5xx status code
+func (o *ReplaceTCPResponseRuleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace Tcp response rule o k response a status code equal to that given
+func (o *ReplaceTCPResponseRuleOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceTCPResponseRuleOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_response_rules/{index}][%d] replaceTcpResponseRuleOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceTCPResponseRuleOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_response_rules/{index}][%d] replaceTcpResponseRuleOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceTCPResponseRuleOK) GetPayload() *models.TCPResponseRule {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceTCPResponseRuleAccepted() *ReplaceTCPResponseRuleAccepted {
 	return &ReplaceTCPResponseRuleAccepted{}
 }
 
-/* ReplaceTCPResponseRuleAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceTCPResponseRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceTCPResponseRuleAccepted struct {
 	Payload *models.TCPResponseRule
 }
 
+// IsSuccess returns true when this replace Tcp response rule accepted response has a 2xx status code
+func (o *ReplaceTCPResponseRuleAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace Tcp response rule accepted response has a 3xx status code
+func (o *ReplaceTCPResponseRuleAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace Tcp response rule accepted response has a 4xx status code
+func (o *ReplaceTCPResponseRuleAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace Tcp response rule accepted response has a 5xx status code
+func (o *ReplaceTCPResponseRuleAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace Tcp response rule accepted response a status code equal to that given
+func (o *ReplaceTCPResponseRuleAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceTCPResponseRuleAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_response_rules/{index}][%d] replaceTcpResponseRuleAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceTCPResponseRuleAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_response_rules/{index}][%d] replaceTcpResponseRuleAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceTCPResponseRuleAccepted) GetPayload() *models.TCPResponseRule {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceTCPResponseRuleBadRequest() *ReplaceTCPResponseRuleBadRequest {
 	return &ReplaceTCPResponseRuleBadRequest{}
 }
 
-/* ReplaceTCPResponseRuleBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceTCPResponseRuleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceTCPResponseRuleBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace Tcp response rule bad request response has a 2xx status code
+func (o *ReplaceTCPResponseRuleBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace Tcp response rule bad request response has a 3xx status code
+func (o *ReplaceTCPResponseRuleBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace Tcp response rule bad request response has a 4xx status code
+func (o *ReplaceTCPResponseRuleBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace Tcp response rule bad request response has a 5xx status code
+func (o *ReplaceTCPResponseRuleBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace Tcp response rule bad request response a status code equal to that given
+func (o *ReplaceTCPResponseRuleBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceTCPResponseRuleBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_response_rules/{index}][%d] replaceTcpResponseRuleBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceTCPResponseRuleBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_response_rules/{index}][%d] replaceTcpResponseRuleBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceTCPResponseRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceTCPResponseRuleNotFound() *ReplaceTCPResponseRuleNotFound {
 	return &ReplaceTCPResponseRuleNotFound{}
 }
 
-/* ReplaceTCPResponseRuleNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceTCPResponseRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceTCPResponseRuleNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace Tcp response rule not found response has a 2xx status code
+func (o *ReplaceTCPResponseRuleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace Tcp response rule not found response has a 3xx status code
+func (o *ReplaceTCPResponseRuleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace Tcp response rule not found response has a 4xx status code
+func (o *ReplaceTCPResponseRuleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace Tcp response rule not found response has a 5xx status code
+func (o *ReplaceTCPResponseRuleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace Tcp response rule not found response a status code equal to that given
+func (o *ReplaceTCPResponseRuleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceTCPResponseRuleNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_response_rules/{index}][%d] replaceTcpResponseRuleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceTCPResponseRuleNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_response_rules/{index}][%d] replaceTcpResponseRuleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceTCPResponseRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceTCPResponseRuleDefault(code int) *ReplaceTCPResponseRuleDefault {
 	}
 }
 
-/* ReplaceTCPResponseRuleDefault describes a response with status code -1, with default header values.
+/*
+ReplaceTCPResponseRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceTCPResponseRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace TCP response rule default response has a 2xx status code
+func (o *ReplaceTCPResponseRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace TCP response rule default response has a 3xx status code
+func (o *ReplaceTCPResponseRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace TCP response rule default response has a 4xx status code
+func (o *ReplaceTCPResponseRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace TCP response rule default response has a 5xx status code
+func (o *ReplaceTCPResponseRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace TCP response rule default response a status code equal to that given
+func (o *ReplaceTCPResponseRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceTCPResponseRuleDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_response_rules/{index}][%d] replaceTCPResponseRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceTCPResponseRuleDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_response_rules/{index}][%d] replaceTCPResponseRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceTCPResponseRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }

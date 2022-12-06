@@ -52,7 +52,8 @@ func NewGetSpoeConfigurationVersionOK() *GetSpoeConfigurationVersionOK {
 	return &GetSpoeConfigurationVersionOK{}
 }
 
-/* GetSpoeConfigurationVersionOK describes a response with status code 200, with default header values.
+/*
+GetSpoeConfigurationVersionOK describes a response with status code 200, with default header values.
 
 SPOE configuration version
 */
@@ -60,9 +61,39 @@ type GetSpoeConfigurationVersionOK struct {
 	Payload int64
 }
 
+// IsSuccess returns true when this get spoe configuration version o k response has a 2xx status code
+func (o *GetSpoeConfigurationVersionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get spoe configuration version o k response has a 3xx status code
+func (o *GetSpoeConfigurationVersionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get spoe configuration version o k response has a 4xx status code
+func (o *GetSpoeConfigurationVersionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get spoe configuration version o k response has a 5xx status code
+func (o *GetSpoeConfigurationVersionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get spoe configuration version o k response a status code equal to that given
+func (o *GetSpoeConfigurationVersionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetSpoeConfigurationVersionOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/version][%d] getSpoeConfigurationVersionOK  %+v", 200, o.Payload)
 }
+
+func (o *GetSpoeConfigurationVersionOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/spoe/version][%d] getSpoeConfigurationVersionOK  %+v", 200, o.Payload)
+}
+
 func (o *GetSpoeConfigurationVersionOK) GetPayload() int64 {
 	return o.Payload
 }
@@ -82,7 +113,8 @@ func NewGetSpoeConfigurationVersionNotFound() *GetSpoeConfigurationVersionNotFou
 	return &GetSpoeConfigurationVersionNotFound{}
 }
 
-/* GetSpoeConfigurationVersionNotFound describes a response with status code 404, with default header values.
+/*
+GetSpoeConfigurationVersionNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -95,9 +127,39 @@ type GetSpoeConfigurationVersionNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get spoe configuration version not found response has a 2xx status code
+func (o *GetSpoeConfigurationVersionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get spoe configuration version not found response has a 3xx status code
+func (o *GetSpoeConfigurationVersionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get spoe configuration version not found response has a 4xx status code
+func (o *GetSpoeConfigurationVersionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get spoe configuration version not found response has a 5xx status code
+func (o *GetSpoeConfigurationVersionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get spoe configuration version not found response a status code equal to that given
+func (o *GetSpoeConfigurationVersionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetSpoeConfigurationVersionNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/version][%d] getSpoeConfigurationVersionNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetSpoeConfigurationVersionNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/spoe/version][%d] getSpoeConfigurationVersionNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetSpoeConfigurationVersionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -128,7 +190,8 @@ func NewGetSpoeConfigurationVersionDefault(code int) *GetSpoeConfigurationVersio
 	}
 }
 
-/* GetSpoeConfigurationVersionDefault describes a response with status code -1, with default header values.
+/*
+GetSpoeConfigurationVersionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -147,9 +210,39 @@ func (o *GetSpoeConfigurationVersionDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get spoe configuration version default response has a 2xx status code
+func (o *GetSpoeConfigurationVersionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get spoe configuration version default response has a 3xx status code
+func (o *GetSpoeConfigurationVersionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get spoe configuration version default response has a 4xx status code
+func (o *GetSpoeConfigurationVersionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get spoe configuration version default response has a 5xx status code
+func (o *GetSpoeConfigurationVersionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get spoe configuration version default response a status code equal to that given
+func (o *GetSpoeConfigurationVersionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetSpoeConfigurationVersionDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/version][%d] getSpoeConfigurationVersion default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetSpoeConfigurationVersionDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/spoe/version][%d] getSpoeConfigurationVersion default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetSpoeConfigurationVersionDefault) GetPayload() *models.Error {
 	return o.Payload
 }

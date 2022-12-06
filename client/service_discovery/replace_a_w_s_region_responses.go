@@ -58,7 +58,8 @@ func NewReplaceAWSRegionOK() *ReplaceAWSRegionOK {
 	return &ReplaceAWSRegionOK{}
 }
 
-/* ReplaceAWSRegionOK describes a response with status code 200, with default header values.
+/*
+ReplaceAWSRegionOK describes a response with status code 200, with default header values.
 
 Resource updated
 */
@@ -66,9 +67,39 @@ type ReplaceAWSRegionOK struct {
 	Payload *models.AwsRegion
 }
 
+// IsSuccess returns true when this replace a w s region o k response has a 2xx status code
+func (o *ReplaceAWSRegionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace a w s region o k response has a 3xx status code
+func (o *ReplaceAWSRegionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace a w s region o k response has a 4xx status code
+func (o *ReplaceAWSRegionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace a w s region o k response has a 5xx status code
+func (o *ReplaceAWSRegionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace a w s region o k response a status code equal to that given
+func (o *ReplaceAWSRegionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceAWSRegionOK) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegionOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceAWSRegionOK) String() string {
+	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegionOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceAWSRegionOK) GetPayload() *models.AwsRegion {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewReplaceAWSRegionBadRequest() *ReplaceAWSRegionBadRequest {
 	return &ReplaceAWSRegionBadRequest{}
 }
 
-/* ReplaceAWSRegionBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceAWSRegionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -103,9 +135,39 @@ type ReplaceAWSRegionBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace a w s region bad request response has a 2xx status code
+func (o *ReplaceAWSRegionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace a w s region bad request response has a 3xx status code
+func (o *ReplaceAWSRegionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace a w s region bad request response has a 4xx status code
+func (o *ReplaceAWSRegionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace a w s region bad request response has a 5xx status code
+func (o *ReplaceAWSRegionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace a w s region bad request response a status code equal to that given
+func (o *ReplaceAWSRegionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceAWSRegionBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegionBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceAWSRegionBadRequest) String() string {
+	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegionBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceAWSRegionBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewReplaceAWSRegionNotFound() *ReplaceAWSRegionNotFound {
 	return &ReplaceAWSRegionNotFound{}
 }
 
-/* ReplaceAWSRegionNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceAWSRegionNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -147,9 +210,39 @@ type ReplaceAWSRegionNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace a w s region not found response has a 2xx status code
+func (o *ReplaceAWSRegionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace a w s region not found response has a 3xx status code
+func (o *ReplaceAWSRegionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace a w s region not found response has a 4xx status code
+func (o *ReplaceAWSRegionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace a w s region not found response has a 5xx status code
+func (o *ReplaceAWSRegionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace a w s region not found response a status code equal to that given
+func (o *ReplaceAWSRegionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceAWSRegionNotFound) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegionNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceAWSRegionNotFound) String() string {
+	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegionNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceAWSRegionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewReplaceAWSRegionDefault(code int) *ReplaceAWSRegionDefault {
 	}
 }
 
-/* ReplaceAWSRegionDefault describes a response with status code -1, with default header values.
+/*
+ReplaceAWSRegionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *ReplaceAWSRegionDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace a w s region default response has a 2xx status code
+func (o *ReplaceAWSRegionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace a w s region default response has a 3xx status code
+func (o *ReplaceAWSRegionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace a w s region default response has a 4xx status code
+func (o *ReplaceAWSRegionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace a w s region default response has a 5xx status code
+func (o *ReplaceAWSRegionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace a w s region default response a status code equal to that given
+func (o *ReplaceAWSRegionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceAWSRegionDefault) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegion default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceAWSRegionDefault) String() string {
+	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegion default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceAWSRegionDefault) GetPayload() *models.Error {
 	return o.Payload
 }

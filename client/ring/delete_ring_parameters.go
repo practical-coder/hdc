@@ -53,10 +53,12 @@ func NewDeleteRingParamsWithHTTPClient(client *http.Client) *DeleteRingParams {
 	}
 }
 
-/* DeleteRingParams contains all the parameters to send to the API endpoint
-   for the delete ring operation.
+/*
+DeleteRingParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete ring operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteRingParams struct {
 

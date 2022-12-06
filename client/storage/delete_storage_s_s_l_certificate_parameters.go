@@ -53,10 +53,12 @@ func NewDeleteStorageSSLCertificateParamsWithHTTPClient(client *http.Client) *De
 	}
 }
 
-/* DeleteStorageSSLCertificateParams contains all the parameters to send to the API endpoint
-   for the delete storage s s l certificate operation.
+/*
+DeleteStorageSSLCertificateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete storage s s l certificate operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteStorageSSLCertificateParams struct {
 

@@ -58,7 +58,8 @@ func NewDeleteResolverAccepted() *DeleteResolverAccepted {
 	return &DeleteResolverAccepted{}
 }
 
-/* DeleteResolverAccepted describes a response with status code 202, with default header values.
+/*
+DeleteResolverAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -69,7 +70,36 @@ type DeleteResolverAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this delete resolver accepted response has a 2xx status code
+func (o *DeleteResolverAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete resolver accepted response has a 3xx status code
+func (o *DeleteResolverAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete resolver accepted response has a 4xx status code
+func (o *DeleteResolverAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete resolver accepted response has a 5xx status code
+func (o *DeleteResolverAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete resolver accepted response a status code equal to that given
+func (o *DeleteResolverAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteResolverAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolverAccepted ", 202)
+}
+
+func (o *DeleteResolverAccepted) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolverAccepted ", 202)
 }
 
@@ -90,14 +120,44 @@ func NewDeleteResolverNoContent() *DeleteResolverNoContent {
 	return &DeleteResolverNoContent{}
 }
 
-/* DeleteResolverNoContent describes a response with status code 204, with default header values.
+/*
+DeleteResolverNoContent describes a response with status code 204, with default header values.
 
 Resolver deleted
 */
 type DeleteResolverNoContent struct {
 }
 
+// IsSuccess returns true when this delete resolver no content response has a 2xx status code
+func (o *DeleteResolverNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete resolver no content response has a 3xx status code
+func (o *DeleteResolverNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete resolver no content response has a 4xx status code
+func (o *DeleteResolverNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete resolver no content response has a 5xx status code
+func (o *DeleteResolverNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete resolver no content response a status code equal to that given
+func (o *DeleteResolverNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteResolverNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolverNoContent ", 204)
+}
+
+func (o *DeleteResolverNoContent) String() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolverNoContent ", 204)
 }
 
@@ -111,7 +171,8 @@ func NewDeleteResolverNotFound() *DeleteResolverNotFound {
 	return &DeleteResolverNotFound{}
 }
 
-/* DeleteResolverNotFound describes a response with status code 404, with default header values.
+/*
+DeleteResolverNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -124,9 +185,39 @@ type DeleteResolverNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete resolver not found response has a 2xx status code
+func (o *DeleteResolverNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete resolver not found response has a 3xx status code
+func (o *DeleteResolverNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete resolver not found response has a 4xx status code
+func (o *DeleteResolverNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete resolver not found response has a 5xx status code
+func (o *DeleteResolverNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete resolver not found response a status code equal to that given
+func (o *DeleteResolverNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteResolverNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolverNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteResolverNotFound) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolverNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteResolverNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -157,7 +248,8 @@ func NewDeleteResolverDefault(code int) *DeleteResolverDefault {
 	}
 }
 
-/* DeleteResolverDefault describes a response with status code -1, with default header values.
+/*
+DeleteResolverDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -176,9 +268,39 @@ func (o *DeleteResolverDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete resolver default response has a 2xx status code
+func (o *DeleteResolverDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete resolver default response has a 3xx status code
+func (o *DeleteResolverDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete resolver default response has a 4xx status code
+func (o *DeleteResolverDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete resolver default response has a 5xx status code
+func (o *DeleteResolverDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete resolver default response a status code equal to that given
+func (o *DeleteResolverDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteResolverDefault) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolver default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteResolverDefault) String() string {
+	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolver default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteResolverDefault) GetPayload() *models.Error {
 	return o.Payload
 }

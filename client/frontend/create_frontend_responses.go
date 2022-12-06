@@ -64,7 +64,8 @@ func NewCreateFrontendCreated() *CreateFrontendCreated {
 	return &CreateFrontendCreated{}
 }
 
-/* CreateFrontendCreated describes a response with status code 201, with default header values.
+/*
+CreateFrontendCreated describes a response with status code 201, with default header values.
 
 Frontend created
 */
@@ -72,9 +73,39 @@ type CreateFrontendCreated struct {
 	Payload *models.Frontend
 }
 
+// IsSuccess returns true when this create frontend created response has a 2xx status code
+func (o *CreateFrontendCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create frontend created response has a 3xx status code
+func (o *CreateFrontendCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create frontend created response has a 4xx status code
+func (o *CreateFrontendCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create frontend created response has a 5xx status code
+func (o *CreateFrontendCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create frontend created response a status code equal to that given
+func (o *CreateFrontendCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateFrontendCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/frontends][%d] createFrontendCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateFrontendCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/frontends][%d] createFrontendCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateFrontendCreated) GetPayload() *models.Frontend {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateFrontendAccepted() *CreateFrontendAccepted {
 	return &CreateFrontendAccepted{}
 }
 
-/* CreateFrontendAccepted describes a response with status code 202, with default header values.
+/*
+CreateFrontendAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateFrontendAccepted struct {
 	Payload *models.Frontend
 }
 
+// IsSuccess returns true when this create frontend accepted response has a 2xx status code
+func (o *CreateFrontendAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create frontend accepted response has a 3xx status code
+func (o *CreateFrontendAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create frontend accepted response has a 4xx status code
+func (o *CreateFrontendAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create frontend accepted response has a 5xx status code
+func (o *CreateFrontendAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create frontend accepted response a status code equal to that given
+func (o *CreateFrontendAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateFrontendAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/frontends][%d] createFrontendAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateFrontendAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/frontends][%d] createFrontendAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateFrontendAccepted) GetPayload() *models.Frontend {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateFrontendBadRequest() *CreateFrontendBadRequest {
 	return &CreateFrontendBadRequest{}
 }
 
-/* CreateFrontendBadRequest describes a response with status code 400, with default header values.
+/*
+CreateFrontendBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateFrontendBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create frontend bad request response has a 2xx status code
+func (o *CreateFrontendBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create frontend bad request response has a 3xx status code
+func (o *CreateFrontendBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create frontend bad request response has a 4xx status code
+func (o *CreateFrontendBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create frontend bad request response has a 5xx status code
+func (o *CreateFrontendBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create frontend bad request response a status code equal to that given
+func (o *CreateFrontendBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateFrontendBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/frontends][%d] createFrontendBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateFrontendBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/frontends][%d] createFrontendBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateFrontendBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateFrontendConflict() *CreateFrontendConflict {
 	return &CreateFrontendConflict{}
 }
 
-/* CreateFrontendConflict describes a response with status code 409, with default header values.
+/*
+CreateFrontendConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateFrontendConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create frontend conflict response has a 2xx status code
+func (o *CreateFrontendConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create frontend conflict response has a 3xx status code
+func (o *CreateFrontendConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create frontend conflict response has a 4xx status code
+func (o *CreateFrontendConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create frontend conflict response has a 5xx status code
+func (o *CreateFrontendConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create frontend conflict response a status code equal to that given
+func (o *CreateFrontendConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateFrontendConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/frontends][%d] createFrontendConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateFrontendConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/frontends][%d] createFrontendConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateFrontendConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateFrontendDefault(code int) *CreateFrontendDefault {
 	}
 }
 
-/* CreateFrontendDefault describes a response with status code -1, with default header values.
+/*
+CreateFrontendDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateFrontendDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create frontend default response has a 2xx status code
+func (o *CreateFrontendDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create frontend default response has a 3xx status code
+func (o *CreateFrontendDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create frontend default response has a 4xx status code
+func (o *CreateFrontendDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create frontend default response has a 5xx status code
+func (o *CreateFrontendDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create frontend default response a status code equal to that given
+func (o *CreateFrontendDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateFrontendDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/frontends][%d] createFrontend default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateFrontendDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/frontends][%d] createFrontend default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateFrontendDefault) GetPayload() *models.Error {
 	return o.Payload
 }

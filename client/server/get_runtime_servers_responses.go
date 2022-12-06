@@ -46,7 +46,8 @@ func NewGetRuntimeServersOK() *GetRuntimeServersOK {
 	return &GetRuntimeServersOK{}
 }
 
-/* GetRuntimeServersOK describes a response with status code 200, with default header values.
+/*
+GetRuntimeServersOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -54,9 +55,39 @@ type GetRuntimeServersOK struct {
 	Payload models.RuntimeServers
 }
 
+// IsSuccess returns true when this get runtime servers o k response has a 2xx status code
+func (o *GetRuntimeServersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get runtime servers o k response has a 3xx status code
+func (o *GetRuntimeServersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get runtime servers o k response has a 4xx status code
+func (o *GetRuntimeServersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get runtime servers o k response has a 5xx status code
+func (o *GetRuntimeServersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get runtime servers o k response a status code equal to that given
+func (o *GetRuntimeServersOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetRuntimeServersOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/servers][%d] getRuntimeServersOK  %+v", 200, o.Payload)
 }
+
+func (o *GetRuntimeServersOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/servers][%d] getRuntimeServersOK  %+v", 200, o.Payload)
+}
+
 func (o *GetRuntimeServersOK) GetPayload() models.RuntimeServers {
 	return o.Payload
 }
@@ -78,7 +109,8 @@ func NewGetRuntimeServersDefault(code int) *GetRuntimeServersDefault {
 	}
 }
 
-/* GetRuntimeServersDefault describes a response with status code -1, with default header values.
+/*
+GetRuntimeServersDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -97,9 +129,39 @@ func (o *GetRuntimeServersDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get runtime servers default response has a 2xx status code
+func (o *GetRuntimeServersDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get runtime servers default response has a 3xx status code
+func (o *GetRuntimeServersDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get runtime servers default response has a 4xx status code
+func (o *GetRuntimeServersDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get runtime servers default response has a 5xx status code
+func (o *GetRuntimeServersDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get runtime servers default response a status code equal to that given
+func (o *GetRuntimeServersDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetRuntimeServersDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/servers][%d] getRuntimeServers default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetRuntimeServersDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/runtime/servers][%d] getRuntimeServers default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetRuntimeServersDefault) GetPayload() *models.Error {
 	return o.Payload
 }

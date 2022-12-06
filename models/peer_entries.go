@@ -16,7 +16,7 @@ import (
 
 // PeerEntries Peer entries
 //
-// HAProxy peer entries array
+// # HAProxy peer entries array
 //
 // swagger:model peer_entries
 type PeerEntries []*PeerEntry

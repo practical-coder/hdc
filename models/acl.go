@@ -20,7 +20,6 @@ import (
 // content switching and generally to take decisions based on content extracted
 // from the request, the response or any environmental status.
 //
-//
 // swagger:model acl
 type ACL struct {
 

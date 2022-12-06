@@ -52,7 +52,8 @@ func NewGetAllStorageGeneralFilesOK() *GetAllStorageGeneralFilesOK {
 	return &GetAllStorageGeneralFilesOK{}
 }
 
-/* GetAllStorageGeneralFilesOK describes a response with status code 200, with default header values.
+/*
+GetAllStorageGeneralFilesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -60,9 +61,39 @@ type GetAllStorageGeneralFilesOK struct {
 	Payload models.GeneralFiles
 }
 
+// IsSuccess returns true when this get all storage general files o k response has a 2xx status code
+func (o *GetAllStorageGeneralFilesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get all storage general files o k response has a 3xx status code
+func (o *GetAllStorageGeneralFilesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all storage general files o k response has a 4xx status code
+func (o *GetAllStorageGeneralFilesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all storage general files o k response has a 5xx status code
+func (o *GetAllStorageGeneralFilesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all storage general files o k response a status code equal to that given
+func (o *GetAllStorageGeneralFilesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAllStorageGeneralFilesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/general][%d] getAllStorageGeneralFilesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAllStorageGeneralFilesOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/storage/general][%d] getAllStorageGeneralFilesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAllStorageGeneralFilesOK) GetPayload() models.GeneralFiles {
 	return o.Payload
 }
@@ -82,7 +113,8 @@ func NewGetAllStorageGeneralFilesNotFound() *GetAllStorageGeneralFilesNotFound {
 	return &GetAllStorageGeneralFilesNotFound{}
 }
 
-/* GetAllStorageGeneralFilesNotFound describes a response with status code 404, with default header values.
+/*
+GetAllStorageGeneralFilesNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -95,9 +127,39 @@ type GetAllStorageGeneralFilesNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get all storage general files not found response has a 2xx status code
+func (o *GetAllStorageGeneralFilesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all storage general files not found response has a 3xx status code
+func (o *GetAllStorageGeneralFilesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all storage general files not found response has a 4xx status code
+func (o *GetAllStorageGeneralFilesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all storage general files not found response has a 5xx status code
+func (o *GetAllStorageGeneralFilesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all storage general files not found response a status code equal to that given
+func (o *GetAllStorageGeneralFilesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetAllStorageGeneralFilesNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/general][%d] getAllStorageGeneralFilesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetAllStorageGeneralFilesNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/storage/general][%d] getAllStorageGeneralFilesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetAllStorageGeneralFilesNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -128,7 +190,8 @@ func NewGetAllStorageGeneralFilesDefault(code int) *GetAllStorageGeneralFilesDef
 	}
 }
 
-/* GetAllStorageGeneralFilesDefault describes a response with status code -1, with default header values.
+/*
+GetAllStorageGeneralFilesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -147,9 +210,39 @@ func (o *GetAllStorageGeneralFilesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get all storage general files default response has a 2xx status code
+func (o *GetAllStorageGeneralFilesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get all storage general files default response has a 3xx status code
+func (o *GetAllStorageGeneralFilesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get all storage general files default response has a 4xx status code
+func (o *GetAllStorageGeneralFilesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get all storage general files default response has a 5xx status code
+func (o *GetAllStorageGeneralFilesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get all storage general files default response a status code equal to that given
+func (o *GetAllStorageGeneralFilesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetAllStorageGeneralFilesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/general][%d] getAllStorageGeneralFiles default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetAllStorageGeneralFilesDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/storage/general][%d] getAllStorageGeneralFiles default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetAllStorageGeneralFilesDefault) GetPayload() *models.Error {
 	return o.Payload
 }

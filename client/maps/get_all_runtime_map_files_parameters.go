@@ -53,10 +53,12 @@ func NewGetAllRuntimeMapFilesParamsWithHTTPClient(client *http.Client) *GetAllRu
 	}
 }
 
-/* GetAllRuntimeMapFilesParams contains all the parameters to send to the API endpoint
-   for the get all runtime map files operation.
+/*
+GetAllRuntimeMapFilesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get all runtime map files operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAllRuntimeMapFilesParams struct {
 

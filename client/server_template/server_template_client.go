@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateServerTemplate adds a new server template
+CreateServerTemplate adds a new server template
 
-  Adds a new server template in the specified backend in the configuration file.
+Adds a new server template in the specified backend in the configuration file.
 */
 func (a *Client) CreateServerTemplate(params *CreateServerTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateServerTemplateCreated, *CreateServerTemplateAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateServerTemplate(params *CreateServerTemplateParams, authIn
 }
 
 /*
-  DeleteServerTemplate deletes a server template
+DeleteServerTemplate deletes a server template
 
-  Deletes a server template configuration by it's prefix in the specified backend.
+Deletes a server template configuration by it's prefix in the specified backend.
 */
 func (a *Client) DeleteServerTemplate(params *DeleteServerTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteServerTemplateAccepted, *DeleteServerTemplateNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteServerTemplate(params *DeleteServerTemplateParams, authIn
 }
 
 /*
-  GetServerTemplate returns one server template
+GetServerTemplate returns one server template
 
-  Returns one server template configuration by it's prefix in the specified backend.
+Returns one server template configuration by it's prefix in the specified backend.
 */
 func (a *Client) GetServerTemplate(params *GetServerTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServerTemplateOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetServerTemplate(params *GetServerTemplateParams, authInfo run
 }
 
 /*
-  GetServerTemplates returns an array of server templates
+GetServerTemplates returns an array of server templates
 
-  Returns an array of all server templates that are configured in specified backend.
+Returns an array of all server templates that are configured in specified backend.
 */
 func (a *Client) GetServerTemplates(params *GetServerTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServerTemplatesOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetServerTemplates(params *GetServerTemplatesParams, authInfo r
 }
 
 /*
-  ReplaceServerTemplate replaces a server template
+ReplaceServerTemplate replaces a server template
 
-  Replaces a server template configuration by it's prefix in the specified backend.
+Replaces a server template configuration by it's prefix in the specified backend.
 */
 func (a *Client) ReplaceServerTemplate(params *ReplaceServerTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceServerTemplateOK, *ReplaceServerTemplateAccepted, error) {
 	// TODO: Validate the params before sending

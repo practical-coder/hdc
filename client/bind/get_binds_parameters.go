@@ -52,10 +52,12 @@ func NewGetBindsParamsWithHTTPClient(client *http.Client) *GetBindsParams {
 	}
 }
 
-/* GetBindsParams contains all the parameters to send to the API endpoint
-   for the get binds operation.
+/*
+GetBindsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get binds operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBindsParams struct {
 

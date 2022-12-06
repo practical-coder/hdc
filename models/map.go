@@ -14,7 +14,7 @@ import (
 
 // Map Map File
 //
-// Map File
+// # Map File
 //
 // swagger:model map
 type Map struct {

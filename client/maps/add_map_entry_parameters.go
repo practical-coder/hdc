@@ -55,10 +55,12 @@ func NewAddMapEntryParamsWithHTTPClient(client *http.Client) *AddMapEntryParams 
 	}
 }
 
-/* AddMapEntryParams contains all the parameters to send to the API endpoint
-   for the add map entry operation.
+/*
+AddMapEntryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the add map entry operation.
+
+	Typically these are written to a http.Request.
 */
 type AddMapEntryParams struct {
 

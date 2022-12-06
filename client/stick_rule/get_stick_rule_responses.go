@@ -55,7 +55,8 @@ func NewGetStickRuleOK() *GetStickRuleOK {
 	return &GetStickRuleOK{}
 }
 
-/* GetStickRuleOK describes a response with status code 200, with default header values.
+/*
+GetStickRuleOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetStickRuleOK struct {
 	Payload *GetStickRuleOKBody
 }
 
+// IsSuccess returns true when this get stick rule o k response has a 2xx status code
+func (o *GetStickRuleOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get stick rule o k response has a 3xx status code
+func (o *GetStickRuleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get stick rule o k response has a 4xx status code
+func (o *GetStickRuleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get stick rule o k response has a 5xx status code
+func (o *GetStickRuleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get stick rule o k response a status code equal to that given
+func (o *GetStickRuleOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetStickRuleOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/stick_rules/{index}][%d] getStickRuleOK  %+v", 200, o.Payload)
 }
+
+func (o *GetStickRuleOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/stick_rules/{index}][%d] getStickRuleOK  %+v", 200, o.Payload)
+}
+
 func (o *GetStickRuleOK) GetPayload() *GetStickRuleOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetStickRuleNotFound() *GetStickRuleNotFound {
 	return &GetStickRuleNotFound{}
 }
 
-/* GetStickRuleNotFound describes a response with status code 404, with default header values.
+/*
+GetStickRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -112,9 +144,39 @@ type GetStickRuleNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get stick rule not found response has a 2xx status code
+func (o *GetStickRuleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get stick rule not found response has a 3xx status code
+func (o *GetStickRuleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get stick rule not found response has a 4xx status code
+func (o *GetStickRuleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get stick rule not found response has a 5xx status code
+func (o *GetStickRuleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get stick rule not found response a status code equal to that given
+func (o *GetStickRuleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetStickRuleNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/stick_rules/{index}][%d] getStickRuleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetStickRuleNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/stick_rules/{index}][%d] getStickRuleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetStickRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetStickRuleDefault(code int) *GetStickRuleDefault {
 	}
 }
 
-/* GetStickRuleDefault describes a response with status code -1, with default header values.
+/*
+GetStickRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetStickRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get stick rule default response has a 2xx status code
+func (o *GetStickRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get stick rule default response has a 3xx status code
+func (o *GetStickRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get stick rule default response has a 4xx status code
+func (o *GetStickRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get stick rule default response has a 5xx status code
+func (o *GetStickRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get stick rule default response a status code equal to that given
+func (o *GetStickRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetStickRuleDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/stick_rules/{index}][%d] getStickRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetStickRuleDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/stick_rules/{index}][%d] getStickRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetStickRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetStickRuleDefault) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-/*GetStickRuleOKBody get stick rule o k body
+/*
+GetStickRuleOKBody get stick rule o k body
 swagger:model GetStickRuleOKBody
 */
 type GetStickRuleOKBody struct {

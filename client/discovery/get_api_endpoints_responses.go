@@ -46,7 +46,8 @@ func NewGetAPIEndpointsOK() *GetAPIEndpointsOK {
 	return &GetAPIEndpointsOK{}
 }
 
-/* GetAPIEndpointsOK describes a response with status code 200, with default header values.
+/*
+GetAPIEndpointsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -54,9 +55,39 @@ type GetAPIEndpointsOK struct {
 	Payload models.Endpoints
 }
 
+// IsSuccess returns true when this get Api endpoints o k response has a 2xx status code
+func (o *GetAPIEndpointsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get Api endpoints o k response has a 3xx status code
+func (o *GetAPIEndpointsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get Api endpoints o k response has a 4xx status code
+func (o *GetAPIEndpointsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get Api endpoints o k response has a 5xx status code
+func (o *GetAPIEndpointsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get Api endpoints o k response a status code equal to that given
+func (o *GetAPIEndpointsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAPIEndpointsOK) Error() string {
 	return fmt.Sprintf("[GET /][%d] getApiEndpointsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAPIEndpointsOK) String() string {
+	return fmt.Sprintf("[GET /][%d] getApiEndpointsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAPIEndpointsOK) GetPayload() models.Endpoints {
 	return o.Payload
 }
@@ -78,7 +109,8 @@ func NewGetAPIEndpointsDefault(code int) *GetAPIEndpointsDefault {
 	}
 }
 
-/* GetAPIEndpointsDefault describes a response with status code -1, with default header values.
+/*
+GetAPIEndpointsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -97,9 +129,39 @@ func (o *GetAPIEndpointsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get API endpoints default response has a 2xx status code
+func (o *GetAPIEndpointsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get API endpoints default response has a 3xx status code
+func (o *GetAPIEndpointsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get API endpoints default response has a 4xx status code
+func (o *GetAPIEndpointsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get API endpoints default response has a 5xx status code
+func (o *GetAPIEndpointsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get API endpoints default response a status code equal to that given
+func (o *GetAPIEndpointsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetAPIEndpointsDefault) Error() string {
 	return fmt.Sprintf("[GET /][%d] getAPIEndpoints default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetAPIEndpointsDefault) String() string {
+	return fmt.Sprintf("[GET /][%d] getAPIEndpoints default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetAPIEndpointsDefault) GetPayload() *models.Error {
 	return o.Payload
 }

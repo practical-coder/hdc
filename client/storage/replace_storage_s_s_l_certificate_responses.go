@@ -64,7 +64,8 @@ func NewReplaceStorageSSLCertificateOK() *ReplaceStorageSSLCertificateOK {
 	return &ReplaceStorageSSLCertificateOK{}
 }
 
-/* ReplaceStorageSSLCertificateOK describes a response with status code 200, with default header values.
+/*
+ReplaceStorageSSLCertificateOK describes a response with status code 200, with default header values.
 
 SSL certificate replaced
 */
@@ -72,9 +73,39 @@ type ReplaceStorageSSLCertificateOK struct {
 	Payload *models.SslCertificate
 }
 
+// IsSuccess returns true when this replace storage s s l certificate o k response has a 2xx status code
+func (o *ReplaceStorageSSLCertificateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace storage s s l certificate o k response has a 3xx status code
+func (o *ReplaceStorageSSLCertificateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage s s l certificate o k response has a 4xx status code
+func (o *ReplaceStorageSSLCertificateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace storage s s l certificate o k response has a 5xx status code
+func (o *ReplaceStorageSSLCertificateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage s s l certificate o k response a status code equal to that given
+func (o *ReplaceStorageSSLCertificateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceStorageSSLCertificateOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceStorageSSLCertificateOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceStorageSSLCertificateOK) GetPayload() *models.SslCertificate {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceStorageSSLCertificateAccepted() *ReplaceStorageSSLCertificateAcce
 	return &ReplaceStorageSSLCertificateAccepted{}
 }
 
-/* ReplaceStorageSSLCertificateAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceStorageSSLCertificateAccepted describes a response with status code 202, with default header values.
 
 SSL certificate replaced and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceStorageSSLCertificateAccepted struct {
 	Payload *models.SslCertificate
 }
 
+// IsSuccess returns true when this replace storage s s l certificate accepted response has a 2xx status code
+func (o *ReplaceStorageSSLCertificateAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace storage s s l certificate accepted response has a 3xx status code
+func (o *ReplaceStorageSSLCertificateAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage s s l certificate accepted response has a 4xx status code
+func (o *ReplaceStorageSSLCertificateAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace storage s s l certificate accepted response has a 5xx status code
+func (o *ReplaceStorageSSLCertificateAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage s s l certificate accepted response a status code equal to that given
+func (o *ReplaceStorageSSLCertificateAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceStorageSSLCertificateAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceStorageSSLCertificateAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceStorageSSLCertificateAccepted) GetPayload() *models.SslCertificate {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceStorageSSLCertificateBadRequest() *ReplaceStorageSSLCertificateBa
 	return &ReplaceStorageSSLCertificateBadRequest{}
 }
 
-/* ReplaceStorageSSLCertificateBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceStorageSSLCertificateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceStorageSSLCertificateBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace storage s s l certificate bad request response has a 2xx status code
+func (o *ReplaceStorageSSLCertificateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace storage s s l certificate bad request response has a 3xx status code
+func (o *ReplaceStorageSSLCertificateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage s s l certificate bad request response has a 4xx status code
+func (o *ReplaceStorageSSLCertificateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace storage s s l certificate bad request response has a 5xx status code
+func (o *ReplaceStorageSSLCertificateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage s s l certificate bad request response a status code equal to that given
+func (o *ReplaceStorageSSLCertificateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceStorageSSLCertificateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceStorageSSLCertificateBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceStorageSSLCertificateBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceStorageSSLCertificateNotFound() *ReplaceStorageSSLCertificateNotF
 	return &ReplaceStorageSSLCertificateNotFound{}
 }
 
-/* ReplaceStorageSSLCertificateNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceStorageSSLCertificateNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceStorageSSLCertificateNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace storage s s l certificate not found response has a 2xx status code
+func (o *ReplaceStorageSSLCertificateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace storage s s l certificate not found response has a 3xx status code
+func (o *ReplaceStorageSSLCertificateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage s s l certificate not found response has a 4xx status code
+func (o *ReplaceStorageSSLCertificateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace storage s s l certificate not found response has a 5xx status code
+func (o *ReplaceStorageSSLCertificateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage s s l certificate not found response a status code equal to that given
+func (o *ReplaceStorageSSLCertificateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceStorageSSLCertificateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceStorageSSLCertificateNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceStorageSSLCertificateNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceStorageSSLCertificateDefault(code int) *ReplaceStorageSSLCertific
 	}
 }
 
-/* ReplaceStorageSSLCertificateDefault describes a response with status code -1, with default header values.
+/*
+ReplaceStorageSSLCertificateDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceStorageSSLCertificateDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace storage s s l certificate default response has a 2xx status code
+func (o *ReplaceStorageSSLCertificateDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace storage s s l certificate default response has a 3xx status code
+func (o *ReplaceStorageSSLCertificateDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace storage s s l certificate default response has a 4xx status code
+func (o *ReplaceStorageSSLCertificateDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace storage s s l certificate default response has a 5xx status code
+func (o *ReplaceStorageSSLCertificateDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace storage s s l certificate default response a status code equal to that given
+func (o *ReplaceStorageSSLCertificateDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceStorageSSLCertificateDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificate default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceStorageSSLCertificateDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificate default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceStorageSSLCertificateDefault) GetPayload() *models.Error {
 	return o.Payload
 }

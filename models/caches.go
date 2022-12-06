@@ -16,7 +16,7 @@ import (
 
 // Caches Cache Sections
 //
-// HAProxy caches array
+// # HAProxy caches array
 //
 // swagger:model caches
 type Caches []*Cache

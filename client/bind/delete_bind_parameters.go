@@ -53,10 +53,12 @@ func NewDeleteBindParamsWithHTTPClient(client *http.Client) *DeleteBindParams {
 	}
 }
 
-/* DeleteBindParams contains all the parameters to send to the API endpoint
-   for the delete bind operation.
+/*
+DeleteBindParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete bind operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteBindParams struct {
 

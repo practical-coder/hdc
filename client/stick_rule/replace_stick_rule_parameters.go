@@ -55,10 +55,12 @@ func NewReplaceStickRuleParamsWithHTTPClient(client *http.Client) *ReplaceStickR
 	}
 }
 
-/* ReplaceStickRuleParams contains all the parameters to send to the API endpoint
-   for the replace stick rule operation.
+/*
+ReplaceStickRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace stick rule operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceStickRuleParams struct {
 

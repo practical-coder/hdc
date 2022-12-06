@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateLogTarget adds a new log target
+CreateLogTarget adds a new log target
 
-  Adds a new Log Target of the specified type in the specified parent.
+Adds a new Log Target of the specified type in the specified parent.
 */
 func (a *Client) CreateLogTarget(params *CreateLogTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateLogTargetCreated, *CreateLogTargetAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateLogTarget(params *CreateLogTargetParams, authInfo runtime
 }
 
 /*
-  DeleteLogTarget deletes a log target
+DeleteLogTarget deletes a log target
 
-  Deletes a Log Target configuration by it's index from the specified parent.
+Deletes a Log Target configuration by it's index from the specified parent.
 */
 func (a *Client) DeleteLogTarget(params *DeleteLogTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteLogTargetAccepted, *DeleteLogTargetNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteLogTarget(params *DeleteLogTargetParams, authInfo runtime
 }
 
 /*
-  GetLogTarget returns one log target
+GetLogTarget returns one log target
 
-  Returns one Log Target configuration by it's index in the specified parent.
+Returns one Log Target configuration by it's index in the specified parent.
 */
 func (a *Client) GetLogTarget(params *GetLogTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogTargetOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetLogTarget(params *GetLogTargetParams, authInfo runtime.Clien
 }
 
 /*
-  GetLogTargets returns an array of all log targets
+GetLogTargets returns an array of all log targets
 
-  Returns all Log Targets that are configured in specified parent.
+Returns all Log Targets that are configured in specified parent.
 */
 func (a *Client) GetLogTargets(params *GetLogTargetsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogTargetsOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetLogTargets(params *GetLogTargetsParams, authInfo runtime.Cli
 }
 
 /*
-  ReplaceLogTarget replaces a log target
+ReplaceLogTarget replaces a log target
 
-  Replaces a Log Target configuration by it's index in the specified parent.
+Replaces a Log Target configuration by it's index in the specified parent.
 */
 func (a *Client) ReplaceLogTarget(params *ReplaceLogTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceLogTargetOK, *ReplaceLogTargetAccepted, error) {
 	// TODO: Validate the params before sending

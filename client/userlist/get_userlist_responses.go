@@ -55,7 +55,8 @@ func NewGetUserlistOK() *GetUserlistOK {
 	return &GetUserlistOK{}
 }
 
-/* GetUserlistOK describes a response with status code 200, with default header values.
+/*
+GetUserlistOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetUserlistOK struct {
 	Payload *GetUserlistOKBody
 }
 
+// IsSuccess returns true when this get userlist o k response has a 2xx status code
+func (o *GetUserlistOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get userlist o k response has a 3xx status code
+func (o *GetUserlistOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get userlist o k response has a 4xx status code
+func (o *GetUserlistOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get userlist o k response has a 5xx status code
+func (o *GetUserlistOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get userlist o k response a status code equal to that given
+func (o *GetUserlistOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetUserlistOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/userlists/{name}][%d] getUserlistOK  %+v", 200, o.Payload)
 }
+
+func (o *GetUserlistOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/userlists/{name}][%d] getUserlistOK  %+v", 200, o.Payload)
+}
+
 func (o *GetUserlistOK) GetPayload() *GetUserlistOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetUserlistNotFound() *GetUserlistNotFound {
 	return &GetUserlistNotFound{}
 }
 
-/* GetUserlistNotFound describes a response with status code 404, with default header values.
+/*
+GetUserlistNotFound describes a response with status code 404, with default header values.
 
 The specified resource already exists
 */
@@ -112,9 +144,39 @@ type GetUserlistNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get userlist not found response has a 2xx status code
+func (o *GetUserlistNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get userlist not found response has a 3xx status code
+func (o *GetUserlistNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get userlist not found response has a 4xx status code
+func (o *GetUserlistNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get userlist not found response has a 5xx status code
+func (o *GetUserlistNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get userlist not found response a status code equal to that given
+func (o *GetUserlistNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetUserlistNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/userlists/{name}][%d] getUserlistNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetUserlistNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/userlists/{name}][%d] getUserlistNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetUserlistNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetUserlistDefault(code int) *GetUserlistDefault {
 	}
 }
 
-/* GetUserlistDefault describes a response with status code -1, with default header values.
+/*
+GetUserlistDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetUserlistDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get userlist default response has a 2xx status code
+func (o *GetUserlistDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get userlist default response has a 3xx status code
+func (o *GetUserlistDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get userlist default response has a 4xx status code
+func (o *GetUserlistDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get userlist default response has a 5xx status code
+func (o *GetUserlistDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get userlist default response a status code equal to that given
+func (o *GetUserlistDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetUserlistDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/userlists/{name}][%d] getUserlist default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetUserlistDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/userlists/{name}][%d] getUserlist default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetUserlistDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetUserlistDefault) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-/*GetUserlistOKBody get userlist o k body
+/*
+GetUserlistOKBody get userlist o k body
 swagger:model GetUserlistOKBody
 */
 type GetUserlistOKBody struct {

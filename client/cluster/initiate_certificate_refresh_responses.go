@@ -52,14 +52,44 @@ func NewInitiateCertificateRefreshOK() *InitiateCertificateRefreshOK {
 	return &InitiateCertificateRefreshOK{}
 }
 
-/* InitiateCertificateRefreshOK describes a response with status code 200, with default header values.
+/*
+InitiateCertificateRefreshOK describes a response with status code 200, with default header values.
 
 refresh activated
 */
 type InitiateCertificateRefreshOK struct {
 }
 
+// IsSuccess returns true when this initiate certificate refresh o k response has a 2xx status code
+func (o *InitiateCertificateRefreshOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this initiate certificate refresh o k response has a 3xx status code
+func (o *InitiateCertificateRefreshOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate certificate refresh o k response has a 4xx status code
+func (o *InitiateCertificateRefreshOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this initiate certificate refresh o k response has a 5xx status code
+func (o *InitiateCertificateRefreshOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate certificate refresh o k response a status code equal to that given
+func (o *InitiateCertificateRefreshOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *InitiateCertificateRefreshOK) Error() string {
+	return fmt.Sprintf("[POST /cluster/certificate][%d] initiateCertificateRefreshOK ", 200)
+}
+
+func (o *InitiateCertificateRefreshOK) String() string {
 	return fmt.Sprintf("[POST /cluster/certificate][%d] initiateCertificateRefreshOK ", 200)
 }
 
@@ -73,14 +103,44 @@ func NewInitiateCertificateRefreshForbidden() *InitiateCertificateRefreshForbidd
 	return &InitiateCertificateRefreshForbidden{}
 }
 
-/* InitiateCertificateRefreshForbidden describes a response with status code 403, with default header values.
+/*
+InitiateCertificateRefreshForbidden describes a response with status code 403, with default header values.
 
 refresh not possible
 */
 type InitiateCertificateRefreshForbidden struct {
 }
 
+// IsSuccess returns true when this initiate certificate refresh forbidden response has a 2xx status code
+func (o *InitiateCertificateRefreshForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this initiate certificate refresh forbidden response has a 3xx status code
+func (o *InitiateCertificateRefreshForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this initiate certificate refresh forbidden response has a 4xx status code
+func (o *InitiateCertificateRefreshForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this initiate certificate refresh forbidden response has a 5xx status code
+func (o *InitiateCertificateRefreshForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this initiate certificate refresh forbidden response a status code equal to that given
+func (o *InitiateCertificateRefreshForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *InitiateCertificateRefreshForbidden) Error() string {
+	return fmt.Sprintf("[POST /cluster/certificate][%d] initiateCertificateRefreshForbidden ", 403)
+}
+
+func (o *InitiateCertificateRefreshForbidden) String() string {
 	return fmt.Sprintf("[POST /cluster/certificate][%d] initiateCertificateRefreshForbidden ", 403)
 }
 
@@ -96,7 +156,8 @@ func NewInitiateCertificateRefreshDefault(code int) *InitiateCertificateRefreshD
 	}
 }
 
-/* InitiateCertificateRefreshDefault describes a response with status code -1, with default header values.
+/*
+InitiateCertificateRefreshDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +176,39 @@ func (o *InitiateCertificateRefreshDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this initiate certificate refresh default response has a 2xx status code
+func (o *InitiateCertificateRefreshDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this initiate certificate refresh default response has a 3xx status code
+func (o *InitiateCertificateRefreshDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this initiate certificate refresh default response has a 4xx status code
+func (o *InitiateCertificateRefreshDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this initiate certificate refresh default response has a 5xx status code
+func (o *InitiateCertificateRefreshDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this initiate certificate refresh default response a status code equal to that given
+func (o *InitiateCertificateRefreshDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *InitiateCertificateRefreshDefault) Error() string {
 	return fmt.Sprintf("[POST /cluster/certificate][%d] initiateCertificateRefresh default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *InitiateCertificateRefreshDefault) String() string {
+	return fmt.Sprintf("[POST /cluster/certificate][%d] initiateCertificateRefresh default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *InitiateCertificateRefreshDefault) GetPayload() *models.Error {
 	return o.Payload
 }

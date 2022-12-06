@@ -55,10 +55,12 @@ func NewCreateCacheParamsWithHTTPClient(client *http.Client) *CreateCacheParams 
 	}
 }
 
-/* CreateCacheParams contains all the parameters to send to the API endpoint
-   for the create cache operation.
+/*
+CreateCacheParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create cache operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateCacheParams struct {
 

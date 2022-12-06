@@ -53,10 +53,12 @@ func NewDeleteRuntimeMapEntryParamsWithHTTPClient(client *http.Client) *DeleteRu
 	}
 }
 
-/* DeleteRuntimeMapEntryParams contains all the parameters to send to the API endpoint
-   for the delete runtime map entry operation.
+/*
+DeleteRuntimeMapEntryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete runtime map entry operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteRuntimeMapEntryParams struct {
 

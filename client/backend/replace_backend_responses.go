@@ -64,7 +64,8 @@ func NewReplaceBackendOK() *ReplaceBackendOK {
 	return &ReplaceBackendOK{}
 }
 
-/* ReplaceBackendOK describes a response with status code 200, with default header values.
+/*
+ReplaceBackendOK describes a response with status code 200, with default header values.
 
 Backend replaced
 */
@@ -72,9 +73,39 @@ type ReplaceBackendOK struct {
 	Payload *models.Backend
 }
 
+// IsSuccess returns true when this replace backend o k response has a 2xx status code
+func (o *ReplaceBackendOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace backend o k response has a 3xx status code
+func (o *ReplaceBackendOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace backend o k response has a 4xx status code
+func (o *ReplaceBackendOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace backend o k response has a 5xx status code
+func (o *ReplaceBackendOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace backend o k response a status code equal to that given
+func (o *ReplaceBackendOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceBackendOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/backends/{name}][%d] replaceBackendOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceBackendOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/backends/{name}][%d] replaceBackendOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceBackendOK) GetPayload() *models.Backend {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceBackendAccepted() *ReplaceBackendAccepted {
 	return &ReplaceBackendAccepted{}
 }
 
-/* ReplaceBackendAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceBackendAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceBackendAccepted struct {
 	Payload *models.Backend
 }
 
+// IsSuccess returns true when this replace backend accepted response has a 2xx status code
+func (o *ReplaceBackendAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace backend accepted response has a 3xx status code
+func (o *ReplaceBackendAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace backend accepted response has a 4xx status code
+func (o *ReplaceBackendAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace backend accepted response has a 5xx status code
+func (o *ReplaceBackendAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace backend accepted response a status code equal to that given
+func (o *ReplaceBackendAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceBackendAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/backends/{name}][%d] replaceBackendAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceBackendAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/backends/{name}][%d] replaceBackendAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceBackendAccepted) GetPayload() *models.Backend {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceBackendBadRequest() *ReplaceBackendBadRequest {
 	return &ReplaceBackendBadRequest{}
 }
 
-/* ReplaceBackendBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceBackendBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceBackendBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace backend bad request response has a 2xx status code
+func (o *ReplaceBackendBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace backend bad request response has a 3xx status code
+func (o *ReplaceBackendBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace backend bad request response has a 4xx status code
+func (o *ReplaceBackendBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace backend bad request response has a 5xx status code
+func (o *ReplaceBackendBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace backend bad request response a status code equal to that given
+func (o *ReplaceBackendBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceBackendBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/backends/{name}][%d] replaceBackendBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceBackendBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/backends/{name}][%d] replaceBackendBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceBackendBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceBackendNotFound() *ReplaceBackendNotFound {
 	return &ReplaceBackendNotFound{}
 }
 
-/* ReplaceBackendNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceBackendNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceBackendNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace backend not found response has a 2xx status code
+func (o *ReplaceBackendNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace backend not found response has a 3xx status code
+func (o *ReplaceBackendNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace backend not found response has a 4xx status code
+func (o *ReplaceBackendNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace backend not found response has a 5xx status code
+func (o *ReplaceBackendNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace backend not found response a status code equal to that given
+func (o *ReplaceBackendNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceBackendNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/backends/{name}][%d] replaceBackendNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceBackendNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/backends/{name}][%d] replaceBackendNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceBackendNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceBackendDefault(code int) *ReplaceBackendDefault {
 	}
 }
 
-/* ReplaceBackendDefault describes a response with status code -1, with default header values.
+/*
+ReplaceBackendDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceBackendDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace backend default response has a 2xx status code
+func (o *ReplaceBackendDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace backend default response has a 3xx status code
+func (o *ReplaceBackendDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace backend default response has a 4xx status code
+func (o *ReplaceBackendDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace backend default response has a 5xx status code
+func (o *ReplaceBackendDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace backend default response a status code equal to that given
+func (o *ReplaceBackendDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceBackendDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/backends/{name}][%d] replaceBackend default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceBackendDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/backends/{name}][%d] replaceBackend default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceBackendDefault) GetPayload() *models.Error {
 	return o.Payload
 }

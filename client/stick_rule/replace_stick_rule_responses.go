@@ -64,7 +64,8 @@ func NewReplaceStickRuleOK() *ReplaceStickRuleOK {
 	return &ReplaceStickRuleOK{}
 }
 
-/* ReplaceStickRuleOK describes a response with status code 200, with default header values.
+/*
+ReplaceStickRuleOK describes a response with status code 200, with default header values.
 
 Stick Rule replaced
 */
@@ -72,9 +73,39 @@ type ReplaceStickRuleOK struct {
 	Payload *models.StickRule
 }
 
+// IsSuccess returns true when this replace stick rule o k response has a 2xx status code
+func (o *ReplaceStickRuleOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace stick rule o k response has a 3xx status code
+func (o *ReplaceStickRuleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace stick rule o k response has a 4xx status code
+func (o *ReplaceStickRuleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace stick rule o k response has a 5xx status code
+func (o *ReplaceStickRuleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace stick rule o k response a status code equal to that given
+func (o *ReplaceStickRuleOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceStickRuleOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRuleOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceStickRuleOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRuleOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceStickRuleOK) GetPayload() *models.StickRule {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceStickRuleAccepted() *ReplaceStickRuleAccepted {
 	return &ReplaceStickRuleAccepted{}
 }
 
-/* ReplaceStickRuleAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceStickRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceStickRuleAccepted struct {
 	Payload *models.StickRule
 }
 
+// IsSuccess returns true when this replace stick rule accepted response has a 2xx status code
+func (o *ReplaceStickRuleAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace stick rule accepted response has a 3xx status code
+func (o *ReplaceStickRuleAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace stick rule accepted response has a 4xx status code
+func (o *ReplaceStickRuleAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace stick rule accepted response has a 5xx status code
+func (o *ReplaceStickRuleAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace stick rule accepted response a status code equal to that given
+func (o *ReplaceStickRuleAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceStickRuleAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRuleAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceStickRuleAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRuleAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceStickRuleAccepted) GetPayload() *models.StickRule {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceStickRuleBadRequest() *ReplaceStickRuleBadRequest {
 	return &ReplaceStickRuleBadRequest{}
 }
 
-/* ReplaceStickRuleBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceStickRuleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceStickRuleBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace stick rule bad request response has a 2xx status code
+func (o *ReplaceStickRuleBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace stick rule bad request response has a 3xx status code
+func (o *ReplaceStickRuleBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace stick rule bad request response has a 4xx status code
+func (o *ReplaceStickRuleBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace stick rule bad request response has a 5xx status code
+func (o *ReplaceStickRuleBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace stick rule bad request response a status code equal to that given
+func (o *ReplaceStickRuleBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceStickRuleBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRuleBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceStickRuleBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRuleBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceStickRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceStickRuleNotFound() *ReplaceStickRuleNotFound {
 	return &ReplaceStickRuleNotFound{}
 }
 
-/* ReplaceStickRuleNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceStickRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceStickRuleNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace stick rule not found response has a 2xx status code
+func (o *ReplaceStickRuleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace stick rule not found response has a 3xx status code
+func (o *ReplaceStickRuleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace stick rule not found response has a 4xx status code
+func (o *ReplaceStickRuleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace stick rule not found response has a 5xx status code
+func (o *ReplaceStickRuleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace stick rule not found response a status code equal to that given
+func (o *ReplaceStickRuleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceStickRuleNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRuleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceStickRuleNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRuleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceStickRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceStickRuleDefault(code int) *ReplaceStickRuleDefault {
 	}
 }
 
-/* ReplaceStickRuleDefault describes a response with status code -1, with default header values.
+/*
+ReplaceStickRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceStickRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace stick rule default response has a 2xx status code
+func (o *ReplaceStickRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace stick rule default response has a 3xx status code
+func (o *ReplaceStickRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace stick rule default response has a 4xx status code
+func (o *ReplaceStickRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace stick rule default response has a 5xx status code
+func (o *ReplaceStickRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace stick rule default response a status code equal to that given
+func (o *ReplaceStickRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceStickRuleDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceStickRuleDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/stick_rules/{index}][%d] replaceStickRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceStickRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }

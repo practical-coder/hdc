@@ -16,7 +16,7 @@ import (
 
 // AwsRegions AWS
 //
-// AWS regions array
+// # AWS regions array
 //
 // swagger:model awsRegions
 type AwsRegions []*AwsRegion

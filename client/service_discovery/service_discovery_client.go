@@ -52,9 +52,10 @@ type ClientService interface {
 }
 
 /*
-  CreateAWSRegion adds a new a w s region
+	CreateAWSRegion adds a new a w s region
 
-  Add a new AWS region.
+	Add a new AWS region.
+
 Credentials are not required in case Dataplane API is running in an EC2 instance with proper IAM role attached.
 */
 func (a *Client) CreateAWSRegion(params *CreateAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAWSRegionCreated, error) {
@@ -93,9 +94,9 @@ func (a *Client) CreateAWSRegion(params *CreateAWSRegionParams, authInfo runtime
 }
 
 /*
-  CreateConsul adds a new consul server
+CreateConsul adds a new consul server
 
-  Adds a new Consul server.
+Adds a new Consul server.
 */
 func (a *Client) CreateConsul(params *CreateConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateConsulCreated, error) {
 	// TODO: Validate the params before sending
@@ -133,9 +134,9 @@ func (a *Client) CreateConsul(params *CreateConsulParams, authInfo runtime.Clien
 }
 
 /*
-  DeleteAWSRegion deletes an a w s region
+DeleteAWSRegion deletes an a w s region
 
-  Delete an AWS region configuration by it's id.
+Delete an AWS region configuration by it's id.
 */
 func (a *Client) DeleteAWSRegion(params *DeleteAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteAWSRegionNoContent, error) {
 	// TODO: Validate the params before sending
@@ -173,9 +174,9 @@ func (a *Client) DeleteAWSRegion(params *DeleteAWSRegionParams, authInfo runtime
 }
 
 /*
-  DeleteConsul deletes a consul server
+DeleteConsul deletes a consul server
 
-  Deletes a Consul server configuration by it's id.
+Deletes a Consul server configuration by it's id.
 */
 func (a *Client) DeleteConsul(params *DeleteConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteConsulNoContent, error) {
 	// TODO: Validate the params before sending
@@ -213,9 +214,9 @@ func (a *Client) DeleteConsul(params *DeleteConsulParams, authInfo runtime.Clien
 }
 
 /*
-  GetAWSRegion returns an a w s region
+GetAWSRegion returns an a w s region
 
-  Return one AWS Region configuration by it's id.
+Return one AWS Region configuration by it's id.
 */
 func (a *Client) GetAWSRegion(params *GetAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAWSRegionOK, error) {
 	// TODO: Validate the params before sending
@@ -253,9 +254,9 @@ func (a *Client) GetAWSRegion(params *GetAWSRegionParams, authInfo runtime.Clien
 }
 
 /*
-  GetAWSRegions returns an array of all configured a w s regions
+GetAWSRegions returns an array of all configured a w s regions
 
-  Return all configured AWS regions.
+Return all configured AWS regions.
 */
 func (a *Client) GetAWSRegions(params *GetAWSRegionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAWSRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -293,9 +294,9 @@ func (a *Client) GetAWSRegions(params *GetAWSRegionsParams, authInfo runtime.Cli
 }
 
 /*
-  GetConsul returns one consul server
+GetConsul returns one consul server
 
-  Returns one Consul server configuration by it's id.
+Returns one Consul server configuration by it's id.
 */
 func (a *Client) GetConsul(params *GetConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsulOK, error) {
 	// TODO: Validate the params before sending
@@ -333,9 +334,9 @@ func (a *Client) GetConsul(params *GetConsulParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  GetConsuls returns an array of all configured consul servers
+GetConsuls returns an array of all configured consul servers
 
-  Returns all configured Consul servers.
+Returns all configured Consul servers.
 */
 func (a *Client) GetConsuls(params *GetConsulsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsulsOK, error) {
 	// TODO: Validate the params before sending
@@ -373,9 +374,9 @@ func (a *Client) GetConsuls(params *GetConsulsParams, authInfo runtime.ClientAut
 }
 
 /*
-  ReplaceAWSRegion replaces an a w s region
+ReplaceAWSRegion replaces an a w s region
 
-  Replace an AWS region configuration by its id.
+Replace an AWS region configuration by its id.
 */
 func (a *Client) ReplaceAWSRegion(params *ReplaceAWSRegionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceAWSRegionOK, error) {
 	// TODO: Validate the params before sending
@@ -413,9 +414,9 @@ func (a *Client) ReplaceAWSRegion(params *ReplaceAWSRegionParams, authInfo runti
 }
 
 /*
-  ReplaceConsul replaces a consul server
+ReplaceConsul replaces a consul server
 
-  Replaces a Consul server configuration by it's id.
+Replaces a Consul server configuration by it's id.
 */
 func (a *Client) ReplaceConsul(params *ReplaceConsulParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceConsulOK, error) {
 	// TODO: Validate the params before sending

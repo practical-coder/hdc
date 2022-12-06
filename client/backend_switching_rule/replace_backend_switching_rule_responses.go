@@ -64,7 +64,8 @@ func NewReplaceBackendSwitchingRuleOK() *ReplaceBackendSwitchingRuleOK {
 	return &ReplaceBackendSwitchingRuleOK{}
 }
 
-/* ReplaceBackendSwitchingRuleOK describes a response with status code 200, with default header values.
+/*
+ReplaceBackendSwitchingRuleOK describes a response with status code 200, with default header values.
 
 Backend Switching Rule replaced
 */
@@ -72,9 +73,39 @@ type ReplaceBackendSwitchingRuleOK struct {
 	Payload *models.BackendSwitchingRule
 }
 
+// IsSuccess returns true when this replace backend switching rule o k response has a 2xx status code
+func (o *ReplaceBackendSwitchingRuleOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace backend switching rule o k response has a 3xx status code
+func (o *ReplaceBackendSwitchingRuleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace backend switching rule o k response has a 4xx status code
+func (o *ReplaceBackendSwitchingRuleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace backend switching rule o k response has a 5xx status code
+func (o *ReplaceBackendSwitchingRuleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace backend switching rule o k response a status code equal to that given
+func (o *ReplaceBackendSwitchingRuleOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceBackendSwitchingRuleOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/backend_switching_rules/{index}][%d] replaceBackendSwitchingRuleOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceBackendSwitchingRuleOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/backend_switching_rules/{index}][%d] replaceBackendSwitchingRuleOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceBackendSwitchingRuleOK) GetPayload() *models.BackendSwitchingRule {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceBackendSwitchingRuleAccepted() *ReplaceBackendSwitchingRuleAccept
 	return &ReplaceBackendSwitchingRuleAccepted{}
 }
 
-/* ReplaceBackendSwitchingRuleAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceBackendSwitchingRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceBackendSwitchingRuleAccepted struct {
 	Payload *models.BackendSwitchingRule
 }
 
+// IsSuccess returns true when this replace backend switching rule accepted response has a 2xx status code
+func (o *ReplaceBackendSwitchingRuleAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace backend switching rule accepted response has a 3xx status code
+func (o *ReplaceBackendSwitchingRuleAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace backend switching rule accepted response has a 4xx status code
+func (o *ReplaceBackendSwitchingRuleAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace backend switching rule accepted response has a 5xx status code
+func (o *ReplaceBackendSwitchingRuleAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace backend switching rule accepted response a status code equal to that given
+func (o *ReplaceBackendSwitchingRuleAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceBackendSwitchingRuleAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/backend_switching_rules/{index}][%d] replaceBackendSwitchingRuleAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceBackendSwitchingRuleAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/backend_switching_rules/{index}][%d] replaceBackendSwitchingRuleAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceBackendSwitchingRuleAccepted) GetPayload() *models.BackendSwitchingRule {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceBackendSwitchingRuleBadRequest() *ReplaceBackendSwitchingRuleBadR
 	return &ReplaceBackendSwitchingRuleBadRequest{}
 }
 
-/* ReplaceBackendSwitchingRuleBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceBackendSwitchingRuleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceBackendSwitchingRuleBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace backend switching rule bad request response has a 2xx status code
+func (o *ReplaceBackendSwitchingRuleBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace backend switching rule bad request response has a 3xx status code
+func (o *ReplaceBackendSwitchingRuleBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace backend switching rule bad request response has a 4xx status code
+func (o *ReplaceBackendSwitchingRuleBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace backend switching rule bad request response has a 5xx status code
+func (o *ReplaceBackendSwitchingRuleBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace backend switching rule bad request response a status code equal to that given
+func (o *ReplaceBackendSwitchingRuleBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceBackendSwitchingRuleBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/backend_switching_rules/{index}][%d] replaceBackendSwitchingRuleBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceBackendSwitchingRuleBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/backend_switching_rules/{index}][%d] replaceBackendSwitchingRuleBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceBackendSwitchingRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceBackendSwitchingRuleNotFound() *ReplaceBackendSwitchingRuleNotFou
 	return &ReplaceBackendSwitchingRuleNotFound{}
 }
 
-/* ReplaceBackendSwitchingRuleNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceBackendSwitchingRuleNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceBackendSwitchingRuleNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace backend switching rule not found response has a 2xx status code
+func (o *ReplaceBackendSwitchingRuleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace backend switching rule not found response has a 3xx status code
+func (o *ReplaceBackendSwitchingRuleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace backend switching rule not found response has a 4xx status code
+func (o *ReplaceBackendSwitchingRuleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace backend switching rule not found response has a 5xx status code
+func (o *ReplaceBackendSwitchingRuleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace backend switching rule not found response a status code equal to that given
+func (o *ReplaceBackendSwitchingRuleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceBackendSwitchingRuleNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/backend_switching_rules/{index}][%d] replaceBackendSwitchingRuleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceBackendSwitchingRuleNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/backend_switching_rules/{index}][%d] replaceBackendSwitchingRuleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceBackendSwitchingRuleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceBackendSwitchingRuleDefault(code int) *ReplaceBackendSwitchingRul
 	}
 }
 
-/* ReplaceBackendSwitchingRuleDefault describes a response with status code -1, with default header values.
+/*
+ReplaceBackendSwitchingRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceBackendSwitchingRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace backend switching rule default response has a 2xx status code
+func (o *ReplaceBackendSwitchingRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace backend switching rule default response has a 3xx status code
+func (o *ReplaceBackendSwitchingRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace backend switching rule default response has a 4xx status code
+func (o *ReplaceBackendSwitchingRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace backend switching rule default response has a 5xx status code
+func (o *ReplaceBackendSwitchingRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace backend switching rule default response a status code equal to that given
+func (o *ReplaceBackendSwitchingRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceBackendSwitchingRuleDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/backend_switching_rules/{index}][%d] replaceBackendSwitchingRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceBackendSwitchingRuleDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/backend_switching_rules/{index}][%d] replaceBackendSwitchingRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceBackendSwitchingRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }

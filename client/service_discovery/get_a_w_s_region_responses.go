@@ -55,7 +55,8 @@ func NewGetAWSRegionOK() *GetAWSRegionOK {
 	return &GetAWSRegionOK{}
 }
 
-/* GetAWSRegionOK describes a response with status code 200, with default header values.
+/*
+GetAWSRegionOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetAWSRegionOK struct {
 	Payload *GetAWSRegionOKBody
 }
 
+// IsSuccess returns true when this get a w s region o k response has a 2xx status code
+func (o *GetAWSRegionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get a w s region o k response has a 3xx status code
+func (o *GetAWSRegionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get a w s region o k response has a 4xx status code
+func (o *GetAWSRegionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get a w s region o k response has a 5xx status code
+func (o *GetAWSRegionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get a w s region o k response a status code equal to that given
+func (o *GetAWSRegionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAWSRegionOK) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/aws/{id}][%d] getAWSRegionOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAWSRegionOK) String() string {
+	return fmt.Sprintf("[GET /service_discovery/aws/{id}][%d] getAWSRegionOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAWSRegionOK) GetPayload() *GetAWSRegionOKBody {
 	return o.Payload
 }
@@ -87,7 +118,8 @@ func NewGetAWSRegionNotFound() *GetAWSRegionNotFound {
 	return &GetAWSRegionNotFound{}
 }
 
-/* GetAWSRegionNotFound describes a response with status code 404, with default header values.
+/*
+GetAWSRegionNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -100,9 +132,39 @@ type GetAWSRegionNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get a w s region not found response has a 2xx status code
+func (o *GetAWSRegionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get a w s region not found response has a 3xx status code
+func (o *GetAWSRegionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get a w s region not found response has a 4xx status code
+func (o *GetAWSRegionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get a w s region not found response has a 5xx status code
+func (o *GetAWSRegionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get a w s region not found response a status code equal to that given
+func (o *GetAWSRegionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetAWSRegionNotFound) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/aws/{id}][%d] getAWSRegionNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetAWSRegionNotFound) String() string {
+	return fmt.Sprintf("[GET /service_discovery/aws/{id}][%d] getAWSRegionNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetAWSRegionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewGetAWSRegionDefault(code int) *GetAWSRegionDefault {
 	}
 }
 
-/* GetAWSRegionDefault describes a response with status code -1, with default header values.
+/*
+GetAWSRegionDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -152,9 +215,39 @@ func (o *GetAWSRegionDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get a w s region default response has a 2xx status code
+func (o *GetAWSRegionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get a w s region default response has a 3xx status code
+func (o *GetAWSRegionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get a w s region default response has a 4xx status code
+func (o *GetAWSRegionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get a w s region default response has a 5xx status code
+func (o *GetAWSRegionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get a w s region default response a status code equal to that given
+func (o *GetAWSRegionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetAWSRegionDefault) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/aws/{id}][%d] getAWSRegion default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetAWSRegionDefault) String() string {
+	return fmt.Sprintf("[GET /service_discovery/aws/{id}][%d] getAWSRegion default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetAWSRegionDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -178,7 +271,8 @@ func (o *GetAWSRegionDefault) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-/*GetAWSRegionOKBody get a w s region o k body
+/*
+GetAWSRegionOKBody get a w s region o k body
 swagger:model GetAWSRegionOKBody
 */
 type GetAWSRegionOKBody struct {

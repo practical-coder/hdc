@@ -55,7 +55,8 @@ func NewGetRingOK() *GetRingOK {
 	return &GetRingOK{}
 }
 
-/* GetRingOK describes a response with status code 200, with default header values.
+/*
+GetRingOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetRingOK struct {
 	Payload *GetRingOKBody
 }
 
+// IsSuccess returns true when this get ring o k response has a 2xx status code
+func (o *GetRingOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get ring o k response has a 3xx status code
+func (o *GetRingOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get ring o k response has a 4xx status code
+func (o *GetRingOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get ring o k response has a 5xx status code
+func (o *GetRingOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get ring o k response a status code equal to that given
+func (o *GetRingOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetRingOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/rings/{name}][%d] getRingOK  %+v", 200, o.Payload)
 }
+
+func (o *GetRingOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/rings/{name}][%d] getRingOK  %+v", 200, o.Payload)
+}
+
 func (o *GetRingOK) GetPayload() *GetRingOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetRingNotFound() *GetRingNotFound {
 	return &GetRingNotFound{}
 }
 
-/* GetRingNotFound describes a response with status code 404, with default header values.
+/*
+GetRingNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -112,9 +144,39 @@ type GetRingNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get ring not found response has a 2xx status code
+func (o *GetRingNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get ring not found response has a 3xx status code
+func (o *GetRingNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get ring not found response has a 4xx status code
+func (o *GetRingNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get ring not found response has a 5xx status code
+func (o *GetRingNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get ring not found response a status code equal to that given
+func (o *GetRingNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetRingNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/rings/{name}][%d] getRingNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetRingNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/rings/{name}][%d] getRingNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetRingNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetRingDefault(code int) *GetRingDefault {
 	}
 }
 
-/* GetRingDefault describes a response with status code -1, with default header values.
+/*
+GetRingDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetRingDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get ring default response has a 2xx status code
+func (o *GetRingDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get ring default response has a 3xx status code
+func (o *GetRingDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get ring default response has a 4xx status code
+func (o *GetRingDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get ring default response has a 5xx status code
+func (o *GetRingDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get ring default response a status code equal to that given
+func (o *GetRingDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetRingDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/rings/{name}][%d] getRing default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetRingDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/rings/{name}][%d] getRing default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetRingDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetRingDefault) readResponse(response runtime.ClientResponse, consumer 
 	return nil
 }
 
-/*GetRingOKBody get ring o k body
+/*
+GetRingOKBody get ring o k body
 swagger:model GetRingOKBody
 */
 type GetRingOKBody struct {

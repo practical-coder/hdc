@@ -16,7 +16,7 @@ import (
 
 // Reloads HAProxy Reloads Array
 //
-// HAProxy reloads array
+// # HAProxy reloads array
 //
 // swagger:model reloads
 type Reloads []*Reload

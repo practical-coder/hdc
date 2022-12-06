@@ -16,7 +16,7 @@ import (
 
 // Rings Rings
 //
-// HAProxy rings array
+// # HAProxy rings array
 //
 // swagger:model rings
 type Rings []*Ring

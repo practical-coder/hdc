@@ -55,10 +55,12 @@ func NewReplaceResolverParamsWithHTTPClient(client *http.Client) *ReplaceResolve
 	}
 }
 
-/* ReplaceResolverParams contains all the parameters to send to the API endpoint
-   for the replace resolver operation.
+/*
+ReplaceResolverParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the replace resolver operation.
+
+	Typically these are written to a http.Request.
 */
 type ReplaceResolverParams struct {
 

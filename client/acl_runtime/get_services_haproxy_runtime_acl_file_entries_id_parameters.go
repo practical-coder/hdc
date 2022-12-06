@@ -52,10 +52,12 @@ func NewGetServicesHaproxyRuntimeACLFileEntriesIDParamsWithHTTPClient(client *ht
 	}
 }
 
-/* GetServicesHaproxyRuntimeACLFileEntriesIDParams contains all the parameters to send to the API endpoint
-   for the get services haproxy runtime ACL file entries ID operation.
+/*
+GetServicesHaproxyRuntimeACLFileEntriesIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get services haproxy runtime ACL file entries ID operation.
+
+	Typically these are written to a http.Request.
 */
 type GetServicesHaproxyRuntimeACLFileEntriesIDParams struct {
 

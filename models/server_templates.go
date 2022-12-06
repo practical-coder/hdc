@@ -16,7 +16,7 @@ import (
 
 // ServerTemplates Server templates
 //
-// HAProxy backend server templates array
+// # HAProxy backend server templates array
 //
 // swagger:model server_templates
 type ServerTemplates []*ServerTemplate

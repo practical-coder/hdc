@@ -52,10 +52,12 @@ func NewGetCacheParamsWithHTTPClient(client *http.Client) *GetCacheParams {
 	}
 }
 
-/* GetCacheParams contains all the parameters to send to the API endpoint
-   for the get cache operation.
+/*
+GetCacheParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get cache operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCacheParams struct {
 

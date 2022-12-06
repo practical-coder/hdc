@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateTCPResponseRule adds a new TCP response rule
+CreateTCPResponseRule adds a new TCP response rule
 
-  Adds a new TCP Response Rule of the specified type in the specified backend.
+Adds a new TCP Response Rule of the specified type in the specified backend.
 */
 func (a *Client) CreateTCPResponseRule(params *CreateTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateTCPResponseRuleCreated, *CreateTCPResponseRuleAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateTCPResponseRule(params *CreateTCPResponseRuleParams, auth
 }
 
 /*
-  DeleteTCPResponseRule deletes a TCP response rule
+DeleteTCPResponseRule deletes a TCP response rule
 
-  Deletes a TCP Response Rule configuration by it's index from the specified backend.
+Deletes a TCP Response Rule configuration by it's index from the specified backend.
 */
 func (a *Client) DeleteTCPResponseRule(params *DeleteTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteTCPResponseRuleAccepted, *DeleteTCPResponseRuleNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteTCPResponseRule(params *DeleteTCPResponseRuleParams, auth
 }
 
 /*
-  GetTCPResponseRule returns one TCP response rule
+GetTCPResponseRule returns one TCP response rule
 
-  Returns one TCP Response Rule configuration by it's index in the specified backend.
+Returns one TCP Response Rule configuration by it's index in the specified backend.
 */
 func (a *Client) GetTCPResponseRule(params *GetTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPResponseRuleOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetTCPResponseRule(params *GetTCPResponseRuleParams, authInfo r
 }
 
 /*
-  GetTCPResponseRules returns an array of all TCP response rules
+GetTCPResponseRules returns an array of all TCP response rules
 
-  Returns all TCP Response Rules that are configured in specified backend.
+Returns all TCP Response Rules that are configured in specified backend.
 */
 func (a *Client) GetTCPResponseRules(params *GetTCPResponseRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPResponseRulesOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetTCPResponseRules(params *GetTCPResponseRulesParams, authInfo
 }
 
 /*
-  ReplaceTCPResponseRule replaces a TCP response rule
+ReplaceTCPResponseRule replaces a TCP response rule
 
-  Replaces a TCP Response Rule configuration by it's Index in the specified backend.
+Replaces a TCP Response Rule configuration by it's Index in the specified backend.
 */
 func (a *Client) ReplaceTCPResponseRule(params *ReplaceTCPResponseRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceTCPResponseRuleOK, *ReplaceTCPResponseRuleAccepted, error) {
 	// TODO: Validate the params before sending

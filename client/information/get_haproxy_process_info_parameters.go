@@ -52,10 +52,12 @@ func NewGetHaproxyProcessInfoParamsWithHTTPClient(client *http.Client) *GetHapro
 	}
 }
 
-/* GetHaproxyProcessInfoParams contains all the parameters to send to the API endpoint
-   for the get haproxy process info operation.
+/*
+GetHaproxyProcessInfoParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get haproxy process info operation.
+
+	Typically these are written to a http.Request.
 */
 type GetHaproxyProcessInfoParams struct {
 	timeout    time.Duration

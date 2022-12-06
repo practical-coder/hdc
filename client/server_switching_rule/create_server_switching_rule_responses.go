@@ -64,7 +64,8 @@ func NewCreateServerSwitchingRuleCreated() *CreateServerSwitchingRuleCreated {
 	return &CreateServerSwitchingRuleCreated{}
 }
 
-/* CreateServerSwitchingRuleCreated describes a response with status code 201, with default header values.
+/*
+CreateServerSwitchingRuleCreated describes a response with status code 201, with default header values.
 
 Server Switching Rule created
 */
@@ -72,9 +73,39 @@ type CreateServerSwitchingRuleCreated struct {
 	Payload *models.ServerSwitchingRule
 }
 
+// IsSuccess returns true when this create server switching rule created response has a 2xx status code
+func (o *CreateServerSwitchingRuleCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create server switching rule created response has a 3xx status code
+func (o *CreateServerSwitchingRuleCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create server switching rule created response has a 4xx status code
+func (o *CreateServerSwitchingRuleCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create server switching rule created response has a 5xx status code
+func (o *CreateServerSwitchingRuleCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create server switching rule created response a status code equal to that given
+func (o *CreateServerSwitchingRuleCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateServerSwitchingRuleCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_switching_rules][%d] createServerSwitchingRuleCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateServerSwitchingRuleCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/server_switching_rules][%d] createServerSwitchingRuleCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateServerSwitchingRuleCreated) GetPayload() *models.ServerSwitchingRule {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateServerSwitchingRuleAccepted() *CreateServerSwitchingRuleAccepted {
 	return &CreateServerSwitchingRuleAccepted{}
 }
 
-/* CreateServerSwitchingRuleAccepted describes a response with status code 202, with default header values.
+/*
+CreateServerSwitchingRuleAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateServerSwitchingRuleAccepted struct {
 	Payload *models.ServerSwitchingRule
 }
 
+// IsSuccess returns true when this create server switching rule accepted response has a 2xx status code
+func (o *CreateServerSwitchingRuleAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create server switching rule accepted response has a 3xx status code
+func (o *CreateServerSwitchingRuleAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create server switching rule accepted response has a 4xx status code
+func (o *CreateServerSwitchingRuleAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create server switching rule accepted response has a 5xx status code
+func (o *CreateServerSwitchingRuleAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create server switching rule accepted response a status code equal to that given
+func (o *CreateServerSwitchingRuleAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateServerSwitchingRuleAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_switching_rules][%d] createServerSwitchingRuleAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateServerSwitchingRuleAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/server_switching_rules][%d] createServerSwitchingRuleAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateServerSwitchingRuleAccepted) GetPayload() *models.ServerSwitchingRule {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateServerSwitchingRuleBadRequest() *CreateServerSwitchingRuleBadReque
 	return &CreateServerSwitchingRuleBadRequest{}
 }
 
-/* CreateServerSwitchingRuleBadRequest describes a response with status code 400, with default header values.
+/*
+CreateServerSwitchingRuleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateServerSwitchingRuleBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create server switching rule bad request response has a 2xx status code
+func (o *CreateServerSwitchingRuleBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create server switching rule bad request response has a 3xx status code
+func (o *CreateServerSwitchingRuleBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create server switching rule bad request response has a 4xx status code
+func (o *CreateServerSwitchingRuleBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create server switching rule bad request response has a 5xx status code
+func (o *CreateServerSwitchingRuleBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create server switching rule bad request response a status code equal to that given
+func (o *CreateServerSwitchingRuleBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateServerSwitchingRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_switching_rules][%d] createServerSwitchingRuleBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateServerSwitchingRuleBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/server_switching_rules][%d] createServerSwitchingRuleBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateServerSwitchingRuleBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateServerSwitchingRuleConflict() *CreateServerSwitchingRuleConflict {
 	return &CreateServerSwitchingRuleConflict{}
 }
 
-/* CreateServerSwitchingRuleConflict describes a response with status code 409, with default header values.
+/*
+CreateServerSwitchingRuleConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateServerSwitchingRuleConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create server switching rule conflict response has a 2xx status code
+func (o *CreateServerSwitchingRuleConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create server switching rule conflict response has a 3xx status code
+func (o *CreateServerSwitchingRuleConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create server switching rule conflict response has a 4xx status code
+func (o *CreateServerSwitchingRuleConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create server switching rule conflict response has a 5xx status code
+func (o *CreateServerSwitchingRuleConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create server switching rule conflict response a status code equal to that given
+func (o *CreateServerSwitchingRuleConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateServerSwitchingRuleConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_switching_rules][%d] createServerSwitchingRuleConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateServerSwitchingRuleConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/server_switching_rules][%d] createServerSwitchingRuleConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateServerSwitchingRuleConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateServerSwitchingRuleDefault(code int) *CreateServerSwitchingRuleDef
 	}
 }
 
-/* CreateServerSwitchingRuleDefault describes a response with status code -1, with default header values.
+/*
+CreateServerSwitchingRuleDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateServerSwitchingRuleDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create server switching rule default response has a 2xx status code
+func (o *CreateServerSwitchingRuleDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create server switching rule default response has a 3xx status code
+func (o *CreateServerSwitchingRuleDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create server switching rule default response has a 4xx status code
+func (o *CreateServerSwitchingRuleDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create server switching rule default response has a 5xx status code
+func (o *CreateServerSwitchingRuleDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create server switching rule default response a status code equal to that given
+func (o *CreateServerSwitchingRuleDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateServerSwitchingRuleDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_switching_rules][%d] createServerSwitchingRule default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateServerSwitchingRuleDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/server_switching_rules][%d] createServerSwitchingRule default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateServerSwitchingRuleDefault) GetPayload() *models.Error {
 	return o.Payload
 }

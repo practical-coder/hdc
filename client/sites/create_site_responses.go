@@ -64,7 +64,8 @@ func NewCreateSiteCreated() *CreateSiteCreated {
 	return &CreateSiteCreated{}
 }
 
-/* CreateSiteCreated describes a response with status code 201, with default header values.
+/*
+CreateSiteCreated describes a response with status code 201, with default header values.
 
 Site created
 */
@@ -72,9 +73,39 @@ type CreateSiteCreated struct {
 	Payload *models.Site
 }
 
+// IsSuccess returns true when this create site created response has a 2xx status code
+func (o *CreateSiteCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create site created response has a 3xx status code
+func (o *CreateSiteCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create site created response has a 4xx status code
+func (o *CreateSiteCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create site created response has a 5xx status code
+func (o *CreateSiteCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create site created response a status code equal to that given
+func (o *CreateSiteCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateSiteCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSiteCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateSiteCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSiteCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateSiteCreated) GetPayload() *models.Site {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateSiteAccepted() *CreateSiteAccepted {
 	return &CreateSiteAccepted{}
 }
 
-/* CreateSiteAccepted describes a response with status code 202, with default header values.
+/*
+CreateSiteAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateSiteAccepted struct {
 	Payload *models.Site
 }
 
+// IsSuccess returns true when this create site accepted response has a 2xx status code
+func (o *CreateSiteAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create site accepted response has a 3xx status code
+func (o *CreateSiteAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create site accepted response has a 4xx status code
+func (o *CreateSiteAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create site accepted response has a 5xx status code
+func (o *CreateSiteAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create site accepted response a status code equal to that given
+func (o *CreateSiteAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateSiteAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSiteAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateSiteAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSiteAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateSiteAccepted) GetPayload() *models.Site {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateSiteBadRequest() *CreateSiteBadRequest {
 	return &CreateSiteBadRequest{}
 }
 
-/* CreateSiteBadRequest describes a response with status code 400, with default header values.
+/*
+CreateSiteBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateSiteBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create site bad request response has a 2xx status code
+func (o *CreateSiteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create site bad request response has a 3xx status code
+func (o *CreateSiteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create site bad request response has a 4xx status code
+func (o *CreateSiteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create site bad request response has a 5xx status code
+func (o *CreateSiteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create site bad request response a status code equal to that given
+func (o *CreateSiteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateSiteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSiteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateSiteBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSiteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateSiteBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateSiteConflict() *CreateSiteConflict {
 	return &CreateSiteConflict{}
 }
 
-/* CreateSiteConflict describes a response with status code 409, with default header values.
+/*
+CreateSiteConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateSiteConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create site conflict response has a 2xx status code
+func (o *CreateSiteConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create site conflict response has a 3xx status code
+func (o *CreateSiteConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create site conflict response has a 4xx status code
+func (o *CreateSiteConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create site conflict response has a 5xx status code
+func (o *CreateSiteConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create site conflict response a status code equal to that given
+func (o *CreateSiteConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateSiteConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSiteConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateSiteConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSiteConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateSiteConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateSiteDefault(code int) *CreateSiteDefault {
 	}
 }
 
-/* CreateSiteDefault describes a response with status code -1, with default header values.
+/*
+CreateSiteDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateSiteDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create site default response has a 2xx status code
+func (o *CreateSiteDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create site default response has a 3xx status code
+func (o *CreateSiteDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create site default response has a 4xx status code
+func (o *CreateSiteDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create site default response has a 5xx status code
+func (o *CreateSiteDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create site default response a status code equal to that given
+func (o *CreateSiteDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateSiteDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSite default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateSiteDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/sites][%d] createSite default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateSiteDefault) GetPayload() *models.Error {
 	return o.Payload
 }

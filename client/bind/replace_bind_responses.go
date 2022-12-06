@@ -64,7 +64,8 @@ func NewReplaceBindOK() *ReplaceBindOK {
 	return &ReplaceBindOK{}
 }
 
-/* ReplaceBindOK describes a response with status code 200, with default header values.
+/*
+ReplaceBindOK describes a response with status code 200, with default header values.
 
 Bind replaced
 */
@@ -72,9 +73,39 @@ type ReplaceBindOK struct {
 	Payload *models.Bind
 }
 
+// IsSuccess returns true when this replace bind o k response has a 2xx status code
+func (o *ReplaceBindOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace bind o k response has a 3xx status code
+func (o *ReplaceBindOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace bind o k response has a 4xx status code
+func (o *ReplaceBindOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace bind o k response has a 5xx status code
+func (o *ReplaceBindOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace bind o k response a status code equal to that given
+func (o *ReplaceBindOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceBindOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBindOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceBindOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBindOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceBindOK) GetPayload() *models.Bind {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceBindAccepted() *ReplaceBindAccepted {
 	return &ReplaceBindAccepted{}
 }
 
-/* ReplaceBindAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceBindAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceBindAccepted struct {
 	Payload *models.Bind
 }
 
+// IsSuccess returns true when this replace bind accepted response has a 2xx status code
+func (o *ReplaceBindAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace bind accepted response has a 3xx status code
+func (o *ReplaceBindAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace bind accepted response has a 4xx status code
+func (o *ReplaceBindAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace bind accepted response has a 5xx status code
+func (o *ReplaceBindAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace bind accepted response a status code equal to that given
+func (o *ReplaceBindAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceBindAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBindAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceBindAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBindAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceBindAccepted) GetPayload() *models.Bind {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceBindBadRequest() *ReplaceBindBadRequest {
 	return &ReplaceBindBadRequest{}
 }
 
-/* ReplaceBindBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceBindBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceBindBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace bind bad request response has a 2xx status code
+func (o *ReplaceBindBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace bind bad request response has a 3xx status code
+func (o *ReplaceBindBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace bind bad request response has a 4xx status code
+func (o *ReplaceBindBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace bind bad request response has a 5xx status code
+func (o *ReplaceBindBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace bind bad request response a status code equal to that given
+func (o *ReplaceBindBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceBindBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBindBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceBindBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBindBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceBindBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceBindNotFound() *ReplaceBindNotFound {
 	return &ReplaceBindNotFound{}
 }
 
-/* ReplaceBindNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceBindNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceBindNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace bind not found response has a 2xx status code
+func (o *ReplaceBindNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace bind not found response has a 3xx status code
+func (o *ReplaceBindNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace bind not found response has a 4xx status code
+func (o *ReplaceBindNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace bind not found response has a 5xx status code
+func (o *ReplaceBindNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace bind not found response a status code equal to that given
+func (o *ReplaceBindNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceBindNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBindNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceBindNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBindNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceBindNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceBindDefault(code int) *ReplaceBindDefault {
 	}
 }
 
-/* ReplaceBindDefault describes a response with status code -1, with default header values.
+/*
+ReplaceBindDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceBindDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace bind default response has a 2xx status code
+func (o *ReplaceBindDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace bind default response has a 3xx status code
+func (o *ReplaceBindDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace bind default response has a 4xx status code
+func (o *ReplaceBindDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace bind default response has a 5xx status code
+func (o *ReplaceBindDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace bind default response a status code equal to that given
+func (o *ReplaceBindDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceBindDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBind default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceBindDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/binds/{name}][%d] replaceBind default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceBindDefault) GetPayload() *models.Error {
 	return o.Payload
 }

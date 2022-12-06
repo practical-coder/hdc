@@ -55,10 +55,12 @@ func NewCreateLogTargetParamsWithHTTPClient(client *http.Client) *CreateLogTarge
 	}
 }
 
-/* CreateLogTargetParams contains all the parameters to send to the API endpoint
-   for the create log target operation.
+/*
+CreateLogTargetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create log target operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateLogTargetParams struct {
 

@@ -46,7 +46,8 @@ func NewGetServicesEndpointsOK() *GetServicesEndpointsOK {
 	return &GetServicesEndpointsOK{}
 }
 
-/* GetServicesEndpointsOK describes a response with status code 200, with default header values.
+/*
+GetServicesEndpointsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -54,9 +55,39 @@ type GetServicesEndpointsOK struct {
 	Payload models.Endpoints
 }
 
+// IsSuccess returns true when this get services endpoints o k response has a 2xx status code
+func (o *GetServicesEndpointsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get services endpoints o k response has a 3xx status code
+func (o *GetServicesEndpointsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get services endpoints o k response has a 4xx status code
+func (o *GetServicesEndpointsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get services endpoints o k response has a 5xx status code
+func (o *GetServicesEndpointsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get services endpoints o k response a status code equal to that given
+func (o *GetServicesEndpointsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetServicesEndpointsOK) Error() string {
 	return fmt.Sprintf("[GET /services][%d] getServicesEndpointsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetServicesEndpointsOK) String() string {
+	return fmt.Sprintf("[GET /services][%d] getServicesEndpointsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetServicesEndpointsOK) GetPayload() models.Endpoints {
 	return o.Payload
 }
@@ -78,7 +109,8 @@ func NewGetServicesEndpointsDefault(code int) *GetServicesEndpointsDefault {
 	}
 }
 
-/* GetServicesEndpointsDefault describes a response with status code -1, with default header values.
+/*
+GetServicesEndpointsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -97,9 +129,39 @@ func (o *GetServicesEndpointsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get services endpoints default response has a 2xx status code
+func (o *GetServicesEndpointsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get services endpoints default response has a 3xx status code
+func (o *GetServicesEndpointsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get services endpoints default response has a 4xx status code
+func (o *GetServicesEndpointsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get services endpoints default response has a 5xx status code
+func (o *GetServicesEndpointsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get services endpoints default response a status code equal to that given
+func (o *GetServicesEndpointsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetServicesEndpointsDefault) Error() string {
 	return fmt.Sprintf("[GET /services][%d] getServicesEndpoints default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetServicesEndpointsDefault) String() string {
+	return fmt.Sprintf("[GET /services][%d] getServicesEndpoints default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetServicesEndpointsDefault) GetPayload() *models.Error {
 	return o.Payload
 }

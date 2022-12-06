@@ -64,7 +64,8 @@ func NewReplaceStorageGeneralFileAccepted() *ReplaceStorageGeneralFileAccepted {
 	return &ReplaceStorageGeneralFileAccepted{}
 }
 
-/* ReplaceStorageGeneralFileAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceStorageGeneralFileAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -75,7 +76,36 @@ type ReplaceStorageGeneralFileAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this replace storage general file accepted response has a 2xx status code
+func (o *ReplaceStorageGeneralFileAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace storage general file accepted response has a 3xx status code
+func (o *ReplaceStorageGeneralFileAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage general file accepted response has a 4xx status code
+func (o *ReplaceStorageGeneralFileAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace storage general file accepted response has a 5xx status code
+func (o *ReplaceStorageGeneralFileAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage general file accepted response a status code equal to that given
+func (o *ReplaceStorageGeneralFileAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceStorageGeneralFileAccepted) Error() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/general/{name}][%d] replaceStorageGeneralFileAccepted ", 202)
+}
+
+func (o *ReplaceStorageGeneralFileAccepted) String() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/general/{name}][%d] replaceStorageGeneralFileAccepted ", 202)
 }
 
@@ -96,14 +126,44 @@ func NewReplaceStorageGeneralFileNoContent() *ReplaceStorageGeneralFileNoContent
 	return &ReplaceStorageGeneralFileNoContent{}
 }
 
-/* ReplaceStorageGeneralFileNoContent describes a response with status code 204, with default header values.
+/*
+ReplaceStorageGeneralFileNoContent describes a response with status code 204, with default header values.
 
 General use file replaced
 */
 type ReplaceStorageGeneralFileNoContent struct {
 }
 
+// IsSuccess returns true when this replace storage general file no content response has a 2xx status code
+func (o *ReplaceStorageGeneralFileNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace storage general file no content response has a 3xx status code
+func (o *ReplaceStorageGeneralFileNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage general file no content response has a 4xx status code
+func (o *ReplaceStorageGeneralFileNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace storage general file no content response has a 5xx status code
+func (o *ReplaceStorageGeneralFileNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage general file no content response a status code equal to that given
+func (o *ReplaceStorageGeneralFileNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *ReplaceStorageGeneralFileNoContent) Error() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/general/{name}][%d] replaceStorageGeneralFileNoContent ", 204)
+}
+
+func (o *ReplaceStorageGeneralFileNoContent) String() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/general/{name}][%d] replaceStorageGeneralFileNoContent ", 204)
 }
 
@@ -117,7 +177,8 @@ func NewReplaceStorageGeneralFileBadRequest() *ReplaceStorageGeneralFileBadReque
 	return &ReplaceStorageGeneralFileBadRequest{}
 }
 
-/* ReplaceStorageGeneralFileBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceStorageGeneralFileBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -130,9 +191,39 @@ type ReplaceStorageGeneralFileBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace storage general file bad request response has a 2xx status code
+func (o *ReplaceStorageGeneralFileBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace storage general file bad request response has a 3xx status code
+func (o *ReplaceStorageGeneralFileBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage general file bad request response has a 4xx status code
+func (o *ReplaceStorageGeneralFileBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace storage general file bad request response has a 5xx status code
+func (o *ReplaceStorageGeneralFileBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage general file bad request response a status code equal to that given
+func (o *ReplaceStorageGeneralFileBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceStorageGeneralFileBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/general/{name}][%d] replaceStorageGeneralFileBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceStorageGeneralFileBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/general/{name}][%d] replaceStorageGeneralFileBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceStorageGeneralFileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -161,7 +252,8 @@ func NewReplaceStorageGeneralFileNotFound() *ReplaceStorageGeneralFileNotFound {
 	return &ReplaceStorageGeneralFileNotFound{}
 }
 
-/* ReplaceStorageGeneralFileNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceStorageGeneralFileNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -174,9 +266,39 @@ type ReplaceStorageGeneralFileNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace storage general file not found response has a 2xx status code
+func (o *ReplaceStorageGeneralFileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace storage general file not found response has a 3xx status code
+func (o *ReplaceStorageGeneralFileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage general file not found response has a 4xx status code
+func (o *ReplaceStorageGeneralFileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace storage general file not found response has a 5xx status code
+func (o *ReplaceStorageGeneralFileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage general file not found response a status code equal to that given
+func (o *ReplaceStorageGeneralFileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceStorageGeneralFileNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/general/{name}][%d] replaceStorageGeneralFileNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceStorageGeneralFileNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/general/{name}][%d] replaceStorageGeneralFileNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceStorageGeneralFileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -207,7 +329,8 @@ func NewReplaceStorageGeneralFileDefault(code int) *ReplaceStorageGeneralFileDef
 	}
 }
 
-/* ReplaceStorageGeneralFileDefault describes a response with status code -1, with default header values.
+/*
+ReplaceStorageGeneralFileDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -226,9 +349,39 @@ func (o *ReplaceStorageGeneralFileDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace storage general file default response has a 2xx status code
+func (o *ReplaceStorageGeneralFileDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace storage general file default response has a 3xx status code
+func (o *ReplaceStorageGeneralFileDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace storage general file default response has a 4xx status code
+func (o *ReplaceStorageGeneralFileDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace storage general file default response has a 5xx status code
+func (o *ReplaceStorageGeneralFileDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace storage general file default response a status code equal to that given
+func (o *ReplaceStorageGeneralFileDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceStorageGeneralFileDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/general/{name}][%d] replaceStorageGeneralFile default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceStorageGeneralFileDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/general/{name}][%d] replaceStorageGeneralFile default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceStorageGeneralFileDefault) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -58,7 +58,8 @@ func NewReplaceDefaultsOK() *ReplaceDefaultsOK {
 	return &ReplaceDefaultsOK{}
 }
 
-/* ReplaceDefaultsOK describes a response with status code 200, with default header values.
+/*
+ReplaceDefaultsOK describes a response with status code 200, with default header values.
 
 Defaults replaced
 */
@@ -66,9 +67,39 @@ type ReplaceDefaultsOK struct {
 	Payload *models.Defaults
 }
 
+// IsSuccess returns true when this replace defaults o k response has a 2xx status code
+func (o *ReplaceDefaultsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace defaults o k response has a 3xx status code
+func (o *ReplaceDefaultsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace defaults o k response has a 4xx status code
+func (o *ReplaceDefaultsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace defaults o k response has a 5xx status code
+func (o *ReplaceDefaultsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace defaults o k response a status code equal to that given
+func (o *ReplaceDefaultsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceDefaultsOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/defaults][%d] replaceDefaultsOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceDefaultsOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/defaults][%d] replaceDefaultsOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceDefaultsOK) GetPayload() *models.Defaults {
 	return o.Payload
 }
@@ -90,7 +121,8 @@ func NewReplaceDefaultsAccepted() *ReplaceDefaultsAccepted {
 	return &ReplaceDefaultsAccepted{}
 }
 
-/* ReplaceDefaultsAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceDefaultsAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -103,9 +135,39 @@ type ReplaceDefaultsAccepted struct {
 	Payload *models.Defaults
 }
 
+// IsSuccess returns true when this replace defaults accepted response has a 2xx status code
+func (o *ReplaceDefaultsAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace defaults accepted response has a 3xx status code
+func (o *ReplaceDefaultsAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace defaults accepted response has a 4xx status code
+func (o *ReplaceDefaultsAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace defaults accepted response has a 5xx status code
+func (o *ReplaceDefaultsAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace defaults accepted response a status code equal to that given
+func (o *ReplaceDefaultsAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceDefaultsAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/defaults][%d] replaceDefaultsAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceDefaultsAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/defaults][%d] replaceDefaultsAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceDefaultsAccepted) GetPayload() *models.Defaults {
 	return o.Payload
 }
@@ -134,7 +196,8 @@ func NewReplaceDefaultsBadRequest() *ReplaceDefaultsBadRequest {
 	return &ReplaceDefaultsBadRequest{}
 }
 
-/* ReplaceDefaultsBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceDefaultsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -147,9 +210,39 @@ type ReplaceDefaultsBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace defaults bad request response has a 2xx status code
+func (o *ReplaceDefaultsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace defaults bad request response has a 3xx status code
+func (o *ReplaceDefaultsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace defaults bad request response has a 4xx status code
+func (o *ReplaceDefaultsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace defaults bad request response has a 5xx status code
+func (o *ReplaceDefaultsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace defaults bad request response a status code equal to that given
+func (o *ReplaceDefaultsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceDefaultsBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/defaults][%d] replaceDefaultsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceDefaultsBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/defaults][%d] replaceDefaultsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceDefaultsBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -180,7 +273,8 @@ func NewReplaceDefaultsDefault(code int) *ReplaceDefaultsDefault {
 	}
 }
 
-/* ReplaceDefaultsDefault describes a response with status code -1, with default header values.
+/*
+ReplaceDefaultsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -199,9 +293,39 @@ func (o *ReplaceDefaultsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace defaults default response has a 2xx status code
+func (o *ReplaceDefaultsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace defaults default response has a 3xx status code
+func (o *ReplaceDefaultsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace defaults default response has a 4xx status code
+func (o *ReplaceDefaultsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace defaults default response has a 5xx status code
+func (o *ReplaceDefaultsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace defaults default response a status code equal to that given
+func (o *ReplaceDefaultsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceDefaultsDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/defaults][%d] replaceDefaults default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceDefaultsDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/defaults][%d] replaceDefaults default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceDefaultsDefault) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -55,10 +55,12 @@ func NewCreateLogForwardParamsWithHTTPClient(client *http.Client) *CreateLogForw
 	}
 }
 
-/* CreateLogForwardParams contains all the parameters to send to the API endpoint
-   for the create log forward operation.
+/*
+CreateLogForwardParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create log forward operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateLogForwardParams struct {
 

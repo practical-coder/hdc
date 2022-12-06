@@ -64,7 +64,8 @@ func NewReplaceResolverOK() *ReplaceResolverOK {
 	return &ReplaceResolverOK{}
 }
 
-/* ReplaceResolverOK describes a response with status code 200, with default header values.
+/*
+ReplaceResolverOK describes a response with status code 200, with default header values.
 
 Resolver replaced
 */
@@ -72,9 +73,39 @@ type ReplaceResolverOK struct {
 	Payload *models.Resolver
 }
 
+// IsSuccess returns true when this replace resolver o k response has a 2xx status code
+func (o *ReplaceResolverOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace resolver o k response has a 3xx status code
+func (o *ReplaceResolverOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace resolver o k response has a 4xx status code
+func (o *ReplaceResolverOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace resolver o k response has a 5xx status code
+func (o *ReplaceResolverOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace resolver o k response a status code equal to that given
+func (o *ReplaceResolverOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceResolverOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolverOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceResolverOK) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolverOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceResolverOK) GetPayload() *models.Resolver {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewReplaceResolverAccepted() *ReplaceResolverAccepted {
 	return &ReplaceResolverAccepted{}
 }
 
-/* ReplaceResolverAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceResolverAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type ReplaceResolverAccepted struct {
 	Payload *models.Resolver
 }
 
+// IsSuccess returns true when this replace resolver accepted response has a 2xx status code
+func (o *ReplaceResolverAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace resolver accepted response has a 3xx status code
+func (o *ReplaceResolverAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace resolver accepted response has a 4xx status code
+func (o *ReplaceResolverAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace resolver accepted response has a 5xx status code
+func (o *ReplaceResolverAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace resolver accepted response a status code equal to that given
+func (o *ReplaceResolverAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceResolverAccepted) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolverAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReplaceResolverAccepted) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolverAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReplaceResolverAccepted) GetPayload() *models.Resolver {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewReplaceResolverBadRequest() *ReplaceResolverBadRequest {
 	return &ReplaceResolverBadRequest{}
 }
 
-/* ReplaceResolverBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceResolverBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type ReplaceResolverBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace resolver bad request response has a 2xx status code
+func (o *ReplaceResolverBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace resolver bad request response has a 3xx status code
+func (o *ReplaceResolverBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace resolver bad request response has a 4xx status code
+func (o *ReplaceResolverBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace resolver bad request response has a 5xx status code
+func (o *ReplaceResolverBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace resolver bad request response a status code equal to that given
+func (o *ReplaceResolverBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceResolverBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolverBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceResolverBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolverBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceResolverBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewReplaceResolverNotFound() *ReplaceResolverNotFound {
 	return &ReplaceResolverNotFound{}
 }
 
-/* ReplaceResolverNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceResolverNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -197,9 +291,39 @@ type ReplaceResolverNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace resolver not found response has a 2xx status code
+func (o *ReplaceResolverNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace resolver not found response has a 3xx status code
+func (o *ReplaceResolverNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace resolver not found response has a 4xx status code
+func (o *ReplaceResolverNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace resolver not found response has a 5xx status code
+func (o *ReplaceResolverNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace resolver not found response a status code equal to that given
+func (o *ReplaceResolverNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceResolverNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolverNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceResolverNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolverNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceResolverNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewReplaceResolverDefault(code int) *ReplaceResolverDefault {
 	}
 }
 
-/* ReplaceResolverDefault describes a response with status code -1, with default header values.
+/*
+ReplaceResolverDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *ReplaceResolverDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace resolver default response has a 2xx status code
+func (o *ReplaceResolverDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace resolver default response has a 3xx status code
+func (o *ReplaceResolverDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace resolver default response has a 4xx status code
+func (o *ReplaceResolverDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace resolver default response has a 5xx status code
+func (o *ReplaceResolverDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace resolver default response a status code equal to that given
+func (o *ReplaceResolverDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceResolverDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolver default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceResolverDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/configuration/resolvers/{name}][%d] replaceResolver default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceResolverDefault) GetPayload() *models.Error {
 	return o.Payload
 }

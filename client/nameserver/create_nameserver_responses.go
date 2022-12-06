@@ -64,7 +64,8 @@ func NewCreateNameserverCreated() *CreateNameserverCreated {
 	return &CreateNameserverCreated{}
 }
 
-/* CreateNameserverCreated describes a response with status code 201, with default header values.
+/*
+CreateNameserverCreated describes a response with status code 201, with default header values.
 
 Nameserver created
 */
@@ -72,9 +73,39 @@ type CreateNameserverCreated struct {
 	Payload *models.Nameserver
 }
 
+// IsSuccess returns true when this create nameserver created response has a 2xx status code
+func (o *CreateNameserverCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create nameserver created response has a 3xx status code
+func (o *CreateNameserverCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create nameserver created response has a 4xx status code
+func (o *CreateNameserverCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create nameserver created response has a 5xx status code
+func (o *CreateNameserverCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create nameserver created response a status code equal to that given
+func (o *CreateNameserverCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateNameserverCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateNameserverCreated) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateNameserverCreated) GetPayload() *models.Nameserver {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewCreateNameserverAccepted() *CreateNameserverAccepted {
 	return &CreateNameserverAccepted{}
 }
 
-/* CreateNameserverAccepted describes a response with status code 202, with default header values.
+/*
+CreateNameserverAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -109,9 +141,39 @@ type CreateNameserverAccepted struct {
 	Payload *models.Nameserver
 }
 
+// IsSuccess returns true when this create nameserver accepted response has a 2xx status code
+func (o *CreateNameserverAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create nameserver accepted response has a 3xx status code
+func (o *CreateNameserverAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create nameserver accepted response has a 4xx status code
+func (o *CreateNameserverAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create nameserver accepted response has a 5xx status code
+func (o *CreateNameserverAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create nameserver accepted response a status code equal to that given
+func (o *CreateNameserverAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateNameserverAccepted) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateNameserverAccepted) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateNameserverAccepted) GetPayload() *models.Nameserver {
 	return o.Payload
 }
@@ -140,7 +202,8 @@ func NewCreateNameserverBadRequest() *CreateNameserverBadRequest {
 	return &CreateNameserverBadRequest{}
 }
 
-/* CreateNameserverBadRequest describes a response with status code 400, with default header values.
+/*
+CreateNameserverBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -153,9 +216,39 @@ type CreateNameserverBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create nameserver bad request response has a 2xx status code
+func (o *CreateNameserverBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create nameserver bad request response has a 3xx status code
+func (o *CreateNameserverBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create nameserver bad request response has a 4xx status code
+func (o *CreateNameserverBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create nameserver bad request response has a 5xx status code
+func (o *CreateNameserverBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create nameserver bad request response a status code equal to that given
+func (o *CreateNameserverBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateNameserverBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateNameserverBadRequest) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateNameserverBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -184,7 +277,8 @@ func NewCreateNameserverConflict() *CreateNameserverConflict {
 	return &CreateNameserverConflict{}
 }
 
-/* CreateNameserverConflict describes a response with status code 409, with default header values.
+/*
+CreateNameserverConflict describes a response with status code 409, with default header values.
 
 The specified resource already exists
 */
@@ -197,9 +291,39 @@ type CreateNameserverConflict struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create nameserver conflict response has a 2xx status code
+func (o *CreateNameserverConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create nameserver conflict response has a 3xx status code
+func (o *CreateNameserverConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create nameserver conflict response has a 4xx status code
+func (o *CreateNameserverConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create nameserver conflict response has a 5xx status code
+func (o *CreateNameserverConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create nameserver conflict response a status code equal to that given
+func (o *CreateNameserverConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *CreateNameserverConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverConflict  %+v", 409, o.Payload)
 }
+
+func (o *CreateNameserverConflict) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverConflict  %+v", 409, o.Payload)
+}
+
 func (o *CreateNameserverConflict) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -230,7 +354,8 @@ func NewCreateNameserverDefault(code int) *CreateNameserverDefault {
 	}
 }
 
-/* CreateNameserverDefault describes a response with status code -1, with default header values.
+/*
+CreateNameserverDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -249,9 +374,39 @@ func (o *CreateNameserverDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this create nameserver default response has a 2xx status code
+func (o *CreateNameserverDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this create nameserver default response has a 3xx status code
+func (o *CreateNameserverDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this create nameserver default response has a 4xx status code
+func (o *CreateNameserverDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this create nameserver default response has a 5xx status code
+func (o *CreateNameserverDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this create nameserver default response a status code equal to that given
+func (o *CreateNameserverDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *CreateNameserverDefault) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserver default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *CreateNameserverDefault) String() string {
+	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserver default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *CreateNameserverDefault) GetPayload() *models.Error {
 	return o.Payload
 }

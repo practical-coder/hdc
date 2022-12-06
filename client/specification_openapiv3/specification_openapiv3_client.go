@@ -34,9 +34,9 @@ type ClientService interface {
 }
 
 /*
-  GetOpenapiv3Specification data plane API v3 specification
+GetOpenapiv3Specification data plane API v3 specification
 
-  Return Data Plane API OpenAPI v3 specification
+Return Data Plane API OpenAPI v3 specification
 */
 func (a *Client) GetOpenapiv3Specification(params *GetOpenapiv3SpecificationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOpenapiv3SpecificationOK, error) {
 	// TODO: Validate the params before sending

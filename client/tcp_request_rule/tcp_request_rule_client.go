@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateTCPRequestRule adds a new TCP request rule
+CreateTCPRequestRule adds a new TCP request rule
 
-  Adds a new TCP Request Rule of the specified type in the specified parent.
+Adds a new TCP Request Rule of the specified type in the specified parent.
 */
 func (a *Client) CreateTCPRequestRule(params *CreateTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateTCPRequestRuleCreated, *CreateTCPRequestRuleAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateTCPRequestRule(params *CreateTCPRequestRuleParams, authIn
 }
 
 /*
-  DeleteTCPRequestRule deletes a TCP request rule
+DeleteTCPRequestRule deletes a TCP request rule
 
-  Deletes a TCP Request Rule configuration by it's index from the specified parent.
+Deletes a TCP Request Rule configuration by it's index from the specified parent.
 */
 func (a *Client) DeleteTCPRequestRule(params *DeleteTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteTCPRequestRuleAccepted, *DeleteTCPRequestRuleNoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteTCPRequestRule(params *DeleteTCPRequestRuleParams, authIn
 }
 
 /*
-  GetTCPRequestRule returns one TCP request rule
+GetTCPRequestRule returns one TCP request rule
 
-  Returns one TCP Request Rule configuration by it's index in the specified parent.
+Returns one TCP Request Rule configuration by it's index in the specified parent.
 */
 func (a *Client) GetTCPRequestRule(params *GetTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPRequestRuleOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetTCPRequestRule(params *GetTCPRequestRuleParams, authInfo run
 }
 
 /*
-  GetTCPRequestRules returns an array of all TCP request rules
+GetTCPRequestRules returns an array of all TCP request rules
 
-  Returns all TCP Request Rules that are configured in specified parent and parent type.
+Returns all TCP Request Rules that are configured in specified parent and parent type.
 */
 func (a *Client) GetTCPRequestRules(params *GetTCPRequestRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTCPRequestRulesOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetTCPRequestRules(params *GetTCPRequestRulesParams, authInfo r
 }
 
 /*
-  ReplaceTCPRequestRule replaces a TCP request rule
+ReplaceTCPRequestRule replaces a TCP request rule
 
-  Replaces a TCP Request Rule configuration by it's index in the specified parent.
+Replaces a TCP Request Rule configuration by it's index in the specified parent.
 */
 func (a *Client) ReplaceTCPRequestRule(params *ReplaceTCPRequestRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReplaceTCPRequestRuleOK, *ReplaceTCPRequestRuleAccepted, error) {
 	// TODO: Validate the params before sending

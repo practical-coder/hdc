@@ -64,7 +64,8 @@ func NewReplaceStorageMapFileAccepted() *ReplaceStorageMapFileAccepted {
 	return &ReplaceStorageMapFileAccepted{}
 }
 
-/* ReplaceStorageMapFileAccepted describes a response with status code 202, with default header values.
+/*
+ReplaceStorageMapFileAccepted describes a response with status code 202, with default header values.
 
 Configuration change accepted and reload requested
 */
@@ -75,7 +76,36 @@ type ReplaceStorageMapFileAccepted struct {
 	ReloadID string
 }
 
+// IsSuccess returns true when this replace storage map file accepted response has a 2xx status code
+func (o *ReplaceStorageMapFileAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace storage map file accepted response has a 3xx status code
+func (o *ReplaceStorageMapFileAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage map file accepted response has a 4xx status code
+func (o *ReplaceStorageMapFileAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace storage map file accepted response has a 5xx status code
+func (o *ReplaceStorageMapFileAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage map file accepted response a status code equal to that given
+func (o *ReplaceStorageMapFileAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReplaceStorageMapFileAccepted) Error() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/maps/{name}][%d] replaceStorageMapFileAccepted ", 202)
+}
+
+func (o *ReplaceStorageMapFileAccepted) String() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/maps/{name}][%d] replaceStorageMapFileAccepted ", 202)
 }
 
@@ -96,14 +126,44 @@ func NewReplaceStorageMapFileNoContent() *ReplaceStorageMapFileNoContent {
 	return &ReplaceStorageMapFileNoContent{}
 }
 
-/* ReplaceStorageMapFileNoContent describes a response with status code 204, with default header values.
+/*
+ReplaceStorageMapFileNoContent describes a response with status code 204, with default header values.
 
 Map file replaced
 */
 type ReplaceStorageMapFileNoContent struct {
 }
 
+// IsSuccess returns true when this replace storage map file no content response has a 2xx status code
+func (o *ReplaceStorageMapFileNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace storage map file no content response has a 3xx status code
+func (o *ReplaceStorageMapFileNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage map file no content response has a 4xx status code
+func (o *ReplaceStorageMapFileNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace storage map file no content response has a 5xx status code
+func (o *ReplaceStorageMapFileNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage map file no content response a status code equal to that given
+func (o *ReplaceStorageMapFileNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *ReplaceStorageMapFileNoContent) Error() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/maps/{name}][%d] replaceStorageMapFileNoContent ", 204)
+}
+
+func (o *ReplaceStorageMapFileNoContent) String() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/maps/{name}][%d] replaceStorageMapFileNoContent ", 204)
 }
 
@@ -117,7 +177,8 @@ func NewReplaceStorageMapFileBadRequest() *ReplaceStorageMapFileBadRequest {
 	return &ReplaceStorageMapFileBadRequest{}
 }
 
-/* ReplaceStorageMapFileBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceStorageMapFileBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -130,9 +191,39 @@ type ReplaceStorageMapFileBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace storage map file bad request response has a 2xx status code
+func (o *ReplaceStorageMapFileBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace storage map file bad request response has a 3xx status code
+func (o *ReplaceStorageMapFileBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage map file bad request response has a 4xx status code
+func (o *ReplaceStorageMapFileBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace storage map file bad request response has a 5xx status code
+func (o *ReplaceStorageMapFileBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage map file bad request response a status code equal to that given
+func (o *ReplaceStorageMapFileBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceStorageMapFileBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/maps/{name}][%d] replaceStorageMapFileBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceStorageMapFileBadRequest) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/maps/{name}][%d] replaceStorageMapFileBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceStorageMapFileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -161,7 +252,8 @@ func NewReplaceStorageMapFileNotFound() *ReplaceStorageMapFileNotFound {
 	return &ReplaceStorageMapFileNotFound{}
 }
 
-/* ReplaceStorageMapFileNotFound describes a response with status code 404, with default header values.
+/*
+ReplaceStorageMapFileNotFound describes a response with status code 404, with default header values.
 
 The specified resource was not found
 */
@@ -174,9 +266,39 @@ type ReplaceStorageMapFileNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace storage map file not found response has a 2xx status code
+func (o *ReplaceStorageMapFileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace storage map file not found response has a 3xx status code
+func (o *ReplaceStorageMapFileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage map file not found response has a 4xx status code
+func (o *ReplaceStorageMapFileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace storage map file not found response has a 5xx status code
+func (o *ReplaceStorageMapFileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage map file not found response a status code equal to that given
+func (o *ReplaceStorageMapFileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReplaceStorageMapFileNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/maps/{name}][%d] replaceStorageMapFileNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReplaceStorageMapFileNotFound) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/maps/{name}][%d] replaceStorageMapFileNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReplaceStorageMapFileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -207,7 +329,8 @@ func NewReplaceStorageMapFileDefault(code int) *ReplaceStorageMapFileDefault {
 	}
 }
 
-/* ReplaceStorageMapFileDefault describes a response with status code -1, with default header values.
+/*
+ReplaceStorageMapFileDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -226,9 +349,39 @@ func (o *ReplaceStorageMapFileDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this replace storage map file default response has a 2xx status code
+func (o *ReplaceStorageMapFileDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this replace storage map file default response has a 3xx status code
+func (o *ReplaceStorageMapFileDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this replace storage map file default response has a 4xx status code
+func (o *ReplaceStorageMapFileDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this replace storage map file default response has a 5xx status code
+func (o *ReplaceStorageMapFileDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this replace storage map file default response a status code equal to that given
+func (o *ReplaceStorageMapFileDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *ReplaceStorageMapFileDefault) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/maps/{name}][%d] replaceStorageMapFile default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *ReplaceStorageMapFileDefault) String() string {
+	return fmt.Sprintf("[PUT /services/haproxy/storage/maps/{name}][%d] replaceStorageMapFile default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *ReplaceStorageMapFileDefault) GetPayload() *models.Error {
 	return o.Payload
 }

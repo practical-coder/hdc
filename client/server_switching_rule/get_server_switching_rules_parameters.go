@@ -52,10 +52,12 @@ func NewGetServerSwitchingRulesParamsWithHTTPClient(client *http.Client) *GetSer
 	}
 }
 
-/* GetServerSwitchingRulesParams contains all the parameters to send to the API endpoint
-   for the get server switching rules operation.
+/*
+GetServerSwitchingRulesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get server switching rules operation.
+
+	Typically these are written to a http.Request.
 */
 type GetServerSwitchingRulesParams struct {
 

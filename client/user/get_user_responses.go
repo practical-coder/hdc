@@ -55,7 +55,8 @@ func NewGetUserOK() *GetUserOK {
 	return &GetUserOK{}
 }
 
-/* GetUserOK describes a response with status code 200, with default header values.
+/*
+GetUserOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -68,9 +69,39 @@ type GetUserOK struct {
 	Payload *GetUserOKBody
 }
 
+// IsSuccess returns true when this get user o k response has a 2xx status code
+func (o *GetUserOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get user o k response has a 3xx status code
+func (o *GetUserOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user o k response has a 4xx status code
+func (o *GetUserOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get user o k response has a 5xx status code
+func (o *GetUserOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user o k response a status code equal to that given
+func (o *GetUserOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetUserOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/users/{username}][%d] getUserOK  %+v", 200, o.Payload)
 }
+
+func (o *GetUserOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/users/{username}][%d] getUserOK  %+v", 200, o.Payload)
+}
+
 func (o *GetUserOK) GetPayload() *GetUserOKBody {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGetUserNotFound() *GetUserNotFound {
 	return &GetUserNotFound{}
 }
 
-/* GetUserNotFound describes a response with status code 404, with default header values.
+/*
+GetUserNotFound describes a response with status code 404, with default header values.
 
 The specified resource already exists
 */
@@ -112,9 +144,39 @@ type GetUserNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get user not found response has a 2xx status code
+func (o *GetUserNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user not found response has a 3xx status code
+func (o *GetUserNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user not found response has a 4xx status code
+func (o *GetUserNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user not found response has a 5xx status code
+func (o *GetUserNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user not found response a status code equal to that given
+func (o *GetUserNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetUserNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/users/{username}][%d] getUserNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetUserNotFound) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/users/{username}][%d] getUserNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetUserNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -145,7 +207,8 @@ func NewGetUserDefault(code int) *GetUserDefault {
 	}
 }
 
-/* GetUserDefault describes a response with status code -1, with default header values.
+/*
+GetUserDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -164,9 +227,39 @@ func (o *GetUserDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get user default response has a 2xx status code
+func (o *GetUserDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get user default response has a 3xx status code
+func (o *GetUserDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get user default response has a 4xx status code
+func (o *GetUserDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get user default response has a 5xx status code
+func (o *GetUserDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get user default response a status code equal to that given
+func (o *GetUserDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetUserDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/users/{username}][%d] getUser default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetUserDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/users/{username}][%d] getUser default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetUserDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -190,7 +283,8 @@ func (o *GetUserDefault) readResponse(response runtime.ClientResponse, consumer 
 	return nil
 }
 
-/*GetUserOKBody get user o k body
+/*
+GetUserOKBody get user o k body
 swagger:model GetUserOKBody
 */
 type GetUserOKBody struct {

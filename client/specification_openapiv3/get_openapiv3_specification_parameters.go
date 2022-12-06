@@ -52,10 +52,12 @@ func NewGetOpenapiv3SpecificationParamsWithHTTPClient(client *http.Client) *GetO
 	}
 }
 
-/* GetOpenapiv3SpecificationParams contains all the parameters to send to the API endpoint
-   for the get openapiv3 specification operation.
+/*
+GetOpenapiv3SpecificationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get openapiv3 specification operation.
+
+	Typically these are written to a http.Request.
 */
 type GetOpenapiv3SpecificationParams struct {
 	timeout    time.Duration

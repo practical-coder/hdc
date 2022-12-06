@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 	"encoding/json"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -23,6 +24,12 @@ import (
 // swagger:model frontend
 type Frontend struct {
 
+	// error files
+	ErrorFiles []*Errorfile `json:"error_files,omitempty"`
+
+	// error files from HTTP errors
+	ErrorFilesFromHTTPErrors []*Errorfiles `json:"errorfiles_from_http_errors,omitempty"`
+
 	// accept invalid http request
 	// Enum: [enabled disabled]
 	AcceptInvalidHTTPRequest string `json:"accept_invalid_http_request,omitempty"`
@@ -36,6 +43,9 @@ type Frontend struct {
 
 	// clflog
 	Clflog bool `json:"clflog,omitempty"`
+
+	// client fin timeout
+	ClientFinTimeout *int64 `json:"client_fin_timeout,omitempty"`
 
 	// client timeout
 	ClientTimeout *int64 `json:"client_timeout,omitempty"`
@@ -64,9 +74,15 @@ type Frontend struct {
 	// Pattern: ^[A-Za-z0-9-_.:]+$
 	DefaultBackend string `json:"default_backend,omitempty"`
 
+	// description
+	Description string `json:"description,omitempty"`
+
 	// disable h2 upgrade
 	// Enum: [enabled disabled]
 	DisableH2Upgrade string `json:"disable_h2_upgrade,omitempty"`
+
+	// disabled
+	Disabled bool `json:"disabled,omitempty"`
 
 	// dontlog normal
 	// Enum: [enabled disabled]
@@ -76,8 +92,27 @@ type Frontend struct {
 	// Enum: [enabled disabled]
 	Dontlognull string `json:"dontlognull,omitempty"`
 
+	// email alert
+	EmailAlert *EmailAlert `json:"email_alert,omitempty"`
+
+	// enabled
+	Enabled bool `json:"enabled,omitempty"`
+
+	// error log format
+	ErrorLogFormat string `json:"error_log_format,omitempty"`
+
+	// errorloc302
+	Errorloc302 *Errorloc `json:"errorloc302,omitempty"`
+
+	// errorloc303
+	Errorloc303 *Errorloc `json:"errorloc303,omitempty"`
+
 	// forwardfor
 	Forwardfor *Forwardfor `json:"forwardfor,omitempty"`
+
+	// from
+	// Pattern: ^[A-Za-z0-9-_.:]+$
+	From string `json:"from,omitempty"`
 
 	// h1 case adjust bogus client
 	// Enum: [enabled disabled]
@@ -109,6 +144,10 @@ type Frontend struct {
 	// http request timeout
 	HTTPRequestTimeout *int64 `json:"http_request_timeout,omitempty"`
 
+	// http restrict req hdr names
+	// Enum: [preserve delete reject]
+	HTTPRestrictReqHdrNames string `json:"http_restrict_req_hdr_names,omitempty"`
+
 	// http use proxy header
 	// Enum: [enabled disabled]
 	HTTPUseProxyHeader string `json:"http_use_proxy_header,omitempty"`
@@ -119,6 +158,9 @@ type Frontend struct {
 	// httpslog
 	// Enum: [enabled disabled]
 	Httpslog string `json:"httpslog,omitempty"`
+
+	// id
+	ID *int64 `json:"id,omitempty"`
 
 	// idle close on response
 	// Enum: [enabled disabled]
@@ -169,8 +211,7 @@ type Frontend struct {
 	Nolinger string `json:"nolinger,omitempty"`
 
 	// originalto
-	// Enum: [enabled disabled]
-	Originalto string `json:"originalto,omitempty"`
+	Originalto *Originalto `json:"originalto,omitempty"`
 
 	// socket stats
 	// Enum: [enabled disabled]
@@ -194,6 +235,9 @@ type Frontend struct {
 	// stick table
 	StickTable *ConfigStickTable `json:"stick_table,omitempty"`
 
+	// tarpit timeout
+	TarpitTimeout *int64 `json:"tarpit_timeout,omitempty"`
+
 	// tcp smart accept
 	// Enum: [enabled disabled]
 	TCPSmartAccept string `json:"tcp_smart_accept,omitempty"`
@@ -215,6 +259,14 @@ type Frontend struct {
 // Validate validates this frontend
 func (m *Frontend) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateErrorFiles(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateErrorFilesFromHTTPErrors(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateAcceptInvalidHTTPRequest(formats); err != nil {
 		res = append(res, err)
@@ -252,7 +304,23 @@ func (m *Frontend) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateEmailAlert(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateErrorloc302(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateErrorloc303(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateForwardfor(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFrom(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -277,6 +345,10 @@ func (m *Frontend) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateHTTPNoDelay(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateHTTPRestrictReqHdrNames(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -367,6 +439,58 @@ func (m *Frontend) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Frontend) validateErrorFiles(formats strfmt.Registry) error {
+	if swag.IsZero(m.ErrorFiles) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ErrorFiles); i++ {
+		if swag.IsZero(m.ErrorFiles[i]) { // not required
+			continue
+		}
+
+		if m.ErrorFiles[i] != nil {
+			if err := m.ErrorFiles[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("error_files" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("error_files" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Frontend) validateErrorFilesFromHTTPErrors(formats strfmt.Registry) error {
+	if swag.IsZero(m.ErrorFilesFromHTTPErrors) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ErrorFilesFromHTTPErrors); i++ {
+		if swag.IsZero(m.ErrorFilesFromHTTPErrors[i]) { // not required
+			continue
+		}
+
+		if m.ErrorFilesFromHTTPErrors[i] != nil {
+			if err := m.ErrorFilesFromHTTPErrors[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("errorfiles_from_http_errors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("errorfiles_from_http_errors" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -662,6 +786,63 @@ func (m *Frontend) validateDontlognull(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Frontend) validateEmailAlert(formats strfmt.Registry) error {
+	if swag.IsZero(m.EmailAlert) { // not required
+		return nil
+	}
+
+	if m.EmailAlert != nil {
+		if err := m.EmailAlert.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("email_alert")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("email_alert")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Frontend) validateErrorloc302(formats strfmt.Registry) error {
+	if swag.IsZero(m.Errorloc302) { // not required
+		return nil
+	}
+
+	if m.Errorloc302 != nil {
+		if err := m.Errorloc302.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("errorloc302")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorloc302")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Frontend) validateErrorloc303(formats strfmt.Registry) error {
+	if swag.IsZero(m.Errorloc303) { // not required
+		return nil
+	}
+
+	if m.Errorloc303 != nil {
+		if err := m.Errorloc303.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("errorloc303")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorloc303")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Frontend) validateForwardfor(formats strfmt.Registry) error {
 	if swag.IsZero(m.Forwardfor) { // not required
 		return nil
@@ -676,6 +857,18 @@ func (m *Frontend) validateForwardfor(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *Frontend) validateFrom(formats strfmt.Registry) error {
+	if swag.IsZero(m.From) { // not required
+		return nil
+	}
+
+	if err := validate.Pattern("from", "body", m.From, `^[A-Za-z0-9-_.:]+$`); err != nil {
+		return err
 	}
 
 	return nil
@@ -930,6 +1123,51 @@ func (m *Frontend) validateHTTPNoDelay(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateHTTPNoDelayEnum("http_no_delay", "body", m.HTTPNoDelay); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var frontendTypeHTTPRestrictReqHdrNamesPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["preserve","delete","reject"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		frontendTypeHTTPRestrictReqHdrNamesPropEnum = append(frontendTypeHTTPRestrictReqHdrNamesPropEnum, v)
+	}
+}
+
+const (
+
+	// FrontendHTTPRestrictReqHdrNamesPreserve captures enum value "preserve"
+	FrontendHTTPRestrictReqHdrNamesPreserve string = "preserve"
+
+	// FrontendHTTPRestrictReqHdrNamesDelete captures enum value "delete"
+	FrontendHTTPRestrictReqHdrNamesDelete string = "delete"
+
+	// FrontendHTTPRestrictReqHdrNamesReject captures enum value "reject"
+	FrontendHTTPRestrictReqHdrNamesReject string = "reject"
+)
+
+// prop value enum
+func (m *Frontend) validateHTTPRestrictReqHdrNamesEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, frontendTypeHTTPRestrictReqHdrNamesPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Frontend) validateHTTPRestrictReqHdrNames(formats strfmt.Registry) error {
+	if swag.IsZero(m.HTTPRestrictReqHdrNames) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateHTTPRestrictReqHdrNamesEnum("http_restrict_req_hdr_names", "body", m.HTTPRestrictReqHdrNames); err != nil {
 		return err
 	}
 
@@ -1333,43 +1571,20 @@ func (m *Frontend) validateNolinger(formats strfmt.Registry) error {
 	return nil
 }
 
-var frontendTypeOriginaltoPropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		frontendTypeOriginaltoPropEnum = append(frontendTypeOriginaltoPropEnum, v)
-	}
-}
-
-const (
-
-	// FrontendOriginaltoEnabled captures enum value "enabled"
-	FrontendOriginaltoEnabled string = "enabled"
-
-	// FrontendOriginaltoDisabled captures enum value "disabled"
-	FrontendOriginaltoDisabled string = "disabled"
-)
-
-// prop value enum
-func (m *Frontend) validateOriginaltoEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, frontendTypeOriginaltoPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *Frontend) validateOriginalto(formats strfmt.Registry) error {
 	if swag.IsZero(m.Originalto) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateOriginaltoEnum("originalto", "body", m.Originalto); err != nil {
-		return err
+	if m.Originalto != nil {
+		if err := m.Originalto.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("originalto")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("originalto")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -1669,7 +1884,27 @@ func (m *Frontend) validateTcpka(formats strfmt.Registry) error {
 func (m *Frontend) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateErrorFiles(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateErrorFilesFromHTTPErrors(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateCompression(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEmailAlert(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateErrorloc302(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateErrorloc303(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1682,6 +1917,10 @@ func (m *Frontend) ContextValidate(ctx context.Context, formats strfmt.Registry)
 	}
 
 	if err := m.contextValidateMonitorURI(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOriginalto(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1699,6 +1938,46 @@ func (m *Frontend) ContextValidate(ctx context.Context, formats strfmt.Registry)
 	return nil
 }
 
+func (m *Frontend) contextValidateErrorFiles(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ErrorFiles); i++ {
+
+		if m.ErrorFiles[i] != nil {
+			if err := m.ErrorFiles[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("error_files" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("error_files" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Frontend) contextValidateErrorFilesFromHTTPErrors(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ErrorFilesFromHTTPErrors); i++ {
+
+		if m.ErrorFilesFromHTTPErrors[i] != nil {
+			if err := m.ErrorFilesFromHTTPErrors[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("errorfiles_from_http_errors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("errorfiles_from_http_errors" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *Frontend) contextValidateCompression(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Compression != nil {
@@ -1707,6 +1986,54 @@ func (m *Frontend) contextValidateCompression(ctx context.Context, formats strfm
 				return ve.ValidateName("compression")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("compression")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Frontend) contextValidateEmailAlert(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EmailAlert != nil {
+		if err := m.EmailAlert.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("email_alert")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("email_alert")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Frontend) contextValidateErrorloc302(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Errorloc302 != nil {
+		if err := m.Errorloc302.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("errorloc302")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorloc302")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Frontend) contextValidateErrorloc303(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Errorloc303 != nil {
+		if err := m.Errorloc303.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("errorloc303")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorloc303")
 			}
 			return err
 		}
@@ -1756,6 +2083,22 @@ func (m *Frontend) contextValidateMonitorURI(ctx context.Context, formats strfmt
 			return ce.ValidateName("monitor_uri")
 		}
 		return err
+	}
+
+	return nil
+}
+
+func (m *Frontend) contextValidateOriginalto(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Originalto != nil {
+		if err := m.Originalto.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("originalto")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("originalto")
+			}
+			return err
+		}
 	}
 
 	return nil

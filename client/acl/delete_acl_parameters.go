@@ -53,10 +53,12 @@ func NewDeleteACLParamsWithHTTPClient(client *http.Client) *DeleteACLParams {
 	}
 }
 
-/* DeleteACLParams contains all the parameters to send to the API endpoint
-   for the delete Acl operation.
+/*
+DeleteACLParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete Acl operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteACLParams struct {
 

@@ -52,10 +52,12 @@ func NewGetOneStorageMapParamsWithHTTPClient(client *http.Client) *GetOneStorage
 	}
 }
 
-/* GetOneStorageMapParams contains all the parameters to send to the API endpoint
-   for the get one storage map operation.
+/*
+GetOneStorageMapParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get one storage map operation.
+
+	Typically these are written to a http.Request.
 */
 type GetOneStorageMapParams struct {
 

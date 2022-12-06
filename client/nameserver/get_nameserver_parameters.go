@@ -52,10 +52,12 @@ func NewGetNameserverParamsWithHTTPClient(client *http.Client) *GetNameserverPar
 	}
 }
 
-/* GetNameserverParams contains all the parameters to send to the API endpoint
-   for the get nameserver operation.
+/*
+GetNameserverParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get nameserver operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNameserverParams struct {
 

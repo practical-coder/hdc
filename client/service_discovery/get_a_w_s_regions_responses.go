@@ -50,7 +50,8 @@ func NewGetAWSRegionsOK() *GetAWSRegionsOK {
 	return &GetAWSRegionsOK{}
 }
 
-/* GetAWSRegionsOK describes a response with status code 200, with default header values.
+/*
+GetAWSRegionsOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -58,9 +59,39 @@ type GetAWSRegionsOK struct {
 	Payload *GetAWSRegionsOKBody
 }
 
+// IsSuccess returns true when this get a w s regions o k response has a 2xx status code
+func (o *GetAWSRegionsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get a w s regions o k response has a 3xx status code
+func (o *GetAWSRegionsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get a w s regions o k response has a 4xx status code
+func (o *GetAWSRegionsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get a w s regions o k response has a 5xx status code
+func (o *GetAWSRegionsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get a w s regions o k response a status code equal to that given
+func (o *GetAWSRegionsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAWSRegionsOK) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/aws][%d] getAWSRegionsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAWSRegionsOK) String() string {
+	return fmt.Sprintf("[GET /service_discovery/aws][%d] getAWSRegionsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAWSRegionsOK) GetPayload() *GetAWSRegionsOKBody {
 	return o.Payload
 }
@@ -84,7 +115,8 @@ func NewGetAWSRegionsDefault(code int) *GetAWSRegionsDefault {
 	}
 }
 
-/* GetAWSRegionsDefault describes a response with status code -1, with default header values.
+/*
+GetAWSRegionsDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -103,9 +135,39 @@ func (o *GetAWSRegionsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get a w s regions default response has a 2xx status code
+func (o *GetAWSRegionsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get a w s regions default response has a 3xx status code
+func (o *GetAWSRegionsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get a w s regions default response has a 4xx status code
+func (o *GetAWSRegionsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get a w s regions default response has a 5xx status code
+func (o *GetAWSRegionsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get a w s regions default response a status code equal to that given
+func (o *GetAWSRegionsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetAWSRegionsDefault) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/aws][%d] getAWSRegions default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetAWSRegionsDefault) String() string {
+	return fmt.Sprintf("[GET /service_discovery/aws][%d] getAWSRegions default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetAWSRegionsDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -129,7 +191,8 @@ func (o *GetAWSRegionsDefault) readResponse(response runtime.ClientResponse, con
 	return nil
 }
 
-/*GetAWSRegionsOKBody get a w s regions o k body
+/*
+GetAWSRegionsOKBody get a w s regions o k body
 swagger:model GetAWSRegionsOKBody
 */
 type GetAWSRegionsOKBody struct {

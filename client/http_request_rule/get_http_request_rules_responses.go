@@ -50,7 +50,8 @@ func NewGetHTTPRequestRulesOK() *GetHTTPRequestRulesOK {
 	return &GetHTTPRequestRulesOK{}
 }
 
-/* GetHTTPRequestRulesOK describes a response with status code 200, with default header values.
+/*
+GetHTTPRequestRulesOK describes a response with status code 200, with default header values.
 
 Successful operation
 */
@@ -63,9 +64,39 @@ type GetHTTPRequestRulesOK struct {
 	Payload *GetHTTPRequestRulesOKBody
 }
 
+// IsSuccess returns true when this get Http request rules o k response has a 2xx status code
+func (o *GetHTTPRequestRulesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get Http request rules o k response has a 3xx status code
+func (o *GetHTTPRequestRulesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get Http request rules o k response has a 4xx status code
+func (o *GetHTTPRequestRulesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get Http request rules o k response has a 5xx status code
+func (o *GetHTTPRequestRulesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get Http request rules o k response a status code equal to that given
+func (o *GetHTTPRequestRulesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetHTTPRequestRulesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_request_rules][%d] getHttpRequestRulesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetHTTPRequestRulesOK) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/http_request_rules][%d] getHttpRequestRulesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetHTTPRequestRulesOK) GetPayload() *GetHTTPRequestRulesOKBody {
 	return o.Payload
 }
@@ -96,7 +127,8 @@ func NewGetHTTPRequestRulesDefault(code int) *GetHTTPRequestRulesDefault {
 	}
 }
 
-/* GetHTTPRequestRulesDefault describes a response with status code -1, with default header values.
+/*
+GetHTTPRequestRulesDefault describes a response with status code -1, with default header values.
 
 General Error
 */
@@ -115,9 +147,39 @@ func (o *GetHTTPRequestRulesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get HTTP request rules default response has a 2xx status code
+func (o *GetHTTPRequestRulesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get HTTP request rules default response has a 3xx status code
+func (o *GetHTTPRequestRulesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get HTTP request rules default response has a 4xx status code
+func (o *GetHTTPRequestRulesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get HTTP request rules default response has a 5xx status code
+func (o *GetHTTPRequestRulesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get HTTP request rules default response a status code equal to that given
+func (o *GetHTTPRequestRulesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetHTTPRequestRulesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_request_rules][%d] getHTTPRequestRules default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetHTTPRequestRulesDefault) String() string {
+	return fmt.Sprintf("[GET /services/haproxy/configuration/http_request_rules][%d] getHTTPRequestRules default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetHTTPRequestRulesDefault) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -141,7 +203,8 @@ func (o *GetHTTPRequestRulesDefault) readResponse(response runtime.ClientRespons
 	return nil
 }
 
-/*GetHTTPRequestRulesOKBody get HTTP request rules o k body
+/*
+GetHTTPRequestRulesOKBody get HTTP request rules o k body
 swagger:model GetHTTPRequestRulesOKBody
 */
 type GetHTTPRequestRulesOKBody struct {

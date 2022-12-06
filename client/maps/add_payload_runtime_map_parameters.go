@@ -55,10 +55,12 @@ func NewAddPayloadRuntimeMapParamsWithHTTPClient(client *http.Client) *AddPayloa
 	}
 }
 
-/* AddPayloadRuntimeMapParams contains all the parameters to send to the API endpoint
-   for the add payload runtime map operation.
+/*
+AddPayloadRuntimeMapParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the add payload runtime map operation.
+
+	Typically these are written to a http.Request.
 */
 type AddPayloadRuntimeMapParams struct {
 
