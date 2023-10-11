@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateServerSwitchingRuleReader is a Reader for the CreateServerSwitchingRule structure.
@@ -98,6 +98,11 @@ func (o *CreateServerSwitchingRuleCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create server switching rule created response
+func (o *CreateServerSwitchingRuleCreated) Code() int {
+	return 201
+}
+
 func (o *CreateServerSwitchingRuleCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_switching_rules][%d] createServerSwitchingRuleCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateServerSwitchingRuleAccepted) IsServerError() bool {
 // IsCode returns true when this create server switching rule accepted response a status code equal to that given
 func (o *CreateServerSwitchingRuleAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create server switching rule accepted response
+func (o *CreateServerSwitchingRuleAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateServerSwitchingRuleAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateServerSwitchingRuleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create server switching rule bad request response
+func (o *CreateServerSwitchingRuleBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateServerSwitchingRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_switching_rules][%d] createServerSwitchingRuleBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateServerSwitchingRuleConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create server switching rule conflict response
+func (o *CreateServerSwitchingRuleConflict) Code() int {
+	return 409
+}
+
 func (o *CreateServerSwitchingRuleConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_switching_rules][%d] createServerSwitchingRuleConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateServerSwitchingRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create server switching rule default response
-func (o *CreateServerSwitchingRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create server switching rule default response has a 2xx status code
 func (o *CreateServerSwitchingRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateServerSwitchingRuleDefault) IsServerError() bool {
 // IsCode returns true when this create server switching rule default response a status code equal to that given
 func (o *CreateServerSwitchingRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create server switching rule default response
+func (o *CreateServerSwitchingRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateServerSwitchingRuleDefault) Error() string {

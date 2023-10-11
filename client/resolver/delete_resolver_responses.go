@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteResolverReader is a Reader for the DeleteResolver structure.
@@ -95,6 +95,11 @@ func (o *DeleteResolverAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete resolver accepted response
+func (o *DeleteResolverAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteResolverAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolverAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteResolverNoContent) IsServerError() bool {
 // IsCode returns true when this delete resolver no content response a status code equal to that given
 func (o *DeleteResolverNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete resolver no content response
+func (o *DeleteResolverNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteResolverNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteResolverNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete resolver not found response
+func (o *DeleteResolverNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteResolverNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/resolvers/{name}][%d] deleteResolverNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteResolverDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete resolver default response
-func (o *DeleteResolverDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete resolver default response has a 2xx status code
 func (o *DeleteResolverDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteResolverDefault) IsServerError() bool {
 // IsCode returns true when this delete resolver default response a status code equal to that given
 func (o *DeleteResolverDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete resolver default response
+func (o *DeleteResolverDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteResolverDefault) Error() string {

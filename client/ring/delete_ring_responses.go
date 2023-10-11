@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteRingReader is a Reader for the DeleteRing structure.
@@ -95,6 +95,11 @@ func (o *DeleteRingAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete ring accepted response
+func (o *DeleteRingAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteRingAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/rings/{name}][%d] deleteRingAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteRingNoContent) IsServerError() bool {
 // IsCode returns true when this delete ring no content response a status code equal to that given
 func (o *DeleteRingNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete ring no content response
+func (o *DeleteRingNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteRingNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteRingNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete ring not found response
+func (o *DeleteRingNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteRingNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/rings/{name}][%d] deleteRingNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteRingDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete ring default response
-func (o *DeleteRingDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete ring default response has a 2xx status code
 func (o *DeleteRingDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteRingDefault) IsServerError() bool {
 // IsCode returns true when this delete ring default response a status code equal to that given
 func (o *DeleteRingDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete ring default response
+func (o *DeleteRingDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteRingDefault) Error() string {

@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetFiltersReader is a Reader for the GetFilters structure.
@@ -89,6 +89,11 @@ func (o *GetFiltersOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get filters o k response
+func (o *GetFiltersOK) Code() int {
+	return 200
+}
+
 func (o *GetFiltersOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/filters][%d] getFiltersOK  %+v", 200, o.Payload)
 }
@@ -142,11 +147,6 @@ type GetFiltersDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get filters default response
-func (o *GetFiltersDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get filters default response has a 2xx status code
 func (o *GetFiltersDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -170,6 +170,11 @@ func (o *GetFiltersDefault) IsServerError() bool {
 // IsCode returns true when this get filters default response a status code equal to that given
 func (o *GetFiltersDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get filters default response
+func (o *GetFiltersDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetFiltersDefault) Error() string {

@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetUserReader is a Reader for the GetUser structure.
@@ -94,6 +94,11 @@ func (o *GetUserOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get user o k response
+func (o *GetUserOK) Code() int {
+	return 200
+}
+
 func (o *GetUserOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/users/{username}][%d] getUserOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get user not found response
+func (o *GetUserNotFound) Code() int {
+	return 404
+}
+
 func (o *GetUserNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/users/{username}][%d] getUserNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetUserDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get user default response
-func (o *GetUserDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get user default response has a 2xx status code
 func (o *GetUserDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetUserDefault) IsServerError() bool {
 // IsCode returns true when this get user default response a status code equal to that given
 func (o *GetUserDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get user default response
+func (o *GetUserDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetUserDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetUserOKBody) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (o *GetUserOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getUserOK" + "." + "data")

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // AddPayloadRuntimeACLReader is a Reader for the AddPayloadRuntimeACL structure.
@@ -86,6 +86,11 @@ func (o *AddPayloadRuntimeACLCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the add payload runtime Acl created response
+func (o *AddPayloadRuntimeACLCreated) Code() int {
+	return 201
+}
+
 func (o *AddPayloadRuntimeACLCreated) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/acl_file_entries][%d] addPayloadRuntimeAclCreated  %+v", 201, o.Payload)
 }
@@ -152,6 +157,11 @@ func (o *AddPayloadRuntimeACLBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the add payload runtime Acl bad request response
+func (o *AddPayloadRuntimeACLBadRequest) Code() int {
+	return 400
+}
+
 func (o *AddPayloadRuntimeACLBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/acl_file_entries][%d] addPayloadRuntimeAclBadRequest  %+v", 400, o.Payload)
 }
@@ -205,11 +215,6 @@ type AddPayloadRuntimeACLDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the add payload runtime ACL default response
-func (o *AddPayloadRuntimeACLDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this add payload runtime ACL default response has a 2xx status code
 func (o *AddPayloadRuntimeACLDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -233,6 +238,11 @@ func (o *AddPayloadRuntimeACLDefault) IsServerError() bool {
 // IsCode returns true when this add payload runtime ACL default response a status code equal to that given
 func (o *AddPayloadRuntimeACLDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the add payload runtime ACL default response
+func (o *AddPayloadRuntimeACLDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *AddPayloadRuntimeACLDefault) Error() string {

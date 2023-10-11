@@ -22,6 +22,7 @@ import (
 	"github.com/practical-coder/hdc/client/defaults"
 	"github.com/practical-coder/hdc/client/dgram_bind"
 	"github.com/practical-coder/hdc/client/discovery"
+	"github.com/practical-coder/hdc/client/f_c_g_i_app"
 	"github.com/practical-coder/hdc/client/filter"
 	"github.com/practical-coder/hdc/client/frontend"
 	"github.com/practical-coder/hdc/client/global"
@@ -59,6 +60,7 @@ import (
 	"github.com/practical-coder/hdc/client/stick_rule"
 	"github.com/practical-coder/hdc/client/stick_table"
 	"github.com/practical-coder/hdc/client/storage"
+	"github.com/practical-coder/hdc/client/table"
 	"github.com/practical-coder/hdc/client/tcp_check"
 	"github.com/practical-coder/hdc/client/tcp_request_rule"
 	"github.com/practical-coder/hdc/client/tcp_response_rule"
@@ -80,7 +82,7 @@ const (
 )
 
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
-var DefaultSchemes = []string{"http"}
+var DefaultSchemes = []string{"http", "https"}
 
 // NewHTTPClient creates a new haproxy dataplane client HTTP client.
 func NewHTTPClient(formats strfmt.Registry) *HaproxyDataplaneClient {
@@ -121,6 +123,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.Defaults = defaults.New(transport, formats)
 	cli.DgramBind = dgram_bind.New(transport, formats)
 	cli.Discovery = discovery.New(transport, formats)
+	cli.FcgiApp = f_c_g_i_app.New(transport, formats)
 	cli.Filter = filter.New(transport, formats)
 	cli.Frontend = frontend.New(transport, formats)
 	cli.Global = global.New(transport, formats)
@@ -158,6 +161,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.StickRule = stick_rule.New(transport, formats)
 	cli.StickTable = stick_table.New(transport, formats)
 	cli.Storage = storage.New(transport, formats)
+	cli.Table = table.New(transport, formats)
 	cli.TCPCheck = tcp_check.New(transport, formats)
 	cli.TCPRequestRule = tcp_request_rule.New(transport, formats)
 	cli.TCPResponseRule = tcp_response_rule.New(transport, formats)
@@ -231,6 +235,8 @@ type HaproxyDataplaneClient struct {
 	DgramBind dgram_bind.ClientService
 
 	Discovery discovery.ClientService
+
+	FcgiApp f_c_g_i_app.ClientService
 
 	Filter filter.ClientService
 
@@ -306,6 +312,8 @@ type HaproxyDataplaneClient struct {
 
 	Storage storage.ClientService
 
+	Table table.ClientService
+
 	TCPCheck tcp_check.ClientService
 
 	TCPRequestRule tcp_request_rule.ClientService
@@ -336,6 +344,7 @@ func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport)
 	c.Defaults.SetTransport(transport)
 	c.DgramBind.SetTransport(transport)
 	c.Discovery.SetTransport(transport)
+	c.FcgiApp.SetTransport(transport)
 	c.Filter.SetTransport(transport)
 	c.Frontend.SetTransport(transport)
 	c.Global.SetTransport(transport)
@@ -373,6 +382,7 @@ func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport)
 	c.StickRule.SetTransport(transport)
 	c.StickTable.SetTransport(transport)
 	c.Storage.SetTransport(transport)
+	c.Table.SetTransport(transport)
 	c.TCPCheck.SetTransport(transport)
 	c.TCPRequestRule.SetTransport(transport)
 	c.TCPResponseRule.SetTransport(transport)

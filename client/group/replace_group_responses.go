@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceGroupReader is a Reader for the ReplaceGroup structure.
@@ -98,6 +98,11 @@ func (o *ReplaceGroupOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace group o k response
+func (o *ReplaceGroupOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceGroupOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceGroupAccepted) IsServerError() bool {
 // IsCode returns true when this replace group accepted response a status code equal to that given
 func (o *ReplaceGroupAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace group accepted response
+func (o *ReplaceGroupAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceGroupAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace group bad request response
+func (o *ReplaceGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceGroupBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace group not found response
+func (o *ReplaceGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceGroupNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/groups/{name}][%d] replaceGroupNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceGroupDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace group default response
-func (o *ReplaceGroupDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace group default response has a 2xx status code
 func (o *ReplaceGroupDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceGroupDefault) IsServerError() bool {
 // IsCode returns true when this replace group default response a status code equal to that given
 func (o *ReplaceGroupDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace group default response
+func (o *ReplaceGroupDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceGroupDefault) Error() string {

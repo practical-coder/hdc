@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateDgramBindReader is a Reader for the CreateDgramBind structure.
@@ -98,6 +98,11 @@ func (o *CreateDgramBindCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create dgram bind created response
+func (o *CreateDgramBindCreated) Code() int {
+	return 201
+}
+
 func (o *CreateDgramBindCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/dgram_binds][%d] createDgramBindCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateDgramBindAccepted) IsServerError() bool {
 // IsCode returns true when this create dgram bind accepted response a status code equal to that given
 func (o *CreateDgramBindAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create dgram bind accepted response
+func (o *CreateDgramBindAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateDgramBindAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateDgramBindBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create dgram bind bad request response
+func (o *CreateDgramBindBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateDgramBindBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/dgram_binds][%d] createDgramBindBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateDgramBindConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create dgram bind conflict response
+func (o *CreateDgramBindConflict) Code() int {
+	return 409
+}
+
 func (o *CreateDgramBindConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/dgram_binds][%d] createDgramBindConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateDgramBindDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create dgram bind default response
-func (o *CreateDgramBindDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create dgram bind default response has a 2xx status code
 func (o *CreateDgramBindDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateDgramBindDefault) IsServerError() bool {
 // IsCode returns true when this create dgram bind default response a status code equal to that given
 func (o *CreateDgramBindDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create dgram bind default response
+func (o *CreateDgramBindDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateDgramBindDefault) Error() string {

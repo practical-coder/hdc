@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetMailersSectionReader is a Reader for the GetMailersSection structure.
@@ -94,6 +94,11 @@ func (o *GetMailersSectionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get mailers section o k response
+func (o *GetMailersSectionOK) Code() int {
+	return 200
+}
+
 func (o *GetMailersSectionOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/mailers_section/{name}][%d] getMailersSectionOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetMailersSectionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get mailers section not found response
+func (o *GetMailersSectionNotFound) Code() int {
+	return 404
+}
+
 func (o *GetMailersSectionNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/mailers_section/{name}][%d] getMailersSectionNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetMailersSectionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get mailers section default response
-func (o *GetMailersSectionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get mailers section default response has a 2xx status code
 func (o *GetMailersSectionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetMailersSectionDefault) IsServerError() bool {
 // IsCode returns true when this get mailers section default response a status code equal to that given
 func (o *GetMailersSectionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get mailers section default response
+func (o *GetMailersSectionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetMailersSectionDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetMailersSectionOKBody) ContextValidate(ctx context.Context, formats s
 func (o *GetMailersSectionOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getMailersSectionOK" + "." + "data")

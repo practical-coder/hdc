@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetFilterReader is a Reader for the GetFilter structure.
@@ -94,6 +94,11 @@ func (o *GetFilterOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get filter o k response
+func (o *GetFilterOK) Code() int {
+	return 200
+}
+
 func (o *GetFilterOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/filters/{index}][%d] getFilterOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetFilterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get filter not found response
+func (o *GetFilterNotFound) Code() int {
+	return 404
+}
+
 func (o *GetFilterNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/filters/{index}][%d] getFilterNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetFilterDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get filter default response
-func (o *GetFilterDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get filter default response has a 2xx status code
 func (o *GetFilterDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetFilterDefault) IsServerError() bool {
 // IsCode returns true when this get filter default response a status code equal to that given
 func (o *GetFilterDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get filter default response
+func (o *GetFilterDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetFilterDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetFilterOKBody) ContextValidate(ctx context.Context, formats strfmt.Re
 func (o *GetFilterOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getFilterOK" + "." + "data")

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetAllRuntimeMapFilesReader is a Reader for the GetAllRuntimeMapFiles structure.
@@ -86,6 +86,11 @@ func (o *GetAllRuntimeMapFilesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get all runtime map files o k response
+func (o *GetAllRuntimeMapFilesOK) Code() int {
+	return 200
+}
+
 func (o *GetAllRuntimeMapFilesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps][%d] getAllRuntimeMapFilesOK  %+v", 200, o.Payload)
 }
@@ -152,6 +157,11 @@ func (o *GetAllRuntimeMapFilesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get all runtime map files not found response
+func (o *GetAllRuntimeMapFilesNotFound) Code() int {
+	return 404
+}
+
 func (o *GetAllRuntimeMapFilesNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps][%d] getAllRuntimeMapFilesNotFound  %+v", 404, o.Payload)
 }
@@ -205,11 +215,6 @@ type GetAllRuntimeMapFilesDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get all runtime map files default response
-func (o *GetAllRuntimeMapFilesDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get all runtime map files default response has a 2xx status code
 func (o *GetAllRuntimeMapFilesDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -233,6 +238,11 @@ func (o *GetAllRuntimeMapFilesDefault) IsServerError() bool {
 // IsCode returns true when this get all runtime map files default response a status code equal to that given
 func (o *GetAllRuntimeMapFilesDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get all runtime map files default response
+func (o *GetAllRuntimeMapFilesDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetAllRuntimeMapFilesDefault) Error() string {

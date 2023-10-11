@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetRingReader is a Reader for the GetRing structure.
@@ -94,6 +94,11 @@ func (o *GetRingOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get ring o k response
+func (o *GetRingOK) Code() int {
+	return 200
+}
+
 func (o *GetRingOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/rings/{name}][%d] getRingOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetRingNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get ring not found response
+func (o *GetRingNotFound) Code() int {
+	return 404
+}
+
 func (o *GetRingNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/rings/{name}][%d] getRingNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetRingDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get ring default response
-func (o *GetRingDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get ring default response has a 2xx status code
 func (o *GetRingDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetRingDefault) IsServerError() bool {
 // IsCode returns true when this get ring default response a status code equal to that given
 func (o *GetRingDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get ring default response
+func (o *GetRingDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetRingDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetRingOKBody) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (o *GetRingOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getRingOK" + "." + "data")

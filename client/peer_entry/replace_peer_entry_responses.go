@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplacePeerEntryReader is a Reader for the ReplacePeerEntry structure.
@@ -98,6 +98,11 @@ func (o *ReplacePeerEntryOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace peer entry o k response
+func (o *ReplacePeerEntryOK) Code() int {
+	return 200
+}
+
 func (o *ReplacePeerEntryOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/peer_entries/{name}][%d] replacePeerEntryOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplacePeerEntryAccepted) IsServerError() bool {
 // IsCode returns true when this replace peer entry accepted response a status code equal to that given
 func (o *ReplacePeerEntryAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace peer entry accepted response
+func (o *ReplacePeerEntryAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplacePeerEntryAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplacePeerEntryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace peer entry bad request response
+func (o *ReplacePeerEntryBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplacePeerEntryBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/peer_entries/{name}][%d] replacePeerEntryBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplacePeerEntryNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace peer entry not found response
+func (o *ReplacePeerEntryNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplacePeerEntryNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/peer_entries/{name}][%d] replacePeerEntryNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplacePeerEntryDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace peer entry default response
-func (o *ReplacePeerEntryDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace peer entry default response has a 2xx status code
 func (o *ReplacePeerEntryDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplacePeerEntryDefault) IsServerError() bool {
 // IsCode returns true when this replace peer entry default response a status code equal to that given
 func (o *ReplacePeerEntryDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace peer entry default response
+func (o *ReplacePeerEntryDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplacePeerEntryDefault) Error() string {

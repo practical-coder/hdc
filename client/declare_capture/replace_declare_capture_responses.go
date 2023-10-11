@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceDeclareCaptureReader is a Reader for the ReplaceDeclareCapture structure.
@@ -98,6 +98,11 @@ func (o *ReplaceDeclareCaptureOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace declare capture o k response
+func (o *ReplaceDeclareCaptureOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceDeclareCaptureOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceDeclareCaptureAccepted) IsServerError() bool {
 // IsCode returns true when this replace declare capture accepted response a status code equal to that given
 func (o *ReplaceDeclareCaptureAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace declare capture accepted response
+func (o *ReplaceDeclareCaptureAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceDeclareCaptureAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceDeclareCaptureBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace declare capture bad request response
+func (o *ReplaceDeclareCaptureBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceDeclareCaptureBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceDeclareCaptureNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace declare capture not found response
+func (o *ReplaceDeclareCaptureNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceDeclareCaptureNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/captures/{index}][%d] replaceDeclareCaptureNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceDeclareCaptureDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace declare capture default response
-func (o *ReplaceDeclareCaptureDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace declare capture default response has a 2xx status code
 func (o *ReplaceDeclareCaptureDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceDeclareCaptureDefault) IsServerError() bool {
 // IsCode returns true when this replace declare capture default response a status code equal to that given
 func (o *ReplaceDeclareCaptureDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace declare capture default response
+func (o *ReplaceDeclareCaptureDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceDeclareCaptureDefault) Error() string {

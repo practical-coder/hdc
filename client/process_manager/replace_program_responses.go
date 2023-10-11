@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceProgramReader is a Reader for the ReplaceProgram structure.
@@ -98,6 +98,11 @@ func (o *ReplaceProgramOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace program o k response
+func (o *ReplaceProgramOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceProgramOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/programs/{name}][%d] replaceProgramOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceProgramAccepted) IsServerError() bool {
 // IsCode returns true when this replace program accepted response a status code equal to that given
 func (o *ReplaceProgramAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace program accepted response
+func (o *ReplaceProgramAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceProgramAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceProgramBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace program bad request response
+func (o *ReplaceProgramBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceProgramBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/programs/{name}][%d] replaceProgramBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceProgramNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace program not found response
+func (o *ReplaceProgramNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceProgramNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/programs/{name}][%d] replaceProgramNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceProgramDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace program default response
-func (o *ReplaceProgramDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace program default response has a 2xx status code
 func (o *ReplaceProgramDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceProgramDefault) IsServerError() bool {
 // IsCode returns true when this replace program default response a status code equal to that given
 func (o *ReplaceProgramDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace program default response
+func (o *ReplaceProgramDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceProgramDefault) Error() string {

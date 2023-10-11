@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetInfoReader is a Reader for the GetInfo structure.
@@ -80,6 +80,11 @@ func (o *GetInfoOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get info o k response
+func (o *GetInfoOK) Code() int {
+	return 200
+}
+
 func (o *GetInfoOK) Error() string {
 	return fmt.Sprintf("[GET /info][%d] getInfoOK  %+v", 200, o.Payload)
 }
@@ -126,11 +131,6 @@ type GetInfoDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get info default response
-func (o *GetInfoDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get info default response has a 2xx status code
 func (o *GetInfoDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -154,6 +154,11 @@ func (o *GetInfoDefault) IsServerError() bool {
 // IsCode returns true when this get info default response a status code equal to that given
 func (o *GetInfoDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get info default response
+func (o *GetInfoDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetInfoDefault) Error() string {

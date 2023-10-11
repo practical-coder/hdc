@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteStorageGeneralFileReader is a Reader for the DeleteStorageGeneralFile structure.
@@ -85,6 +85,11 @@ func (o *DeleteStorageGeneralFileNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete storage general file no content response
+func (o *DeleteStorageGeneralFileNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteStorageGeneralFileNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/general/{name}][%d] deleteStorageGeneralFileNoContent ", 204)
 }
@@ -142,6 +147,11 @@ func (o *DeleteStorageGeneralFileNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete storage general file not found response
+func (o *DeleteStorageGeneralFileNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteStorageGeneralFileNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/general/{name}][%d] deleteStorageGeneralFileNotFound  %+v", 404, o.Payload)
 }
@@ -195,11 +205,6 @@ type DeleteStorageGeneralFileDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete storage general file default response
-func (o *DeleteStorageGeneralFileDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete storage general file default response has a 2xx status code
 func (o *DeleteStorageGeneralFileDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -223,6 +228,11 @@ func (o *DeleteStorageGeneralFileDefault) IsServerError() bool {
 // IsCode returns true when this delete storage general file default response a status code equal to that given
 func (o *DeleteStorageGeneralFileDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete storage general file default response
+func (o *DeleteStorageGeneralFileDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteStorageGeneralFileDefault) Error() string {

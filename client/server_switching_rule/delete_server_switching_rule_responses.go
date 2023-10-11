@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteServerSwitchingRuleReader is a Reader for the DeleteServerSwitchingRule structure.
@@ -95,6 +95,11 @@ func (o *DeleteServerSwitchingRuleAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete server switching rule accepted response
+func (o *DeleteServerSwitchingRuleAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteServerSwitchingRuleAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_switching_rules/{index}][%d] deleteServerSwitchingRuleAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteServerSwitchingRuleNoContent) IsServerError() bool {
 // IsCode returns true when this delete server switching rule no content response a status code equal to that given
 func (o *DeleteServerSwitchingRuleNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete server switching rule no content response
+func (o *DeleteServerSwitchingRuleNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteServerSwitchingRuleNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteServerSwitchingRuleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete server switching rule not found response
+func (o *DeleteServerSwitchingRuleNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteServerSwitchingRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_switching_rules/{index}][%d] deleteServerSwitchingRuleNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteServerSwitchingRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete server switching rule default response
-func (o *DeleteServerSwitchingRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete server switching rule default response has a 2xx status code
 func (o *DeleteServerSwitchingRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteServerSwitchingRuleDefault) IsServerError() bool {
 // IsCode returns true when this delete server switching rule default response a status code equal to that given
 func (o *DeleteServerSwitchingRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete server switching rule default response
+func (o *DeleteServerSwitchingRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteServerSwitchingRuleDefault) Error() string {

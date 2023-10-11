@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteRuntimeMapEntryReader is a Reader for the DeleteRuntimeMapEntry structure.
@@ -85,6 +85,11 @@ func (o *DeleteRuntimeMapEntryNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete runtime map entry no content response
+func (o *DeleteRuntimeMapEntryNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteRuntimeMapEntryNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/maps_entries/{id}][%d] deleteRuntimeMapEntryNoContent ", 204)
 }
@@ -142,6 +147,11 @@ func (o *DeleteRuntimeMapEntryNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete runtime map entry not found response
+func (o *DeleteRuntimeMapEntryNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteRuntimeMapEntryNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/maps_entries/{id}][%d] deleteRuntimeMapEntryNotFound  %+v", 404, o.Payload)
 }
@@ -195,11 +205,6 @@ type DeleteRuntimeMapEntryDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete runtime map entry default response
-func (o *DeleteRuntimeMapEntryDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete runtime map entry default response has a 2xx status code
 func (o *DeleteRuntimeMapEntryDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -223,6 +228,11 @@ func (o *DeleteRuntimeMapEntryDefault) IsServerError() bool {
 // IsCode returns true when this delete runtime map entry default response a status code equal to that given
 func (o *DeleteRuntimeMapEntryDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete runtime map entry default response
+func (o *DeleteRuntimeMapEntryDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteRuntimeMapEntryDefault) Error() string {

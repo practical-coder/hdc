@@ -43,9 +43,6 @@ type PeerSection struct {
 	// declared in the "peers" section. In such cases, "shards" specifies the
 	// number of peer involved in this stick-table contents distribution.
 	Shards int64 `json:"shards,omitempty"`
-
-	// stick table
-	StickTable *ConfigStickTable `json:"stick_table,omitempty"`
 }
 
 // Validate validates this peer section
@@ -61,10 +58,6 @@ func (m *PeerSection) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateStickTable(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -125,25 +118,6 @@ func (m *PeerSection) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *PeerSection) validateStickTable(formats strfmt.Registry) error {
-	if swag.IsZero(m.StickTable) { // not required
-		return nil
-	}
-
-	if m.StickTable != nil {
-		if err := m.StickTable.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("stick_table")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("stick_table")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 // ContextValidate validate this peer section based on the context it is used
 func (m *PeerSection) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -156,10 +130,6 @@ func (m *PeerSection) ContextValidate(ctx context.Context, formats strfmt.Regist
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateStickTable(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -169,6 +139,11 @@ func (m *PeerSection) ContextValidate(ctx context.Context, formats strfmt.Regist
 func (m *PeerSection) contextValidateDefaultBind(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DefaultBind != nil {
+
+		if swag.IsZero(m.DefaultBind) { // not required
+			return nil
+		}
+
 		if err := m.DefaultBind.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("default_bind")
@@ -185,27 +160,16 @@ func (m *PeerSection) contextValidateDefaultBind(ctx context.Context, formats st
 func (m *PeerSection) contextValidateDefaultServer(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DefaultServer != nil {
+
+		if swag.IsZero(m.DefaultServer) { // not required
+			return nil
+		}
+
 		if err := m.DefaultServer.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("default_server")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("default_server")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *PeerSection) contextValidateStickTable(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.StickTable != nil {
-		if err := m.StickTable.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("stick_table")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("stick_table")
 			}
 			return err
 		}

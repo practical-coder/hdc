@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateResolverReader is a Reader for the CreateResolver structure.
@@ -98,6 +98,11 @@ func (o *CreateResolverCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create resolver created response
+func (o *CreateResolverCreated) Code() int {
+	return 201
+}
+
 func (o *CreateResolverCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/resolvers][%d] createResolverCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateResolverAccepted) IsServerError() bool {
 // IsCode returns true when this create resolver accepted response a status code equal to that given
 func (o *CreateResolverAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create resolver accepted response
+func (o *CreateResolverAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateResolverAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateResolverBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create resolver bad request response
+func (o *CreateResolverBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateResolverBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/resolvers][%d] createResolverBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateResolverConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create resolver conflict response
+func (o *CreateResolverConflict) Code() int {
+	return 409
+}
+
 func (o *CreateResolverConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/resolvers][%d] createResolverConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateResolverDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create resolver default response
-func (o *CreateResolverDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create resolver default response has a 2xx status code
 func (o *CreateResolverDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateResolverDefault) IsServerError() bool {
 // IsCode returns true when this create resolver default response a status code equal to that given
 func (o *CreateResolverDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create resolver default response
+func (o *CreateResolverDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateResolverDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateFilterReader is a Reader for the CreateFilter structure.
@@ -98,6 +98,11 @@ func (o *CreateFilterCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create filter created response
+func (o *CreateFilterCreated) Code() int {
+	return 201
+}
+
 func (o *CreateFilterCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/filters][%d] createFilterCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateFilterAccepted) IsServerError() bool {
 // IsCode returns true when this create filter accepted response a status code equal to that given
 func (o *CreateFilterAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create filter accepted response
+func (o *CreateFilterAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateFilterAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateFilterBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create filter bad request response
+func (o *CreateFilterBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateFilterBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/filters][%d] createFilterBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateFilterConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create filter conflict response
+func (o *CreateFilterConflict) Code() int {
+	return 409
+}
+
 func (o *CreateFilterConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/filters][%d] createFilterConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateFilterDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create filter default response
-func (o *CreateFilterDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create filter default response has a 2xx status code
 func (o *CreateFilterDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateFilterDefault) IsServerError() bool {
 // IsCode returns true when this create filter default response a status code equal to that given
 func (o *CreateFilterDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create filter default response
+func (o *CreateFilterDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateFilterDefault) Error() string {

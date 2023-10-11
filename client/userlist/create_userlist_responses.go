@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateUserlistReader is a Reader for the CreateUserlist structure.
@@ -98,6 +98,11 @@ func (o *CreateUserlistCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create userlist created response
+func (o *CreateUserlistCreated) Code() int {
+	return 201
+}
+
 func (o *CreateUserlistCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateUserlistAccepted) IsServerError() bool {
 // IsCode returns true when this create userlist accepted response a status code equal to that given
 func (o *CreateUserlistAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create userlist accepted response
+func (o *CreateUserlistAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateUserlistAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateUserlistBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create userlist bad request response
+func (o *CreateUserlistBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateUserlistBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateUserlistConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create userlist conflict response
+func (o *CreateUserlistConflict) Code() int {
+	return 409
+}
+
 func (o *CreateUserlistConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/userlists][%d] createUserlistConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateUserlistDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create userlist default response
-func (o *CreateUserlistDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create userlist default response has a 2xx status code
 func (o *CreateUserlistDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateUserlistDefault) IsServerError() bool {
 // IsCode returns true when this create userlist default response a status code equal to that given
 func (o *CreateUserlistDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create userlist default response
+func (o *CreateUserlistDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateUserlistDefault) Error() string {

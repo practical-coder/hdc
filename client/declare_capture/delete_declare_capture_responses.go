@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteDeclareCaptureReader is a Reader for the DeleteDeclareCapture structure.
@@ -95,6 +95,11 @@ func (o *DeleteDeclareCaptureAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete declare capture accepted response
+func (o *DeleteDeclareCaptureAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteDeclareCaptureAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/captures/{index}][%d] deleteDeclareCaptureAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteDeclareCaptureNoContent) IsServerError() bool {
 // IsCode returns true when this delete declare capture no content response a status code equal to that given
 func (o *DeleteDeclareCaptureNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete declare capture no content response
+func (o *DeleteDeclareCaptureNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteDeclareCaptureNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteDeclareCaptureNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete declare capture not found response
+func (o *DeleteDeclareCaptureNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteDeclareCaptureNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/captures/{index}][%d] deleteDeclareCaptureNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteDeclareCaptureDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete declare capture default response
-func (o *DeleteDeclareCaptureDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete declare capture default response has a 2xx status code
 func (o *DeleteDeclareCaptureDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteDeclareCaptureDefault) IsServerError() bool {
 // IsCode returns true when this delete declare capture default response a status code equal to that given
 func (o *DeleteDeclareCaptureDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete declare capture default response
+func (o *DeleteDeclareCaptureDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteDeclareCaptureDefault) Error() string {

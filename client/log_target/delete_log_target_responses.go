@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteLogTargetReader is a Reader for the DeleteLogTarget structure.
@@ -95,6 +95,11 @@ func (o *DeleteLogTargetAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete log target accepted response
+func (o *DeleteLogTargetAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteLogTargetAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/log_targets/{index}][%d] deleteLogTargetAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteLogTargetNoContent) IsServerError() bool {
 // IsCode returns true when this delete log target no content response a status code equal to that given
 func (o *DeleteLogTargetNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete log target no content response
+func (o *DeleteLogTargetNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteLogTargetNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteLogTargetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete log target not found response
+func (o *DeleteLogTargetNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteLogTargetNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/log_targets/{index}][%d] deleteLogTargetNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteLogTargetDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete log target default response
-func (o *DeleteLogTargetDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete log target default response has a 2xx status code
 func (o *DeleteLogTargetDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteLogTargetDefault) IsServerError() bool {
 // IsCode returns true when this delete log target default response a status code equal to that given
 func (o *DeleteLogTargetDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete log target default response
+func (o *DeleteLogTargetDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteLogTargetDefault) Error() string {

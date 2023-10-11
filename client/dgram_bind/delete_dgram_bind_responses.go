@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteDgramBindReader is a Reader for the DeleteDgramBind structure.
@@ -95,6 +95,11 @@ func (o *DeleteDgramBindAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete dgram bind accepted response
+func (o *DeleteDgramBindAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteDgramBindAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/dgram_binds/{name}][%d] deleteDgramBindAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteDgramBindNoContent) IsServerError() bool {
 // IsCode returns true when this delete dgram bind no content response a status code equal to that given
 func (o *DeleteDgramBindNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete dgram bind no content response
+func (o *DeleteDgramBindNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteDgramBindNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteDgramBindNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete dgram bind not found response
+func (o *DeleteDgramBindNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteDgramBindNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/dgram_binds/{name}][%d] deleteDgramBindNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteDgramBindDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete dgram bind default response
-func (o *DeleteDgramBindDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete dgram bind default response has a 2xx status code
 func (o *DeleteDgramBindDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteDgramBindDefault) IsServerError() bool {
 // IsCode returns true when this delete dgram bind default response a status code equal to that given
 func (o *DeleteDgramBindDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete dgram bind default response
+func (o *DeleteDgramBindDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteDgramBindDefault) Error() string {

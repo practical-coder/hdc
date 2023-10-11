@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteHTTPErrorsSectionReader is a Reader for the DeleteHTTPErrorsSection structure.
@@ -95,6 +95,11 @@ func (o *DeleteHTTPErrorsSectionAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete Http errors section accepted response
+func (o *DeleteHTTPErrorsSectionAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteHTTPErrorsSectionAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_errors_sections/{name}][%d] deleteHttpErrorsSectionAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteHTTPErrorsSectionNoContent) IsServerError() bool {
 // IsCode returns true when this delete Http errors section no content response a status code equal to that given
 func (o *DeleteHTTPErrorsSectionNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete Http errors section no content response
+func (o *DeleteHTTPErrorsSectionNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteHTTPErrorsSectionNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteHTTPErrorsSectionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete Http errors section not found response
+func (o *DeleteHTTPErrorsSectionNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteHTTPErrorsSectionNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_errors_sections/{name}][%d] deleteHttpErrorsSectionNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteHTTPErrorsSectionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete HTTP errors section default response
-func (o *DeleteHTTPErrorsSectionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete HTTP errors section default response has a 2xx status code
 func (o *DeleteHTTPErrorsSectionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteHTTPErrorsSectionDefault) IsServerError() bool {
 // IsCode returns true when this delete HTTP errors section default response a status code equal to that given
 func (o *DeleteHTTPErrorsSectionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete HTTP errors section default response
+func (o *DeleteHTTPErrorsSectionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteHTTPErrorsSectionDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateBackendSwitchingRuleReader is a Reader for the CreateBackendSwitchingRule structure.
@@ -98,6 +98,11 @@ func (o *CreateBackendSwitchingRuleCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create backend switching rule created response
+func (o *CreateBackendSwitchingRuleCreated) Code() int {
+	return 201
+}
+
 func (o *CreateBackendSwitchingRuleCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backend_switching_rules][%d] createBackendSwitchingRuleCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateBackendSwitchingRuleAccepted) IsServerError() bool {
 // IsCode returns true when this create backend switching rule accepted response a status code equal to that given
 func (o *CreateBackendSwitchingRuleAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create backend switching rule accepted response
+func (o *CreateBackendSwitchingRuleAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateBackendSwitchingRuleAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateBackendSwitchingRuleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create backend switching rule bad request response
+func (o *CreateBackendSwitchingRuleBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateBackendSwitchingRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backend_switching_rules][%d] createBackendSwitchingRuleBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateBackendSwitchingRuleConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create backend switching rule conflict response
+func (o *CreateBackendSwitchingRuleConflict) Code() int {
+	return 409
+}
+
 func (o *CreateBackendSwitchingRuleConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backend_switching_rules][%d] createBackendSwitchingRuleConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateBackendSwitchingRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create backend switching rule default response
-func (o *CreateBackendSwitchingRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create backend switching rule default response has a 2xx status code
 func (o *CreateBackendSwitchingRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateBackendSwitchingRuleDefault) IsServerError() bool {
 // IsCode returns true when this create backend switching rule default response a status code equal to that given
 func (o *CreateBackendSwitchingRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create backend switching rule default response
+func (o *CreateBackendSwitchingRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateBackendSwitchingRuleDefault) Error() string {

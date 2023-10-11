@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteStorageSSLCertificateReader is a Reader for the DeleteStorageSSLCertificate structure.
@@ -95,6 +95,11 @@ func (o *DeleteStorageSSLCertificateAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete storage s s l certificate accepted response
+func (o *DeleteStorageSSLCertificateAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteStorageSSLCertificateAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/ssl_certificates/{name}][%d] deleteStorageSSLCertificateAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteStorageSSLCertificateNoContent) IsServerError() bool {
 // IsCode returns true when this delete storage s s l certificate no content response a status code equal to that given
 func (o *DeleteStorageSSLCertificateNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete storage s s l certificate no content response
+func (o *DeleteStorageSSLCertificateNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteStorageSSLCertificateNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteStorageSSLCertificateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete storage s s l certificate not found response
+func (o *DeleteStorageSSLCertificateNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteStorageSSLCertificateNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/ssl_certificates/{name}][%d] deleteStorageSSLCertificateNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteStorageSSLCertificateDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete storage s s l certificate default response
-func (o *DeleteStorageSSLCertificateDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete storage s s l certificate default response has a 2xx status code
 func (o *DeleteStorageSSLCertificateDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteStorageSSLCertificateDefault) IsServerError() bool {
 // IsCode returns true when this delete storage s s l certificate default response a status code equal to that given
 func (o *DeleteStorageSSLCertificateDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete storage s s l certificate default response
+func (o *DeleteStorageSSLCertificateDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteStorageSSLCertificateDefault) Error() string {

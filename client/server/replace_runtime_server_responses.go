@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceRuntimeServerReader is a Reader for the ReplaceRuntimeServer structure.
@@ -92,6 +92,11 @@ func (o *ReplaceRuntimeServerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace runtime server o k response
+func (o *ReplaceRuntimeServerOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceRuntimeServerOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/servers/{name}][%d] replaceRuntimeServerOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *ReplaceRuntimeServerBadRequest) IsServerError() bool {
 // IsCode returns true when this replace runtime server bad request response a status code equal to that given
 func (o *ReplaceRuntimeServerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the replace runtime server bad request response
+func (o *ReplaceRuntimeServerBadRequest) Code() int {
+	return 400
 }
 
 func (o *ReplaceRuntimeServerBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *ReplaceRuntimeServerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace runtime server not found response
+func (o *ReplaceRuntimeServerNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceRuntimeServerNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/servers/{name}][%d] replaceRuntimeServerNotFound  %+v", 404, o.Payload)
 }
@@ -288,11 +303,6 @@ type ReplaceRuntimeServerDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace runtime server default response
-func (o *ReplaceRuntimeServerDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace runtime server default response has a 2xx status code
 func (o *ReplaceRuntimeServerDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -316,6 +326,11 @@ func (o *ReplaceRuntimeServerDefault) IsServerError() bool {
 // IsCode returns true when this replace runtime server default response a status code equal to that given
 func (o *ReplaceRuntimeServerDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace runtime server default response
+func (o *ReplaceRuntimeServerDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceRuntimeServerDefault) Error() string {

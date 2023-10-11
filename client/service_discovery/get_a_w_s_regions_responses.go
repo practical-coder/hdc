@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetAWSRegionsReader is a Reader for the GetAWSRegions structure.
@@ -84,6 +84,11 @@ func (o *GetAWSRegionsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get a w s regions o k response
+func (o *GetAWSRegionsOK) Code() int {
+	return 200
+}
+
 func (o *GetAWSRegionsOK) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/aws][%d] getAWSRegionsOK  %+v", 200, o.Payload)
 }
@@ -130,11 +135,6 @@ type GetAWSRegionsDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get a w s regions default response
-func (o *GetAWSRegionsDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get a w s regions default response has a 2xx status code
 func (o *GetAWSRegionsDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -158,6 +158,11 @@ func (o *GetAWSRegionsDefault) IsServerError() bool {
 // IsCode returns true when this get a w s regions default response a status code equal to that given
 func (o *GetAWSRegionsDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get a w s regions default response
+func (o *GetAWSRegionsDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetAWSRegionsDefault) Error() string {

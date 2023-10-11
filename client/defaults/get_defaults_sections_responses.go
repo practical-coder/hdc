@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetDefaultsSectionsReader is a Reader for the GetDefaultsSections structure.
@@ -89,6 +89,11 @@ func (o *GetDefaultsSectionsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get defaults sections o k response
+func (o *GetDefaultsSectionsOK) Code() int {
+	return 200
+}
+
 func (o *GetDefaultsSectionsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/named_defaults][%d] getDefaultsSectionsOK  %+v", 200, o.Payload)
 }
@@ -142,11 +147,6 @@ type GetDefaultsSectionsDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get defaults sections default response
-func (o *GetDefaultsSectionsDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get defaults sections default response has a 2xx status code
 func (o *GetDefaultsSectionsDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -170,6 +170,11 @@ func (o *GetDefaultsSectionsDefault) IsServerError() bool {
 // IsCode returns true when this get defaults sections default response a status code equal to that given
 func (o *GetDefaultsSectionsDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get defaults sections default response
+func (o *GetDefaultsSectionsDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetDefaultsSectionsDefault) Error() string {

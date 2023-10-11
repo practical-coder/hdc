@@ -138,6 +138,11 @@ func (m *SpoeMessage) contextValidateACL(ctx context.Context, formats strfmt.Reg
 func (m *SpoeMessage) contextValidateEvent(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Event != nil {
+
+		if swag.IsZero(m.Event) { // not required
+			return nil
+		}
+
 		if err := m.Event.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("event")

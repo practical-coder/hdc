@@ -51,7 +51,6 @@ type FcgiApp struct {
 
 	// Declares a FastCGI application
 	// Required: true
-	// Read Only: true
 	// Pattern: ^[^\s]+$
 	Name string `json:"name"`
 
@@ -359,10 +358,6 @@ func (m *FcgiApp) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateName(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidatePassHeaders(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -382,6 +377,11 @@ func (m *FcgiApp) contextValidateLogStderrs(ctx context.Context, formats strfmt.
 	for i := 0; i < len(m.LogStderrs); i++ {
 
 		if m.LogStderrs[i] != nil {
+
+			if swag.IsZero(m.LogStderrs[i]) { // not required
+				return nil
+			}
+
 			if err := m.LogStderrs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("log_stderrs" + "." + strconv.Itoa(i))
@@ -397,20 +397,16 @@ func (m *FcgiApp) contextValidateLogStderrs(ctx context.Context, formats strfmt.
 	return nil
 }
 
-func (m *FcgiApp) contextValidateName(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := validate.ReadOnly(ctx, "name", "body", string(m.Name)); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *FcgiApp) contextValidatePassHeaders(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.PassHeaders); i++ {
 
 		if m.PassHeaders[i] != nil {
+
+			if swag.IsZero(m.PassHeaders[i]) { // not required
+				return nil
+			}
+
 			if err := m.PassHeaders[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("pass_headers" + "." + strconv.Itoa(i))
@@ -431,6 +427,11 @@ func (m *FcgiApp) contextValidateSetParams(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.SetParams); i++ {
 
 		if m.SetParams[i] != nil {
+
+			if swag.IsZero(m.SetParams[i]) { // not required
+				return nil
+			}
+
 			if err := m.SetParams[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("set_params" + "." + strconv.Itoa(i))

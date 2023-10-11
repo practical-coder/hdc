@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteFilterReader is a Reader for the DeleteFilter structure.
@@ -95,6 +95,11 @@ func (o *DeleteFilterAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete filter accepted response
+func (o *DeleteFilterAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteFilterAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/filters/{index}][%d] deleteFilterAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteFilterNoContent) IsServerError() bool {
 // IsCode returns true when this delete filter no content response a status code equal to that given
 func (o *DeleteFilterNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete filter no content response
+func (o *DeleteFilterNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteFilterNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteFilterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete filter not found response
+func (o *DeleteFilterNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteFilterNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/filters/{index}][%d] deleteFilterNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteFilterDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete filter default response
-func (o *DeleteFilterDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete filter default response has a 2xx status code
 func (o *DeleteFilterDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteFilterDefault) IsServerError() bool {
 // IsCode returns true when this delete filter default response a status code equal to that given
 func (o *DeleteFilterDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete filter default response
+func (o *DeleteFilterDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteFilterDefault) Error() string {

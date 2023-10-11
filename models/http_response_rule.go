@@ -151,6 +151,9 @@ type HTTPResponseRule struct {
 	// sc id
 	ScID int64 `json:"sc_id,omitempty"`
 
+	// sc idx
+	ScIdx int64 `json:"sc_idx,omitempty"`
+
 	// sc int
 	ScInt *int64 `json:"sc_int,omitempty"`
 
@@ -202,9 +205,20 @@ type HTTPResponseRule struct {
 	// Pattern: ^[^\s]+$
 	TrackSc2Table string `json:"track-sc2-table,omitempty"`
 
+	// track sc key
+	// Pattern: ^[^\s]+$
+	TrackScKey string `json:"track_sc_key,omitempty"`
+
+	// track sc stick counter
+	TrackScStickCounter *int64 `json:"track_sc_stick_counter,omitempty"`
+
+	// track sc table
+	// Pattern: ^[^\s]+$
+	TrackScTable string `json:"track_sc_table,omitempty"`
+
 	// type
 	// Required: true
-	// Enum: [add-acl add-header allow cache-store capture del-acl del-header del-map deny redirect replace-header replace-value return sc-inc-gpc0 sc-inc-gpc1 sc-set-gpt0 send-spoe-group set-header set-log-level set-map set-mark set-nice set-status set-tos set-var set-var-fmt silent-drop strict-mode track-sc0 track-sc1 track-sc2 unset-var wait-for-body set-bandwidth-limit]
+	// Enum: [add-acl add-header allow cache-store capture del-acl del-header del-map deny lua redirect replace-header replace-value return sc-add-gpc sc-inc-gpc sc-inc-gpc0 sc-inc-gpc1 sc-set-gpt0 send-spoe-group set-header set-log-level set-map set-mark set-nice set-status set-tos set-var set-var-fmt silent-drop strict-mode track-sc0 track-sc1 track-sc2 track-sc unset-var wait-for-body set-bandwidth-limit]
 	Type string `json:"type"`
 
 	// var expr
@@ -353,6 +367,14 @@ func (m *HTTPResponseRule) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateTrackSc2Table(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTrackScKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTrackScTable(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -983,11 +1005,35 @@ func (m *HTTPResponseRule) validateTrackSc2Table(formats strfmt.Registry) error 
 	return nil
 }
 
+func (m *HTTPResponseRule) validateTrackScKey(formats strfmt.Registry) error {
+	if swag.IsZero(m.TrackScKey) { // not required
+		return nil
+	}
+
+	if err := validate.Pattern("track_sc_key", "body", m.TrackScKey, `^[^\s]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *HTTPResponseRule) validateTrackScTable(formats strfmt.Registry) error {
+	if swag.IsZero(m.TrackScTable) { // not required
+		return nil
+	}
+
+	if err := validate.Pattern("track_sc_table", "body", m.TrackScTable, `^[^\s]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 var httpResponseRuleTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["add-acl","add-header","allow","cache-store","capture","del-acl","del-header","del-map","deny","redirect","replace-header","replace-value","return","sc-inc-gpc0","sc-inc-gpc1","sc-set-gpt0","send-spoe-group","set-header","set-log-level","set-map","set-mark","set-nice","set-status","set-tos","set-var","set-var-fmt","silent-drop","strict-mode","track-sc0","track-sc1","track-sc2","unset-var","wait-for-body","set-bandwidth-limit"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["add-acl","add-header","allow","cache-store","capture","del-acl","del-header","del-map","deny","lua","redirect","replace-header","replace-value","return","sc-add-gpc","sc-inc-gpc","sc-inc-gpc0","sc-inc-gpc1","sc-set-gpt0","send-spoe-group","set-header","set-log-level","set-map","set-mark","set-nice","set-status","set-tos","set-var","set-var-fmt","silent-drop","strict-mode","track-sc0","track-sc1","track-sc2","track-sc","unset-var","wait-for-body","set-bandwidth-limit"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -1024,6 +1070,9 @@ const (
 	// HTTPResponseRuleTypeDeny captures enum value "deny"
 	HTTPResponseRuleTypeDeny string = "deny"
 
+	// HTTPResponseRuleTypeLua captures enum value "lua"
+	HTTPResponseRuleTypeLua string = "lua"
+
 	// HTTPResponseRuleTypeRedirect captures enum value "redirect"
 	HTTPResponseRuleTypeRedirect string = "redirect"
 
@@ -1035,6 +1084,12 @@ const (
 
 	// HTTPResponseRuleTypeReturn captures enum value "return"
 	HTTPResponseRuleTypeReturn string = "return"
+
+	// HTTPResponseRuleTypeScDashAddDashGpc captures enum value "sc-add-gpc"
+	HTTPResponseRuleTypeScDashAddDashGpc string = "sc-add-gpc"
+
+	// HTTPResponseRuleTypeScDashIncDashGpc captures enum value "sc-inc-gpc"
+	HTTPResponseRuleTypeScDashIncDashGpc string = "sc-inc-gpc"
 
 	// HTTPResponseRuleTypeScDashIncDashGpc0 captures enum value "sc-inc-gpc0"
 	HTTPResponseRuleTypeScDashIncDashGpc0 string = "sc-inc-gpc0"
@@ -1089,6 +1144,9 @@ const (
 
 	// HTTPResponseRuleTypeTrackDashSc2 captures enum value "track-sc2"
 	HTTPResponseRuleTypeTrackDashSc2 string = "track-sc2"
+
+	// HTTPResponseRuleTypeTrackDashSc captures enum value "track-sc"
+	HTTPResponseRuleTypeTrackDashSc string = "track-sc"
 
 	// HTTPResponseRuleTypeUnsetDashVar captures enum value "unset-var"
 	HTTPResponseRuleTypeUnsetDashVar string = "unset-var"
@@ -1165,6 +1223,11 @@ func (m *HTTPResponseRule) contextValidateReturnHeaders(ctx context.Context, for
 	for i := 0; i < len(m.ReturnHeaders); i++ {
 
 		if m.ReturnHeaders[i] != nil {
+
+			if swag.IsZero(m.ReturnHeaders[i]) { // not required
+				return nil
+			}
+
 			if err := m.ReturnHeaders[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("return_hdrs" + "." + strconv.Itoa(i))

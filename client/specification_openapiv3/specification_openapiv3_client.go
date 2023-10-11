@@ -49,7 +49,7 @@ func (a *Client) GetOpenapiv3Specification(params *GetOpenapiv3SpecificationPara
 		PathPattern:        "/specification_openapiv3",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetOpenapiv3SpecificationReader{formats: a.formats},
 		AuthInfo:           authInfo,

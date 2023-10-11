@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateBackendReader is a Reader for the CreateBackend structure.
@@ -98,6 +98,11 @@ func (o *CreateBackendCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create backend created response
+func (o *CreateBackendCreated) Code() int {
+	return 201
+}
+
 func (o *CreateBackendCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backends][%d] createBackendCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateBackendAccepted) IsServerError() bool {
 // IsCode returns true when this create backend accepted response a status code equal to that given
 func (o *CreateBackendAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create backend accepted response
+func (o *CreateBackendAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateBackendAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateBackendBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create backend bad request response
+func (o *CreateBackendBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateBackendBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backends][%d] createBackendBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateBackendConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create backend conflict response
+func (o *CreateBackendConflict) Code() int {
+	return 409
+}
+
 func (o *CreateBackendConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/backends][%d] createBackendConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateBackendDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create backend default response
-func (o *CreateBackendDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create backend default response has a 2xx status code
 func (o *CreateBackendDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateBackendDefault) IsServerError() bool {
 // IsCode returns true when this create backend default response a status code equal to that given
 func (o *CreateBackendDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create backend default response
+func (o *CreateBackendDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateBackendDefault) Error() string {

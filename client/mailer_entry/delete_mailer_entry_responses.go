@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteMailerEntryReader is a Reader for the DeleteMailerEntry structure.
@@ -95,6 +95,11 @@ func (o *DeleteMailerEntryAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete mailer entry accepted response
+func (o *DeleteMailerEntryAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteMailerEntryAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/mailer_entries/{name}][%d] deleteMailerEntryAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteMailerEntryNoContent) IsServerError() bool {
 // IsCode returns true when this delete mailer entry no content response a status code equal to that given
 func (o *DeleteMailerEntryNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete mailer entry no content response
+func (o *DeleteMailerEntryNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteMailerEntryNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteMailerEntryNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete mailer entry not found response
+func (o *DeleteMailerEntryNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteMailerEntryNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/mailer_entries/{name}][%d] deleteMailerEntryNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteMailerEntryDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete mailer entry default response
-func (o *DeleteMailerEntryDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete mailer entry default response has a 2xx status code
 func (o *DeleteMailerEntryDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteMailerEntryDefault) IsServerError() bool {
 // IsCode returns true when this delete mailer entry default response a status code equal to that given
 func (o *DeleteMailerEntryDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete mailer entry default response
+func (o *DeleteMailerEntryDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteMailerEntryDefault) Error() string {

@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // StartTransactionReader is a Reader for the StartTransaction structure.
@@ -88,6 +88,11 @@ func (o *StartTransactionCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the start transaction created response
+func (o *StartTransactionCreated) Code() int {
+	return 201
+}
+
 func (o *StartTransactionCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/transactions][%d] startTransactionCreated  %+v", 201, o.Payload)
 }
@@ -151,6 +156,11 @@ func (o *StartTransactionTooManyRequests) IsCode(code int) bool {
 	return code == 429
 }
 
+// Code gets the status code for the start transaction too many requests response
+func (o *StartTransactionTooManyRequests) Code() int {
+	return 429
+}
+
 func (o *StartTransactionTooManyRequests) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/transactions][%d] startTransactionTooManyRequests  %+v", 429, o.Payload)
 }
@@ -197,11 +207,6 @@ type StartTransactionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the start transaction default response
-func (o *StartTransactionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this start transaction default response has a 2xx status code
 func (o *StartTransactionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -225,6 +230,11 @@ func (o *StartTransactionDefault) IsServerError() bool {
 // IsCode returns true when this start transaction default response a status code equal to that given
 func (o *StartTransactionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the start transaction default response
+func (o *StartTransactionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *StartTransactionDefault) Error() string {

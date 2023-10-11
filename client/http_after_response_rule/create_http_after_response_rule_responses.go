@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateHTTPAfterResponseRuleReader is a Reader for the CreateHTTPAfterResponseRule structure.
@@ -98,6 +98,11 @@ func (o *CreateHTTPAfterResponseRuleCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create Http after response rule created response
+func (o *CreateHTTPAfterResponseRuleCreated) Code() int {
+	return 201
+}
+
 func (o *CreateHTTPAfterResponseRuleCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_after_response_rules][%d] createHttpAfterResponseRuleCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateHTTPAfterResponseRuleAccepted) IsServerError() bool {
 // IsCode returns true when this create Http after response rule accepted response a status code equal to that given
 func (o *CreateHTTPAfterResponseRuleAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create Http after response rule accepted response
+func (o *CreateHTTPAfterResponseRuleAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateHTTPAfterResponseRuleAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateHTTPAfterResponseRuleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create Http after response rule bad request response
+func (o *CreateHTTPAfterResponseRuleBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateHTTPAfterResponseRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_after_response_rules][%d] createHttpAfterResponseRuleBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateHTTPAfterResponseRuleConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create Http after response rule conflict response
+func (o *CreateHTTPAfterResponseRuleConflict) Code() int {
+	return 409
+}
+
 func (o *CreateHTTPAfterResponseRuleConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_after_response_rules][%d] createHttpAfterResponseRuleConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateHTTPAfterResponseRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create HTTP after response rule default response
-func (o *CreateHTTPAfterResponseRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create HTTP after response rule default response has a 2xx status code
 func (o *CreateHTTPAfterResponseRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateHTTPAfterResponseRuleDefault) IsServerError() bool {
 // IsCode returns true when this create HTTP after response rule default response a status code equal to that given
 func (o *CreateHTTPAfterResponseRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create HTTP after response rule default response
+func (o *CreateHTTPAfterResponseRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateHTTPAfterResponseRuleDefault) Error() string {

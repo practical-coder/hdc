@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceServerReader is a Reader for the ReplaceServer structure.
@@ -98,6 +98,11 @@ func (o *ReplaceServerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace server o k response
+func (o *ReplaceServerOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceServerOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/servers/{name}][%d] replaceServerOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceServerAccepted) IsServerError() bool {
 // IsCode returns true when this replace server accepted response a status code equal to that given
 func (o *ReplaceServerAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace server accepted response
+func (o *ReplaceServerAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceServerAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceServerBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace server bad request response
+func (o *ReplaceServerBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceServerBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/servers/{name}][%d] replaceServerBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceServerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace server not found response
+func (o *ReplaceServerNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceServerNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/servers/{name}][%d] replaceServerNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceServerDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace server default response
-func (o *ReplaceServerDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace server default response has a 2xx status code
 func (o *ReplaceServerDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceServerDefault) IsServerError() bool {
 // IsCode returns true when this replace server default response a status code equal to that given
 func (o *ReplaceServerDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace server default response
+func (o *ReplaceServerDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceServerDefault) Error() string {

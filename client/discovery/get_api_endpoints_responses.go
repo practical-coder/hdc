@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetAPIEndpointsReader is a Reader for the GetAPIEndpoints structure.
@@ -80,6 +80,11 @@ func (o *GetAPIEndpointsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get Api endpoints o k response
+func (o *GetAPIEndpointsOK) Code() int {
+	return 200
+}
+
 func (o *GetAPIEndpointsOK) Error() string {
 	return fmt.Sprintf("[GET /][%d] getApiEndpointsOK  %+v", 200, o.Payload)
 }
@@ -124,11 +129,6 @@ type GetAPIEndpointsDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get API endpoints default response
-func (o *GetAPIEndpointsDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get API endpoints default response has a 2xx status code
 func (o *GetAPIEndpointsDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -152,6 +152,11 @@ func (o *GetAPIEndpointsDefault) IsServerError() bool {
 // IsCode returns true when this get API endpoints default response a status code equal to that given
 func (o *GetAPIEndpointsDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get API endpoints default response
+func (o *GetAPIEndpointsDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetAPIEndpointsDefault) Error() string {

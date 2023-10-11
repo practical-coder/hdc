@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateSpoeReader is a Reader for the CreateSpoe structure.
@@ -92,6 +92,11 @@ func (o *CreateSpoeCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create spoe created response
+func (o *CreateSpoeCreated) Code() int {
+	return 201
+}
+
 func (o *CreateSpoeCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoeCreated  %+v", 201, o.Payload)
 }
@@ -156,6 +161,11 @@ func (o *CreateSpoeBadRequest) IsServerError() bool {
 // IsCode returns true when this create spoe bad request response a status code equal to that given
 func (o *CreateSpoeBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the create spoe bad request response
+func (o *CreateSpoeBadRequest) Code() int {
+	return 400
 }
 
 func (o *CreateSpoeBadRequest) Error() string {
@@ -233,6 +243,11 @@ func (o *CreateSpoeConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create spoe conflict response
+func (o *CreateSpoeConflict) Code() int {
+	return 409
+}
+
 func (o *CreateSpoeConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_files][%d] createSpoeConflict  %+v", 409, o.Payload)
 }
@@ -286,11 +301,6 @@ type CreateSpoeDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create spoe default response
-func (o *CreateSpoeDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create spoe default response has a 2xx status code
 func (o *CreateSpoeDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -314,6 +324,11 @@ func (o *CreateSpoeDefault) IsServerError() bool {
 // IsCode returns true when this create spoe default response a status code equal to that given
 func (o *CreateSpoeDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create spoe default response
+func (o *CreateSpoeDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateSpoeDefault) Error() string {

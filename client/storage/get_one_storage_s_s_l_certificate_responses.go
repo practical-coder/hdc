@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetOneStorageSSLCertificateReader is a Reader for the GetOneStorageSSLCertificate structure.
@@ -86,6 +86,11 @@ func (o *GetOneStorageSSLCertificateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get one storage s s l certificate o k response
+func (o *GetOneStorageSSLCertificateOK) Code() int {
+	return 200
+}
+
 func (o *GetOneStorageSSLCertificateOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/ssl_certificates/{name}][%d] getOneStorageSSLCertificateOK  %+v", 200, o.Payload)
 }
@@ -154,6 +159,11 @@ func (o *GetOneStorageSSLCertificateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get one storage s s l certificate not found response
+func (o *GetOneStorageSSLCertificateNotFound) Code() int {
+	return 404
+}
+
 func (o *GetOneStorageSSLCertificateNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/ssl_certificates/{name}][%d] getOneStorageSSLCertificateNotFound  %+v", 404, o.Payload)
 }
@@ -207,11 +217,6 @@ type GetOneStorageSSLCertificateDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get one storage s s l certificate default response
-func (o *GetOneStorageSSLCertificateDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get one storage s s l certificate default response has a 2xx status code
 func (o *GetOneStorageSSLCertificateDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -235,6 +240,11 @@ func (o *GetOneStorageSSLCertificateDefault) IsServerError() bool {
 // IsCode returns true when this get one storage s s l certificate default response a status code equal to that given
 func (o *GetOneStorageSSLCertificateDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get one storage s s l certificate default response
+func (o *GetOneStorageSSLCertificateDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetOneStorageSSLCertificateDefault) Error() string {

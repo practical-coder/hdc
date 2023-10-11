@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // SetStickTableEntriesReader is a Reader for the SetStickTableEntries structure.
@@ -83,6 +83,11 @@ func (o *SetStickTableEntriesNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the set stick table entries no content response
+func (o *SetStickTableEntriesNoContent) Code() int {
+	return 204
+}
+
 func (o *SetStickTableEntriesNoContent) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/stick_table_entries][%d] setStickTableEntriesNoContent ", 204)
 }
@@ -118,11 +123,6 @@ type SetStickTableEntriesDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the set stick table entries default response
-func (o *SetStickTableEntriesDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this set stick table entries default response has a 2xx status code
 func (o *SetStickTableEntriesDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -146,6 +146,11 @@ func (o *SetStickTableEntriesDefault) IsServerError() bool {
 // IsCode returns true when this set stick table entries default response a status code equal to that given
 func (o *SetStickTableEntriesDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the set stick table entries default response
+func (o *SetStickTableEntriesDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *SetStickTableEntriesDefault) Error() string {
@@ -258,6 +263,7 @@ func (o *SetStickTableEntriesBody) ContextValidate(ctx context.Context, formats 
 func (o *SetStickTableEntriesBody) contextValidateDataType(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.DataType != nil {
+
 		if err := o.DataType.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stick_table_entry" + "." + "data_type")

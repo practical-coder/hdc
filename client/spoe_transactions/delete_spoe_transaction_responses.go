@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteSpoeTransactionReader is a Reader for the DeleteSpoeTransaction structure.
@@ -85,6 +85,11 @@ func (o *DeleteSpoeTransactionNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete spoe transaction no content response
+func (o *DeleteSpoeTransactionNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteSpoeTransactionNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe_transactions/{id}][%d] deleteSpoeTransactionNoContent ", 204)
 }
@@ -142,6 +147,11 @@ func (o *DeleteSpoeTransactionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete spoe transaction not found response
+func (o *DeleteSpoeTransactionNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteSpoeTransactionNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe_transactions/{id}][%d] deleteSpoeTransactionNotFound  %+v", 404, o.Payload)
 }
@@ -195,11 +205,6 @@ type DeleteSpoeTransactionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete spoe transaction default response
-func (o *DeleteSpoeTransactionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete spoe transaction default response has a 2xx status code
 func (o *DeleteSpoeTransactionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -223,6 +228,11 @@ func (o *DeleteSpoeTransactionDefault) IsServerError() bool {
 // IsCode returns true when this delete spoe transaction default response a status code equal to that given
 func (o *DeleteSpoeTransactionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete spoe transaction default response
+func (o *DeleteSpoeTransactionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteSpoeTransactionDefault) Error() string {

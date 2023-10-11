@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteTCPCheckReader is a Reader for the DeleteTCPCheck structure.
@@ -95,6 +95,11 @@ func (o *DeleteTCPCheckAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete Tcp check accepted response
+func (o *DeleteTCPCheckAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteTCPCheckAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_checks/{index}][%d] deleteTcpCheckAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteTCPCheckNoContent) IsServerError() bool {
 // IsCode returns true when this delete Tcp check no content response a status code equal to that given
 func (o *DeleteTCPCheckNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete Tcp check no content response
+func (o *DeleteTCPCheckNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteTCPCheckNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteTCPCheckNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete Tcp check not found response
+func (o *DeleteTCPCheckNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteTCPCheckNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_checks/{index}][%d] deleteTcpCheckNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteTCPCheckDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete TCP check default response
-func (o *DeleteTCPCheckDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete TCP check default response has a 2xx status code
 func (o *DeleteTCPCheckDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteTCPCheckDefault) IsServerError() bool {
 // IsCode returns true when this delete TCP check default response a status code equal to that given
 func (o *DeleteTCPCheckDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete TCP check default response
+func (o *DeleteTCPCheckDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteTCPCheckDefault) Error() string {

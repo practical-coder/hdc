@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteSpoeScopeReader is a Reader for the DeleteSpoeScope structure.
@@ -85,6 +85,11 @@ func (o *DeleteSpoeScopeNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete spoe scope no content response
+func (o *DeleteSpoeScopeNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteSpoeScopeNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_scopes/{name}][%d] deleteSpoeScopeNoContent ", 204)
 }
@@ -142,6 +147,11 @@ func (o *DeleteSpoeScopeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete spoe scope not found response
+func (o *DeleteSpoeScopeNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteSpoeScopeNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_scopes/{name}][%d] deleteSpoeScopeNotFound  %+v", 404, o.Payload)
 }
@@ -195,11 +205,6 @@ type DeleteSpoeScopeDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete spoe scope default response
-func (o *DeleteSpoeScopeDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete spoe scope default response has a 2xx status code
 func (o *DeleteSpoeScopeDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -223,6 +228,11 @@ func (o *DeleteSpoeScopeDefault) IsServerError() bool {
 // IsCode returns true when this delete spoe scope default response a status code equal to that given
 func (o *DeleteSpoeScopeDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete spoe scope default response
+func (o *DeleteSpoeScopeDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteSpoeScopeDefault) Error() string {

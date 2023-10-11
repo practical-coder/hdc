@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceConsulReader is a Reader for the ReplaceConsul structure.
@@ -92,6 +92,11 @@ func (o *ReplaceConsulOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace consul o k response
+func (o *ReplaceConsulOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceConsulOK) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/consul/{id}][%d] replaceConsulOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *ReplaceConsulBadRequest) IsServerError() bool {
 // IsCode returns true when this replace consul bad request response a status code equal to that given
 func (o *ReplaceConsulBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the replace consul bad request response
+func (o *ReplaceConsulBadRequest) Code() int {
+	return 400
 }
 
 func (o *ReplaceConsulBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *ReplaceConsulNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace consul not found response
+func (o *ReplaceConsulNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceConsulNotFound) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/consul/{id}][%d] replaceConsulNotFound  %+v", 404, o.Payload)
 }
@@ -288,11 +303,6 @@ type ReplaceConsulDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace consul default response
-func (o *ReplaceConsulDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace consul default response has a 2xx status code
 func (o *ReplaceConsulDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -316,6 +326,11 @@ func (o *ReplaceConsulDefault) IsServerError() bool {
 // IsCode returns true when this replace consul default response a status code equal to that given
 func (o *ReplaceConsulDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace consul default response
+func (o *ReplaceConsulDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceConsulDefault) Error() string {

@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetHAProxyConfigurationReader is a Reader for the GetHAProxyConfiguration structure.
@@ -89,6 +89,11 @@ func (o *GetHAProxyConfigurationOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get h a proxy configuration o k response
+func (o *GetHAProxyConfigurationOK) Code() int {
+	return 200
+}
+
 func (o *GetHAProxyConfigurationOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/raw][%d] getHAProxyConfigurationOK  %+v", 200, o.Payload)
 }
@@ -142,11 +147,6 @@ type GetHAProxyConfigurationDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get h a proxy configuration default response
-func (o *GetHAProxyConfigurationDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get h a proxy configuration default response has a 2xx status code
 func (o *GetHAProxyConfigurationDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -170,6 +170,11 @@ func (o *GetHAProxyConfigurationDefault) IsServerError() bool {
 // IsCode returns true when this get h a proxy configuration default response a status code equal to that given
 func (o *GetHAProxyConfigurationDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get h a proxy configuration default response
+func (o *GetHAProxyConfigurationDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetHAProxyConfigurationDefault) Error() string {

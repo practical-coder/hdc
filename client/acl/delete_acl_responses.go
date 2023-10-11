@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteACLReader is a Reader for the DeleteACL structure.
@@ -95,6 +95,11 @@ func (o *DeleteACLAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete Acl accepted response
+func (o *DeleteACLAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteACLAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/acls/{index}][%d] deleteAclAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteACLNoContent) IsServerError() bool {
 // IsCode returns true when this delete Acl no content response a status code equal to that given
 func (o *DeleteACLNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete Acl no content response
+func (o *DeleteACLNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteACLNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteACLNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete Acl not found response
+func (o *DeleteACLNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteACLNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/acls/{index}][%d] deleteAclNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteACLDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete Acl default response
-func (o *DeleteACLDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete Acl default response has a 2xx status code
 func (o *DeleteACLDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteACLDefault) IsServerError() bool {
 // IsCode returns true when this delete Acl default response a status code equal to that given
 func (o *DeleteACLDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete Acl default response
+func (o *DeleteACLDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteACLDefault) Error() string {

@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetACLReader is a Reader for the GetACL structure.
@@ -94,6 +94,11 @@ func (o *GetACLOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get Acl o k response
+func (o *GetACLOK) Code() int {
+	return 200
+}
+
 func (o *GetACLOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/acls/{index}][%d] getAclOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetACLNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get Acl not found response
+func (o *GetACLNotFound) Code() int {
+	return 404
+}
+
 func (o *GetACLNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/acls/{index}][%d] getAclNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetACLDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get Acl default response
-func (o *GetACLDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get Acl default response has a 2xx status code
 func (o *GetACLDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetACLDefault) IsServerError() bool {
 // IsCode returns true when this get Acl default response a status code equal to that given
 func (o *GetACLDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get Acl default response
+func (o *GetACLDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetACLDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetACLOKBody) ContextValidate(ctx context.Context, formats strfmt.Regis
 func (o *GetACLOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getAclOK" + "." + "data")

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateProgramReader is a Reader for the CreateProgram structure.
@@ -98,6 +98,11 @@ func (o *CreateProgramCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create program created response
+func (o *CreateProgramCreated) Code() int {
+	return 201
+}
+
 func (o *CreateProgramCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/programs][%d] createProgramCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateProgramAccepted) IsServerError() bool {
 // IsCode returns true when this create program accepted response a status code equal to that given
 func (o *CreateProgramAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create program accepted response
+func (o *CreateProgramAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateProgramAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateProgramBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create program bad request response
+func (o *CreateProgramBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateProgramBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/programs][%d] createProgramBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateProgramConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create program conflict response
+func (o *CreateProgramConflict) Code() int {
+	return 409
+}
+
 func (o *CreateProgramConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/programs][%d] createProgramConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateProgramDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create program default response
-func (o *CreateProgramDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create program default response has a 2xx status code
 func (o *CreateProgramDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateProgramDefault) IsServerError() bool {
 // IsCode returns true when this create program default response a status code equal to that given
 func (o *CreateProgramDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create program default response
+func (o *CreateProgramDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateProgramDefault) Error() string {

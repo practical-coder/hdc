@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // EditMailersSectionReader is a Reader for the EditMailersSection structure.
@@ -98,6 +98,11 @@ func (o *EditMailersSectionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the edit mailers section o k response
+func (o *EditMailersSectionOK) Code() int {
+	return 200
+}
+
 func (o *EditMailersSectionOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/mailers_section/{name}][%d] editMailersSectionOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *EditMailersSectionAccepted) IsServerError() bool {
 // IsCode returns true when this edit mailers section accepted response a status code equal to that given
 func (o *EditMailersSectionAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the edit mailers section accepted response
+func (o *EditMailersSectionAccepted) Code() int {
+	return 202
 }
 
 func (o *EditMailersSectionAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *EditMailersSectionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the edit mailers section bad request response
+func (o *EditMailersSectionBadRequest) Code() int {
+	return 400
+}
+
 func (o *EditMailersSectionBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/mailers_section/{name}][%d] editMailersSectionBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *EditMailersSectionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the edit mailers section not found response
+func (o *EditMailersSectionNotFound) Code() int {
+	return 404
+}
+
 func (o *EditMailersSectionNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/mailers_section/{name}][%d] editMailersSectionNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type EditMailersSectionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the edit mailers section default response
-func (o *EditMailersSectionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this edit mailers section default response has a 2xx status code
 func (o *EditMailersSectionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *EditMailersSectionDefault) IsServerError() bool {
 // IsCode returns true when this edit mailers section default response a status code equal to that given
 func (o *EditMailersSectionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the edit mailers section default response
+func (o *EditMailersSectionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *EditMailersSectionDefault) Error() string {

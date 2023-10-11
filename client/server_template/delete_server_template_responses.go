@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteServerTemplateReader is a Reader for the DeleteServerTemplate structure.
@@ -95,6 +95,11 @@ func (o *DeleteServerTemplateAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete server template accepted response
+func (o *DeleteServerTemplateAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteServerTemplateAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_templates/{prefix}][%d] deleteServerTemplateAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteServerTemplateNoContent) IsServerError() bool {
 // IsCode returns true when this delete server template no content response a status code equal to that given
 func (o *DeleteServerTemplateNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete server template no content response
+func (o *DeleteServerTemplateNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteServerTemplateNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteServerTemplateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete server template not found response
+func (o *DeleteServerTemplateNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteServerTemplateNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/server_templates/{prefix}][%d] deleteServerTemplateNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteServerTemplateDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete server template default response
-func (o *DeleteServerTemplateDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete server template default response has a 2xx status code
 func (o *DeleteServerTemplateDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteServerTemplateDefault) IsServerError() bool {
 // IsCode returns true when this delete server template default response a status code equal to that given
 func (o *DeleteServerTemplateDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete server template default response
+func (o *DeleteServerTemplateDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteServerTemplateDefault) Error() string {

@@ -157,6 +157,11 @@ func (m *StickTable) contextValidateFields(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.Fields); i++ {
 
 		if m.Fields[i] != nil {
+
+			if swag.IsZero(m.Fields[i]) { // not required
+				return nil
+			}
+
 			if err := m.Fields[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("fields" + "." + strconv.Itoa(i))

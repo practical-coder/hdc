@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceBackendReader is a Reader for the ReplaceBackend structure.
@@ -98,6 +98,11 @@ func (o *ReplaceBackendOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace backend o k response
+func (o *ReplaceBackendOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceBackendOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/backends/{name}][%d] replaceBackendOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceBackendAccepted) IsServerError() bool {
 // IsCode returns true when this replace backend accepted response a status code equal to that given
 func (o *ReplaceBackendAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace backend accepted response
+func (o *ReplaceBackendAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceBackendAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceBackendBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace backend bad request response
+func (o *ReplaceBackendBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceBackendBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/backends/{name}][%d] replaceBackendBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceBackendNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace backend not found response
+func (o *ReplaceBackendNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceBackendNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/backends/{name}][%d] replaceBackendNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceBackendDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace backend default response
-func (o *ReplaceBackendDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace backend default response has a 2xx status code
 func (o *ReplaceBackendDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceBackendDefault) IsServerError() bool {
 // IsCode returns true when this replace backend default response a status code equal to that given
 func (o *ReplaceBackendDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace backend default response
+func (o *ReplaceBackendDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceBackendDefault) Error() string {

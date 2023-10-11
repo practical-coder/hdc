@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreatePeerEntryReader is a Reader for the CreatePeerEntry structure.
@@ -98,6 +98,11 @@ func (o *CreatePeerEntryCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create peer entry created response
+func (o *CreatePeerEntryCreated) Code() int {
+	return 201
+}
+
 func (o *CreatePeerEntryCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_entries][%d] createPeerEntryCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreatePeerEntryAccepted) IsServerError() bool {
 // IsCode returns true when this create peer entry accepted response a status code equal to that given
 func (o *CreatePeerEntryAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create peer entry accepted response
+func (o *CreatePeerEntryAccepted) Code() int {
+	return 202
 }
 
 func (o *CreatePeerEntryAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreatePeerEntryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create peer entry bad request response
+func (o *CreatePeerEntryBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreatePeerEntryBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_entries][%d] createPeerEntryBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreatePeerEntryConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create peer entry conflict response
+func (o *CreatePeerEntryConflict) Code() int {
+	return 409
+}
+
 func (o *CreatePeerEntryConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/peer_entries][%d] createPeerEntryConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreatePeerEntryDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create peer entry default response
-func (o *CreatePeerEntryDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create peer entry default response has a 2xx status code
 func (o *CreatePeerEntryDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreatePeerEntryDefault) IsServerError() bool {
 // IsCode returns true when this create peer entry default response a status code equal to that given
 func (o *CreatePeerEntryDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create peer entry default response
+func (o *CreatePeerEntryDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreatePeerEntryDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateSpoeAgentReader is a Reader for the CreateSpoeAgent structure.
@@ -92,6 +92,11 @@ func (o *CreateSpoeAgentCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create spoe agent created response
+func (o *CreateSpoeAgentCreated) Code() int {
+	return 201
+}
+
 func (o *CreateSpoeAgentCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_agents][%d] createSpoeAgentCreated  %+v", 201, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *CreateSpoeAgentBadRequest) IsServerError() bool {
 // IsCode returns true when this create spoe agent bad request response a status code equal to that given
 func (o *CreateSpoeAgentBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the create spoe agent bad request response
+func (o *CreateSpoeAgentBadRequest) Code() int {
+	return 400
 }
 
 func (o *CreateSpoeAgentBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *CreateSpoeAgentConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create spoe agent conflict response
+func (o *CreateSpoeAgentConflict) Code() int {
+	return 409
+}
+
 func (o *CreateSpoeAgentConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_agents][%d] createSpoeAgentConflict  %+v", 409, o.Payload)
 }
@@ -288,11 +303,6 @@ type CreateSpoeAgentDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create spoe agent default response
-func (o *CreateSpoeAgentDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create spoe agent default response has a 2xx status code
 func (o *CreateSpoeAgentDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -316,6 +326,11 @@ func (o *CreateSpoeAgentDefault) IsServerError() bool {
 // IsCode returns true when this create spoe agent default response a status code equal to that given
 func (o *CreateSpoeAgentDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create spoe agent default response
+func (o *CreateSpoeAgentDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateSpoeAgentDefault) Error() string {

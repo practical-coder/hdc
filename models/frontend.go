@@ -1943,6 +1943,11 @@ func (m *Frontend) contextValidateErrorFiles(ctx context.Context, formats strfmt
 	for i := 0; i < len(m.ErrorFiles); i++ {
 
 		if m.ErrorFiles[i] != nil {
+
+			if swag.IsZero(m.ErrorFiles[i]) { // not required
+				return nil
+			}
+
 			if err := m.ErrorFiles[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("error_files" + "." + strconv.Itoa(i))
@@ -1963,6 +1968,11 @@ func (m *Frontend) contextValidateErrorFilesFromHTTPErrors(ctx context.Context, 
 	for i := 0; i < len(m.ErrorFilesFromHTTPErrors); i++ {
 
 		if m.ErrorFilesFromHTTPErrors[i] != nil {
+
+			if swag.IsZero(m.ErrorFilesFromHTTPErrors[i]) { // not required
+				return nil
+			}
+
 			if err := m.ErrorFilesFromHTTPErrors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("errorfiles_from_http_errors" + "." + strconv.Itoa(i))
@@ -1981,6 +1991,11 @@ func (m *Frontend) contextValidateErrorFilesFromHTTPErrors(ctx context.Context, 
 func (m *Frontend) contextValidateCompression(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Compression != nil {
+
+		if swag.IsZero(m.Compression) { // not required
+			return nil
+		}
+
 		if err := m.Compression.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("compression")
@@ -1997,6 +2012,11 @@ func (m *Frontend) contextValidateCompression(ctx context.Context, formats strfm
 func (m *Frontend) contextValidateEmailAlert(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EmailAlert != nil {
+
+		if swag.IsZero(m.EmailAlert) { // not required
+			return nil
+		}
+
 		if err := m.EmailAlert.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("email_alert")
@@ -2013,6 +2033,11 @@ func (m *Frontend) contextValidateEmailAlert(ctx context.Context, formats strfmt
 func (m *Frontend) contextValidateErrorloc302(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Errorloc302 != nil {
+
+		if swag.IsZero(m.Errorloc302) { // not required
+			return nil
+		}
+
 		if err := m.Errorloc302.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("errorloc302")
@@ -2029,6 +2054,11 @@ func (m *Frontend) contextValidateErrorloc302(ctx context.Context, formats strfm
 func (m *Frontend) contextValidateErrorloc303(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Errorloc303 != nil {
+
+		if swag.IsZero(m.Errorloc303) { // not required
+			return nil
+		}
+
 		if err := m.Errorloc303.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("errorloc303")
@@ -2045,6 +2075,11 @@ func (m *Frontend) contextValidateErrorloc303(ctx context.Context, formats strfm
 func (m *Frontend) contextValidateForwardfor(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Forwardfor != nil {
+
+		if swag.IsZero(m.Forwardfor) { // not required
+			return nil
+		}
+
 		if err := m.Forwardfor.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("forwardfor")
@@ -2061,6 +2096,11 @@ func (m *Frontend) contextValidateForwardfor(ctx context.Context, formats strfmt
 func (m *Frontend) contextValidateMonitorFail(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.MonitorFail != nil {
+
+		if swag.IsZero(m.MonitorFail) { // not required
+			return nil
+		}
+
 		if err := m.MonitorFail.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("monitor_fail")
@@ -2075,6 +2115,10 @@ func (m *Frontend) contextValidateMonitorFail(ctx context.Context, formats strfm
 }
 
 func (m *Frontend) contextValidateMonitorURI(ctx context.Context, formats strfmt.Registry) error {
+
+	if swag.IsZero(m.MonitorURI) { // not required
+		return nil
+	}
 
 	if err := m.MonitorURI.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
@@ -2091,6 +2135,11 @@ func (m *Frontend) contextValidateMonitorURI(ctx context.Context, formats strfmt
 func (m *Frontend) contextValidateOriginalto(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Originalto != nil {
+
+		if swag.IsZero(m.Originalto) { // not required
+			return nil
+		}
+
 		if err := m.Originalto.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("originalto")
@@ -2107,6 +2156,11 @@ func (m *Frontend) contextValidateOriginalto(ctx context.Context, formats strfmt
 func (m *Frontend) contextValidateStatsOptions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.StatsOptions != nil {
+
+		if swag.IsZero(m.StatsOptions) { // not required
+			return nil
+		}
+
 		if err := m.StatsOptions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stats_options")
@@ -2123,6 +2177,11 @@ func (m *Frontend) contextValidateStatsOptions(ctx context.Context, formats strf
 func (m *Frontend) contextValidateStickTable(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.StickTable != nil {
+
+		if swag.IsZero(m.StickTable) { // not required
+			return nil
+		}
+
 		if err := m.StickTable.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stick_table")

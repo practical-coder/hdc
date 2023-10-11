@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateUserReader is a Reader for the CreateUser structure.
@@ -98,6 +98,11 @@ func (o *CreateUserCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create user created response
+func (o *CreateUserCreated) Code() int {
+	return 201
+}
+
 func (o *CreateUserCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/users][%d] createUserCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateUserAccepted) IsServerError() bool {
 // IsCode returns true when this create user accepted response a status code equal to that given
 func (o *CreateUserAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create user accepted response
+func (o *CreateUserAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateUserAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateUserBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create user bad request response
+func (o *CreateUserBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateUserBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/users][%d] createUserBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateUserConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create user conflict response
+func (o *CreateUserConflict) Code() int {
+	return 409
+}
+
 func (o *CreateUserConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/users][%d] createUserConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateUserDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create user default response
-func (o *CreateUserDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create user default response has a 2xx status code
 func (o *CreateUserDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateUserDefault) IsServerError() bool {
 // IsCode returns true when this create user default response a status code equal to that given
 func (o *CreateUserDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create user default response
+func (o *CreateUserDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateUserDefault) Error() string {

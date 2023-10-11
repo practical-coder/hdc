@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceUserReader is a Reader for the ReplaceUser structure.
@@ -98,6 +98,11 @@ func (o *ReplaceUserOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace user o k response
+func (o *ReplaceUserOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceUserOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/users/{username}][%d] replaceUserOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceUserAccepted) IsServerError() bool {
 // IsCode returns true when this replace user accepted response a status code equal to that given
 func (o *ReplaceUserAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace user accepted response
+func (o *ReplaceUserAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceUserAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceUserBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace user bad request response
+func (o *ReplaceUserBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceUserBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/users/{username}][%d] replaceUserBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace user not found response
+func (o *ReplaceUserNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceUserNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/users/{username}][%d] replaceUserNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceUserDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace user default response
-func (o *ReplaceUserDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace user default response has a 2xx status code
 func (o *ReplaceUserDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceUserDefault) IsServerError() bool {
 // IsCode returns true when this replace user default response a status code equal to that given
 func (o *ReplaceUserDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace user default response
+func (o *ReplaceUserDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceUserDefault) Error() string {

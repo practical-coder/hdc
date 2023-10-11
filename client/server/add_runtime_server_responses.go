@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // AddRuntimeServerReader is a Reader for the AddRuntimeServer structure.
@@ -98,6 +98,11 @@ func (o *AddRuntimeServerCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the add runtime server created response
+func (o *AddRuntimeServerCreated) Code() int {
+	return 201
+}
+
 func (o *AddRuntimeServerCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/servers][%d] addRuntimeServerCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AddRuntimeServerBadRequest) IsServerError() bool {
 // IsCode returns true when this add runtime server bad request response a status code equal to that given
 func (o *AddRuntimeServerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the add runtime server bad request response
+func (o *AddRuntimeServerBadRequest) Code() int {
+	return 400
 }
 
 func (o *AddRuntimeServerBadRequest) Error() string {
@@ -241,6 +251,11 @@ func (o *AddRuntimeServerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the add runtime server not found response
+func (o *AddRuntimeServerNotFound) Code() int {
+	return 404
+}
+
 func (o *AddRuntimeServerNotFound) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/servers][%d] addRuntimeServerNotFound  %+v", 404, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *AddRuntimeServerConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the add runtime server conflict response
+func (o *AddRuntimeServerConflict) Code() int {
+	return 409
+}
+
 func (o *AddRuntimeServerConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/servers][%d] addRuntimeServerConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type AddRuntimeServerDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the add runtime server default response
-func (o *AddRuntimeServerDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this add runtime server default response has a 2xx status code
 func (o *AddRuntimeServerDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *AddRuntimeServerDefault) IsServerError() bool {
 // IsCode returns true when this add runtime server default response a status code equal to that given
 func (o *AddRuntimeServerDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the add runtime server default response
+func (o *AddRuntimeServerDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *AddRuntimeServerDefault) Error() string {

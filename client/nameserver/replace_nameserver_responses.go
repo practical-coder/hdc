@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceNameserverReader is a Reader for the ReplaceNameserver structure.
@@ -98,6 +98,11 @@ func (o *ReplaceNameserverOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace nameserver o k response
+func (o *ReplaceNameserverOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceNameserverOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/nameservers/{name}][%d] replaceNameserverOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceNameserverAccepted) IsServerError() bool {
 // IsCode returns true when this replace nameserver accepted response a status code equal to that given
 func (o *ReplaceNameserverAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace nameserver accepted response
+func (o *ReplaceNameserverAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceNameserverAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceNameserverBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace nameserver bad request response
+func (o *ReplaceNameserverBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceNameserverBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/nameservers/{name}][%d] replaceNameserverBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceNameserverNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace nameserver not found response
+func (o *ReplaceNameserverNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceNameserverNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/nameservers/{name}][%d] replaceNameserverNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceNameserverDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace nameserver default response
-func (o *ReplaceNameserverDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace nameserver default response has a 2xx status code
 func (o *ReplaceNameserverDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceNameserverDefault) IsServerError() bool {
 // IsCode returns true when this replace nameserver default response a status code equal to that given
 func (o *ReplaceNameserverDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace nameserver default response
+func (o *ReplaceNameserverDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceNameserverDefault) Error() string {

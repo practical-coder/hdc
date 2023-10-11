@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetServersReader is a Reader for the GetServers structure.
@@ -89,6 +89,11 @@ func (o *GetServersOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get servers o k response
+func (o *GetServersOK) Code() int {
+	return 200
+}
+
 func (o *GetServersOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/servers][%d] getServersOK  %+v", 200, o.Payload)
 }
@@ -142,11 +147,6 @@ type GetServersDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get servers default response
-func (o *GetServersDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get servers default response has a 2xx status code
 func (o *GetServersDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -170,6 +170,11 @@ func (o *GetServersDefault) IsServerError() bool {
 // IsCode returns true when this get servers default response a status code equal to that given
 func (o *GetServersDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get servers default response
+func (o *GetServersDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetServersDefault) Error() string {

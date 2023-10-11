@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetHTTPErrorsSectionReader is a Reader for the GetHTTPErrorsSection structure.
@@ -94,6 +94,11 @@ func (o *GetHTTPErrorsSectionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get Http errors section o k response
+func (o *GetHTTPErrorsSectionOK) Code() int {
+	return 200
+}
+
 func (o *GetHTTPErrorsSectionOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_errors_sections/{name}][%d] getHttpErrorsSectionOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetHTTPErrorsSectionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get Http errors section not found response
+func (o *GetHTTPErrorsSectionNotFound) Code() int {
+	return 404
+}
+
 func (o *GetHTTPErrorsSectionNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_errors_sections/{name}][%d] getHttpErrorsSectionNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetHTTPErrorsSectionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get HTTP errors section default response
-func (o *GetHTTPErrorsSectionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get HTTP errors section default response has a 2xx status code
 func (o *GetHTTPErrorsSectionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetHTTPErrorsSectionDefault) IsServerError() bool {
 // IsCode returns true when this get HTTP errors section default response a status code equal to that given
 func (o *GetHTTPErrorsSectionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get HTTP errors section default response
+func (o *GetHTTPErrorsSectionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetHTTPErrorsSectionDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetHTTPErrorsSectionOKBody) ContextValidate(ctx context.Context, format
 func (o *GetHTTPErrorsSectionOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getHttpErrorsSectionOK" + "." + "data")

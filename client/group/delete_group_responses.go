@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteGroupReader is a Reader for the DeleteGroup structure.
@@ -95,6 +95,11 @@ func (o *DeleteGroupAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete group accepted response
+func (o *DeleteGroupAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteGroupAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/groups/{name}][%d] deleteGroupAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteGroupNoContent) IsServerError() bool {
 // IsCode returns true when this delete group no content response a status code equal to that given
 func (o *DeleteGroupNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete group no content response
+func (o *DeleteGroupNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteGroupNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete group not found response
+func (o *DeleteGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteGroupNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/groups/{name}][%d] deleteGroupNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteGroupDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete group default response
-func (o *DeleteGroupDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete group default response has a 2xx status code
 func (o *DeleteGroupDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteGroupDefault) IsServerError() bool {
 // IsCode returns true when this delete group default response a status code equal to that given
 func (o *DeleteGroupDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete group default response
+func (o *DeleteGroupDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteGroupDefault) Error() string {

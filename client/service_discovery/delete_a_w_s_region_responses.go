@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteAWSRegionReader is a Reader for the DeleteAWSRegion structure.
@@ -85,6 +85,11 @@ func (o *DeleteAWSRegionNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete a w s region no content response
+func (o *DeleteAWSRegionNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteAWSRegionNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /service_discovery/aws/{id}][%d] deleteAWSRegionNoContent ", 204)
 }
@@ -142,6 +147,11 @@ func (o *DeleteAWSRegionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete a w s region not found response
+func (o *DeleteAWSRegionNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteAWSRegionNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /service_discovery/aws/{id}][%d] deleteAWSRegionNotFound  %+v", 404, o.Payload)
 }
@@ -195,11 +205,6 @@ type DeleteAWSRegionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete a w s region default response
-func (o *DeleteAWSRegionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete a w s region default response has a 2xx status code
 func (o *DeleteAWSRegionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -223,6 +228,11 @@ func (o *DeleteAWSRegionDefault) IsServerError() bool {
 // IsCode returns true when this delete a w s region default response a status code equal to that given
 func (o *DeleteAWSRegionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete a w s region default response
+func (o *DeleteAWSRegionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteAWSRegionDefault) Error() string {

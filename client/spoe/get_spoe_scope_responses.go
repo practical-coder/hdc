@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetSpoeScopeReader is a Reader for the GetSpoeScope structure.
@@ -95,6 +95,11 @@ func (o *GetSpoeScopeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get spoe scope o k response
+func (o *GetSpoeScopeOK) Code() int {
+	return 200
+}
+
 func (o *GetSpoeScopeOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_scopes/{name}][%d] getSpoeScopeOK  %+v", 200, o.Payload)
 }
@@ -170,6 +175,11 @@ func (o *GetSpoeScopeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get spoe scope not found response
+func (o *GetSpoeScopeNotFound) Code() int {
+	return 404
+}
+
 func (o *GetSpoeScopeNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_scopes/{name}][%d] getSpoeScopeNotFound  %+v", 404, o.Payload)
 }
@@ -223,11 +233,6 @@ type GetSpoeScopeDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get spoe scope default response
-func (o *GetSpoeScopeDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get spoe scope default response has a 2xx status code
 func (o *GetSpoeScopeDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -251,6 +256,11 @@ func (o *GetSpoeScopeDefault) IsServerError() bool {
 // IsCode returns true when this get spoe scope default response a status code equal to that given
 func (o *GetSpoeScopeDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get spoe scope default response
+func (o *GetSpoeScopeDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetSpoeScopeDefault) Error() string {
@@ -353,6 +363,7 @@ func (o *GetSpoeScopeOKBody) ContextValidate(ctx context.Context, formats strfmt
 func (o *GetSpoeScopeOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getSpoeScopeOK" + "." + "data")

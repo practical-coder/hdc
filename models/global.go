@@ -65,6 +65,9 @@ type Global struct {
 	// Pattern: ^[^\s]+$
 	Chroot string `json:"chroot,omitempty"`
 
+	// close spread time
+	CloseSpreadTime *int64 `json:"close_spread_time,omitempty"`
+
 	// cluster secret
 	ClusterSecret string `json:"cluster_secret,omitempty"`
 
@@ -112,6 +115,24 @@ type Global struct {
 	// hard stop after
 	HardStopAfter *int64 `json:"hard_stop_after,omitempty"`
 
+	// httpclient resolvers disabled
+	// Enum: [enabled disabled]
+	HttpclientResolversDisabled string `json:"httpclient_resolvers_disabled,omitempty"`
+
+	// httpclient resolvers id
+	HttpclientResolversID string `json:"httpclient_resolvers_id,omitempty"`
+
+	// httpclient resolvers prefer
+	// Enum: [ipv4 ipv6]
+	HttpclientResolversPrefer string `json:"httpclient_resolvers_prefer,omitempty"`
+
+	// httpclient ssl ca file
+	HttpclientSslCaFile string `json:"httpclient_ssl_ca_file,omitempty"`
+
+	// httpclient ssl verify
+	// Enum: [ none required]
+	HttpclientSslVerify *string `json:"httpclient_ssl_verify,omitempty"`
+
 	// insecure fork wanted
 	InsecureForkWanted bool `json:"insecure_fork_wanted,omitempty"`
 
@@ -145,7 +166,7 @@ type Global struct {
 	MasterWorker bool `json:"master-worker,omitempty"`
 
 	// max spread checks
-	MaxSpreadChecks int64 `json:"max_spread_checks,omitempty"`
+	MaxSpreadChecks *int64 `json:"max_spread_checks,omitempty"`
 
 	// maxcompcpuusage
 	Maxcompcpuusage int64 `json:"maxcompcpuusage,omitempty"`
@@ -221,6 +242,9 @@ type Global struct {
 	// pp2 never send local
 	Pp2NeverSendLocal bool `json:"pp2_never_send_local,omitempty"`
 
+	// prealloc fd
+	PreallocFd bool `json:"prealloc-fd,omitempty"`
+
 	// profiling tasks
 	// Enum: [auto on off]
 	ProfilingTasks string `json:"profiling_tasks,omitempty"`
@@ -251,11 +275,17 @@ type Global struct {
 	// ssl default bind ciphersuites
 	SslDefaultBindCiphersuites string `json:"ssl_default_bind_ciphersuites,omitempty"`
 
+	// ssl default bind client sigalgs
+	SslDefaultBindClientSigalgs string `json:"ssl_default_bind_client_sigalgs,omitempty"`
+
 	// ssl default bind curves
 	SslDefaultBindCurves string `json:"ssl_default_bind_curves,omitempty"`
 
 	// ssl default bind options
 	SslDefaultBindOptions string `json:"ssl_default_bind_options,omitempty"`
+
+	// ssl default bind sigalgs
+	SslDefaultBindSigalgs string `json:"ssl_default_bind_sigalgs,omitempty"`
 
 	// ssl default server ciphers
 	SslDefaultServerCiphers string `json:"ssl_default_server_ciphers,omitempty"`
@@ -386,6 +416,18 @@ func (m *Global) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateGroup(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateHttpclientResolversDisabled(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateHttpclientResolversPrefer(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateHttpclientSslVerify(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -822,6 +864,135 @@ func (m *Global) validateGroup(formats strfmt.Registry) error {
 	}
 
 	if err := validate.Pattern("group", "body", m.Group, `^[^\s]+$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var globalTypeHttpclientResolversDisabledPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enabled","disabled"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		globalTypeHttpclientResolversDisabledPropEnum = append(globalTypeHttpclientResolversDisabledPropEnum, v)
+	}
+}
+
+const (
+
+	// GlobalHttpclientResolversDisabledEnabled captures enum value "enabled"
+	GlobalHttpclientResolversDisabledEnabled string = "enabled"
+
+	// GlobalHttpclientResolversDisabledDisabled captures enum value "disabled"
+	GlobalHttpclientResolversDisabledDisabled string = "disabled"
+)
+
+// prop value enum
+func (m *Global) validateHttpclientResolversDisabledEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, globalTypeHttpclientResolversDisabledPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Global) validateHttpclientResolversDisabled(formats strfmt.Registry) error {
+	if swag.IsZero(m.HttpclientResolversDisabled) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateHttpclientResolversDisabledEnum("httpclient_resolvers_disabled", "body", m.HttpclientResolversDisabled); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var globalTypeHttpclientResolversPreferPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["ipv4","ipv6"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		globalTypeHttpclientResolversPreferPropEnum = append(globalTypeHttpclientResolversPreferPropEnum, v)
+	}
+}
+
+const (
+
+	// GlobalHttpclientResolversPreferIPV4 captures enum value "ipv4"
+	GlobalHttpclientResolversPreferIPV4 string = "ipv4"
+
+	// GlobalHttpclientResolversPreferIPV6 captures enum value "ipv6"
+	GlobalHttpclientResolversPreferIPV6 string = "ipv6"
+)
+
+// prop value enum
+func (m *Global) validateHttpclientResolversPreferEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, globalTypeHttpclientResolversPreferPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Global) validateHttpclientResolversPrefer(formats strfmt.Registry) error {
+	if swag.IsZero(m.HttpclientResolversPrefer) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateHttpclientResolversPreferEnum("httpclient_resolvers_prefer", "body", m.HttpclientResolversPrefer); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var globalTypeHttpclientSslVerifyPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["","none","required"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		globalTypeHttpclientSslVerifyPropEnum = append(globalTypeHttpclientSslVerifyPropEnum, v)
+	}
+}
+
+const (
+
+	// GlobalHttpclientSslVerifyEmpty captures enum value ""
+	GlobalHttpclientSslVerifyEmpty string = ""
+
+	// GlobalHttpclientSslVerifyNone captures enum value "none"
+	GlobalHttpclientSslVerifyNone string = "none"
+
+	// GlobalHttpclientSslVerifyRequired captures enum value "required"
+	GlobalHttpclientSslVerifyRequired string = "required"
+)
+
+// prop value enum
+func (m *Global) validateHttpclientSslVerifyEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, globalTypeHttpclientSslVerifyPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Global) validateHttpclientSslVerify(formats strfmt.Registry) error {
+	if swag.IsZero(m.HttpclientSslVerify) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateHttpclientSslVerifyEnum("httpclient_ssl_verify", "body", *m.HttpclientSslVerify); err != nil {
 		return err
 	}
 
@@ -1296,6 +1467,11 @@ func (m *Global) contextValidateCPUMaps(ctx context.Context, formats strfmt.Regi
 	for i := 0; i < len(m.CPUMaps); i++ {
 
 		if m.CPUMaps[i] != nil {
+
+			if swag.IsZero(m.CPUMaps[i]) { // not required
+				return nil
+			}
+
 			if err := m.CPUMaps[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("cpu_maps" + "." + strconv.Itoa(i))
@@ -1316,6 +1492,11 @@ func (m *Global) contextValidateH1CaseAdjusts(ctx context.Context, formats strfm
 	for i := 0; i < len(m.H1CaseAdjusts); i++ {
 
 		if m.H1CaseAdjusts[i] != nil {
+
+			if swag.IsZero(m.H1CaseAdjusts[i]) { // not required
+				return nil
+			}
+
 			if err := m.H1CaseAdjusts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("h1_case_adjust" + "." + strconv.Itoa(i))
@@ -1336,6 +1517,11 @@ func (m *Global) contextValidatePresetEnvs(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.PresetEnvs); i++ {
 
 		if m.PresetEnvs[i] != nil {
+
+			if swag.IsZero(m.PresetEnvs[i]) { // not required
+				return nil
+			}
+
 			if err := m.PresetEnvs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("presetenv" + "." + strconv.Itoa(i))
@@ -1356,6 +1542,11 @@ func (m *Global) contextValidateRuntimeAPIs(ctx context.Context, formats strfmt.
 	for i := 0; i < len(m.RuntimeAPIs); i++ {
 
 		if m.RuntimeAPIs[i] != nil {
+
+			if swag.IsZero(m.RuntimeAPIs[i]) { // not required
+				return nil
+			}
+
 			if err := m.RuntimeAPIs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("runtime_apis" + "." + strconv.Itoa(i))
@@ -1376,6 +1567,11 @@ func (m *Global) contextValidateSetEnvs(ctx context.Context, formats strfmt.Regi
 	for i := 0; i < len(m.SetEnvs); i++ {
 
 		if m.SetEnvs[i] != nil {
+
+			if swag.IsZero(m.SetEnvs[i]) { // not required
+				return nil
+			}
+
 			if err := m.SetEnvs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("setenv" + "." + strconv.Itoa(i))
@@ -1396,6 +1592,11 @@ func (m *Global) contextValidateSetVarFmts(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.SetVarFmts); i++ {
 
 		if m.SetVarFmts[i] != nil {
+
+			if swag.IsZero(m.SetVarFmts[i]) { // not required
+				return nil
+			}
+
 			if err := m.SetVarFmts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("set_var_fmt" + "." + strconv.Itoa(i))
@@ -1416,6 +1617,11 @@ func (m *Global) contextValidateSetVars(ctx context.Context, formats strfmt.Regi
 	for i := 0; i < len(m.SetVars); i++ {
 
 		if m.SetVars[i] != nil {
+
+			if swag.IsZero(m.SetVars[i]) { // not required
+				return nil
+			}
+
 			if err := m.SetVars[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("set_var" + "." + strconv.Itoa(i))
@@ -1436,6 +1642,11 @@ func (m *Global) contextValidateSslEngines(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.SslEngines); i++ {
 
 		if m.SslEngines[i] != nil {
+
+			if swag.IsZero(m.SslEngines[i]) { // not required
+				return nil
+			}
+
 			if err := m.SslEngines[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("ssl_engines" + "." + strconv.Itoa(i))
@@ -1456,6 +1667,11 @@ func (m *Global) contextValidateThreadGroupLines(ctx context.Context, formats st
 	for i := 0; i < len(m.ThreadGroupLines); i++ {
 
 		if m.ThreadGroupLines[i] != nil {
+
+			if swag.IsZero(m.ThreadGroupLines[i]) { // not required
+				return nil
+			}
+
 			if err := m.ThreadGroupLines[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("thread_group_lines" + "." + strconv.Itoa(i))
@@ -1474,6 +1690,11 @@ func (m *Global) contextValidateThreadGroupLines(ctx context.Context, formats st
 func (m *Global) contextValidateDefaultPath(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DefaultPath != nil {
+
+		if swag.IsZero(m.DefaultPath) { // not required
+			return nil
+		}
+
 		if err := m.DefaultPath.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("default_path")
@@ -1490,6 +1711,11 @@ func (m *Global) contextValidateDefaultPath(ctx context.Context, formats strfmt.
 func (m *Global) contextValidateDeviceAtlasOptions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DeviceAtlasOptions != nil {
+
+		if swag.IsZero(m.DeviceAtlasOptions) { // not required
+			return nil
+		}
+
 		if err := m.DeviceAtlasOptions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("device_atlas_options")
@@ -1506,6 +1732,11 @@ func (m *Global) contextValidateDeviceAtlasOptions(ctx context.Context, formats 
 func (m *Global) contextValidateFiftyOneDegreesOptions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.FiftyOneDegreesOptions != nil {
+
+		if swag.IsZero(m.FiftyOneDegreesOptions) { // not required
+			return nil
+		}
+
 		if err := m.FiftyOneDegreesOptions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("fifty_one_degrees_options")
@@ -1522,6 +1753,11 @@ func (m *Global) contextValidateFiftyOneDegreesOptions(ctx context.Context, form
 func (m *Global) contextValidateLogSendHostname(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.LogSendHostname != nil {
+
+		if swag.IsZero(m.LogSendHostname) { // not required
+			return nil
+		}
+
 		if err := m.LogSendHostname.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("log_send_hostname")
@@ -1540,6 +1776,11 @@ func (m *Global) contextValidateLuaLoads(ctx context.Context, formats strfmt.Reg
 	for i := 0; i < len(m.LuaLoads); i++ {
 
 		if m.LuaLoads[i] != nil {
+
+			if swag.IsZero(m.LuaLoads[i]) { // not required
+				return nil
+			}
+
 			if err := m.LuaLoads[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("lua_loads" + "." + strconv.Itoa(i))
@@ -1560,6 +1801,11 @@ func (m *Global) contextValidateLuaPrependPath(ctx context.Context, formats strf
 	for i := 0; i < len(m.LuaPrependPath); i++ {
 
 		if m.LuaPrependPath[i] != nil {
+
+			if swag.IsZero(m.LuaPrependPath[i]) { // not required
+				return nil
+			}
+
 			if err := m.LuaPrependPath[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("lua_prepend_path" + "." + strconv.Itoa(i))
@@ -1578,6 +1824,11 @@ func (m *Global) contextValidateLuaPrependPath(ctx context.Context, formats strf
 func (m *Global) contextValidateTuneOptions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.TuneOptions != nil {
+
+		if swag.IsZero(m.TuneOptions) { // not required
+			return nil
+		}
+
 		if err := m.TuneOptions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("tune_options")
@@ -1594,6 +1845,11 @@ func (m *Global) contextValidateTuneOptions(ctx context.Context, formats strfmt.
 func (m *Global) contextValidateWurflOptions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.WurflOptions != nil {
+
+		if swag.IsZero(m.WurflOptions) { // not required
+			return nil
+		}
+
 		if err := m.WurflOptions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("wurfl_options")
@@ -2834,6 +3090,18 @@ type GlobalTuneOptions struct {
 	// Enum: [enabled disabled]
 	FdEdgeTriggered string `json:"fd_edge_triggered,omitempty"`
 
+	// h2 be initial window size
+	H2BeInitialWindowSize int64 `json:"h2_be_initial_window_size,omitempty"`
+
+	// h2 be max concurrent streams
+	H2BeMaxConcurrentStreams int64 `json:"h2_be_max_concurrent_streams,omitempty"`
+
+	// h2 fe initial window size
+	H2FeInitialWindowSize int64 `json:"h2_fe_initial_window_size,omitempty"`
+
+	// h2 fe max concurrent streams
+	H2FeMaxConcurrentStreams int64 `json:"h2_fe_max_concurrent_streams,omitempty"`
+
 	// h2 header table size
 	// Maximum: 65535
 	H2HeaderTableSize int64 `json:"h2_header_table_size,omitempty"`
@@ -2867,9 +3135,16 @@ type GlobalTuneOptions struct {
 	// Minimum: 0
 	Idletimer *int64 `json:"idletimer,omitempty"`
 
+	// listener default shards
+	// Enum: [by-process by-thread by-group]
+	ListenerDefaultShards string `json:"listener_default_shards,omitempty"`
+
 	// listener multi queue
 	// Enum: [enabled disabled]
 	ListenerMultiQueue string `json:"listener_multi_queue,omitempty"`
+
+	// lua burst timeout
+	LuaBurstTimeout *int64 `json:"lua_burst_timeout,omitempty"`
 
 	// lua forced yield
 	LuaForcedYield int64 `json:"lua_forced_yield,omitempty"`
@@ -2895,6 +3170,9 @@ type GlobalTuneOptions struct {
 	// maxrewrite
 	Maxrewrite int64 `json:"maxrewrite,omitempty"`
 
+	// memory hot size
+	MemoryHotSize *int64 `json:"memory_hot_size,omitempty"`
+
 	// pattern cache size
 	PatternCacheSize *int64 `json:"pattern_cache_size,omitempty"`
 
@@ -2910,8 +3188,8 @@ type GlobalTuneOptions struct {
 	// pool low fd ratio
 	PoolLowFdRatio int64 `json:"pool_low_fd_ratio,omitempty"`
 
-	// quic frontend conn tc buffers limit
-	QuicFrontendConnTcBuffersLimit *int64 `json:"quic_frontend_conn_tc_buffers_limit,omitempty"`
+	// quic frontend conn tx buffers limit
+	QuicFrontendConnTxBuffersLimit *int64 `json:"quic_frontend_conn_tx_buffers_limit,omitempty"`
 
 	// quic frontend max idle timeout
 	QuicFrontendMaxIdleTimeout *int64 `json:"quic_frontend_max_idle_timeout,omitempty"`
@@ -2976,6 +3254,15 @@ type GlobalTuneOptions struct {
 	// ssl maxrecord
 	SslMaxrecord *int64 `json:"ssl_maxrecord,omitempty"`
 
+	// ssl ocsp update max delay
+	SslOcspUpdateMaxDelay *int64 `json:"ssl_ocsp_update_max_delay,omitempty"`
+
+	// ssl ocsp update min delay
+	SslOcspUpdateMinDelay *int64 `json:"ssl_ocsp_update_min_delay,omitempty"`
+
+	// stick counters
+	StickCounters *int64 `json:"stick_counters,omitempty"`
+
 	// vars global max size
 	VarsGlobalMaxSize *int64 `json:"vars_global_max_size,omitempty"`
 
@@ -3027,6 +3314,10 @@ func (m *GlobalTuneOptions) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateIdletimer(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateListenerDefaultShards(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -3194,6 +3485,51 @@ func (m *GlobalTuneOptions) validateIdletimer(formats strfmt.Registry) error {
 	}
 
 	if err := validate.MaximumInt("tune_options"+"."+"idletimer", "body", *m.Idletimer, 65535, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var globalTuneOptionsTypeListenerDefaultShardsPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["by-process","by-thread","by-group"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		globalTuneOptionsTypeListenerDefaultShardsPropEnum = append(globalTuneOptionsTypeListenerDefaultShardsPropEnum, v)
+	}
+}
+
+const (
+
+	// GlobalTuneOptionsListenerDefaultShardsByDashProcess captures enum value "by-process"
+	GlobalTuneOptionsListenerDefaultShardsByDashProcess string = "by-process"
+
+	// GlobalTuneOptionsListenerDefaultShardsByDashThread captures enum value "by-thread"
+	GlobalTuneOptionsListenerDefaultShardsByDashThread string = "by-thread"
+
+	// GlobalTuneOptionsListenerDefaultShardsByDashGroup captures enum value "by-group"
+	GlobalTuneOptionsListenerDefaultShardsByDashGroup string = "by-group"
+)
+
+// prop value enum
+func (m *GlobalTuneOptions) validateListenerDefaultShardsEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, globalTuneOptionsTypeListenerDefaultShardsPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *GlobalTuneOptions) validateListenerDefaultShards(formats strfmt.Registry) error {
+	if swag.IsZero(m.ListenerDefaultShards) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateListenerDefaultShardsEnum("tune_options"+"."+"listener_default_shards", "body", m.ListenerDefaultShards); err != nil {
 		return err
 	}
 

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateGroupReader is a Reader for the CreateGroup structure.
@@ -98,6 +98,11 @@ func (o *CreateGroupCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create group created response
+func (o *CreateGroupCreated) Code() int {
+	return 201
+}
+
 func (o *CreateGroupCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateGroupAccepted) IsServerError() bool {
 // IsCode returns true when this create group accepted response a status code equal to that given
 func (o *CreateGroupAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create group accepted response
+func (o *CreateGroupAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateGroupAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateGroupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create group bad request response
+func (o *CreateGroupBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateGroupConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create group conflict response
+func (o *CreateGroupConflict) Code() int {
+	return 409
+}
+
 func (o *CreateGroupConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/groups][%d] createGroupConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateGroupDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create group default response
-func (o *CreateGroupDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create group default response has a 2xx status code
 func (o *CreateGroupDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateGroupDefault) IsServerError() bool {
 // IsCode returns true when this create group default response a status code equal to that given
 func (o *CreateGroupDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create group default response
+func (o *CreateGroupDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateGroupDefault) Error() string {

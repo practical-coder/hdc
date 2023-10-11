@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetServerTemplatesReader is a Reader for the GetServerTemplates structure.
@@ -89,6 +89,11 @@ func (o *GetServerTemplatesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get server templates o k response
+func (o *GetServerTemplatesOK) Code() int {
+	return 200
+}
+
 func (o *GetServerTemplatesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_templates][%d] getServerTemplatesOK  %+v", 200, o.Payload)
 }
@@ -146,11 +151,6 @@ type GetServerTemplatesDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get server templates default response
-func (o *GetServerTemplatesDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get server templates default response has a 2xx status code
 func (o *GetServerTemplatesDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -174,6 +174,11 @@ func (o *GetServerTemplatesDefault) IsServerError() bool {
 // IsCode returns true when this get server templates default response a status code equal to that given
 func (o *GetServerTemplatesDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get server templates default response
+func (o *GetServerTemplatesDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetServerTemplatesDefault) Error() string {

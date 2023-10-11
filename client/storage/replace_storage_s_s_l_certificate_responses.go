@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceStorageSSLCertificateReader is a Reader for the ReplaceStorageSSLCertificate structure.
@@ -98,6 +98,11 @@ func (o *ReplaceStorageSSLCertificateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace storage s s l certificate o k response
+func (o *ReplaceStorageSSLCertificateOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceStorageSSLCertificateOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceStorageSSLCertificateAccepted) IsServerError() bool {
 // IsCode returns true when this replace storage s s l certificate accepted response a status code equal to that given
 func (o *ReplaceStorageSSLCertificateAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace storage s s l certificate accepted response
+func (o *ReplaceStorageSSLCertificateAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceStorageSSLCertificateAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceStorageSSLCertificateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace storage s s l certificate bad request response
+func (o *ReplaceStorageSSLCertificateBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceStorageSSLCertificateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceStorageSSLCertificateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace storage s s l certificate not found response
+func (o *ReplaceStorageSSLCertificateNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceStorageSSLCertificateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/storage/ssl_certificates/{name}][%d] replaceStorageSSLCertificateNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceStorageSSLCertificateDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace storage s s l certificate default response
-func (o *ReplaceStorageSSLCertificateDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace storage s s l certificate default response has a 2xx status code
 func (o *ReplaceStorageSSLCertificateDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceStorageSSLCertificateDefault) IsServerError() bool {
 // IsCode returns true when this replace storage s s l certificate default response a status code equal to that given
 func (o *ReplaceStorageSSLCertificateDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace storage s s l certificate default response
+func (o *ReplaceStorageSSLCertificateDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceStorageSSLCertificateDefault) Error() string {

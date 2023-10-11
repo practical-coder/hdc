@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateTCPResponseRuleReader is a Reader for the CreateTCPResponseRule structure.
@@ -98,6 +98,11 @@ func (o *CreateTCPResponseRuleCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create Tcp response rule created response
+func (o *CreateTCPResponseRuleCreated) Code() int {
+	return 201
+}
+
 func (o *CreateTCPResponseRuleCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_response_rules][%d] createTcpResponseRuleCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateTCPResponseRuleAccepted) IsServerError() bool {
 // IsCode returns true when this create Tcp response rule accepted response a status code equal to that given
 func (o *CreateTCPResponseRuleAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create Tcp response rule accepted response
+func (o *CreateTCPResponseRuleAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateTCPResponseRuleAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateTCPResponseRuleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create Tcp response rule bad request response
+func (o *CreateTCPResponseRuleBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateTCPResponseRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_response_rules][%d] createTcpResponseRuleBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateTCPResponseRuleConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create Tcp response rule conflict response
+func (o *CreateTCPResponseRuleConflict) Code() int {
+	return 409
+}
+
 func (o *CreateTCPResponseRuleConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_response_rules][%d] createTcpResponseRuleConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateTCPResponseRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create TCP response rule default response
-func (o *CreateTCPResponseRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create TCP response rule default response has a 2xx status code
 func (o *CreateTCPResponseRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateTCPResponseRuleDefault) IsServerError() bool {
 // IsCode returns true when this create TCP response rule default response a status code equal to that given
 func (o *CreateTCPResponseRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create TCP response rule default response
+func (o *CreateTCPResponseRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateTCPResponseRuleDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteBindReader is a Reader for the DeleteBind structure.
@@ -95,6 +95,11 @@ func (o *DeleteBindAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete bind accepted response
+func (o *DeleteBindAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteBindAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/binds/{name}][%d] deleteBindAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteBindNoContent) IsServerError() bool {
 // IsCode returns true when this delete bind no content response a status code equal to that given
 func (o *DeleteBindNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete bind no content response
+func (o *DeleteBindNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteBindNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteBindNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete bind not found response
+func (o *DeleteBindNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteBindNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/binds/{name}][%d] deleteBindNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteBindDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete bind default response
-func (o *DeleteBindDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete bind default response has a 2xx status code
 func (o *DeleteBindDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteBindDefault) IsServerError() bool {
 // IsCode returns true when this delete bind default response a status code equal to that given
 func (o *DeleteBindDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete bind default response
+func (o *DeleteBindDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteBindDefault) Error() string {

@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetSpoeMessageReader is a Reader for the GetSpoeMessage structure.
@@ -95,6 +95,11 @@ func (o *GetSpoeMessageOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get spoe message o k response
+func (o *GetSpoeMessageOK) Code() int {
+	return 200
+}
+
 func (o *GetSpoeMessageOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_messages/{name}][%d] getSpoeMessageOK  %+v", 200, o.Payload)
 }
@@ -170,6 +175,11 @@ func (o *GetSpoeMessageNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get spoe message not found response
+func (o *GetSpoeMessageNotFound) Code() int {
+	return 404
+}
+
 func (o *GetSpoeMessageNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_messages/{name}][%d] getSpoeMessageNotFound  %+v", 404, o.Payload)
 }
@@ -223,11 +233,6 @@ type GetSpoeMessageDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get spoe message default response
-func (o *GetSpoeMessageDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get spoe message default response has a 2xx status code
 func (o *GetSpoeMessageDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -251,6 +256,11 @@ func (o *GetSpoeMessageDefault) IsServerError() bool {
 // IsCode returns true when this get spoe message default response a status code equal to that given
 func (o *GetSpoeMessageDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get spoe message default response
+func (o *GetSpoeMessageDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetSpoeMessageDefault) Error() string {
@@ -349,6 +359,7 @@ func (o *GetSpoeMessageOKBody) ContextValidate(ctx context.Context, formats strf
 func (o *GetSpoeMessageOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getSpoeMessageOK" + "." + "data")

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateLogTargetReader is a Reader for the CreateLogTarget structure.
@@ -98,6 +98,11 @@ func (o *CreateLogTargetCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create log target created response
+func (o *CreateLogTargetCreated) Code() int {
+	return 201
+}
+
 func (o *CreateLogTargetCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/log_targets][%d] createLogTargetCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateLogTargetAccepted) IsServerError() bool {
 // IsCode returns true when this create log target accepted response a status code equal to that given
 func (o *CreateLogTargetAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create log target accepted response
+func (o *CreateLogTargetAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateLogTargetAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateLogTargetBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create log target bad request response
+func (o *CreateLogTargetBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateLogTargetBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/log_targets][%d] createLogTargetBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateLogTargetConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create log target conflict response
+func (o *CreateLogTargetConflict) Code() int {
+	return 409
+}
+
 func (o *CreateLogTargetConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/log_targets][%d] createLogTargetConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateLogTargetDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create log target default response
-func (o *CreateLogTargetDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create log target default response has a 2xx status code
 func (o *CreateLogTargetDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateLogTargetDefault) IsServerError() bool {
 // IsCode returns true when this create log target default response a status code equal to that given
 func (o *CreateLogTargetDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create log target default response
+func (o *CreateLogTargetDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateLogTargetDefault) Error() string {

@@ -23,7 +23,7 @@ import (
 // configure simple HAProxy configurations, for more advanced options use /haproxy/configuration
 // endpoints.
 //
-// Example: {"farms":[{"balance":{"algorithm":"roundrobin"},"mode":"http","name":"www_backend","servers":[{"address":"127.0.1.1","name":"www_server","port":4567,"weight":30},{"address":"127.0.1.2","name":"www_server_new","port":4567,"weight":70}],"use_as":"default"}],"name":"test_site","service":{"http_connection_mode":"httpclose","listeners":[{"address":"127.0.0.1","name":"test_listener","port":80},{"address":"127.0.0.1","name":"test_listener_2","port":8080}],"maxconn":2000,"mode":"http"}}
+// Example: {"farms":[{"balance":{"algorithm":"roundrobin"},"mode":"http","name":"www_backend","servers":[{"address":"127.0.1.1","name":"www_server","port":4567},{"address":"127.0.1.2","name":"www_server_new","port":4567}],"use_as":"default"}],"name":"test_site","service":{"http_connection_mode":"httpclose","maxconn":2000,"mode":"http"}}
 //
 // swagger:model site
 type Site struct {
@@ -143,6 +143,11 @@ func (m *Site) contextValidateFarms(ctx context.Context, formats strfmt.Registry
 	for i := 0; i < len(m.Farms); i++ {
 
 		if m.Farms[i] != nil {
+
+			if swag.IsZero(m.Farms[i]) { // not required
+				return nil
+			}
+
 			if err := m.Farms[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("farms" + "." + strconv.Itoa(i))
@@ -161,6 +166,11 @@ func (m *Site) contextValidateFarms(ctx context.Context, formats strfmt.Registry
 func (m *Site) contextValidateService(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Service != nil {
+
+		if swag.IsZero(m.Service) { // not required
+			return nil
+		}
+
 		if err := m.Service.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("service")
@@ -495,6 +505,11 @@ func (m *SiteFarm) ContextValidate(ctx context.Context, formats strfmt.Registry)
 func (m *SiteFarm) contextValidateBalance(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Balance != nil {
+
+		if swag.IsZero(m.Balance) { // not required
+			return nil
+		}
+
 		if err := m.Balance.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("balance")
@@ -511,6 +526,11 @@ func (m *SiteFarm) contextValidateBalance(ctx context.Context, formats strfmt.Re
 func (m *SiteFarm) contextValidateForwardfor(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Forwardfor != nil {
+
+		if swag.IsZero(m.Forwardfor) { // not required
+			return nil
+		}
+
 		if err := m.Forwardfor.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("forwardfor")
@@ -529,6 +549,11 @@ func (m *SiteFarm) contextValidateServers(ctx context.Context, formats strfmt.Re
 	for i := 0; i < len(m.Servers); i++ {
 
 		if m.Servers[i] != nil {
+
+			if swag.IsZero(m.Servers[i]) { // not required
+				return nil
+			}
+
 			if err := m.Servers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("servers" + "." + strconv.Itoa(i))
@@ -742,6 +767,11 @@ func (m *SiteService) contextValidateListeners(ctx context.Context, formats strf
 	for i := 0; i < len(m.Listeners); i++ {
 
 		if m.Listeners[i] != nil {
+
+			if swag.IsZero(m.Listeners[i]) { // not required
+				return nil
+			}
+
 			if err := m.Listeners[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("service" + "." + "listeners" + "." + strconv.Itoa(i))

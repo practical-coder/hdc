@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateStorageMapFileReader is a Reader for the CreateStorageMapFile structure.
@@ -92,6 +92,11 @@ func (o *CreateStorageMapFileCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create storage map file created response
+func (o *CreateStorageMapFileCreated) Code() int {
+	return 201
+}
+
 func (o *CreateStorageMapFileCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/maps][%d] createStorageMapFileCreated  %+v", 201, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *CreateStorageMapFileBadRequest) IsServerError() bool {
 // IsCode returns true when this create storage map file bad request response a status code equal to that given
 func (o *CreateStorageMapFileBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the create storage map file bad request response
+func (o *CreateStorageMapFileBadRequest) Code() int {
+	return 400
 }
 
 func (o *CreateStorageMapFileBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *CreateStorageMapFileConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create storage map file conflict response
+func (o *CreateStorageMapFileConflict) Code() int {
+	return 409
+}
+
 func (o *CreateStorageMapFileConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/maps][%d] createStorageMapFileConflict  %+v", 409, o.Payload)
 }
@@ -288,11 +303,6 @@ type CreateStorageMapFileDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create storage map file default response
-func (o *CreateStorageMapFileDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create storage map file default response has a 2xx status code
 func (o *CreateStorageMapFileDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -316,6 +326,11 @@ func (o *CreateStorageMapFileDefault) IsServerError() bool {
 // IsCode returns true when this create storage map file default response a status code equal to that given
 func (o *CreateStorageMapFileDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create storage map file default response
+func (o *CreateStorageMapFileDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateStorageMapFileDefault) Error() string {

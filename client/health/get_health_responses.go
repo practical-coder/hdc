@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetHealthReader is a Reader for the GetHealth structure.
@@ -80,6 +80,11 @@ func (o *GetHealthOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get health o k response
+func (o *GetHealthOK) Code() int {
+	return 200
+}
+
 func (o *GetHealthOK) Error() string {
 	return fmt.Sprintf("[GET /health][%d] getHealthOK  %+v", 200, o.Payload)
 }
@@ -126,11 +131,6 @@ type GetHealthDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get health default response
-func (o *GetHealthDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get health default response has a 2xx status code
 func (o *GetHealthDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -154,6 +154,11 @@ func (o *GetHealthDefault) IsServerError() bool {
 // IsCode returns true when this get health default response a status code equal to that given
 func (o *GetHealthDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get health default response
+func (o *GetHealthDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetHealthDefault) Error() string {

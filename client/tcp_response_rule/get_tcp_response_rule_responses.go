@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetTCPResponseRuleReader is a Reader for the GetTCPResponseRule structure.
@@ -94,6 +94,11 @@ func (o *GetTCPResponseRuleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get Tcp response rule o k response
+func (o *GetTCPResponseRuleOK) Code() int {
+	return 200
+}
+
 func (o *GetTCPResponseRuleOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_response_rules/{index}][%d] getTcpResponseRuleOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetTCPResponseRuleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get Tcp response rule not found response
+func (o *GetTCPResponseRuleNotFound) Code() int {
+	return 404
+}
+
 func (o *GetTCPResponseRuleNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_response_rules/{index}][%d] getTcpResponseRuleNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetTCPResponseRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get TCP response rule default response
-func (o *GetTCPResponseRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get TCP response rule default response has a 2xx status code
 func (o *GetTCPResponseRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetTCPResponseRuleDefault) IsServerError() bool {
 // IsCode returns true when this get TCP response rule default response a status code equal to that given
 func (o *GetTCPResponseRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get TCP response rule default response
+func (o *GetTCPResponseRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetTCPResponseRuleDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetTCPResponseRuleOKBody) ContextValidate(ctx context.Context, formats 
 func (o *GetTCPResponseRuleOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getTcpResponseRuleOK" + "." + "data")

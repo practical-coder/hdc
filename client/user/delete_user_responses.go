@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteUserReader is a Reader for the DeleteUser structure.
@@ -95,6 +95,11 @@ func (o *DeleteUserAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete user accepted response
+func (o *DeleteUserAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteUserAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/users/{username}][%d] deleteUserAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteUserNoContent) IsServerError() bool {
 // IsCode returns true when this delete user no content response a status code equal to that given
 func (o *DeleteUserNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete user no content response
+func (o *DeleteUserNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteUserNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete user not found response
+func (o *DeleteUserNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteUserNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/users/{username}][%d] deleteUserNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteUserDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete user default response
-func (o *DeleteUserDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete user default response has a 2xx status code
 func (o *DeleteUserDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteUserDefault) IsServerError() bool {
 // IsCode returns true when this delete user default response a status code equal to that given
 func (o *DeleteUserDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete user default response
+func (o *DeleteUserDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteUserDefault) Error() string {

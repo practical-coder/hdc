@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetRuntimeServersReader is a Reader for the GetRuntimeServers structure.
@@ -80,6 +80,11 @@ func (o *GetRuntimeServersOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get runtime servers o k response
+func (o *GetRuntimeServersOK) Code() int {
+	return 200
+}
+
 func (o *GetRuntimeServersOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/servers][%d] getRuntimeServersOK  %+v", 200, o.Payload)
 }
@@ -124,11 +129,6 @@ type GetRuntimeServersDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get runtime servers default response
-func (o *GetRuntimeServersDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get runtime servers default response has a 2xx status code
 func (o *GetRuntimeServersDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -152,6 +152,11 @@ func (o *GetRuntimeServersDefault) IsServerError() bool {
 // IsCode returns true when this get runtime servers default response a status code equal to that given
 func (o *GetRuntimeServersDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get runtime servers default response
+func (o *GetRuntimeServersDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetRuntimeServersDefault) Error() string {

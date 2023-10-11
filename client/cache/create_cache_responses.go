@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateCacheReader is a Reader for the CreateCache structure.
@@ -98,6 +98,11 @@ func (o *CreateCacheCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create cache created response
+func (o *CreateCacheCreated) Code() int {
+	return 201
+}
+
 func (o *CreateCacheCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/caches][%d] createCacheCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateCacheAccepted) IsServerError() bool {
 // IsCode returns true when this create cache accepted response a status code equal to that given
 func (o *CreateCacheAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create cache accepted response
+func (o *CreateCacheAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateCacheAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateCacheBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create cache bad request response
+func (o *CreateCacheBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateCacheBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/caches][%d] createCacheBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateCacheConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create cache conflict response
+func (o *CreateCacheConflict) Code() int {
+	return 409
+}
+
 func (o *CreateCacheConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/caches][%d] createCacheConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateCacheDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create cache default response
-func (o *CreateCacheDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create cache default response has a 2xx status code
 func (o *CreateCacheDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateCacheDefault) IsServerError() bool {
 // IsCode returns true when this create cache default response a status code equal to that given
 func (o *CreateCacheDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create cache default response
+func (o *CreateCacheDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateCacheDefault) Error() string {

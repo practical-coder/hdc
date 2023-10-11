@@ -339,6 +339,11 @@ func (m *AwsRegion) contextValidateAllowlist(ctx context.Context, formats strfmt
 	for i := 0; i < len(m.Allowlist); i++ {
 
 		if m.Allowlist[i] != nil {
+
+			if swag.IsZero(m.Allowlist[i]) { // not required
+				return nil
+			}
+
 			if err := m.Allowlist[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("allowlist" + "." + strconv.Itoa(i))
@@ -359,6 +364,11 @@ func (m *AwsRegion) contextValidateDenylist(ctx context.Context, formats strfmt.
 	for i := 0; i < len(m.Denylist); i++ {
 
 		if m.Denylist[i] != nil {
+
+			if swag.IsZero(m.Denylist[i]) { // not required
+				return nil
+			}
+
 			if err := m.Denylist[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("denylist" + "." + strconv.Itoa(i))

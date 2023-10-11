@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteBackendSwitchingRuleReader is a Reader for the DeleteBackendSwitchingRule structure.
@@ -95,6 +95,11 @@ func (o *DeleteBackendSwitchingRuleAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete backend switching rule accepted response
+func (o *DeleteBackendSwitchingRuleAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteBackendSwitchingRuleAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/backend_switching_rules/{index}][%d] deleteBackendSwitchingRuleAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteBackendSwitchingRuleNoContent) IsServerError() bool {
 // IsCode returns true when this delete backend switching rule no content response a status code equal to that given
 func (o *DeleteBackendSwitchingRuleNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete backend switching rule no content response
+func (o *DeleteBackendSwitchingRuleNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteBackendSwitchingRuleNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteBackendSwitchingRuleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete backend switching rule not found response
+func (o *DeleteBackendSwitchingRuleNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteBackendSwitchingRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/backend_switching_rules/{index}][%d] deleteBackendSwitchingRuleNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteBackendSwitchingRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete backend switching rule default response
-func (o *DeleteBackendSwitchingRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete backend switching rule default response has a 2xx status code
 func (o *DeleteBackendSwitchingRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteBackendSwitchingRuleDefault) IsServerError() bool {
 // IsCode returns true when this delete backend switching rule default response a status code equal to that given
 func (o *DeleteBackendSwitchingRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete backend switching rule default response
+func (o *DeleteBackendSwitchingRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteBackendSwitchingRuleDefault) Error() string {

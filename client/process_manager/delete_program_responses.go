@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteProgramReader is a Reader for the DeleteProgram structure.
@@ -95,6 +95,11 @@ func (o *DeleteProgramAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete program accepted response
+func (o *DeleteProgramAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteProgramAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/programs/{name}][%d] deleteProgramAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteProgramNoContent) IsServerError() bool {
 // IsCode returns true when this delete program no content response a status code equal to that given
 func (o *DeleteProgramNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete program no content response
+func (o *DeleteProgramNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteProgramNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteProgramNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete program not found response
+func (o *DeleteProgramNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteProgramNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/programs/{name}][%d] deleteProgramNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteProgramDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete program default response
-func (o *DeleteProgramDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete program default response has a 2xx status code
 func (o *DeleteProgramDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteProgramDefault) IsServerError() bool {
 // IsCode returns true when this delete program default response a status code equal to that given
 func (o *DeleteProgramDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete program default response
+func (o *DeleteProgramDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteProgramDefault) Error() string {

@@ -21,7 +21,7 @@ import (
 type HttpchkParams struct {
 
 	// method
-	// Enum: [HEAD PUT POST GET TRACE PATCH]
+	// Enum: [HEAD PUT POST GET TRACE PATCH DELETE CONNECT OPTIONS]
 	Method string `json:"method,omitempty"`
 
 	// uri
@@ -54,7 +54,7 @@ var httpchkParamsTypeMethodPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["HEAD","PUT","POST","GET","TRACE","PATCH"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["HEAD","PUT","POST","GET","TRACE","PATCH","DELETE","CONNECT","OPTIONS"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -81,6 +81,15 @@ const (
 
 	// HttpchkParamsMethodPATCH captures enum value "PATCH"
 	HttpchkParamsMethodPATCH string = "PATCH"
+
+	// HttpchkParamsMethodDELETE captures enum value "DELETE"
+	HttpchkParamsMethodDELETE string = "DELETE"
+
+	// HttpchkParamsMethodCONNECT captures enum value "CONNECT"
+	HttpchkParamsMethodCONNECT string = "CONNECT"
+
+	// HttpchkParamsMethodOPTIONS captures enum value "OPTIONS"
+	HttpchkParamsMethodOPTIONS string = "OPTIONS"
 )
 
 // prop value enum

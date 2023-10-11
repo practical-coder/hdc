@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetOpenapiv3SpecificationReader is a Reader for the GetOpenapiv3Specification structure.
@@ -80,6 +80,11 @@ func (o *GetOpenapiv3SpecificationOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get openapiv3 specification o k response
+func (o *GetOpenapiv3SpecificationOK) Code() int {
+	return 200
+}
+
 func (o *GetOpenapiv3SpecificationOK) Error() string {
 	return fmt.Sprintf("[GET /specification_openapiv3][%d] getOpenapiv3SpecificationOK  %+v", 200, o.Payload)
 }
@@ -124,11 +129,6 @@ type GetOpenapiv3SpecificationDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get openapiv3 specification default response
-func (o *GetOpenapiv3SpecificationDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get openapiv3 specification default response has a 2xx status code
 func (o *GetOpenapiv3SpecificationDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -152,6 +152,11 @@ func (o *GetOpenapiv3SpecificationDefault) IsServerError() bool {
 // IsCode returns true when this get openapiv3 specification default response a status code equal to that given
 func (o *GetOpenapiv3SpecificationDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get openapiv3 specification default response
+func (o *GetOpenapiv3SpecificationDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetOpenapiv3SpecificationDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateDeclareCaptureReader is a Reader for the CreateDeclareCapture structure.
@@ -98,6 +98,11 @@ func (o *CreateDeclareCaptureCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create declare capture created response
+func (o *CreateDeclareCaptureCreated) Code() int {
+	return 201
+}
+
 func (o *CreateDeclareCaptureCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/captures][%d] createDeclareCaptureCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateDeclareCaptureAccepted) IsServerError() bool {
 // IsCode returns true when this create declare capture accepted response a status code equal to that given
 func (o *CreateDeclareCaptureAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create declare capture accepted response
+func (o *CreateDeclareCaptureAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateDeclareCaptureAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateDeclareCaptureBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create declare capture bad request response
+func (o *CreateDeclareCaptureBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateDeclareCaptureBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/captures][%d] createDeclareCaptureBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateDeclareCaptureConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create declare capture conflict response
+func (o *CreateDeclareCaptureConflict) Code() int {
+	return 409
+}
+
 func (o *CreateDeclareCaptureConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/captures][%d] createDeclareCaptureConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateDeclareCaptureDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create declare capture default response
-func (o *CreateDeclareCaptureDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create declare capture default response has a 2xx status code
 func (o *CreateDeclareCaptureDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateDeclareCaptureDefault) IsServerError() bool {
 // IsCode returns true when this create declare capture default response a status code equal to that given
 func (o *CreateDeclareCaptureDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create declare capture default response
+func (o *CreateDeclareCaptureDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateDeclareCaptureDefault) Error() string {

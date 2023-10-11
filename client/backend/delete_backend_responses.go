@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteBackendReader is a Reader for the DeleteBackend structure.
@@ -95,6 +95,11 @@ func (o *DeleteBackendAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete backend accepted response
+func (o *DeleteBackendAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteBackendAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/backends/{name}][%d] deleteBackendAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteBackendNoContent) IsServerError() bool {
 // IsCode returns true when this delete backend no content response a status code equal to that given
 func (o *DeleteBackendNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete backend no content response
+func (o *DeleteBackendNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteBackendNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteBackendNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete backend not found response
+func (o *DeleteBackendNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteBackendNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/backends/{name}][%d] deleteBackendNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteBackendDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete backend default response
-func (o *DeleteBackendDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete backend default response has a 2xx status code
 func (o *DeleteBackendDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteBackendDefault) IsServerError() bool {
 // IsCode returns true when this delete backend default response a status code equal to that given
 func (o *DeleteBackendDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete backend default response
+func (o *DeleteBackendDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteBackendDefault) Error() string {

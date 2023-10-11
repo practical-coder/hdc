@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetBackendsReader is a Reader for the GetBackends structure.
@@ -89,6 +89,11 @@ func (o *GetBackendsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get backends o k response
+func (o *GetBackendsOK) Code() int {
+	return 200
+}
+
 func (o *GetBackendsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/backends][%d] getBackendsOK  %+v", 200, o.Payload)
 }
@@ -142,11 +147,6 @@ type GetBackendsDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get backends default response
-func (o *GetBackendsDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get backends default response has a 2xx status code
 func (o *GetBackendsDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -170,6 +170,11 @@ func (o *GetBackendsDefault) IsServerError() bool {
 // IsCode returns true when this get backends default response a status code equal to that given
 func (o *GetBackendsDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get backends default response
+func (o *GetBackendsDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetBackendsDefault) Error() string {

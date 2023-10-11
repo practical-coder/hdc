@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetSpoeTransactionsReader is a Reader for the GetSpoeTransactions structure.
@@ -80,6 +80,11 @@ func (o *GetSpoeTransactionsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get spoe transactions o k response
+func (o *GetSpoeTransactionsOK) Code() int {
+	return 200
+}
+
 func (o *GetSpoeTransactionsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe_transactions][%d] getSpoeTransactionsOK  %+v", 200, o.Payload)
 }
@@ -124,11 +129,6 @@ type GetSpoeTransactionsDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get spoe transactions default response
-func (o *GetSpoeTransactionsDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get spoe transactions default response has a 2xx status code
 func (o *GetSpoeTransactionsDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -152,6 +152,11 @@ func (o *GetSpoeTransactionsDefault) IsServerError() bool {
 // IsCode returns true when this get spoe transactions default response a status code equal to that given
 func (o *GetSpoeTransactionsDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get spoe transactions default response
+func (o *GetSpoeTransactionsDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetSpoeTransactionsDefault) Error() string {

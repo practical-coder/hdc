@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteServerReader is a Reader for the DeleteServer structure.
@@ -95,6 +95,11 @@ func (o *DeleteServerAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete server accepted response
+func (o *DeleteServerAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteServerAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/servers/{name}][%d] deleteServerAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteServerNoContent) IsServerError() bool {
 // IsCode returns true when this delete server no content response a status code equal to that given
 func (o *DeleteServerNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete server no content response
+func (o *DeleteServerNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteServerNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteServerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete server not found response
+func (o *DeleteServerNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteServerNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/servers/{name}][%d] deleteServerNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteServerDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete server default response
-func (o *DeleteServerDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete server default response has a 2xx status code
 func (o *DeleteServerDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteServerDefault) IsServerError() bool {
 // IsCode returns true when this delete server default response a status code equal to that given
 func (o *DeleteServerDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete server default response
+func (o *DeleteServerDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteServerDefault) Error() string {

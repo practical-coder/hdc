@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteTCPResponseRuleReader is a Reader for the DeleteTCPResponseRule structure.
@@ -95,6 +95,11 @@ func (o *DeleteTCPResponseRuleAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete Tcp response rule accepted response
+func (o *DeleteTCPResponseRuleAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteTCPResponseRuleAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_response_rules/{index}][%d] deleteTcpResponseRuleAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteTCPResponseRuleNoContent) IsServerError() bool {
 // IsCode returns true when this delete Tcp response rule no content response a status code equal to that given
 func (o *DeleteTCPResponseRuleNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete Tcp response rule no content response
+func (o *DeleteTCPResponseRuleNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteTCPResponseRuleNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteTCPResponseRuleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete Tcp response rule not found response
+func (o *DeleteTCPResponseRuleNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteTCPResponseRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_response_rules/{index}][%d] deleteTcpResponseRuleNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteTCPResponseRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete TCP response rule default response
-func (o *DeleteTCPResponseRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete TCP response rule default response has a 2xx status code
 func (o *DeleteTCPResponseRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteTCPResponseRuleDefault) IsServerError() bool {
 // IsCode returns true when this delete TCP response rule default response a status code equal to that given
 func (o *DeleteTCPResponseRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete TCP response rule default response
+func (o *DeleteTCPResponseRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteTCPResponseRuleDefault) Error() string {

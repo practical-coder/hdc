@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetServerReader is a Reader for the GetServer structure.
@@ -94,6 +94,11 @@ func (o *GetServerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get server o k response
+func (o *GetServerOK) Code() int {
+	return 200
+}
+
 func (o *GetServerOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/servers/{name}][%d] getServerOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetServerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get server not found response
+func (o *GetServerNotFound) Code() int {
+	return 404
+}
+
 func (o *GetServerNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/servers/{name}][%d] getServerNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetServerDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get server default response
-func (o *GetServerDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get server default response has a 2xx status code
 func (o *GetServerDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetServerDefault) IsServerError() bool {
 // IsCode returns true when this get server default response a status code equal to that given
 func (o *GetServerDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get server default response
+func (o *GetServerDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetServerDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetServerOKBody) ContextValidate(ctx context.Context, formats strfmt.Re
 func (o *GetServerOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getServerOK" + "." + "data")

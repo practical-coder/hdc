@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetHTTPCheckReader is a Reader for the GetHTTPCheck structure.
@@ -94,6 +94,11 @@ func (o *GetHTTPCheckOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get Http check o k response
+func (o *GetHTTPCheckOK) Code() int {
+	return 200
+}
+
 func (o *GetHTTPCheckOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_checks/{index}][%d] getHttpCheckOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetHTTPCheckNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get Http check not found response
+func (o *GetHTTPCheckNotFound) Code() int {
+	return 404
+}
+
 func (o *GetHTTPCheckNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_checks/{index}][%d] getHttpCheckNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetHTTPCheckDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get HTTP check default response
-func (o *GetHTTPCheckDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get HTTP check default response has a 2xx status code
 func (o *GetHTTPCheckDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetHTTPCheckDefault) IsServerError() bool {
 // IsCode returns true when this get HTTP check default response a status code equal to that given
 func (o *GetHTTPCheckDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get HTTP check default response
+func (o *GetHTTPCheckDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetHTTPCheckDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetHTTPCheckOKBody) ContextValidate(ctx context.Context, formats strfmt
 func (o *GetHTTPCheckOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getHttpCheckOK" + "." + "data")

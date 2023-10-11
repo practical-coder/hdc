@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceDefaultsSectionReader is a Reader for the ReplaceDefaultsSection structure.
@@ -98,6 +98,11 @@ func (o *ReplaceDefaultsSectionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace defaults section o k response
+func (o *ReplaceDefaultsSectionOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceDefaultsSectionOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/named_defaults/{name}][%d] replaceDefaultsSectionOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceDefaultsSectionAccepted) IsServerError() bool {
 // IsCode returns true when this replace defaults section accepted response a status code equal to that given
 func (o *ReplaceDefaultsSectionAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace defaults section accepted response
+func (o *ReplaceDefaultsSectionAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceDefaultsSectionAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceDefaultsSectionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace defaults section bad request response
+func (o *ReplaceDefaultsSectionBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceDefaultsSectionBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/named_defaults/{name}][%d] replaceDefaultsSectionBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceDefaultsSectionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace defaults section not found response
+func (o *ReplaceDefaultsSectionNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceDefaultsSectionNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/named_defaults/{name}][%d] replaceDefaultsSectionNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceDefaultsSectionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace defaults section default response
-func (o *ReplaceDefaultsSectionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace defaults section default response has a 2xx status code
 func (o *ReplaceDefaultsSectionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceDefaultsSectionDefault) IsServerError() bool {
 // IsCode returns true when this replace defaults section default response a status code equal to that given
 func (o *ReplaceDefaultsSectionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace defaults section default response
+func (o *ReplaceDefaultsSectionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceDefaultsSectionDefault) Error() string {

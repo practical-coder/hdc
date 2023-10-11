@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteHTTPErrorRuleReader is a Reader for the DeleteHTTPErrorRule structure.
@@ -95,6 +95,11 @@ func (o *DeleteHTTPErrorRuleAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete Http error rule accepted response
+func (o *DeleteHTTPErrorRuleAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteHTTPErrorRuleAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_error_rules/{index}][%d] deleteHttpErrorRuleAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteHTTPErrorRuleNoContent) IsServerError() bool {
 // IsCode returns true when this delete Http error rule no content response a status code equal to that given
 func (o *DeleteHTTPErrorRuleNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete Http error rule no content response
+func (o *DeleteHTTPErrorRuleNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteHTTPErrorRuleNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteHTTPErrorRuleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete Http error rule not found response
+func (o *DeleteHTTPErrorRuleNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteHTTPErrorRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/http_error_rules/{index}][%d] deleteHttpErrorRuleNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteHTTPErrorRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete HTTP error rule default response
-func (o *DeleteHTTPErrorRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete HTTP error rule default response has a 2xx status code
 func (o *DeleteHTTPErrorRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteHTTPErrorRuleDefault) IsServerError() bool {
 // IsCode returns true when this delete HTTP error rule default response a status code equal to that given
 func (o *DeleteHTTPErrorRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete HTTP error rule default response
+func (o *DeleteHTTPErrorRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteHTTPErrorRuleDefault) Error() string {

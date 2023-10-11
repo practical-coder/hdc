@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateMailersSectionReader is a Reader for the CreateMailersSection structure.
@@ -98,6 +98,11 @@ func (o *CreateMailersSectionCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create mailers section created response
+func (o *CreateMailersSectionCreated) Code() int {
+	return 201
+}
+
 func (o *CreateMailersSectionCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/mailers_section][%d] createMailersSectionCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateMailersSectionAccepted) IsServerError() bool {
 // IsCode returns true when this create mailers section accepted response a status code equal to that given
 func (o *CreateMailersSectionAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create mailers section accepted response
+func (o *CreateMailersSectionAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateMailersSectionAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateMailersSectionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create mailers section bad request response
+func (o *CreateMailersSectionBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateMailersSectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/mailers_section][%d] createMailersSectionBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateMailersSectionConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create mailers section conflict response
+func (o *CreateMailersSectionConflict) Code() int {
+	return 409
+}
+
 func (o *CreateMailersSectionConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/mailers_section][%d] createMailersSectionConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateMailersSectionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create mailers section default response
-func (o *CreateMailersSectionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create mailers section default response has a 2xx status code
 func (o *CreateMailersSectionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateMailersSectionDefault) IsServerError() bool {
 // IsCode returns true when this create mailers section default response a status code equal to that given
 func (o *CreateMailersSectionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create mailers section default response
+func (o *CreateMailersSectionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateMailersSectionDefault) Error() string {

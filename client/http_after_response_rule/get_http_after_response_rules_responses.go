@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetHTTPAfterResponseRulesReader is a Reader for the GetHTTPAfterResponseRules structure.
@@ -89,6 +89,11 @@ func (o *GetHTTPAfterResponseRulesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get Http after response rules o k response
+func (o *GetHTTPAfterResponseRulesOK) Code() int {
+	return 200
+}
+
 func (o *GetHTTPAfterResponseRulesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_after_response_rules][%d] getHttpAfterResponseRulesOK  %+v", 200, o.Payload)
 }
@@ -142,11 +147,6 @@ type GetHTTPAfterResponseRulesDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get HTTP after response rules default response
-func (o *GetHTTPAfterResponseRulesDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get HTTP after response rules default response has a 2xx status code
 func (o *GetHTTPAfterResponseRulesDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -170,6 +170,11 @@ func (o *GetHTTPAfterResponseRulesDefault) IsServerError() bool {
 // IsCode returns true when this get HTTP after response rules default response a status code equal to that given
 func (o *GetHTTPAfterResponseRulesDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get HTTP after response rules default response
+func (o *GetHTTPAfterResponseRulesDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetHTTPAfterResponseRulesDefault) Error() string {

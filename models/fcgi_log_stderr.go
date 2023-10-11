@@ -95,6 +95,11 @@ func (m *FcgiLogStderr) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *FcgiLogStderr) contextValidateSample(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Sample != nil {
+
+		if swag.IsZero(m.Sample) { // not required
+			return nil
+		}
+
 		if err := m.Sample.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sample")

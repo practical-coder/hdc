@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetTCPResponseRulesReader is a Reader for the GetTCPResponseRules structure.
@@ -89,6 +89,11 @@ func (o *GetTCPResponseRulesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get Tcp response rules o k response
+func (o *GetTCPResponseRulesOK) Code() int {
+	return 200
+}
+
 func (o *GetTCPResponseRulesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/tcp_response_rules][%d] getTcpResponseRulesOK  %+v", 200, o.Payload)
 }
@@ -142,11 +147,6 @@ type GetTCPResponseRulesDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get TCP response rules default response
-func (o *GetTCPResponseRulesDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get TCP response rules default response has a 2xx status code
 func (o *GetTCPResponseRulesDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -170,6 +170,11 @@ func (o *GetTCPResponseRulesDefault) IsServerError() bool {
 // IsCode returns true when this get TCP response rules default response a status code equal to that given
 func (o *GetTCPResponseRulesDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get TCP response rules default response
+func (o *GetTCPResponseRulesDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetTCPResponseRulesDefault) Error() string {

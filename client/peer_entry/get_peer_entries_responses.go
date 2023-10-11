@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetPeerEntriesReader is a Reader for the GetPeerEntries structure.
@@ -89,6 +89,11 @@ func (o *GetPeerEntriesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get peer entries o k response
+func (o *GetPeerEntriesOK) Code() int {
+	return 200
+}
+
 func (o *GetPeerEntriesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/peer_entries][%d] getPeerEntriesOK  %+v", 200, o.Payload)
 }
@@ -142,11 +147,6 @@ type GetPeerEntriesDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get peer entries default response
-func (o *GetPeerEntriesDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get peer entries default response has a 2xx status code
 func (o *GetPeerEntriesDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -170,6 +170,11 @@ func (o *GetPeerEntriesDefault) IsServerError() bool {
 // IsCode returns true when this get peer entries default response a status code equal to that given
 func (o *GetPeerEntriesDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get peer entries default response
+func (o *GetPeerEntriesDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetPeerEntriesDefault) Error() string {

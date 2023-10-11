@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceFrontendReader is a Reader for the ReplaceFrontend structure.
@@ -98,6 +98,11 @@ func (o *ReplaceFrontendOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace frontend o k response
+func (o *ReplaceFrontendOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceFrontendOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/frontends/{name}][%d] replaceFrontendOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceFrontendAccepted) IsServerError() bool {
 // IsCode returns true when this replace frontend accepted response a status code equal to that given
 func (o *ReplaceFrontendAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace frontend accepted response
+func (o *ReplaceFrontendAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceFrontendAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceFrontendBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace frontend bad request response
+func (o *ReplaceFrontendBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceFrontendBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/frontends/{name}][%d] replaceFrontendBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceFrontendNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace frontend not found response
+func (o *ReplaceFrontendNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceFrontendNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/frontends/{name}][%d] replaceFrontendNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceFrontendDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace frontend default response
-func (o *ReplaceFrontendDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace frontend default response has a 2xx status code
 func (o *ReplaceFrontendDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceFrontendDefault) IsServerError() bool {
 // IsCode returns true when this replace frontend default response a status code equal to that given
 func (o *ReplaceFrontendDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace frontend default response
+func (o *ReplaceFrontendDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceFrontendDefault) Error() string {

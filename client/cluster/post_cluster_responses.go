@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // PostClusterReader is a Reader for the PostCluster structure.
@@ -86,6 +86,11 @@ func (o *PostClusterOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the post cluster o k response
+func (o *PostClusterOK) Code() int {
+	return 200
+}
+
 func (o *PostClusterOK) Error() string {
 	return fmt.Sprintf("[POST /cluster][%d] postClusterOK  %+v", 200, o.Payload)
 }
@@ -154,6 +159,11 @@ func (o *PostClusterBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the post cluster bad request response
+func (o *PostClusterBadRequest) Code() int {
+	return 400
+}
+
 func (o *PostClusterBadRequest) Error() string {
 	return fmt.Sprintf("[POST /cluster][%d] postClusterBadRequest  %+v", 400, o.Payload)
 }
@@ -207,11 +217,6 @@ type PostClusterDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the post cluster default response
-func (o *PostClusterDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this post cluster default response has a 2xx status code
 func (o *PostClusterDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -235,6 +240,11 @@ func (o *PostClusterDefault) IsServerError() bool {
 // IsCode returns true when this post cluster default response a status code equal to that given
 func (o *PostClusterDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the post cluster default response
+func (o *PostClusterDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *PostClusterDefault) Error() string {

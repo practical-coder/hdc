@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceACLReader is a Reader for the ReplaceACL structure.
@@ -98,6 +98,11 @@ func (o *ReplaceACLOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace Acl o k response
+func (o *ReplaceACLOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceACLOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/acls/{index}][%d] replaceAclOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceACLAccepted) IsServerError() bool {
 // IsCode returns true when this replace Acl accepted response a status code equal to that given
 func (o *ReplaceACLAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace Acl accepted response
+func (o *ReplaceACLAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceACLAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceACLBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace Acl bad request response
+func (o *ReplaceACLBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceACLBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/acls/{index}][%d] replaceAclBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceACLNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace Acl not found response
+func (o *ReplaceACLNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceACLNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/acls/{index}][%d] replaceAclNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceACLDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace Acl default response
-func (o *ReplaceACLDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace Acl default response has a 2xx status code
 func (o *ReplaceACLDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceACLDefault) IsServerError() bool {
 // IsCode returns true when this replace Acl default response a status code equal to that given
 func (o *ReplaceACLDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace Acl default response
+func (o *ReplaceACLDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceACLDefault) Error() string {

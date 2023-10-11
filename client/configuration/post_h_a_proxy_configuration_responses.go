@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // PostHAProxyConfigurationReader is a Reader for the PostHAProxyConfiguration structure.
@@ -92,6 +92,11 @@ func (o *PostHAProxyConfigurationCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the post h a proxy configuration created response
+func (o *PostHAProxyConfigurationCreated) Code() int {
+	return 201
+}
+
 func (o *PostHAProxyConfigurationCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/raw][%d] postHAProxyConfigurationCreated  %+v", 201, o.Payload)
 }
@@ -156,6 +161,11 @@ func (o *PostHAProxyConfigurationAccepted) IsServerError() bool {
 // IsCode returns true when this post h a proxy configuration accepted response a status code equal to that given
 func (o *PostHAProxyConfigurationAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the post h a proxy configuration accepted response
+func (o *PostHAProxyConfigurationAccepted) Code() int {
+	return 202
 }
 
 func (o *PostHAProxyConfigurationAccepted) Error() string {
@@ -231,6 +241,11 @@ func (o *PostHAProxyConfigurationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the post h a proxy configuration bad request response
+func (o *PostHAProxyConfigurationBadRequest) Code() int {
+	return 400
+}
+
 func (o *PostHAProxyConfigurationBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/raw][%d] postHAProxyConfigurationBadRequest  %+v", 400, o.Payload)
 }
@@ -284,11 +299,6 @@ type PostHAProxyConfigurationDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the post h a proxy configuration default response
-func (o *PostHAProxyConfigurationDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this post h a proxy configuration default response has a 2xx status code
 func (o *PostHAProxyConfigurationDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -312,6 +322,11 @@ func (o *PostHAProxyConfigurationDefault) IsServerError() bool {
 // IsCode returns true when this post h a proxy configuration default response a status code equal to that given
 func (o *PostHAProxyConfigurationDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the post h a proxy configuration default response
+func (o *PostHAProxyConfigurationDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *PostHAProxyConfigurationDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteFrontendReader is a Reader for the DeleteFrontend structure.
@@ -95,6 +95,11 @@ func (o *DeleteFrontendAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete frontend accepted response
+func (o *DeleteFrontendAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteFrontendAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/frontends/{name}][%d] deleteFrontendAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteFrontendNoContent) IsServerError() bool {
 // IsCode returns true when this delete frontend no content response a status code equal to that given
 func (o *DeleteFrontendNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete frontend no content response
+func (o *DeleteFrontendNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteFrontendNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteFrontendNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete frontend not found response
+func (o *DeleteFrontendNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteFrontendNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/frontends/{name}][%d] deleteFrontendNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteFrontendDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete frontend default response
-func (o *DeleteFrontendDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete frontend default response has a 2xx status code
 func (o *DeleteFrontendDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteFrontendDefault) IsServerError() bool {
 // IsCode returns true when this delete frontend default response a status code equal to that given
 func (o *DeleteFrontendDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete frontend default response
+func (o *DeleteFrontendDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteFrontendDefault) Error() string {

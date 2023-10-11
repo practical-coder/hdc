@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteStickRuleReader is a Reader for the DeleteStickRule structure.
@@ -95,6 +95,11 @@ func (o *DeleteStickRuleAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete stick rule accepted response
+func (o *DeleteStickRuleAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteStickRuleAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/stick_rules/{index}][%d] deleteStickRuleAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteStickRuleNoContent) IsServerError() bool {
 // IsCode returns true when this delete stick rule no content response a status code equal to that given
 func (o *DeleteStickRuleNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete stick rule no content response
+func (o *DeleteStickRuleNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteStickRuleNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteStickRuleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete stick rule not found response
+func (o *DeleteStickRuleNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteStickRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/stick_rules/{index}][%d] deleteStickRuleNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteStickRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete stick rule default response
-func (o *DeleteStickRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete stick rule default response has a 2xx status code
 func (o *DeleteStickRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteStickRuleDefault) IsServerError() bool {
 // IsCode returns true when this delete stick rule default response a status code equal to that given
 func (o *DeleteStickRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete stick rule default response
+func (o *DeleteStickRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteStickRuleDefault) Error() string {

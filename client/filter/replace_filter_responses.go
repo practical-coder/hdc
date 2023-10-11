@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceFilterReader is a Reader for the ReplaceFilter structure.
@@ -98,6 +98,11 @@ func (o *ReplaceFilterOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace filter o k response
+func (o *ReplaceFilterOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceFilterOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceFilterAccepted) IsServerError() bool {
 // IsCode returns true when this replace filter accepted response a status code equal to that given
 func (o *ReplaceFilterAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace filter accepted response
+func (o *ReplaceFilterAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceFilterAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceFilterBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace filter bad request response
+func (o *ReplaceFilterBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceFilterBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceFilterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace filter not found response
+func (o *ReplaceFilterNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceFilterNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/filters/{index}][%d] replaceFilterNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceFilterDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace filter default response
-func (o *ReplaceFilterDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace filter default response has a 2xx status code
 func (o *ReplaceFilterDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceFilterDefault) IsServerError() bool {
 // IsCode returns true when this replace filter default response a status code equal to that given
 func (o *ReplaceFilterDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace filter default response
+func (o *ReplaceFilterDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceFilterDefault) Error() string {

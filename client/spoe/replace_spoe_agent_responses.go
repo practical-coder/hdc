@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceSpoeAgentReader is a Reader for the ReplaceSpoeAgent structure.
@@ -92,6 +92,11 @@ func (o *ReplaceSpoeAgentOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace spoe agent o k response
+func (o *ReplaceSpoeAgentOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceSpoeAgentOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgentOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *ReplaceSpoeAgentBadRequest) IsServerError() bool {
 // IsCode returns true when this replace spoe agent bad request response a status code equal to that given
 func (o *ReplaceSpoeAgentBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the replace spoe agent bad request response
+func (o *ReplaceSpoeAgentBadRequest) Code() int {
+	return 400
 }
 
 func (o *ReplaceSpoeAgentBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *ReplaceSpoeAgentNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace spoe agent not found response
+func (o *ReplaceSpoeAgentNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceSpoeAgentNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_agents/{name}][%d] replaceSpoeAgentNotFound  %+v", 404, o.Payload)
 }
@@ -288,11 +303,6 @@ type ReplaceSpoeAgentDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace spoe agent default response
-func (o *ReplaceSpoeAgentDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace spoe agent default response has a 2xx status code
 func (o *ReplaceSpoeAgentDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -316,6 +326,11 @@ func (o *ReplaceSpoeAgentDefault) IsServerError() bool {
 // IsCode returns true when this replace spoe agent default response a status code equal to that given
 func (o *ReplaceSpoeAgentDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace spoe agent default response
+func (o *ReplaceSpoeAgentDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceSpoeAgentDefault) Error() string {

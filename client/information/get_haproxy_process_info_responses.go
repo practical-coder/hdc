@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetHaproxyProcessInfoReader is a Reader for the GetHaproxyProcessInfo structure.
@@ -80,6 +80,11 @@ func (o *GetHaproxyProcessInfoOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get haproxy process info o k response
+func (o *GetHaproxyProcessInfoOK) Code() int {
+	return 200
+}
+
 func (o *GetHaproxyProcessInfoOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/info][%d] getHaproxyProcessInfoOK  %+v", 200, o.Payload)
 }
@@ -124,11 +129,6 @@ type GetHaproxyProcessInfoDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get haproxy process info default response
-func (o *GetHaproxyProcessInfoDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get haproxy process info default response has a 2xx status code
 func (o *GetHaproxyProcessInfoDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -152,6 +152,11 @@ func (o *GetHaproxyProcessInfoDefault) IsServerError() bool {
 // IsCode returns true when this get haproxy process info default response a status code equal to that given
 func (o *GetHaproxyProcessInfoDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get haproxy process info default response
+func (o *GetHaproxyProcessInfoDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetHaproxyProcessInfoDefault) Error() string {

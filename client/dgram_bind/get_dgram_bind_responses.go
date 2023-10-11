@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetDgramBindReader is a Reader for the GetDgramBind structure.
@@ -94,6 +94,11 @@ func (o *GetDgramBindOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get dgram bind o k response
+func (o *GetDgramBindOK) Code() int {
+	return 200
+}
+
 func (o *GetDgramBindOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/dgram_binds/{name}][%d] getDgramBindOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetDgramBindNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get dgram bind not found response
+func (o *GetDgramBindNotFound) Code() int {
+	return 404
+}
+
 func (o *GetDgramBindNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/dgram_binds/{name}][%d] getDgramBindNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetDgramBindDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get dgram bind default response
-func (o *GetDgramBindDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get dgram bind default response has a 2xx status code
 func (o *GetDgramBindDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetDgramBindDefault) IsServerError() bool {
 // IsCode returns true when this get dgram bind default response a status code equal to that given
 func (o *GetDgramBindDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get dgram bind default response
+func (o *GetDgramBindDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetDgramBindDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetDgramBindOKBody) ContextValidate(ctx context.Context, formats strfmt
 func (o *GetDgramBindOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getDgramBindOK" + "." + "data")

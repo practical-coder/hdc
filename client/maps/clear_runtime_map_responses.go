@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ClearRuntimeMapReader is a Reader for the ClearRuntimeMap structure.
@@ -85,6 +85,11 @@ func (o *ClearRuntimeMapNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the clear runtime map no content response
+func (o *ClearRuntimeMapNoContent) Code() int {
+	return 204
+}
+
 func (o *ClearRuntimeMapNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/maps/{name}][%d] clearRuntimeMapNoContent ", 204)
 }
@@ -142,6 +147,11 @@ func (o *ClearRuntimeMapNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the clear runtime map not found response
+func (o *ClearRuntimeMapNotFound) Code() int {
+	return 404
+}
+
 func (o *ClearRuntimeMapNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/maps/{name}][%d] clearRuntimeMapNotFound  %+v", 404, o.Payload)
 }
@@ -195,11 +205,6 @@ type ClearRuntimeMapDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the clear runtime map default response
-func (o *ClearRuntimeMapDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this clear runtime map default response has a 2xx status code
 func (o *ClearRuntimeMapDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -223,6 +228,11 @@ func (o *ClearRuntimeMapDefault) IsServerError() bool {
 // IsCode returns true when this clear runtime map default response a status code equal to that given
 func (o *ClearRuntimeMapDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the clear runtime map default response
+func (o *ClearRuntimeMapDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ClearRuntimeMapDefault) Error() string {

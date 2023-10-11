@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceHTTPErrorRuleReader is a Reader for the ReplaceHTTPErrorRule structure.
@@ -98,6 +98,11 @@ func (o *ReplaceHTTPErrorRuleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace Http error rule o k response
+func (o *ReplaceHTTPErrorRuleOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceHTTPErrorRuleOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_error_rules/{index}][%d] replaceHttpErrorRuleOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceHTTPErrorRuleAccepted) IsServerError() bool {
 // IsCode returns true when this replace Http error rule accepted response a status code equal to that given
 func (o *ReplaceHTTPErrorRuleAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace Http error rule accepted response
+func (o *ReplaceHTTPErrorRuleAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceHTTPErrorRuleAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceHTTPErrorRuleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace Http error rule bad request response
+func (o *ReplaceHTTPErrorRuleBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceHTTPErrorRuleBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_error_rules/{index}][%d] replaceHttpErrorRuleBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceHTTPErrorRuleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace Http error rule not found response
+func (o *ReplaceHTTPErrorRuleNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceHTTPErrorRuleNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_error_rules/{index}][%d] replaceHttpErrorRuleNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceHTTPErrorRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace HTTP error rule default response
-func (o *ReplaceHTTPErrorRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace HTTP error rule default response has a 2xx status code
 func (o *ReplaceHTTPErrorRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceHTTPErrorRuleDefault) IsServerError() bool {
 // IsCode returns true when this replace HTTP error rule default response a status code equal to that given
 func (o *ReplaceHTTPErrorRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace HTTP error rule default response
+func (o *ReplaceHTTPErrorRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceHTTPErrorRuleDefault) Error() string {

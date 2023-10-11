@@ -49,7 +49,7 @@ func (a *Client) GetHealth(params *GetHealthParams, authInfo runtime.ClientAuthI
 		PathPattern:        "/health",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetHealthReader{formats: a.formats},
 		AuthInfo:           authInfo,

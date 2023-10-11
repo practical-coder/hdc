@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetBackendReader is a Reader for the GetBackend structure.
@@ -94,6 +94,11 @@ func (o *GetBackendOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get backend o k response
+func (o *GetBackendOK) Code() int {
+	return 200
+}
+
 func (o *GetBackendOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/backends/{name}][%d] getBackendOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetBackendNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get backend not found response
+func (o *GetBackendNotFound) Code() int {
+	return 404
+}
+
 func (o *GetBackendNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/backends/{name}][%d] getBackendNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetBackendDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get backend default response
-func (o *GetBackendDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get backend default response has a 2xx status code
 func (o *GetBackendDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetBackendDefault) IsServerError() bool {
 // IsCode returns true when this get backend default response a status code equal to that given
 func (o *GetBackendDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get backend default response
+func (o *GetBackendDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetBackendDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetBackendOKBody) ContextValidate(ctx context.Context, formats strfmt.R
 func (o *GetBackendOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getBackendOK" + "." + "data")

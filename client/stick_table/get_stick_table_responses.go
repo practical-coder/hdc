@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetStickTableReader is a Reader for the GetStickTable structure.
@@ -86,6 +86,11 @@ func (o *GetStickTableOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get stick table o k response
+func (o *GetStickTableOK) Code() int {
+	return 200
+}
+
 func (o *GetStickTableOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_tables/{name}][%d] getStickTableOK  %+v", 200, o.Payload)
 }
@@ -154,6 +159,11 @@ func (o *GetStickTableNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get stick table not found response
+func (o *GetStickTableNotFound) Code() int {
+	return 404
+}
+
 func (o *GetStickTableNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_tables/{name}][%d] getStickTableNotFound  %+v", 404, o.Payload)
 }
@@ -207,11 +217,6 @@ type GetStickTableDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get stick table default response
-func (o *GetStickTableDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get stick table default response has a 2xx status code
 func (o *GetStickTableDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -235,6 +240,11 @@ func (o *GetStickTableDefault) IsServerError() bool {
 // IsCode returns true when this get stick table default response a status code equal to that given
 func (o *GetStickTableDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get stick table default response
+func (o *GetStickTableDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetStickTableDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteTransactionReader is a Reader for the DeleteTransaction structure.
@@ -85,6 +85,11 @@ func (o *DeleteTransactionNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete transaction no content response
+func (o *DeleteTransactionNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteTransactionNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/transactions/{id}][%d] deleteTransactionNoContent ", 204)
 }
@@ -142,6 +147,11 @@ func (o *DeleteTransactionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete transaction not found response
+func (o *DeleteTransactionNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteTransactionNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/transactions/{id}][%d] deleteTransactionNotFound  %+v", 404, o.Payload)
 }
@@ -195,11 +205,6 @@ type DeleteTransactionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete transaction default response
-func (o *DeleteTransactionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete transaction default response has a 2xx status code
 func (o *DeleteTransactionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -223,6 +228,11 @@ func (o *DeleteTransactionDefault) IsServerError() bool {
 // IsCode returns true when this delete transaction default response a status code equal to that given
 func (o *DeleteTransactionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete transaction default response
+func (o *DeleteTransactionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteTransactionDefault) Error() string {

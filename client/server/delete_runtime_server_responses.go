@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteRuntimeServerReader is a Reader for the DeleteRuntimeServer structure.
@@ -91,6 +91,11 @@ func (o *DeleteRuntimeServerNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete runtime server no content response
+func (o *DeleteRuntimeServerNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteRuntimeServerNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/servers/{name}][%d] deleteRuntimeServerNoContent ", 204)
 }
@@ -146,6 +151,11 @@ func (o *DeleteRuntimeServerBadRequest) IsServerError() bool {
 // IsCode returns true when this delete runtime server bad request response a status code equal to that given
 func (o *DeleteRuntimeServerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the delete runtime server bad request response
+func (o *DeleteRuntimeServerBadRequest) Code() int {
+	return 400
 }
 
 func (o *DeleteRuntimeServerBadRequest) Error() string {
@@ -223,6 +233,11 @@ func (o *DeleteRuntimeServerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete runtime server not found response
+func (o *DeleteRuntimeServerNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteRuntimeServerNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/runtime/servers/{name}][%d] deleteRuntimeServerNotFound  %+v", 404, o.Payload)
 }
@@ -276,11 +291,6 @@ type DeleteRuntimeServerDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete runtime server default response
-func (o *DeleteRuntimeServerDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete runtime server default response has a 2xx status code
 func (o *DeleteRuntimeServerDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -304,6 +314,11 @@ func (o *DeleteRuntimeServerDefault) IsServerError() bool {
 // IsCode returns true when this delete runtime server default response a status code equal to that given
 func (o *DeleteRuntimeServerDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete runtime server default response
+func (o *DeleteRuntimeServerDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteRuntimeServerDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateHTTPErrorsSectionReader is a Reader for the CreateHTTPErrorsSection structure.
@@ -98,6 +98,11 @@ func (o *CreateHTTPErrorsSectionCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create Http errors section created response
+func (o *CreateHTTPErrorsSectionCreated) Code() int {
+	return 201
+}
+
 func (o *CreateHTTPErrorsSectionCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_errors_sections][%d] createHttpErrorsSectionCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateHTTPErrorsSectionAccepted) IsServerError() bool {
 // IsCode returns true when this create Http errors section accepted response a status code equal to that given
 func (o *CreateHTTPErrorsSectionAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create Http errors section accepted response
+func (o *CreateHTTPErrorsSectionAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateHTTPErrorsSectionAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateHTTPErrorsSectionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create Http errors section bad request response
+func (o *CreateHTTPErrorsSectionBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateHTTPErrorsSectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_errors_sections][%d] createHttpErrorsSectionBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateHTTPErrorsSectionConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create Http errors section conflict response
+func (o *CreateHTTPErrorsSectionConflict) Code() int {
+	return 409
+}
+
 func (o *CreateHTTPErrorsSectionConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_errors_sections][%d] createHttpErrorsSectionConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateHTTPErrorsSectionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create HTTP errors section default response
-func (o *CreateHTTPErrorsSectionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create HTTP errors section default response has a 2xx status code
 func (o *CreateHTTPErrorsSectionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateHTTPErrorsSectionDefault) IsServerError() bool {
 // IsCode returns true when this create HTTP errors section default response a status code equal to that given
 func (o *CreateHTTPErrorsSectionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create HTTP errors section default response
+func (o *CreateHTTPErrorsSectionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateHTTPErrorsSectionDefault) Error() string {

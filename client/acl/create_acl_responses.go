@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateACLReader is a Reader for the CreateACL structure.
@@ -98,6 +98,11 @@ func (o *CreateACLCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create Acl created response
+func (o *CreateACLCreated) Code() int {
+	return 201
+}
+
 func (o *CreateACLCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateACLAccepted) IsServerError() bool {
 // IsCode returns true when this create Acl accepted response a status code equal to that given
 func (o *CreateACLAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create Acl accepted response
+func (o *CreateACLAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateACLAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateACLBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create Acl bad request response
+func (o *CreateACLBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateACLBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateACLConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create Acl conflict response
+func (o *CreateACLConflict) Code() int {
+	return 409
+}
+
 func (o *CreateACLConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/acls][%d] createAclConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateACLDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create Acl default response
-func (o *CreateACLDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create Acl default response has a 2xx status code
 func (o *CreateACLDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateACLDefault) IsServerError() bool {
 // IsCode returns true when this create Acl default response a status code equal to that given
 func (o *CreateACLDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create Acl default response
+func (o *CreateACLDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateACLDefault) Error() string {

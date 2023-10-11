@@ -61,7 +61,7 @@ func (a *Client) CreateDefaultsSection(params *CreateDefaultsSectionParams, auth
 		PathPattern:        "/services/haproxy/configuration/named_defaults",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &CreateDefaultsSectionReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -103,7 +103,7 @@ func (a *Client) DeleteDefaultsSection(params *DeleteDefaultsSectionParams, auth
 		PathPattern:        "/services/haproxy/configuration/named_defaults/{name}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &DeleteDefaultsSectionReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -145,7 +145,7 @@ func (a *Client) GetDefaults(params *GetDefaultsParams, authInfo runtime.ClientA
 		PathPattern:        "/services/haproxy/configuration/defaults",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetDefaultsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -170,9 +170,9 @@ func (a *Client) GetDefaults(params *GetDefaultsParams, authInfo runtime.ClientA
 }
 
 /*
-GetDefaultsSection returns a defautls section
+GetDefaultsSection returns a defaults section
 
-Returns one defautls section configuration by it's name.
+Returns one defaults section configuration by it's name.
 */
 func (a *Client) GetDefaultsSection(params *GetDefaultsSectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDefaultsSectionOK, error) {
 	// TODO: Validate the params before sending
@@ -185,7 +185,7 @@ func (a *Client) GetDefaultsSection(params *GetDefaultsSectionParams, authInfo r
 		PathPattern:        "/services/haproxy/configuration/named_defaults/{name}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetDefaultsSectionReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -225,7 +225,7 @@ func (a *Client) GetDefaultsSections(params *GetDefaultsSectionsParams, authInfo
 		PathPattern:        "/services/haproxy/configuration/named_defaults",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetDefaultsSectionsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -265,7 +265,7 @@ func (a *Client) ReplaceDefaults(params *ReplaceDefaultsParams, authInfo runtime
 		PathPattern:        "/services/haproxy/configuration/defaults",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &ReplaceDefaultsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -307,7 +307,7 @@ func (a *Client) ReplaceDefaultsSection(params *ReplaceDefaultsSectionParams, au
 		PathPattern:        "/services/haproxy/configuration/named_defaults/{name}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &ReplaceDefaultsSectionReader{formats: a.formats},
 		AuthInfo:           authInfo,

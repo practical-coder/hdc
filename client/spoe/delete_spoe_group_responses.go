@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteSpoeGroupReader is a Reader for the DeleteSpoeGroup structure.
@@ -85,6 +85,11 @@ func (o *DeleteSpoeGroupNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete spoe group no content response
+func (o *DeleteSpoeGroupNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteSpoeGroupNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_groups/{name}][%d] deleteSpoeGroupNoContent ", 204)
 }
@@ -142,6 +147,11 @@ func (o *DeleteSpoeGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete spoe group not found response
+func (o *DeleteSpoeGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteSpoeGroupNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_groups/{name}][%d] deleteSpoeGroupNotFound  %+v", 404, o.Payload)
 }
@@ -195,11 +205,6 @@ type DeleteSpoeGroupDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete spoe group default response
-func (o *DeleteSpoeGroupDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete spoe group default response has a 2xx status code
 func (o *DeleteSpoeGroupDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -223,6 +228,11 @@ func (o *DeleteSpoeGroupDefault) IsServerError() bool {
 // IsCode returns true when this delete spoe group default response a status code equal to that given
 func (o *DeleteSpoeGroupDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete spoe group default response
+func (o *DeleteSpoeGroupDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteSpoeGroupDefault) Error() string {

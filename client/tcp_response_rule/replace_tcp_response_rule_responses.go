@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceTCPResponseRuleReader is a Reader for the ReplaceTCPResponseRule structure.
@@ -98,6 +98,11 @@ func (o *ReplaceTCPResponseRuleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace Tcp response rule o k response
+func (o *ReplaceTCPResponseRuleOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceTCPResponseRuleOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_response_rules/{index}][%d] replaceTcpResponseRuleOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceTCPResponseRuleAccepted) IsServerError() bool {
 // IsCode returns true when this replace Tcp response rule accepted response a status code equal to that given
 func (o *ReplaceTCPResponseRuleAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace Tcp response rule accepted response
+func (o *ReplaceTCPResponseRuleAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceTCPResponseRuleAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceTCPResponseRuleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace Tcp response rule bad request response
+func (o *ReplaceTCPResponseRuleBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceTCPResponseRuleBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_response_rules/{index}][%d] replaceTcpResponseRuleBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceTCPResponseRuleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace Tcp response rule not found response
+func (o *ReplaceTCPResponseRuleNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceTCPResponseRuleNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/tcp_response_rules/{index}][%d] replaceTcpResponseRuleNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceTCPResponseRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace TCP response rule default response
-func (o *ReplaceTCPResponseRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace TCP response rule default response has a 2xx status code
 func (o *ReplaceTCPResponseRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceTCPResponseRuleDefault) IsServerError() bool {
 // IsCode returns true when this replace TCP response rule default response a status code equal to that given
 func (o *ReplaceTCPResponseRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace TCP response rule default response
+func (o *ReplaceTCPResponseRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceTCPResponseRuleDefault) Error() string {

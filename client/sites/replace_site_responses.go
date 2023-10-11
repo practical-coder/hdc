@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceSiteReader is a Reader for the ReplaceSite structure.
@@ -98,6 +98,11 @@ func (o *ReplaceSiteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace site o k response
+func (o *ReplaceSiteOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceSiteOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceSiteAccepted) IsServerError() bool {
 // IsCode returns true when this replace site accepted response a status code equal to that given
 func (o *ReplaceSiteAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace site accepted response
+func (o *ReplaceSiteAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceSiteAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceSiteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace site bad request response
+func (o *ReplaceSiteBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceSiteBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceSiteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace site not found response
+func (o *ReplaceSiteNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceSiteNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/sites/{name}][%d] replaceSiteNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceSiteDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace site default response
-func (o *ReplaceSiteDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace site default response has a 2xx status code
 func (o *ReplaceSiteDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceSiteDefault) IsServerError() bool {
 // IsCode returns true when this replace site default response a status code equal to that given
 func (o *ReplaceSiteDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace site default response
+func (o *ReplaceSiteDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceSiteDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // AddPayloadRuntimeMapReader is a Reader for the AddPayloadRuntimeMap structure.
@@ -86,6 +86,11 @@ func (o *AddPayloadRuntimeMapCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the add payload runtime map created response
+func (o *AddPayloadRuntimeMapCreated) Code() int {
+	return 201
+}
+
 func (o *AddPayloadRuntimeMapCreated) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps/{name}][%d] addPayloadRuntimeMapCreated  %+v", 201, o.Payload)
 }
@@ -152,6 +157,11 @@ func (o *AddPayloadRuntimeMapBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the add payload runtime map bad request response
+func (o *AddPayloadRuntimeMapBadRequest) Code() int {
+	return 400
+}
+
 func (o *AddPayloadRuntimeMapBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps/{name}][%d] addPayloadRuntimeMapBadRequest  %+v", 400, o.Payload)
 }
@@ -205,11 +215,6 @@ type AddPayloadRuntimeMapDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the add payload runtime map default response
-func (o *AddPayloadRuntimeMapDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this add payload runtime map default response has a 2xx status code
 func (o *AddPayloadRuntimeMapDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -233,6 +238,11 @@ func (o *AddPayloadRuntimeMapDefault) IsServerError() bool {
 // IsCode returns true when this add payload runtime map default response a status code equal to that given
 func (o *AddPayloadRuntimeMapDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the add payload runtime map default response
+func (o *AddPayloadRuntimeMapDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *AddPayloadRuntimeMapDefault) Error() string {

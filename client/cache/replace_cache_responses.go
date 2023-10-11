@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceCacheReader is a Reader for the ReplaceCache structure.
@@ -98,6 +98,11 @@ func (o *ReplaceCacheOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace cache o k response
+func (o *ReplaceCacheOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceCacheOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceCacheAccepted) IsServerError() bool {
 // IsCode returns true when this replace cache accepted response a status code equal to that given
 func (o *ReplaceCacheAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace cache accepted response
+func (o *ReplaceCacheAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceCacheAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceCacheBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace cache bad request response
+func (o *ReplaceCacheBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceCacheBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceCacheNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace cache not found response
+func (o *ReplaceCacheNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceCacheNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/caches/{name}][%d] replaceCacheNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceCacheDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace cache default response
-func (o *ReplaceCacheDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace cache default response has a 2xx status code
 func (o *ReplaceCacheDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceCacheDefault) IsServerError() bool {
 // IsCode returns true when this replace cache default response a status code equal to that given
 func (o *ReplaceCacheDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace cache default response
+func (o *ReplaceCacheDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceCacheDefault) Error() string {

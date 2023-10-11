@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetOneRuntimeMapReader is a Reader for the GetOneRuntimeMap structure.
@@ -86,6 +86,11 @@ func (o *GetOneRuntimeMapOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get one runtime map o k response
+func (o *GetOneRuntimeMapOK) Code() int {
+	return 200
+}
+
 func (o *GetOneRuntimeMapOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps/{name}][%d] getOneRuntimeMapOK  %+v", 200, o.Payload)
 }
@@ -154,6 +159,11 @@ func (o *GetOneRuntimeMapNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get one runtime map not found response
+func (o *GetOneRuntimeMapNotFound) Code() int {
+	return 404
+}
+
 func (o *GetOneRuntimeMapNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/maps/{name}][%d] getOneRuntimeMapNotFound  %+v", 404, o.Payload)
 }
@@ -207,11 +217,6 @@ type GetOneRuntimeMapDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get one runtime map default response
-func (o *GetOneRuntimeMapDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get one runtime map default response has a 2xx status code
 func (o *GetOneRuntimeMapDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -235,6 +240,11 @@ func (o *GetOneRuntimeMapDefault) IsServerError() bool {
 // IsCode returns true when this get one runtime map default response a status code equal to that given
 func (o *GetOneRuntimeMapDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get one runtime map default response
+func (o *GetOneRuntimeMapDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetOneRuntimeMapDefault) Error() string {

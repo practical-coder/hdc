@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateFrontendReader is a Reader for the CreateFrontend structure.
@@ -98,6 +98,11 @@ func (o *CreateFrontendCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create frontend created response
+func (o *CreateFrontendCreated) Code() int {
+	return 201
+}
+
 func (o *CreateFrontendCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/frontends][%d] createFrontendCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateFrontendAccepted) IsServerError() bool {
 // IsCode returns true when this create frontend accepted response a status code equal to that given
 func (o *CreateFrontendAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create frontend accepted response
+func (o *CreateFrontendAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateFrontendAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateFrontendBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create frontend bad request response
+func (o *CreateFrontendBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateFrontendBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/frontends][%d] createFrontendBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateFrontendConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create frontend conflict response
+func (o *CreateFrontendConflict) Code() int {
+	return 409
+}
+
 func (o *CreateFrontendConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/frontends][%d] createFrontendConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateFrontendDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create frontend default response
-func (o *CreateFrontendDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create frontend default response has a 2xx status code
 func (o *CreateFrontendDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateFrontendDefault) IsServerError() bool {
 // IsCode returns true when this create frontend default response a status code equal to that given
 func (o *CreateFrontendDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create frontend default response
+func (o *CreateFrontendDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateFrontendDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteSpoeMessageReader is a Reader for the DeleteSpoeMessage structure.
@@ -85,6 +85,11 @@ func (o *DeleteSpoeMessageNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete spoe message no content response
+func (o *DeleteSpoeMessageNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteSpoeMessageNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_messages/{name}][%d] deleteSpoeMessageNoContent ", 204)
 }
@@ -142,6 +147,11 @@ func (o *DeleteSpoeMessageNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete spoe message not found response
+func (o *DeleteSpoeMessageNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteSpoeMessageNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/spoe/spoe_messages/{name}][%d] deleteSpoeMessageNotFound  %+v", 404, o.Payload)
 }
@@ -195,11 +205,6 @@ type DeleteSpoeMessageDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete spoe message default response
-func (o *DeleteSpoeMessageDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete spoe message default response has a 2xx status code
 func (o *DeleteSpoeMessageDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -223,6 +228,11 @@ func (o *DeleteSpoeMessageDefault) IsServerError() bool {
 // IsCode returns true when this delete spoe message default response a status code equal to that given
 func (o *DeleteSpoeMessageDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete spoe message default response
+func (o *DeleteSpoeMessageDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteSpoeMessageDefault) Error() string {

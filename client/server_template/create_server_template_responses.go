@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateServerTemplateReader is a Reader for the CreateServerTemplate structure.
@@ -98,6 +98,11 @@ func (o *CreateServerTemplateCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create server template created response
+func (o *CreateServerTemplateCreated) Code() int {
+	return 201
+}
+
 func (o *CreateServerTemplateCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateServerTemplateAccepted) IsServerError() bool {
 // IsCode returns true when this create server template accepted response a status code equal to that given
 func (o *CreateServerTemplateAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create server template accepted response
+func (o *CreateServerTemplateAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateServerTemplateAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateServerTemplateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create server template bad request response
+func (o *CreateServerTemplateBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateServerTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateServerTemplateConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create server template conflict response
+func (o *CreateServerTemplateConflict) Code() int {
+	return 409
+}
+
 func (o *CreateServerTemplateConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/server_templates][%d] createServerTemplateConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateServerTemplateDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create server template default response
-func (o *CreateServerTemplateDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create server template default response has a 2xx status code
 func (o *CreateServerTemplateDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateServerTemplateDefault) IsServerError() bool {
 // IsCode returns true when this create server template default response a status code equal to that given
 func (o *CreateServerTemplateDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create server template default response
+func (o *CreateServerTemplateDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateServerTemplateDefault) Error() string {

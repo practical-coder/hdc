@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetNameserversReader is a Reader for the GetNameservers structure.
@@ -89,6 +89,11 @@ func (o *GetNameserversOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get nameservers o k response
+func (o *GetNameserversOK) Code() int {
+	return 200
+}
+
 func (o *GetNameserversOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/nameservers][%d] getNameserversOK  %+v", 200, o.Payload)
 }
@@ -142,11 +147,6 @@ type GetNameserversDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get nameservers default response
-func (o *GetNameserversDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get nameservers default response has a 2xx status code
 func (o *GetNameserversDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -170,6 +170,11 @@ func (o *GetNameserversDefault) IsServerError() bool {
 // IsCode returns true when this get nameservers default response a status code equal to that given
 func (o *GetNameserversDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get nameservers default response
+func (o *GetNameserversDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetNameserversDefault) Error() string {

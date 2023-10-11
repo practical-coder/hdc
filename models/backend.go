@@ -2683,6 +2683,11 @@ func (m *Backend) contextValidateErrorFiles(ctx context.Context, formats strfmt.
 	for i := 0; i < len(m.ErrorFiles); i++ {
 
 		if m.ErrorFiles[i] != nil {
+
+			if swag.IsZero(m.ErrorFiles[i]) { // not required
+				return nil
+			}
+
 			if err := m.ErrorFiles[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("error_files" + "." + strconv.Itoa(i))
@@ -2703,6 +2708,11 @@ func (m *Backend) contextValidateErrorFilesFromHTTPErrors(ctx context.Context, f
 	for i := 0; i < len(m.ErrorFilesFromHTTPErrors); i++ {
 
 		if m.ErrorFilesFromHTTPErrors[i] != nil {
+
+			if swag.IsZero(m.ErrorFilesFromHTTPErrors[i]) { // not required
+				return nil
+			}
+
 			if err := m.ErrorFilesFromHTTPErrors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("errorfiles_from_http_errors" + "." + strconv.Itoa(i))
@@ -2721,6 +2731,11 @@ func (m *Backend) contextValidateErrorFilesFromHTTPErrors(ctx context.Context, f
 func (m *Backend) contextValidateBalance(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Balance != nil {
+
+		if swag.IsZero(m.Balance) { // not required
+			return nil
+		}
+
 		if err := m.Balance.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("balance")
@@ -2737,6 +2752,11 @@ func (m *Backend) contextValidateBalance(ctx context.Context, formats strfmt.Reg
 func (m *Backend) contextValidateCompression(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Compression != nil {
+
+		if swag.IsZero(m.Compression) { // not required
+			return nil
+		}
+
 		if err := m.Compression.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("compression")
@@ -2753,6 +2773,11 @@ func (m *Backend) contextValidateCompression(ctx context.Context, formats strfmt
 func (m *Backend) contextValidateCookie(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Cookie != nil {
+
+		if swag.IsZero(m.Cookie) { // not required
+			return nil
+		}
+
 		if err := m.Cookie.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("cookie")
@@ -2769,6 +2794,11 @@ func (m *Backend) contextValidateCookie(ctx context.Context, formats strfmt.Regi
 func (m *Backend) contextValidateDefaultServer(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DefaultServer != nil {
+
+		if swag.IsZero(m.DefaultServer) { // not required
+			return nil
+		}
+
 		if err := m.DefaultServer.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("default_server")
@@ -2785,6 +2815,11 @@ func (m *Backend) contextValidateDefaultServer(ctx context.Context, formats strf
 func (m *Backend) contextValidateEmailAlert(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EmailAlert != nil {
+
+		if swag.IsZero(m.EmailAlert) { // not required
+			return nil
+		}
+
 		if err := m.EmailAlert.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("email_alert")
@@ -2801,6 +2836,11 @@ func (m *Backend) contextValidateEmailAlert(ctx context.Context, formats strfmt.
 func (m *Backend) contextValidateErrorloc302(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Errorloc302 != nil {
+
+		if swag.IsZero(m.Errorloc302) { // not required
+			return nil
+		}
+
 		if err := m.Errorloc302.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("errorloc302")
@@ -2817,6 +2857,11 @@ func (m *Backend) contextValidateErrorloc302(ctx context.Context, formats strfmt
 func (m *Backend) contextValidateErrorloc303(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Errorloc303 != nil {
+
+		if swag.IsZero(m.Errorloc303) { // not required
+			return nil
+		}
+
 		if err := m.Errorloc303.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("errorloc303")
@@ -2833,6 +2878,11 @@ func (m *Backend) contextValidateErrorloc303(ctx context.Context, formats strfmt
 func (m *Backend) contextValidateForcePersist(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ForcePersist != nil {
+
+		if swag.IsZero(m.ForcePersist) { // not required
+			return nil
+		}
+
 		if err := m.ForcePersist.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("force_persist")
@@ -2849,6 +2899,11 @@ func (m *Backend) contextValidateForcePersist(ctx context.Context, formats strfm
 func (m *Backend) contextValidateForwardfor(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Forwardfor != nil {
+
+		if swag.IsZero(m.Forwardfor) { // not required
+			return nil
+		}
+
 		if err := m.Forwardfor.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("forwardfor")
@@ -2865,6 +2920,11 @@ func (m *Backend) contextValidateForwardfor(ctx context.Context, formats strfmt.
 func (m *Backend) contextValidateHashType(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.HashType != nil {
+
+		if swag.IsZero(m.HashType) { // not required
+			return nil
+		}
+
 		if err := m.HashType.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("hash_type")
@@ -2881,6 +2941,11 @@ func (m *Backend) contextValidateHashType(ctx context.Context, formats strfmt.Re
 func (m *Backend) contextValidateHTTPCheck(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.HTTPCheck != nil {
+
+		if swag.IsZero(m.HTTPCheck) { // not required
+			return nil
+		}
+
 		if err := m.HTTPCheck.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("http-check")
@@ -2897,6 +2962,11 @@ func (m *Backend) contextValidateHTTPCheck(ctx context.Context, formats strfmt.R
 func (m *Backend) contextValidateHttpchkParams(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.HttpchkParams != nil {
+
+		if swag.IsZero(m.HttpchkParams) { // not required
+			return nil
+		}
+
 		if err := m.HttpchkParams.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("httpchk_params")
@@ -2913,6 +2983,11 @@ func (m *Backend) contextValidateHttpchkParams(ctx context.Context, formats strf
 func (m *Backend) contextValidateIgnorePersist(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.IgnorePersist != nil {
+
+		if swag.IsZero(m.IgnorePersist) { // not required
+			return nil
+		}
+
 		if err := m.IgnorePersist.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("ignore_persist")
@@ -2929,6 +3004,11 @@ func (m *Backend) contextValidateIgnorePersist(ctx context.Context, formats strf
 func (m *Backend) contextValidateMysqlCheckParams(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.MysqlCheckParams != nil {
+
+		if swag.IsZero(m.MysqlCheckParams) { // not required
+			return nil
+		}
+
 		if err := m.MysqlCheckParams.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("mysql_check_params")
@@ -2945,6 +3025,11 @@ func (m *Backend) contextValidateMysqlCheckParams(ctx context.Context, formats s
 func (m *Backend) contextValidateOriginalto(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Originalto != nil {
+
+		if swag.IsZero(m.Originalto) { // not required
+			return nil
+		}
+
 		if err := m.Originalto.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("originalto")
@@ -2961,6 +3046,11 @@ func (m *Backend) contextValidateOriginalto(ctx context.Context, formats strfmt.
 func (m *Backend) contextValidatePersistRule(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PersistRule != nil {
+
+		if swag.IsZero(m.PersistRule) { // not required
+			return nil
+		}
+
 		if err := m.PersistRule.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("persist_rule")
@@ -2977,6 +3067,11 @@ func (m *Backend) contextValidatePersistRule(ctx context.Context, formats strfmt
 func (m *Backend) contextValidatePgsqlCheckParams(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PgsqlCheckParams != nil {
+
+		if swag.IsZero(m.PgsqlCheckParams) { // not required
+			return nil
+		}
+
 		if err := m.PgsqlCheckParams.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pgsql_check_params")
@@ -2993,6 +3088,11 @@ func (m *Backend) contextValidatePgsqlCheckParams(ctx context.Context, formats s
 func (m *Backend) contextValidateRedispatch(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Redispatch != nil {
+
+		if swag.IsZero(m.Redispatch) { // not required
+			return nil
+		}
+
 		if err := m.Redispatch.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("redispatch")
@@ -3009,6 +3109,11 @@ func (m *Backend) contextValidateRedispatch(ctx context.Context, formats strfmt.
 func (m *Backend) contextValidateSmtpchkParams(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SmtpchkParams != nil {
+
+		if swag.IsZero(m.SmtpchkParams) { // not required
+			return nil
+		}
+
 		if err := m.SmtpchkParams.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("smtpchk_params")
@@ -3025,6 +3130,11 @@ func (m *Backend) contextValidateSmtpchkParams(ctx context.Context, formats strf
 func (m *Backend) contextValidateSource(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Source != nil {
+
+		if swag.IsZero(m.Source) { // not required
+			return nil
+		}
+
 		if err := m.Source.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("source")
@@ -3041,6 +3151,11 @@ func (m *Backend) contextValidateSource(ctx context.Context, formats strfmt.Regi
 func (m *Backend) contextValidateStatsOptions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.StatsOptions != nil {
+
+		if swag.IsZero(m.StatsOptions) { // not required
+			return nil
+		}
+
 		if err := m.StatsOptions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stats_options")
@@ -3057,6 +3172,11 @@ func (m *Backend) contextValidateStatsOptions(ctx context.Context, formats strfm
 func (m *Backend) contextValidateStickTable(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.StickTable != nil {
+
+		if swag.IsZero(m.StickTable) { // not required
+			return nil
+		}
+
 		if err := m.StickTable.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stick_table")

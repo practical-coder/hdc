@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetSpoeAgentReader is a Reader for the GetSpoeAgent structure.
@@ -95,6 +95,11 @@ func (o *GetSpoeAgentOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get spoe agent o k response
+func (o *GetSpoeAgentOK) Code() int {
+	return 200
+}
+
 func (o *GetSpoeAgentOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_agents/{name}][%d] getSpoeAgentOK  %+v", 200, o.Payload)
 }
@@ -170,6 +175,11 @@ func (o *GetSpoeAgentNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get spoe agent not found response
+func (o *GetSpoeAgentNotFound) Code() int {
+	return 404
+}
+
 func (o *GetSpoeAgentNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_agents/{name}][%d] getSpoeAgentNotFound  %+v", 404, o.Payload)
 }
@@ -223,11 +233,6 @@ type GetSpoeAgentDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get spoe agent default response
-func (o *GetSpoeAgentDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get spoe agent default response has a 2xx status code
 func (o *GetSpoeAgentDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -251,6 +256,11 @@ func (o *GetSpoeAgentDefault) IsServerError() bool {
 // IsCode returns true when this get spoe agent default response a status code equal to that given
 func (o *GetSpoeAgentDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get spoe agent default response
+func (o *GetSpoeAgentDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetSpoeAgentDefault) Error() string {
@@ -349,6 +359,7 @@ func (o *GetSpoeAgentOKBody) ContextValidate(ctx context.Context, formats strfmt
 func (o *GetSpoeAgentOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getSpoeAgentOK" + "." + "data")

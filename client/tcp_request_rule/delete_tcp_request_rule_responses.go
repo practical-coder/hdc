@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteTCPRequestRuleReader is a Reader for the DeleteTCPRequestRule structure.
@@ -95,6 +95,11 @@ func (o *DeleteTCPRequestRuleAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete Tcp request rule accepted response
+func (o *DeleteTCPRequestRuleAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteTCPRequestRuleAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_request_rules/{index}][%d] deleteTcpRequestRuleAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteTCPRequestRuleNoContent) IsServerError() bool {
 // IsCode returns true when this delete Tcp request rule no content response a status code equal to that given
 func (o *DeleteTCPRequestRuleNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete Tcp request rule no content response
+func (o *DeleteTCPRequestRuleNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteTCPRequestRuleNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteTCPRequestRuleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete Tcp request rule not found response
+func (o *DeleteTCPRequestRuleNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteTCPRequestRuleNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/tcp_request_rules/{index}][%d] deleteTcpRequestRuleNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteTCPRequestRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete TCP request rule default response
-func (o *DeleteTCPRequestRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete TCP request rule default response has a 2xx status code
 func (o *DeleteTCPRequestRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteTCPRequestRuleDefault) IsServerError() bool {
 // IsCode returns true when this delete TCP request rule default response a status code equal to that given
 func (o *DeleteTCPRequestRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete TCP request rule default response
+func (o *DeleteTCPRequestRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteTCPRequestRuleDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateNameserverReader is a Reader for the CreateNameserver structure.
@@ -98,6 +98,11 @@ func (o *CreateNameserverCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create nameserver created response
+func (o *CreateNameserverCreated) Code() int {
+	return 201
+}
+
 func (o *CreateNameserverCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateNameserverAccepted) IsServerError() bool {
 // IsCode returns true when this create nameserver accepted response a status code equal to that given
 func (o *CreateNameserverAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create nameserver accepted response
+func (o *CreateNameserverAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateNameserverAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateNameserverBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create nameserver bad request response
+func (o *CreateNameserverBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateNameserverBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateNameserverConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create nameserver conflict response
+func (o *CreateNameserverConflict) Code() int {
+	return 409
+}
+
 func (o *CreateNameserverConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/nameservers][%d] createNameserverConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateNameserverDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create nameserver default response
-func (o *CreateNameserverDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create nameserver default response has a 2xx status code
 func (o *CreateNameserverDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateNameserverDefault) IsServerError() bool {
 // IsCode returns true when this create nameserver default response a status code equal to that given
 func (o *CreateNameserverDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create nameserver default response
+func (o *CreateNameserverDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateNameserverDefault) Error() string {

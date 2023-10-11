@@ -16,7 +16,6 @@ import (
 )
 
 // BindParams bind params
-// Example: {"address":"127.0.0.1","name":"http","port":80}
 //
 // swagger:model bind_params
 type BindParams struct {
@@ -54,6 +53,9 @@ type BindParams struct {
 
 	// ciphersuites
 	Ciphersuites string `json:"ciphersuites,omitempty"`
+
+	// client sigalgs
+	ClientSigalgs string `json:"client_sigalgs,omitempty"`
 
 	// crl file
 	CrlFile string `json:"crl_file,omitempty"`
@@ -107,10 +109,12 @@ type BindParams struct {
 	Interface string `json:"interface,omitempty"`
 
 	// level
+	// Example: user
 	// Enum: [user operator admin]
 	Level string `json:"level,omitempty"`
 
 	// maxconn
+	// Example: 1234
 	Maxconn int64 `json:"maxconn,omitempty"`
 
 	// mode
@@ -124,10 +128,15 @@ type BindParams struct {
 	Name string `json:"name,omitempty"`
 
 	// namespace
+	// Example: app
 	Namespace string `json:"namespace,omitempty"`
 
 	// nice
+	// Example: 1
 	Nice int64 `json:"nice,omitempty"`
+
+	// no alpn
+	NoAlpn bool `json:"no_alpn,omitempty"`
 
 	// no ca names
 	NoCaNames bool `json:"no_ca_names,omitempty"`
@@ -171,8 +180,12 @@ type BindParams struct {
 	QuicForceRetry bool `json:"quic-force-retry,omitempty"`
 
 	// severity output
+	// Example: none
 	// Enum: [none number string]
 	SeverityOutput string `json:"severity_output,omitempty"`
+
+	// sigalgs
+	Sigalgs string `json:"sigalgs,omitempty"`
 
 	// ssl
 	Ssl bool `json:"ssl,omitempty"`
@@ -201,6 +214,9 @@ type BindParams struct {
 
 	// tfo
 	Tfo bool `json:"tfo,omitempty"`
+
+	// thread
+	Thread string `json:"thread,omitempty"`
 
 	// tls ticket keys
 	TLSTicketKeys string `json:"tls_ticket_keys,omitempty"`

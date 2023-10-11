@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateConsulReader is a Reader for the CreateConsul structure.
@@ -92,6 +92,11 @@ func (o *CreateConsulCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create consul created response
+func (o *CreateConsulCreated) Code() int {
+	return 201
+}
+
 func (o *CreateConsulCreated) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsulCreated  %+v", 201, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *CreateConsulBadRequest) IsServerError() bool {
 // IsCode returns true when this create consul bad request response a status code equal to that given
 func (o *CreateConsulBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the create consul bad request response
+func (o *CreateConsulBadRequest) Code() int {
+	return 400
 }
 
 func (o *CreateConsulBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *CreateConsulConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create consul conflict response
+func (o *CreateConsulConflict) Code() int {
+	return 409
+}
+
 func (o *CreateConsulConflict) Error() string {
 	return fmt.Sprintf("[POST /service_discovery/consul][%d] createConsulConflict  %+v", 409, o.Payload)
 }
@@ -288,11 +303,6 @@ type CreateConsulDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create consul default response
-func (o *CreateConsulDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create consul default response has a 2xx status code
 func (o *CreateConsulDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -316,6 +326,11 @@ func (o *CreateConsulDefault) IsServerError() bool {
 // IsCode returns true when this create consul default response a status code equal to that given
 func (o *CreateConsulDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create consul default response
+func (o *CreateConsulDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateConsulDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateHTTPErrorRuleReader is a Reader for the CreateHTTPErrorRule structure.
@@ -98,6 +98,11 @@ func (o *CreateHTTPErrorRuleCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create Http error rule created response
+func (o *CreateHTTPErrorRuleCreated) Code() int {
+	return 201
+}
+
 func (o *CreateHTTPErrorRuleCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_error_rules][%d] createHttpErrorRuleCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateHTTPErrorRuleAccepted) IsServerError() bool {
 // IsCode returns true when this create Http error rule accepted response a status code equal to that given
 func (o *CreateHTTPErrorRuleAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create Http error rule accepted response
+func (o *CreateHTTPErrorRuleAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateHTTPErrorRuleAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateHTTPErrorRuleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create Http error rule bad request response
+func (o *CreateHTTPErrorRuleBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateHTTPErrorRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_error_rules][%d] createHttpErrorRuleBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateHTTPErrorRuleConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create Http error rule conflict response
+func (o *CreateHTTPErrorRuleConflict) Code() int {
+	return 409
+}
+
 func (o *CreateHTTPErrorRuleConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_error_rules][%d] createHttpErrorRuleConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateHTTPErrorRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create HTTP error rule default response
-func (o *CreateHTTPErrorRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create HTTP error rule default response has a 2xx status code
 func (o *CreateHTTPErrorRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateHTTPErrorRuleDefault) IsServerError() bool {
 // IsCode returns true when this create HTTP error rule default response a status code equal to that given
 func (o *CreateHTTPErrorRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create HTTP error rule default response
+func (o *CreateHTTPErrorRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateHTTPErrorRuleDefault) Error() string {

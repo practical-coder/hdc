@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetLogForwardReader is a Reader for the GetLogForward structure.
@@ -94,6 +94,11 @@ func (o *GetLogForwardOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get log forward o k response
+func (o *GetLogForwardOK) Code() int {
+	return 200
+}
+
 func (o *GetLogForwardOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_forwards/{name}][%d] getLogForwardOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetLogForwardNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get log forward not found response
+func (o *GetLogForwardNotFound) Code() int {
+	return 404
+}
+
 func (o *GetLogForwardNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_forwards/{name}][%d] getLogForwardNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetLogForwardDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get log forward default response
-func (o *GetLogForwardDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get log forward default response has a 2xx status code
 func (o *GetLogForwardDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetLogForwardDefault) IsServerError() bool {
 // IsCode returns true when this get log forward default response a status code equal to that given
 func (o *GetLogForwardDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get log forward default response
+func (o *GetLogForwardDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetLogForwardDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetLogForwardOKBody) ContextValidate(ctx context.Context, formats strfm
 func (o *GetLogForwardOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getLogForwardOK" + "." + "data")

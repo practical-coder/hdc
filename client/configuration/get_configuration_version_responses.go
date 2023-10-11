@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetConfigurationVersionReader is a Reader for the GetConfigurationVersion structure.
@@ -86,6 +86,11 @@ func (o *GetConfigurationVersionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get configuration version o k response
+func (o *GetConfigurationVersionOK) Code() int {
+	return 200
+}
+
 func (o *GetConfigurationVersionOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/version][%d] getConfigurationVersionOK  %+v", 200, o.Payload)
 }
@@ -152,6 +157,11 @@ func (o *GetConfigurationVersionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get configuration version not found response
+func (o *GetConfigurationVersionNotFound) Code() int {
+	return 404
+}
+
 func (o *GetConfigurationVersionNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/version][%d] getConfigurationVersionNotFound  %+v", 404, o.Payload)
 }
@@ -205,11 +215,6 @@ type GetConfigurationVersionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get configuration version default response
-func (o *GetConfigurationVersionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get configuration version default response has a 2xx status code
 func (o *GetConfigurationVersionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -233,6 +238,11 @@ func (o *GetConfigurationVersionDefault) IsServerError() bool {
 // IsCode returns true when this get configuration version default response a status code equal to that given
 func (o *GetConfigurationVersionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get configuration version default response
+func (o *GetConfigurationVersionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetConfigurationVersionDefault) Error() string {

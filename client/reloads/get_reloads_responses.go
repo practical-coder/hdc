@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetReloadsReader is a Reader for the GetReloads structure.
@@ -80,6 +80,11 @@ func (o *GetReloadsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get reloads o k response
+func (o *GetReloadsOK) Code() int {
+	return 200
+}
+
 func (o *GetReloadsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/reloads][%d] getReloadsOK  %+v", 200, o.Payload)
 }
@@ -124,11 +129,6 @@ type GetReloadsDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get reloads default response
-func (o *GetReloadsDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get reloads default response has a 2xx status code
 func (o *GetReloadsDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -152,6 +152,11 @@ func (o *GetReloadsDefault) IsServerError() bool {
 // IsCode returns true when this get reloads default response a status code equal to that given
 func (o *GetReloadsDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get reloads default response
+func (o *GetReloadsDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetReloadsDefault) Error() string {

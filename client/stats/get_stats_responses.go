@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetStatsReader is a Reader for the GetStats structure.
@@ -86,6 +86,11 @@ func (o *GetStatsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get stats o k response
+func (o *GetStatsOK) Code() int {
+	return 200
+}
+
 func (o *GetStatsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/stats/native][%d] getStatsOK  %+v", 200, o.Payload)
 }
@@ -147,6 +152,11 @@ func (o *GetStatsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
+// Code gets the status code for the get stats internal server error response
+func (o *GetStatsInternalServerError) Code() int {
+	return 500
+}
+
 func (o *GetStatsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/stats/native][%d] getStatsInternalServerError  %+v", 500, o.Payload)
 }
@@ -191,11 +201,6 @@ type GetStatsDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get stats default response
-func (o *GetStatsDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get stats default response has a 2xx status code
 func (o *GetStatsDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -219,6 +224,11 @@ func (o *GetStatsDefault) IsServerError() bool {
 // IsCode returns true when this get stats default response a status code equal to that given
 func (o *GetStatsDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get stats default response
+func (o *GetStatsDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetStatsDefault) Error() string {

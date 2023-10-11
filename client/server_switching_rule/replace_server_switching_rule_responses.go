@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceServerSwitchingRuleReader is a Reader for the ReplaceServerSwitchingRule structure.
@@ -98,6 +98,11 @@ func (o *ReplaceServerSwitchingRuleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace server switching rule o k response
+func (o *ReplaceServerSwitchingRuleOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceServerSwitchingRuleOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_switching_rules/{index}][%d] replaceServerSwitchingRuleOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceServerSwitchingRuleAccepted) IsServerError() bool {
 // IsCode returns true when this replace server switching rule accepted response a status code equal to that given
 func (o *ReplaceServerSwitchingRuleAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace server switching rule accepted response
+func (o *ReplaceServerSwitchingRuleAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceServerSwitchingRuleAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceServerSwitchingRuleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace server switching rule bad request response
+func (o *ReplaceServerSwitchingRuleBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceServerSwitchingRuleBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_switching_rules/{index}][%d] replaceServerSwitchingRuleBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceServerSwitchingRuleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace server switching rule not found response
+func (o *ReplaceServerSwitchingRuleNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceServerSwitchingRuleNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/server_switching_rules/{index}][%d] replaceServerSwitchingRuleNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceServerSwitchingRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace server switching rule default response
-func (o *ReplaceServerSwitchingRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace server switching rule default response has a 2xx status code
 func (o *ReplaceServerSwitchingRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceServerSwitchingRuleDefault) IsServerError() bool {
 // IsCode returns true when this replace server switching rule default response a status code equal to that given
 func (o *ReplaceServerSwitchingRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace server switching rule default response
+func (o *ReplaceServerSwitchingRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceServerSwitchingRuleDefault) Error() string {

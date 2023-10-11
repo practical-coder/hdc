@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetStickTableEntriesReader is a Reader for the GetStickTableEntries structure.
@@ -80,6 +80,11 @@ func (o *GetStickTableEntriesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get stick table entries o k response
+func (o *GetStickTableEntriesOK) Code() int {
+	return 200
+}
+
 func (o *GetStickTableEntriesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/stick_table_entries][%d] getStickTableEntriesOK  %+v", 200, o.Payload)
 }
@@ -124,11 +129,6 @@ type GetStickTableEntriesDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get stick table entries default response
-func (o *GetStickTableEntriesDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get stick table entries default response has a 2xx status code
 func (o *GetStickTableEntriesDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -152,6 +152,11 @@ func (o *GetStickTableEntriesDefault) IsServerError() bool {
 // IsCode returns true when this get stick table entries default response a status code equal to that given
 func (o *GetStickTableEntriesDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get stick table entries default response
+func (o *GetStickTableEntriesDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetStickTableEntriesDefault) Error() string {

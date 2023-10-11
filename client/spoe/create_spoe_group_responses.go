@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateSpoeGroupReader is a Reader for the CreateSpoeGroup structure.
@@ -92,6 +92,11 @@ func (o *CreateSpoeGroupCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create spoe group created response
+func (o *CreateSpoeGroupCreated) Code() int {
+	return 201
+}
+
 func (o *CreateSpoeGroupCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_groups][%d] createSpoeGroupCreated  %+v", 201, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *CreateSpoeGroupBadRequest) IsServerError() bool {
 // IsCode returns true when this create spoe group bad request response a status code equal to that given
 func (o *CreateSpoeGroupBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the create spoe group bad request response
+func (o *CreateSpoeGroupBadRequest) Code() int {
+	return 400
 }
 
 func (o *CreateSpoeGroupBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *CreateSpoeGroupConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create spoe group conflict response
+func (o *CreateSpoeGroupConflict) Code() int {
+	return 409
+}
+
 func (o *CreateSpoeGroupConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe/spoe_groups][%d] createSpoeGroupConflict  %+v", 409, o.Payload)
 }
@@ -288,11 +303,6 @@ type CreateSpoeGroupDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create spoe group default response
-func (o *CreateSpoeGroupDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create spoe group default response has a 2xx status code
 func (o *CreateSpoeGroupDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -316,6 +326,11 @@ func (o *CreateSpoeGroupDefault) IsServerError() bool {
 // IsCode returns true when this create spoe group default response a status code equal to that given
 func (o *CreateSpoeGroupDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create spoe group default response
+func (o *CreateSpoeGroupDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateSpoeGroupDefault) Error() string {

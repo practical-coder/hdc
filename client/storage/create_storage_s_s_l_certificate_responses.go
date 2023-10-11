@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateStorageSSLCertificateReader is a Reader for the CreateStorageSSLCertificate structure.
@@ -92,6 +92,11 @@ func (o *CreateStorageSSLCertificateCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create storage s s l certificate created response
+func (o *CreateStorageSSLCertificateCreated) Code() int {
+	return 201
+}
+
 func (o *CreateStorageSSLCertificateCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificateCreated  %+v", 201, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *CreateStorageSSLCertificateBadRequest) IsServerError() bool {
 // IsCode returns true when this create storage s s l certificate bad request response a status code equal to that given
 func (o *CreateStorageSSLCertificateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the create storage s s l certificate bad request response
+func (o *CreateStorageSSLCertificateBadRequest) Code() int {
+	return 400
 }
 
 func (o *CreateStorageSSLCertificateBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *CreateStorageSSLCertificateConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create storage s s l certificate conflict response
+func (o *CreateStorageSSLCertificateConflict) Code() int {
+	return 409
+}
+
 func (o *CreateStorageSSLCertificateConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/storage/ssl_certificates][%d] createStorageSSLCertificateConflict  %+v", 409, o.Payload)
 }
@@ -288,11 +303,6 @@ type CreateStorageSSLCertificateDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create storage s s l certificate default response
-func (o *CreateStorageSSLCertificateDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create storage s s l certificate default response has a 2xx status code
 func (o *CreateStorageSSLCertificateDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -316,6 +326,11 @@ func (o *CreateStorageSSLCertificateDefault) IsServerError() bool {
 // IsCode returns true when this create storage s s l certificate default response a status code equal to that given
 func (o *CreateStorageSSLCertificateDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create storage s s l certificate default response
+func (o *CreateStorageSSLCertificateDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateStorageSSLCertificateDefault) Error() string {

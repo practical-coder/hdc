@@ -226,7 +226,7 @@ type ServerParams struct {
 	Redir string `json:"redir,omitempty"`
 
 	// resolve net
-	// Pattern: ^[^,\s][^\,]*[^,\s]*$
+	// Pattern: ^([A-Za-z0-9.:/]+)(,[A-Za-z0-9.:/]+)*$
 	ResolveNet string `json:"resolve-net,omitempty"`
 
 	// resolve prefer
@@ -234,7 +234,7 @@ type ServerParams struct {
 	ResolvePrefer string `json:"resolve-prefer,omitempty"`
 
 	// resolve opts
-	// Pattern: ^[^,\s][^\,]*[^,\s]*$
+	// Pattern: ^(allow-dup-ip|ignore-weight|prevent-dup-ip)(,(allow-dup-ip|ignore-weight|prevent-dup-ip))*$
 	ResolveOpts string `json:"resolve_opts,omitempty"`
 
 	// resolvers
@@ -306,7 +306,7 @@ type ServerParams struct {
 	Stick string `json:"stick,omitempty"`
 
 	// tcp ut
-	TCPUt int64 `json:"tcp_ut,omitempty"`
+	TCPUt *int64 `json:"tcp_ut,omitempty"`
 
 	// tfo
 	// Enum: [enabled disabled]
@@ -1715,7 +1715,7 @@ func (m *ServerParams) validateResolveNet(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := validate.Pattern("resolve-net", "body", m.ResolveNet, `^[^,\s][^\,]*[^,\s]*$`); err != nil {
+	if err := validate.Pattern("resolve-net", "body", m.ResolveNet, `^([A-Za-z0-9.:/]+)(,[A-Za-z0-9.:/]+)*$`); err != nil {
 		return err
 	}
 
@@ -1769,7 +1769,7 @@ func (m *ServerParams) validateResolveOpts(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := validate.Pattern("resolve_opts", "body", m.ResolveOpts, `^[^,\s][^\,]*[^,\s]*$`); err != nil {
+	if err := validate.Pattern("resolve_opts", "body", m.ResolveOpts, `^(allow-dup-ip|ignore-weight|prevent-dup-ip)(,(allow-dup-ip|ignore-weight|prevent-dup-ip))*$`); err != nil {
 		return err
 	}
 

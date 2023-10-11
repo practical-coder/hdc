@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceDgramBindReader is a Reader for the ReplaceDgramBind structure.
@@ -98,6 +98,11 @@ func (o *ReplaceDgramBindOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace dgram bind o k response
+func (o *ReplaceDgramBindOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceDgramBindOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/dgram_binds/{name}][%d] replaceDgramBindOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceDgramBindAccepted) IsServerError() bool {
 // IsCode returns true when this replace dgram bind accepted response a status code equal to that given
 func (o *ReplaceDgramBindAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace dgram bind accepted response
+func (o *ReplaceDgramBindAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceDgramBindAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceDgramBindBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace dgram bind bad request response
+func (o *ReplaceDgramBindBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceDgramBindBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/dgram_binds/{name}][%d] replaceDgramBindBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceDgramBindNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace dgram bind not found response
+func (o *ReplaceDgramBindNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceDgramBindNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/dgram_binds/{name}][%d] replaceDgramBindNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceDgramBindDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace dgram bind default response
-func (o *ReplaceDgramBindDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace dgram bind default response has a 2xx status code
 func (o *ReplaceDgramBindDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceDgramBindDefault) IsServerError() bool {
 // IsCode returns true when this replace dgram bind default response a status code equal to that given
 func (o *ReplaceDgramBindDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace dgram bind default response
+func (o *ReplaceDgramBindDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceDgramBindDefault) Error() string {

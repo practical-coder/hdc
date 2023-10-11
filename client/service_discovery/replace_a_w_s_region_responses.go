@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceAWSRegionReader is a Reader for the ReplaceAWSRegion structure.
@@ -92,6 +92,11 @@ func (o *ReplaceAWSRegionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace a w s region o k response
+func (o *ReplaceAWSRegionOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceAWSRegionOK) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegionOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *ReplaceAWSRegionBadRequest) IsServerError() bool {
 // IsCode returns true when this replace a w s region bad request response a status code equal to that given
 func (o *ReplaceAWSRegionBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the replace a w s region bad request response
+func (o *ReplaceAWSRegionBadRequest) Code() int {
+	return 400
 }
 
 func (o *ReplaceAWSRegionBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *ReplaceAWSRegionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace a w s region not found response
+func (o *ReplaceAWSRegionNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceAWSRegionNotFound) Error() string {
 	return fmt.Sprintf("[PUT /service_discovery/aws/{id}][%d] replaceAWSRegionNotFound  %+v", 404, o.Payload)
 }
@@ -288,11 +303,6 @@ type ReplaceAWSRegionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace a w s region default response
-func (o *ReplaceAWSRegionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace a w s region default response has a 2xx status code
 func (o *ReplaceAWSRegionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -316,6 +326,11 @@ func (o *ReplaceAWSRegionDefault) IsServerError() bool {
 // IsCode returns true when this replace a w s region default response a status code equal to that given
 func (o *ReplaceAWSRegionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace a w s region default response
+func (o *ReplaceAWSRegionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceAWSRegionDefault) Error() string {

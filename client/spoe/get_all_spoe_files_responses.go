@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetAllSpoeFilesReader is a Reader for the GetAllSpoeFiles structure.
@@ -86,6 +86,11 @@ func (o *GetAllSpoeFilesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get all spoe files o k response
+func (o *GetAllSpoeFilesOK) Code() int {
+	return 200
+}
+
 func (o *GetAllSpoeFilesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files][%d] getAllSpoeFilesOK  %+v", 200, o.Payload)
 }
@@ -152,6 +157,11 @@ func (o *GetAllSpoeFilesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get all spoe files not found response
+func (o *GetAllSpoeFilesNotFound) Code() int {
+	return 404
+}
+
 func (o *GetAllSpoeFilesNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_files][%d] getAllSpoeFilesNotFound  %+v", 404, o.Payload)
 }
@@ -205,11 +215,6 @@ type GetAllSpoeFilesDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get all spoe files default response
-func (o *GetAllSpoeFilesDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get all spoe files default response has a 2xx status code
 func (o *GetAllSpoeFilesDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -233,6 +238,11 @@ func (o *GetAllSpoeFilesDefault) IsServerError() bool {
 // IsCode returns true when this get all spoe files default response a status code equal to that given
 func (o *GetAllSpoeFilesDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get all spoe files default response
+func (o *GetAllSpoeFilesDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetAllSpoeFilesDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteConsulReader is a Reader for the DeleteConsul structure.
@@ -85,6 +85,11 @@ func (o *DeleteConsulNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete consul no content response
+func (o *DeleteConsulNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteConsulNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /service_discovery/consul/{id}][%d] deleteConsulNoContent ", 204)
 }
@@ -142,6 +147,11 @@ func (o *DeleteConsulNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete consul not found response
+func (o *DeleteConsulNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteConsulNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /service_discovery/consul/{id}][%d] deleteConsulNotFound  %+v", 404, o.Payload)
 }
@@ -195,11 +205,6 @@ type DeleteConsulDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete consul default response
-func (o *DeleteConsulDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete consul default response has a 2xx status code
 func (o *DeleteConsulDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -223,6 +228,11 @@ func (o *DeleteConsulDefault) IsServerError() bool {
 // IsCode returns true when this delete consul default response a status code equal to that given
 func (o *DeleteConsulDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete consul default response
+func (o *DeleteConsulDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteConsulDefault) Error() string {

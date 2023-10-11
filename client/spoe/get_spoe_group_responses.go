@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetSpoeGroupReader is a Reader for the GetSpoeGroup structure.
@@ -95,6 +95,11 @@ func (o *GetSpoeGroupOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get spoe group o k response
+func (o *GetSpoeGroupOK) Code() int {
+	return 200
+}
+
 func (o *GetSpoeGroupOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_groups/{name}][%d] getSpoeGroupOK  %+v", 200, o.Payload)
 }
@@ -170,6 +175,11 @@ func (o *GetSpoeGroupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get spoe group not found response
+func (o *GetSpoeGroupNotFound) Code() int {
+	return 404
+}
+
 func (o *GetSpoeGroupNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_groups/{name}][%d] getSpoeGroupNotFound  %+v", 404, o.Payload)
 }
@@ -223,11 +233,6 @@ type GetSpoeGroupDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get spoe group default response
-func (o *GetSpoeGroupDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get spoe group default response has a 2xx status code
 func (o *GetSpoeGroupDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -251,6 +256,11 @@ func (o *GetSpoeGroupDefault) IsServerError() bool {
 // IsCode returns true when this get spoe group default response a status code equal to that given
 func (o *GetSpoeGroupDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get spoe group default response
+func (o *GetSpoeGroupDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetSpoeGroupDefault) Error() string {
@@ -349,6 +359,7 @@ func (o *GetSpoeGroupOKBody) ContextValidate(ctx context.Context, formats strfmt
 func (o *GetSpoeGroupOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getSpoeGroupOK" + "." + "data")

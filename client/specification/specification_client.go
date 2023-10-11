@@ -49,7 +49,7 @@ func (a *Client) GetSpecification(params *GetSpecificationParams, authInfo runti
 		PathPattern:        "/specification",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetSpecificationReader{formats: a.formats},
 		AuthInfo:           authInfo,

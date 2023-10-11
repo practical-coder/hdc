@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteStorageMapReader is a Reader for the DeleteStorageMap structure.
@@ -85,6 +85,11 @@ func (o *DeleteStorageMapNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete storage map no content response
+func (o *DeleteStorageMapNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteStorageMapNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/maps/{name}][%d] deleteStorageMapNoContent ", 204)
 }
@@ -142,6 +147,11 @@ func (o *DeleteStorageMapNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete storage map not found response
+func (o *DeleteStorageMapNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteStorageMapNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/storage/maps/{name}][%d] deleteStorageMapNotFound  %+v", 404, o.Payload)
 }
@@ -195,11 +205,6 @@ type DeleteStorageMapDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete storage map default response
-func (o *DeleteStorageMapDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete storage map default response has a 2xx status code
 func (o *DeleteStorageMapDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -223,6 +228,11 @@ func (o *DeleteStorageMapDefault) IsServerError() bool {
 // IsCode returns true when this delete storage map default response a status code equal to that given
 func (o *DeleteStorageMapDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete storage map default response
+func (o *DeleteStorageMapDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteStorageMapDefault) Error() string {

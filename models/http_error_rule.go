@@ -19,7 +19,7 @@ import (
 // HTTPErrorRule HTTP Error Rule
 //
 // HAProxy HTTP error rule configuration (corresponds to http-error directives)
-// Example: {"hdr_format":"%T","hdr_name":"X-Haproxy-Current-Date","index":0,"status":425,"type":"status"}
+// Example: {"index":0,"status":425,"type":"status"}
 //
 // swagger:model http_error_rule
 type HTTPErrorRule struct {
@@ -267,6 +267,11 @@ func (m *HTTPErrorRule) contextValidateReturnHeaders(ctx context.Context, format
 	for i := 0; i < len(m.ReturnHeaders); i++ {
 
 		if m.ReturnHeaders[i] != nil {
+
+			if swag.IsZero(m.ReturnHeaders[i]) { // not required
+				return nil
+			}
+
 			if err := m.ReturnHeaders[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("return_hdrs" + "." + strconv.Itoa(i))

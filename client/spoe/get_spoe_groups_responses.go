@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetSpoeGroupsReader is a Reader for the GetSpoeGroups structure.
@@ -89,6 +89,11 @@ func (o *GetSpoeGroupsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get spoe groups o k response
+func (o *GetSpoeGroupsOK) Code() int {
+	return 200
+}
+
 func (o *GetSpoeGroupsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_groups][%d] getSpoeGroupsOK  %+v", 200, o.Payload)
 }
@@ -142,11 +147,6 @@ type GetSpoeGroupsDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get spoe groups default response
-func (o *GetSpoeGroupsDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get spoe groups default response has a 2xx status code
 func (o *GetSpoeGroupsDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -170,6 +170,11 @@ func (o *GetSpoeGroupsDefault) IsServerError() bool {
 // IsCode returns true when this get spoe groups default response a status code equal to that given
 func (o *GetSpoeGroupsDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get spoe groups default response
+func (o *GetSpoeGroupsDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetSpoeGroupsDefault) Error() string {

@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceRuntimeMapEntryReader is a Reader for the ReplaceRuntimeMapEntry structure.
@@ -96,6 +96,11 @@ func (o *ReplaceRuntimeMapEntryOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace runtime map entry o k response
+func (o *ReplaceRuntimeMapEntryOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceRuntimeMapEntryOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntryOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ReplaceRuntimeMapEntryBadRequest) IsServerError() bool {
 // IsCode returns true when this replace runtime map entry bad request response a status code equal to that given
 func (o *ReplaceRuntimeMapEntryBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the replace runtime map entry bad request response
+func (o *ReplaceRuntimeMapEntryBadRequest) Code() int {
+	return 400
 }
 
 func (o *ReplaceRuntimeMapEntryBadRequest) Error() string {
@@ -239,6 +249,11 @@ func (o *ReplaceRuntimeMapEntryNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace runtime map entry not found response
+func (o *ReplaceRuntimeMapEntryNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceRuntimeMapEntryNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/runtime/maps_entries/{id}][%d] replaceRuntimeMapEntryNotFound  %+v", 404, o.Payload)
 }
@@ -292,11 +307,6 @@ type ReplaceRuntimeMapEntryDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace runtime map entry default response
-func (o *ReplaceRuntimeMapEntryDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace runtime map entry default response has a 2xx status code
 func (o *ReplaceRuntimeMapEntryDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -320,6 +330,11 @@ func (o *ReplaceRuntimeMapEntryDefault) IsServerError() bool {
 // IsCode returns true when this replace runtime map entry default response a status code equal to that given
 func (o *ReplaceRuntimeMapEntryDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace runtime map entry default response
+func (o *ReplaceRuntimeMapEntryDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceRuntimeMapEntryDefault) Error() string {

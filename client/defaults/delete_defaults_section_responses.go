@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteDefaultsSectionReader is a Reader for the DeleteDefaultsSection structure.
@@ -95,6 +95,11 @@ func (o *DeleteDefaultsSectionAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete defaults section accepted response
+func (o *DeleteDefaultsSectionAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteDefaultsSectionAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/named_defaults/{name}][%d] deleteDefaultsSectionAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteDefaultsSectionNoContent) IsServerError() bool {
 // IsCode returns true when this delete defaults section no content response a status code equal to that given
 func (o *DeleteDefaultsSectionNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete defaults section no content response
+func (o *DeleteDefaultsSectionNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteDefaultsSectionNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteDefaultsSectionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete defaults section not found response
+func (o *DeleteDefaultsSectionNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteDefaultsSectionNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/named_defaults/{name}][%d] deleteDefaultsSectionNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteDefaultsSectionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete defaults section default response
-func (o *DeleteDefaultsSectionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete defaults section default response has a 2xx status code
 func (o *DeleteDefaultsSectionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteDefaultsSectionDefault) IsServerError() bool {
 // IsCode returns true when this delete defaults section default response a status code equal to that given
 func (o *DeleteDefaultsSectionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete defaults section default response
+func (o *DeleteDefaultsSectionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteDefaultsSectionDefault) Error() string {

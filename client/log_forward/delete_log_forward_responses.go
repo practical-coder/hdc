@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteLogForwardReader is a Reader for the DeleteLogForward structure.
@@ -95,6 +95,11 @@ func (o *DeleteLogForwardAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete log forward accepted response
+func (o *DeleteLogForwardAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteLogForwardAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/log_forwards/{name}][%d] deleteLogForwardAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteLogForwardNoContent) IsServerError() bool {
 // IsCode returns true when this delete log forward no content response a status code equal to that given
 func (o *DeleteLogForwardNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete log forward no content response
+func (o *DeleteLogForwardNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteLogForwardNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteLogForwardNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete log forward not found response
+func (o *DeleteLogForwardNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteLogForwardNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/log_forwards/{name}][%d] deleteLogForwardNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteLogForwardDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete log forward default response
-func (o *DeleteLogForwardDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete log forward default response has a 2xx status code
 func (o *DeleteLogForwardDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteLogForwardDefault) IsServerError() bool {
 // IsCode returns true when this delete log forward default response a status code equal to that given
 func (o *DeleteLogForwardDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete log forward default response
+func (o *DeleteLogForwardDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteLogForwardDefault) Error() string {

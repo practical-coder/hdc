@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceSpoeMessageReader is a Reader for the ReplaceSpoeMessage structure.
@@ -92,6 +92,11 @@ func (o *ReplaceSpoeMessageOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace spoe message o k response
+func (o *ReplaceSpoeMessageOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceSpoeMessageOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_messages/{name}][%d] replaceSpoeMessageOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *ReplaceSpoeMessageBadRequest) IsServerError() bool {
 // IsCode returns true when this replace spoe message bad request response a status code equal to that given
 func (o *ReplaceSpoeMessageBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the replace spoe message bad request response
+func (o *ReplaceSpoeMessageBadRequest) Code() int {
+	return 400
 }
 
 func (o *ReplaceSpoeMessageBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *ReplaceSpoeMessageNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace spoe message not found response
+func (o *ReplaceSpoeMessageNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceSpoeMessageNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/spoe/spoe_messages/{name}][%d] replaceSpoeMessageNotFound  %+v", 404, o.Payload)
 }
@@ -288,11 +303,6 @@ type ReplaceSpoeMessageDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace spoe message default response
-func (o *ReplaceSpoeMessageDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace spoe message default response has a 2xx status code
 func (o *ReplaceSpoeMessageDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -316,6 +326,11 @@ func (o *ReplaceSpoeMessageDefault) IsServerError() bool {
 // IsCode returns true when this replace spoe message default response a status code equal to that given
 func (o *ReplaceSpoeMessageDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace spoe message default response
+func (o *ReplaceSpoeMessageDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceSpoeMessageDefault) Error() string {

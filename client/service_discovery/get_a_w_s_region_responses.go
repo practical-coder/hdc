@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetAWSRegionReader is a Reader for the GetAWSRegion structure.
@@ -89,6 +89,11 @@ func (o *GetAWSRegionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get a w s region o k response
+func (o *GetAWSRegionOK) Code() int {
+	return 200
+}
+
 func (o *GetAWSRegionOK) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/aws/{id}][%d] getAWSRegionOK  %+v", 200, o.Payload)
 }
@@ -157,6 +162,11 @@ func (o *GetAWSRegionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get a w s region not found response
+func (o *GetAWSRegionNotFound) Code() int {
+	return 404
+}
+
 func (o *GetAWSRegionNotFound) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/aws/{id}][%d] getAWSRegionNotFound  %+v", 404, o.Payload)
 }
@@ -210,11 +220,6 @@ type GetAWSRegionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get a w s region default response
-func (o *GetAWSRegionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get a w s region default response has a 2xx status code
 func (o *GetAWSRegionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -238,6 +243,11 @@ func (o *GetAWSRegionDefault) IsServerError() bool {
 // IsCode returns true when this get a w s region default response a status code equal to that given
 func (o *GetAWSRegionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get a w s region default response
+func (o *GetAWSRegionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetAWSRegionDefault) Error() string {
@@ -331,6 +341,11 @@ func (o *GetAWSRegionOKBody) ContextValidate(ctx context.Context, formats strfmt
 func (o *GetAWSRegionOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getAWSRegionOK" + "." + "data")

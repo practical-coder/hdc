@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateRingReader is a Reader for the CreateRing structure.
@@ -98,6 +98,11 @@ func (o *CreateRingCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create ring created response
+func (o *CreateRingCreated) Code() int {
+	return 201
+}
+
 func (o *CreateRingCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/rings][%d] createRingCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateRingAccepted) IsServerError() bool {
 // IsCode returns true when this create ring accepted response a status code equal to that given
 func (o *CreateRingAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create ring accepted response
+func (o *CreateRingAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateRingAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateRingBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create ring bad request response
+func (o *CreateRingBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateRingBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/rings][%d] createRingBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateRingConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create ring conflict response
+func (o *CreateRingConflict) Code() int {
+	return 409
+}
+
 func (o *CreateRingConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/rings][%d] createRingConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateRingDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create ring default response
-func (o *CreateRingDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create ring default response has a 2xx status code
 func (o *CreateRingDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateRingDefault) IsServerError() bool {
 // IsCode returns true when this create ring default response a status code equal to that given
 func (o *CreateRingDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create ring default response
+func (o *CreateRingDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateRingDefault) Error() string {

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetServicesHaproxyRuntimeAclsIDReader is a Reader for the GetServicesHaproxyRuntimeAclsID structure.
@@ -86,6 +86,11 @@ func (o *GetServicesHaproxyRuntimeAclsIDOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get services haproxy runtime acls Id o k response
+func (o *GetServicesHaproxyRuntimeAclsIDOK) Code() int {
+	return 200
+}
+
 func (o *GetServicesHaproxyRuntimeAclsIDOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acls/{id}][%d] getServicesHaproxyRuntimeAclsIdOK  %+v", 200, o.Payload)
 }
@@ -154,6 +159,11 @@ func (o *GetServicesHaproxyRuntimeAclsIDNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get services haproxy runtime acls Id not found response
+func (o *GetServicesHaproxyRuntimeAclsIDNotFound) Code() int {
+	return 404
+}
+
 func (o *GetServicesHaproxyRuntimeAclsIDNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/runtime/acls/{id}][%d] getServicesHaproxyRuntimeAclsIdNotFound  %+v", 404, o.Payload)
 }
@@ -207,11 +217,6 @@ type GetServicesHaproxyRuntimeAclsIDDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get services haproxy runtime acls ID default response
-func (o *GetServicesHaproxyRuntimeAclsIDDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get services haproxy runtime acls ID default response has a 2xx status code
 func (o *GetServicesHaproxyRuntimeAclsIDDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -235,6 +240,11 @@ func (o *GetServicesHaproxyRuntimeAclsIDDefault) IsServerError() bool {
 // IsCode returns true when this get services haproxy runtime acls ID default response a status code equal to that given
 func (o *GetServicesHaproxyRuntimeAclsIDDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get services haproxy runtime acls ID default response
+func (o *GetServicesHaproxyRuntimeAclsIDDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetServicesHaproxyRuntimeAclsIDDefault) Error() string {

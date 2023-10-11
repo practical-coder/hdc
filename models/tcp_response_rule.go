@@ -24,7 +24,7 @@ import (
 type TCPResponseRule struct {
 
 	// action
-	// Enum: [accept reject lua set-bandwidth-limit close sc-inc-gpc0 sc-inc-gpc1 sc-set-gpt0 send-spoe-group set-log-level set-mark set-nice set-tos silent-drop unset-var]
+	// Enum: [accept reject lua set-bandwidth-limit close sc-add-gpc sc-inc-gpc sc-inc-gpc0 sc-inc-gpc1 sc-set-gpt0 send-spoe-group set-log-level set-mark set-nice set-tos silent-drop unset-var]
 	Action string `json:"action,omitempty"`
 
 	// bandwidth limit limit
@@ -70,8 +70,14 @@ type TCPResponseRule struct {
 	// Minimum: -1024
 	NiceValue int64 `json:"nice_value,omitempty"`
 
+	// sc expr
+	ScExpr string `json:"sc_expr,omitempty"`
+
 	// sc id
 	ScID int64 `json:"sc_id,omitempty"`
+
+	// sc idx
+	ScIdx int64 `json:"sc_idx,omitempty"`
 
 	// sc int
 	ScInt *int64 `json:"sc_int,omitempty"`
@@ -171,7 +177,7 @@ var tcpResponseRuleTypeActionPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["accept","reject","lua","set-bandwidth-limit","close","sc-inc-gpc0","sc-inc-gpc1","sc-set-gpt0","send-spoe-group","set-log-level","set-mark","set-nice","set-tos","silent-drop","unset-var"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["accept","reject","lua","set-bandwidth-limit","close","sc-add-gpc","sc-inc-gpc","sc-inc-gpc0","sc-inc-gpc1","sc-set-gpt0","send-spoe-group","set-log-level","set-mark","set-nice","set-tos","silent-drop","unset-var"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -195,6 +201,12 @@ const (
 
 	// TCPResponseRuleActionClose captures enum value "close"
 	TCPResponseRuleActionClose string = "close"
+
+	// TCPResponseRuleActionScDashAddDashGpc captures enum value "sc-add-gpc"
+	TCPResponseRuleActionScDashAddDashGpc string = "sc-add-gpc"
+
+	// TCPResponseRuleActionScDashIncDashGpc captures enum value "sc-inc-gpc"
+	TCPResponseRuleActionScDashIncDashGpc string = "sc-inc-gpc"
 
 	// TCPResponseRuleActionScDashIncDashGpc0 captures enum value "sc-inc-gpc0"
 	TCPResponseRuleActionScDashIncDashGpc0 string = "sc-inc-gpc0"

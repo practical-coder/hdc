@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateHTTPCheckReader is a Reader for the CreateHTTPCheck structure.
@@ -98,6 +98,11 @@ func (o *CreateHTTPCheckCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create Http check created response
+func (o *CreateHTTPCheckCreated) Code() int {
+	return 201
+}
+
 func (o *CreateHTTPCheckCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_checks][%d] createHttpCheckCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateHTTPCheckAccepted) IsServerError() bool {
 // IsCode returns true when this create Http check accepted response a status code equal to that given
 func (o *CreateHTTPCheckAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create Http check accepted response
+func (o *CreateHTTPCheckAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateHTTPCheckAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateHTTPCheckBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create Http check bad request response
+func (o *CreateHTTPCheckBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateHTTPCheckBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_checks][%d] createHttpCheckBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateHTTPCheckConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create Http check conflict response
+func (o *CreateHTTPCheckConflict) Code() int {
+	return 409
+}
+
 func (o *CreateHTTPCheckConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/http_checks][%d] createHttpCheckConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateHTTPCheckDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create HTTP check default response
-func (o *CreateHTTPCheckDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create HTTP check default response has a 2xx status code
 func (o *CreateHTTPCheckDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateHTTPCheckDefault) IsServerError() bool {
 // IsCode returns true when this create HTTP check default response a status code equal to that given
 func (o *CreateHTTPCheckDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create HTTP check default response
+func (o *CreateHTTPCheckDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateHTTPCheckDefault) Error() string {

@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetSiteReader is a Reader for the GetSite structure.
@@ -94,6 +94,11 @@ func (o *GetSiteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get site o k response
+func (o *GetSiteOK) Code() int {
+	return 200
+}
+
 func (o *GetSiteOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/sites/{name}][%d] getSiteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetSiteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get site not found response
+func (o *GetSiteNotFound) Code() int {
+	return 404
+}
+
 func (o *GetSiteNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/sites/{name}][%d] getSiteNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetSiteDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get site default response
-func (o *GetSiteDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get site default response has a 2xx status code
 func (o *GetSiteDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetSiteDefault) IsServerError() bool {
 // IsCode returns true when this get site default response a status code equal to that given
 func (o *GetSiteDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get site default response
+func (o *GetSiteDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetSiteDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetSiteOKBody) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (o *GetSiteOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getSiteOK" + "." + "data")

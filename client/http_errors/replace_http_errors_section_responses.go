@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceHTTPErrorsSectionReader is a Reader for the ReplaceHTTPErrorsSection structure.
@@ -98,6 +98,11 @@ func (o *ReplaceHTTPErrorsSectionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace Http errors section o k response
+func (o *ReplaceHTTPErrorsSectionOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceHTTPErrorsSectionOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_errors_sections/{name}][%d] replaceHttpErrorsSectionOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceHTTPErrorsSectionAccepted) IsServerError() bool {
 // IsCode returns true when this replace Http errors section accepted response a status code equal to that given
 func (o *ReplaceHTTPErrorsSectionAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace Http errors section accepted response
+func (o *ReplaceHTTPErrorsSectionAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceHTTPErrorsSectionAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceHTTPErrorsSectionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace Http errors section bad request response
+func (o *ReplaceHTTPErrorsSectionBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceHTTPErrorsSectionBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_errors_sections/{name}][%d] replaceHttpErrorsSectionBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceHTTPErrorsSectionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace Http errors section not found response
+func (o *ReplaceHTTPErrorsSectionNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceHTTPErrorsSectionNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/http_errors_sections/{name}][%d] replaceHttpErrorsSectionNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceHTTPErrorsSectionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace HTTP errors section default response
-func (o *ReplaceHTTPErrorsSectionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace HTTP errors section default response has a 2xx status code
 func (o *ReplaceHTTPErrorsSectionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceHTTPErrorsSectionDefault) IsServerError() bool {
 // IsCode returns true when this replace HTTP errors section default response a status code equal to that given
 func (o *ReplaceHTTPErrorsSectionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace HTTP errors section default response
+func (o *ReplaceHTTPErrorsSectionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceHTTPErrorsSectionDefault) Error() string {

@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetServerSwitchingRuleReader is a Reader for the GetServerSwitchingRule structure.
@@ -94,6 +94,11 @@ func (o *GetServerSwitchingRuleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get server switching rule o k response
+func (o *GetServerSwitchingRuleOK) Code() int {
+	return 200
+}
+
 func (o *GetServerSwitchingRuleOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_switching_rules/{index}][%d] getServerSwitchingRuleOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetServerSwitchingRuleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get server switching rule not found response
+func (o *GetServerSwitchingRuleNotFound) Code() int {
+	return 404
+}
+
 func (o *GetServerSwitchingRuleNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/server_switching_rules/{index}][%d] getServerSwitchingRuleNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetServerSwitchingRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get server switching rule default response
-func (o *GetServerSwitchingRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get server switching rule default response has a 2xx status code
 func (o *GetServerSwitchingRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetServerSwitchingRuleDefault) IsServerError() bool {
 // IsCode returns true when this get server switching rule default response a status code equal to that given
 func (o *GetServerSwitchingRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get server switching rule default response
+func (o *GetServerSwitchingRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetServerSwitchingRuleDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetServerSwitchingRuleOKBody) ContextValidate(ctx context.Context, form
 func (o *GetServerSwitchingRuleOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getServerSwitchingRuleOK" + "." + "data")

@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetGroupsReader is a Reader for the GetGroups structure.
@@ -89,6 +89,11 @@ func (o *GetGroupsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get groups o k response
+func (o *GetGroupsOK) Code() int {
+	return 200
+}
+
 func (o *GetGroupsOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/groups][%d] getGroupsOK  %+v", 200, o.Payload)
 }
@@ -142,11 +147,6 @@ type GetGroupsDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get groups default response
-func (o *GetGroupsDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get groups default response has a 2xx status code
 func (o *GetGroupsDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -170,6 +170,11 @@ func (o *GetGroupsDefault) IsServerError() bool {
 // IsCode returns true when this get groups default response a status code equal to that given
 func (o *GetGroupsDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get groups default response
+func (o *GetGroupsDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetGroupsDefault) Error() string {

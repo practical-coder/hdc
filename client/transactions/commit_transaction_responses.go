@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CommitTransactionReader is a Reader for the CommitTransaction structure.
@@ -104,6 +104,11 @@ func (o *CommitTransactionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the commit transaction o k response
+func (o *CommitTransactionOK) Code() int {
+	return 200
+}
+
 func (o *CommitTransactionOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionOK  %+v", 200, o.Payload)
 }
@@ -170,6 +175,11 @@ func (o *CommitTransactionAccepted) IsServerError() bool {
 // IsCode returns true when this commit transaction accepted response a status code equal to that given
 func (o *CommitTransactionAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the commit transaction accepted response
+func (o *CommitTransactionAccepted) Code() int {
+	return 202
 }
 
 func (o *CommitTransactionAccepted) Error() string {
@@ -247,6 +257,11 @@ func (o *CommitTransactionBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the commit transaction bad request response
+func (o *CommitTransactionBadRequest) Code() int {
+	return 400
+}
+
 func (o *CommitTransactionBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionBadRequest  %+v", 400, o.Payload)
 }
@@ -320,6 +335,11 @@ func (o *CommitTransactionNotFound) IsServerError() bool {
 // IsCode returns true when this commit transaction not found response a status code equal to that given
 func (o *CommitTransactionNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the commit transaction not found response
+func (o *CommitTransactionNotFound) Code() int {
+	return 404
 }
 
 func (o *CommitTransactionNotFound) Error() string {
@@ -397,6 +417,11 @@ func (o *CommitTransactionNotAcceptable) IsCode(code int) bool {
 	return code == 406
 }
 
+// Code gets the status code for the commit transaction not acceptable response
+func (o *CommitTransactionNotAcceptable) Code() int {
+	return 406
+}
+
 func (o *CommitTransactionNotAcceptable) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/transactions/{id}][%d] commitTransactionNotAcceptable  %+v", 406, o.Payload)
 }
@@ -450,11 +475,6 @@ type CommitTransactionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the commit transaction default response
-func (o *CommitTransactionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this commit transaction default response has a 2xx status code
 func (o *CommitTransactionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -478,6 +498,11 @@ func (o *CommitTransactionDefault) IsServerError() bool {
 // IsCode returns true when this commit transaction default response a status code equal to that given
 func (o *CommitTransactionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the commit transaction default response
+func (o *CommitTransactionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CommitTransactionDefault) Error() string {

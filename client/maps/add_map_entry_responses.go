@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // AddMapEntryReader is a Reader for the AddMapEntry structure.
@@ -92,6 +92,11 @@ func (o *AddMapEntryCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the add map entry created response
+func (o *AddMapEntryCreated) Code() int {
+	return 201
+}
+
 func (o *AddMapEntryCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntryCreated  %+v", 201, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *AddMapEntryBadRequest) IsServerError() bool {
 // IsCode returns true when this add map entry bad request response a status code equal to that given
 func (o *AddMapEntryBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the add map entry bad request response
+func (o *AddMapEntryBadRequest) Code() int {
+	return 400
 }
 
 func (o *AddMapEntryBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *AddMapEntryConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the add map entry conflict response
+func (o *AddMapEntryConflict) Code() int {
+	return 409
+}
+
 func (o *AddMapEntryConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/runtime/maps_entries][%d] addMapEntryConflict  %+v", 409, o.Payload)
 }
@@ -288,11 +303,6 @@ type AddMapEntryDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the add map entry default response
-func (o *AddMapEntryDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this add map entry default response has a 2xx status code
 func (o *AddMapEntryDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -316,6 +326,11 @@ func (o *AddMapEntryDefault) IsServerError() bool {
 // IsCode returns true when this add map entry default response a status code equal to that given
 func (o *AddMapEntryDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the add map entry default response
+func (o *AddMapEntryDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *AddMapEntryDefault) Error() string {

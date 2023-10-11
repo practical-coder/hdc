@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetAllStorageGeneralFilesReader is a Reader for the GetAllStorageGeneralFiles structure.
@@ -86,6 +86,11 @@ func (o *GetAllStorageGeneralFilesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get all storage general files o k response
+func (o *GetAllStorageGeneralFilesOK) Code() int {
+	return 200
+}
+
 func (o *GetAllStorageGeneralFilesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/general][%d] getAllStorageGeneralFilesOK  %+v", 200, o.Payload)
 }
@@ -152,6 +157,11 @@ func (o *GetAllStorageGeneralFilesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get all storage general files not found response
+func (o *GetAllStorageGeneralFilesNotFound) Code() int {
+	return 404
+}
+
 func (o *GetAllStorageGeneralFilesNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/storage/general][%d] getAllStorageGeneralFilesNotFound  %+v", 404, o.Payload)
 }
@@ -205,11 +215,6 @@ type GetAllStorageGeneralFilesDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get all storage general files default response
-func (o *GetAllStorageGeneralFilesDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get all storage general files default response has a 2xx status code
 func (o *GetAllStorageGeneralFilesDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -233,6 +238,11 @@ func (o *GetAllStorageGeneralFilesDefault) IsServerError() bool {
 // IsCode returns true when this get all storage general files default response a status code equal to that given
 func (o *GetAllStorageGeneralFilesDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get all storage general files default response
+func (o *GetAllStorageGeneralFilesDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetAllStorageGeneralFilesDefault) Error() string {

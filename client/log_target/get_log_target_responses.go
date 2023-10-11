@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetLogTargetReader is a Reader for the GetLogTarget structure.
@@ -94,6 +94,11 @@ func (o *GetLogTargetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get log target o k response
+func (o *GetLogTargetOK) Code() int {
+	return 200
+}
+
 func (o *GetLogTargetOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_targets/{index}][%d] getLogTargetOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetLogTargetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get log target not found response
+func (o *GetLogTargetNotFound) Code() int {
+	return 404
+}
+
 func (o *GetLogTargetNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/log_targets/{index}][%d] getLogTargetNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetLogTargetDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get log target default response
-func (o *GetLogTargetDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get log target default response has a 2xx status code
 func (o *GetLogTargetDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetLogTargetDefault) IsServerError() bool {
 // IsCode returns true when this get log target default response a status code equal to that given
 func (o *GetLogTargetDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get log target default response
+func (o *GetLogTargetDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetLogTargetDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetLogTargetOKBody) ContextValidate(ctx context.Context, formats strfmt
 func (o *GetLogTargetOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getLogTargetOK" + "." + "data")

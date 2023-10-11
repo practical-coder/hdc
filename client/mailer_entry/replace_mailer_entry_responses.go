@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // ReplaceMailerEntryReader is a Reader for the ReplaceMailerEntry structure.
@@ -98,6 +98,11 @@ func (o *ReplaceMailerEntryOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace mailer entry o k response
+func (o *ReplaceMailerEntryOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceMailerEntryOK) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/mailer_entries/{name}][%d] replaceMailerEntryOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ReplaceMailerEntryAccepted) IsServerError() bool {
 // IsCode returns true when this replace mailer entry accepted response a status code equal to that given
 func (o *ReplaceMailerEntryAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the replace mailer entry accepted response
+func (o *ReplaceMailerEntryAccepted) Code() int {
+	return 202
 }
 
 func (o *ReplaceMailerEntryAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *ReplaceMailerEntryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace mailer entry bad request response
+func (o *ReplaceMailerEntryBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceMailerEntryBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/mailer_entries/{name}][%d] replaceMailerEntryBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *ReplaceMailerEntryNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace mailer entry not found response
+func (o *ReplaceMailerEntryNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceMailerEntryNotFound) Error() string {
 	return fmt.Sprintf("[PUT /services/haproxy/configuration/mailer_entries/{name}][%d] replaceMailerEntryNotFound  %+v", 404, o.Payload)
 }
@@ -369,11 +389,6 @@ type ReplaceMailerEntryDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the replace mailer entry default response
-func (o *ReplaceMailerEntryDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this replace mailer entry default response has a 2xx status code
 func (o *ReplaceMailerEntryDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *ReplaceMailerEntryDefault) IsServerError() bool {
 // IsCode returns true when this replace mailer entry default response a status code equal to that given
 func (o *ReplaceMailerEntryDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the replace mailer entry default response
+func (o *ReplaceMailerEntryDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *ReplaceMailerEntryDefault) Error() string {

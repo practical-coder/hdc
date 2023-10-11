@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetSpoeScopesReader is a Reader for the GetSpoeScopes structure.
@@ -89,6 +89,11 @@ func (o *GetSpoeScopesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get spoe scopes o k response
+func (o *GetSpoeScopesOK) Code() int {
+	return 200
+}
+
 func (o *GetSpoeScopesOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/spoe/spoe_scopes][%d] getSpoeScopesOK  %+v", 200, o.Payload)
 }
@@ -142,11 +147,6 @@ type GetSpoeScopesDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get spoe scopes default response
-func (o *GetSpoeScopesDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get spoe scopes default response has a 2xx status code
 func (o *GetSpoeScopesDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -170,6 +170,11 @@ func (o *GetSpoeScopesDefault) IsServerError() bool {
 // IsCode returns true when this get spoe scopes default response a status code equal to that given
 func (o *GetSpoeScopesDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get spoe scopes default response
+func (o *GetSpoeScopesDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetSpoeScopesDefault) Error() string {

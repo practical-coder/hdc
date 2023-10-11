@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateBindReader is a Reader for the CreateBind structure.
@@ -98,6 +98,11 @@ func (o *CreateBindCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create bind created response
+func (o *CreateBindCreated) Code() int {
+	return 201
+}
+
 func (o *CreateBindCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/binds][%d] createBindCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateBindAccepted) IsServerError() bool {
 // IsCode returns true when this create bind accepted response a status code equal to that given
 func (o *CreateBindAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create bind accepted response
+func (o *CreateBindAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateBindAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateBindBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create bind bad request response
+func (o *CreateBindBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateBindBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/binds][%d] createBindBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateBindConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create bind conflict response
+func (o *CreateBindConflict) Code() int {
+	return 409
+}
+
 func (o *CreateBindConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/binds][%d] createBindConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateBindDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create bind default response
-func (o *CreateBindDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create bind default response has a 2xx status code
 func (o *CreateBindDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateBindDefault) IsServerError() bool {
 // IsCode returns true when this create bind default response a status code equal to that given
 func (o *CreateBindDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create bind default response
+func (o *CreateBindDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateBindDefault) Error() string {

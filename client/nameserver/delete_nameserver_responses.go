@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // DeleteNameserverReader is a Reader for the DeleteNameserver structure.
@@ -95,6 +95,11 @@ func (o *DeleteNameserverAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete nameserver accepted response
+func (o *DeleteNameserverAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteNameserverAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/nameservers/{name}][%d] deleteNameserverAccepted ", 202)
 }
@@ -151,6 +156,11 @@ func (o *DeleteNameserverNoContent) IsServerError() bool {
 // IsCode returns true when this delete nameserver no content response a status code equal to that given
 func (o *DeleteNameserverNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete nameserver no content response
+func (o *DeleteNameserverNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteNameserverNoContent) Error() string {
@@ -210,6 +220,11 @@ func (o *DeleteNameserverNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete nameserver not found response
+func (o *DeleteNameserverNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteNameserverNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /services/haproxy/configuration/nameservers/{name}][%d] deleteNameserverNotFound  %+v", 404, o.Payload)
 }
@@ -263,11 +278,6 @@ type DeleteNameserverDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the delete nameserver default response
-func (o *DeleteNameserverDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this delete nameserver default response has a 2xx status code
 func (o *DeleteNameserverDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -291,6 +301,11 @@ func (o *DeleteNameserverDefault) IsServerError() bool {
 // IsCode returns true when this delete nameserver default response a status code equal to that given
 func (o *DeleteNameserverDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the delete nameserver default response
+func (o *DeleteNameserverDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *DeleteNameserverDefault) Error() string {

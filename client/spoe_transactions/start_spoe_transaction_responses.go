@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // StartSpoeTransactionReader is a Reader for the StartSpoeTransaction structure.
@@ -88,6 +88,11 @@ func (o *StartSpoeTransactionCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the start spoe transaction created response
+func (o *StartSpoeTransactionCreated) Code() int {
+	return 201
+}
+
 func (o *StartSpoeTransactionCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe_transactions][%d] startSpoeTransactionCreated  %+v", 201, o.Payload)
 }
@@ -151,6 +156,11 @@ func (o *StartSpoeTransactionTooManyRequests) IsCode(code int) bool {
 	return code == 429
 }
 
+// Code gets the status code for the start spoe transaction too many requests response
+func (o *StartSpoeTransactionTooManyRequests) Code() int {
+	return 429
+}
+
 func (o *StartSpoeTransactionTooManyRequests) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/spoe_transactions][%d] startSpoeTransactionTooManyRequests  %+v", 429, o.Payload)
 }
@@ -197,11 +207,6 @@ type StartSpoeTransactionDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the start spoe transaction default response
-func (o *StartSpoeTransactionDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this start spoe transaction default response has a 2xx status code
 func (o *StartSpoeTransactionDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -225,6 +230,11 @@ func (o *StartSpoeTransactionDefault) IsServerError() bool {
 // IsCode returns true when this start spoe transaction default response a status code equal to that given
 func (o *StartSpoeTransactionDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the start spoe transaction default response
+func (o *StartSpoeTransactionDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *StartSpoeTransactionDefault) Error() string {

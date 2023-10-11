@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateStickRuleReader is a Reader for the CreateStickRule structure.
@@ -98,6 +98,11 @@ func (o *CreateStickRuleCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create stick rule created response
+func (o *CreateStickRuleCreated) Code() int {
+	return 201
+}
+
 func (o *CreateStickRuleCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/stick_rules][%d] createStickRuleCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateStickRuleAccepted) IsServerError() bool {
 // IsCode returns true when this create stick rule accepted response a status code equal to that given
 func (o *CreateStickRuleAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create stick rule accepted response
+func (o *CreateStickRuleAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateStickRuleAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateStickRuleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create stick rule bad request response
+func (o *CreateStickRuleBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateStickRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/stick_rules][%d] createStickRuleBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateStickRuleConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create stick rule conflict response
+func (o *CreateStickRuleConflict) Code() int {
+	return 409
+}
+
 func (o *CreateStickRuleConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/stick_rules][%d] createStickRuleConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateStickRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create stick rule default response
-func (o *CreateStickRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create stick rule default response has a 2xx status code
 func (o *CreateStickRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateStickRuleDefault) IsServerError() bool {
 // IsCode returns true when this create stick rule default response a status code equal to that given
 func (o *CreateStickRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create stick rule default response
+func (o *CreateStickRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateStickRuleDefault) Error() string {

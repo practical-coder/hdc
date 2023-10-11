@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetHTTPResponseRuleReader is a Reader for the GetHTTPResponseRule structure.
@@ -94,6 +94,11 @@ func (o *GetHTTPResponseRuleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get Http response rule o k response
+func (o *GetHTTPResponseRuleOK) Code() int {
+	return 200
+}
+
 func (o *GetHTTPResponseRuleOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_response_rules/{index}][%d] getHttpResponseRuleOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetHTTPResponseRuleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get Http response rule not found response
+func (o *GetHTTPResponseRuleNotFound) Code() int {
+	return 404
+}
+
 func (o *GetHTTPResponseRuleNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/http_response_rules/{index}][%d] getHttpResponseRuleNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetHTTPResponseRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get HTTP response rule default response
-func (o *GetHTTPResponseRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get HTTP response rule default response has a 2xx status code
 func (o *GetHTTPResponseRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetHTTPResponseRuleDefault) IsServerError() bool {
 // IsCode returns true when this get HTTP response rule default response a status code equal to that given
 func (o *GetHTTPResponseRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get HTTP response rule default response
+func (o *GetHTTPResponseRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetHTTPResponseRuleDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetHTTPResponseRuleOKBody) ContextValidate(ctx context.Context, formats
 func (o *GetHTTPResponseRuleOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getHttpResponseRuleOK" + "." + "data")

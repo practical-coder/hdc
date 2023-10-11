@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetStickRuleReader is a Reader for the GetStickRule structure.
@@ -94,6 +94,11 @@ func (o *GetStickRuleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get stick rule o k response
+func (o *GetStickRuleOK) Code() int {
+	return 200
+}
+
 func (o *GetStickRuleOK) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/stick_rules/{index}][%d] getStickRuleOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *GetStickRuleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get stick rule not found response
+func (o *GetStickRuleNotFound) Code() int {
+	return 404
+}
+
 func (o *GetStickRuleNotFound) Error() string {
 	return fmt.Sprintf("[GET /services/haproxy/configuration/stick_rules/{index}][%d] getStickRuleNotFound  %+v", 404, o.Payload)
 }
@@ -222,11 +232,6 @@ type GetStickRuleDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get stick rule default response
-func (o *GetStickRuleDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get stick rule default response has a 2xx status code
 func (o *GetStickRuleDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -250,6 +255,11 @@ func (o *GetStickRuleDefault) IsServerError() bool {
 // IsCode returns true when this get stick rule default response a status code equal to that given
 func (o *GetStickRuleDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get stick rule default response
+func (o *GetStickRuleDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetStickRuleDefault) Error() string {
@@ -346,6 +356,11 @@ func (o *GetStickRuleOKBody) ContextValidate(ctx context.Context, formats strfmt
 func (o *GetStickRuleOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if o.Data != nil {
+
+		if swag.IsZero(o.Data) { // not required
+			return nil
+		}
+
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getStickRuleOK" + "." + "data")

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // CreateTCPCheckReader is a Reader for the CreateTCPCheck structure.
@@ -98,6 +98,11 @@ func (o *CreateTCPCheckCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create Tcp check created response
+func (o *CreateTCPCheckCreated) Code() int {
+	return 201
+}
+
 func (o *CreateTCPCheckCreated) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_checks][%d] createTcpCheckCreated  %+v", 201, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CreateTCPCheckAccepted) IsServerError() bool {
 // IsCode returns true when this create Tcp check accepted response a status code equal to that given
 func (o *CreateTCPCheckAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the create Tcp check accepted response
+func (o *CreateTCPCheckAccepted) Code() int {
+	return 202
 }
 
 func (o *CreateTCPCheckAccepted) Error() string {
@@ -241,6 +251,11 @@ func (o *CreateTCPCheckBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create Tcp check bad request response
+func (o *CreateTCPCheckBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateTCPCheckBadRequest) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_checks][%d] createTcpCheckBadRequest  %+v", 400, o.Payload)
 }
@@ -316,6 +331,11 @@ func (o *CreateTCPCheckConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the create Tcp check conflict response
+func (o *CreateTCPCheckConflict) Code() int {
+	return 409
+}
+
 func (o *CreateTCPCheckConflict) Error() string {
 	return fmt.Sprintf("[POST /services/haproxy/configuration/tcp_checks][%d] createTcpCheckConflict  %+v", 409, o.Payload)
 }
@@ -369,11 +389,6 @@ type CreateTCPCheckDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the create TCP check default response
-func (o *CreateTCPCheckDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this create TCP check default response has a 2xx status code
 func (o *CreateTCPCheckDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -397,6 +412,11 @@ func (o *CreateTCPCheckDefault) IsServerError() bool {
 // IsCode returns true when this create TCP check default response a status code equal to that given
 func (o *CreateTCPCheckDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the create TCP check default response
+func (o *CreateTCPCheckDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *CreateTCPCheckDefault) Error() string {

@@ -49,7 +49,7 @@ func (a *Client) GetStats(params *GetStatsParams, authInfo runtime.ClientAuthInf
 		PathPattern:        "/services/haproxy/stats/native",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetStatsReader{formats: a.formats},
 		AuthInfo:           authInfo,

@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // GetConsulsReader is a Reader for the GetConsuls structure.
@@ -84,6 +84,11 @@ func (o *GetConsulsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get consuls o k response
+func (o *GetConsulsOK) Code() int {
+	return 200
+}
+
 func (o *GetConsulsOK) Error() string {
 	return fmt.Sprintf("[GET /service_discovery/consul][%d] getConsulsOK  %+v", 200, o.Payload)
 }
@@ -130,11 +135,6 @@ type GetConsulsDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the get consuls default response
-func (o *GetConsulsDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this get consuls default response has a 2xx status code
 func (o *GetConsulsDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -158,6 +158,11 @@ func (o *GetConsulsDefault) IsServerError() bool {
 // IsCode returns true when this get consuls default response a status code equal to that given
 func (o *GetConsulsDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the get consuls default response
+func (o *GetConsulsDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *GetConsulsDefault) Error() string {

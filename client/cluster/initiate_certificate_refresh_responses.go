@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/haproxytech/client-native/v4/models"
+	"github.com/haproxytech/client-native/v5/models"
 )
 
 // InitiateCertificateRefreshReader is a Reader for the InitiateCertificateRefresh structure.
@@ -85,6 +85,11 @@ func (o *InitiateCertificateRefreshOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the initiate certificate refresh o k response
+func (o *InitiateCertificateRefreshOK) Code() int {
+	return 200
+}
+
 func (o *InitiateCertificateRefreshOK) Error() string {
 	return fmt.Sprintf("[POST /cluster/certificate][%d] initiateCertificateRefreshOK ", 200)
 }
@@ -136,6 +141,11 @@ func (o *InitiateCertificateRefreshForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the initiate certificate refresh forbidden response
+func (o *InitiateCertificateRefreshForbidden) Code() int {
+	return 403
+}
+
 func (o *InitiateCertificateRefreshForbidden) Error() string {
 	return fmt.Sprintf("[POST /cluster/certificate][%d] initiateCertificateRefreshForbidden ", 403)
 }
@@ -171,11 +181,6 @@ type InitiateCertificateRefreshDefault struct {
 	Payload *models.Error
 }
 
-// Code gets the status code for the initiate certificate refresh default response
-func (o *InitiateCertificateRefreshDefault) Code() int {
-	return o._statusCode
-}
-
 // IsSuccess returns true when this initiate certificate refresh default response has a 2xx status code
 func (o *InitiateCertificateRefreshDefault) IsSuccess() bool {
 	return o._statusCode/100 == 2
@@ -199,6 +204,11 @@ func (o *InitiateCertificateRefreshDefault) IsServerError() bool {
 // IsCode returns true when this initiate certificate refresh default response a status code equal to that given
 func (o *InitiateCertificateRefreshDefault) IsCode(code int) bool {
 	return o._statusCode == code
+}
+
+// Code gets the status code for the initiate certificate refresh default response
+func (o *InitiateCertificateRefreshDefault) Code() int {
+	return o._statusCode
 }
 
 func (o *InitiateCertificateRefreshDefault) Error() string {

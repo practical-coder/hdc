@@ -24,7 +24,7 @@ import (
 type TCPRequestRule struct {
 
 	// action
-	// Enum: [accept capture do-resolve expect-netscaler-cip expect-proxy reject sc-inc-gpc0 sc-inc-gpc1 sc-set-gpt0 send-spoe-group set-dst-port set-dst set-priority set-src set-var silent-drop track-sc0 track-sc1 track-sc2 unset-var use-service lua set-bandwidth-limit set-src-port set-mark set-tos set-var-fmt set-log-level set-nice switch-mode]
+	// Enum: [accept capture do-resolve expect-netscaler-cip expect-proxy reject sc-add-gpc sc-inc-gpc sc-inc-gpc0 sc-inc-gpc1 sc-set-gpt0 send-spoe-group set-dst-port set-dst set-priority set-src set-var silent-drop track-sc0 track-sc1 track-sc2 track-sc unset-var use-service lua set-bandwidth-limit set-src-port set-mark set-tos set-var-fmt set-log-level set-nice switch-mode]
 	Action string `json:"action,omitempty"`
 
 	// bandwidth limit limit
@@ -94,8 +94,14 @@ type TCPRequestRule struct {
 	// resolve var
 	ResolveVar string `json:"resolve_var,omitempty"`
 
+	// sc idx
+	ScIdx string `json:"sc_idx,omitempty"`
+
 	// sc inc id
 	ScIncID string `json:"sc_inc_id,omitempty"`
+
+	// sc int
+	ScInt *int64 `json:"sc_int,omitempty"`
 
 	// service name
 	ServiceName string `json:"service_name,omitempty"`
@@ -118,6 +124,9 @@ type TCPRequestRule struct {
 
 	// track key
 	TrackKey string `json:"track_key,omitempty"`
+
+	// track stick counter
+	TrackStickCounter *int64 `json:"track_stick_counter,omitempty"`
 
 	// track table
 	TrackTable string `json:"track_table,omitempty"`
@@ -209,7 +218,7 @@ var tcpRequestRuleTypeActionPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["accept","capture","do-resolve","expect-netscaler-cip","expect-proxy","reject","sc-inc-gpc0","sc-inc-gpc1","sc-set-gpt0","send-spoe-group","set-dst-port","set-dst","set-priority","set-src","set-var","silent-drop","track-sc0","track-sc1","track-sc2","unset-var","use-service","lua","set-bandwidth-limit","set-src-port","set-mark","set-tos","set-var-fmt","set-log-level","set-nice","switch-mode"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["accept","capture","do-resolve","expect-netscaler-cip","expect-proxy","reject","sc-add-gpc","sc-inc-gpc","sc-inc-gpc0","sc-inc-gpc1","sc-set-gpt0","send-spoe-group","set-dst-port","set-dst","set-priority","set-src","set-var","silent-drop","track-sc0","track-sc1","track-sc2","track-sc","unset-var","use-service","lua","set-bandwidth-limit","set-src-port","set-mark","set-tos","set-var-fmt","set-log-level","set-nice","switch-mode"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -236,6 +245,12 @@ const (
 
 	// TCPRequestRuleActionReject captures enum value "reject"
 	TCPRequestRuleActionReject string = "reject"
+
+	// TCPRequestRuleActionScDashAddDashGpc captures enum value "sc-add-gpc"
+	TCPRequestRuleActionScDashAddDashGpc string = "sc-add-gpc"
+
+	// TCPRequestRuleActionScDashIncDashGpc captures enum value "sc-inc-gpc"
+	TCPRequestRuleActionScDashIncDashGpc string = "sc-inc-gpc"
 
 	// TCPRequestRuleActionScDashIncDashGpc0 captures enum value "sc-inc-gpc0"
 	TCPRequestRuleActionScDashIncDashGpc0 string = "sc-inc-gpc0"
@@ -275,6 +290,9 @@ const (
 
 	// TCPRequestRuleActionTrackDashSc2 captures enum value "track-sc2"
 	TCPRequestRuleActionTrackDashSc2 string = "track-sc2"
+
+	// TCPRequestRuleActionTrackDashSc captures enum value "track-sc"
+	TCPRequestRuleActionTrackDashSc string = "track-sc"
 
 	// TCPRequestRuleActionUnsetDashVar captures enum value "unset-var"
 	TCPRequestRuleActionUnsetDashVar string = "unset-var"
