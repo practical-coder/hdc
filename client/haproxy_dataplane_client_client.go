@@ -22,7 +22,6 @@ import (
 	"github.com/practical-coder/hdc/client/defaults"
 	"github.com/practical-coder/hdc/client/dgram_bind"
 	"github.com/practical-coder/hdc/client/discovery"
-	"github.com/practical-coder/hdc/client/f_c_g_i_app"
 	"github.com/practical-coder/hdc/client/filter"
 	"github.com/practical-coder/hdc/client/frontend"
 	"github.com/practical-coder/hdc/client/global"
@@ -123,7 +122,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *HaproxyDat
 	cli.Defaults = defaults.New(transport, formats)
 	cli.DgramBind = dgram_bind.New(transport, formats)
 	cli.Discovery = discovery.New(transport, formats)
-	cli.FcgiApp = f_c_g_i_app.New(transport, formats)
 	cli.Filter = filter.New(transport, formats)
 	cli.Frontend = frontend.New(transport, formats)
 	cli.Global = global.New(transport, formats)
@@ -236,8 +234,6 @@ type HaproxyDataplaneClient struct {
 
 	Discovery discovery.ClientService
 
-	FcgiApp f_c_g_i_app.ClientService
-
 	Filter filter.ClientService
 
 	Frontend frontend.ClientService
@@ -344,7 +340,6 @@ func (c *HaproxyDataplaneClient) SetTransport(transport runtime.ClientTransport)
 	c.Defaults.SetTransport(transport)
 	c.DgramBind.SetTransport(transport)
 	c.Discovery.SetTransport(transport)
-	c.FcgiApp.SetTransport(transport)
 	c.Filter.SetTransport(transport)
 	c.Frontend.SetTransport(transport)
 	c.Global.SetTransport(transport)
